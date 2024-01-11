@@ -3,7 +3,7 @@ Page 51516273 "Sacco No. Series"
 {
     ApplicationArea = Basic;
     DeleteAllowed = false;
-    InsertAllowed=false;
+    InsertAllowed = false;
     Editable = true;
     SourceTable = "Sacco No. Series";
     UsageCategory = Administration;
@@ -15,7 +15,7 @@ Page 51516273 "Sacco No. Series"
             group(General)
             {
                 Caption = 'General';
-           
+
                 field("SMS Request Series"; "SMS Request Series")
                 {
                     ApplicationArea = Basic;
@@ -310,6 +310,10 @@ Page 51516273 "Sacco No. Series"
                 {
                     ApplicationArea = Basic;
                 }
+                field("SurePESA Registration Nos"; "SurePESA Registration Nos")
+                {
+                    ApplicationArea = all;
+                }
             }
             group(CRM)
             {
@@ -332,7 +336,7 @@ Page 51516273 "Sacco No. Series"
         }
     }
 
-       trigger OnInit()
+    trigger OnInit()
 
     begin
         if Rec.IsEmpty() then

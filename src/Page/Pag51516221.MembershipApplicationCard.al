@@ -74,7 +74,7 @@ Page 51516221 "Membership Application Card"
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
-                    ShowMandatory = true;  
+                    ShowMandatory = true;
                 }
                 field(Town; Town)
                 {

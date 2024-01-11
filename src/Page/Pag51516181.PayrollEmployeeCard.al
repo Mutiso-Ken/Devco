@@ -27,18 +27,22 @@ Page 51516181 "Payroll Employee Card"
                 field(Surname; Surname)
                 {
                     ApplicationArea = Basic;
+                    Visible=false;
                 }
                  field("Full Name";"Full Name")
                 {
                     ApplicationArea = Basic;
+                     
                 }
                 field(Firstname; Firstname)
                 {
                     ApplicationArea = Basic;
+                     Visible=false;
                 }
                 field(Lastname; Lastname)
                 {
                     ApplicationArea = Basic;
+                     Visible=false;
                 }
                 field(Photo; Photo)
                 {
