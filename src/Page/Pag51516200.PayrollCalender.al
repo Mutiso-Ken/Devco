@@ -3,7 +3,7 @@ Page 51516200 "Payroll Calender"
 {
     ApplicationArea = Basic;
     DeleteAllowed = false;
-    InsertAllowed = false;
+    InsertAllowed = true;
     ModifyAllowed = false;
     PageType = List;
     SourceTable = "Payroll Calender";
@@ -18,6 +18,7 @@ Page 51516200 "Payroll Calender"
                 field("Date Opened"; "Date Opened")
                 {
                     ApplicationArea = Basic;
+                    NotBlank=true;
                 }
                 field("Period Name"; "Period Name")
                 {

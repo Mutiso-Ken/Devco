@@ -18,34 +18,34 @@ Page 51516226 "Member List"
     {
         area(content)
         {
-            repeater(General)
+            repeater(Control1)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
 
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Phone No."; "Phone No.")
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
-                    visible = false;
+
                 }
-                field("<Mobile Phone>"; "Mobile Phone No")
+                field("<Mobile Phone>"; Rec."Mobile Phone No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Mobile Phone';
                 }
-                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                 {
                     Caption = 'Branch Code';
                     ApplicationArea = Basic;
@@ -59,14 +59,15 @@ Page 51516226 "Member List"
                 // }
 
 
-                field("Account Category"; "Account Category")
+                field("Account Category"; Rec."Account Category")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
+                    ApplicationArea = basic;
                 }
-                field("Payroll/Staff No"; "Payroll/Staff No")
+                field("Payroll/Staff No"; Rec."Payroll/Staff No")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
@@ -85,6 +86,7 @@ Page 51516226 "Member List"
             {
                 SubPageLink = "No." = field("No.");
                 Visible = true;
+                ApplicationArea=all;
             }
         }
 

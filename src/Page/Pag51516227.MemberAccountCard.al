@@ -362,7 +362,7 @@ Page 51516227 "Member Account Card"
             }
             group("Bank Details")
             {
-            
+
                 field("Bank Account No."; "Bank Account No.")
                 {
                     ApplicationArea = Basic;
@@ -370,10 +370,12 @@ Page 51516227 "Member Account Card"
                 field("Bank Code"; "Bank Code")
                 {
                     ApplicationArea = Basic;
+                    Caption = ' Bank Name';
                 }
                 field("Bank Name"; "Bank Name")
                 {
                     ApplicationArea = Basic;
+                    Visible = false;
                 }
                 field("Bank Branch"; "Bank Branch")
                 {

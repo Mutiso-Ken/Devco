@@ -41,7 +41,7 @@ Table 51516185 "Payroll Calender"
 
     keys
     {
-        key(Key1;"Date Opened")
+        key(Key1;"Date Opened","Period Name")
         {
             Clustered = true;
         }
