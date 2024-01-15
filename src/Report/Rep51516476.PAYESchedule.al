@@ -114,7 +114,7 @@ Report 51516476 "PAYE Schedule"
                 objEmp.SetRange(objEmp."No.","No.");
                 if objEmp.Find('-') then
                   EmployeeName:='';
-                  EmployeeName:=objEmp.Firstname+' '+objEmp.Lastname+' '+objEmp.Surname;
+                  EmployeeName:=objEmp."Full Name";
 
                   PinNumber:=objEmp."PIN No";
 

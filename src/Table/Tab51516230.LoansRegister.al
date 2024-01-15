@@ -2097,10 +2097,14 @@ Table 51516230 "Loans Register"
         field(68109; "Non-member Account"; Boolean)
         {
         }
-        // field(68110; ; Blob)
-        // {
-        //     DataClassification = ToBeClassified;
-        // }
+        field(68110; "Valuation Cost"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(68111; "Legal Cost"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
 
 
 

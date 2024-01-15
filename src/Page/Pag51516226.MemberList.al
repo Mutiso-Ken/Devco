@@ -38,46 +38,39 @@ Page 51516226 "Member List"
                 field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
-
-                }
-                field("<Mobile Phone>"; Rec."Mobile Phone No")
-                {
-                    ApplicationArea = Basic;
                     Caption = 'Mobile Phone';
-                }
-                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
-                {
-                    Caption = 'Branch Code';
-                    ApplicationArea = Basic;
-                    Style = StrongAccent;
+
                 }
 
 
-                // field("FOSA Account"; "FOSA Account")
-                // {
-                //     ApplicationArea = Basic;
-                // }
 
 
-                field("Account Category"; Rec."Account Category")
-                {
-                    ApplicationArea = Basic;
-                }
                 field(Status; Rec.Status)
                 {
                     ApplicationArea = basic;
                 }
-                field("Payroll/Staff No"; Rec."Payroll/Staff No")
+                field("Shares Retained"; "Shares Retained")
                 {
                     ApplicationArea = Basic;
-                    Visible = false;
+                    Caption = 'Share Capital';
+                }
+                field("Current Shares"; "Current Shares")
+                {
+                    Caption = 'Unwithdrawable Deposits';
+                    Style = StrongAccent;
+                }
+                field("Outstanding Balance"; "Outstanding Balance")
+                {
+                    Style = StrongAccent;
+                    Caption = 'Oustanding Loan Balance';
+                }
+                field("Outstanding Interest"; "Outstanding Interest")
+                {
+                    Style = StrongAccent;
+                    Caption = 'Oustanding Loan Interest';
                 }
 
-                field("Employer Code"; "Employer Code")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
+
             }
         }
         area(factboxes)
@@ -86,7 +79,7 @@ Page 51516226 "Member List"
             {
                 SubPageLink = "No." = field("No.");
                 Visible = true;
-                ApplicationArea=all;
+                ApplicationArea = all;
             }
         }
 

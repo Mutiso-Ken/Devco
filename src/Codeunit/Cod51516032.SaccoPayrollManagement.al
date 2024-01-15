@@ -35,7 +35,7 @@ codeunit 51516032 "Sacco Payroll Management"
         NSSFEMPyee: Code[20];
         NHIFEMPyer: Code[20];
         NHIFEMPyee: Code[20];
-        HrEmployee: Record "HR Employee";
+        HrEmployee: Record "Payroll Employee";
         CoopParameters: enum CoopParameters;
         PayrollType: Code[20];
         SpecialTranAmount: Decimal;

@@ -24,26 +24,26 @@ Page 51516181 "Payroll Employee Card"
                     Caption = 'Sacco Member No.';
 
                 }
-                field(Surname; Surname)
-                {
-                    ApplicationArea = Basic;
-                    Visible=false;
-                }
-                 field("Full Name";"Full Name")
-                {
-                    ApplicationArea = Basic;
+                // field(Surname; Surname)
+                // {
+                //     ApplicationArea = Basic;
+                //     Visible=false;
+                // }
+                //  field("Full Name";"Full Name")
+                // {
+                //     ApplicationArea = Basic;
                      
-                }
-                field(Firstname; Firstname)
-                {
-                    ApplicationArea = Basic;
-                     Visible=false;
-                }
-                field(Lastname; Lastname)
-                {
-                    ApplicationArea = Basic;
-                     Visible=false;
-                }
+                // }
+                // field(Firstname; Firstname)
+                // {
+                //     ApplicationArea = Basic;
+                //      Visible=false;
+                // }
+                // field(Lastname; Lastname)
+                // {
+                //     ApplicationArea = Basic;
+                //      Visible=false;
+                // }
                 field(Photo; Photo)
                 {
                     ApplicationArea = Basic;
@@ -56,14 +56,11 @@ Page 51516181 "Payroll Employee Card"
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1"; "Global Dimension 1")
+                field("National ID No";"National ID No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 2"; "Global Dimension 2")
-                {
-                    ApplicationArea = Basic;
-                }
+               
                 field("Posting Group"; "Posting Group")
                 {
                     ApplicationArea = Basic;
@@ -99,18 +96,6 @@ Page 51516181 "Payroll Employee Card"
                 {
                     ApplicationArea = Basic;
                 }
-                field("Basic Pay(LCY)"; "Basic Pay(LCY)")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Non Taxable"; "Non Taxable")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Non Taxable(LCY)"; "Non Taxable(LCY)")
-                {
-                    ApplicationArea = Basic;
-                }
                 field("Suspend Pay"; "Suspend Pay")
                 {
                     ApplicationArea = Basic;
@@ -140,22 +125,6 @@ Page 51516181 "Payroll Employee Card"
                     ApplicationArea = Basic;
                 }
                 field(Gratuity; Gratuity)
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Gratuity Percentage"; "Gratuity Percentage")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Gratuity Provision"; "Gratuity Provision")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Gratuity Provision(LCY)"; "Gratuity Provision(LCY)")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Days Absent"; "Days Absent")
                 {
                     ApplicationArea = Basic;
                 }
@@ -342,7 +311,7 @@ Page 51516181 "Payroll Employee Card"
         PeriodYear: Integer;
 
         ProcessPayroll: Codeunit "Sacco Payroll Management";
-        HrEmployee: Record "HR Employee";
+        HrEmployee: Record "Payroll Employee";
         prPeriodTransactions: Record "Payroll Monthly Transactions";
         prEmployerDeductions: Record "Payroll Employer Deductions";
         Selection: Integer;
@@ -413,11 +382,11 @@ Page 51516181 "Payroll Employee Card"
                     SLEEP(100);
                     //Progress Window
                     IF NOT SalCard."Suspend Pay" THEN BEGIN
-                        ProgressWindow.UPDATE(1, HrEmployee."No." + ':' + HrEmployee."First Name" + ' ' + HrEmployee."Middle Name" + ' ' + HrEmployee.Surname);
+                        ProgressWindow.UPDATE(1, HrEmployee."No." + ':' + HrEmployee."Full Name");
                         IF SalCard.GET(HrEmployee."No.") THEN
-                            ProcessPayroll.fnProcesspayroll(HrEmployee."No.", HrEmployee."Admission Date", SalCard."Basic Pay", SalCard."Pays PAYE"
+                            ProcessPayroll.fnProcesspayroll(HrEmployee."No.", 0D, SalCard."Basic Pay", SalCard."Pays PAYE"
                                 , SalCard."Pays NSSF", SalCard."Pays NHIF", SelectedPeriod, SelectedPeriod, '', '',
-                                HrEmployee."Date of Leaving", TRUE, HrEmployee."Department Code", PayrollCode);
+                                HrEmployee."Date of Leaving", TRUE, ' ', PayrollCode);
                     END;
                 UNTIL HrEmployee.NEXT = 0;
                 ////Progress Window

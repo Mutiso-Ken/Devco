@@ -502,7 +502,7 @@ page 51516145 "Employees Card"
         end else begin
             PayrollEmployees.Init();
             PayrollEmployees."No." := "No.";
-            PayrollEmployees.Surname := Surname;
+            PayrollEmployees.Lastname := "Last Name";
             PayrollEmployees.Firstname := "First Name";
             PayrollEmployees."Joining Date" := "Date Of Join";
             PayrollEmployees."Global Dimension 1" := "Global Dimension 1 Code";

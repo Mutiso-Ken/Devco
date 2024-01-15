@@ -35,11 +35,7 @@ Page 51516247 "Loans Guarantee Details"
                         end;
                     end;
                 }
-                field("Group Account No"; "Group Account No.")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
+
                 field("ID No."; "ID No.")
                 {
                     ApplicationArea = Basic;

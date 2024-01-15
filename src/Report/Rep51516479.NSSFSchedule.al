@@ -149,7 +149,7 @@ Report 51516479 "NSSF Schedule"
                 objEmp.Reset;
                 objEmp.SetRange(objEmp."No.","No.");
                 if objEmp.Find('-') then;
-                  EmployeeName:=  objEmp.Firstname+' '+objEmp.Lastname+' '+objEmp.Surname;
+                  EmployeeName:=  objEmp."Full Name";
                   NssfNo:=objEmp."NSSF No";
                   IDNumber:=objEmp."National ID No";
 

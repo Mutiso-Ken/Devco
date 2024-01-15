@@ -247,7 +247,7 @@ Report 51516470 "Deductions Summary"
 
             trigger OnAfterGetRecord()
             begin
-                Name := emps.Firstname + ' ' + emps.Lastname + ' ' + emps.Surname;
+                Name := emps."Full Name";
                 TransCount := 0;
                 showdet := true;
                 NetPay := 0;

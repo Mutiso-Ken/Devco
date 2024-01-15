@@ -791,7 +791,7 @@ Report 51516244 "Loan Appraisal- BOSA"
 
             trigger OnAfterGetRecord()
             begin
-                //Initials:=(COPYSTR(USERID,8));
+           
                 Cshares := 0;
                 MAXAvailable := 0;
                 LOANBALANCE := 0;
@@ -845,11 +845,11 @@ Report 51516244 "Loan Appraisal- BOSA"
                         LoanApp.SetRange(LoanApp.Posted, true);
                         if LoanApp.Find('-') then begin
                             repeat
-                                //IF (LoanApp."Loan Product Type"='D/L') OR (LoanApp."Loan Product Type"='E/L')  OR  (LoanApp."Loan Product Type"='J/L') OR (LoanApp."Loan Product Type"='SELF') THEN BEGIN
+                               
                                 LoanApp.CalcFields(LoanApp."Outstanding Balance", "Topup Commission");
                                 if LoanApp."Outstanding Balance" > 0 then begin
                                     LOANBALANCE := LOANBALANCE + LoanApp."Outstanding Balance";
-                                    TotalRepayments := TotalRepayments + LoanApp.Repayment; //
+                                    TotalRepayments := TotalRepayments + LoanApp.Repayment; 
 
                                 end;
                             //END;
@@ -912,24 +912,7 @@ Report 51516244 "Loan Appraisal- BOSA"
 
 
                     LBalance := LOANBALANCE - BRIGEDAMOUNT + Commision;
-                    //****Banding*******************************
-                    /*
-                    IF CONFIRM('Do you Want the system to insert the Minimum Deposits Contributions?',FALSE)=TRUE THEN BEGIN
-                    IF BANDING.FIND('-') THEN BEGIN
-                    REPEAT
-                    IF (TotalLoanBal>=BANDING."Minimum Amount") AND (TotalLoanBal<=BANDING."Maximum Amount") THEN BEGIN
-                    Band:=BANDING."Minimum Dep Contributions";
-                    "Min Deposit As Per Tier":=Band;
-
-                    MODIFY;
-                    END;
-                    UNTIL BANDING.NEXT=0;
-                    END;
-                    END ELSE
-                    Band:="Min Deposit As Per Tier";
-                    */
-
-                    ///****************End Banding************
+                  
                     TotalBand := TotalLoanBal + Band;
 
 
@@ -970,21 +953,7 @@ Report 51516244 "Loan Appraisal- BOSA"
                         until SalDetails.Next = 0;
                     end;
 
-                    /*
-                    //compute Earnings
-                    //compute Deduction
-                    SalDetails.RESET;
-                    SalDetails.SETRANGE(SalDetails."Client Code",Loans."Client Code");
-                    SalDetails.SETRANGE(SalDetails.Type,SalDetails.Type::Deductions);
-
-                    IF SalDetails.FIND('-') THEN BEGIN
-                    REPEAT
-                     Deductions:=Deductions+SalDetails.Amount;
-                    UNTIL SalDetails.NEXT=0;
-                    END;
-                    MESSAGE('StatDeductions is %1',StatDeductions);
-
-                        */
+                
 
                     //**//  Statutory Ded
                     SalDetails.Reset;

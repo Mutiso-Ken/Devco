@@ -2,9 +2,9 @@
 Page 51516200 "Payroll Calender"
 {
     ApplicationArea = Basic;
-    DeleteAllowed = false;
+    DeleteAllowed = true;
     InsertAllowed = true;
-    ModifyAllowed = false;
+
     PageType = List;
     SourceTable = "Payroll Calender";
     UsageCategory = Tasks;
@@ -15,15 +15,12 @@ Page 51516200 "Payroll Calender"
         {
             repeater(Group)
             {
-                field("Date Opened"; "Date Opened")
-                {
-                    ApplicationArea = Basic;
-                    NotBlank=true;
-                }
                 field("Period Name"; "Period Name")
                 {
                     ApplicationArea = Basic;
                 }
+
+
                 field("Period Month"; "Period Month")
                 {
                     ApplicationArea = Basic;
@@ -32,27 +29,17 @@ Page 51516200 "Payroll Calender"
                 {
                     ApplicationArea = Basic;
                 }
+                field("Date Opened"; "Date Opened")
+                {
+                    ApplicationArea = Basic;
+                    NotBlank = true;
+                }
                 field(Closed; Closed)
                 {
                     ApplicationArea = Basic;
+                    Editable=false;
                 }
                 field("Date Closed"; "Date Closed")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Tax Paid"; "Tax Paid")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Tax Paid(LCY)"; "Tax Paid(LCY)")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Basic Pay Paid"; "Basic Pay Paid")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Basic Pay Paid(LCY)"; "Basic Pay Paid(LCY)")
                 {
                     ApplicationArea = Basic;
                 }

@@ -15,12 +15,11 @@ Table 51516231 "Loans Guarantee Details"
         }
         field(2; "Member No"; Code[20])
         {
-            // TableRelation = Customer."No." where("Group Account No" = field("Group Account No."));
+            TableRelation = Customer."No.";
+            trigger OnValidate()
+            begin
 
-            // trigger OnValidate()
-            // begin
-
-            // end;
+            end;
         }
         field(3; Name; Text[200])
         {
@@ -97,9 +96,9 @@ Table 51516231 "Loans Guarantee Details"
         }
         field(16; "Outstanding Balance"; Decimal)
         {
-            // CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Transaction Type" = filter(Loan | Repayment),
-            //                                                       "Loan No" = field("Loan No")));
-            // FieldClass = FlowField;
+            CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Transaction Type" = filter(Loan | Repayment),
+                                                                  "Loan No" = field("Loan No")));
+            FieldClass = FlowField;
         }
         field(17; "Total Loans Guaranteed"; Decimal)
         {
@@ -107,21 +106,21 @@ Table 51516231 "Loans Guarantee Details"
         }
         field(18; "Loans Outstanding"; Decimal)
         {
-            // CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Transaction Type" = filter(Loan | Repayment),
-            //                                                       "Loan No" = field("Loan No")));
-            // FieldClass = FlowField;
+            CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Transaction Type" = filter(Loan | Repayment),
+                                                                  "Loan No" = field("Loan No")));
+            FieldClass = FlowField;
 
             trigger OnValidate()
             begin
-                // "Total Loans Guaranteed" := "Outstanding Balance";
-                // Modify;
+                "Total Loans Guaranteed" := "Outstanding Balance";
+                Modify;
             end;
         }
         field(19; "Guarantor Outstanding"; Decimal)
         {
-            // CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Member No"),
-            //                                                       "Transaction Type" = filter(Loan | Repayment)));
-            // FieldClass = FlowField;
+            CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Member No"),
+                                                                  "Transaction Type" = filter(Loan | Repayment)));
+            FieldClass = FlowField;
         }
         field(20; "Employer Code"; Code[20])
         {
@@ -161,9 +160,9 @@ Table 51516231 "Loans Guarantee Details"
         }
         field(29; "Loan amount"; Decimal)
         {
-            // CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Loan No" = field("Loan No"),
-            //                                                       "Transaction Type" = filter(Loan | "Unallocated Funds")));
-            // FieldClass = FlowField;
+            CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Loan No" = field("Loan No"),
+                                                                  "Transaction Type" = filter(Loan | "Unallocated Funds")));
+            FieldClass = FlowField;
         }
         field(30; "Amount Committed"; Decimal)
         {

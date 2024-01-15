@@ -129,7 +129,7 @@ Page 51516245 "Loan Application Card"
                     ShowMandatory = false;
                     Style = Ambiguous;
                     Editable = MNoEditable;
-                    Visible = false;
+
 
                     trigger OnValidate()
                     begin
@@ -142,7 +142,7 @@ Page 51516245 "Loan Application Card"
                     ShowMandatory = false;
                     Style = Ambiguous;
                     Editable = MNoEditable;
-                    visible = false;
+
 
                     trigger OnValidate()
                     begin
@@ -155,7 +155,7 @@ Page 51516245 "Loan Application Card"
                     ShowMandatory = false;
                     Style = Ambiguous;
                     Editable = MNoEditable;
-                    visible = false;
+
 
                     trigger OnValidate()
                     begin
@@ -167,7 +167,7 @@ Page 51516245 "Loan Application Card"
                 {
                     ApplicationArea = Basic;
                     Editable = MNoEditable;
-                    Visible = true;
+
                 }
                 field("Repayment Method"; "Repayment Method")
                 {
@@ -188,6 +188,14 @@ Page 51516245 "Loan Application Card"
                 {
                     ApplicationArea = Basic;
                     Editable = false;
+                }
+                field("Valuation Cost"; "Valuation Cost")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Legal Cost"; "Legal Cost")
+                {
+
                 }
                 field("Loan Status"; "Loan Status")
                 {

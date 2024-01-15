@@ -50,55 +50,55 @@ DeleteAllowed=true;
     {
         area(creation)
         {
-            action("Update List")
-            {
-                ApplicationArea = Basic;
-                Image = Allocations;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
-                PromotedOnly = true;
-                Visible = false;
+            // action("Update List")
+            // {
+            //     ApplicationArea = Basic;
+            //     Image = Allocations;
+            //     Promoted = true;
+            //     PromotedIsBig = true;
+            //     PromotedCategory = Process;
+            //     PromotedOnly = true;
+            //     Visible = false;
 
-                trigger OnAction()
-                var
-                    objEmp: Record "HR Employee";
-                    PayrollEmployees: record "Payroll Employee";
-                begin
-                    //......................................Check For If there are new employees in HR Employee Table
-                    PayrollEmployees.Reset();
-                    PayrollEmployees.SetRange(PayrollEmployees."No.", objEmp."No.");
-                    if PayrollEmployees.Find('-') = false then begin
-                        repeat
-                            PayrollEmployees.Init();
-                            PayrollEmployees."No." := objEmp."No.";
-                            PayrollEmployees.Surname := objEmp.Surname;
-                            PayrollEmployees.Firstname := objEmp."First Name";
-                            PayrollEmployees."Joining Date" := objEmp."Date Of Join";
-                            PayrollEmployees."Global Dimension 1" := objEmp."Global Dimension 1 Code";
-                            PayrollEmployees."Global Dimension 2" := objEmp."Global Dimension 2 Code";
-                            PayrollEmployees."Payment Mode" := "Payment Mode"::"Bank Transfer";
-                            PayrollEmployees.Status := Status::Active;
-                            PayrollEmployees."NSSF No" := objEmp."NSSF No.";
-                            PayrollEmployees."Pays NHIF" := true;
-                            PayrollEmployees."Pays NSSF" := true;
-                            PayrollEmployees."PIN No" := objEmp."PIN No.";
-                            PayrollEmployees."Pays PAYE" := true;
-                            if CopyStr(objEmp."No.", 1, 2) = 'C0' then begin
-                                PayrollEmployees.Gratuity := true;
-                                PayrollEmployees.Casual := true;
-                            end;
-                            PayrollEmployees."Full Name" := objEmp."Full Name";
+            //     trigger OnAction()
+            //     var
+            //         objEmp: Record "HR Employee";
+            //         PayrollEmployees: record "Payroll Employee";
+            //     begin
+            //         //......................................Check For If there are new employees in HR Employee Table
+            //         PayrollEmployees.Reset();
+            //         PayrollEmployees.SetRange(PayrollEmployees."No.", objEmp."No.");
+            //         if PayrollEmployees.Find('-') = false then begin
+            //             repeat
+            //                 PayrollEmployees.Init();
+            //                 PayrollEmployees."No." := objEmp."No.";
+            //                 PayrollEmployees.Surname := objEmp.Surname;
+            //                 PayrollEmployees.Firstname := objEmp."First Name";
+            //                 PayrollEmployees."Joining Date" := objEmp."Date Of Join";
+            //                 PayrollEmployees."Global Dimension 1" := objEmp."Global Dimension 1 Code";
+            //                 PayrollEmployees."Global Dimension 2" := objEmp."Global Dimension 2 Code";
+            //                 PayrollEmployees."Payment Mode" := "Payment Mode"::"Bank Transfer";
+            //                 PayrollEmployees.Status := Status::Active;
+            //                 PayrollEmployees."NSSF No" := objEmp."NSSF No.";
+            //                 PayrollEmployees."Pays NHIF" := true;
+            //                 PayrollEmployees."Pays NSSF" := true;
+            //                 PayrollEmployees."PIN No" := objEmp."PIN No.";
+            //                 PayrollEmployees."Pays PAYE" := true;
+            //                 if CopyStr(objEmp."No.", 1, 2) = 'C0' then begin
+            //                     PayrollEmployees.Gratuity := true;
+            //                     PayrollEmployees.Casual := true;
+            //                 end;
+            //                 PayrollEmployees."Full Name" := objEmp."Full Name";
 
-                            if PayrollEmployees.Insert(true) = false then begin
-                                PayrollEmployees.Modify();
-                            end;
-                        until objEmp.Next = 0;
-                        Message('Updated');
-                    end;
-                    Message('No new Records');
-                end;
-            }
+            //                 if PayrollEmployees.Insert(true) = false then begin
+            //                     PayrollEmployees.Modify();
+            //                 end;
+            //             until objEmp.Next = 0;
+            //             Message('Updated');
+            //         end;
+            //         Message('No new Records');
+            //     end;
+            // }
         }
     }
 

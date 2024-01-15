@@ -26,10 +26,10 @@ Page 51516248 "Loan Collateral Security"
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No";"Account No")
-                {
-                    ApplicationArea = Basic;
-                }
+                // field("Account No";"Account No")
+                // {
+                //     ApplicationArea = Basic;
+                // }
                 field(Category;Category)
                 {
                     ApplicationArea = Basic;

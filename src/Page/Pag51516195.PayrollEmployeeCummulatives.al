@@ -17,15 +17,15 @@ Page 51516195 "Payroll Employee Cummulatives"
                 {
                     ApplicationArea = Basic;
                 }
-                field(Surname;Surname)
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Firstname;Firstname)
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Lastname;Lastname)
+                // field(Surname;Surname)
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field(Firstname;Firstname)
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                field("Full Name";"Full Name")
                 {
                     ApplicationArea = Basic;
                 }

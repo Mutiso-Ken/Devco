@@ -27,9 +27,9 @@ Report 51516047 "P9 Report"
             column(FirstName_HREmployees; "HR Employees".Firstname)
             {
             }
-            column(MiddleName_HREmployees; "HR Employees".Surname)
-            {
-            }
+            // column(MiddleName_HREmployees; "HR Employees".Surname)
+            // {
+            // }
             column(LastName_HREmployees; "HR Employees".Lastname)
             {
             }

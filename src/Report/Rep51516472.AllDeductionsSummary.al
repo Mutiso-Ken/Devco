@@ -103,7 +103,7 @@ Report 51516472 "All Deductions Summary"
 
                 Clear(empName);
                 if emps.Get("Payroll Monthly Transactions"."No.") then
-                    empName := emps.Firstname + ' ' + emps.Lastname + ' ' + emps.Surname;
+                    empName := emps."Full Name";
                 if not (((("Payroll Monthly Transactions".Grouping = 7) and
                      (("Payroll Monthly Transactions".SubGrouping <> 6)
                     and ("Payroll Monthly Transactions".SubGrouping <> 5))) or

@@ -136,7 +136,7 @@ Report 51516478 "NHIF Schedule"
                 objEmp.SetRange(objEmp."No.", "No.");
 
                 if objEmp.Find('-') then;
-                EmployeeName := objEmp.Firstname + ' ' + objEmp.Lastname + ' ' + objEmp.Surname;
+                EmployeeName := objEmp."Full Name";
                 NhifNo := objEmp."NHIF No";
                 IDNumber := objEmp."National ID No";
                 //Dob:=objEmp.dat;

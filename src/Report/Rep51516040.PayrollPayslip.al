@@ -542,7 +542,7 @@ report 51516040 "Payroll Payslip"
                     objEmp.SetRange(objEmp."No.", "Payroll Employee"."No.");
                     if objEmp.Find('-') then begin
                         strEmpName := "Payroll Employee"."No.";
-                        EmpName := objEmp.Surname + ' ' + objEmp.Firstname + ' ' + objEmp.Lastname;
+                        EmpName := objEmp."Full Name";
                         strPin := objEmp."PIN No";
                         dtDOE := objEmp."Joining Date";
                         STATUS := Format(objEmp.Status);

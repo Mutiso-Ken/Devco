@@ -9,20 +9,20 @@ Table 51516180 "Payroll Employee"
             NotBlank=true;
             
         }
-        field(11; Surname; Text[30])
+        field(11; Firstname; Text[30])
         {
 
             trigger OnValidate()
             begin
-                "Full Name" := Surname + ' ' + Firstname + ' ' + Lastname;
+                "Full Name" := Firstname + ' ' + ' '+ SecondName+ ' '+ Lastname;
             end;
         }
-        field(12; Firstname; Text[30])
+        field(12;SecondName; Text[30])
         {
 
             trigger OnValidate()
             begin
-                "Full Name" := Surname + ' ' + Firstname + ' ' + Lastname;
+                "Full Name" := Firstname + ' ' + ' '+ SecondName+ ' '+ Lastname;
             end;
         }
         field(13; Lastname; Text[30])
@@ -30,7 +30,7 @@ Table 51516180 "Payroll Employee"
 
             trigger OnValidate()
             begin
-                "Full Name" := Surname + ' ' + Firstname + ' ' + Lastname;
+              "Full Name" := Firstname + ' ' + ' '+ SecondName+ ' '+ Lastname;
             end;
         }
         field(14; "Joining Date"; Date)

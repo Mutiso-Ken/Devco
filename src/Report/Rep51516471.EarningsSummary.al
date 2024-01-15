@@ -248,7 +248,7 @@ Report 51516471 "Earnings Summary"
             trigger OnAfterGetRecord()
             begin
                 Name := '';
-                Name := HrEmp.Firstname + ' ' + HrEmp.Lastname + ' ' + HrEmp.Surname;
+                Name := HrEmp."Full Name";
                 TransCount := 0;
                 showdet := true;
                 NetPay := 0;

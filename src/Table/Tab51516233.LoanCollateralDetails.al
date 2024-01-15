@@ -105,18 +105,18 @@ Table 51516233 "Loan Collateral Details"
         field(12; "Assesment Done"; Boolean)
         {
         }
-        field(13; "Account No"; Code[20])
-        {
-            TableRelation = Vendor."No." where("Vendor Posting Group" = const('FIXED'));
+        // field(13; "Account No"; Code[20])
+        // {
+        //     TableRelation = Vendor."No." where("Vendor Posting Group" = const('FIXED'));
 
-            trigger OnValidate()
-            begin
-                if Vendor.Get("Account No") then begin
-                    Vendor.CalcFields(Vendor."Balance (LCY)");
-                    Value := Vendor."Balance (LCY)";
-                end;
-            end;
-        }
+        //     trigger OnValidate()
+        //     begin
+        //         if Vendor.Get("Account No") then begin
+        //             Vendor.CalcFields(Vendor."Balance (LCY)");
+        //             Value := Vendor."Balance (LCY)";
+        //         end;
+        //     end;
+        // }
     }
 
     keys

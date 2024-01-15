@@ -16,12 +16,12 @@ Page 51516194 "Payroll Employee Assignments"
                 {
                     ApplicationArea = Basic;
                 }
-                field(Surname;Surname)
+                field(Firstname;Firstname)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Firstname;Firstname)
+                field(SecondName;SecondName)
                 {
                     ApplicationArea = Basic;
                     Editable = false;

@@ -263,7 +263,7 @@ Report 51516480 "Payroll Summary"
             trigger OnAfterGetRecord()
             begin
                 Name := '';
-                Name := "Payroll Employee".Firstname + ' ' + "Payroll Employee".Lastname + ' ' + "Payroll Employee".Surname;
+                Name := "Payroll Employee"."Full Name";
                 TransCount := 0;
                 showdet := true;
                 NetPay := 0;

@@ -6,44 +6,44 @@ Table 51516245 "Loan Collateral Set-up"
 
     fields
     {
-        field(1;"Code";Code[20])
+        field(1; "Code"; Code[20])
         {
             NotBlank = true;
 
             trigger OnValidate()
             begin
-                /*IF LoanApplications.GET(Code) THEN
-                Category:=LoanApplications."Loan Product Type";    */
+                // IF LoanApplications.GET(Code) THEN
+                // Category:=LoanApplications."Loan Product Type";   
 
             end;
         }
-        field(2;Type;Option)
+        field(2; Type; Option)
         {
             NotBlank = true;
             OptionCaption = ' ,Shares,Deposits,Collateral,Fixed Deposit';
             OptionMembers = " ",Shares,Deposits,Collateral,"Fixed Deposit";
         }
-        field(3;"Security Description";Text[50])
+        field(3; "Security Description"; Text[50])
         {
         }
-        field(5;Category;Option)
+        field(5; Category; Option)
         {
-            OptionCaption = ' ,Cash,Government Securities,Corporate Bonds,Equity,Mortgage Securities,Fixed Deposit';
-            OptionMembers = " ",Cash,"Government Securities","Corporate Bonds",Equity,"Mortgage Securities","Fixed Deposit";
+         
+            OptionMembers = " ","Title Deed",Cash,"Government Securities","Corporate Bonds",Equity,"Mortgage Securities","Fixed Deposit";
         }
-        field(6;"Collateral Multiplier";Integer)
+        field(6; "Collateral Multiplier"; Integer)
         {
 
             trigger OnValidate()
             begin
-                //"Guarantee Value":="Collateral Multiplier"*0.7;
+                // "Guarantee Value":="Collateral Multiplier"*0.7;
             end;
         }
     }
 
     keys
     {
-        key(Key1;"Code",Type,"Security Description")
+        key(Key1; "Code", Type, "Security Description")
         {
             Clustered = true;
         }

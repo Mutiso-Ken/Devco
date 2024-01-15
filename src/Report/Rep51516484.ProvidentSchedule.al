@@ -42,7 +42,7 @@ Report 51516484 "Provident Schedule"
             trigger OnAfterGetRecord()
             begin
                 if HrEmp.Get("Payroll Monthly Transactions"."No.") then
-                    EmpName := HrEmp.Surname + ' ' + HrEmp.Firstname + ' ' + HrEmp.Lastname;
+                    EmpName := HrEmp."Full Name";
 
 
                 "Payroll Monthly Transactions".SetRange("Payroll Monthly Transactions"."Payroll Period", PeriodFilter);
