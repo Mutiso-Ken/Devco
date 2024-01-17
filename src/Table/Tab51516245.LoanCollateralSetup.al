@@ -10,12 +10,11 @@ Table 51516245 "Loan Collateral Set-up"
         {
             NotBlank = true;
 
-            trigger OnValidate()
-            begin
-                // IF LoanApplications.GET(Code) THEN
-                // Category:=LoanApplications."Loan Product Type";   
+            // trigger OnValidate()
+            // begin
+            //     IF LoanApplications.GET(Code);
 
-            end;
+            // end;
         }
         field(2; Type; Option)
         {

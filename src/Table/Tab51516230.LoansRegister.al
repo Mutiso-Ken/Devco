@@ -87,10 +87,15 @@ Table 51516230 "Loans Register"
                         end;
                 //............................
                 if LoanType.Get("Loan Product Type") then begin
-
+                    LoanType.SetRange(LoanType.Code, "Loan Product Type");
+                    if Posted <> true then begin
+                        if Installments > LoanType."No of Installment" then
+                            Error('Installments cannot be greater than the maximum installments.%1', LoanType."No of Installment");
+                    end;
                     if (LoanType."Loan Product Expiry Date" = 0D) or (LoanType."Loan Product Expiry Date" > Today) then begin
                         sHARES := 0;
                         MonthlyRepayT := 0;
+
                         if Source = Source::BOSA then begin
                             Cust.Reset;
                             Cust.SetRange(Cust."No.", "Client Code");
@@ -162,13 +167,14 @@ Table 51516230 "Loans Register"
                             "Max. Installments" := LoanType."No of Installment";
                             "Max. Loan Amount" := LoanType."Max. Loan Amount";
                             "Repayment Frequency" := LoanType."Repayment Frequency";
+                            "Paying Bank Account No" := LoanType."Loan Bank Account";
 
                             if LoanType."Use Cycles" = false then begin
                                 "Loan Cycle" := 0;
                                 "Max. Installments" := LoanType."No of Installment";
                                 "Max. Loan Amount" := LoanType."Max. Loan Amount";
                                 Installments := LoanType."Default Installements";
-                                "Paying Bank Account No" := LoanType."BacK Code";
+                                "Paying Bank Account No" := LoanType."Loan Bank Account";
 
                             end;
 
@@ -464,8 +470,8 @@ Table 51516230 "Loans Register"
             begin
                 if Posted <> true then begin
                     if ("Loan Product Type" <> 'OVERDRAFT') AND ("Loan Product Type" <> 'OKOA') then begin
-                        // if Installments > "Max. Installments" then
-                        //     ERROR('Installments cannot be greater than the maximum installments.');
+                        if Installments > "Max. Installments" then
+                            ERROR('Installments cannot be greater than the maximum installments.');
                     end;
                 end;
 
@@ -1911,7 +1917,7 @@ Table 51516230 "Loans Register"
         }
         field(69189; "Sub-Sector"; Code[10])
         {
-            TableRelation = "Sub-Sector".Code where(No = FIELD("Main Sector"));
+            TableRelation = "Sub-Sector".Code;//where(No = FIELD("Main Sector"));
             trigger OnValidate()
             begin
                 TestField(Posted, false);
@@ -1919,7 +1925,7 @@ Table 51516230 "Loans Register"
         }
         field(69190; "Specific Sector"; Code[10])
         {
-            TableRelation = "Specific-Sector".Code where(No = FIELD("Sub-Sector"));
+            TableRelation = "Specific-Sector".Code;//where(No = FIELD("Sub-Sector"));
             trigger OnValidate()
             begin
                 TestField(Posted, false);
@@ -2102,6 +2108,10 @@ Table 51516230 "Loans Register"
             DataClassification = ToBeClassified;
         }
         field(68111; "Legal Cost"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(68112; "Appealed Loan"; Boolean)
         {
             DataClassification = ToBeClassified;
         }

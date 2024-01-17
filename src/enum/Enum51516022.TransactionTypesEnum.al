@@ -2,7 +2,7 @@ enum 51516022 "TransactionTypesEnum"
 {
     Extensible = true;
 
-    value(0; "")
+    value(0; " ")
     {
         Caption = '';
     }

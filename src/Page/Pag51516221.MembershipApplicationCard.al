@@ -88,7 +88,7 @@ Page 51516221 "Membership Application Card"
                     Editable = PostalCodeEditable;
                     Importance = Promoted;
                 }
-                 field(Address; Address)
+                field(Address; Address)
                 {
                     ApplicationArea = Basic;
                     Caption = 'P.O Box';
@@ -213,14 +213,14 @@ Page 51516221 "Membership Application Card"
                     ApplicationArea = Basic;
                     Editable = CopyofKRAPinEditable;
                     ShowMandatory = true;
-                    Visible=false;
+                    Visible = false;
                 }
                 field("AutoFill Agency Details"; "AutoFill Agency Details")
                 {
                     ApplicationArea = Basic;
                     Editable = CopyofKRAPinEditable;
                     ShowMandatory = true;
-                    Visible=false;
+                    Visible = false;
                 }
             }
             group("Bank Details")
@@ -584,14 +584,7 @@ Page 51516221 "Membership Application Card"
                     RunObject = Page "Membership App Kin Details";
                     RunPageLink = "Account No" = field("No.");
                 }
-                action("Account Signatories ")
-                {
-                    ApplicationArea = Basic;
-                    Caption = 'Signatories';
-                    Image = Group;
-                    RunObject = Page "Membership App Signatories";
-                    RunPageLink = "Account No" = field("No.");
-                }
+
                 separator(Action6)
                 {
                     Caption = '-';
@@ -818,9 +811,6 @@ Page 51516221 "Membership Application Card"
                 {
                 }
                 actionref("Next of Kin_Promoted"; "Next of Kin")
-                {
-                }
-                actionref("Account Signatories _Promoted"; "Account Signatories ")
                 {
                 }
                 actionref("Create Account_Promoted"; "Create Account")
@@ -1636,9 +1626,9 @@ Page 51516221 "Membership Application Card"
         Cust."Payroll/Staff No" := "Payroll/Staff No";
         Cust.Department := Department;
         Cust."Office Branch" := "Office Branch";
-        Cust.Designation:= "Official Designation";
-        Cust."Date Employed":="Date Employed";
-        cust."Terms of Service":="Terms of Employment";
+        Cust.Designation := "Official Designation";
+        Cust."Date Employed" := "Date Employed";
+        cust."Terms of Service" := "Terms of Employment";
         //Bank Details
         Cust."Bank Code" := "Bank Code";
         cust."Bank Name" := "Bank Name";

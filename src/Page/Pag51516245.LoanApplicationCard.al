@@ -266,6 +266,12 @@ Page 51516245 "Loan Application Card"
                     Editable = false;
                 }
             }
+            part(Control1000000003; "Loans CheckRisk List")
+            {
+                Caption = 'Loan Risk Checking';
+                SubPageLink = "Client Code" = field("Client Code");
+                Editable = false;
+            }
             part(Control1000000004; "Loans Guarantee Details")
             {
                 Caption = 'Guarantors  Detail';
@@ -776,15 +782,15 @@ Page 51516245 "Loan Application Card"
         TestField("Loan Product Type");
         TestField("Mode of Disbursement");
         //----------------------
-        if (LoanType.get("Loan Product Type")) and ("Loan Product Type" <> 'RESTRUCTURED LOAN') then begin
-            if LoanType."Appraise Guarantors" = true then begin
-                LoanGuarantors.Reset();
-                LoanGuarantors.SetRange(LoanGuarantors."Loan No", "Loan  No.");
-                if LoanGuarantors.find('-') then begin
-                    Error('Please Insert Loan Applicant Guarantor Details!');
-                end;
-            end;
-        end;
+        // if (LoanType.get("Loan Product Type")) then begin
+        //     if LoanType."Appraise Guarantors" = true then begin
+        //         LoanGuarantors.Reset();
+        //         LoanGuarantors.SetRange(LoanGuarantors."Loan No", "Loan  No.");
+        //         if LoanGuarantors.find('-') then begin
+        //             Error('Please Insert Loan Applicant Guarantor Details!');
+        //         end;
+        //     end;
+        // end;
     end;
 
     local procedure FnSendLoanApprovalNotifications()
@@ -810,7 +816,7 @@ Page 51516245 "Loan Application Card"
         SMSMessages."Entered By" := USERID;
         SMSMessages."Sent To Server" := SMSMessages."Sent To Server"::No;
         SMSMessages."SMS Message" := 'Your loan application of KSHs.' + FORMAT("Requested Amount") +
-                                  ' has been received. Jamii Yetu Sacco Ltd.';
+                                  ' has been received. Devco Sacco Ltd.';
         Cust.RESET;
         IF Cust.GET("Client Code") THEN
             if Cust."Mobile Phone No" <> '' then begin
@@ -849,7 +855,7 @@ Page 51516245 "Loan Application Card"
                     IF LoanApp.GET(LoanGuar."Loan No") THEN
                         SMSMessages."SMS Message" := 'You have guaranteed an amount of ' + FORMAT(LoanGuar."Amont Guaranteed")
                         + ' to ' + "Client Name" + '  ' +
-                        'Loan Type ' + "Loan Product Type" + ' ' + 'of ' + FORMAT("Requested Amount") + ' at Jamii Yetu Sacco Ltd. Call 0726050260 if in dispute';
+                        'Loan Type ' + "Loan Product Type" + ' ' + 'of ' + FORMAT("Requested Amount") + ' at Devco Sacco Ltd. Call 0726050260 if in dispute';
                     ;
                     SMSMessages."Telephone No" := Cust."Phone No.";
                     SMSMessages.INSERT;

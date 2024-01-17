@@ -97,6 +97,7 @@ tableextension 51516043 "UserSetUpExt" extends "User Setup"
         field(51516024; "Can POST Loans"; Boolean)
         {
         }
+       
     }
 
 

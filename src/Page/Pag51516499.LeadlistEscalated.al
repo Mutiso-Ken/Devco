@@ -6,7 +6,7 @@ Page 51516499 "Lead list Escalated"
     DelayedInsert = false;
     PageType = List;
     DeleteAllowed = false;
-    InsertAllowed = false;
+    InsertAllowed = true;
     SourceTable = "General Equiries.";
     SourceTableView = where(Status = const(Escalted));
 

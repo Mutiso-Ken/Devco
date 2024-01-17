@@ -49,6 +49,7 @@ Page 51516270 "Loan Products Setup List"
                 {
                     ApplicationArea = Basic;
                 }
+
                 field("Instalment Period"; "Instalment Period")
                 {
                     ApplicationArea = Basic;
@@ -56,6 +57,8 @@ Page 51516270 "Loan Products Setup List"
                 field("No of Installment"; "No of Installment")
                 {
                     ApplicationArea = Basic;
+                    Caption = 'Maximum Number of Instalment';
+                    ShowMandatory = true;
                 }
                 field("Default Installements"; "Default Installements")
                 {

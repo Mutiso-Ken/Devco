@@ -102,7 +102,7 @@ Page 51516346 "Transfers"
                     trigger OnAction()
                     begin
                         DBranch := BSched."Branch Code";
-                        TestField(Status, Status::Approved);
+                        // TestField(Status, Status::Approved);
 
                         if FundsUSer.Get(UserId) then begin
                             Jtemplate := FundsUSer."Payment Journal Template";

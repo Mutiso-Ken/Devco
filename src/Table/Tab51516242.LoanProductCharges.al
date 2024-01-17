@@ -4,12 +4,12 @@ Table 51516242 "Loan Product Charges"
 
     fields
     {
-        field(1;"Product Code";Code[20])
+        field(1; "Product Code"; Code[20])
         {
             NotBlank = true;
             TableRelation = "Loan Products Setup".Code;
         }
-        field(2;"Code";Code[20])
+        field(2; "Code"; Code[20])
         {
             NotBlank = true;
             TableRelation = "Loan Charges".Code;
@@ -17,47 +17,53 @@ Table 51516242 "Loan Product Charges"
             trigger OnValidate()
             begin
                 if Charges.Get(Code) then begin
-                Description:=Charges.Description;
-                Amount:=Charges.Amount;
-                Percentage:=Charges.Percentage;
-                "G/L Account":=Charges."G/L Account";
-                "Use Perc":=Charges."Use Perc";
+                    Description := Charges.Description;
+                    Amount := Charges.Amount;
+                    Percentage := Charges.Percentage;
+                    "G/L Account" := Charges."G/L Account";
+                    "Use Perc" := Charges."Use Perc";
                 end;
             end;
         }
-        field(3;Description;Text[30])
+        field(3; Description; Text[30])
         {
         }
-        field(4;Amount;Decimal)
+        field(4; Amount; Decimal)
         {
         }
-        field(5;Percentage;Decimal)
+        field(5; Percentage; Decimal)
         {
         }
-        field(6;"G/L Account";Code[20])
+        field(6; "G/L Account"; Code[20])
         {
             TableRelation = "G/L Account"."No.";
         }
-        field(7;"Use Perc";Boolean)
+        field(7; "Use Perc"; Boolean)
         {
         }
-        field(8;"Use Band";Boolean)
+        field(8; "Use Band"; Boolean)
         {
 
             trigger OnValidate()
             begin
                 if "Use Band" then
-                 Amount:=0; Percentage:=0; "Use Perc":=false;
+                    Amount := 0;
+                Percentage := 0;
+                "Use Perc" := false;
             end;
         }
-        field(9;"Charge Excise";Boolean)
+        field(9; "Charge Excise"; Boolean)
         {
+        }
+        field(10; "Balancing Account"; Code[20])
+        {
+
         }
     }
 
     keys
     {
-        key(Key1;"Product Code","Code")
+        key(Key1; "Product Code", "Code")
         {
             Clustered = true;
         }

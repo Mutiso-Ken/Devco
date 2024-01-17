@@ -68,6 +68,7 @@ Page 51516275 "Loan Products Setup Card"
                 {
                     ApplicationArea = Basic;
                 }
+
                 field("Instalment Period"; "Instalment Period")
                 {
                     ApplicationArea = Basic;
@@ -75,6 +76,7 @@ Page 51516275 "Loan Products Setup Card"
                 field("No of Installment"; "No of Installment")
                 {
                     ApplicationArea = Basic;
+                    Caption='Maximum Instalments';
                 }
                 field("Default Installements"; "Default Installements")
                 {
@@ -195,11 +197,8 @@ Page 51516275 "Loan Products Setup Card"
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Comm %"; "Bank Comm %")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Bank Comm A/c"; "Bank Comm A/c")
+
+                field("Loan Bank Account"; "Loan Bank Account")
                 {
                     ApplicationArea = Basic;
                 }
@@ -231,6 +230,10 @@ Page 51516275 "Loan Products Setup Card"
                     ApplicationArea = Basic;
                 }
                 field("Appraise Dividend"; "Appraise Dividend")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Appraise Collateral"; "Appraise Collateral")
                 {
                     ApplicationArea = Basic;
                 }

@@ -424,6 +424,8 @@ Report 51516244 "Loan Appraisal- BOSA"
             column(BridgedRepayment; BridgedRepayment)
             {
             }
+
+
             column(BRIGEDAMOUNT; BRIGEDAMOUNT)
             {
             }
@@ -552,6 +554,17 @@ Report 51516244 "Loan Appraisal- BOSA"
                 column(OTHERDEDUCTIONS; OTHERDEDUCTIONS)
                 {
                 }
+            }
+            dataitem("Loan Collateral Details"; "Loan Collateral Details")
+            {
+                DataItemLink = "Loan No" = field("Loan  No.");
+                DataItemTableView = sorting("Loan No") where("Guarantee Value" = filter(<> 0));
+                column(Code; Code) { }
+                column(Type; Type) { }
+                column(Value; Value) { }
+                column(Collateral_Multiplier; "Collateral Multiplier") { }
+                column(Guarantee_Value; "Guarantee Value") { }
+
             }
             dataitem("Loans Guarantee Details"; "Loans Guarantee Details")
             {
@@ -712,6 +725,10 @@ Report 51516244 "Loan Appraisal- BOSA"
                 column(WarnGuarantor; WarnGuarantor)
                 {
                 }
+                column(TotalCola; TotalCola)
+                {
+
+                }
                 column(WarnShare; WarnShare)
                 {
                 }
@@ -738,7 +755,7 @@ Report 51516244 "Loan Appraisal- BOSA"
                         if LoanType.Get("Loans Register"."Loan Product Type") then
                             Ttype := LoanType."Product Description";
                     end;
-                    //END;
+
 
                     TOTALBRIDGED := TOTALBRIDGED + "Loan Offset Details"."Total Top Up";
 
@@ -791,7 +808,7 @@ Report 51516244 "Loan Appraisal- BOSA"
 
             trigger OnAfterGetRecord()
             begin
-           
+
                 Cshares := 0;
                 MAXAvailable := 0;
                 LOANBALANCE := 0;
@@ -801,9 +818,6 @@ Report 51516244 "Loan Appraisal- BOSA"
                 AmountGuaranteed := 0;
                 TotLoans := 0;
                 BInt := 0;
-
-
-
                 TotalSec := 0;
                 TShares := 0;
                 TLoans := 0;
@@ -816,10 +830,9 @@ Report 51516244 "Loan Appraisal- BOSA"
                 Psalary := 0;
                 TotalLoanBal := 0;
                 TotalBand := 0;
-                //NtTakeHome:=0;
-                //NetDisburment:=0;
                 TotalRepay := 0;
-
+                Camount := 0;
+                TotalCola := 0;
 
 
                 //  Deposits analysis
@@ -827,15 +840,7 @@ Report 51516244 "Loan Appraisal- BOSA"
                     Cust.CalcFields(Cust."Current Shares");
                     Cshares := Cust."Current Shares";
                     if LoanType.Get("Loans Register"."Loan Product Type") then begin
-
-                        //QUALIFICATION AS PER DEPOSITS
-
-                        if "Loan Product Type" = 'J/L' then begin
-
-                        end else begin
-                            DEpMultiplier := LoanType."Shares Multiplier" * (Cshares + "Deposit Reinstatement");
-                        end;
-
+                        DEpMultiplier := LoanType."Shares Multiplier" * (Cshares + "Deposit Reinstatement");
                         BridgedRepayment := 0;
                         TotalRepayments := 0;
 
@@ -845,17 +850,16 @@ Report 51516244 "Loan Appraisal- BOSA"
                         LoanApp.SetRange(LoanApp.Posted, true);
                         if LoanApp.Find('-') then begin
                             repeat
-                               
                                 LoanApp.CalcFields(LoanApp."Outstanding Balance", "Topup Commission");
                                 if LoanApp."Outstanding Balance" > 0 then begin
                                     LOANBALANCE := LOANBALANCE + LoanApp."Outstanding Balance";
-                                    TotalRepayments := TotalRepayments + LoanApp.Repayment; 
-
+                                    TotalRepayments := TotalRepayments + LoanApp.Repayment;
                                 end;
-                            //END;
                             until LoanApp.Next = 0;
                         end;
                     end;
+
+                    //Loan Top Up Computation
                     SHARES := 0;
                     Commision := 0;
                     Deeboster := 0;
@@ -865,31 +869,13 @@ Report 51516244 "Loan Appraisal- BOSA"
                     LoanTopUp.SetRange(LoanTopUp."Client Code", "Loans Register"."Client Code");
                     if LoanTopUp.Find('-') then begin
                         repeat
-                            //BRIGEDAMOUNT:=BRIGEDAMOUNT+LoanTopUp."Principle Top Up";
                             BRIGEDAMOUNT := BRIGEDAMOUNT + LoanTopUp."Principle Top Up";
                             BInt := BInt + LoanTopUp."Interest Top Up";
                             Commision := Commision + LoanTopUp.Commision;
                         until LoanTopUp.Next = 0;
 
                     end;
-                    if LoanType.Get("Loan Product Type") then begin
-                        //IF LoanType.Source=LoanType.Source::BOSA THEN BEGIN
-                        if LoanType."Post to Deposits" = true then begin
-
-
-
-                            //IF ("Loan Product Type"='L05') THEN
-                            //SHARES:=0;
-                            /*IF SHARES > 5000 THEN
-                            SHARES:=5000;*/
-
-                            if LoanType.Code = 'L16' then begin
-                                Deeboster := ("Approved Amount" * 50 / 100);
-                                TOpDeb := ("Approved Amount" * 5 / 100);
-                            end;
-                        end;
-                        //END;
-                    end;
+                    ;
                     LoanTopUp.Reset;
                     LoanTopUp.SetRange(LoanTopUp."Loan No.", "Loans Register"."Loan  No.");
                     LoanTopUp.SetRange(LoanTopUp."Client Code", "Loans Register"."Client Code");
@@ -912,7 +898,7 @@ Report 51516244 "Loan Appraisal- BOSA"
 
 
                     LBalance := LOANBALANCE - BRIGEDAMOUNT + Commision;
-                  
+
                     TotalBand := TotalLoanBal + Band;
 
 
@@ -953,7 +939,7 @@ Report 51516244 "Loan Appraisal- BOSA"
                         until SalDetails.Next = 0;
                     end;
 
-                
+
 
                     //**//  Statutory Ded
                     SalDetails.Reset;
@@ -989,7 +975,16 @@ Report 51516244 "Loan Appraisal- BOSA"
                     //**//  Long Term Ded End
 
 
+                    //Collateral Processing
 
+                    LoanCollateralDetails.reset;
+                    LoanCollateralDetails.SetRange(LoanCollateralDetails."Loan No", "Loans Register"."Loan  No.");
+                    if LoanCollateralDetails.Find('-') then begin
+                        if (LoanType."Appraise Collateral" = true) and (LoanCollateralDetails."Guarantee Value" <> 0) then
+                            Camount := Camount + LoanCollateralDetails."Guarantee Value";
+
+                    end;
+                    //End of Collateral Processing
 
 
                     TotalMRepay := 0;
@@ -1014,10 +1009,6 @@ Report 51516244 "Loan Appraisal- BOSA"
                         end;
                     end;
 
-                    //**2Thirds Waumini
-
-                    //TwoThirds:=ROUND((Earnings- StatDeductions)*2/3,0.05,'>');
-                    //ATHIRD:=ROUND((Earnings- StatDeductions)*1/3,0.05,'>');
                     TwoThirds := ROUND((BASIC) * 2 / 3, 0.05, '>');
                     ATHIRD := ROUND((BASIC) * 1 / 3, 0.05, '>');
                     NtTakeHome := TwoThirds - (TotalRepayments + Repayment + Band);
@@ -1029,6 +1020,8 @@ Report 51516244 "Loan Appraisal- BOSA"
                     //Psalary:=TwoThirds-(OTHERDEDUCTIONS);
 
                     Psalary := NetSalary - ATHIRD;
+
+
                     //Total amount guaranteed
                     LoanG.Reset;
                     LoanG.SetRange(LoanG."Loan No", "Loan  No.");
@@ -1042,7 +1035,7 @@ Report 51516244 "Loan Appraisal- BOSA"
                     //End Total Amount guaranteed
 
 
-
+                    TotalCola := GShares + Camount;
                     //Recommended Amount
 
                     if "Loan Product Type" = 'J/L' then begin
@@ -1064,22 +1057,25 @@ Report 51516244 "Loan Appraisal- BOSA"
                         //Msalary:=ROUND((salary*100*Installments)/(100+Installments),100,'<');
                         Msalary := ROUND((Psalary * "Requested Amount") / Repayment, 100, '<');
                     // End Qualification As Per Salary
-                    if "Loan Product Type" = 'EXECUTIVE' then begin
+
+                    if (DepX > Msalary) then
                         Recomm := ROUND(Msalary, 100, '<')
-                    end else
-                        if (DepX > Msalary) then
-                            Recomm := ROUND(Msalary, 100, '<')
-                        else
-                            Recomm := ROUND(DepX, 100, '<');
+                    else
+                        Recomm := ROUND(DepX, 100, '<');
 
                     if Recomm > GShares then
                         Recomm := ROUND(GShares, 100, '<');
 
+                    if LoanType."Appraise Collateral" = true then begin
+                        if TotalCola >= "Loans Register"."Requested Amount" then
+                            Recomm := Round(TotalCola, 100, '<')
+                    end;
                     if Recomm > "Loans Register"."Requested Amount" then
                         Recomm := ROUND("Loans Register"."Requested Amount", 100, '<');
                     if Recomm < 0 then begin
                         Recomm := ROUND(Recomm, 100, '<');
                     end;
+
 
 
                     Riskamount := "Loans Register"."Requested Amount" - MAXAvailable;
@@ -1093,32 +1089,6 @@ Report 51516244 "Loan Appraisal- BOSA"
 
 
 
-
-
-                    /*
-                    //Identify Defaulters
-                    LoanApp.RESET;
-                    LoanApp.SETRANGE(LoanApp."Client Code",Loans."Client Code");
-                    LoanApp.SETRANGE(LoanApp.Posted,TRUE);
-                    IF LoanApp.FIND('-') THEN BEGIN
-                    REPEAT
-                    LoanApp.CALCFIELDS(LoanApp."Outstanding Balance",LoanApp."Total Repayments",LoanApp."Total Interest",LoanApp."Topup Commission");
-
-                    IF LoanApp."Outstanding Balance">0 THEN BEGIN
-                    IF (LoanApp."Loans Category"=LoanApp."Loans Category"::Substandard) OR
-                    (LoanApp."Loans Category"=LoanApp."Loans Category"::Doubtful) OR (LoanApp."Loans Category"=LoanApp."Loans Category"::Loss)
-                    THEN BEGIN
-                    DefaultInfo:='The member is a defaulter' +'. '+ 'Loan No' + ' '+LoanApp."Loan  No."+' ' + 'is in loan category' +' '+
-                    FORMAT(LoanApp."Loans Category");
-                    END;
-                    END;
-                    UNTIL LoanApp.NEXT=0;
-                    END;
-                    //End Identify Defaulters
-                          */
-
-                    //Compute monthly Repayments based on repay method
-
                     TotalMRepay := 0;
                     LPrincipal := 0;
                     LInterest := 0;
@@ -1127,56 +1097,7 @@ Report 51516244 "Loan Appraisal- BOSA"
                     LoanAmount := "Approved Amount";
                     RepayPeriod := Installments;
                     LBalance := "Approved Amount";
-                    /*
-                    ///Bonnie-Repayments for Amortised method
-                    IF "Loan Product Type"<>'BBL' THEN BEGIN
-                    IF "Repayment Method"="Repayment Method"::Amortised THEN BEGIN
-                    TESTFIELD(Interest);
-                    TESTFIELD(Installments);
 
-                    TotalMRepay:=ROUND((InterestRate/12/100) / (1 - POWER((1 + (InterestRate/12/100)),- RepayPeriod)) * LoanAmount,1,'>');
-                    LInterest:=ROUND(LBalance / 100 / 12 * InterestRate,0.05,'>');
-
-                    LPrincipal:=TotalMRepay-LInterest;
-                    Repayment:=TotalMRepay;
-                    "Loan Principle Repayment":=LPrincipal;
-                    "Loan Interest Repayment":=LInterest;
-
-                    END;
-                    END;
-                    //MESSAGE('Repayment is %1',Repayment);
-                    //End Respayments for amortised method
-
-
-                    //Repayments for Straight line method
-                    IF "Loan Product Type"<>'BBL' THEN BEGIN
-                    IF "Repayment Method"="Repayment Method"::"Straight Line" THEN BEGIN
-                    TESTFIELD(Installments);
-                    LPrincipal:=ROUND(LoanAmount/RepayPeriod,1,'>');
-                    LInterest:=ROUND((InterestRate/100)*LoanAmount,1,'>');
-                    Repayment:=LPrincipal+LInterest;
-                    "Loan Principle Repayment":=LPrincipal;
-                    "Loan Interest Repayment":=LInterest;
-                    END;
-                    END;
-
-                    IF "Loan Product Type"<>'BBL' THEN BEGIN
-                    IF "Repayment Method"="Repayment Method"::"Reducing Balance" THEN BEGIN
-                    TESTFIELD(Installments);
-                    IF ("Loan Product Type" = 'PLKCB') OR ("Loan Product Type" = 'PLCBA') OR ("Loan Product Type" = 'PLCOOP') THEN BEGIN
-                    LPrincipal:=ROUND(LoanAmount/RepayPeriod,1,'>');
-                    LInterest:=ROUND((InterestRate/100)*LBalance,1,'>');
-                    END ELSE BEGIN
-                    LPrincipal:=ROUND(LoanAmount/RepayPeriod,1,'>');
-                    LInterest:=ROUND((InterestRate/100)/12*LoanAmount,1,'>');
-                    END;
-                    Repayment:=LPrincipal+LInterest;
-                    "Loan Principle Repayment":=LPrincipal;
-                    "Loan Interest Repayment":=LInterest;
-
-                    END;
-                    END;
-                     */
 
 
                     "Loans Guarantee Details".Reset;
@@ -1185,6 +1106,7 @@ Report 51516244 "Loan Appraisal- BOSA"
                         "Loans Guarantee Details".CalcSums("Loans Guarantee Details"."Amont Guaranteed");
                         TGAmount := "Loans Guarantee Details"."Amont Guaranteed";
                     end;
+
 
                     LoanApp.Reset;
                     LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
@@ -1198,26 +1120,10 @@ Report 51516244 "Loan Appraisal- BOSA"
                     Lcommit.SetRange(Lcommit."Loan No.", "Loans Register"."Loan  No.");
                     if Lcommit.Find('-') then begin
                         repeat
-                            // LoanG.CALCFIELDS(LoanG."Outstanding Balance",LoanG."Guarantor Outstanding");
-                            //IF LoanG."Outstanding Balance" > 0 THEN BEGIN
                             Lamount := Lamount + Lcommit.Amount;
-                        ///END;
                         until Lcommit.Next = 0;
                     end;
                     Lamount := Lamount + "Loans Register"."Total TopUp Commission";
-                    //"Loans Register".CALCFIELDS("Loans Register"."Topup Commission");
-                    //amount:=Lamount+"Loans Register"."Topup Commission";
-                    /*GenSetUp.GET();
-                    Charge:=0;
-                    IF LoanType.GET("Loan Product Type") THEN BEGIN
-                    Pcharges.RESET;
-                    Pcharges.SETRANGE(Pcharges."Product Code","Loan Product Type");
-                    IF Pcharges.FIND('-') THEN BEGIN
-                    REPEAT
-                    Charge:=Charge+Pcharges.Amount;
-                    UNTIL Pcharges.NEXT=0;
-                    END;
-                    */
 
                     GenSetUp.Get();
 
@@ -1239,35 +1145,6 @@ Report 51516244 "Loan Appraisal- BOSA"
                         end;
                         BridgeLevy := LoanApp."Topup Commission";
 
-                        /*IF LoanApp."Top Up Amount" > 0 THEN BEGIN
-                        IF  BridgeLevy < 500 THEN BEGIN
-                        BridgeLevy:=500;
-                        END ELSE BEGIN
-                        BridgeLevy:=LoanApp."Topup Commission";
-                        END;
-                        END;*/
-                        Upfronts := BRIGEDAMOUNT  + "Deposit Reinstatement" + JazaLevy + GenSetUp."Loan Trasfer Fee-Cheque" + SHARES + Charge + Lamount + BridgeLevy + BInt + Deeboster + TOpDeb;
-                        // if "Mode of Disbursement" = "mode of disbursement"::Cheque then
-                        //     Upfronts := BRIGEDAMOUNT  + "Deposit Reinstatement" + JazaLevy + GenSetUp."Loan Trasfer Fee-Cheque" + SHARES + Charge + Lamount + BridgeLevy + BInt + Deeboster + TOpDeb
-                        // else
-                            // if "Mode of Disbursement" = "mode of disbursement"::EFT then
-                            //     Upfronts := BRIGEDAMOUNT + "Deposit Reinstatement" + JazaLevy + GenSetUp."Loan Trasfer Fee-EFT" + SHARES + Charge + Lamount + BridgeLevy + BInt + Deeboster + TOpDeb
-                            // else
-                                // if "Mode of Disbursement" = "mode of disbursement"::"Bank Transfer" then
-                                //     Upfronts := BRIGEDAMOUNT  + "Deposit Reinstatement" + JazaLevy + GenSetUp."Loan Trasfer Fee-FOSA" + SHARES + Charge + Lamount + BridgeLevy + BInt + Deeboster + TOpDeb
-                                // else
-
-                                    // if "Mode of Disbursement" = "mode of disbursement"::"Cheque NonMember" then
-                                    //     Upfronts := BRIGEDAMOUNT+ "Deposit Reinstatement" + JazaLevy + SHARES + Charge + Lamount + BridgeLevy + BInt + Deeboster + TOpDeb
-                                    // else
-
-
-                                        // if "Mode of Disbursement" = "mode of disbursement"::RTGS then
-                                        //     Upfronts := BRIGEDAMOUNT + "Deposit Reinstatement" + JazaLevy + GenSetUp."Loan Trasfer Fee-RTGS" + SHARES + Charge + Lamount + BInt + Deeboster + TOpDeb;
-                        //ELSE
-                        //Upfronts:=BRIGEDAMOUNT+BridgeLevy";
-                        //END;
-                        //Netdisbursed:="Approved Amount" - Upfronts;
                         Netdisbursed := "Approved Amount" - Upfronts;
                     end;
                     "Loan Processing Fee" := Charge;
@@ -1347,6 +1224,11 @@ Report 51516244 "Loan Appraisal- BOSA"
         grosspay: Decimal;
         Tdeduct: Decimal;
         Cshares: Decimal;
+        Camount: Decimal;
+        TotalCola: Decimal;
+        CollateralCode: Code[30];
+        CollateralType: Option;
+
         "Cshares*3": Decimal;
         "Cshares*4": Decimal;
         QUALIFY_SHARES: Decimal;
@@ -1515,6 +1397,7 @@ Report 51516244 "Loan Appraisal- BOSA"
         WarnDeposits: Text;
         WarnGuarantor: Text;
         WarnShare: Text;
+        LoanCollateralDetails: Record "Loan Collateral Details";
         RiskGshares: Decimal;
         RiskDeposits: Decimal;
         BasicEarnings: Decimal;

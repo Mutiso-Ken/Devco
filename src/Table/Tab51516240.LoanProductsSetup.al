@@ -51,6 +51,7 @@ Table 51516240 "Loan Products Setup"
         }
         field(30; "No of Installment"; Integer)
         {
+            
         }
         field(31; "Loan No Series"; Code[10])
         {
@@ -110,11 +111,7 @@ Table 51516240 "Loan Products Setup"
         field(48; "Bank Account Details"; Text[250])
         {
         }
-        field(49; "BacK Code"; Code[20])
-        {
-            FieldClass = Normal;
-            TableRelation = "Bank Account"."No.";
-        }
+
         field(50; "Loan Account"; Code[20])
         {
             TableRelation = "G/L Account";
@@ -251,7 +248,7 @@ Table 51516240 "Loan Products Setup"
         field(83; "Deposits Multiplier"; Decimal)
         {
         }
-        field(84; "Appraise Collateral"; Decimal)
+        field(84; "Appraise Collateral"; Boolean)
         {
         }
         field(85; "Appraise Dividend"; Boolean)
@@ -352,9 +349,9 @@ Table 51516240 "Loan Products Setup"
         field(110; "Bank Comm %"; Decimal)
         {
         }
-        field(111; "Bank Comm A/c"; Code[20])
+        field(111; "Loan Bank Account"; Code[20])
         {
-            TableRelation = "G/L Account";
+            TableRelation = "Bank Account"."No.";
         }
         field(112; "Loan Tiers"; Option)
         {
@@ -373,6 +370,7 @@ Table 51516240 "Loan Products Setup"
         field(116; "Load All Loan Interest"; Boolean)
         {
         }
+
     }
 
     keys
