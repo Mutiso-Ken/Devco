@@ -3,7 +3,7 @@ Page 51516397 "BOSA Loans Disbursement Card"
 {
     DeleteAllowed = false;
     // Editable = false;
-    ModifyAllowed = false;
+    // ModifyAllowed = false;
     PageType = Card;
     InsertAllowed = false;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
@@ -218,6 +218,7 @@ Page 51516397 "BOSA Loans Disbursement Card"
                 }
                 field("Batch No."; "Batch No.")
                 {
+                    Editable = true;
                     ApplicationArea = Basic;
                 }
                 field("Loan Disbursement Date"; "Loan Disbursement Date")
@@ -316,8 +317,8 @@ Page 51516397 "BOSA Loans Disbursement Card"
                             if GenJournalLine.Find('-') then begin
                                 // CODEUNIT.RUN(CODEUNIT::"Gen. Jnl.-Post Batch", GenJournalLine);
                                 FnSendNotifications();//Send Notifications
-                                "Loan Status" := "Loan Status"::Issued;
-                                Posted := true;
+                                // "Loan Status" := "Loan Status"::Issued;
+                                // Posted := true;
                                 "Posted By" := UserId;
                                 "Posting Date" := Today;
                                 "Issued Date" := "Loan Disbursement Date";
@@ -933,27 +934,11 @@ Page 51516397 "BOSA Loans Disbursement Card"
             DBranch := Cust."Global Dimension 2 Code";
         END;
         //**************Loan Principal Posting**********************************
+
         LineNo := LineNo + 10000;
-        GenJournalLine.INIT;
-        GenJournalLine."Journal Template Name" := TemplateName;
-        GenJournalLine."Journal Batch Name" := BatchName;
-        GenJournalLine."Line No." := LineNo;
-        GenJournalLine."Account Type" := GenJournalLine."Account Type"::Customer;
-        GenJournalLine."Account No." := "Client Code";
-        GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-        GenJournalLine."Document No." := "Loan  No.";
-        GenJournalLine."Posting Date" := Today;
-        GenJournalLine.Description := 'Loan Principle Amount' + Format("Loan  No.");
-        GenJournalLine.Amount := "Amount Disburse";
-        GenJournalLine.VALIDATE(GenJournalLine.Amount);
-        GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::Loan;
-        GenJournalLine."Loan No" := "Loan  No.";
-        GenJournalLine."Group Code" := "Group Code";
-        GenJournalLine.VALIDATE(GenJournalLine."Bal. Account No.");
-        GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
-        GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
-        IF GenJournalLine.Amount <> 0 THEN
-            GenJournalLine.INSERT;
+        SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, "Loan  No.", LineNo, GenJournalLine."Transaction Type"::Loan,
+        GenJournalLine."Account Type"::Customer, LoanApps."Client Code", LoanApps."Loan Disbursement Date", VarAmounttoDisburse, 'BOSA', LoanApps."Loan  No.",
+        'Loan Principle Amount ' + Format("Loan  No."), LoanApps."Loan  No.");
 
         //--------------------------------RECOVER OVERDRAFT()-------------------------------------------------------
         //Code Here
@@ -995,54 +980,24 @@ Page 51516397 "BOSA Loans Disbursement Card"
         //...................Cater for Loan Offset Now !
         CalcFields("Top Up Amount");
         if "Top Up Amount" > 0 then begin
+
             LoanTopUp.RESET;
             LoanTopUp.SETRANGE(LoanTopUp."Loan No.", "Loan  No.");
+
             IF LoanTopUp.FIND('-') THEN BEGIN
-                REPEAT//Maybe there are multiple topup loans
-                    //Principle
+                repeat
+
                     LineNo := LineNo + 10000;
-                    GenJournalLine.INIT;
-                    GenJournalLine."Journal Template Name" := TemplateName;
-                    GenJournalLine."Journal Batch Name" := BatchName;
-                    GenJournalLine."Line No." := LineNo;
-                    GenJournalLine."Document No." := "Loan  No.";
-                    GenJournalLine."Posting Date" := Today;
-                    GenJournalLine."External Document No." := "Loan  No.";
-                    GenJournalLine."Account Type" := GenJournalLine."Account Type"::Customer;
-                    GenJournalLine."Account No." := "Client Code";
-                    GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                    GenJournalLine.Description := 'Loan OffSet By - ' + "Loan  No.";
-                    GenJournalLine.Amount := LoanTopUp."Principle Top Up" * -1;
-                    GenJournalLine.VALIDATE(GenJournalLine.Amount);
-                    GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::Repayment;
-                    GenJournalLine."Loan No" := LoanTopUp."Loan Top Up";
-                    GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
-                    GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
-                    IF GenJournalLine.Amount <> 0 THEN
-                        GenJournalLine.INSERT;
+                    SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, "Loan  No.", LineNo, GenJournalLine."Transaction Type"::Repayment,
+                    GenJournalLine."Account Type"::Customer, LoanApps."Client Code", LoanApps."Loan Disbursement Date", LoanTopUp."Principle Top Up" * -1, 'BOSA', LoanApps."Loan  No.",
+                    'Loan OffSet By - ' + LoanApps."Loan  No.", LoanTopUp."Loan Top Up");
 
                     //..................Recover Interest On Top Up
                     LineNo := LineNo + 10000;
-                    GenJournalLine.INIT;
-                    GenJournalLine."Journal Template Name" := TemplateName;
-                    GenJournalLine."Journal Batch Name" := BatchName;
-                    GenJournalLine."Line No." := LineNo;
-                    GenJournalLine."Account Type" := GenJournalLine."Bal. Account Type"::Customer;
-                    GenJournalLine."Account No." := "Client Code";
-                    GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                    GenJournalLine."Document No." := "Loan  No.";
-                    GenJournalLine."Posting Date" := Today;
-                    GenJournalLine.Description := 'Interest Due Paid on top up';
-                    GenJournalLine.Amount := -LoanTopUp."Interest Top Up";
-                    GenJournalLine."External Document No." := "Loan  No.";
-                    GenJournalLine.VALIDATE(GenJournalLine.Amount);
-                    GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Interest Paid";
-                    GenJournalLine."Loan No" := LoanTopUp."Loan Top Up";
-                    GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
-                    GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
-                    IF GenJournalLine.Amount <> 0 THEN
-                        GenJournalLine.INSERT;
-                    VarAmounttoDisburse := VarAmounttoDisburse - LoanTopUp."Outstanding Balance";
+                    SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, "Loan  No.", LineNo, GenJournalLine."Transaction Type"::"Interest Paid",
+                    GenJournalLine."Account Type"::Customer, LoanApps."Client Code", LoanApps."Loan Disbursement Date", LoanTopUp."Interest Top Up" * -1, 'BOSA', LoanApps."Loan  No.",
+                    'Interest Due Paid on top up - ', LoanTopUp."Loan Top Up");
+                    VarAmounttoDisburse := VarAmounttoDisburse - (LoanTopUp."Outstanding Balance" + LoanTopUp."Interest Top Up");
                 UNTIL LoanTopUp.NEXT = 0;
             END;
         end;
@@ -1055,7 +1010,7 @@ Page 51516397 "BOSA Loans Disbursement Card"
         LineNo := LineNo + 10000;
         SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, "Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ",
         GenJournalLine."Account Type"::"Bank Account", LoanApps."Paying Bank Account No", LoanApps."Loan Disbursement Date", VarAmounttoDisburse * -1, 'BOSA', LoanApps."Loan  No.",
-        'Loan Disbursement - ' + LoanApps."Loan Product Type" + ' - ' + LoanApps."Loan  No.", '');
+        'Loan Principle Amount ' + Format("Loan  No."), '');
     end;
 
 

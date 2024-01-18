@@ -35,13 +35,7 @@ Page 51516245 "Loan Application Card"
                     Editable = AccountNoEditable;
                     Style = StrongAccent;
                 }
-                //cj
-                //  field("Non-member Account";"Non-member Account")
-                // {
-                //     ApplicationArea = Basic;
-                //    // Editable = AccountNoEditable;
-                //     Style = StrongAccent;
-                // }
+
                 field("Account Category"; "Account Category")
                 {
                     ApplicationArea = all;
@@ -242,6 +236,11 @@ Page 51516245 "Loan Application Card"
                     Editable = MNoEditable;
                     Style = StrongAccent;
                     ShowMandatory = true;
+                }
+                field("Paying Bank Account No"; "Paying Bank Account No")
+                {
+                    ApplicationArea = basic;
+                    Editable = false;
                 }
                 field("Repayment Start Date"; "Repayment Start Date")
                 {

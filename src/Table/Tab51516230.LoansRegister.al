@@ -671,14 +671,14 @@ Table 51516230 "Loans Register"
             TableRelation = if (Source = const(BOSA)) "Loan Disburesment-Batching"."Batch No." where(Posted = const(false),
                                                                                                             Status = const(Open),
                                                                                                             Source = const(BOSA),
-                                                                                                            "Batch Type" = filter(Loans))
-            else
-            if (Source = const(MICRO)) "Loan Disburesment-Batching"."Batch No." where(Posted = const(false), Status = const(Open), Source = const(MICRO), "Batch Type" = filter(Loans))
-            else
-            if (Source = const(FOSA)) "Loan Disburesment-Batching"."Batch No." where(Posted = const(false),
-                                                                                                                                                                                                                                                                                       Status = const(Open),
-                                                                                                                                                                                                                                                                                       Source = const(FOSA),
-                                                                                                                                                                                                                                                                                       "Batch Type" = filter(Loans));
+                                                                                                            "Batch Type" = filter(Loans));
+            // else
+            // if (Source = const(MICRO)) "Loan Disburesment-Batching"."Batch No." where(Posted = const(false), Status = const(Open), Source = const(MICRO), "Batch Type" = filter(Loans))
+            // else
+            // if (Source = const(FOSA)) "Loan Disburesment-Batching"."Batch No." where(Posted = const(false),
+            //    Status = const(Open),
+            //    Source = const(FOSA),
+            //    "Batch Type" = filter(Loans));
 
             trigger OnValidate()
             begin
@@ -2119,7 +2119,7 @@ Table 51516230 "Loans Register"
         {
             DataClassification = ToBeClassified;
         }
-                field(51516294; "Out. Loan Application fee"; Decimal)
+        field(51516294; "Out. Loan Application fee"; Decimal)
         {
             FieldClass = FlowField;
             CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Transaction Type" = filter("Application Fee"), "Loan No" = field("Loan  No."), Reversed = filter(false),

@@ -83,14 +83,14 @@ Table 51516557 "General Equiries."
 
             trigger OnLookup()
             var
-                UserMgt: Codeunit "Jamii User Management";
+                UserMgt: Codeunit "Devco User Management";
             begin
                 UserMgt.LookupUserID("Caller Reffered To");
             end;
 
             trigger OnValidate()
             var
-                UserMgt: Codeunit "Jamii User Management";
+                UserMgt: Codeunit "Devco User Management";
             begin
                 UserMgt.ValidateUserID("Caller Reffered To");
 
@@ -274,7 +274,7 @@ Table 51516557 "General Equiries."
         GenSetUp: Record "Sacco General Set-Up";
         Cust: Record Customer;
         PVApp: Record "Cust. Ledger Entry";
-        UserMgt: Codeunit "Jamii User Management";
+        UserMgt: Codeunit "Devco User Management";
         PRD: Record Customer;
         ObjEmployers: Record "Sacco Employers";
         ObjUser: Record "User Setup";

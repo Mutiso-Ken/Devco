@@ -291,35 +291,35 @@ codeunit 51516002 "GenerateLoanInterestDue"
 
     ///--------------------------------------------------------------------------
     ///
-    procedure FnMarkBatchLoansAsPosted()
-    var
-        PostedBatchList: Record "Loan Disburesment-Batching";
-        LoansRegister: record "Loans Register";
-    begin
-        PostedBatchList.Reset();
-        PostedBatchList.SetRange(PostedBatchList.Posted, true);
-        //PostedBatchList.SetRange(PostedBatchList."Batch No.", 'LBCH014912');
-        PostedBatchList.SetRange(PostedBatchList.Source, PostedBatchList.Source::MICRO);
-        PostedBatchList.SetFilter(PostedBatchList."Posting Date", '%1..%2', 20230807D, Today);
-        IF PostedBatchList.Find('-') THEN begin
-            repeat
-                LoansRegister.Reset();
-                LoansRegister.SetRange(LoansRegister."Batch No.", PostedBatchList."Batch No.");
-                if LoansRegister.Find('-') then begin
-                    repeat
-                        LoansRegister."Issued Date" := PostedBatchList."Posting Date";
-                        LoansRegister.Advice := true;
-                        LoansRegister."Advice Type" := LoansRegister."advice type"::"Fresh Loan";
-                        LoansRegister.Posted := true;
-                        LoansRegister."Posting Date" := LoansRegister."Issued Date";
-                        LoansRegister."Loan Interest Repayment" := ((LoansRegister."Approved Amount") * LoansRegister.Installments / 12 * (LoansRegister.Interest / 100));
-                        LoansRegister."Loan Status" := LoansRegister."loan status"::Issued;
-                        LoansRegister.Modify;
-                    until LoansRegister.Next = 0;
-                end;
-            UNTIL PostedBatchList.Next = 0;
-        end;
-    end;
+    // procedure FnMarkBatchLoansAsPosted()
+    // var
+    //     PostedBatchList: Record "Loan Disburesment-Batching";
+    //     LoansRegister: record "Loans Register";
+    // begin
+    //     PostedBatchList.Reset();
+    //     PostedBatchList.SetRange(PostedBatchList.Posted, true);
+    //     //PostedBatchList.SetRange(PostedBatchList."Batch No.", 'LBCH014912');
+    //     PostedBatchList.SetRange(PostedBatchList.Source, PostedBatchList.Source::MICRO);
+    //     PostedBatchList.SetFilter(PostedBatchList."Posting Date", '%1..%2', 20230807D, Today);
+    //     IF PostedBatchList.Find('-') THEN begin
+    //         repeat
+    //             LoansRegister.Reset();
+    //             LoansRegister.SetRange(LoansRegister."Batch No.", PostedBatchList."Batch No.");
+    //             if LoansRegister.Find('-') then begin
+    //                 repeat
+    //                     LoansRegister."Issued Date" := PostedBatchList."Posting Date";
+    //                     LoansRegister.Advice := true;
+    //                     LoansRegister."Advice Type" := LoansRegister."advice type"::"Fresh Loan";
+    //                     LoansRegister.Posted := true;
+    //                     LoansRegister."Posting Date" := LoansRegister."Issued Date";
+    //                     LoansRegister."Loan Interest Repayment" := ((LoansRegister."Approved Amount") * LoansRegister.Installments / 12 * (LoansRegister.Interest / 100));
+    //                     LoansRegister."Loan Status" := LoansRegister."loan status"::Issued;
+    //                     LoansRegister.Modify;
+    //                 until LoansRegister.Next = 0;
+    //             end;
+    //         UNTIL PostedBatchList.Next = 0;
+    //     end;
+    // end;
 
     var
         GenJournalLine: Record "Gen. Journal Line";

@@ -346,7 +346,7 @@ Table 51516031 "Funds User Setup"
 
     var
         UserTemp: Record "Funds User Setup";
-        UserManager: Codeunit "Jamii User Management";
+        UserManager: Codeunit "Devco User Management";
         SameBatch: label 'Another User has been assign to the batch:%1';
 }
 

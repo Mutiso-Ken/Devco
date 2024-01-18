@@ -17,7 +17,7 @@ Report 50313 "Payroll JournalTransfer."
             trigger OnAfterGetRecord()
             begin
                 //For use when posting Pension and NSSF
-                PostingGroup.Get('VIWANDA');
+                PostingGroup.Get('DEVCO');
                 PostingGroup.TestField("SSF Employer Account");
                 PostingGroup.TestField("SSF Employee Account");
                 objEmp.SetRange(objEmp."No.", "No.");
@@ -173,7 +173,7 @@ Report 50313 "Payroll JournalTransfer."
         PostingDate := CalcDate('1M-1D', SelectedPeriod);
 
         if UserSetup.Get(UserId) then begin
-            if UserSetup."Allow Process Payroll" = false then Error('You dont have permissions for payroll, Contact your system administrator! ')
+            if UserSetup."Payroll User" = false then Error('You dont have permissions for payroll, Contact your system administrator! ')
         end;
     end;
 

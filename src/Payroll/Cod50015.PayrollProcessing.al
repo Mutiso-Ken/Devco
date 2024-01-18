@@ -261,12 +261,14 @@ Codeunit 50015 "Payroll Processing"
                         strTransDescription := '';
                         strExtractedFrml := '';
                         if prTransactionCodes."Is Formulae" then begin
-                            if Management then
-                                //     strExtractedFrml := fnPureFormula(strEmpCode, intMonth, intYear, prTransactionCodes."Formula for Management Prov")
-                                // else
+                            // if Management then
+                            //         strExtractedFrml := fnPureFormula(strEmpCode, intMonth, intYear, prTransactionCodes."Formula for Management Prov")
+                            //     else
                                 strExtractedFrml := fnPureFormula(strEmpCode, intMonth, intYear, prTransactionCodes.Formulae);
 
-                            curTransAmount := ROUND(fnFormulaResult(strExtractedFrml), 0.05, '<'); //Get the calculated amount
+                            curTransAmount := ROUND(fnFormulaResult(strExtractedFrml), 0.05, '<'); 
+                            Message('CurTransAmount %1',curTransAmount);
+                            //Get the calculated amount
 
                         end else begin
                             curTransAmount := prEmployeeTransactions.Amount;
@@ -305,13 +307,11 @@ Codeunit 50015 "Payroll Processing"
                         if (not prTransactionCodes.Taxable) and (prTransactionCodes."Special Transaction" =
                         prTransactionCodes."special transaction"::Ignore) then
                             curNonTaxable := curNonTaxable + curTransAmount;
-                        Message('curNonTaxable %1', curNonTaxable);
-
-
+                     
                         //Added to ensure special transaction that are not taxable are not inlcuded in list of Allowances
-                        if (not prTransactionCodes.Taxable) and (prTransactionCodes."Special Transaction" <>
-                        prTransactionCodes."special transaction"::Ignore) then
-                            curTransAmount := 0;
+                        // if (not prTransactionCodes.Taxable) and (prTransactionCodes."Special Transaction" <>
+                        // prTransactionCodes."special transaction"::Ignore) then
+                        //     curTransAmount := 0;
 
 
                         curTotAllowances := curTotAllowances + curTransAmount; //Sum-up all the allowances
@@ -540,7 +540,7 @@ Codeunit 50015 "Payroll Processing"
             curTaxablePay := curGrossTaxable - (curSalaryArrears + curDefinedContrib + curMaxPensionContrib + curHOSP + curNonTaxable + curOOI)
 
         else
-            curTaxablePay := curGrossTaxable - (curSalaryArrears + curDefinedContrib);
+            curTaxablePay := curGrossTaxable - (curSalaryArrears + curDefinedContrib+ curNonTaxable);
         //Taxable Benefit
         txBenefitAmt := 0;
         if EmpSalary.Get(strEmpCode) then begin
@@ -563,7 +563,7 @@ Codeunit 50015 "Payroll Processing"
                 end;
             end;
         end;
-        curTransAmount := (curTaxablePay + txBenefitAmt + NSSFR)-curNonTaxable;
+        curTransAmount := curTaxablePay ;
         strTransDescription := 'Taxable Pay';
         TGroup := 'TAX CALCULATIONS';
         TGroupOrder := 6;
@@ -826,8 +826,8 @@ Codeunit 50015 "Payroll Processing"
                             if prTransactionCodes."Is Formulae" then begin
                                 strExtractedFrml := '';
                                 if Management then
-                                    //     strExtractedFrml := fnPureFormula(strEmpCode, intMonth, intYear, prTransactionCodes."Formula for Management Prov")
-                                    // else
+                                        strExtractedFrml := fnPureFormula(strEmpCode, intMonth, intYear, prTransactionCodes."Formula for Management Prov")
+                                    else
                                     strExtractedFrml := fnPureFormula(strEmpCode, intMonth, intYear, prTransactionCodes.Formulae);
 
                                 SpecialTransAmount := SpecialTransAmount + (fnFormulaResult(strExtractedFrml)); //Get the calculated amount
@@ -991,7 +991,7 @@ Codeunit 50015 "Payroll Processing"
         AccSchedMgt: Codeunit AccSchedManagement;
     begin
         // Results :=
-        //  AccSchedMgt.EvaluateExpression(true, strFormula, AccSchedLine, ColumnLayout, CalcAddCurr);
+         AccSchedMgt.EvaluateExpression(true, strFormula, AccSchedLine, ColumnLayout, CalcAddCurr);
     end;
 
 

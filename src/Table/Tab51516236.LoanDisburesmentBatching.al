@@ -136,8 +136,8 @@ Table 51516236 "Loan Disburesment-Batching"
         }
         field(24; Source; Option)
         {
-            OptionCaption = 'BOSA,FOSA,MICRO';
-            OptionMembers = BOSA,FOSA,MICRO;
+          
+            OptionMembers = BOSA;//,FOSA,MICRO;
             trigger OnValidate()
             begin
                 if "Batch No." = '' then begin

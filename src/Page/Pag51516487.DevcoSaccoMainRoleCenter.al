@@ -1636,9 +1636,25 @@ Page 51516487 "Devco Sacco Main Role Center"
                     }
 
 
+                    group("Loan Batching")
+                    {
 
+                        action("Loan Batch List")
+                        {
+                            ApplicationArea = Basic, Suite;
+                            RunObject = page "Loans Disbursment Batch List";
+
+                        }
+                        action("Posted Loan Batch List")
+                        {
+                            ApplicationArea = Basic, Suite;
+                            RunObject = page "Posted Loan Batch - List";
+
+                        }
+                    }
                     group("Loans Top Up List")
                     {
+                        Visible = false;
                         action("LoansTop Up List")
                         {
                             ApplicationArea = Basic, Suite;
@@ -3629,11 +3645,11 @@ Page 51516487 "Devco Sacco Main Role Center"
                     //     RunObject = page "Salary grade Structures";
                     //     ApplicationArea = All;
                     // }
-                    // action("Salary Proposal Lists")
-                    // {
-                    //     RunObject = page "Salary Proposal List";
-                    //     ApplicationArea = All;
-                    // }
+                    action("Payroll Period Transactions")
+                    {
+                        RunObject = page "Payroll Period Transaction.";
+                        ApplicationArea = All;
+                    }
                     action("Payroll General Setup LIST")
                     {
                         RunObject = page "Payroll General Setup LIST.";

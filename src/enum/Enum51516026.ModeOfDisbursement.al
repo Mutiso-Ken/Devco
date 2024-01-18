@@ -9,9 +9,12 @@ enum 51516026 "Mode Of Disbursement"
     {
         Caption = 'Cheque';
     }
-
     value(2; "Cash")
     {
         Caption = 'Cash';
+    }
+    value(3; "EFT")
+    {
+
     }
 }

@@ -62,18 +62,14 @@ Table 51516231 "Loans Guarantee Details"
             trigger OnValidate()
             begin
 
-                // Reset;
-                // LoanApp.Reset;
-                // LoanApp.SetRange(LoanApp."Loan  No.", "Loan No");
-
-                // if LoanApp.Find('-') then begin
-
-                // end;
-
-                // "Amount Committed" := "Amont Guaranteed";
-                // if Loans.Get("Loan No") then
-                //     "% Proportion" := ("Amont Guaranteed" / Loans."Approved Amount") * 100;
-
+                Reset;
+                LoanApp.Reset;
+                LoanApp.SetRange(LoanApp."Loan  No.", "Loan No");
+                if LoanApp.Find('-') then begin
+                    "Amount Committed" := "Amont Guaranteed";
+                    if Loans.Get("Loan No") then
+                        "% Proportion" := ("Amont Guaranteed" / Loans."Approved Amount") * 100;
+                end;
 
             end;
         }
@@ -97,7 +93,7 @@ Table 51516231 "Loans Guarantee Details"
         field(16; "Outstanding Balance"; Decimal)
         {
             CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Transaction Type" = filter(Loan | Repayment),
-                                                                  "Loan No" = field("Loan No")));
+                                                                  "Customer No." = field("Member No")));
             FieldClass = FlowField;
         }
         field(17; "Total Loans Guaranteed"; Decimal)
@@ -107,7 +103,7 @@ Table 51516231 "Loans Guarantee Details"
         field(18; "Loans Outstanding"; Decimal)
         {
             CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Transaction Type" = filter(Loan | Repayment),
-                                                                  "Loan No" = field("Loan No")));
+                                                                  "Customer No." = field("Member No")));
             FieldClass = FlowField;
 
             trigger OnValidate()

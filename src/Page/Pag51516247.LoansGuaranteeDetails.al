@@ -66,7 +66,10 @@ Page 51516247 "Loans Guarantee Details"
                     ShowMandatory = true;
                     trigger OnValidate()
                     begin
-                        rec."Total Amount Guaranteed" := FnRunGetCummulativeAmountGuaranteed(Rec."Loan No");
+                        rec.CalcFields("Outstanding Balance");
+                        if Shares < "Amont Guaranteed" then
+                            Error('The Guarantor has no enough Deposits to Guarantee') else
+                            rec."Total Amount Guaranteed" := FnRunGetCummulativeAmountGuaranteed(Rec."Loan No");
                         rec.Modify();
                     end;
                 }

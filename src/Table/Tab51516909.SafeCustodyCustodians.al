@@ -12,14 +12,14 @@ Table 51516909 "Safe Custody Custodians"
 
             trigger OnLookup()
             var
-                UserManagement: Codeunit "Jamii User Management";
+                UserManagement: Codeunit "Devco User Management";
             begin
                 UserManagement.LookupUserID("User ID");
             end;
 
             trigger OnValidate()
             var
-                UserManagement: Codeunit "Jamii User Management";
+                UserManagement: Codeunit "Devco User Management";
             begin
                 UserManagement.ValidateUserID("User ID");
 

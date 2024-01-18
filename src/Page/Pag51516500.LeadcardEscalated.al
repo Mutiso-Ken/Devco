@@ -4,8 +4,8 @@ Page 51516500 "Lead card Escalated"
     PageType = Card;
     SourceTable = "General Equiries.";
     DeleteAllowed = false;
-    InsertAllowed = false;
-    DelayedInsert = false;
+    // InsertAllowed = false;
+    // DelayedInsert = false;
 
     layout
     {
@@ -143,6 +143,7 @@ Page 51516500 "Lead card Escalated"
                     Caption = 'ID No';
                     ShowMandatory = true;
                 }
+
                 field("Escalate Case;"; "Escalate Case")
                 {
                     ApplicationArea = Basic;
@@ -433,7 +434,7 @@ Page 51516500 "Lead card Escalated"
         SMSMessages.Source := 'CRM';
         SMSMessages."Entered By" := UserId;
         SMSMessages."Sent To Server" := SMSMessages."Sent To Server"::No;
-        SMSMessages."SMS Message" := 'Good news! Your query has been resolved. If you have any more concerns or require further assistance, please feel free to contact us.Thank you for being a valued member. Jamii Yetu Sacco.';
+        SMSMessages."SMS Message" := 'Good news! Your query has been resolved. If you have any more concerns or require further assistance, please feel free to contact us.Thank you for being a valued member. Devco Sacco';
         SMSMessages."Telephone No" := "Phone No";
         SMSMessages.INSERT;
     end;
@@ -461,7 +462,7 @@ Page 51516500 "Lead card Escalated"
         SMSMessages.Source := 'CRM';
         SMSMessages."Entered By" := UserId;
         SMSMessages."Sent To Server" := SMSMessages."Sent To Server"::No;
-        SMSMessages."SMS Message" := 'Dear staff, Ticket No. ' + Format(No) + ' subject-' + Format("Calling For") + ' has been raised and requires your immediate attention. Jamii Yetu Sacco.';
+        SMSMessages."SMS Message" := 'Dear staff, Ticket No. ' + Format(No) + ' subject-' + Format("Calling For") + ' has been raised and requires your immediate attention. Devco Sacco';
         SMSMessages."Telephone No" := FnGetPhoneNo("Caller Reffered To");
         SMSMessages.INSERT;
     end;

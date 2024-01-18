@@ -228,7 +228,7 @@ Page 51516488 "Lead card"
     {
         area(creation)
         {
-            action("Email Escalted")
+            action("Email Escalated")
             {
                 ApplicationArea = Basic;
                 Promoted = true;

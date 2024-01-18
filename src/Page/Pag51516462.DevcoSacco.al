@@ -2155,12 +2155,12 @@ Page 51516462 "Devco Sacco"
                             RunPageView = WHERE("Loan Status" = CONST(approved), source = filter('MICRO'));
 
                         }
-                        action("CEEP Batch Disbursement")
-                        {
-                            Image = Group;
-                            RunObject = page "Loans Disb Batch List(MICRO)";
+                        // action("CEEP Batch Disbursement")
+                        // {
+                        //     Image = Group;
+                        //     RunObject = page "Loans Disb Batch List(MICRO)";
 
-                        }
+                        // }
 
                     }
 
@@ -2171,11 +2171,11 @@ Page 51516462 "Devco Sacco"
                             Image = Group;
                             RunObject = page "Loans Posted-MICRO";
                         }
-                        action("CEEP Batches Posted")
-                        {
-                            Image = Group;
-                            RunObject = page "Posted Loan Batch-List(MICRO)";
-                        }
+                        // action("CEEP Batches Posted")
+                        // {
+                        //     Image = Group;
+                        //     RunObject = page "Posted Loan Batch-List(MICRO)";
+                        // }
                     }
                 }
 
