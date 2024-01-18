@@ -790,33 +790,33 @@ page 51516842 DevcoGENERALROLECENTRE
                 }
 
 
-                group(StandingOrders)
-                {
-                    Caption = 'Standing Orders';
-                    action(StandingOrderApplication)
-                    {
-                        ApplicationArea = All;
-                        Caption = 'Standing Order Application List';
+                // group(StandingOrders)
+                // {
+                //     Caption = 'Standing Orders';
+                //     action(StandingOrderApplication)
+                //     {
+                //         ApplicationArea = All;
+                //         Caption = 'Standing Order Application List';
 
-                        RunObject = Page standingorderapplicationlist;
-                    }
+                //         RunObject = Page standingorderapplicationlist;
+                //     }
 
-                    action(ActiveStandingOrder)
-                    {
-                        ApplicationArea = all;
-                        Caption = 'Active Standing Order';
-                        RunPageView = WHERE(Status = CONST(Approved));
-                        RunObject = Page "Standing Orders - List";
-                    }
-                    action("StopedStandingOrder")
-                    {
-                        ApplicationArea = all;
-                        Caption = 'Stopped Standing Order';
-                        RunPageView = WHERE(Status = CONST(Stopped));
-                        RunObject = Page "Standing Orders - List";
-                    }
+                //     action(ActiveStandingOrder)
+                //     {
+                //         ApplicationArea = all;
+                //         Caption = 'Active Standing Order';
+                //         RunPageView = WHERE(Status = CONST(Approved));
+                //         RunObject = Page "Standing Orders - List";
+                //     }
+                //     action("StopedStandingOrder")
+                //     {
+                //         ApplicationArea = all;
+                //         Caption = 'Stopped Standing Order';
+                //         RunPageView = WHERE(Status = CONST(Stopped));
+                //         RunObject = Page "Standing Orders - List";
+                //     }
 
-                }
+                // }
 
 
 
@@ -3056,652 +3056,652 @@ page 51516842 DevcoGENERALROLECENTRE
                     ToolTip = 'Post recurring fixed asset transactions, such as acquisition and depreciation book without integration to the general ledger.';
                 }
             }
-            group("Human Resources")
-
-            {
-                Visible = true;
-                group("Employee Management")
-                {
-                    action("EmployeesList")
-                    {
-                        Caption = 'Employees List';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        RunObject = page "Employees List";
-                    }
-                    group(HREmployeeReports)
-                    {
-                        Caption = 'Reports';
-                        action("EmployeeListReport")
-                        {
-                            Caption = 'Employees List Report';
-                            ApplicationArea = basic, suite;
-                            Image = Employee;
-                            // RunObject = page ;
-                        }
-
-                        action("EmployeePIF")
-                        {
-                            Caption = 'Employees PIF Report';
-                            ApplicationArea = basic, suite;
-                            Image = Employee;
-                            // RunObject = page ;
-                        }
-
-                    }
-
-                }
-
-
-                group("Leave Management")
-                {
-                    action("Leave Application")
-                    {
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        RunObject = page "HR Leave Applications List";
-                    }
-
-                    action("Leave Reimbursement")
-                    {
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        RunObject = page "HR Leave Reimbursment List";
-                    }
-
-                    action("Leave Planner")
-                    {
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        RunObject = page "Hr Leave Planner List";
-                    }
-
-                    action("Leave Journal")
-                    {
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        RunObject = page "HR Leave Journal Lines";
-                    }
-
-                    action("Posted Leave Application")
-                    {
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        RunObject = page "HR Leave Applications L-Posted";
-                    }
-
-
-
-                    group(LeaveReports)
-                    {
-                        caption = 'Leave Reports';
-
-                        action("LeaveApplicationReports")
-                        {
-                            Caption = 'Leave Application Report';
-                            ApplicationArea = basic, suite;
-                            Image = Employee;
-                            // RunObject = page "HR Leave Applications List";
-
-                        }
-
-                        action("PostedLeaveApplication")
-                        {
-                            Caption = 'Posted Leave Applications';
-                            ApplicationArea = basic, suite;
-                            Image = Employee;
-                            // RunObject = page "HR Leave Applications List";
-
-                        }
-
-                    }
-
-                }
-
-                group("EmployeeRecruitment")
-
-                {
-                    Caption = 'Employees Recruitment';
-                    Visible = false;
-                    action(EmployeeRequisitionsList)
-                    {
-                        Caption = 'Employee Requisition';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        RunObject = page "HR Employee Requisitions List";
-
-                    }
-
-                    action("JobApplicationList")
-                    {
-                        Caption = 'Job Application List';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        RunObject = page "HR Job Applications List";
-                    }
-
-                    action("JobShortlisting")
-                    {
-                        Caption = 'Job Shortlisting';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        RunObject = page "HR Shortlisting List";
-                    }
-
-                    action("QualifiedJobApplicants")
-                    {
-                        Caption = 'Qualified Job Applicants';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        RunObject = page "HR Job Applicants Qualified";
-                    }
-
-                    action("UnQualifiedJobApplicants")
-                    {
-                        Caption = 'UnQualified Job Applicants';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        RunObject = page "HR Applicants UnQualified List";
-                    }
-
-                    action("ApplicantToEmployee")
-                    {
-                        Caption = 'New Employees Registration';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-
-                    }
-
-                    group(EmployeeRecruitmentReports)
-                    {
-                        Caption = 'Recruitment Reports';
-                        Visible = false;
-
-
-                        action("EmployeeRequisitionReport")
-                        {
-                            Caption = 'Employee Requisition Report';
-                            ApplicationArea = basic, suite;
-                            Image = Employee;
-                            // RunObject = page "HR Applicants UnQualified List";
-                        }
-
-                        action("JobApplicationReport")
-                        {
-                            Caption = 'Job Application Report';
-                            ApplicationArea = basic, suite;
-                            Image = Employee;
-                        }
-
-                        action("ShortlistedApplicantsReport")
-                        {
-                            Caption = 'Shortlisted Applicants Report';
-                            ApplicationArea = basic, suite;
-                            Image = Employee;
-
-                        }
-                    }
-
-
-                }
-
-                group("HRJobManagement")
-                {
-
-                    Caption = 'Job Management';
-                    Visible = false;
-                    action("JobList")
-                    {
-                        Caption = 'Job Lists';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        RunObject = page "Job List";
-                    }
-                    action("JobQualifications")
-                    {
-                        Caption = 'Job Qualifications';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        RunObject = page "HR Job Qualifications";
-                    }
-
-                    group(JobManagementReports)
-                    {
-                        Caption = 'Job Management Reports';
-                        action("HR Jobs")
-                        {
-                            Caption = 'HR Jobs';
-                            ApplicationArea = basic, suite;
-                            Image = Employee;
-                            // RunObject = page "HR Job Qualifications";
-                        }
-                        action("JobOccupantsReports")
-                        {
-                            Caption = 'Job Occupants Reports';
-                            ApplicationArea = basic, suite;
-                            Image = Employee;
-                            // RunObject = page "HR Job Qualifications";
-                        }
-                        action("VacantJobsReport")
-                        {
-                            Caption = 'Vacant Jobs Report';
-                            ApplicationArea = basic, suite;
-                            Image = Employee;
-                            // RunObject = page "HR Job Qualifications";
-                        }
-                        action("OccupiedJobsReport")
-                        {
-                            Caption = 'Occupied Jobs Report';
-                            ApplicationArea = basic, suite;
-                            Image = Employee;
-                            RunObject = page "HR Job Qualifications";
-                        }
-                        action("JobReponsibilities")
-                        {
-                            Caption = 'Job Reponsibilities';
-                            ApplicationArea = basic, suite;
-                            Image = Employee;
-                            // RunObject = page "HR Job Qualifications";
-                        }
-
-                        action("JobRequirements")
-                        {
-                            Caption = 'Job Requirements';
-                            ApplicationArea = basic, suite;
-                            Image = Employee;
-                            // RunObject = page "HR Job Qualifications";
-                        }
-
-                        action("HRCost")
-                        {
-                            Caption = 'Human Resource Costs';
-                            ApplicationArea = basic, suite;
-                            Image = Employee;
-                            // RunObject = page "HR Job Qualifications";
-                        }
-
-                    }
-
-                }
-
-                group("PerformanceManagement")
-                {
-                    Caption = 'Performance Management';
-                    action("AppraisalsGoalsAppraisee")
-                    {
-                        Caption = 'Appraisals Goals - Appraisee';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        // RunObject = page "HR Job Qualifications";
-                    }
-                    action("AppraisalsGoalsSupervisor")
-                    {
-                        Caption = 'Appraisals Goals - Supervisor';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        // RunObject = page "HR Job Qualifications";
-                    }
-
-                    action("AppraisalsGoalsEvaluation")
-                    {
-                        Caption = 'Appraisals Goals Evaluations';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        // RunObject = page "HR Job Qualifications";
-                    }
-
-                    action("PerformanceDiscussions")
-                    {
-                        Caption = 'Performance Disscussion';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        // RunObject = page "HR Job Qualifications";
-                    }
-
-                    action("RatingScaleStructure")
-                    {
-                        Caption = 'Rating Scales Structure';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        // RunObject = page "HR Job Qualifications";
-                    }
-
-                    action("TrainingandCompetenciesList")
-                    {
-                        Caption = 'Training & Competencies List';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        // RunObject = page "HR Job Qualifications";
-                    }
-
-                    group(PerformanceManagementReport)
-
-                    {
-                        Caption = 'Performance Report';
-                        action("TargetConfirmationReport")
-                        {
-                            Caption = 'Target Confirmation Report';
-                            ApplicationArea = basic, suite;
-                            Image = Employee;
-                            // RunObject = page "HR Job Qualifications";
-                        }
-
-                    }
-
-                }
-
-                group("DisciplinaryManagement")
-                {
-                    Caption = 'Disciplinary Management';
-                    Visible = false;
-                    action(DisciplinaryCaseList)
-                    {
-                        Caption = 'Disciplinary Case List';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        // RunObject = page "HR Job Qualifications";
-                    }
-                    action("EmployeeGrievances")
-                    {
-                        Caption = 'Employee Grievances';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        // RunObject = page "HR Job Qualifications";
-                    }
-                    action("DisplinaryAction")
-                    {
-                        Caption = 'Displinary Action';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        //  RunObject = page "HR Job Qualifications";
-                    }
-
-                }
-
-                group("TrainingManagement")
-                {
-
-                    Caption = 'Training Management';
-                    Visible = false;
-                    action("TrainingNeeds")
-                    {
-                        Caption = 'Training Needs';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        RunObject = page "HR Training Needs";
-                    }
-                    action("TrainingGroups")
-                    {
-                        Caption = 'Training Groups';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        RunObject = page "HR Training Group";
-                    }
-
-                    action("TrainingApplicationList")
-                    {
-                        Caption = 'Training Application List';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        RunObject = page "HR Training Application List";
-                    }
-
-                    action("TrainingProjectionList")
-                    {
-                        Caption = 'Training Projection List';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        RunObject = page "Hr Training Projection List";
-                    }
-
-                    action("TrainingCalenderList")
-                    {
-                        Caption = 'Training Calender List';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        //RunObject = page "Hr Training Projection List";
-                    }
-
-                    group(TrainingReport)
-                    {
-                        Caption = 'Training Reports';
-                        action("TrainingNeedsReport")
-                        {
-                            Caption = 'Training Needs Report';
-                            ApplicationArea = basic, suite;
-                            Image = Employee;
-                            //RunObject = page "Hr Training Projection List";
-                        }
-                        action("TrainingProjectionReport")
-                        {
-                            Caption = 'Training Projection Report';
-                            ApplicationArea = basic, suite;
-                            Image = Employee;
-                            //RunObject = page "Hr Training Projection List";
-                        }
-                        action("TrainingCalenderReport")
-                        {
-                            Caption = 'Training Calender Report';
-                            ApplicationArea = basic, suite;
-                            Image = Employee;
-                            //RunObject = page "Hr Training Projection List";
-                        }
-                        action("SkillsInventoryForm")
-                        {
-                            Caption = 'Skills Inventory Form';
-                            ApplicationArea = basic, suite;
-                            Image = Employee;
-                            //RunObject = page "Hr Training Projection List";
-                        }
-
-                    }
-
-                }
-
-
-                group("ExitInterviews")
-                {
-                    Caption = 'Exit Interviews';
-                    Visible = false;
-                    action("DepartmentClearanceList")
-                    {
-                        Caption = 'Department Clearance List';
-                        ApplicationArea = basic, suite;
-                        //RunObject = page "HR General Setup";
-                    }
-
-                    action("ExitInterviewList")
-                    {
-                        Caption = 'Exit Interview List';
-                        ApplicationArea = basic, suite;
-                        //RunObject = page "HR General Setup";
-                    }
-
-                }
-
-
-            }
-
-            Group(SaccoPayroll)
-            {
-                Caption = 'Payroll Management';
-                group(payrollEmployees)
-                {
-                    Caption = 'Payroll Employee';
-                    action(payrollemp)
-                    {
-                        Caption = 'Payroll Employee list';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        RunObject = page "Payroll Employee List";
-                        tooltip = 'Open Payroll Employees list';
-                    }
-                    action(HREmployeeList)
-                    {
-                        Caption = 'HR Employee List';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        RunObject = page "HR Employee List";
-                        tooltip = 'HR  Employees list';
-                    }
-                }
-                group(PayrollReports)
-                {
-                    Caption = 'Payroll Reports';
-                    action(PayrollSummary)
-                    {
-                        Caption = 'Payroll Summary';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "Payroll Summary";
-
-                    }
-                    action(CompanyPayrollSummary)
-                    {
-                        Caption = 'Company Payroll Summary';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "Company Payroll Summary";
-
-                    }
-                    action(AllDeductionsReport)
-                    {
-                        Caption = 'All Deductions Summary';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "All Deductions Summary";
-
-                    }
-                    action(AllEarningsReport)
-                    {
-                        Caption = 'All Earnings Summary';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "All Earnings Summary";
-
-                    }
-                    action(DeductionsReport)
-                    {
-                        Caption = 'Deductions Summary';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "Deductions Summary";
-
-                    }
-                    action(EarningsReport)
-                    {
-                        Caption = 'Earnings Summary';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "Earnings Summary";
-
-                    }
-                    action(PAYESchedule)
-                    {
-                        Caption = 'PAYE Schedule';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "PAYE Schedule";
-
-                    }
-                    action(NHIFSchedule)
-                    {
-                        Caption = 'NHIF Schedule';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "NHIF Schedule";
-
-                    }
-                    action(NSSFSchedule)
-                    {
-                        Caption = 'NSSF Schedule';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "NSSF Schedule";
-
-                    }
-                    action(HousingLevySchedule)
-                    {
-                        Caption = 'Housing Levy Schedule';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "Housing Levy Schedule";
-
-                    }
-                    action(GratuitySchedule)
-                    {
-                        Caption = 'Gratuity Schedule';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "Gratuity Report";
-
-                    }
-                    action(ProvidentSchedule)
-                    {
-                        Caption = 'Provident Schedule';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "Provident Schedule";
-
-                    }
-                    action(BIFUContribution)
-                    {
-                        Caption = 'BIFU Contribution';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "BIFU Contribution";
-
-                    }
-                    action(P9Report)
-                    {
-                        Caption = 'P9 Report';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "P9 Report";
-                    }
-                }
-
-                group(payrollperiodicactivities)
-                {
-                    Caption = 'Payroll Periodic Activities';
-                    action(payrollperiods)
-                    {
-                        Caption = 'Payroll Periods';
-                        ApplicationArea = basic, suite;
-                        RunObject = page "Payroll Calender";
-                    }
-                    action(Transfertojournal)
-                    {
-                        Caption = 'Payroll journal transfer';
-                        ApplicationArea = basic, suite;
-                        RunObject = report "Payroll Journal Transfer";
-                    }
-                    action(Payrolnettransfer)
-                    {
-                        Caption = 'Payroll Net Transfer To FOSA';
-                        ApplicationArea = basic, suite;
-                        RunObject = report "NET Salary Transfer To FOSA";
-                    }
-
-                    action(SendPaySlip)
-                    {
-                        Caption = 'Send Payslip via Mail';
-                        ApplicationArea = basic, suite;
-                        // RunObject = report "Send P9 Report Via Mail";
-                    }
-                    action(SendP9)
-                    {
-                        Caption = 'Send P9 via Mail';
-                        ApplicationArea = basic, suite;
-                        RunObject = report "Send P9 Report Via Mail";
-                    }
-
-                }
-
-
-            }
-
-#if not CLEAN18
+            // group("Human Resources")
+
+            // {
+            //     Visible = true;
+            //     group("Employee Management")
+            //     {
+            //         action("EmployeesList")
+            //         {
+            //             Caption = 'Employees List';
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             RunObject = page "Employees List";
+            //         }
+            //         group(HREmployeeReports)
+            //         {
+            //             Caption = 'Reports';
+            //             action("EmployeeListReport")
+            //             {
+            //                 Caption = 'Employees List Report';
+            //                 ApplicationArea = basic, suite;
+            //                 Image = Employee;
+            //                 // RunObject = page ;
+            //             }
+
+            //             action("EmployeePIF")
+            //             {
+            //                 Caption = 'Employees PIF Report';
+            //                 ApplicationArea = basic, suite;
+            //                 Image = Employee;
+            //                 // RunObject = page ;
+            //             }
+
+            //         }
+
+            //     }
+
+
+            //     group("Leave Management")
+            //     {
+            //         action("Leave Application")
+            //         {
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             RunObject = page "HR Leave Applications List";
+            //         }
+
+            //         action("Leave Reimbursement")
+            //         {
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             RunObject = page "HR Leave Reimbursment List";
+            //         }
+
+            //         action("Leave Planner")
+            //         {
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             RunObject = page "Hr Leave Planner List";
+            //         }
+
+            //         action("Leave Journal")
+            //         {
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             RunObject = page "HR Leave Journal Lines";
+            //         }
+
+            //         action("Posted Leave Application")
+            //         {
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             RunObject = page "HR Leave Applications L-Posted";
+            //         }
+
+
+
+            //         group(LeaveReports)
+            //         {
+            //             caption = 'Leave Reports';
+
+            //             action("LeaveApplicationReports")
+            //             {
+            //                 Caption = 'Leave Application Report';
+            //                 ApplicationArea = basic, suite;
+            //                 Image = Employee;
+            //                 // RunObject = page "HR Leave Applications List";
+
+            //             }
+
+            //             action("PostedLeaveApplication")
+            //             {
+            //                 Caption = 'Posted Leave Applications';
+            //                 ApplicationArea = basic, suite;
+            //                 Image = Employee;
+            //                 // RunObject = page "HR Leave Applications List";
+
+            //             }
+
+            //         }
+
+            //     }
+
+            //     group("EmployeeRecruitment")
+
+            //     {
+            //         Caption = 'Employees Recruitment';
+            //         Visible = false;
+            //         action(EmployeeRequisitionsList)
+            //         {
+            //             Caption = 'Employee Requisition';
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             RunObject = page "HR Employee Requisitions List";
+
+            //         }
+
+            //         action("JobApplicationList")
+            //         {
+            //             Caption = 'Job Application List';
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             RunObject = page "HR Job Applications List";
+            //         }
+
+            //         action("JobShortlisting")
+            //         {
+            //             Caption = 'Job Shortlisting';
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             RunObject = page "HR Shortlisting List";
+            //         }
+
+            //         action("QualifiedJobApplicants")
+            //         {
+            //             Caption = 'Qualified Job Applicants';
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             RunObject = page "HR Job Applicants Qualified";
+            //         }
+
+            //         action("UnQualifiedJobApplicants")
+            //         {
+            //             Caption = 'UnQualified Job Applicants';
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             RunObject = page "HR Applicants UnQualified List";
+            //         }
+
+            //         action("ApplicantToEmployee")
+            //         {
+            //             Caption = 'New Employees Registration';
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+
+            //         }
+
+            //         group(EmployeeRecruitmentReports)
+            //         {
+            //             Caption = 'Recruitment Reports';
+            //             Visible = false;
+
+
+            //             action("EmployeeRequisitionReport")
+            //             {
+            //                 Caption = 'Employee Requisition Report';
+            //                 ApplicationArea = basic, suite;
+            //                 Image = Employee;
+            //                 // RunObject = page "HR Applicants UnQualified List";
+            //             }
+
+            //             action("JobApplicationReport")
+            //             {
+            //                 Caption = 'Job Application Report';
+            //                 ApplicationArea = basic, suite;
+            //                 Image = Employee;
+            //             }
+
+            //             action("ShortlistedApplicantsReport")
+            //             {
+            //                 Caption = 'Shortlisted Applicants Report';
+            //                 ApplicationArea = basic, suite;
+            //                 Image = Employee;
+
+            //             }
+            //         }
+
+
+            //     }
+
+            //     // group("HRJobManagement")
+            //     // {
+
+            //     //     Caption = 'Job Management';
+            //     //     Visible = false;
+            //     //     action("JobList")
+            //     //     {
+            //     //         Caption = 'Job Lists';
+            //     //         ApplicationArea = basic, suite;
+            //     //         Image = Employee;
+            //     //         RunObject = page "Job List";
+            //     //     }
+            //     //     action("JobQualifications")
+            //     //     {
+            //     //         Caption = 'Job Qualifications';
+            //     //         ApplicationArea = basic, suite;
+            //     //         Image = Employee;
+            //     //         RunObject = page "HR Job Qualifications";
+            //     //     }
+
+            //     //     group(JobManagementReports)
+            //     //     {
+            //     //         Caption = 'Job Management Reports';
+            //     //         action("HR Jobs")
+            //     //         {
+            //     //             Caption = 'HR Jobs';
+            //     //             ApplicationArea = basic, suite;
+            //     //             Image = Employee;
+            //     //             // RunObject = page "HR Job Qualifications";
+            //     //         }
+            //     //         action("JobOccupantsReports")
+            //     //         {
+            //     //             Caption = 'Job Occupants Reports';
+            //     //             ApplicationArea = basic, suite;
+            //     //             Image = Employee;
+            //     //             // RunObject = page "HR Job Qualifications";
+            //     //         }
+            //     //         action("VacantJobsReport")
+            //     //         {
+            //     //             Caption = 'Vacant Jobs Report';
+            //     //             ApplicationArea = basic, suite;
+            //     //             Image = Employee;
+            //     //             // RunObject = page "HR Job Qualifications";
+            //     //         }
+            //     //         action("OccupiedJobsReport")
+            //     //         {
+            //     //             Caption = 'Occupied Jobs Report';
+            //     //             ApplicationArea = basic, suite;
+            //     //             Image = Employee;
+            //     //             RunObject = page "HR Job Qualifications";
+            //     //         }
+            //     //         action("JobReponsibilities")
+            //     //         {
+            //     //             Caption = 'Job Reponsibilities';
+            //     //             ApplicationArea = basic, suite;
+            //     //             Image = Employee;
+            //     //             // RunObject = page "HR Job Qualifications";
+            //     //         }
+
+            //     //         action("JobRequirements")
+            //     //         {
+            //     //             Caption = 'Job Requirements';
+            //     //             ApplicationArea = basic, suite;
+            //     //             Image = Employee;
+            //     //             // RunObject = page "HR Job Qualifications";
+            //     //         }
+
+            //     //         action("HRCost")
+            //     //         {
+            //     //             Caption = 'Human Resource Costs';
+            //     //             ApplicationArea = basic, suite;
+            //     //             Image = Employee;
+            //     //             // RunObject = page "HR Job Qualifications";
+            //     //         }
+
+            //     //     }
+
+            //     // }
+
+            //     group("PerformanceManagement")
+            //     {
+            //         Caption = 'Performance Management';
+            //         action("AppraisalsGoalsAppraisee")
+            //         {
+            //             Caption = 'Appraisals Goals - Appraisee';
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             // RunObject = page "HR Job Qualifications";
+            //         }
+            //         action("AppraisalsGoalsSupervisor")
+            //         {
+            //             Caption = 'Appraisals Goals - Supervisor';
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             // RunObject = page "HR Job Qualifications";
+            //         }
+
+            //         action("AppraisalsGoalsEvaluation")
+            //         {
+            //             Caption = 'Appraisals Goals Evaluations';
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             // RunObject = page "HR Job Qualifications";
+            //         }
+
+            //         action("PerformanceDiscussions")
+            //         {
+            //             Caption = 'Performance Disscussion';
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             // RunObject = page "HR Job Qualifications";
+            //         }
+
+            //         action("RatingScaleStructure")
+            //         {
+            //             Caption = 'Rating Scales Structure';
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             // RunObject = page "HR Job Qualifications";
+            //         }
+
+            //         action("TrainingandCompetenciesList")
+            //         {
+            //             Caption = 'Training & Competencies List';
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             // RunObject = page "HR Job Qualifications";
+            //         }
+
+            //         group(PerformanceManagementReport)
+
+            //         {
+            //             Caption = 'Performance Report';
+            //             action("TargetConfirmationReport")
+            //             {
+            //                 Caption = 'Target Confirmation Report';
+            //                 ApplicationArea = basic, suite;
+            //                 Image = Employee;
+            //                 // RunObject = page "HR Job Qualifications";
+            //             }
+
+            //         }
+
+            //     }
+
+            //     group("DisciplinaryManagement")
+            //     {
+            //         Caption = 'Disciplinary Management';
+            //         Visible = false;
+            //         action(DisciplinaryCaseList)
+            //         {
+            //             Caption = 'Disciplinary Case List';
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             // RunObject = page "HR Job Qualifications";
+            //         }
+            //         action("EmployeeGrievances")
+            //         {
+            //             Caption = 'Employee Grievances';
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             // RunObject = page "HR Job Qualifications";
+            //         }
+            //         action("DisplinaryAction")
+            //         {
+            //             Caption = 'Displinary Action';
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             //  RunObject = page "HR Job Qualifications";
+            //         }
+
+            //     }
+
+            //     group("TrainingManagement")
+            //     {
+
+            //         Caption = 'Training Management';
+            //         Visible = false;
+            //         action("TrainingNeeds")
+            //         {
+            //             Caption = 'Training Needs';
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             RunObject = page "HR Training Needs";
+            //         }
+            //         action("TrainingGroups")
+            //         {
+            //             Caption = 'Training Groups';
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             RunObject = page "HR Training Group";
+            //         }
+
+            //         action("TrainingApplicationList")
+            //         {
+            //             Caption = 'Training Application List';
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             RunObject = page "HR Training Application List";
+            //         }
+
+            //         action("TrainingProjectionList")
+            //         {
+            //             Caption = 'Training Projection List';
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             RunObject = page "Hr Training Projection List";
+            //         }
+
+            //         action("TrainingCalenderList")
+            //         {
+            //             Caption = 'Training Calender List';
+            //             ApplicationArea = basic, suite;
+            //             Image = Employee;
+            //             //RunObject = page "Hr Training Projection List";
+            //         }
+
+            //         group(TrainingReport)
+            //         {
+            //             Caption = 'Training Reports';
+            //             action("TrainingNeedsReport")
+            //             {
+            //                 Caption = 'Training Needs Report';
+            //                 ApplicationArea = basic, suite;
+            //                 Image = Employee;
+            //                 //RunObject = page "Hr Training Projection List";
+            //             }
+            //             action("TrainingProjectionReport")
+            //             {
+            //                 Caption = 'Training Projection Report';
+            //                 ApplicationArea = basic, suite;
+            //                 Image = Employee;
+            //                 //RunObject = page "Hr Training Projection List";
+            //             }
+            //             action("TrainingCalenderReport")
+            //             {
+            //                 Caption = 'Training Calender Report';
+            //                 ApplicationArea = basic, suite;
+            //                 Image = Employee;
+            //                 //RunObject = page "Hr Training Projection List";
+            //             }
+            //             action("SkillsInventoryForm")
+            //             {
+            //                 Caption = 'Skills Inventory Form';
+            //                 ApplicationArea = basic, suite;
+            //                 Image = Employee;
+            //                 //RunObject = page "Hr Training Projection List";
+            //             }
+
+            //         }
+
+            //     }
+
+
+            //     group("ExitInterviews")
+            //     {
+            //         Caption = 'Exit Interviews';
+            //         Visible = false;
+            //         action("DepartmentClearanceList")
+            //         {
+            //             Caption = 'Department Clearance List';
+            //             ApplicationArea = basic, suite;
+            //             //RunObject = page "HR General Setup";
+            //         }
+
+            //         action("ExitInterviewList")
+            //         {
+            //             Caption = 'Exit Interview List';
+            //             ApplicationArea = basic, suite;
+            //             //RunObject = page "HR General Setup";
+            //         }
+
+            //     }
+
+
+            // }
+
+//             Group(SaccoPayroll)
+//             {
+//                 Caption = 'Payroll Management';
+//                 group(payrollEmployees)
+//                 {
+//                     Caption = 'Payroll Employee';
+//                     action(payrollemp)
+//                     {
+//                         Caption = 'Payroll Employee list';
+//                         ApplicationArea = basic, suite;
+//                         Image = Employee;
+//                         RunObject = page "Payroll Employee List";
+//                         tooltip = 'Open Payroll Employees list';
+//                     }
+//                     action(HREmployeeList)
+//                     {
+//                         Caption = 'HR Employee List';
+//                         ApplicationArea = basic, suite;
+//                         Image = Employee;
+//                         RunObject = page "HR Employee List";
+//                         tooltip = 'HR  Employees list';
+//                     }
+//                 }
+//                 group(PayrollReports)
+//                 {
+//                     Caption = 'Payroll Reports';
+//                     action(PayrollSummary)
+//                     {
+//                         Caption = 'Payroll Summary';
+//                         ApplicationArea = basic, suite;
+//                         Image = Report;
+//                         RunObject = report "Payroll Summary";
+
+//                     }
+//                     action(CompanyPayrollSummary)
+//                     {
+//                         Caption = 'Company Payroll Summary';
+//                         ApplicationArea = basic, suite;
+//                         Image = Report;
+//                         RunObject = report "Company Payroll Summary";
+
+//                     }
+//                     action(AllDeductionsReport)
+//                     {
+//                         Caption = 'All Deductions Summary';
+//                         ApplicationArea = basic, suite;
+//                         Image = Report;
+//                         RunObject = report "All Deductions Summary";
+
+//                     }
+//                     action(AllEarningsReport)
+//                     {
+//                         Caption = 'All Earnings Summary';
+//                         ApplicationArea = basic, suite;
+//                         Image = Report;
+//                         RunObject = report "All Earnings Summary";
+
+//                     }
+//                     action(DeductionsReport)
+//                     {
+//                         Caption = 'Deductions Summary';
+//                         ApplicationArea = basic, suite;
+//                         Image = Report;
+//                         RunObject = report "Deductions Summary";
+
+//                     }
+//                     action(EarningsReport)
+//                     {
+//                         Caption = 'Earnings Summary';
+//                         ApplicationArea = basic, suite;
+//                         Image = Report;
+//                         RunObject = report "Earnings Summary";
+
+//                     }
+//                     action(PAYESchedule)
+//                     {
+//                         Caption = 'PAYE Schedule';
+//                         ApplicationArea = basic, suite;
+//                         Image = Report;
+//                         RunObject = report "PAYE Schedule";
+
+//                     }
+//                     action(NHIFSchedule)
+//                     {
+//                         Caption = 'NHIF Schedule';
+//                         ApplicationArea = basic, suite;
+//                         Image = Report;
+//                         RunObject = report "NHIF Schedule";
+
+//                     }
+//                     action(NSSFSchedule)
+//                     {
+//                         Caption = 'NSSF Schedule';
+//                         ApplicationArea = basic, suite;
+//                         Image = Report;
+//                         RunObject = report "NSSF Schedule";
+
+//                     }
+//                     action(HousingLevySchedule)
+//                     {
+//                         Caption = 'Housing Levy Schedule';
+//                         ApplicationArea = basic, suite;
+//                         Image = Report;
+//                         RunObject = report "Housing Levy Schedule";
+
+//                     }
+//                     action(GratuitySchedule)
+//                     {
+//                         Caption = 'Gratuity Schedule';
+//                         ApplicationArea = basic, suite;
+//                         Image = Report;
+//                         RunObject = report "Gratuity Report";
+
+//                     }
+//                     action(ProvidentSchedule)
+//                     {
+//                         Caption = 'Provident Schedule';
+//                         ApplicationArea = basic, suite;
+//                         Image = Report;
+//                         RunObject = report "Provident Schedule";
+
+//                     }
+//                     action(BIFUContribution)
+//                     {
+//                         Caption = 'BIFU Contribution';
+//                         ApplicationArea = basic, suite;
+//                         Image = Report;
+//                         RunObject = report "BIFU Contribution";
+
+//                     }
+//                     action(P9Report)
+//                     {
+//                         Caption = 'P9 Report';
+//                         ApplicationArea = basic, suite;
+//                         Image = Report;
+//                         RunObject = report "P9 Report";
+//                     }
+//                 }
+
+//                 group(payrollperiodicactivities)
+//                 {
+//                     Caption = 'Payroll Periodic Activities';
+//                     action(payrollperiods)
+//                     {
+//                         Caption = 'Payroll Periods';
+//                         ApplicationArea = basic, suite;
+//                         RunObject = page "Payroll Calender";
+//                     }
+//                     action(Transfertojournal)
+//                     {
+//                         Caption = 'Payroll journal transfer';
+//                         ApplicationArea = basic, suite;
+//                         RunObject = report "Payroll Journal Transfer";
+//                     }
+//                     action(Payrolnettransfer)
+//                     {
+//                         Caption = 'Payroll Net Transfer To FOSA';
+//                         ApplicationArea = basic, suite;
+//                         RunObject = report "NET Salary Transfer To FOSA";
+//                     }
+
+//                     action(SendPaySlip)
+//                     {
+//                         Caption = 'Send Payslip via Mail';
+//                         ApplicationArea = basic, suite;
+//                         // RunObject = report "Send P9 Report Via Mail";
+//                     }
+//                     action(SendP9)
+//                     {
+//                         Caption = 'Send P9 via Mail';
+//                         ApplicationArea = basic, suite;
+//                         RunObject = report "Send P9 Report Via Mail";
+//                     }
+
+//                 }
+
+
+//             }
+
+// #if not CLEAN18
 
 
 
@@ -3954,7 +3954,6 @@ page 51516842 DevcoGENERALROLECENTRE
 
         }
 
-#endif
 
     }
 

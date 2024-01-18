@@ -48,7 +48,7 @@ Page 51516336 "Customer Care Role"
             {
                 ApplicationArea = Basic;
                 Image = Aging;
-                RunObject = Page "Payroll Employee Card";
+               // RunObject = Page "Payroll Employee Card";
             }
         }
         area(creation)

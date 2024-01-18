@@ -64,6 +64,49 @@ Codeunit 51516022 "SURESTEP Factory"
         exit(branchCode);
     end;
 
+    procedure FnGetMemberMonthlyContributionDepositstier(MemberNo: Code[30]) VarMemberMonthlyContribution: Decimal
+    var
+        ObjMember: Record Customer;
+        ObjLoans: Record "Loans Register";
+        VarTotalLoansIssued: Decimal;
+        ObjDeposittier: Record "Member Deposit Tier";
+    begin
+        VarTotalLoansIssued := 0;
+        VarMemberMonthlyContribution := 0;
+
+        ObjMember.Reset;
+        ObjMember.SetRange(ObjMember."No.", MemberNo);
+        if ObjMember.FindSet then begin
+            ObjLoans.CalcFields(ObjLoans."Outstanding Balance");
+
+            ObjLoans.Reset;
+            ObjLoans.SetRange(ObjLoans."Client Code", MemberNo);
+            ObjLoans.SetRange(ObjLoans.Posted, true);
+            ObjLoans.SetFilter(ObjLoans."Outstanding Balance", '>%1', 0);
+            if ObjLoans.FindSet then begin
+                ObjLoans.CalcSums(ObjLoans."Approved Amount");
+                VarTotalLoansIssued := ObjLoans."Approved Amount";
+            end;
+
+            ObjDeposittier.Reset;
+            ObjDeposittier.SetFilter(ObjDeposittier."Minimum Amount", '<=%1', VarTotalLoansIssued);
+            ObjDeposittier.SetFilter(ObjDeposittier."Maximum Amount", '>=%1', VarTotalLoansIssued);
+            if ObjDeposittier.FindSet then begin
+                VarMemberMonthlyContribution := ObjDeposittier.Amount;
+            end;
+
+            ObjGenSetUp.Get;
+            if (ObjMember."Account Category" = ObjMember."account category"::Individual)
+            and (VarMemberMonthlyContribution < ObjGenSetUp."Min. Contribution") then
+                VarMemberMonthlyContribution := ObjGenSetUp."Min. Contribution";
+            // if (ObjMember."Account Category" <> ObjMember."account category"::Individual)
+            // and (VarMemberMonthlyContribution < ObjGenSetUp."Corporate Minimum Monthly Cont") then
+            //     VarMemberMonthlyContribution := ObjGenSetUp."Corporate Minimum Monthly Cont";
+
+            exit(VarMemberMonthlyContribution);
+        end;
+
+    end;
 
     procedure FnSendSMS(SMSSource: Text; SMSBody: Text; CurrentAccountNo: Text; MobileNumber: Text)
     var
@@ -821,25 +864,25 @@ Codeunit 51516022 "SURESTEP Factory"
     end;
 
 
-    procedure FnGetLoanOfficerFromMemberNo(MemberNo: Code[100]): Code[100]
-    var
-        ObjMembers: Record Customer;
-        ObjGroups: Record Customer;
-        ObjLoanOfficers: Record "Loan Officers Details";
-    begin
-        ObjMembers.Reset;
-        ObjMembers.SetRange(ObjMembers."No.", MemberNo);
-        if ObjMembers.Find('-') then begin
-            ObjGroups.Reset;
-            // ObjGroups.SetRange(ObjGroups."No.", ObjMembers."Group Account No");
-            if ObjGroups.Find('-') then begin
-                ObjLoanOfficers.Reset;
-                ObjLoanOfficers.SetRange(ObjLoanOfficers.Name, ObjGroups."Loan Officer Name");
-                if ObjLoanOfficers.Find('-') then
-                    exit(ObjLoanOfficers."Account No.");
-            end
-        end;
-    end;
+    // procedure FnGetLoanOfficerFromMemberNo(MemberNo: Code[100]): Code[100]
+    // var
+    //     ObjMembers: Record Customer;
+    //     ObjGroups: Record Customer;
+    //     ObjLoanOfficers: Record "Loan Officers Details";
+    // begin
+    //     ObjMembers.Reset;
+    //     ObjMembers.SetRange(ObjMembers."No.", MemberNo);
+    //     if ObjMembers.Find('-') then begin
+    //         ObjGroups.Reset;
+    //         // ObjGroups.SetRange(ObjGroups."No.", ObjMembers."Group Account No");
+    //         if ObjGroups.Find('-') then begin
+    //             ObjLoanOfficers.Reset;
+    //             ObjLoanOfficers.SetRange(ObjLoanOfficers.Name, ObjGroups."Loan Officer Name");
+    //             if ObjLoanOfficers.Find('-') then
+    //                 exit(ObjLoanOfficers."Account No.");
+    //         end
+    //     end;
+    // end;
 
 
     procedure FnGenerateRepaymentScheduleHistorical(LoanNumber: Code[50])
@@ -1043,7 +1086,7 @@ Codeunit 51516022 "SURESTEP Factory"
             ObjCustRiskRates.SetRange(ObjCustRiskRates."Sub Category", ObjMembershipApplication."Individual Category");
             if ObjCustRiskRates.FindSet then begin
                 VarCategoryScore := ObjCustRiskRates."Risk Score";
-               
+
             end;
         end;
 
@@ -1056,7 +1099,7 @@ Codeunit 51516022 "SURESTEP Factory"
             ObjCustRiskRates.SetRange(ObjCustRiskRates."Sub Category", ObjMembershipApplication.Entities);
             if ObjCustRiskRates.FindSet then begin
                 VarEntityScore := ObjCustRiskRates."Risk Score";
-               
+
             end;
         end;
 
@@ -1265,7 +1308,7 @@ Codeunit 51516022 "SURESTEP Factory"
 
         ObjMemberRiskRating.Init;
         ObjMemberRiskRating."Membership Application No" := MemberNo;
-    
+
         ObjMemberRiskRating."What is the Customer Category?" := ObjMembershipApplication."Individual Category";
         ObjMemberRiskRating."Customer Category Score" := VarCategoryScore;
         ObjMemberRiskRating."What is the Member residency?" := ObjMembershipApplication."Member Residency Status";

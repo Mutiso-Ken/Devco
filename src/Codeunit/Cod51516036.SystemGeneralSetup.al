@@ -28,20 +28,20 @@ codeunit 51516036 "System General Setup"
 
 
     //.................Prevent One from double logging into two machines
-    [EventSubscriber(ObjectType::Codeunit, 40, OnBeforeCompanyClose, '', false, false)]
-    local procedure ModifyPostingDatesRange()
-    var
-        UserSetup: Record "User Setup";
-        ProcessPayroll: Codeunit "Sacco Payroll Management";
-    begin
-        IF UserSetup.GET(USERID) THEN BEGIN
-            UserSetup.SetRange(UserSetup."Exempt Posting Date Update", false);
-            UserSetup."Allow FA Posting From" := TODAY;
-            UserSetup."Allow FA Posting To" := TODAY;
-            UserSetup.MODIFY;
-            COMMIT;
-        END;
-    END;
+    // [EventSubscriber(ObjectType::Codeunit, 40, OnBeforeCompanyClose, '', false, false)]
+    // local procedure ModifyPostingDatesRange()
+    // var
+    //     UserSetup: Record "User Setup";
+    //     ProcessPayroll: Codeunit "Sacco Payroll Management";
+    // begin
+    //     IF UserSetup.GET(USERID) THEN BEGIN
+    //         UserSetup.SetRange(UserSetup."Exempt Posting Date Update", false);
+    //         UserSetup."Allow FA Posting From" := TODAY;
+    //         UserSetup."Allow FA Posting To" := TODAY;
+    //         UserSetup.MODIFY;
+    //         COMMIT;
+    //     END;
+    // END;
     //...........Add LogIn TO systsm with OTP
     [EventSubscriber(ObjectType::Codeunit, 40, OnLogInEndOnAfterGetUserSetupRegisterTime, '', false, false)]
     local procedure RestrictLogInWithOTP()

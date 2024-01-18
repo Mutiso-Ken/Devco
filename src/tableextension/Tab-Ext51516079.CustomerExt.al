@@ -557,7 +557,7 @@ tableextension 51516079 "CustomerExt" extends Customer
         field(68112; "Account Category"; Option)
         {
             OptionCaption = 'Individual,Joint,Corporate,Group,Junior';
-            OptionMembers = SINGLE,Joint,Corporate,Group,Junior;
+            OptionMembers = Individual,Joint,Corporate,Group,Junior;
         }
         field(68113; "Type Of Organisation"; Option)
         {
@@ -1333,9 +1333,9 @@ tableextension 51516079 "CustomerExt" extends Customer
         }
         field(69245; "Group Officer"; Code[100])
         {
-            TableRelation = "Loan Officers Details".Name;
+            //TableRelation = "Loan Officers Details".Name;
             // CalcFormula = lookup(Customer."Loan Officer Name" where("No." = field("Group Account No")));
-            FieldClass = FlowField;
+            // FieldClass = FlowField;
         }
         field(69246; "Principal Arrears"; Decimal)
         {

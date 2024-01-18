@@ -321,7 +321,7 @@ Table 51516063 "Store Requistion Header"
         Text001: label 'Your identification is set up to process from %1 %2 only.';
         Dimval: Record "Dimension Value";
         ReqLines: Record "Store Requistion-Lines";
-        HrEmp: Record "HR Employee";
+        // HrEmp: Record "HR Employee";
         RespCenter: Record "Responsibility Center";
 
 

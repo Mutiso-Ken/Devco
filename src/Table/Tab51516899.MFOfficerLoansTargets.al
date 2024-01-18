@@ -8,15 +8,15 @@ Table 51516899 "MF Officer Loans Targets"
     {
         field(1;"Account No.";Code[10])
         {
-            TableRelation = "Loan Officers Details"."Account No." where (Status=const(Approved));
+            // TableRelation = "Loan Officers Details"."Account No." where (Status=const(Approved));
 
             trigger OnValidate()
             begin
 
-                BloanOfficer.Reset;
-                BloanOfficer.SetRange(BloanOfficer."Account No.","Account No.");
-                if BloanOfficer.Find('-') then
-                "Account Name":=BloanOfficer."Account Name";
+                // BloanOfficer.Reset;
+                // BloanOfficer.SetRange(BloanOfficer."Account No.","Account No.");
+                // if BloanOfficer.Find('-') then
+                // "Account Name":=BloanOfficer."Account Name";
             end;
         }
         field(2;"Account Name";Text[30])
@@ -215,6 +215,6 @@ Table 51516899 "MF Officer Loans Targets"
     }
 
     var
-        BloanOfficer: Record "Loan Officers Details";
+      //  BloanOfficer: Record "Loan Officers Details";
 }
 

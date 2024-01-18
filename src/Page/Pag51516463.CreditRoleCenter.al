@@ -157,31 +157,31 @@ Page 51516463 "Credit Role Center"
                     RunObject = page "Account Details Master";
                     ToolTip = 'All Saving Products';
                 }
-                group(StandingOrders)
-                {
-                    Caption = 'Standing Orders';
-                    action(StandingOrderApplication)
-                    {
-                        ApplicationArea = All;
-                        Caption = 'Standing Order Application List';
-                        RunObject = Page standingorderapplicationlist;
-                    }
-                    action(ActiveStandingOrder)
-                    {
-                        ApplicationArea = all;
-                        Caption = 'Active Standing Order';
-                        RunPageView = WHERE(Status = CONST(Approved));
-                        RunObject = Page "Standing Orders - List";
-                    }
-                    action("StopedStandingOrder")
-                    {
-                        ApplicationArea = all;
-                        Caption = 'Stopped Standing Order';
-                        RunPageView = WHERE(Status = CONST(Stopped));
-                        RunObject = Page "Standing Orders - List";
-                    }
+                // group(StandingOrders)
+                // {
+                //     Caption = 'Standing Orders';
+                //     action(StandingOrderApplication)
+                //     {
+                //         ApplicationArea = All;
+                //         Caption = 'Standing Order Application List';
+                //         RunObject = Page standingorderapplicationlist;
+                //     }
+                //     action(ActiveStandingOrder)
+                //     {
+                //         ApplicationArea = all;
+                //         Caption = 'Active Standing Order';
+                //         RunPageView = WHERE(Status = CONST(Approved));
+                //         RunObject = Page "Standing Orders - List";
+                //     }
+                //     action("StopedStandingOrder")
+                //     {
+                //         ApplicationArea = all;
+                //         Caption = 'Stopped Standing Order';
+                //         RunPageView = WHERE(Status = CONST(Stopped));
+                //         RunObject = Page "Standing Orders - List";
+                //     }
 
-                }
+                // }
                 group("FOSA Loans")
                 {
                     group("FOSA Loans Management")
@@ -883,34 +883,34 @@ Page 51516463 "Credit Role Center"
                     }
                 }
             }
-            group("Self Services")
-            {
-                Visible = true;
-                action("Apply Leave")
-                {
-                    ApplicationArea = basic, suite;
-                    Image = Employee;
-                    RunObject = page "HR Leave Applications List";
-                }
-                action("My Posted Leave Applications")
-                {
-                    ApplicationArea = basic, suite;
-                    Image = Employee;
-                    RunObject = page "HR Leave Applications L-Posted";
-                }
-                action(SendPaySlip)
-                {
-                    Caption = 'My Payslip';
-                    ApplicationArea = basic, suite;
-                    // RunObject = report "Send P9 Report Via Mail";
-                }
-                action(SendP9)
-                {
-                    Caption = 'My P9 Slip';
-                    ApplicationArea = basic, suite;
-                    RunObject = report "Send P9 Report Via Mail";
-                }
-            }
+            // group("Self Services")
+            // {
+            //     Visible = true;
+            //     action("Apply Leave")
+            //     {
+            //         ApplicationArea = basic, suite;
+            //         Image = Employee;
+            //         RunObject = page "HR Leave Applications List";
+            //     }
+            //     action("My Posted Leave Applications")
+            //     {
+            //         ApplicationArea = basic, suite;
+            //         Image = Employee;
+            //         RunObject = page "HR Leave Applications L-Posted";
+            //     }
+            //     action(SendPaySlip)
+            //     {
+            //         Caption = 'My Payslip';
+            //         ApplicationArea = basic, suite;
+            //         // RunObject = report "Send P9 Report Via Mail";
+            //     }
+            //     action(SendP9)
+            //     {
+            //         Caption = 'My P9 Slip';
+            //         ApplicationArea = basic, suite;
+            //         RunObject = report "Send P9 Report Via Mail";
+            //     }
+            // }
 
 #if not CLEAN18
         }

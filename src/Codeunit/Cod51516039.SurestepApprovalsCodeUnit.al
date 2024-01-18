@@ -12,7 +12,7 @@ Codeunit 51516039 "SurestepApprovalsCodeUnit"
         LoanApplications: Record "Loans Register";
         LoanBatches: Record "Loan Disburesment-Batching";
         GuarantorSubstitution: Record "Guarantorship Substitution H";
-        LeaveApplications: Record "HR Leave Application";
+        // LeaveApplications: Record "HR Leave Application";
         PaymentVoucher: Record "Payment Header";
         FundsTransferHeader: Record "Funds Transfer Header";
 
@@ -272,44 +272,44 @@ Codeunit 51516039 "SurestepApprovalsCodeUnit"
     end;
     //------------------------------------------------------------------------------------------------------
     //7)--------------------------------------------------------------------Send Membership Applications request For Approval start
-    procedure SendLeaveApplicationsRequestForApproval(LeaveApplicationNo: Code[40]; var "HR Leave Application": Record "HR Leave Application")
-    begin
-        if FnCheckIfLeaveApplicationApprovalsWorkflowEnabled("HR Leave Application") then begin
-            FnOnSendLeaveApplicationForApproval("HR Leave Application");
-        end;
-    end;
+    // procedure SendLeaveApplicationsRequestForApproval(LeaveApplicationNo: Code[40]; var "HR Leave Application": Record "HR Leave Application")
+    // begin
+    //     if FnCheckIfLeaveApplicationApprovalsWorkflowEnabled("HR Leave Application") then begin
+    //         FnOnSendLeaveApplicationForApproval("HR Leave Application");
+    //     end;
+    // end;
 
-    local procedure FnCheckIfLeaveApplicationApprovalsWorkflowEnabled(var "HR Leave Application": Record "HR Leave Application"): Boolean;
-    begin
-        if not IsLeaveApplicationApprovalsWorkflowEnabled("HR Leave Application") then
-            Error(NoWorkflowEnabledErr);
-        exit(true);
-    end;
+    // local procedure FnCheckIfLeaveApplicationApprovalsWorkflowEnabled(var "HR Leave Application": Record "HR Leave Application"): Boolean;
+    // begin
+    //     if not IsLeaveApplicationApprovalsWorkflowEnabled("HR Leave Application") then
+    //         Error(NoWorkflowEnabledErr);
+    //     exit(true);
+    // end;
 
-    //.
-    procedure CancelLeaveApplicationsRequestForApproval(LeaveApplicationNo: Code[40]; var "HR Leave Application": Record "HR Leave Application")
-    begin
-        FnOnCancelLeaveApplicationApprovalRequest("HR Leave Application");
-    end;
-
-
-    local procedure IsLeaveApplicationApprovalsWorkflowEnabled(var LeaveApplication: Record "HR Leave Application"): Boolean
-    begin
-        exit(WorkflowManagement.CanExecuteWorkflow(LeaveApplication, Psalmkitswfevents.RunWorkflowOnSendLeaveApplicationForApprovalCode));
-    end;
+    // //.
+    // procedure CancelLeaveApplicationsRequestForApproval(LeaveApplicationNo: Code[40]; var "HR Leave Application": Record "HR Leave Application")
+    // begin
+    //     FnOnCancelLeaveApplicationApprovalRequest("HR Leave Application");
+    // end;
 
 
-    [IntegrationEvent(false, false)]
+    // local procedure IsLeaveApplicationApprovalsWorkflowEnabled(var LeaveApplication: Record "HR Leave Application"): Boolean
+    // begin
+    //     exit(WorkflowManagement.CanExecuteWorkflow(LeaveApplication, Psalmkitswfevents.RunWorkflowOnSendLeaveApplicationForApprovalCode));
+    // end;
 
-    procedure FnOnSendLeaveApplicationForApproval(var LeaveApplication: Record "HR Leave Application")
-    begin
-    end;
 
-    [IntegrationEvent(false, false)]
+    // [IntegrationEvent(false, false)]
 
-    procedure FnOnCancelLeaveApplicationApprovalRequest(var LeaveApplication: Record "HR Leave Application")
-    begin
-    end;
+    // procedure FnOnSendLeaveApplicationForApproval(var LeaveApplication: Record "HR Leave Application")
+    // begin
+    // end;
+
+    // [IntegrationEvent(false, false)]
+
+    // procedure FnOnCancelLeaveApplicationApprovalRequest(var LeaveApplication: Record "HR Leave Application")
+    // begin
+    // end;
     //8)--------------------------------------------------------------------Guarantor Substitution request For Approval start
     procedure SendGuarantorSubRequestForApproval(GuarantorSubNo: Code[40]; var "Guarantorship Substitution H": Record "Guarantorship Substitution H")
     begin

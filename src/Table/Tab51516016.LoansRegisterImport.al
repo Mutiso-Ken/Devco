@@ -1302,7 +1302,7 @@ table 51516016 "Loans Register Import"
         }
         field(69111; "Loan Officer"; Code[30])
         {
-            TableRelation = "Loan Officers Details".Name;
+            //TableRelation = "Loan Officers Details".Name;
         }
         field(69112; "Group Name"; Text[50])
         {

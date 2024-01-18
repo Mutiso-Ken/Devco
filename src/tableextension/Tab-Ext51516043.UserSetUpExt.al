@@ -97,7 +97,10 @@ tableextension 51516043 "UserSetUpExt" extends "User Setup"
         field(51516024; "Can POST Loans"; Boolean)
         {
         }
-       
+       field(515156025; "Allow Process Payroll" ; Boolean)
+       {
+        DataClassification = ToBeClassified;
+       }
     }
 
 

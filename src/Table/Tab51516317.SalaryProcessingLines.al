@@ -174,7 +174,7 @@ Table 51516317 "Salary Processing Lines"
 
     var
         Acc: Record Vendor;
-        NoSetup: Record "Payroll Employee Deductions";
+        // NoSetup: Record "Payroll Employee Deductions";
         NoSeriesMgt: Codeunit NoSeriesManagement;
         SalBuffer: Record "Salary Processing Lines";
 }

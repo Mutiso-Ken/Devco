@@ -204,7 +204,7 @@ Report 51516850 "Micro Finance Schedule"
         SAVINGS2: Decimal;
         CompanyInfo: Record "Company Information";
         CEEPOfficer: Text;
-        CEEPOfficerDetails: Record "Loan Officers Details";
+        // CEEPOfficerDetails: Record "Loan Officers Details";
         MeetingDate: Date;
         Transactions: Record Micro_Fin_Transactions;
         ReceiptNo: Code[30];

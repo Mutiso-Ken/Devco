@@ -1402,7 +1402,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                         Caption = 'Member Accounts';
                         RunObject = Page "Member List";
                         ToolTip = 'View Member Accounts';
-                        Visible=false;
+                        Visible = false;
                     }
                     group("Account Opening")
                     {
@@ -3522,185 +3522,309 @@ Page 51516487 "Devco Sacco Main Role Center"
 
 
             // }
-
-            Group(SaccoPayroll)
+            group("Agile Payroll Management")
             {
-                Caption = 'Payroll Management';
-                group(payrollEmployees)
+                group("Payroll Employees")
                 {
-                    Caption = 'Payroll Employee';
-                    action(payrollemp)
+                    action("Payroll Employee List")
                     {
-                        Caption = 'Payroll Employee list';
-                        ApplicationArea = basic, suite;
-                        Image = Employee;
-                        RunObject = page "Payroll Employee List";
-                        tooltip = 'Open Payroll Employees list';
+                        RunObject = page "Payroll Employee List.";
+                        ApplicationArea = All;
+
                     }
-                   
                     action("Payroll Earnings List.")
                     {
-                        RunObject = page "Payroll Earnings List";
+                        RunObject = page "Payroll Earnings List.";
                         ApplicationArea = All;
 
                     }
                     action("Payroll Deductions List.")
                     {
-                        RunObject = page "Payroll Deductions List";
+                        RunObject = page "Payroll Deductions List.";
                         ApplicationArea = All;
 
                     }
                     action("Payroll Employee Earnings.")
                     {
-                        RunObject = page "Payroll Employee Earnings";
+                        RunObject = page "Payroll Employee Earnings.";
                         ApplicationArea = All;
 
                     }
                     action("Payroll Employee Deductions.")
                     {
-                        RunObject = page "Payroll Employee Deductions";
+                        RunObject = page "Payroll Employee Deductions.";
                         ApplicationArea = All;
 
                     }
-              
+
                 }
+                group("Payrolll Periodic Activities")
+                {
+                    action("Payroll Periods")
+                    {
+                        RunObject = page "Payroll Periods.";
+                        ApplicationArea = All;
+
+                    }
+                    action("Transfer Payroll to journal")
+                    {
+                        RunObject = report "Payroll JournalTransfer.";
+                        ApplicationArea = All;
+
+                    }
+                    action("General Journal")
+                    {
+                        RunObject = page "General Journal";
+                        ApplicationArea = All;
+
+                    }
+
+                }
+                group(Reports1)
+                {
+                    Caption = 'Reports';
+                    action("Payroll Employees Report")
+                    {
+                        RunObject = report "Payroll Employees Report.";
+                        ApplicationArea = All;
+                    }
+                    // action("PayrollSummary")
+                    // {
+                    //     RunObject = report "Payroll Summary";
+                    //     ApplicationArea = all;
+                    // }
+
+
+                }
+                group(Setup1)
+                {
+                    Caption = 'Payroll Setup';
+                    action("Payroll PAYE Setup")
+                    {
+                        RunObject = page "Payroll PAYE Setup.";
+                        ApplicationArea = All;
+                    }
+                    action("Payroll NSSF Setup")
+                    {
+                        RunObject = page "Payroll NSSF Setup.";
+                        ApplicationArea = All;
+                    }
+                    action("Payroll NHIF Setup")
+                    {
+                        RunObject = page "Payroll NHIF Setup.";
+                        ApplicationArea = All;
+                    }
+                    action("Payroll Posting Group")
+                    {
+                        RunObject = page "Payroll Posting Group.";
+                        ApplicationArea = All;
+                    }
+                    action("Payroll Transaction List")
+                    {
+                        RunObject = page "Payroll Transaction List.";
+                        ApplicationArea = All;
+                    }
+                    // action("Salary Grade Structures")
+                    // {
+                    //     RunObject = page "Salary grade Structures";
+                    //     ApplicationArea = All;
+                    // }
+                    // action("Salary Proposal Lists")
+                    // {
+                    //     RunObject = page "Salary Proposal List";
+                    //     ApplicationArea = All;
+                    // }
+                    action("Payroll General Setup LIST")
+                    {
+                        RunObject = page "Payroll General Setup LIST.";
+                        ApplicationArea = All;
+                    }
+
+
+                }
+
+            }
+
+#if not CLEAN18
+            Group(SaccoPayroll)
+            {
+                Visible = false;
+                Caption = 'Payroll Management';
+                // group(payrollEmployees)
+                // {
+                //     Caption = 'Payroll Employee';
+                //     action(payrollemp)
+                //     {
+                //         Caption = 'Payroll Employee list';
+                //         ApplicationArea = basic, suite;
+                //         Image = Employee;
+                //         RunObject = page "Payroll Employee List";
+                //         tooltip = 'Open Payroll Employees list';
+                //     }
+
+                //     action("Payroll Earnings List.")
+                //     {
+                //         RunObject = page "Payroll Earnings List";
+                //         ApplicationArea = All;
+
+                //     }
+                //     action("Payroll Deductions List.")
+                //     {
+                //         RunObject = page "Payroll Deductions List";
+                //         ApplicationArea = All;
+
+                //     }
+                //     action("Payroll Employee Earnings.")
+                //     {
+                //         RunObject = page "Payroll Employee Earnings";
+                //         ApplicationArea = All;
+
+                //     }
+                //     action("Payroll Employee Deductions.")
+                //     {
+                //         RunObject = page "Payroll Employee Deductions";
+                //         ApplicationArea = All;
+
+                //     }
+
+                // }
                 group(PayrollReports)
                 {
                     Caption = 'Payroll Reports';
-                    action(PayrollSummary)
-                    {
-                        Caption = 'Payroll Summary';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "Payroll Summary";
+                    // action(PayrollSummary)
+                    // {
+                    //     Caption = 'Payroll Summary';
+                    //     ApplicationArea = basic, suite;
+                    //     Image = Report;
+                    //     RunObject = report "Payroll Summary";
 
-                    }
-                    action(CompanyPayrollSummary)
-                    {
-                        Caption = 'Company Payroll Summary';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "Company Payroll Summary";
+                    // }
+                    // action(CompanyPayrollSummary)
+                    // {
+                    //     Caption = 'Company Payroll Summary';
+                    //     ApplicationArea = basic, suite;
+                    //     Image = Report;
+                    //     RunObject = report "Company Payroll Summary";
 
-                    }
-                    action(AllDeductionsReport)
-                    {
-                        Caption = 'All Deductions Summary';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "All Deductions Summary";
+                    // }
+                    // action(AllDeductionsReport)
+                    // {
+                    //     Caption = 'All Deductions Summary';
+                    //     ApplicationArea = basic, suite;
+                    //     Image = Report;
+                    //     RunObject = report "All Deductions Summary";
 
-                    }
-                    action(AllEarningsReport)
-                    {
-                        Caption = 'All Earnings Summary';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "All Earnings Summary";
+                    // }
+                    // action(AllEarningsReport)
+                    // {
+                    //     Caption = 'All Earnings Summary';
+                    //     ApplicationArea = basic, suite;
+                    //     Image = Report;
+                    //     RunObject = report "All Earnings Summary";
 
-                    }
-                    action(DeductionsReport)
-                    {
-                        Caption = 'Deductions Summary';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "Deductions Summary";
+                    // }
+                    // action(DeductionsReport)
+                    // {
+                    //     Caption = 'Deductions Summary';
+                    //     ApplicationArea = basic, suite;
+                    //     Image = Report;
+                    //     RunObject = report "Deductions Summary";
 
-                    }
-                    action(EarningsReport)
-                    {
-                        Caption = 'Earnings Summary';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "Earnings Summary";
+                    // }
+                    // action(EarningsReport)
+                    // {
+                    //     Caption = 'Earnings Summary';
+                    //     ApplicationArea = basic, suite;
+                    //     Image = Report;
+                    //     RunObject = report "Earnings Summary";
 
-                    }
-                    action(PAYESchedule)
-                    {
-                        Caption = 'PAYE Schedule';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "PAYE Schedule";
+                    // }
+                    // action(PAYESchedule)
+                    // {
+                    //     Caption = 'PAYE Schedule';
+                    //     ApplicationArea = basic, suite;
+                    //     Image = Report;
+                    //     RunObject = report "PAYE Schedule";
 
-                    }
-                    action(NHIFSchedule)
-                    {
-                        Caption = 'NHIF Schedule';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "NHIF Schedule";
+                    // }
+                    // action(NHIFSchedule)
+                    // {
+                    //     Caption = 'NHIF Schedule';
+                    //     ApplicationArea = basic, suite;
+                    //     Image = Report;
+                    //     RunObject = report "NHIF Schedule";
 
-                    }
-                    action(NSSFSchedule)
-                    {
-                        Caption = 'NSSF Schedule';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "NSSF Schedule";
+                    // }
+                    // action(NSSFSchedule)
+                    // {
+                    //     Caption = 'NSSF Schedule';
+                    //     ApplicationArea = basic, suite;
+                    //     Image = Report;
+                    //     RunObject = report "NSSF Schedule";
 
-                    }
-                    action(HousingLevySchedule)
-                    {
-                        Caption = 'Housing Levy Schedule';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "Housing Levy Schedule";
+                    // }
+                    // action(HousingLevySchedule)
+                    // {
+                    //     Caption = 'Housing Levy Schedule';
+                    //     ApplicationArea = basic, suite;
+                    //     Image = Report;
+                    //     RunObject = report "Housing Levy Schedule";
 
-                    }
-                    action(GratuitySchedule)
-                    {
-                        Caption = 'Gratuity Schedule';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "Gratuity Report";
+                    // }
+                    // action(GratuitySchedule)
+                    // {
+                    //     Caption = 'Gratuity Schedule';
+                    //     ApplicationArea = basic, suite;
+                    //     Image = Report;
+                    //     RunObject = report "Gratuity Report";
 
-                    }
-                    action(ProvidentSchedule)
-                    {
-                        Caption = 'Provident Schedule';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "Provident Schedule";
+                    // }
+                    // action(ProvidentSchedule)
+                    // {
+                    //     Caption = 'Provident Schedule';
+                    //     ApplicationArea = basic, suite;
+                    //     Image = Report;
+                    //     RunObject = report "Provident Schedule";
 
-                    }
-                    action(BIFUContribution)
-                    {
-                        Caption = 'BIFU Contribution';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "BIFU Contribution";
+                    // }
+                    // action(BIFUContribution)
+                    // {
+                    //     Caption = 'BIFU Contribution';
+                    //     ApplicationArea = basic, suite;
+                    //     Image = Report;
+                    //     RunObject = report "BIFU Contribution";
 
-                    }
-                    action(P9Report)
-                    {
-                        Caption = 'P9 Report';
-                        ApplicationArea = basic, suite;
-                        Image = Report;
-                        RunObject = report "P9 Report";
-                    }
+                    // }
+                    // action(P9Report)
+                    // {
+                    //     Caption = 'P9 Report';
+                    //     ApplicationArea = basic, suite;
+                    //     Image = Report;
+                    //     RunObject = report "P9 Report";
+                    // }
                 }
 
                 group(payrollperiodicactivities)
                 {
                     Caption = 'Payroll Periodic Activities';
-                    action(payrollperiods)
-                    {
-                        Caption = 'Payroll Periods';
-                        ApplicationArea = basic, suite;
-                        RunObject = page "Payroll Calender";
-                    }
-                    action(Transfertojournal)
-                    {
-                        Caption = 'Payroll journal transfer';
-                        ApplicationArea = basic, suite;
-                        RunObject = report "Payroll Journal Transfer";
-                    }
-                    action(Payrolnettransfer)
-                    {
-                        Caption = 'Payroll Net Transfer To FOSA';
-                        ApplicationArea = basic, suite;
-                        RunObject = report "NET Salary Transfer To FOSA";
-                    }
+                    // action(payrollperiods)
+                    // {
+                    //     Caption = 'Payroll Periods';
+                    //     ApplicationArea = basic, suite;
+                    //     RunObject = page "Payroll Calender";
+                    // }
+                    // action(Transfertojournal)
+                    // {
+                    //     Caption = 'Payroll journal transfer';
+                    //     ApplicationArea = basic, suite;
+                    //     RunObject = report "Payroll Journal Transfer";
+                    // }
+                    // action(Payrolnettransfer)
+                    // {
+                    //     Caption = 'Payroll Net Transfer To FOSA';
+                    //     ApplicationArea = basic, suite;
+                    //     RunObject = report "NET Salary Transfer To FOSA";
+                    // }
 
                     action(SendPaySlip)
                     {
@@ -4536,4 +4660,4 @@ Page 51516487 "Devco Sacco Main Role Center"
 }
 
 
-
+#endif

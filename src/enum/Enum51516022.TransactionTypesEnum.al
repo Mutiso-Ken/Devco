@@ -218,14 +218,14 @@ enum 51516022 "TransactionTypesEnum"
     {
         Caption = 'Juja';
     }
-    // value(54; Konza)
-    // {
-    //     Caption = 'Konza';
-    // }
-    // value(55; "Housing Water")
-    // {
-    //     Caption = 'Housing Water';
-    // }
+    value(54; "Loan Application Fee Paid")
+    {
+       
+    }
+    value(55;"Loan Insurance Paid")
+    {
+       
+    }
     // value(56; "Normal shares")
     // {
     //     Caption = 'Normal shares';

@@ -249,7 +249,7 @@ Table 51516230 "Loans Register"
                         if Cust.Find('-') then begin
                             Cust.CalcFields(Cust."Current Shares");
                             sHARES := Cust."Current Shares" * -1;
-                            IF CUST."Account Category" <> CUST."Account Category"::SINGLE then
+                            IF CUST."Account Category" <> CUST."Account Category"::Individual then
                                 if (sHARES = 0) then
                                     Error(Text012);
                         end;
@@ -1782,7 +1782,7 @@ Table 51516230 "Loans Register"
         }
         field(69111; "Loan Officer"; Code[30])
         {
-            TableRelation = "Loan Officers Details".Name;
+            // TableRelation = "Loan Officers Details".Name;
         }
         field(69112; "Group Name"; Text[50])
         {
@@ -2114,6 +2114,16 @@ Table 51516230 "Loans Register"
         field(68112; "Appealed Loan"; Boolean)
         {
             DataClassification = ToBeClassified;
+        }
+        field(68113; "Exempt From Payroll Deduction"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+        }
+                field(51516294; "Out. Loan Application fee"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Transaction Type" = filter("Application Fee"), "Loan No" = field("Loan  No."), Reversed = filter(false),
+            "Posting Date" = field("Date filter"), Reversed = filter(false)));
         }
 
 

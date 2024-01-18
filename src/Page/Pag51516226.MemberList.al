@@ -10,8 +10,8 @@ Page 51516226 "Member List"
     SourceTable = Customer;
     SourceTableView = sorting("No.")
                       order(ascending)
-                      where("Customer Type" = filter(Member | MicroFinance),
-                            "Customer Posting Group" = filter('MEMBER|MICRO'));
+                      where("Customer Type" = filter(Member),
+                            "Customer Posting Group" = filter('MEMBER'));
     UsageCategory = Lists;
 
     layout

@@ -75,9 +75,9 @@ Page 51516268 "Membership Withdrawal List"
                     var
                         ApprovalEntries: Page "Approval Entries";
                     begin
-                        DocumentType := Documenttype::"Member Closure";
-                        ApprovalEntries.SetRecordFilters(Database::"Payroll Employer Deductions", DocumentType, "No.");
-                        ApprovalEntries.Run;
+                        // DocumentType := Documenttype::"Member Closure";
+                        // ApprovalEntries.SetRecordFilters(Database::"Payroll Employer Deductions", DocumentType, "No.");
+                        // ApprovalEntries.Run;
                     end;
                 }
                 action("Send Approval Request")

@@ -36,7 +36,7 @@ Codeunit 51516041 "Custom Workflow Responses"
         LoanBatchDisbursements: Record "Loan Disburesment-Batching";
         LoanTopUp: Record "Loan Top Up.";
         ChangeRequest: Record "Change Request";
-        LeaveApplication: Record "HR Leave Application";
+        // LeaveApplication: Record "HR Leave Application";
         GuarantorSubstitution: Record "Guarantorship Substitution H";
         PaymentVoucher: Record "Payment Header";
         PettyCashReimbersement: Record "Funds Transfer Header";
@@ -70,13 +70,13 @@ Codeunit 51516041 "Custom Workflow Responses"
                     Variant := GuarantorSubstitution;
                 end;
             //Leave Application
-            Database::"HR Leave Application":
-                begin
-                    RecRef.SetTable(LeaveApplication);
-                    LeaveApplication.Validate(Status, LeaveApplication.Status::"Pending Approval");
-                    LeaveApplication.Modify(true);
-                    Variant := LeaveApplication;
-                end;
+            // Database::"HR Leave Application":
+            //     begin
+            //         RecRef.SetTable(LeaveApplication);
+            //         LeaveApplication.Validate(Status, LeaveApplication.Status::"Pending Approval");
+            //         LeaveApplication.Modify(true);
+            //         Variant := LeaveApplication;
+            //     end;
             //Membership Application
             Database::"Membership Applications":
                 begin
@@ -164,7 +164,7 @@ Codeunit 51516041 "Custom Workflow Responses"
         LoanBatchDisbursements: Record "Loan Disburesment-Batching";
         LoanTopUp: Record "Loan Top Up.";
         ChangeRequest: Record "Change Request";
-        LeaveApplication: Record "HR Leave Application";
+        // LeaveApplication: Record "HR Leave Application";
         GuarantorSubstitution: Record "Guarantorship Substitution H";
         PaymentVoucher: Record "Payment Header";
         PettyCashReimbersement: Record "Funds Transfer Header";
@@ -199,13 +199,13 @@ Codeunit 51516041 "Custom Workflow Responses"
                     Handled := true;
                 end;
             //Leave Application
-            DATABASE::"HR Leave Application":
-                begin
-                    RecRef.SetTable(LeaveApplication);
-                    LeaveApplication.Status := LeaveApplication.Status::New;
-                    LeaveApplication.Modify(true);
-                    Handled := true;
-                end;
+            // DATABASE::"HR Leave Application":
+            //     begin
+            //         RecRef.SetTable(LeaveApplication);
+            //         LeaveApplication.Status := LeaveApplication.Status::New;
+            //         LeaveApplication.Modify(true);
+            //         Handled := true;
+            //     end;
             //Membership Application
             DATABASE::"Membership Applications":
                 begin
@@ -293,7 +293,7 @@ Codeunit 51516041 "Custom Workflow Responses"
         LoanBatchDisbursements: Record "Loan Disburesment-Batching";
         LoanTopUp: Record "Loan Top Up.";
         ChangeRequest: Record "Change Request";
-        LeaveApplication: Record "HR Leave Application";
+        // LeaveApplication: Record "HR Leave Application";
         GuarantorSubstitution: Record "Guarantorship Substitution H";
         PaymentVoucher: Record "Payment Header";
         PettyCashReimbersement: Record "Funds Transfer Header";
@@ -328,13 +328,13 @@ Codeunit 51516041 "Custom Workflow Responses"
                     IsHandled := true;
                 end;
             //Leave Application
-            Database::"HR Leave Application":
-                begin
-                    RecRef.SetTable(LeaveApplication);
-                    LeaveApplication.Validate(Status, LeaveApplication.Status::"Pending Approval");
-                    LeaveApplication.Modify(true);
-                    IsHandled := true;
-                end;
+            // Database::"HR Leave Application":
+            //     begin
+            //         RecRef.SetTable(LeaveApplication);
+            //         LeaveApplication.Validate(Status, LeaveApplication.Status::"Pending Approval");
+            //         LeaveApplication.Modify(true);
+            //         IsHandled := true;
+            //     end;
             //Membership Application
             Database::"Membership Applications":
                 begin
@@ -425,7 +425,7 @@ Codeunit 51516041 "Custom Workflow Responses"
         LoanBatchDisbursements: Record "Loan Disburesment-Batching";
         LoanTopUp: Record "Loan Top Up.";
         ChangeRequest: Record "Change Request";
-        LeaveApplication: Record "HR Leave Application";
+        // LeaveApplication: Record "HR Leave Application";
         GuarantorSubstitution: Record "Guarantorship Substitution H";
         PaymentVoucher: Record "Payment Header";
         PettyCashReimbersement: Record "Funds Transfer Header";
@@ -459,13 +459,13 @@ Codeunit 51516041 "Custom Workflow Responses"
                     Variant := GuarantorSubstitution;
                 end;
             //Leave Application
-            Database::"HR Leave Application":
-                begin
-                    RecRef.SetTable(LeaveApplication);
-                    LeaveApplication.Validate(Status, LeaveApplication.Status::"Pending Approval");
-                    LeaveApplication.Modify(true);
-                    Variant := LeaveApplication;
-                end;
+            // Database::"HR Leave Application":
+            //     begin
+            //         RecRef.SetTable(LeaveApplication);
+            //         LeaveApplication.Validate(Status, LeaveApplication.Status::"Pending Approval");
+            //         LeaveApplication.Modify(true);
+            //         Variant := LeaveApplication;
+            //     end;
             //Membership Application
             Database::"Membership Applications":
                 begin
@@ -553,7 +553,7 @@ Codeunit 51516041 "Custom Workflow Responses"
         LoanBatchDisbursements: Record "Loan Disburesment-Batching";
         LoanTopUp: Record "Loan Top Up.";
         ChangeRequest: Record "Change Request";
-        LeaveApplication: Record "HR Leave Application";
+        // LeaveApplication: Record "HR Leave Application";
         GuarantorSubstitution: Record "Guarantorship Substitution H";
         PaymentVoucher: Record "Payment Header";
         PettyCashReimbersement: Record "Funds Transfer Header";
@@ -587,13 +587,13 @@ Codeunit 51516041 "Custom Workflow Responses"
                     Handled := true;
                 end;
             //Leave applications
-            DATABASE::"HR Leave Application":
-                begin
-                    RecRef.SetTable(LeaveApplication);
-                    LeaveApplication.Status := LeaveApplication.Status::Approved;
-                    LeaveApplication.Modify(true);
-                    Handled := true;
-                end;
+            // DATABASE::"HR Leave Application":
+            //     begin
+            //         RecRef.SetTable(LeaveApplication);
+            //         LeaveApplication.Status := LeaveApplication.Status::Approved;
+            //         LeaveApplication.Modify(true);
+            //         Handled := true;
+            //     end;
             //Membership applications
             DATABASE::"Membership Applications":
                 begin

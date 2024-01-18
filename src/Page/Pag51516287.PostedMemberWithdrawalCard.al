@@ -106,9 +106,9 @@ Page 51516287 "Posted Member Withdrawal Card"
                     var
                         ApprovalEntries: Page "Approval Entries";
                     begin
-                        DocumentType := Documenttype::"Member Closure";
-                        ApprovalEntries.SetRecordFilters(Database::"Payroll Employer Deductions", DocumentType, "No.");
-                        ApprovalEntries.Run;
+                        // DocumentType := Documenttype::"Member Closure";
+                        // ApprovalEntries.SetRecordFilters(Database::"Payroll Employer Deductions", DocumentType, "No.");
+                        // ApprovalEntries.Run;
                     end;
                 }
                 action("Send Approval Request")

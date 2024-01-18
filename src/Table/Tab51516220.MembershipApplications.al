@@ -660,7 +660,7 @@ Table 51516220 "Membership Applications"
         }
         field(68112; "Sales Code"; Code[10])
         {
-            TableRelation = "Loan Officers Details";
+            //TableRelation = "Loan Officers Details";
 
             trigger OnValidate()
             begin
@@ -695,11 +695,11 @@ Table 51516220 "Membership Applications"
                 HREmp."First Name":="Salesperson Name";
                 
                 END;*/
-                HREmp.Reset;
-                HREmp.SetRange(HREmp."No.", "Sales Code");
-                if HREmp.Find('-') then begin
-                    "Salesperson Name" := HREmp."Full Name";
-                end;
+                // HREmp.Reset;
+                // HREmp.SetRange(HREmp."No.", "Sales Code");
+                // if HREmp.Find('-') then begin
+                //     "Salesperson Name" := HREmp."Full Name";
+                // end;
 
             end;
         }
@@ -1059,7 +1059,7 @@ Table 51516220 "Membership Applications"
         Employer: Record "Sacco Employers";
         Dates: Codeunit "Dates Calculation";
         DAge: DateFormula;
-        HREmp: Record "HR Employee";
+        // HREmp: Record "HR Employee";
         CustMember: Record Customer;
         Text0024: label 'This Member Status is %1, Therefore not eligible for enrollment';
         MemberAppl: Record Customer;

@@ -181,17 +181,17 @@ Table 51516020 "CEEP Change Request"
         }
         field(129; "CEEP Group Officer(New)"; code[50])
         {
-            TableRelation = "Loan Officers Details";
-            trigger OnValidate()
-            var
-                LoanOfficer: record "Loan Officers Details";
-            begin
-                LoanOfficer.Reset();
-                LoanOfficer.SetRange(LoanOfficer."Account No.", "CEEP Group Officer(New)");
-                if LoanOfficer.Find('-') then begin
-                    "CEEP Group Officer Name(New)" := LoanOfficer.Name;
-                end;
-            end;
+            // TableRelation = "Loan Officers Details";
+            // trigger OnValidate()
+            // var
+            //     LoanOfficer: record "Loan Officers Details";
+            // begin
+            //     LoanOfficer.Reset();
+            //     LoanOfficer.SetRange(LoanOfficer."Account No.", "CEEP Group Officer(New)");
+            //     if LoanOfficer.Find('-') then begin
+            //         "CEEP Group Officer Name(New)" := LoanOfficer.Name;
+            //     end;
+            // end;
         }
         field(1050; "CEEP Group Officer Name(New)"; text[100])
         {

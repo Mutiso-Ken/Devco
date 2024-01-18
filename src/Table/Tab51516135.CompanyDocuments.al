@@ -60,16 +60,16 @@ Table 51516135 "Company Documents"
 
     trigger OnInsert()
     begin
-        if "Doc No." = '' then begin
-            HRSetup.Get;
-            HRSetup.TestField("Company Documents");
-            NoSeriesMgt.InitSeries(HRSetup."Company Documents", xRec."No. Series", 0D, "Doc No.", "No. Series");
-        end;
+        // if "Doc No." = '' then begin
+        //     HRSetup.Get;
+        //     HRSetup.TestField("Company Documents");
+        //     NoSeriesMgt.InitSeries(HRSetup."Company Documents", xRec."No. Series", 0D, "Doc No.", "No. Series");
+        // end;
     end;
 
     var
         CompanyDocs: Record "Company Documents";
-        HRSetup: Record "HR General Setup";
+        // HRSetup: Record "HR General Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
 }
 

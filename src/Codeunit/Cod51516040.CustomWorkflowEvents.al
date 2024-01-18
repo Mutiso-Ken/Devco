@@ -60,10 +60,10 @@ Codeunit 51516040 "Custom Workflow Events"
                                     Database::"CEEP Change Request", 'An Approval request for CEEP Change Request is canceled.', 0, false);
 
         //Leave Application
-        WFHandler.AddEventToLibrary(RunWorkflowOnSendLeaveApplicationForApprovalCode,
-                            Database::"HR Leave Application", 'Approval of Leave Application is Requested.', 0, false);
-        WFHandler.AddEventToLibrary(RunWorkflowOnCancelLeaveApplicationApprovalRequestCode,
-                                    Database::"HR Leave Application", 'An Approval request for  Leave Application is canceled.', 0, false);
+        // WFHandler.AddEventToLibrary(RunWorkflowOnSendLeaveApplicationForApprovalCode,
+        //                     Database::"HR Leave Application", 'Approval of Leave Application is Requested.', 0, false);
+        // WFHandler.AddEventToLibrary(RunWorkflowOnCancelLeaveApplicationApprovalRequestCode,
+        //                             Database::"HR Leave Application", 'An Approval request for  Leave Application is canceled.', 0, false);
         //Guarantor Substitution
         WFHandler.AddEventToLibrary(RunWorkflowOnSendGuarantorSubForApprovalCode,
                             Database::"Guarantorship Substitution H", 'Approval of Guarantor Substitution is Requested.', 0, false);
@@ -359,19 +359,19 @@ Codeunit 51516040 "Custom Workflow Events"
         exit(UpperCase('RunWorkflowOnCancelLeaveApplicationApprovalRequest'));
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::SurestepApprovalsCodeUnit, 'FnOnSendLeaveApplicationForApproval', '', false, false)]
+    // [EventSubscriber(ObjectType::Codeunit, Codeunit::SurestepApprovalsCodeUnit, 'FnOnSendLeaveApplicationForApproval', '', false, false)]
 
-    procedure RunWorkflowOnSendLeaveApplicationForApproval(var LeaveApplication: Record "HR Leave Application")
-    begin
-        WorkflowManagement.HandleEvent(RunWorkflowOnSendLeaveApplicationForApprovalCode, LeaveApplication);
-    end;
+    // procedure RunWorkflowOnSendLeaveApplicationForApproval(var LeaveApplication: Record "HR Leave Application")
+    // begin
+    //     WorkflowManagement.HandleEvent(RunWorkflowOnSendLeaveApplicationForApprovalCode, LeaveApplication);
+    // end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::SurestepApprovalsCodeUnit, 'FnOnCancelLeaveApplicationApprovalRequest', '', false, false)]
+    // [EventSubscriber(ObjectType::Codeunit, Codeunit::SurestepApprovalsCodeUnit, 'FnOnCancelLeaveApplicationApprovalRequest', '', false, false)]
 
-    procedure RunWorkflowOnCancelLeaveApplicationApprovalRequest(var LeaveApplication: Record "HR Leave Application")
-    begin
-        WorkflowManagement.HandleEvent(RunWorkflowOnCancelLeaveApplicationApprovalRequestCode, LeaveApplication);
-    end;
+    // procedure RunWorkflowOnCancelLeaveApplicationApprovalRequest(var LeaveApplication: Record "HR Leave Application")
+    // begin
+    //     WorkflowManagement.HandleEvent(RunWorkflowOnCancelLeaveApplicationApprovalRequestCode, LeaveApplication);
+    // end;
     //...................................................................................................
     //8)Guarantor Substitution
     procedure RunWorkflowOnSendGuarantorSubForApprovalCode(): Code[128]//

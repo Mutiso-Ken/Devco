@@ -607,7 +607,7 @@ Page 51516221 "Membership Application Card"
                             Cust.SetRange(Cust."ID No.", "ID No.");
                             Cust.SetRange(Cust."Customer Type", Cust."customer type"::Member);
                             if Cust.Find('-') then begin
-                                if (Cust."No." <> "No.") and (Cust."Account Category" = Cust."account category"::SINGLE) then
+                                if (Cust."No." <> "No.") and (Cust."Account Category" = Cust."account category"::Individual) then
                                     Error('Member has already been created. Kindly Confirm the ID Number to proceed.');
                             end;
                         end;
@@ -721,7 +721,7 @@ Page 51516221 "Membership Application Card"
                         Cust.SetRange(Cust."ID No.", "ID No.");
                         Cust.SetRange(Cust."Customer Type", Cust."customer type"::Member);
                         if Cust.Find('-') then begin
-                            if (Cust."No." <> "No.") and (Cust."Account Category" = Cust."account category"::SINGLE) then
+                            if (Cust."No." <> "No.") and (Cust."Account Category" = Cust."account category"::Individual) then
                                 Error('Member has already been created');
                         end;
                         if Confirm('Are you sure you want to create account application?', false) = false then begin

@@ -32,7 +32,7 @@ codeunit 51516015 "PostCustomerExtension"
         DtldCustLedgEntry."Posting Date" := GenJournalLine."Posting Date";
         DtldCustLedgEntry."Prepayment Date" := GenJournalLine."Prepayment date";
         DtldCustLedgEntry."Group Code" := GenJournalLine."Group Code";
-        DtldCustLedgEntry."BLoan Officer No." := sfactory.FnGetLoanOfficerFromMemberNo(GenJournalLine."Account No.");
+        //DtldCustLedgEntry."BLoan Officer No." := sfactory.FnGetLoanOfficerFromMemberNo(GenJournalLine."Account No.");
     end;
 
     //2)-----------------------------------------------------------------------------------------------------
@@ -377,7 +377,7 @@ codeunit 51516015 "PostCustomerExtension"
         CustLedgerEntry."Prepayment Date" := GenJournalLine."Prepayment date";
         CustLedgerEntry."Group Code" := GenJournalLine."Group Code";
         CustLedgerEntry."Document No." := GenJournalLine."Document No.";
-        CustLedgerEntry."BLoan Officer No." := sfactory.FnGetLoanOfficerFromMemberNo(GenJournalLine."Account No.");
+       // CustLedgerEntry."BLoan Officer No." := sfactory.FnGetLoanOfficerFromMemberNo(GenJournalLine."Account No.");
     end;
 
 
