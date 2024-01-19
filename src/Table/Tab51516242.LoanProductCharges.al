@@ -55,9 +55,9 @@ Table 51516242 "Loan Product Charges"
         field(9; "Charge Excise"; Boolean)
         {
         }
-        field(10; "Balancing Account"; Code[20])
+        field(10; "Balancing G/L Account"; Code[20])
         {
-
+            TableRelation = "G/L Account"."No.";
         }
     }
 

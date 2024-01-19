@@ -10,31 +10,35 @@ Page 51516281 "Loan Product Charges"
         {
             repeater(Group)
             {
-                field("Product Code";"Product Code")
+                field("Product Code"; "Product Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Code";Code)
+                field("Code"; Code)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Percentage;Percentage)
+                field(Percentage; Percentage)
                 {
                     ApplicationArea = Basic;
                 }
-                field("G/L Account";"G/L Account")
+                field("G/L Account"; "G/L Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Use Perc";"Use Perc")
+                field("Balancing G/L Account"; "Balancing G/L Account")
+                {
+                    ApplicationArea = basic;
+                }
+                field("Use Perc"; "Use Perc")
                 {
                     ApplicationArea = Basic;
                 }

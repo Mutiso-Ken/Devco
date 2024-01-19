@@ -308,30 +308,36 @@ Page 51516397 "BOSA Loans Disbursement Card"
                         end else begin
                             TemplateName := 'GENERAL';
                             BatchName := 'LOANS';
-                            FnInsertBOSALines();
 
 
-                            GenJournalLine.RESET;
-                            GenJournalLine.SETRANGE("Journal Template Name", TemplateName);
-                            GenJournalLine.SETRANGE("Journal Batch Name", BatchName);
-                            if GenJournalLine.Find('-') then begin
-                                // CODEUNIT.RUN(CODEUNIT::"Gen. Jnl.-Post Batch", GenJournalLine);
-                                FnSendNotifications();//Send Notifications
-                                // "Loan Status" := "Loan Status"::Issued;
-                                // Posted := true;
-                                "Posted By" := UserId;
-                                "Posting Date" := Today;
-                                "Issued Date" := "Loan Disbursement Date";
-                                "Approval Status" := "Approval Status"::Approved;
-                                "Loans Category-SASRA" := "Loans Category-SASRA"::Perfoming;
-                                Modify();
-                                //...................Recover Overdraft Loan On Loan
-                                SFactory.FnRecoverOnLoanOverdrafts("Client Code");
-                                //.................................................
-                                Message('Loan has successfully been posted and member notified');
-                                CurrPage.close();
+                            LoanApps.Reset;
+                            LoanApps.SetRange(LoanApps."Loan  No.", "Loan  No.");
+                            if LoanApps.FindSet then begin
+                                FnInsertBOSALines(LoanApps, LoanApps."Loan  No.");
+
+
+                                GenJournalLine.RESET;
+                                GenJournalLine.SETRANGE("Journal Template Name", TemplateName);
+                                GenJournalLine.SETRANGE("Journal Batch Name", BatchName);
+                                if GenJournalLine.Find('-') then begin
+                                    CODEUNIT.RUN(CODEUNIT::"Gen. Jnl.-Post Batch", GenJournalLine);
+                                    FnSendNotifications();//Send Notifications
+                                                          "Loan Status" := "Loan Status"::Issued;
+                                                          Posted := true;
+                                    "Posted By" := UserId;
+                                    "Posting Date" := Today;
+                                    "Issued Date" := "Loan Disbursement Date";
+                                    "Approval Status" := "Approval Status"::Approved;
+                                    "Loans Category-SASRA" := "Loans Category-SASRA"::Perfoming;
+                                    Modify();
+                                    //...................Recover Overdraft Loan On Loan
+                                    SFactory.FnRecoverOnLoanOverdrafts("Client Code");
+                                    //.................................................
+                                    Message('Loan has successfully been posted and member notified');
+                                    CurrPage.close();
+                                end;
+
                             end;
-
                         end;
                     end;
                 }
@@ -459,6 +465,8 @@ Page 51516397 "BOSA Loans Disbursement Card"
     end;
 
     var
+        ClientCode: Code[40];
+        DirbursementDate: Date;
         VarAmounttoDisburse: Decimal;
         LoanGuar: Record "Loans Guarantee Details";
         SMSMessages: Record "SMS Messages";
@@ -899,7 +907,7 @@ Page 51516397 "BOSA Loans Disbursement Card"
         exit(Balance);
     end;
 
-    local procedure FnInsertBOSALines()
+    local procedure FnInsertBOSALines(var LoanApps: Record "Loans Register"; LoanNo: Code[30])
     var
         EndMonth: Date;
         RemainingDays: Integer;
@@ -908,6 +916,7 @@ Page 51516397 "BOSA Loans Disbursement Card"
     begin
         //--------------------Generate Schedule
         Sfactorycode.FnGenerateRepaymentSchedule("Loan  No.");
+        DirbursementDate := "Loan Disbursement Date";
         VarAmounttoDisburse := "Approved Amount";
         //....................PRORATED DAYS
         EndMonth := CALCDATE('-1D', CALCDATE('1M', DMY2DATE(1, DATE2DMY(Today, 2), DATE2DMY(Today, 3))));
@@ -934,11 +943,10 @@ Page 51516397 "BOSA Loans Disbursement Card"
             DBranch := Cust."Global Dimension 2 Code";
         END;
         //**************Loan Principal Posting**********************************
-
         LineNo := LineNo + 10000;
         SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, "Loan  No.", LineNo, GenJournalLine."Transaction Type"::Loan,
-        GenJournalLine."Account Type"::Customer, LoanApps."Client Code", LoanApps."Loan Disbursement Date", VarAmounttoDisburse, 'BOSA', LoanApps."Loan  No.",
-        'Loan Principle Amount ' + Format("Loan  No."), LoanApps."Loan  No.");
+        GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, VarAmounttoDisburse, 'BOSA', LoanApps."Loan  No.",
+       'Loan Disbursement - ' + LoanApps."Loan Product Type", LoanApps."Loan  No.");
 
         //--------------------------------RECOVER OVERDRAFT()-------------------------------------------------------
         //Code Here
@@ -958,7 +966,7 @@ Page 51516397 "BOSA Loans Disbursement Card"
                 GenJournalLine.VALIDATE(GenJournalLine."Account No.");
                 GenJournalLine."Document No." := "Loan  No.";
                 GenJournalLine."External Document No." := "Loan  No.";
-                GenJournalLine."Posting Date" := Today;
+                GenJournalLine."Posting Date" := DirbursementDate;
                 GenJournalLine.Description := PCharges.Description + '-' + Format("Loan  No.");
                 IF PCharges."Use Perc" = TRUE THEN BEGIN
                     GenJournalLine.Amount := ("Approved Amount" * (PCharges.Percentage / 100)) * -1
@@ -968,7 +976,7 @@ Page 51516397 "BOSA Loans Disbursement Card"
                     end;
                 GenJournalLine.VALIDATE(GenJournalLine.Amount);
                 GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
-                GenJournalLine."Bal. Account No." := PCharges."Balancing Account";
+                GenJournalLine."Bal. Account No." := PCharges."Balancing G/L Account";
                 GenJournalLine.VALIDATE(GenJournalLine."Bal. Account No.");
                 GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
                 GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
@@ -980,24 +988,25 @@ Page 51516397 "BOSA Loans Disbursement Card"
         //...................Cater for Loan Offset Now !
         CalcFields("Top Up Amount");
         if "Top Up Amount" > 0 then begin
-
             LoanTopUp.RESET;
             LoanTopUp.SETRANGE(LoanTopUp."Loan No.", "Loan  No.");
-
             IF LoanTopUp.FIND('-') THEN BEGIN
                 repeat
 
                     LineNo := LineNo + 10000;
                     SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, "Loan  No.", LineNo, GenJournalLine."Transaction Type"::Repayment,
-                    GenJournalLine."Account Type"::Customer, LoanApps."Client Code", LoanApps."Loan Disbursement Date", LoanTopUp."Principle Top Up" * -1, 'BOSA', LoanApps."Loan  No.",
+                    GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, LoanTopUp."Principle Top Up" * -1, 'BOSA', LoanApps."Loan  No.",
                     'Loan OffSet By - ' + LoanApps."Loan  No.", LoanTopUp."Loan Top Up");
+
 
                     //..................Recover Interest On Top Up
                     LineNo := LineNo + 10000;
                     SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, "Loan  No.", LineNo, GenJournalLine."Transaction Type"::"Interest Paid",
-                    GenJournalLine."Account Type"::Customer, LoanApps."Client Code", LoanApps."Loan Disbursement Date", LoanTopUp."Interest Top Up" * -1, 'BOSA', LoanApps."Loan  No.",
+                    GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, LoanTopUp."Interest Top Up" * -1, 'BOSA', LoanApps."Loan  No.",
                     'Interest Due Paid on top up - ', LoanTopUp."Loan Top Up");
-                    VarAmounttoDisburse := VarAmounttoDisburse - (LoanTopUp."Outstanding Balance" + LoanTopUp."Interest Top Up");
+                    VarAmounttoDisburse := VarAmounttoDisburse -( LoanTopUp."Principle Top Up"+LoanTopUp."Interest Top Up");
+                    // VarAmounttoDisburse := VarAmounttoDisburse - ;
+
                 UNTIL LoanTopUp.NEXT = 0;
             END;
         end;
@@ -1009,7 +1018,7 @@ Page 51516397 "BOSA Loans Disbursement Card"
         //------------------------------------2. CREDIT MEMBER BANK A/C---------------------------------------------------------------------------------------------
         LineNo := LineNo + 10000;
         SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, "Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ",
-        GenJournalLine."Account Type"::"Bank Account", LoanApps."Paying Bank Account No", LoanApps."Loan Disbursement Date", VarAmounttoDisburse * -1, 'BOSA', LoanApps."Loan  No.",
+        GenJournalLine."Account Type"::"Bank Account", LoanApps."Paying Bank Account No", DirbursementDate, VarAmounttoDisburse * -1, 'BOSA', LoanApps."Loan  No.",
         'Loan Principle Amount ' + Format("Loan  No."), '');
     end;
 
@@ -1047,7 +1056,7 @@ Page 51516397 "BOSA Loans Disbursement Card"
         SMSMessages."Account No" := BOSANo;
         SMSMessages."Date Entered" := Today;
         SMSMessages."Time Entered" := Time;
-        SMSMessages.Source := 'MOBILETRAN';
+        SMSMessages.Source := 'LOANDISB';
         SMSMessages."Entered By" := UserId;
         SMSMessages."Sent To Server" := SMSMessages."sent to server"::No;
         SMSMessages."SMS Message" := msg;
