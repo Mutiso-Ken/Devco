@@ -34,7 +34,7 @@ Table 51516257 "Sacco General Set-Up"
         field(10; "Insurance Premium (%)"; Decimal)
         {
         }
-          field(11;"Primary Key";Code[10])
+        field(11; "Primary Key"; Code[10])
         {
         }
         field(12; "Commision (%)"; Decimal)
@@ -521,6 +521,10 @@ Table 51516257 "Sacco General Set-Up"
         field(157; "Interest On FOSA Shares"; Decimal)
         {
         }
+        field(158; "GO Live Date"; Date)
+        {
+            DataClassification = ToBeClassified;
+        }
         field(1588; "Interest On Computer Shares"; Decimal)
         {
         }
@@ -557,12 +561,31 @@ Table 51516257 "Sacco General Set-Up"
         field(1599; "Last Loan Interest Run Date"; Date)
         {
         }
+        field(1600; "Top up Account"; Code[50])
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = "G/L Account";
+        }
+        field(1601; "Asset Valuation Cost"; Code[50])
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = "G/L Account";
+        }
+        field(1602; "Legal Fees"; Code[50])
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = "G/L Account";
+        }
+field(1603; "Benevolent Fund Contribution"; Decimal)
+{
+    DataClassification = ToBeClassified;
+}
 
     }
 
     keys
     {
-        key(Key1;"Primary Key")
+        key(Key1; "Primary Key")
         {
             Clustered = true;
         }

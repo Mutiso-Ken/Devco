@@ -1,15 +1,15 @@
-#pragma warning disable AA0005, AA0008, AA0018, AA0021, AA0072, AA0137, AA0201, AA0206, AA0218, AA0228, AL0254, AL0424, AS0011, AW0006 // ForNAV settings
+#pragma warning disable AA0005, AA0008, AA0018, AA0021, AA0072, AA0137, AA0201, AA0206, AA0218, AA0228, AL0424, AW0006 // 
+
 Report 51516247 "BOSA Receipt Slip"
 {
+    RDLCLayout = 'Layouts/BOSAReceiptSlip.rdlc';
     DefaultLayout = RDLC;
-    RDLCLayout = './Layouts/BOSAReceiptSlip.rdlc';
 
     dataset
     {
         dataitem("Receipts & Payments"; "Receipts & Payments")
         {
             RequestFilterFields = "Transaction No.", "Account No.", Amount, "Cheque No.", "Employer No.";
-
             column(TransactionNo_ReceiptsPayments; "Receipts & Payments"."Transaction No.")
             {
             }
@@ -46,7 +46,7 @@ Report 51516247 "BOSA Receipt Slip"
             column(TransactionDate_ReceiptsPayments; Format("Receipts & Payments"."Transaction Date"))
             {
             }
-            column(TransactionTime_ReceiptsPayments; Format("Receipts & Payments"."Transaction Time"))
+            column(TransactionTime_ReceiptsPayments; "Receipts & Payments"."Transaction Time")
             {
             }
             column(NoSeries_ReceiptsPayments; "Receipts & Payments"."No. Series")
@@ -64,7 +64,16 @@ Report 51516247 "BOSA Receipt Slip"
             column(Insuarance_ReceiptsPayments; "Receipts & Payments".Insuarance)
             {
             }
+            column(CustPayrollNo; Cust."Payroll/Staff No")
+            {
+            }
+            column(id_no; Cust."ID No.")
+            {
+            }
             column(UnallocatedAmount_ReceiptsPayments; "Receipts & Payments"."Un allocated Amount")
+            {
+            }
+            column(User; "Receipts & Payments"."User ID")
             {
             }
             column(Remarks_ReceiptsPayments; "Receipts & Payments".Remarks)
@@ -88,9 +97,6 @@ Report 51516247 "BOSA Receipt Slip"
             dataitem("Receipt Allocation"; "Receipt Allocation")
             {
                 DataItemLink = "Document No" = field("Transaction No.");
-                column(ReportForNavId_1102755001; 1102755001)
-                {
-                }
                 column(DocumentNo_ReceiptAllocation; "Receipt Allocation"."Document No")
                 {
                 }
@@ -142,63 +148,101 @@ Report 51516247 "BOSA Receipt Slip"
                 column(GlobalDimension2Code_ReceiptAllocation; "Receipt Allocation"."Global Dimension 2 Code")
                 {
                 }
-
-                trigger OnAfterGetRecord()
+                column(LoanProduct; LoanProduct)
+                {
+                }
+                column(Description_ReceiptAllocation; "Receipt Allocation".Description)
+                {
+                }
+                trigger OnAfterGetRecord();
                 begin
-                    // IF "Transaction Type"="Transaction Type"::"Benevolent Fund" THEN
-                    // "Receipt Allocation"."Loan ID":= '';
+                    LoanProduct := '';
+                    if "Receipt Allocation"."Loan No." <> '' then begin
+                        if LoansRec.Get("Receipt Allocation"."Loan No.") then begin
+                            LoanProduct := LoansRec."Loan Product Type Name";
+                        end;
+                    end;
                 end;
+
             }
-
-            trigger OnAfterGetRecord()
+            trigger OnPreDataItem();
             begin
+                companyInfo.Get();
+                companyInfo.CalcFields(companyInfo.Picture);
+            end;
 
+            trigger OnAfterGetRecord();
+            begin
                 if Cust.Get("Receipts & Payments"."Account No.") then
                     Comms := 0;
                 //IF CashPayType.GET("Receipts & Payments"."Cash Window Pay Type") THEN
                 //Comms:=CashPayType.Description;
-
                 CheckReport.InitTextVariable();
                 CheckReport.FormatNoText(NumberText, Amount, ' ');
             end;
 
-            trigger OnPreDataItem()
-            begin
-
-                companyInfo.Get();
-                companyInfo.CalcFields(companyInfo.Picture);
-            end;
         }
     }
 
     requestpage
     {
 
+
+        SaveValues = false;
         layout
         {
+            area(content)
+            {
+                group(Options)
+                {
+                    Caption = 'Options';
+
+                }
+            }
         }
 
         actions
         {
         }
+        trigger OnOpenPage()
+        begin
+
+        end;
     }
 
-    labels
-    {
-    }
+    trigger OnInitReport()
+    begin
+        ;
+
+
+    end;
+
+    trigger OnPostReport()
+    begin
+        ;
+
+    end;
+
+    trigger OnPreReport()
+    begin
+        ;
+
+    end;
 
     var
         Cust: Record Customer;
         Comms: Decimal;
-        CashPayType: Record "Loan Repayment Schedule";
         companyInfo: Record "Company Information";
         NumberText: array[2] of Text[80];
         LastFieldNo: Integer;
         CheckReport: Report Check;
-
+        LoanProduct: Code[20];
+        LoansRec: Record "Loans Register";
 
     procedure CalAvailableBal()
     begin
     end;
-}
 
+    var
+
+}

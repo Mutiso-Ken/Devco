@@ -921,9 +921,9 @@ Report 51516043 "Generate Member Tea Batch"
                                         IF ReceiptAllocations."Transaction Type" = ReceiptAllocations."Transaction Type"::"FOSA Shares" THEN
                                             GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"FOSA Shares"
                                         ELSE
-                                            IF ReceiptAllocations."Transaction Type" = ReceiptAllocations."Transaction Type"::"Tambaa Shares" THEN
-                                                GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Tamba Shares"
-                                            ELSE
+                                            // IF ReceiptAllocations."Transaction Type" = ReceiptAllocations."Transaction Type"::"Tambaa Shares" THEN
+                                            //     GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Tamba Shares"
+                                            // ELSE
                                                 IF ReceiptAllocations."Transaction Type" = ReceiptAllocations."Transaction Type"::"Changamka Shares" THEN
                                                     GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Changamka Shares"
                                                 ELSE

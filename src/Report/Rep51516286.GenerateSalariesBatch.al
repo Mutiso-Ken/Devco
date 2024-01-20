@@ -939,9 +939,9 @@ Report 51516286 "Generate Salaries Batch"
                                         if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"FOSA Shares" then
                                             GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"FOSA Shares"
                                         else
-                                            if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Tambaa Shares" then
-                                                GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Tamba Shares"
-                                            else
+                                            // if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Tambaa Shares" then
+                                            //     GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Tamba Shares"
+                                            // else
                                                 if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Changamka Shares" then
                                                     GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Changamka Shares"
                                                 else

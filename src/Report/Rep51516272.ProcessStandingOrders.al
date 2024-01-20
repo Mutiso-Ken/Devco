@@ -472,8 +472,8 @@ Report 51516272 "Process Standing Orders"
         else if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Pepea Shares" then
         GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Pepea Shares"
 
-        else if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Tambaa Shares" then
-        GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Tamba Shares"
+        // else if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Tambaa Shares" then
+        // GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Tamba Shares"
         //.................... Added Changamka Shares .......................................................//
 
         else if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Changamka Shares" then

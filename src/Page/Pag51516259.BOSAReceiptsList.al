@@ -1,13 +1,14 @@
-#pragma warning disable AA0005, AA0008, AA0018, AA0021, AA0072, AA0137, AA0201, AA0206, AA0218, AA0228, AL0254, AL0424, AS0011, AW0006 // ForNAV settings
+#pragma warning disable AA0005, AA0008, AA0018, AA0021, AA0072, AA0137, AA0201, AA0206, AA0218, AA0228, AL0424, AW0006 // ForNAV settings
 Page 51516259 "BOSA Receipts List"
 {
-    ApplicationArea = Basic;
     CardPageID = "BOSA Receipt Card";
-    Editable = false;
+    Editable = true;
     PageType = List;
+    UsageCategory = Lists;
+    DeleteAllowed = true;
+    ApplicationArea = All;
     SourceTable = "Receipts & Payments";
-    SourceTableView = where(Posted=filter(false));
-    UsageCategory = Tasks;
+    SourceTableView = where(Posted = filter(false));
 
     layout
     {
@@ -15,35 +16,40 @@ Page 51516259 "BOSA Receipts List"
         {
             repeater(Group)
             {
-                field("Transaction No.";"Transaction No.")
+                field("Transaction No."; "Transaction No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No.";"Account No.")
+                field("Account No."; "Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cheque No.";"Cheque No.")
+                field("Cheque No."; "Cheque No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employer No.";"Employer No.")
+                field("Employer No."; "Employer No.")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Receipting Bank';
+                }
+                field(Amount; Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("User ID";"User ID")
+                field(Posted; Posted)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field("Transaction Date"; "Transaction Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted;Posted)
+                field("User ID"; "User ID")
                 {
                     ApplicationArea = Basic;
                 }
@@ -54,5 +60,18 @@ Page 51516259 "BOSA Receipts List"
     actions
     {
     }
+
+    trigger OnOpenPage()
+    begin
+        ObjUserSetup.Reset;
+        ObjUserSetup.SetRange("User ID", UserId);
+        if ObjUserSetup.Find('-') then begin
+            if ObjUserSetup."Approval Administrator" <> true then
+                SetRange("User ID", UserId);
+        end;
+    end;
+
+    var
+        ObjUserSetup: Record "User Setup";
 }
 

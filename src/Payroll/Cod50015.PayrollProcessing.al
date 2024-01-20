@@ -584,12 +584,13 @@ Codeunit 50015 "Payroll Processing"
         TGroup := 'TAX CALCULATIONS';
         TGroupOrder := 6;
         TSubGroupOrder := 7;
+        curTransAmount:=curTaxCharged;
         fnUpdatePeriodTrans(strEmpCode, 'TXCHRG', TGroup, TGroupOrder, TSubGroupOrder, strTransDescription,
         curTransAmount, 0, intMonth, intYear, '', '', SelectedPeriod, Dept, '', Journalpostas::" ", Journalpostingtype::" ", '',
         Coopparameters::none);
 
-        curPAYE := (curTaxCharged) - NhifRelief;//- curReliefPersonal;
-        if not blnPaysPaye then curPAYE := 0; //Get statutory Exemption for the staff. If exempted from tax, set PAYE=0
+        curPAYE := (curTaxCharged) - NhifRelief- curReliefPersonal;
+        if not blnPaysPaye then curPAYE := 0; 
         curTransAmount := curPAYE;//+curTransAmount2;
         if curPAYE < 0 then curTransAmount := 0;
         strTransDescription := 'P.A.Y.E';

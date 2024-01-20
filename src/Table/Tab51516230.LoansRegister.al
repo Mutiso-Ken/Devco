@@ -2000,7 +2000,7 @@ Table 51516230 "Loans Register"
         }
         field(69202; "Outstanding Insurance"; Decimal)
         {
-
+        
         }
         field(69203; "Loan Insurance Charged"; Decimal)
         {
@@ -2124,6 +2124,15 @@ Table 51516230 "Loans Register"
             FieldClass = FlowField;
             CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Transaction Type" = filter("Application Fee"), "Loan No" = field("Loan  No."), Reversed = filter(false),
             "Posting Date" = field("Date filter"), Reversed = filter(false)));
+        }
+        field(51516295; "Outstanding Interest"; Decimal)
+        {
+            CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Client Code"),
+                                                                  "Loan No" = field("Loan  No."),
+                                                                  "Transaction Type" = filter("Interest Paid" | "Interest Due"),
+                                                                  "Posting Date" = field("Date filter"),
+                                                                   Reversed = const(false)));
+            FieldClass = FlowField;
         }
 
 

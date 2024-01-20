@@ -1264,11 +1264,20 @@ ekVRbyivio+XZ1v+a5Tv/wc=
         <Field Name="Insuarance_ReceiptsPaymentsFormat">
           <DataField>Insuarance_ReceiptsPaymentsFormat</DataField>
         </Field>
+        <Field Name="CustPayrollNo">
+          <DataField>CustPayrollNo</DataField>
+        </Field>
+        <Field Name="id_no">
+          <DataField>id_no</DataField>
+        </Field>
         <Field Name="UnallocatedAmount_ReceiptsPayments">
           <DataField>UnallocatedAmount_ReceiptsPayments</DataField>
         </Field>
         <Field Name="UnallocatedAmount_ReceiptsPaymentsFormat">
           <DataField>UnallocatedAmount_ReceiptsPaymentsFormat</DataField>
+        </Field>
+        <Field Name="User">
+          <DataField>User</DataField>
         </Field>
         <Field Name="Remarks_ReceiptsPayments">
           <DataField>Remarks_ReceiptsPayments</DataField>
@@ -1287,9 +1296,6 @@ ekVRbyivio+XZ1v+a5Tv/wc=
         </Field>
         <Field Name="CompanyPicture">
           <DataField>CompanyPicture</DataField>
-        </Field>
-        <Field Name="ReportForNavId_1102755001">
-          <DataField>ReportForNavId_1102755001</DataField>
         </Field>
         <Field Name="DocumentNo_ReceiptAllocation">
           <DataField>DocumentNo_ReceiptAllocation</DataField>
@@ -1368,6 +1374,12 @@ ekVRbyivio+XZ1v+a5Tv/wc=
         </Field>
         <Field Name="GlobalDimension2Code_ReceiptAllocation">
           <DataField>GlobalDimension2Code_ReceiptAllocation</DataField>
+        </Field>
+        <Field Name="LoanProduct">
+          <DataField>LoanProduct</DataField>
+        </Field>
+        <Field Name="Description_ReceiptAllocation">
+          <DataField>Description_ReceiptAllocation</DataField>
         </Field>
       </Fields>
       <Query>

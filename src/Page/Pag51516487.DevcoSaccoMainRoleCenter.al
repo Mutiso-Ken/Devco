@@ -13,7 +13,7 @@ Page 51516487 "Devco Sacco Main Role Center"
             part(Control75; "Headline RC Accountant")
             {
                 ApplicationArea = All;
-                Visible = true;
+                Visible = false;
 
             }
 
@@ -121,7 +121,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                 Caption = 'Chart of Accounts';
                 RunObject = Page "Chart of Accounts";
                 ToolTip = 'Open the chart of accounts.';
-                visible = true;
+                 Visible = false;
             }
             action("Bank Accounts List")
             {
@@ -747,480 +747,6 @@ Page 51516487 "Devco Sacco Main Role Center"
 
             }
 
-            //...................... START OF FOSA MANAGEMENT MENU ................................................            
-
-            // group(FOSAManagement)
-            // {
-            //     Caption = 'FOSA Management ';
-
-            //     action("Savings Products")
-            //     {
-            //         ApplicationArea = Basic, Suite;
-            //         RunObject = page "Account Details Master";
-            //         ToolTip = 'All Saving Products';
-            //     }
-
-            //     group(ProductManagement)
-            //     {
-            //         Caption = 'Product Management';
-            //         action("ProductsApplication")
-            //         {
-            //             ApplicationArea = all;
-            //             Caption = 'Products Application List';
-            //             RunPageView = WHERE(status = CONST(open));
-            //             RunObject = Page "Products Applications Master";
-            //         }
-
-            //         action(NewApprovedPoducts)
-            //         {
-            //             ApplicationArea = all;
-            //             Caption = 'Products Pending Creation';
-            //             RunPageView = WHERE(Status = CONST(Approved));
-            //             RunObject = Page "Products Applied Master";
-            //         }
-            //         action(ProductsCreated)
-            //         {
-            //             ApplicationArea = all;
-            //             Caption = 'Products Created';
-            //             RunPageView = WHERE(Status = CONST(created));
-            //             RunObject = Page "Products Applied Master";
-            //         }
-            //     }
-
-
-            //     group(StandingOrders)
-            //     {
-            //         Caption = 'Standing Orders';
-            //         action(StandingOrderApplication)
-            //         {
-            //             ApplicationArea = All;
-            //             Caption = 'Standing Order Application List';
-
-            //             RunObject = Page standingorderapplicationlist;
-            //         }
-
-            //         action(ActiveStandingOrder)
-            //         {
-            //             ApplicationArea = all;
-            //             Caption = 'Active Standing Order';
-            //             RunPageView = WHERE(Status = CONST(Approved));
-            //             RunObject = Page "Standing Orders - List";
-            //         }
-            //         action("StopedStandingOrder")
-            //         {
-            //             ApplicationArea = all;
-            //             Caption = 'Stopped Standing Order';
-            //             RunPageView = WHERE(Status = CONST(Stopped));
-            //             RunObject = Page "Standing Orders - List";
-            //         }
-
-            //     }
-
-
-
-
-            //     group("Cheque Management")
-            //     {
-
-            //         Caption = 'Cheque Management';
-            //         group(chequetruncation)
-            //         {
-            //             Caption = 'Cheque Truncation';
-
-            //             action("New Cheque Truncation")
-            //             {
-            //                 ApplicationArea = All;
-            //                 RunObject = Page "Cheque Receipt List-Family";
-            //                 RunPageView = where(Posted = const(false));
-            //             }
-
-            //             action("Posted Cheque Truncation")
-            //             {
-            //                 ApplicationArea = All;
-            //                 RunObject = Page "Postedcheque truncation";
-            //                 RunPageView = where(Posted = const(true));
-            //             }
-            //         }
-            //         group(ChequeProcessing)
-
-            //         {
-            //             Caption = 'Cheque Processing';
-            //             action("Uncleared Cheque List")
-            //             {
-            //                 Caption = 'Unprocessed Cheque List';
-            //                 ApplicationArea = All;
-            //                 RunObject = Page "Process Cheque clearing";
-            //             }
-            //             action("Mature Cheque Uncleared")
-            //             {
-            //                 Caption = 'Unprocessed Mature Cheque';
-            //                 ApplicationArea = All;
-            //                 RunObject = Page maturechequesnotposted;
-            //             }
-
-            //             action("Processed Cheques")
-            //             {
-            //                 ApplicationArea = Basic, Suite;
-            //                 caption = 'Procesed Cheques';
-            //                 RunObject = page processedchequelist;
-
-            //             }
-
-            //             action("Open Cheques")
-            //             {
-            //                 ApplicationArea = Basic, Suite;
-            //                 Caption = 'Open Cheques';
-            //                 // promoted = true;
-            //                 // PromotedCategory = Process;
-            //                 //RunObject = Page OpenCheques;
-            //                 visible = false;
-            //             }
-
-            //             action("Rejected Cheques")
-            //             {
-            //                 ApplicationArea = Basic, Suite;
-            //                 Caption = 'Rejected Cheques';
-            //                 // promoted = true;
-            //                 // PromotedCategory = Process;
-            //                 //RunObject = Page RejectedCheques;
-            //                 visible = false;
-            //             }
-
-            //             action("Approved Cheques")
-            //             {
-            //                 ApplicationArea = Basic, Suite;
-            //                 Caption = 'Approved Cheques';
-            //                 // promoted = true;
-            //                 // PromotedCategory = Process;
-            //                 //RunObject = Page ApprovedCheques;
-            //                 visible = false;
-            //             }
-
-            //             action("Pending Cheques")
-            //             {
-            //                 ApplicationArea = Basic, Suite;
-            //                 Caption = 'Pending Cheques';
-            //                 // promoted = true;
-            //                 // PromotedCategory = Process;
-            //                 // RunObject = Page PendingCheques;
-            //                 visible = false;
-            //             }
-
-            //         }
-
-            //         group("Chequebook Management")
-            //         {
-
-            //             action("Cheque Book Application")
-            //             {
-            //                 ApplicationArea = All;
-            //                 RunObject = Page "Cheque Book Application List";
-
-            //             }
-
-            //             action("Applied Cheque Books")
-            //             {
-            //                 ApplicationArea = All;
-            //                 RunObject = Page "Cheque Book Application List F";
-            //             }
-
-            //             action("Cheque Register")
-            //             {
-            //                 ApplicationArea = All;
-            //                 RunObject = Page "Cheques RegisterX";
-            //             }
-            //         }
-
-            //         action("Collected Cheques")
-            //         {
-            //             ApplicationArea = Basic, Suite;
-            //             caption = 'Collected Cheques';
-            //             visible = false;
-            //             // promoted = true;
-            //             // PromotedCategory = Process;
-            //             //RunObject = page CollectedCheques;
-            //         }
-            //         group("Cheque Schedule")
-            //         {
-            //             action("Cheque Banking Schedule")
-            //             {
-            //                 ApplicationArea = basic;
-            //                 RunObject = page "Banking Schedule Cheques";
-
-            //             }
-            //             action("Bankers Cheque Schedule")
-            //             {
-            //                 ApplicationArea = basic;
-            //                 RunObject = page "Bankers Cheque Schedule";
-
-            //             }
-
-            //         }
-
-            //     }
-
-
-            //     group("FOSA Loans")
-            //     {
-            //         group("FOSA Loans Applications")
-            //         {
-            //             action("FOSA Applications")
-            //             {
-            //                 Caption = 'FOSA Loans New Application List';
-            //                 Image = Receipt;
-            //                 RunObject = page fosaloansapplicationlist;
-            //                 RunPageView = where("loan Status" = const(application));
-            //             }
-            //             action("FOSA Applications-Pending")
-            //             {
-            //                 Caption = 'FOSA Loans Pending Approval';
-            //                 Image = Receipt;
-            //                 RunPageView = where("Approval Status" = const(pending));
-            //                 RunObject = page fosaloansapplicationlist;
-            //             }
-            //             action("FOSA Applications-Approved")
-            //             {
-            //                 Caption = 'FOSA Loans Pending Disbursement';
-            //                 Image = Receipt;
-            //                 RunPageView = where("Loan Status" = const(Approved));
-            //                 RunObject = page "Loans List - Advances";
-            //             }
-            //         }
-            //         group("Overdraft Loan Management")
-            //         {
-            //             action(OverDraftNewApplication)
-            //             {
-            //                 ApplicationArea = Basic, Suite;
-            //                 Caption = 'Overdraft New Applications';
-            //                 RunPageView = where("Loan Status" = const(Application));
-            //                 RunObject = page "OverDrafts Application List";
-            //             }
-            //             action(OverDraftPendingApplication)
-            //             {
-            //                 ApplicationArea = Basic, Suite;
-            //                 Caption = 'Overdrafts Pending Approval';
-            //                 RunPageView = where("Loan Status" = const(Appraisal));
-            //                 RunObject = page "OverDrafts Application List";
-            //             }
-            //             action(OverDraftApprovedApplication)
-            //             {
-            //                 ApplicationArea = Basic, Suite;
-            //                 Caption = 'Overdrafts Pending Disbursements';
-            //                 RunPageView = where("Loan Status" = const(Approved));
-            //                 RunObject = page "OverDrafts Application List";
-            //             }
-
-            //             action(OverDraftPostedApplication)
-            //             {
-            //                 ApplicationArea = Basic, Suite;
-            //                 Caption = 'Overdrafts Disbursed';
-            //                 RunPageView = where("Loan Status" = const(Issued));
-            //                 RunObject = page "OverDrafts Posted List";
-
-            //             }
-            //         }
-            //         group("Okoa Loan Management")
-            //         {
-
-            //             action(OkoaApplications)
-            //             {
-            //                 ApplicationArea = Basic, Suite;
-            //                 Caption = 'Okoa New Applications';
-            //                 RunPageView = where("Loan Status" = const(application));
-            //                 RunObject = page "Okoa Loan Applications List";
-            //             }
-
-
-            //             action(OkoaPendingApproval)
-            //             {
-            //                 ApplicationArea = Basic, Suite;
-            //                 Caption = 'Okoa Pending Approval';
-            //                 RunPageView = where("Loan Status" = const(appraisal));
-            //                 RunObject = page "Okoa Loan Applications List";
-            //             }
-
-            //             action(OkoaPendingDisbursement)
-            //             {
-            //                 ApplicationArea = Basic, Suite;
-            //                 Caption = 'Okoa Pending Disbursement';
-            //                 RunPageView = where("Loan Status" = const(approved));
-            //                 RunObject = page "Okoa Loan Applications List";
-
-            //             }
-            //             action(OkoaIssued)
-            //             {
-            //                 ApplicationArea = Basic, Suite;
-            //                 Caption = 'Okoa Disbursed Loans';
-            //                 RunPageView = where("Loan Status" = const(issued));
-            //                 RunObject = page "Okoa Loan Applications List";
-            //             }
-
-            //         }
-            //         action("FOSA Loans-Posted")
-            //         {
-            //             Caption = 'FOSA Loans Posted';
-            //             Image = Receipt;
-            //             RunObject = page "Posted Advances List";
-            //         }
-            //         group("FOSA Loans Reports")
-            //         {
-
-            //             action("Loans Register Report")
-            //             {
-            //                 Caption = 'Overdraft Register Report';
-            //                 Image = Report;
-            //                 RunObject = report "Loans Register";
-
-            //             }
-            //             action("Overdraft Register")
-            //             {
-            //                 Image = Receipt;
-            //                 RunObject = report "Overdraft Register";
-            //             }
-            //         }
-
-            //     }
-            //     group("Accounts Activation")
-            //     {
-            //         Caption = 'Account Activation';
-            //         action("Account Activation List")
-            //         {
-
-            //             Image = Receipt;
-            //             RunObject = page "allaccountactivationlist";
-            //             Caption = 'New Account Activations';
-
-            //         }
-
-            //         action("Posted Account Activations")
-            //         {
-            //             Image = Receipt;
-            //             RunObject = page postedaccountactivationlist;
-            //             Caption = 'Activated Accounts';
-
-            //         }
-
-            //     }
-
-
-            //     group("Periodics Activities")
-
-            //     {
-            //         Caption = 'Periodic Activities';
-
-
-
-            //         group("Process Salary")
-            //         {
-            //             Image = Receipt;
-            //             Caption = 'Member Salary Processing';
-            //             action("Salary Processing List")
-            //             {
-            //                 Image = ProfileCalendar;
-            //                 Caption = 'Member Salary Processing';
-            //                 RunObject = Page "Periodics Processing List";
-            //             }
-            //             action("Posted Salary Processings")
-            //             {
-            //                 Image = Receipt;
-            //                 Caption = 'Posted Member Salary Processing';
-            //                 RunObject = Page "Posted Salary List";
-            //             }
-            //         }
-
-            //         action("Process Monthly Tea")
-            //         {
-            //             Image = ProfileCalendar;
-            //             Caption = 'Member Tea Processing';
-            //             RunObject = Page "Periodics Processing-Tea";
-            //         }
-
-            //         action("Process Tea Bonus")
-            //         {
-            //             Image = Receipt;
-            //             RunObject = Page TeaBonusPosting;
-            //         }
-
-            //         action("Process Milk")
-            //         {
-            //             Image = Receipt;
-            //             RunObject = Page MilkPosting;
-            //         }
-
-            //         action("Generate FOSA Savings Interest")
-
-            //         {
-            //             Image = Report;
-            //             RunObject = report "Generate FOSA Interest";
-            //         }
-            //         action("Generate Christmas  Interest")
-            //         {
-            //             Image = Receipt;
-            //             RunObject = report "Christmas Calculate Interest";
-            //         }
-
-            //         action("Process Standing Orders")
-            //         {
-            //             Image = Receipt;
-            //             RunObject = report "Process Standing Orders";
-            //         }
-
-            //         action("Charge Account Maintance")
-            //         {
-            //             Image = Receipt;
-            //             RunObject = report "Account Maintance";
-            //         }
-            //         action("Charge Quaterly Statement")
-            //         {
-            //             Image = Receipt;
-            //             RunObject = report "Charge Statement";
-            //         }
-            //     }
-
-
-
-            //     group("FDR Management")
-            //     {
-
-            //         action("FDR Application List")
-            //         {
-            //             Caption = 'FDR Application';
-            //             Image = Receipt;
-            //             RunObject = Page fdrapplicationlist;
-
-            //         }
-
-            //         action("FDR Processing")
-            //         {
-            //             Caption = 'FDR Processing';
-            //             Image = Receipt;
-            //             RunObject = report "Manage Fixed Deposit";
-
-            //         }
-            //         action("FDR Certificates")
-            //         {
-            //             Caption = 'FDR Certificates';
-            //             Image = Receipt;
-            //             RunObject = report "Fixed Deposit Receipt";
-
-
-            //         }
-
-            //         action("Active FDR ")
-            //         {
-            //             Caption = 'Active FDR';
-            //             Image = Receipt;
-            //             RunObject = page "Account Details Master";
-            //             RunPageView = WHERE("Account Type" = CONST('FIXED'), "Balance" = filter(> 0));
-
-            //         }
-            //     }
-
-
-            // }
-
-            //.......................... End of FOSA MANAGEMENT MENU ........................................
-
 
 
             group("Cash Management New")
@@ -1498,14 +1024,6 @@ Page 51516487 "Devco Sacco Main Role Center"
 
                     }
 
-                    // action("NonMember List")
-                    // {
-                    //     ApplicationArea = all;
-                    //     RunObject = page "Non Member List";
-                    //     Caption = 'NonMember Account';
-                    //     ToolTip = 'View NonMember List';
-                    // }
-
 
 
                 }
@@ -1552,13 +1070,7 @@ Page 51516487 "Devco Sacco Main Role Center"
 
                 }
 
-                action(AccountActivationList)
-                {
-                    Caption = 'Account Activation';
-                    Image = Action;
-                    RunObject = page "Account Activation List";
-                    visible = false;
-                }
+
                 //...........................START OF TRANSFERS MENU .........................................
                 group(Transfers)
                 {
@@ -1597,6 +1109,26 @@ Page 51516487 "Devco Sacco Main Role Center"
                 //......................................................................................
 
 
+                group("Bosa Receipts")
+                {
+                    Caption = 'Bosa Receipts';
+
+                    action("Bosa Receipt")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Bosa Receipts';
+                        RunObject = page "BOSA Receipts List";
+                    }
+               
+
+                    //"Receipts list-BOSA"
+                    action(" Posted Bosa Receipt")
+                    {
+                        ApplicationArea = All;
+                        caption = 'Posted Bosa Receipts';
+                        RunObject = page "Posted BOSA Receipts List";
+                    }
+                }
 
                 //.....................................START OF LOAN MANAGEMENT
                 group(SaccoLoansManagement)

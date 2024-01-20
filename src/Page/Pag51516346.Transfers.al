@@ -61,6 +61,7 @@ Page 51516346 "Transfers"
                 field(Status; Status)
                 {
                     ApplicationArea = Basic;
+                    Visible = false;
 
                     trigger OnValidate()
                     begin
@@ -174,6 +175,7 @@ Page 51516346 "Transfers"
                     Image = SendApprovalRequest;
                     Promoted = true;
                     PromotedCategory = Process;
+                    Visible = false;
 
                     trigger OnAction()
                     var
@@ -194,6 +196,7 @@ Page 51516346 "Transfers"
                     Image = Cancel;
                     Promoted = true;
                     PromotedCategory = process;
+                    Visible = false;
 
                     trigger OnAction()
                     var
@@ -314,140 +317,140 @@ Page 51516346 "Transfers"
                 GenJournalLine.Validate(GenJournalLine.Amount);
                 GenJournalLine.Insert();
                 //......................................................................Source is vendor
-                if BSched."Source Type" = BSched."Source Type"::Vendor then begin
-                    if BSched."Charge Type" = BSched."Charge Type"::Milk then begin
-                        GenJournalLine.Init();
-                        GenJournalLine."Journal Template Name" := Jtemplate;
-                        GenJournalLine."Journal Batch Name" := Jbatch;
-                        GenJournalLine."Document No." := No;
-                        GenJournalLine."Line No." := GenJournalLine."Line No." + 10000;
-                        GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
-                        GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-                        GenJournalLine."Shortcut Dimension 2 Code" := BSched."Branch Code";
-                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                        GenJournalLine."Account No." := BSched."Source Account No.";
-                        GenJournalLine."Posting Date" := "Transaction Date";
-                        GenJournalLine.Description := 'Milk Transfer Charges';
-                        GenJournalLine.Amount := BSched."Charge Amount";
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
-                        GenJournalLine."Bal. Account No." := '5421';
-                        GenJournalLine.Insert();
-                        //.....................................................
-                        GenJournalLine.Init();
-                        GenJournalLine."Journal Template Name" := Jtemplate;
-                        GenJournalLine."Journal Batch Name" := Jbatch;
-                        GenJournalLine."Document No." := No;
-                        GenJournalLine."Line No." := GenJournalLine."Line No." + 10000;
-                        GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
-                        GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-                        GenJournalLine."Shortcut Dimension 2 Code" := BSched."Branch Code";
-                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                        GenJournalLine."Account No." := BSched."Source Account No.";
-                        GenJournalLine."Posting Date" := "Transaction Date";
-                        GenJournalLine.Description := 'Milk Transfer Charges Excise Duty';
-                        GenJournalLine.Amount := BSched."Charge Amount" * 0.2;
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
-                        GenJournalLine."Bal. Account No." := '3326';
-                        GenJournalLine.Insert(true);
-                    end;
-                    //......................................................................
-                    if BSched."Charge Type" = BSched."Charge Type"::"BOSA Transfer" then begin
-                        GenJournalLine.Init();
-                        GenJournalLine."Journal Template Name" := Jtemplate;
-                        GenJournalLine."Journal Batch Name" := Jbatch;
-                        GenJournalLine."Document No." := No;
-                        GenJournalLine."Line No." := GenJournalLine."Line No." + 10000;
-                        GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
-                        GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-                        GenJournalLine."Shortcut Dimension 2 Code" := BSched."Branch Code";
-                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                        GenJournalLine."Account No." := BSched."Source Account No.";
-                        GenJournalLine."Posting Date" := "Transaction Date";
-                        GenJournalLine.Description := 'BOSA Transfer Charges';
-                        GenJournalLine.Amount := BSched."Charge Amount";
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
-                        GenJournalLine."Bal. Account No." := '5421';
-                        GenJournalLine.Insert();
-                        //.....................................................
-                        GenJournalLine.Init();
-                        GenJournalLine."Journal Template Name" := Jtemplate;
-                        GenJournalLine."Journal Batch Name" := Jbatch;
-                        GenJournalLine."Document No." := No;
-                        GenJournalLine."Line No." := GenJournalLine."Line No." + 10000;
-                        GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
-                        GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-                        GenJournalLine."Shortcut Dimension 2 Code" := BSched."Branch Code";
-                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                        GenJournalLine."Account No." := BSched."Source Account No.";
-                        GenJournalLine."Posting Date" := "Transaction Date";
-                        GenJournalLine.Description := 'BOSA Transfer Charges Excise Duty';
-                        GenJournalLine.Amount := BSched."Charge Amount" * 0.2;
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
-                        GenJournalLine."Bal. Account No." := '3326';
-                        GenJournalLine.Insert();
-                    end;
-                    //..........................................................................
-                    if BSched."Charge Type" = BSched."Charge Type"::Salary then begin
-                        GenJournalLine.Init();
-                        GenJournalLine."Journal Template Name" := Jtemplate;
-                        GenJournalLine."Journal Batch Name" := Jbatch;
-                        GenJournalLine."Document No." := No;
-                        GenJournalLine."Line No." := GenJournalLine."Line No." + 10000;
-                        GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
-                        GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-                        GenJournalLine."Shortcut Dimension 2 Code" := BSched."Branch Code";
-                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                        GenJournalLine."Account No." := BSched."Source Account No.";
-                        GenJournalLine."Posting Date" := "Transaction Date";
-                        GenJournalLine.Description := 'Salary Charges';
-                        GenJournalLine.Amount := BSched."Charge Amount";
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
-                        GenJournalLine."Bal. Account No." := '5421';
-                        GenJournalLine.Insert();
-                        //.....................................................
-                        GenJournalLine.Init();
-                        GenJournalLine."Journal Template Name" := Jtemplate;
-                        GenJournalLine."Journal Batch Name" := Jbatch;
-                        GenJournalLine."Document No." := No;
-                        GenJournalLine."Line No." := GenJournalLine."Line No." + 10000;
-                        GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
-                        GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-                        GenJournalLine."Shortcut Dimension 2 Code" := BSched."Branch Code";
-                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                        GenJournalLine."Account No." := BSched."Source Account No.";
-                        GenJournalLine."Posting Date" := "Transaction Date";
-                        GenJournalLine.Description := 'Salary Charges Excise Duty';
-                        GenJournalLine.Amount := BSched."Charge Amount" * 0.2;
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
-                        GenJournalLine."Bal. Account No." := '3326';
-                        GenJournalLine.Insert();
-                    end;
-                    if BSched."Charge Type" = BSched."Charge Type"::FDR then begin
-                        GenJournalLine.Init();
-                        GenJournalLine."Journal Template Name" := Jtemplate;
-                        GenJournalLine."Journal Batch Name" := Jbatch;
-                        GenJournalLine."Document No." := No;
-                        GenJournalLine."Line No." := GenJournalLine."Line No." + 10000;
-                        GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
-                        GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-                        GenJournalLine."Shortcut Dimension 2 Code" := BSched."Branch Code";
-                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                        GenJournalLine."Account No." := BSched."Source Account No.";
-                        GenJournalLine."Posting Date" := "Transaction Date";
-                        GenJournalLine.Description := 'FDR Transfer Charges';
-                        GenJournalLine.Amount := BSched."Charge Amount";
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
-                        GenJournalLine."Bal. Account No." := '5421';
-                        GenJournalLine.Insert();
-                    end;
-                end;
+                // if BSched."Source Type" = BSched."Source Type"::Vendor then begin
+                //     if BSched."Charge Type" = BSched."Charge Type"::Milk then begin
+                //         GenJournalLine.Init();
+                //         GenJournalLine."Journal Template Name" := Jtemplate;
+                //         GenJournalLine."Journal Batch Name" := Jbatch;
+                //         GenJournalLine."Document No." := No;
+                //         GenJournalLine."Line No." := GenJournalLine."Line No." + 10000;
+                //         GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
+                //         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
+                //         GenJournalLine."Shortcut Dimension 2 Code" := BSched."Branch Code";
+                //         GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                //         GenJournalLine."Account No." := BSched."Source Account No.";
+                //         GenJournalLine."Posting Date" := "Transaction Date";
+                //         GenJournalLine.Description := 'Milk Transfer Charges';
+                //         GenJournalLine.Amount := BSched."Charge Amount";
+                //         GenJournalLine.Validate(GenJournalLine.Amount);
+                //         GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
+                //         GenJournalLine."Bal. Account No." := '5421';
+                //         GenJournalLine.Insert();
+                //         //.....................................................
+                //         GenJournalLine.Init();
+                //         GenJournalLine."Journal Template Name" := Jtemplate;
+                //         GenJournalLine."Journal Batch Name" := Jbatch;
+                //         GenJournalLine."Document No." := No;
+                //         GenJournalLine."Line No." := GenJournalLine."Line No." + 10000;
+                //         GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
+                //         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
+                //         GenJournalLine."Shortcut Dimension 2 Code" := BSched."Branch Code";
+                //         GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                //         GenJournalLine."Account No." := BSched."Source Account No.";
+                //         GenJournalLine."Posting Date" := "Transaction Date";
+                //         GenJournalLine.Description := 'Milk Transfer Charges Excise Duty';
+                //         GenJournalLine.Amount := BSched."Charge Amount" * 0.2;
+                //         GenJournalLine.Validate(GenJournalLine.Amount);
+                //         GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
+                //         GenJournalLine."Bal. Account No." := '3326';
+                //         GenJournalLine.Insert(true);
+                //     end;
+                //     //......................................................................
+                //     if BSched."Charge Type" = BSched."Charge Type"::"BOSA Transfer" then begin
+                //         GenJournalLine.Init();
+                //         GenJournalLine."Journal Template Name" := Jtemplate;
+                //         GenJournalLine."Journal Batch Name" := Jbatch;
+                //         GenJournalLine."Document No." := No;
+                //         GenJournalLine."Line No." := GenJournalLine."Line No." + 10000;
+                //         GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
+                //         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
+                //         GenJournalLine."Shortcut Dimension 2 Code" := BSched."Branch Code";
+                //         GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                //         GenJournalLine."Account No." := BSched."Source Account No.";
+                //         GenJournalLine."Posting Date" := "Transaction Date";
+                //         GenJournalLine.Description := 'BOSA Transfer Charges';
+                //         GenJournalLine.Amount := BSched."Charge Amount";
+                //         GenJournalLine.Validate(GenJournalLine.Amount);
+                //         GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
+                //         GenJournalLine."Bal. Account No." := '5421';
+                //         GenJournalLine.Insert();
+                //         //.....................................................
+                //         GenJournalLine.Init();
+                //         GenJournalLine."Journal Template Name" := Jtemplate;
+                //         GenJournalLine."Journal Batch Name" := Jbatch;
+                //         GenJournalLine."Document No." := No;
+                //         GenJournalLine."Line No." := GenJournalLine."Line No." + 10000;
+                //         GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
+                //         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
+                //         GenJournalLine."Shortcut Dimension 2 Code" := BSched."Branch Code";
+                //         GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                //         GenJournalLine."Account No." := BSched."Source Account No.";
+                //         GenJournalLine."Posting Date" := "Transaction Date";
+                //         GenJournalLine.Description := 'BOSA Transfer Charges Excise Duty';
+                //         GenJournalLine.Amount := BSched."Charge Amount" * 0.2;
+                //         GenJournalLine.Validate(GenJournalLine.Amount);
+                //         GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
+                //         GenJournalLine."Bal. Account No." := '3326';
+                //         GenJournalLine.Insert();
+                //     end;
+                //     //..........................................................................
+                //     if BSched."Charge Type" = BSched."Charge Type"::Salary then begin
+                //         GenJournalLine.Init();
+                //         GenJournalLine."Journal Template Name" := Jtemplate;
+                //         GenJournalLine."Journal Batch Name" := Jbatch;
+                //         GenJournalLine."Document No." := No;
+                //         GenJournalLine."Line No." := GenJournalLine."Line No." + 10000;
+                //         GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
+                //         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
+                //         GenJournalLine."Shortcut Dimension 2 Code" := BSched."Branch Code";
+                //         GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                //         GenJournalLine."Account No." := BSched."Source Account No.";
+                //         GenJournalLine."Posting Date" := "Transaction Date";
+                //         GenJournalLine.Description := 'Salary Charges';
+                //         GenJournalLine.Amount := BSched."Charge Amount";
+                //         GenJournalLine.Validate(GenJournalLine.Amount);
+                //         GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
+                //         GenJournalLine."Bal. Account No." := '5421';
+                //         GenJournalLine.Insert();
+                //         //.....................................................
+                //         GenJournalLine.Init();
+                //         GenJournalLine."Journal Template Name" := Jtemplate;
+                //         GenJournalLine."Journal Batch Name" := Jbatch;
+                //         GenJournalLine."Document No." := No;
+                //         GenJournalLine."Line No." := GenJournalLine."Line No." + 10000;
+                //         GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
+                //         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
+                //         GenJournalLine."Shortcut Dimension 2 Code" := BSched."Branch Code";
+                //         GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                //         GenJournalLine."Account No." := BSched."Source Account No.";
+                //         GenJournalLine."Posting Date" := "Transaction Date";
+                //         GenJournalLine.Description := 'Salary Charges Excise Duty';
+                //         GenJournalLine.Amount := BSched."Charge Amount" * 0.2;
+                //         GenJournalLine.Validate(GenJournalLine.Amount);
+                //         GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
+                //         GenJournalLine."Bal. Account No." := '3326';
+                //         GenJournalLine.Insert();
+                //     end;
+                //     if BSched."Charge Type" = BSched."Charge Type"::FDR then begin
+                //         GenJournalLine.Init();
+                //         GenJournalLine."Journal Template Name" := Jtemplate;
+                //         GenJournalLine."Journal Batch Name" := Jbatch;
+                //         GenJournalLine."Document No." := No;
+                //         GenJournalLine."Line No." := GenJournalLine."Line No." + 10000;
+                //         GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
+                //         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
+                //         GenJournalLine."Shortcut Dimension 2 Code" := BSched."Branch Code";
+                //         GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                //         GenJournalLine."Account No." := BSched."Source Account No.";
+                //         GenJournalLine."Posting Date" := "Transaction Date";
+                //         GenJournalLine.Description := 'FDR Transfer Charges';
+                //         GenJournalLine.Amount := BSched."Charge Amount";
+                //         GenJournalLine.Validate(GenJournalLine.Amount);
+                //         GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
+                //         GenJournalLine."Bal. Account No." := '5421';
+                //         GenJournalLine.Insert();
+                //     end;
+                // end;
                 //...................................................................
                 GenJournalLine."Journal Template Name" := Jtemplate;
                 GenJournalLine."Journal Batch Name" := Jbatch;

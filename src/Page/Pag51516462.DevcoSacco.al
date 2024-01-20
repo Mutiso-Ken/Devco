@@ -2337,7 +2337,7 @@ Page 51516462 "Devco Sacco"
                     {
                         Caption = 'Member Receipts';
                         Image = Receipt;
-                        RunObject = page "Receipts list-BOSA";
+                        RunObject = page "BOSA Receipts List";
                         ToolTip = 'New Member Receipts for payments done.';
 
                     }

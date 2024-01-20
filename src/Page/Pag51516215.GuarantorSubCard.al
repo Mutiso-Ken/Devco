@@ -49,7 +49,7 @@ Page 51516215 "Guarantor Sub Card"
                 field(Status; Status)
                 {
                     ApplicationArea = Basic;
-                    Editable = false;
+                    Editable = true;
                 }
                 field("Created By"; "Created By")
                 {

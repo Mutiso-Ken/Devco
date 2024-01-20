@@ -930,9 +930,9 @@ Report 51516865 "Tea Batch"
                                             if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Pepea Shares" then
                                                 GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Pepea Shares"
                                             else
-                                                if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Tambaa Shares" then
-                                                    GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Tamba Shares"
-                                                else
+                                                // if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Tambaa Shares" then
+                                                //     GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Tamba Shares"
+                                                // else
                                                     if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Lift Shares" then
                                                         GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Lift Shares";
 

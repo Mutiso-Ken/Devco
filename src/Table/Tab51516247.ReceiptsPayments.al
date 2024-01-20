@@ -1,4 +1,4 @@
-#pragma warning disable AA0005, AA0008, AA0018, AA0021, AA0072, AA0137, AA0201, AA0206, AA0218, AA0228, AL0254, AL0424, AS0011, AW0006 // ForNAV settings
+#pragma warning disable AA0005, AA0008, AA0018, AA0021, AA0072, AA0137, AA0201, AA0206, AA0218, AA0228, AL0424, AW0006 // ForNAV settings
 Table 51516247 "Receipts & Payments"
 {
 
@@ -7,29 +7,46 @@ Table 51516247 "Receipts & Payments"
         field(1; "Transaction No."; Code[20])
         {
         }
-        field(2; "Account No."; Code[20])
+        field(2; "Account No."; Code[30])
         {
             NotBlank = true;
-            TableRelation = Customer."No.";
+            TableRelation = if ("Account Type" = const(Customer)) Customer."No."
+            //  where(ISNormalMember = filter(true)
+            // , "Employer Checkoff" = filter(false))
+            else
+            // if ("Account Type" = const(Debtor)) Customer."No." where(ISNormalMember = filter(false))
+            // else
+            if ("Account Type" = const("G/L Account")) "G/L Account"."No."
+            else
+            // if ("Account Type" = const("FOSA Loan")) Customer."No." where(ISNormalMember = filter(true))
+            // else
+            // if ("Account Type" = const(Vendor)) Vendor."No." where("Creditor Type" = filter("FOSA Account"),
+            //                                                                            Status = filter(<> Closed | Deceased),
+            //                                                                            Blocked = filter(<> Payment | All))
+            // else
+            if ("Account Type" = const("IC Partner")) Customer."No." where("Customer Posting Group" = filter('MICRO'));
 
             trigger OnValidate()
             begin
-                TestField(Source);
+                //TESTFIELD(Source);
 
-                if ("Account Type" = "account type"::"FOSA Loan") or
-                   ("Account Type" = "account type"::Debtor) then begin
-                    if Cust.Get("Account No.") then begin
-                        Name := Cust.Name;
-                    end;
-                end;
-                if ("Account Type" = "account type"::Customer) then begin
-                    if Mem.Get("Account No.") then
-                        Name := Mem.Name;
-                end;
+                // if ("Account Type" = "account type"::"FOSA Loan") or
+                //    ("Account Type" = "account type"::Debtor) then begin
+                //     if Cust.Get("Account No.") then begin
+                //         Name := Cust.Name;
+
+                //     end;
+                // end;
+                // if ("Account Type" = "account type"::Customer) or ("Account Type" = "account type"::Micro) then begin
+                //     if Mem.Get("Account No.") then
+                //         Name := Mem.Name;
+                // end;
+
                 if ("Account Type" = "account type"::Vendor) then begin
                     if Vend.Get("Account No.") then
                         Name := Vend.Name;
                 end;
+
                 if ("Account Type" = "account type"::"G/L Account") then begin
                     if GLAcct.Get("Account No.") then begin
                         Name := GLAcct.Name;
@@ -44,19 +61,21 @@ Table 51516247 "Receipts & Payments"
         {
             NotBlank = true;
         }
-        field(5; "Cheque No."; Code[50])
+        field(5; "Cheque No."; Code[20])
         {
 
             trigger OnValidate()
             begin
-                /*
-                BOSARcpt.RESET;
-                BOSARcpt.SETRANGE(BOSARcpt."Cheque No.","Cheque No.");
-                BOSARcpt.SETRANGE(BOSARcpt.Posted,TRUE);
-                IF BOSARcpt.FIND('-') THEN
-                ERROR('Cheque no already exist in a posted receipt.');
-                */
+                BOSARcpt.Reset;
+                BOSARcpt.SetRange(BOSARcpt."Cheque No.", "Cheque No.");
+                BOSARcpt.SetRange(BOSARcpt.Posted, true);
+                if BOSARcpt.Find('-') then
+                    Error('Cheque no already exist in a posted receipt.');
 
+                if "Receipt Mode" = "receipt mode"::Cheque then begin
+                    if StrLen("Cheque No.") <> 6 then
+                        Error('Cheque No. Can not be more or less than 6 Characters');
+                end;
             end;
         }
         field(6; "Cheque Date"; Date)
@@ -69,19 +88,8 @@ Table 51516247 "Receipts & Payments"
         field(8; "Employer No."; Code[20])
         {
             Editable = true;
-            TableRelation = if (Source = const(Bosa),
-                                "Mode of Payment" = filter(Cheque | "Deposit Slip" | Mpesa | "Standing order")) "Bank Account"."No." where("Account Type" = filter(" "))
-            else
-            if (Source = const(Bosa),
-                                         "Mode of Payment" = filter(Cheque | "Deposit Slip" | Mpesa | "Standing order")) "Bank Account"."No." where("Account Type" = filter(" "))
-            else
-            if (Source = const(Bosa),
-                                                  "Mode of Payment" = filter(Cash)) "Bank Account"."No." where("Account Type" = filter(Cashier),
-                                                                                                              CashierID = field("User ID"))
-            else
-            if (Source = const(Fosa),
-                                                                                                                       "Mode of Payment" = filter(Cash)) "Bank Account"."No." where("Account Type" = filter(Cashier),
-                                                                                                                                                                                   CashierID = field("User ID"));
+            TableRelation = if (Source = const(BOSA),
+                                "Receipt Mode" = filter(Cheque | "Deposit Slip" | Mpesa | "Standing order" | EFT | Cash)) "Bank Account"."No.";
         }
         field(9; "User ID"; Code[50])
         {
@@ -89,8 +97,7 @@ Table 51516247 "Receipts & Payments"
         }
         field(10; "Allocated Amount"; Decimal)
         {
-            CalcFormula = sum("Receipt Allocation".Amount where("Document No" = field("Transaction No."),
-                                                                 "Member No" = field("Account No.")));
+            CalcFormula = sum("Receipt Allocation".Amount where("Document No" = field("Transaction No.")));
             Editable = false;
             FieldClass = FlowField;
 
@@ -114,10 +121,11 @@ Table 51516247 "Receipts & Payments"
             Editable = false;
             TableRelation = "No. Series";
         }
-        field(14; "Account Type"; Option)
+        field(14; "Account Type"; enum "Gen. Journal Account Type")
         {
-            OptionCaption = 'Member,Debtor,G/L Account,FOSA Loan,Vendor';
-            OptionMembers = Customer,Debtor,"G/L Account","FOSA Loan",Vendor;
+
+            // OptionCaption = 'Member,Debtor,G/L Account,FOSA Loan,Customer,Vendor,Micro';
+            // OptionMembers = Member,Debtor,"G/L Account","FOSA Loan",Customer,Vendor,Micro;
         }
         field(15; "Transaction Slip Type"; Option)
         {
@@ -133,28 +141,23 @@ Table 51516247 "Receipts & Payments"
         }
         field(50001; "Un allocated Amount"; Decimal)
         {
+            Editable = false;
+            FieldClass = Normal;
         }
         field(50002; Source; Option)
         {
-            OptionCaption = ' ,Bosa,Fosa,Micro';
-            OptionMembers = " ",Bosa,Fosa,Micro;
+            OptionCaption = 'BOSA,FOSA,MICRO';
+            OptionMembers = BOSA,FOSA,MICRO;
         }
-        field(50003; "Mode of Payment"; Option)
+        field(50003; "Receipt Mode"; Option)
         {
-            OptionCaption = 'Cash,Cheque,Mpesa,Standing order,Deposit Slip';
-            OptionMembers = Cash,Cheque,Mpesa,"Standing order","Deposit Slip";
-
-            trigger OnValidate()
-            begin
-                Clear("Employer No.");
-                if "Mode of Payment" = "mode of payment"::Cash then
-                    "Employer No." := SFactory.FnGetTellerTillNo();
-            end;
+            OptionCaption = 'Cash,Cheque,Mpesa,Standing order,Deposit Slip,EFT';
+            OptionMembers = Cash,Cheque,Mpesa,"Standing order","Deposit Slip",EFT;
         }
-        field(50004; Remarks; Text[100])
+        field(50004; Remarks; Text[50])
         {
         }
-        field(50005; "Code"; Code[100])
+        field(50005; "Code"; Code[20])
         {
         }
         field(50006; Type; Option)
@@ -201,65 +204,23 @@ Table 51516247 "Receipts & Payments"
         field(50012; Blocked; Boolean)
         {
         }
-        field(50013; "Old receipt No"; Code[30])
+        field(50013; "Global Dimension 1 Code"; Code[50])
         {
-
-            trigger OnValidate()
-            begin
-                //IF xRec."Old receipt No"="Old receipt No" THEN ERROR ('OLD RECEIPT NO ALREADY EXIST');
-                BOSARcpt.Reset;
-                BOSARcpt.SetRange(BOSARcpt."Old receipt No", "Old receipt No");
-                if BOSARcpt.Find('-') then begin
-                    repeat
-                        OldNo := BOSARcpt."Old receipt No";
-                    until BOSARcpt.Next = 0;
-                    if OldNo = Rec."Old receipt No" then Error('This old receipt No. already exists!');
-                end;
-            end;
+            CaptionClass = '1,1,1';
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(1),
+                                                          "Dimension Value Type" = const(Standard));
         }
-        field(50014; "Bank No."; Code[30])
+        field(50014; "Global Dimension 2 Code"; Code[50])
         {
+            CaptionClass = '1,2,2';
+            Editable = false;
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(2),
+                                                          "Dimension Value Type" = const(Standard));
         }
-        field(50015; "FOSA Account No."; Code[30])
+        field(50015; "Excess Transaction Type"; Option)
         {
-            TableRelation = Vendor."No.";
-        }
-        field(50016; "Branch Code"; Code[10])
-        {
-        }
-        field(50017; "Activity Code"; Code[10])
-        {
-        }
-        field(50018; "Posted By"; Code[50])
-        {
-        }
-        field(50019; "Responsibilty Center"; Code[50])
-        {
-            TableRelation = "Responsibility Center".Code;
-        }
-        field(50020; "Date Posted"; Date)
-        {
-        }
-        field(50021; "Time Posted"; Time)
-        {
-        }
-        field(50022; "FOSA Account Bal"; Decimal)
-        {
-        }
-        field(50023; "Application Type"; Option)
-        {
-            OptionCaption = 'BOSA,MICRO,FOSA';
-            OptionMembers = BOSA,MICRO,FOSA;
-        }
-        field(50024; "BOSA Account No."; Code[30])
-        {
-            TableRelation = Customer;
-        }
-        field(50025; "Payroll/Staff No."; Code[20])
-        {
-        }
-        field(50026; "Loan No"; Code[40])
-        {
+            OptionCaption = 'Deposit Contribution,Safari Saving,Silver Savings,Junior Savings';
+            OptionMembers = "Deposit Contribution","Safari Saving","Silver Savings","Junior Savings";
         }
     }
 
@@ -284,12 +245,16 @@ Table 51516247 "Receipts & Payments"
 
     trigger OnDelete()
     begin
+        /*
+        IF Posted THEN
+        ERROR('Cannot delete a posted transaction');
+        */
 
-        if Posted then
-            Error('Cannot delete a posted transaction');
     end;
 
     trigger OnInsert()
+    var
+        ReceiptAllocation: Record "Receipt Allocation";
     begin
         if "Transaction No." = '' then begin
             NoSetup.Get();
@@ -298,22 +263,39 @@ Table 51516247 "Receipts & Payments"
         end;
 
         "User ID" := UserId;
-        "Transaction Date" := Today;
+        "Transaction Date" := "Transaction Date";
         "Transaction Time" := Time;
-        if "Mode of Payment" = "mode of payment"::Cash then
-            "Employer No." := SFactory.FnGetTellerTillNo();
+        Source := Source::BOSA;
+        "Global Dimension 1 Code" := 'BOSA';
+        "Global Dimension 2 Code" := SFactory.FnGetUserBranch();
+
+        Banks.Reset;
+        Banks.SetRange(Banks.CashierID, UserId);
+        Banks.SetRange(Banks."Account Type", Banks."account type"::Cashier);
+        if Banks.Find('-') then begin
+            "Employer No." := Banks."No.";
+            "Bank Name" := Banks.Name;
+        end;
+
+        ReceiptAllocation.Reset;
+        ReceiptAllocation.SetRange("Document No", Rec."Transaction No.");
+        ReceiptAllocation.DeleteAll;
     end;
 
     trigger OnModify()
     begin
-        if Posted = true then
-            Error('Cannot modify a posted transaction');
+        /*IF Posted THEN
+        ERROR('Cannot modify a posted transaction');
+        */
+
     end;
 
     trigger OnRename()
     begin
-        if Posted then
-            Error('Cannot rename a posted transaction');
+        /*IF Posted THEN
+        ERROR('Cannot rename a posted transaction');
+        */
+
     end;
 
     var
@@ -325,8 +307,8 @@ Table 51516247 "Receipts & Payments"
         Mem: Record Customer;
         Vend: Record Vendor;
         GLAcc: Record "G/L Account";
-        PayLine: Record "Payment Line";
-        OldNo: Code[20];
+        // PayLine: Record "Payment Line.";
+        Banks: Record "Bank Account";
         SFactory: Codeunit "SURESTEP Factory";
 }
 
