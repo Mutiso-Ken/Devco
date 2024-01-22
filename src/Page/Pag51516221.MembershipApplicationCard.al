@@ -29,14 +29,17 @@ Page 51516221 "Membership Application Card"
                 {
                     ApplicationArea = Basic;
                     Caption = 'Account Type';
-                    Enabled = membertypeEditable;
+                    //Enabled = membertypeEditable;
                     ShowMandatory = true;
-                    Editable = NameEditable;
+                    //Editable = NameEditable;
 
                     trigger OnValidate()
                     begin
+                        UpdateControls;
                         if "Account Category" = "account category"::Joint then
-                            Jooint := true;
+                            Jooint := true else
+                            if "Account Category" <> "Account Category"::Joint then
+                                Jooint := false;
                     end;
                 }
                 field("First Name"; "First Name")
@@ -878,7 +881,7 @@ Page 51516221 "Membership Application Card"
             FilterGroup(0);
 
         end;
-        Jooint := false;
+        // Jooint := false;
 
 
 
