@@ -72,7 +72,7 @@ Codeunit 50015 "Payroll Processing"
         if HrEmployee.Find('-') then
             VitalSetup.FindFirst;
         with VitalSetup do begin
-            // curReliefPersonal := "Tax Relief";
+            curReliefPersonal := "Tax Relief";
             curReliefInsurance := "Insurance Relief";
             // curReliefMorgage := HrEmployee."Morgage Relief";
             NSSFR := 0;
@@ -264,10 +264,10 @@ Codeunit 50015 "Payroll Processing"
                             // if Management then
                             //         strExtractedFrml := fnPureFormula(strEmpCode, intMonth, intYear, prTransactionCodes."Formula for Management Prov")
                             //     else
-                                strExtractedFrml := fnPureFormula(strEmpCode, intMonth, intYear, prTransactionCodes.Formulae);
+                            strExtractedFrml := fnPureFormula(strEmpCode, intMonth, intYear, prTransactionCodes.Formulae);
 
-                            curTransAmount := ROUND(fnFormulaResult(strExtractedFrml), 0.05, '<'); 
-                            Message('CurTransAmount %1',curTransAmount);
+                            curTransAmount := ROUND(fnFormulaResult(strExtractedFrml), 0.05, '<');
+                            Message('CurTransAmount %1', curTransAmount);
                             //Get the calculated amount
 
                         end else begin
@@ -307,7 +307,7 @@ Codeunit 50015 "Payroll Processing"
                         if (not prTransactionCodes.Taxable) and (prTransactionCodes."Special Transaction" =
                         prTransactionCodes."special transaction"::Ignore) then
                             curNonTaxable := curNonTaxable + curTransAmount;
-                     
+
                         //Added to ensure special transaction that are not taxable are not inlcuded in list of Allowances
                         // if (not prTransactionCodes.Taxable) and (prTransactionCodes."Special Transaction" <>
                         // prTransactionCodes."special transaction"::Ignore) then
@@ -540,7 +540,7 @@ Codeunit 50015 "Payroll Processing"
             curTaxablePay := curGrossTaxable - (curSalaryArrears + curDefinedContrib + curMaxPensionContrib + curHOSP + curNonTaxable + curOOI)
 
         else
-            curTaxablePay := curGrossTaxable - (curSalaryArrears + curDefinedContrib+ curNonTaxable);
+            curTaxablePay := curGrossTaxable - (curSalaryArrears + curDefinedContrib + curNonTaxable);
         //Taxable Benefit
         txBenefitAmt := 0;
         if EmpSalary.Get(strEmpCode) then begin
@@ -563,7 +563,7 @@ Codeunit 50015 "Payroll Processing"
                 end;
             end;
         end;
-        curTransAmount := curTaxablePay ;
+        curTransAmount := curTaxablePay;
         strTransDescription := 'Taxable Pay';
         TGroup := 'TAX CALCULATIONS';
         TGroupOrder := 6;
@@ -579,19 +579,19 @@ Codeunit 50015 "Payroll Processing"
             HrEmployee.CalcFields(HrEmployee."Cummulative NHIF");
         SFR := ROUND(HrEmployee."Cummulative NHIF" * 0.15, 1, '=');
         curTaxablePay := curTaxablePay + txBenefitAmt;
-        curTaxCharged := fnGetEmployeePaye(curTaxablePay) - (curInsuranceReliefAmount + curReliefPersonal + CurrInsuranceRel);
+        curTaxCharged := fnGetEmployeePaye(curTaxablePay);
         strTransDescription := 'Tax Charged';
         TGroup := 'TAX CALCULATIONS';
         TGroupOrder := 6;
         TSubGroupOrder := 7;
-        curTransAmount:=curTaxCharged;
+        curTransAmount := curTaxCharged;
         fnUpdatePeriodTrans(strEmpCode, 'TXCHRG', TGroup, TGroupOrder, TSubGroupOrder, strTransDescription,
         curTransAmount, 0, intMonth, intYear, '', '', SelectedPeriod, Dept, '', Journalpostas::" ", Journalpostingtype::" ", '',
         Coopparameters::none);
 
-        curPAYE := (curTaxCharged) - NhifRelief- curReliefPersonal;
-        if not blnPaysPaye then curPAYE := 0; 
-        curTransAmount := curPAYE;//+curTransAmount2;
+        curPAYE := (curTaxCharged) - NhifRelief;
+        if not blnPaysPaye then curPAYE := 0;
+        curTransAmount := curPAYE - curReliefPersonal;
         if curPAYE < 0 then curTransAmount := 0;
         strTransDescription := 'P.A.Y.E';
         TGroup := 'STATUTORIES';
@@ -827,8 +827,8 @@ Codeunit 50015 "Payroll Processing"
                             if prTransactionCodes."Is Formulae" then begin
                                 strExtractedFrml := '';
                                 if Management then
-                                        strExtractedFrml := fnPureFormula(strEmpCode, intMonth, intYear, prTransactionCodes."Formula for Management Prov")
-                                    else
+                                    strExtractedFrml := fnPureFormula(strEmpCode, intMonth, intYear, prTransactionCodes."Formula for Management Prov")
+                                else
                                     strExtractedFrml := fnPureFormula(strEmpCode, intMonth, intYear, prTransactionCodes.Formulae);
 
                                 SpecialTransAmount := SpecialTransAmount + (fnFormulaResult(strExtractedFrml)); //Get the calculated amount
@@ -992,7 +992,7 @@ Codeunit 50015 "Payroll Processing"
         AccSchedMgt: Codeunit AccSchedManagement;
     begin
         // Results :=
-         AccSchedMgt.EvaluateExpression(true, strFormula, AccSchedLine, ColumnLayout, CalcAddCurr);
+        AccSchedMgt.EvaluateExpression(true, strFormula, AccSchedLine, ColumnLayout, CalcAddCurr);
     end;
 
 

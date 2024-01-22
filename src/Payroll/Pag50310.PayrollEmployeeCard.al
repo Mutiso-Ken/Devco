@@ -108,12 +108,7 @@ page 50310 "Payroll Employee Card."
                     ApplicationArea = All;
                     ShowMandatory = true;
                 }
-                field("Job Group"; "Job Group")
-                {
-                    ApplicationArea = All;
-                    Caption = 'Job Grade';
-                    ShowMandatory = true;
-                }
+     
                 field(Organization; Organization)
                 {
                     ApplicationArea = All;
@@ -133,10 +128,6 @@ page 50310 "Payroll Employee Card."
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Job scale"; "Job scale")
-                {
-                    ApplicationArea = All;
-                }
                 field("Payroll Categories"; "Payroll Categories")
                 {
                     ApplicationArea = All;
@@ -145,10 +136,6 @@ page 50310 "Payroll Employee Card."
                 {
                     ApplicationArea = All;
                 }
-                //field("New Scale"; "New Scale")
-                //{
-                //    ApplicationArea = All;
-                //}
                 field("Department Code"; "Department Code")
                 {
                     ApplicationArea = All;
@@ -553,7 +540,7 @@ page 50310 "Payroll Employee Card."
         UserSetup: Record "User Setup";
         ObjPayrollTransactions: Record "prPeriod Transactions.";
         varPeriodMonth: Integer;
-        Scale: Record "MSEA Salary Scales";
+        //Scale: Record "MSEA Salary Scales";
 
     local procedure RemoveTrans(EmpNo: Code[20]; PayrollPeriod: Date)
     begin
