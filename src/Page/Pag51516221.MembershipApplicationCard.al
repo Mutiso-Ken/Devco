@@ -564,7 +564,7 @@ Page 51516221 "Membership Application Card"
                                     ObjProductsApp.INIT;
                                     ObjProductsApp."Membership Applicaton No" := xRec."No.";
                                     ObjProductsApp."Applicant Name" := xRec.Name;
-                                    ObjProductsApp."Applicant Age" := xRec.Age;
+                                    // ObjProductsApp."Applicant Age" := xRec.Age;
                                     ObjProductsApp."Applicant Gender" := xRec.Gender;
                                     ObjProductsApp."Applicant ID" := xRec."ID No.";
                                     ObjProductsApp."Product Code" := AccoutTypes.Code;

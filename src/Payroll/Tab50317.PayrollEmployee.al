@@ -36,7 +36,7 @@ table 50317 "Payroll Employee."
         field(10; "No."; Code[50])
         {
             Editable = true;
-            NotBlank=true;
+            NotBlank = true;
         }
         field(11; Surname; Text[30])
         {
@@ -424,7 +424,7 @@ table 50317 "Payroll Employee."
         field(91; "Job Group"; Code[25])
         {
             //TableRelation = "Job Grades".Code;
-            
+
         }
         field(92; Category; Option)
         {
@@ -444,7 +444,7 @@ table 50317 "Payroll Employee."
             trigger OnValidate()
             begin
                 if ObjCust.Get("Payroll No") then begin
-               "Full Name" := ObjCust.Name;
+                    "Full Name" := ObjCust.Name;
                     // "Middle Name" := ObjCust."Middle Name";
                     // "First Name" := ObjCust."First Name";
 
@@ -555,7 +555,7 @@ table 50317 "Payroll Employee."
         field(115; "Job scale"; Code[10])
         {
             DataClassification = ToBeClassified;
-           // TableRelation = Scales.Scales;
+            // TableRelation = Scales.Scales;
             //ValidateTableRelation = false;
 
             trigger OnValidate()

@@ -26,11 +26,11 @@ page 50310 "Payroll Employee Card."
 
                 }
 
-                field("Full Name";"Full Name")
+                field("Full Name"; "Full Name")
                 {
                     ApplicationArea = All;
                 }
-                
+
                 field("Employee Email"; "Employee Email")
                 {
                     ApplicationArea = All;
@@ -482,7 +482,7 @@ page 50310 "Payroll Employee Card."
                 PromotedIsBig = true;
                 PromotedOnly = true;
                 RunObject = Page "Payroll Employee Cummulatives.";
-                RunPageLink = "No." = FIELD("No."); 
+                RunPageLink = "No." = FIELD("No.");
             }
             action("View PaySlip")
             {
@@ -553,7 +553,7 @@ page 50310 "Payroll Employee Card."
         UserSetup: Record "User Setup";
         ObjPayrollTransactions: Record "prPeriod Transactions.";
         varPeriodMonth: Integer;
-        Scale: Record "MSEA Salary Scales";
+    //Scale: Record "MSEA Salary Scales";
 
     local procedure RemoveTrans(EmpNo: Code[20]; PayrollPeriod: Date)
     begin

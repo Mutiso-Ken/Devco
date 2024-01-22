@@ -626,9 +626,9 @@ Table 51516220 "Membership Applications"
         field(68102; "E-Mail (Personal2)"; Text[50])
         {
         }
-        // field(68103; Age; Text[50])
-        // {
-        // }
+        field(68103; Age; Text[50])
+        {
+        }
         field(68104; "Copy of constitution"; Boolean)
         {
         }
