@@ -85,16 +85,17 @@ Page 51516221 "Membership Application Card"
                     Caption = 'County';
                     Editable = CityEditable;
                 }
-                field("Postal Code"; "Postal Code")
+                field("Country"; "Country/Region Code")
                 {
                     ApplicationArea = Basic;
-                    Editable = PostalCodeEditable;
+                    //Editable = PostalCodeEditable;
+                    Editable = CountryCodeEditable;
                     Importance = Promoted;
                 }
-                field(Address; Address)
+                field(Constituency; Address)
                 {
                     ApplicationArea = Basic;
-                    Caption = 'P.O Box';
+                    Caption = 'Constituency';
                     Editable = AddressEditable;
                 }
                 field(IPRS; IPRS)
@@ -120,6 +121,7 @@ Page 51516221 "Membership Application Card"
                 {
                     ApplicationArea = Basic;
                     Editable = PhoneEditable;
+                    Caption = 'Other Phone No.';
 
                     trigger OnValidate()
                     begin
@@ -955,6 +957,7 @@ Page 51516221 "Membership Application Card"
         NOkApp: Record "Member App Next Of kin";
         TitleEditable: Boolean;
         PostalCodeEditable: Boolean;
+        CountryCodeEditable: Boolean;
         HomeAddressPostalCodeEditable: Boolean;
         HomeTownEditable: Boolean;
         RecruitedEditable: Boolean;
@@ -1068,6 +1071,7 @@ Page 51516221 "Membership Application Card"
             VillageResidence := true;
             TitleEditable := true;
             PostalCodeEditable := true;
+            CountryCodeEditable := true;
             HomeAddressPostalCodeEditable := true;
             HomeTownEditable := true;
             RecruitedEditable := true;
@@ -1139,6 +1143,7 @@ Page 51516221 "Membership Application Card"
             VillageResidence := true;
             TitleEditable := false;
             PostalCodeEditable := true;
+            CountryCodeEditable := true;
             HomeAddressPostalCodeEditable := true;
             HomeTownEditable := true;
             RecruitedEditable := true;
@@ -1215,6 +1220,7 @@ Page 51516221 "Membership Application Card"
             VillageResidence := true;
             TitleEditable := false;
             PostalCodeEditable := true;
+            CountryCodeEditable := true;
             HomeAddressPostalCodeEditable := true;
             HomeTownEditable := true;
             RecruitedEditable := true;
@@ -1293,6 +1299,7 @@ Page 51516221 "Membership Application Card"
             VillageResidence := true;
             TitleEditable := false;
             PostalCodeEditable := true;
+            CountryCodeEditable := true;
             HomeAddressPostalCodeEditable := true;
             HomeTownEditable := true;
             RecruitedEditable := true;
@@ -1368,6 +1375,7 @@ Page 51516221 "Membership Application Card"
             VillageResidence := false;
             TitleEditable := false;
             PostalCodeEditable := false;
+            CountryCodeEditable := false;
             HomeAddressPostalCodeEditable := false;
             HomeTownEditable := false;
             RecruitedEditable := false;
@@ -1434,6 +1442,7 @@ Page 51516221 "Membership Application Card"
             VillageResidence := false;
             TitleEditable := false;
             PostalCodeEditable := false;
+            CountryCodeEditable := false;
             HomeAddressPostalCodeEditable := false;
             HomeTownEditable := false;
             RecruitedEditable := false;
@@ -1501,6 +1510,7 @@ Page 51516221 "Membership Application Card"
             VillageResidence := true;
             TitleEditable := true;
             PostalCodeEditable := true;
+            CountryCodeEditable := true;
             HomeAddressPostalCodeEditable := true;
             HomeTownEditable := true;
             RecruitedEditable := true;
