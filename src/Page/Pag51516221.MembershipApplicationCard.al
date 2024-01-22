@@ -98,6 +98,13 @@ Page 51516221 "Membership Application Card"
                     Caption = 'Constituency';
                     Editable = AddressEditable;
                 }
+                field(Location; Location)
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Physical Location';
+                    ShowMandatory = true;
+                    Editable = NameEditable;
+                }
                 field(IPRS; IPRS)
                 {
                     ApplicationArea = Basic;
@@ -151,11 +158,11 @@ Page 51516221 "Membership Application Card"
                         DAge := Dates.DetermineAge("Date of Birth", Today);
                     end;
                 }
-                field(Age; DAge)
-                {
-                    ApplicationArea = Basic;
-                    Editable = ageEditable;
-                }
+                // field(Age; DAge)
+                // {
+                //     ApplicationArea = Basic;
+                //     Editable = ageEditable;
+                // }
                 field(Gender; Gender)
                 {
                     Editable = GenderEditable;
@@ -188,13 +195,6 @@ Page 51516221 "Membership Application Card"
                 field("Recruiter Name"; "Recruiter Name")
                 {
                     ApplicationArea = Basic;
-                    Editable = NameEditable;
-                }
-                field(Location; Location)
-                {
-                    ApplicationArea = Basic;
-                    Caption = 'Physical Location';
-                    ShowMandatory = true;
                     Editable = NameEditable;
                 }
                 field("Received 1 Copy Of ID"; "Received 1 Copy Of ID")
