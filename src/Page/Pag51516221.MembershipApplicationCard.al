@@ -113,7 +113,7 @@ Page 51516221 "Membership Application Card"
                             Error('Mobile No. Can not be more or less than 10 Characters');
                     end;
                 }
-                field("Mobile Phone No 2"; "Mobile No. 2")
+                field("Other Phone No."; "Mobile No. 2")
                 {
                     ApplicationArea = Basic;
                     Editable = PhoneEditable;
