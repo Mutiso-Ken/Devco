@@ -560,32 +560,32 @@ table 50317 "Payroll Employee."
 
             trigger OnValidate()
             begin
-                MSEASalaryScales.Reset;
-                // MSEASalaryScales.SetRange(MSEASalaryScales.Grade, "Job Group");
-                MSEASalaryScales.SetRange(MSEASalaryScales.Scale, "Job scale");
-                if MSEASalaryScales.FindFirst then begin
-                    "Basic Pay" := MSEASalaryScales."Basic Pay";
+                // MSEASalaryScales.Reset;
+                // // MSEASalaryScales.SetRange(MSEASalaryScales.Grade, "Job Group");
+                // MSEASalaryScales.SetRange(MSEASalaryScales.Scale, "Job scale");
+                // if MSEASalaryScales.FindFirst then begin
+                //     "Basic Pay" := MSEASalaryScales."Basic Pay";
 
-                end;
-                Modify;
+                // end;
+                // Modify;
 
-                PayrollEmployeededucation.Reset;
+                // PayrollEmployeededucation.Reset;
 
-                PayrollEmployeededucation.SetRange(PayrollEmployeededucation."Transaction Code", 'PSLF');
-                if PayrollEmployeededucation.Find('-') then begin
-                    if scad.Get("No.") then
-                        PayrollEmployeededucation.Amount := 1000;//("Basic Pay"/100)*scad."Basic Pay";
-                    PayrollEmployeededucation.Modify;
-                end;
+                // PayrollEmployeededucation.SetRange(PayrollEmployeededucation."Transaction Code", 'PSLF');
+                // if PayrollEmployeededucation.Find('-') then begin
+                //     if scad.Get("No.") then
+                //         PayrollEmployeededucation.Amount := 1000;//("Basic Pay"/100)*scad."Basic Pay";
+                //     PayrollEmployeededucation.Modify;
+                // end;
 
 
             end;
         }
-        field(116; "New Scale"; Integer)
-        {
-            DataClassification = ToBeClassified;
-            TableRelation = "MSEA Salary Scales";
-        }
+        // field(116; "New Scale"; Integer)
+        // {
+        //     DataClassification = ToBeClassified;
+        //     TableRelation = "MSEA Salary Scales";
+        // }
         field(117; "Next Scale"; Integer)
         {
             DataClassification = ToBeClassified;
@@ -672,7 +672,7 @@ table 50317 "Payroll Employee."
         empl: Record "Payroll Employee.";
         // hrset: Record "HR Setup";
         Dates: Codeunit "Dates Calculation";
-        MSEASalaryScales: Record "MSEA Salary Scales";
+        // MSEASalaryScales: Record "MSEA Salary Scales";
         prperiod: Record "prPeriod Transactions.";
         // pen: Record "Pension Test";
         PrTrans2: Record "Payroll Employee Transactions.";

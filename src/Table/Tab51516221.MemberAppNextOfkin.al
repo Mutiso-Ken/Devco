@@ -40,11 +40,16 @@ Table 51516221 "Member App Next Of kin"
         field(12; "%Allocation"; Decimal)
         {
             trigger OnValidate()
+            var
+                Text000: Label 'Total Allocation should not  be greater than 100 %';
             begin
                 SetAutoCalcFields("Total Allocation");
-                //CalcFields("Total Allocation");
-                if "Total Allocation" > 100 then
-                    Error(' Total allocation should not  be greater than 100 %');
+                CalcFields("Total Allocation");
+                if "Total Allocation" + "%Allocation" > 100 then
+                    // Dialog.Error('Total allocation should not  be greater than 100 %');
+                    // Add an pop up message
+                    ERROR(Text000);
+
             end;
         }
         field(13; "Total Allocation"; Decimal)
