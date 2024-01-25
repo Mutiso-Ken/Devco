@@ -3,6 +3,7 @@ Page 51516285 "Loan Collateral Setup"
 {
     PageType = List;
     SourceTable = "Loan Collateral Set-up";
+    
 
     layout
     {

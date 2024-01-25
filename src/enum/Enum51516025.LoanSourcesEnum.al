@@ -2,15 +2,16 @@ enum 51516025 "LoanSourcesEnum"
 {
     Extensible = true;
 
-    value(0; BOSA)
+    value(0; " ") { }
+    value(1; BOSA)
     {
         Caption = 'BOSA';
     }
-    value(1; FOSA)
+    value(2; FOSA)
     {
         Caption = 'FOSA';
     }
-    value(2; MICRO)
+    value(3; MICRO)
     {
         Caption = 'MICRO';
     }

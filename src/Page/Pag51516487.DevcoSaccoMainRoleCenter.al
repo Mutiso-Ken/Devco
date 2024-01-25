@@ -121,7 +121,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                 Caption = 'Chart of Accounts';
                 RunObject = Page "Chart of Accounts";
                 ToolTip = 'Open the chart of accounts.';
-                 Visible = false;
+                Visible = false;
             }
             action("Bank Accounts List")
             {
@@ -360,19 +360,19 @@ Page 51516487 "Devco Sacco Main Role Center"
                         Image = Report;
                         RunObject = report "Deposit Return SASRA";
                     }
-                    action("Agency Returns-SASRA")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Agency Report';
-                        Visible = true;
-                        RunObject = report "Agency Report-SASRA";
-                    }
-                    // action("Loans Defaulter Aging-SASRA")
+                    // action("Agency Returns-SASRA")
                     // {
                     //     ApplicationArea = Basic, Suite;
-                    //     Caption = 'Loans Defaulter Aging';
-                    //     RunObject = report "Loans Defaulter Aging - SASRA";
+                    //     Caption = 'Agency Report';
+                    //     Visible = true;
+                    //     RunObject = report "Agency Report-SASRA";
                     // }
+                    action("Loans Defaulter Aging-SASRA")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Loans Defaulter Aging';
+                        RunObject = report "Loans Defaulter Aging - SASRA";
+                    }
 
 
                     action("Loans Provisioning Summary-SASRA")
@@ -1021,6 +1021,12 @@ Page 51516487 "Devco Sacco Main Role Center"
                             RunObject = report "Membership Closure Report";
 
                         }
+                        action("Member Next Of Kin Details")
+                        {
+                            ApplicationArea = All;
+
+                            RunObject = report "Next of Kin Report";
+                        }
 
                     }
 
@@ -1119,7 +1125,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                         Caption = 'Bosa Receipts';
                         RunObject = page "BOSA Receipts List";
                     }
-               
+
 
                     //"Receipts list-BOSA"
                     action(" Posted Bosa Receipt")
@@ -1361,7 +1367,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                 group("Defaulter's Management")
                 {
                     Caption = 'Defaulter Management';
-                    //Visible = false;
+                    Visible = false;
 
                     group(loanRecovery)
                     {
@@ -1545,24 +1551,24 @@ Page 51516487 "Devco Sacco Main Role Center"
                             Image = Setup;
                             RunObject = report "Generate Monthly Advice";
                         }
-                        action("DataSheetMainReport")
-                        {
-                            Caption = 'Data Sheet Main Report';
-                            Image = Report;
-                            RunObject = report "Data Sheet Main";
-                        }
-                        action("DataSheetADJDeposits")
-                        {
-                            Caption = 'Data Sheet ADJ Deposits';
-                            Image = Report;
-                            RunObject = report "Data Sheet ADJ Deposits";
-                        }
-                        action("DataSheetADJLoans")
-                        {
-                            Caption = 'Data Sheet ADJ Loans';
-                            Image = Report;
-                            RunObject = report "Data Sheet ADJ Loan";
-                        }
+                        // action("DataSheetMainReport")
+                        // {
+                        //     Caption = 'Data Sheet Main Report';
+                        //     Image = Report;
+                        //     RunObject = report "Data Sheet Main";
+                        // }
+                        // action("DataSheetADJDeposits")
+                        // {
+                        //     Caption = 'Data Sheet ADJ Deposits';
+                        //     Image = Report;
+                        //     RunObject = report "Data Sheet ADJ Deposits";
+                        // }
+                        // action("DataSheetADJLoans")
+                        // {
+                        //     Caption = 'Data Sheet ADJ Loans';
+                        //     Image = Report;
+                        //     RunObject = report "Data Sheet ADJ Loan";
+                        //}
                     }
                     group(MonthlyInterestProcessing)
                     {
@@ -2004,223 +2010,223 @@ Page 51516487 "Devco Sacco Main Role Center"
             group(CloudPesa)
             {
                 Caption = 'Alternative Channels';
-                group(CloudPesaActivities)
-                {
-                    Caption = 'Mobile Banking';
+                // group(CloudPesaActivities)
+                // {
+                //     Caption = 'Mobile Banking';
 
-                    ToolTip = 'Mobile Banking .';
+                //     ToolTip = 'Mobile Banking .';
 
-                    action("CloudPesaApplications")
-                    {
-                        Caption = 'M-Banking Applications';
-                        Image = Calls;
-                        RunObject = page "SurePESA Appplications List";
-                        ToolTip = 'Membership Applicaton for cloudpesa.';
-                    }
-                    action("RegisteredCloudPesaMembers")
-                    {
-                        Caption = 'M-Banking Registered Members';
-                        Image = PostedReceipt;
-                        RunObject = page "SurePESA Applications";
-                        ToolTip = 'Member Receipts for payments done.';
+                //     action("CloudPesaApplications")
+                //     {
+                //         Caption = 'M-Banking Applications';
+                //         Image = Calls;
+                //         RunObject = page "SurePESA Appplications List";
+                //         ToolTip = 'Membership Applicaton for cloudpesa.';
+                //     }
+                //     action("RegisteredCloudPesaMembers")
+                //     {
+                //         Caption = 'M-Banking Registered Members';
+                //         Image = PostedReceipt;
+                //         RunObject = page "SurePESA Applications";
+                //         ToolTip = 'Member Receipts for payments done.';
 
-                    }
-                    action("M-Banking PIN Reset")
-                    {
-                        Caption = 'M-Banking PIN Reset';
-                        Image = PostedReceipt;
-                        RunObject = page "CloudPESA PIN RESET";
-                        ToolTip = 'Member Receipts for payments done.';
+                //     }
+                //     action("M-Banking PIN Reset")
+                //     {
+                //         Caption = 'M-Banking PIN Reset';
+                //         Image = PostedReceipt;
+                //         RunObject = page "CloudPESA PIN RESET";
+                //         ToolTip = 'Member Receipts for payments done.';
 
-                    }
+                //     }
 
-                    action("SurePesaTransactions")
-                    {
-                        Caption = 'M-Banking Transactions';
-                        Image = PostedReceipt;
-                        RunObject = page "SUREPESA Transactions";
-                        ToolTip = 'Surepesa Transactions.';
+                //     action("SurePesaTransactions")
+                //     {
+                //         Caption = 'M-Banking Transactions';
+                //         Image = PostedReceipt;
+                //         RunObject = page "SUREPESA Transactions";
+                //         ToolTip = 'Surepesa Transactions.';
 
-                    }
-                    action("Mobile Loans")
-                    {
-                        Caption = 'Mobile Loans';
-                        Image = PostedReceipt;
-                        RunObject = page "Mobile Loans";
-                        ToolTip = 'View Mobile Loans List.';
-                    }
+                //     }
+                //     action("Mobile Loans")
+                //     {
+                //         Caption = 'Mobile Loans';
+                //         Image = PostedReceipt;
+                //         RunObject = page "Mobile Loans";
+                //         ToolTip = 'View Mobile Loans List.';
+                //     }
 
-                }
+                // }
 
-                group("Agency Banking")
-                {
-                    Caption = 'Agency Banking';
+                // group("Agency Banking")
+                // {
+                //     Caption = 'Agency Banking';
 
-                    ToolTip = 'Agency Banking.';
+                //     ToolTip = 'Agency Banking.';
 
-                    action("Agency Banking Application")
-                    {
-                        Caption = 'Agency Banking Application';
-                        Image = AgreementQuote;
-                        RunObject = page "Agency Members";
+                //     action("Agency Banking Application")
+                //     {
+                //         Caption = 'Agency Banking Application';
+                //         Image = AgreementQuote;
+                //         RunObject = page "Agency Members";
 
-                    }
+                //     }
 
-                    action("Agency Member")
-                    {
-                        Caption = 'Agency Banking Members';
-                        Image = AgreementQuote;
-                        RunObject = page "Agency Members";
+                //     action("Agency Member")
+                //     {
+                //         Caption = 'Agency Banking Members';
+                //         Image = AgreementQuote;
+                //         RunObject = page "Agency Members";
 
-                    }
+                //     }
 
-                    action("Agency Transactions")
-                    {
-                        Caption = 'Agency Transactions';
-                        Image = AgreementQuote;
-                        RunObject = page "Agent Transactions";
-                        ToolTip = 'Agency Banking Transactions.';
+                //     action("Agency Transactions")
+                //     {
+                //         Caption = 'Agency Transactions';
+                //         Image = AgreementQuote;
+                //         RunObject = page "Agent Transactions";
+                //         ToolTip = 'Agency Banking Transactions.';
 
-                    }
+                //     }
 
-                    group(AgentsManagements)
-                    {
-                        Caption = 'Agents Managements';
+                //     group(AgentsManagements)
+                //     {
+                //         Caption = 'Agents Managements';
 
-                        action(AgentsApplication)
-                        {
-                            Caption = 'Agents Application';
-                            Image = AgreementQuote;
-                            RunObject = page "Agent applications List";
+                //         action(AgentsApplication)
+                //         {
+                //             Caption = 'Agents Application';
+                //             Image = AgreementQuote;
+                //             RunObject = page "Agent applications List";
 
-                        }
-
-
-                        action(ApprovedAgents)
-                        {
-                            Caption = 'Approved Agents';
-                            Image = AgreementQuote;
-                            RunObject = page "Approved - Agent applications";
-
-                        }
-
-                    }
-
-                }
-
-                //.............................................................................................
-
-                group("Paybill Management")
-                {
-                    Caption = 'Paybill Deposits';
-
-                    ToolTip = 'Manage Paybill Deposits.';
-                    action("All Paybill Deposits")
-                    {
-                        Caption = 'All Paybill Transactions';
-                        Image = PostedReceipt;
-                        RunObject = page "PAYBILL Transactions";
-                        ToolTip = 'View Paybill Deposits.';
-
-                    }
-
-                    action("Pending Paybill Deposits")
-                    {
-                        Caption = 'Pending Paybill Transactions';
-                        Image = PostedReceipt;
-                        RunObject = page pendingpaybill;
-                        ToolTip = 'View Paybill Deposits.';
-                        visible = false;
-                    }
-
-                    action("Failed Paybill Deposits")
-                    {
-                        Caption = 'Failed Paybill Transactions';
-                        Image = PostedReceipt;
-                        RunObject = page FailedPaybill;
-                        ToolTip = 'View Failed Paybill Deposits.';
-                        visible = false;
-
-                    }
-
-                    action("Paybill Import")
-                    {
-                        Caption = 'Import Paybill';
-                        Image = PostedReceipt;
-                        RunObject = page "CloudPESA Paybill Imports";
-                        ToolTip = 'Import Paybill Deposits from M-PESA Portal.';
-                        visible = false;
-
-                    }
+                //         }
 
 
-                }
+                //         action(ApprovedAgents)
+                //         {
+                //             Caption = 'Approved Agents';
+                //             Image = AgreementQuote;
+                //             RunObject = page "Approved - Agent applications";
+
+                //         }
+
+                //     }
+
+                // }
+
+                // //.............................................................................................
+
+                // group("Paybill Management")
+                // {
+                //     Caption = 'Paybill Deposits';
+
+                //     ToolTip = 'Manage Paybill Deposits.';
+                //     action("All Paybill Deposits")
+                //     {
+                //         Caption = 'All Paybill Transactions';
+                //         Image = PostedReceipt;
+                //         RunObject = page "PAYBILL Transactions";
+                //         ToolTip = 'View Paybill Deposits.';
+
+                //     }
+
+                //     action("Pending Paybill Deposits")
+                //     {
+                //         Caption = 'Pending Paybill Transactions';
+                //         Image = PostedReceipt;
+                //         RunObject = page pendingpaybill;
+                //         ToolTip = 'View Paybill Deposits.';
+                //         visible = false;
+                //     }
+
+                //     action("Failed Paybill Deposits")
+                //     {
+                //         Caption = 'Failed Paybill Transactions';
+                //         Image = PostedReceipt;
+                //         RunObject = page FailedPaybill;
+                //         ToolTip = 'View Failed Paybill Deposits.';
+                //         visible = false;
+
+                //     }
+
+                //     action("Paybill Import")
+                //     {
+                //         Caption = 'Import Paybill';
+                //         Image = PostedReceipt;
+                //         RunObject = page "CloudPESA Paybill Imports";
+                //         ToolTip = 'Import Paybill Deposits from M-PESA Portal.';
+                //         visible = false;
+
+                //     }
 
 
-                //..............................................................................................
-                group("ATM Banking")
-                {
-                    Caption = 'ATM Banking';
-                    action(ATMApplication)
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'ATM Card Application';
-                        //RunObject = page "ATM Cards Application - New";
-
-                    }
-                    action(ATMProcessed)
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Processed ATM Cards';
-                        //RunObject = page "ATM Cards Appl. - Processed";
-
-                    }
-                    action(ATMTransactionDetails)
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'ATM Transaction Details';
-                        //RunObject = page "Atm Transaction Details";
-
-                    }
-                    action(ATMRequestBatch)
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'ATM Card Request Batch List';
-                        //RunObject = page "ATM Card Request Batch List";
-
-                    }
-                    action(ATMBatchReceiptsBatch)
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'ATM Card Receipt Batch List';
-                        //RunObject = page "ATM Card Receipt Batch List";
-
-                    }
-                    action("ATM Logs Entries")
-                    {
-                        Caption = 'ATM Log Entries';
-                        Image = Receipt;
-                        RunObject = page "ATM Log Entries";
-
-                    }
-
-                    action("ATM Transactionss")
-                    {
-                        Caption = 'ATM Transactions';
-                        Image = Receipt;
-                        RunObject = page "ATM Transactions";
-
-                    }
-                    action("ABC ATM Transactionss")
-                    {
-                        Caption = 'ABC ATM Transactions';
-                        Image = Receipt;
-                        RunObject = page "ABC ATM Transactions";
-
-                    }
+                // }
 
 
-                }
+                // //..............................................................................................
+                // group("ATM Banking")
+                // {
+                //     Caption = 'ATM Banking';
+                //     action(ATMApplication)
+                //     {
+                //         ApplicationArea = Basic, Suite;
+                //         Caption = 'ATM Card Application';
+                //         //RunObject = page "ATM Cards Application - New";
+
+                //     }
+                //     action(ATMProcessed)
+                //     {
+                //         ApplicationArea = Basic, Suite;
+                //         Caption = 'Processed ATM Cards';
+                //         //RunObject = page "ATM Cards Appl. - Processed";
+
+                //     }
+                //     action(ATMTransactionDetails)
+                //     {
+                //         ApplicationArea = Basic, Suite;
+                //         Caption = 'ATM Transaction Details';
+                //         //RunObject = page "Atm Transaction Details";
+
+                //     }
+                //     action(ATMRequestBatch)
+                //     {
+                //         ApplicationArea = Basic, Suite;
+                //         Caption = 'ATM Card Request Batch List';
+                //         //RunObject = page "ATM Card Request Batch List";
+
+                //     }
+                //     action(ATMBatchReceiptsBatch)
+                //     {
+                //         ApplicationArea = Basic, Suite;
+                //         Caption = 'ATM Card Receipt Batch List';
+                //         //RunObject = page "ATM Card Receipt Batch List";
+
+                //     }
+                //     action("ATM Logs Entries")
+                //     {
+                //         Caption = 'ATM Log Entries';
+                //         Image = Receipt;
+                //         RunObject = page "ATM Log Entries";
+
+                //     }
+
+                //     action("ATM Transactionss")
+                //     {
+                //         Caption = 'ATM Transactions';
+                //         Image = Receipt;
+                //         RunObject = page "ATM Transactions";
+
+                //     }
+                //     action("ABC ATM Transactionss")
+                //     {
+                //         Caption = 'ABC ATM Transactions';
+                //         Image = Receipt;
+                //         RunObject = page "ABC ATM Transactions";
+
+                //     }
+
+
+                // }
                 group("SMS Messages")
                 {
                     Caption = 'SMS Messages';
@@ -2245,37 +2251,37 @@ Page 51516487 "Devco Sacco Main Role Center"
 
 
                 }
-                group("Alternative Channels Setups")
+                // group("Alternative Channels Setups")
 
-                {
-                    Caption = 'Alternative Channels Setup';
+                // {
+                //     Caption = 'Alternative Channels Setup';
 
-                    ToolTip = 'SMS Messages.';
-                    action("M-Banking Charges Setup")
-                    {
-                        Caption = 'M-Banking Charges Setup';
-                        Image = PostedReceipt;
-                        RunObject = page "SMS Messages";
-                        ToolTip = 'Sent SMS.';
-                    }
+                //     ToolTip = 'SMS Messages.';
+                //     action("M-Banking Charges Setup")
+                //     {
+                //         Caption = 'M-Banking Charges Setup';
+                //         Image = PostedReceipt;
+                //         RunObject = page "SMS Messages";
+                //         ToolTip = 'Sent SMS.';
+                //     }
 
-                    action("Agency Banking Charges")
-                    {
-                        Caption = 'Agency Banking Charges Setup';
-                        Image = PostedReceipt;
-                        RunObject = page "Bulk SMS Header List";
-                        ToolTip = 'Sent SMS.';
+                //     action("Agency Banking Charges")
+                //     {
+                //         Caption = 'Agency Banking Charges Setup';
+                //         Image = PostedReceipt;
+                //         RunObject = page "Bulk SMS Header List";
+                //         ToolTip = 'Sent SMS.';
 
-                    }
-                    action("ATM  Charges")
-                    {
-                        Caption = 'ATM Charges Setups';
-                        Image = PostedReceipt;
-                        RunObject = page "Bulk SMS Header List";
-                        ToolTip = 'Sent SMS.';
+                //     }
+                //     action("ATM  Charges")
+                //     {
+                //         Caption = 'ATM Charges Setups';
+                //         Image = PostedReceipt;
+                //         RunObject = page "Bulk SMS Header List";
+                //         ToolTip = 'Sent SMS.';
 
-                    }
-                }
+                //     }
+                // }
 
             }
 
@@ -3136,11 +3142,31 @@ Page 51516487 "Devco Sacco Main Role Center"
                         RunObject = report "Payroll Employees Report.";
                         ApplicationArea = All;
                     }
-                    // action("PayrollSummary")
-                    // {
-                    //     RunObject = report "Payroll Summary";
-                    //     ApplicationArea = all;
-                    // }
+                    action("Payroll allowances Report")
+                    {
+                        RunObject = report "payroll Allowances Report.";
+                        ApplicationArea = all;
+                    }
+                    action("payroll Deductions Report.")
+                    {
+                        RunObject = report "payroll Deductions Report.";
+                        ApplicationArea = All;
+                    }
+                    action("Payroll Summary")
+                    {
+                        RunObject = report "Payroll Summary";
+                        ApplicationArea = All;
+                    }
+                    action("Payroll Payee")
+                    {
+                        RunObject = report "Paye Schedule W..";
+                        ApplicationArea = All;
+                    }
+                    action("P9 Report")
+                    {
+                        RunObject = report "P9Report";
+                        ApplicationArea = All;
+                    }
 
 
                 }

@@ -1134,17 +1134,7 @@ Page 51516462 "Devco Sacco"
                         RunObject = Page "Periodics Processing-Tea";
                     }
 
-                    action("Process Tea Bonus")
-                    {
-                        Image = Receipt;
-                        RunObject = Page TeaBonusPosting;
-                    }
-
-                    action("Process Milk")
-                    {
-                        Image = Receipt;
-                        RunObject = Page MilkPosting;
-                    }
+                 
 
                     action("Generate FOSA Savings Interest")
 

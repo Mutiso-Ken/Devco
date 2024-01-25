@@ -2,7 +2,7 @@
 Page 51516258 "Posted Loans Batch Card"
 {
     DeleteAllowed = false;
-    Editable = false;
+    // Editable = false;
     InsertAllowed = false;
     PageType = Card;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
@@ -32,6 +32,11 @@ Page 51516258 "Posted Loans Batch Card"
             {
                 ApplicationArea = Basic;
                 Editable = false;
+            }
+            field(Posted; Posted)
+            {
+                Editable = true;
+                ApplicationArea = Basic;
             }
             field("Total Loan Amount"; "Total Loan Amount")
             {

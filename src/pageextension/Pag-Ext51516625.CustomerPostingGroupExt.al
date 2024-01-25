@@ -2,16 +2,16 @@ pageextension 51516625 "Customer Posting Group Ext" extends "Customer Posting Gr
 {
     layout
     {
-        addfirst(Control1)
-        {
+        // addfirst(Control1)
+        // {
 
-            field("Account Type"; Rec."Account Type")
-            {
+        //     field("Account Type"; Rec."Account Type")
+        //     {
 
-            }
+        //     }
 
 
-        }
+        // }
         modify("View All Accounts on Lookup")
         {
             Visible = false;

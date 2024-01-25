@@ -519,6 +519,7 @@ Page 51516256 "Loan Disburesment Batch Card"
                     GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
                     IF GenJournalLine.Amount <> 0 THEN
                         GenJournalLine.INSERT;
+                    VarAmounttoDisburse := VarAmounttoDisburse - PCharges.Amount;
                 UNTIL PCharges.NEXT = 0;
             END;
 

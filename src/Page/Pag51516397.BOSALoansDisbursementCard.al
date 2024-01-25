@@ -968,11 +968,15 @@ Page 51516397 "BOSA Loans Disbursement Card"
                 GenJournalLine."External Document No." := "Loan  No.";
                 GenJournalLine."Posting Date" := DirbursementDate;
                 GenJournalLine.Description := PCharges.Description + '-' + Format("Loan  No.");
+
                 IF PCharges."Use Perc" = TRUE THEN BEGIN
                     GenJournalLine.Amount := ("Approved Amount" * (PCharges.Percentage / 100)) * -1
                 END ELSE
                     IF PCharges."Use Perc" = false then begin
-                        GenJournalLine.Amount := PCharges.Amount * -1;
+                        if ("Approved Amount" >= 1000000) and (PCharges."Above 1M" = true) then
+                            GenJournalLine.Amount := PCharges.Amount2 * -1
+                        else
+                                GenJournalLine.Amount := PCharges.Amount * -1
                     end;
                 GenJournalLine.VALIDATE(GenJournalLine.Amount);
                 // GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";

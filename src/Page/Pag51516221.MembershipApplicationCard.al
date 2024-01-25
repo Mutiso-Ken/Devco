@@ -1770,22 +1770,7 @@ Page 51516221 "Membership Application Card"
         NextOfKinApp.SetRange(NextOfKinApp."Account No", "No.");
         if NextOfKinApp.Find('-') then begin
             repeat
-                //........................................FOSA
-                // NextofKinFOSA.Init;
-                // NextofKinFOSA."Account No" := AcctNo;
-                // NextofKinFOSA.Name := NextOfKinApp.Name;
-                // NextofKinFOSA.Relationship := NextOfKinApp.Relationship;
-                // NextofKinFOSA.Beneficiary := NextOfKinApp.Beneficiary;
-                // NextofKinFOSA."Date of Birth" := NextOfKinApp."Date of Birth";
-                // NextofKinFOSA.Address := NextOfKinApp.Address;
-                // NextofKinFOSA.Telephone := NextOfKinApp.Telephone;
-                // NextofKinFOSA.Fax := NextOfKinApp.Fax;
-                // NextofKinFOSA.Email := NextOfKinApp.Email;
-                // NextofKinFOSA."ID No." := NextOfKinApp."ID No.";
-                // NextofKinFOSA."%Allocation" := NextOfKinApp."%Allocation";
-                // NextofKinFOSA.Type := NextOfKin.Type;
-                // NextofKinFOSA.Insert;
-                //......................................BOSA
+                // ............BOSA
                 NextofKinBOSA.Init;
                 NextofKinBOSA."Account No" := AcctNo;
                 NextofKinBOSA.Name := NextOfKinApp.Name;

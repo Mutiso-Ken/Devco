@@ -42,7 +42,7 @@ Table 51516221 "Member App Next Of kin"
             trigger OnValidate()
             begin
                 SetAutoCalcFields("Total Allocation");
-                //CalcFields("Total Allocation");
+                CalcFields("Total Allocation");
                 if "Total Allocation" > 100 then
                     Error(' Total allocation should not  be greater than 100 %');
             end;

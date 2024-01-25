@@ -258,7 +258,7 @@ tableextension 51516079 "CustomerExt" extends Customer
         {
             CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
                                                                    "Transaction Type" = const("Shares Capital"),
-                                                                   "Posting Date" = field("Date Filter"), "Posting Date" = field("Date Filter"), Reversed = const(false)));
+                                                                   "Posting Date" = field("Date Filter"), Reversed = const(false)));
             Editable = false;
             FieldClass = FlowField;
 
@@ -266,7 +266,8 @@ tableextension 51516079 "CustomerExt" extends Customer
         field(68043; "Registration Fee Paid"; Decimal)
         {
             CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
-                                                                           "Transaction Type" = const("Registration Fee"), "Posting Date" = field("Date Filter"), Reversed = const(false)));
+                                                                           "Transaction Type" = const("Registration Fee"), 
+                                                                           "Posting Date" = field("Date Filter"), Reversed = const(false)));
             Editable = false;
             FieldClass = FlowField;
         }

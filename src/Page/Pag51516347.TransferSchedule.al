@@ -37,11 +37,13 @@ Page 51516347 "Transfer Schedule"
                 field("Charge Type"; "Charge Type")
                 {
                     ApplicationArea = Basic;
+                    Visible = false;
                 }
                 field("Charge Amount"; "Charge Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
+                    Visible = false;
                 }
                 field(Loan; Loan)
                 {

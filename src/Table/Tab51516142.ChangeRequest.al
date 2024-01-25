@@ -23,8 +23,8 @@ Table 51516142 "Change Request"
         }
         field(2; Type; Option)
         {
-            OptionCaption = ',BOSA Change';
-            OptionMembers = " ","M-Banking Change","ATM Change","BOSA Change","FOSA Change";
+            // OptionCaption = ',BOSA Change';
+            OptionMembers = "BOSA Change";
             InitValue = "BOSA Change";
             trigger OnValidate()
             begin
@@ -33,52 +33,52 @@ Table 51516142 "Change Request"
         }
         field(3; "Account No"; Code[50])
         {
-            TableRelation = if (Type = const("BOSA Change")) Customer."No." where("Customer Posting Group" = filter('MEMBER'))
-            else
-            if (Type = const("M-Banking Change")) Vendor."No."
-            else
-            if (Type = const("ATM Change")) Vendor."No."
-            else
-            if (Type = const("FOSA Change")) Vendor."No.";
+            TableRelation = Customer."No." where("Customer Posting Group" = filter('MEMBER'));
+            // else
+            // if (Type = const("M-Banking Change")) Vendor."No."
+            // else
+            // if (Type = const("ATM Change")) Vendor."No."
+            // else
+            // if (Type = const("FOSA Change")) Vendor."No.";
             trigger OnValidate()
             begin
                 Clear(Picture);
-                if ((Type = Type::"M-Banking Change") or (Type = Type::"ATM Change") or (Type = Type::"FOSA Change")) then begin
-                    vend.Reset;
-                    vend.SetRange(vend."No.", "Account No");
-                    if vend.Find('-') then begin
-                        Name := vend.Name;
-                        Branch := vend."Global Dimension 2 Code";
-                        Address := vend.Address;
-                        Picture := vend.Image;
-                        signinature := vend.Signature;
-                        Email := vend."E-Mail";
-                        "Mobile No" := vend."Mobile Phone No";
-                        "Phone No." := vend."Phone No.";
-                        "Mpesa mobile No." := vend."MPESA Mobile No";
-                        "SMS Notification" := vend."Sms Notification";
-                        "Mobile No" := vend."Mobile Phone No";
-                        "ID No" := vend."ID No.";
-                        "Personal No" := vend."Employer P/F";
-                        "Account Type" := vend."Account Type";
-                        City := vend.City;
-                        Section := vend.Section;
-                        "Card Expiry Date" := vend."Card Expiry Date";
-                        "Card No" := vend."Card No.";
-                        "Card Valid From" := vend."Card Valid From";
-                        "Card Valid To" := vend."Card Valid To";
-                        "Marital Status" := vend."Marital Status";
-                        "Reason for change" := vend."Reason For Blocking Account";
-                        Blocked := vend.Blocked;
-                        "Blocked (New)" := vend.Blocked;
-                        "Status." := vend.Status;
-                        "Status.(New)" := vend.Status;
+                // if ((Type = Type::"M-Banking Change") or (Type = Type::"ATM Change") or (Type = Type::"FOSA Change")) then begin
+                //     vend.Reset;
+                //     vend.SetRange(vend."No.", "Account No");
+                //     if vend.Find('-') then begin
+                //         Name := vend.Name;
+                //         Branch := vend."Global Dimension 2 Code";
+                //         Address := vend.Address;
+                //         Picture := vend.Image;
+                //         signinature := vend.Signature;
+                //         Email := vend."E-Mail";
+                //         "Mobile No" := vend."Mobile Phone No";
+                //         "Phone No." := vend."Phone No.";
+                //         "Mpesa mobile No." := vend."MPESA Mobile No";
+                //         "SMS Notification" := vend."Sms Notification";
+                //         "Mobile No" := vend."Mobile Phone No";
+                //         "ID No" := vend."ID No.";
+                //         "Personal No" := vend."Employer P/F";
+                //         "Account Type" := vend."Account Type";
+                //         City := vend.City;
+                //         Section := vend.Section;
+                //         "Card Expiry Date" := vend."Card Expiry Date";
+                //         "Card No" := vend."Card No.";
+                //         "Card Valid From" := vend."Card Valid From";
+                //         "Card Valid To" := vend."Card Valid To";
+                //         "Marital Status" := vend."Marital Status";
+                //         "Reason for change" := vend."Reason For Blocking Account";
+                //         Blocked := vend.Blocked;
+                //         "Blocked (New)" := vend.Blocked;
+                //         "Status." := vend.Status;
+                //         "Status.(New)" := vend.Status;
 
 
-                    end;
+                //     end;
 
 
-                end;
+                // end;
                 if Type = Type::"BOSA Change" then begin
                     Memb.Reset;
                     Memb.SetRange(Memb."No.", "Account No");

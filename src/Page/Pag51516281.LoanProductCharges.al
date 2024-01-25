@@ -26,6 +26,11 @@ Page 51516281 "Loan Product Charges"
                 {
                     ApplicationArea = Basic;
                 }
+                field(Amount2; Amount2)
+                {
+                    Caption = 'Loan Drsbursement Fee Above 1M';
+                    ApplicationArea = Basic;
+                }
                 field(Percentage; Percentage)
                 {
                     ApplicationArea = Basic;
@@ -34,7 +39,8 @@ Page 51516281 "Loan Product Charges"
                 {
                     ApplicationArea = Basic;
                 }
-                field("Balancing G/L Account"; "Balancing G/L Account")
+
+                field("Above 1M"; "Above 1M")
                 {
                     ApplicationArea = basic;
                 }

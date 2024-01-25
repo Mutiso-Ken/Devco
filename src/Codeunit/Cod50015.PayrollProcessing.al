@@ -170,8 +170,9 @@ Codeunit 50015 "Payroll Processing"
         fnInitialize;
         fnGetJournalDet(strEmpCode);
         //PayrollType
+        Message('StrEmpCode %1', strEmpCode);
         PayrollType := PayrollCode;
-
+        Message('PayrollType %1', PayrollType);
         // if EmployeeP.Get(strEmpCode) then
         //     Management := EmployeeP."Managerial Position";
 
@@ -579,6 +580,16 @@ Codeunit 50015 "Payroll Processing"
             HrEmployee.CalcFields(HrEmployee."Cummulative NHIF");
         SFR := ROUND(HrEmployee."Cummulative NHIF" * 0.15, 1, '=');
         curTaxablePay := curTaxablePay + txBenefitAmt;
+
+
+        //Get the Tax charged for the month
+
+        if curPensionStaff + curDefinedContrib > curMaxPensionContrib then
+            curTaxablePay := curTaxablePay + txBenefitAmt + curDefinedContrib
+        else
+            curTaxablePay := curTaxablePay + txBenefitAmt;
+
+        curTaxablePay := curTaxablePay + txBenefitAmt;
         curTaxCharged := fnGetEmployeePaye(curTaxablePay);
         strTransDescription := 'Tax Charged';
         TGroup := 'TAX CALCULATIONS';
@@ -630,7 +641,6 @@ Codeunit 50015 "Payroll Processing"
         prEmployeeTransactions.SetRange(prEmployeeTransactions."No.", strEmpCode);
         prEmployeeTransactions.SetRange(prEmployeeTransactions."Period Month", intMonth);
         prEmployeeTransactions.SetRange(prEmployeeTransactions."Period Year", intYear);
-        // prEmployeeTransactions.SetRange(prEmployeeTransactions."Loan Number", '');
         prEmployeeTransactions.SetRange(prEmployeeTransactions.Suspended, false);
         if prEmployeeTransactions.Find('-') then begin
             curTotalDeductions := 0;
@@ -638,7 +648,7 @@ Codeunit 50015 "Payroll Processing"
                 prTransactionCodes.Reset;
                 prTransactionCodes.SetRange(prTransactionCodes."Transaction Code", prEmployeeTransactions."Transaction Code");
                 prTransactionCodes.SetRange(prTransactionCodes."Transaction Type", prTransactionCodes."transaction type"::Deduction);
-                prTransactionCodes.SetRange(prTransactionCodes."IsCo-Op/LnRep", true);
+                // prTransactionCodes.SetRange(prTransactionCodes."IsCo-Op/LnRep", true);
                 if prTransactionCodes.Find('-') then begin
                     curTransAmount := 0;
                     curTransBalance := 0;
@@ -653,6 +663,7 @@ Codeunit 50015 "Payroll Processing"
 
                     end else begin
                         curTransAmount := prEmployeeTransactions.Amount;
+                        Message('CurTransAmount %1', curTransAmount);
                         curTransBalance := prEmployeeTransactions.Balance;
 
                     end;

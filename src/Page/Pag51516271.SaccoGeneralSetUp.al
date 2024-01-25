@@ -5,7 +5,7 @@ Page 51516271 "Sacco General Set-Up"
     PageType = Card;
     SourceTable = "Sacco General Set-Up";
     UsageCategory = Administration;
-    InsertAllowed =false;
+    InsertAllowed = false;
     DeleteAllowed = false;
 
     layout
@@ -74,6 +74,10 @@ Page 51516271 "Sacco General Set-Up"
                 field("Maximum No of Guarantees"; "Maximum No of Guarantees")
                 {
                     ApplicationArea = Basic;
+                }
+                field("Top up Account"; "Top up Account")
+                {
+                    ApplicationArea = basic;
                 }
                 field("Max. Contactual Shares"; "Max. Contactual Shares")
                 {

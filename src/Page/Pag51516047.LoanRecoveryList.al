@@ -48,8 +48,5 @@ page 51516047 "Loan Recovery List"
         SetRange("Entered By", UserId);
     end;
 
-    trigger OnInit()
-    begin
-        Error('Kindly use the Loan recovery option in the Member FOSA Page. This page is currently under maintainace');
-    end;
+ 
 }

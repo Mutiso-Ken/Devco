@@ -68,7 +68,7 @@ Table 51516231 "Loans Guarantee Details"
                 if LoanApp.Find('-') then begin
                     "Amount Committed" := "Amont Guaranteed";
                     if Loans.Get("Loan No") then
-                        "% Proportion" := ("Amont Guaranteed" / Loans."Approved Amount") * 100;
+                        "% Proportion" := ("Amont Guaranteed" / Loans."Requested Amount") * 100;
                 end;
 
             end;
@@ -191,6 +191,10 @@ Table 51516231 "Loans Guarantee Details"
             CalcFormula = sum("Loans Guarantee Details"."Amont Guaranteed" where("Loan No" = field("Loan No"),
                                                                                   Substituted = const(false)));
             FieldClass = FlowField;
+        }
+        field(39; "Free Shares"; Decimal)
+        {
+            DataClassification = ToBeClassified;
         }
     }
 

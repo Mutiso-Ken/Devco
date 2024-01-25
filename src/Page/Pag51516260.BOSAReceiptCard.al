@@ -361,10 +361,10 @@ Page 51516260 "BOSA Receipt Card"
                     Commit;
 
 
-                    BOSARcpt.Reset;
-                    BOSARcpt.SetRange(BOSARcpt."Transaction No.", "Transaction No.");
-                    if BOSARcpt.Find('-') then
-                        Report.Run(51516259, true, false, BOSARcpt);
+                    // BOSARcpt.Reset;
+                    // BOSARcpt.SetRange(BOSARcpt."Transaction No.", "Transaction No.");
+                    // if BOSARcpt.Find('-') then
+                    //     Report.Run(51516259, true, false, BOSARcpt);
 
                     CurrPage.Close;
                 end;

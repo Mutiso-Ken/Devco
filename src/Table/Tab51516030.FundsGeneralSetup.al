@@ -4,58 +4,63 @@ Table 51516030 "Funds General Setup"
 
     fields
     {
-        field(10;"Primary Key";Integer)
+        field(10; "Primary Key"; Integer)
         {
         }
-        field(11;"Payment Voucher Nos";Code[20])
+        field(11; "Payment Voucher Nos"; Code[20])
         {
             TableRelation = "No. Series".Code;
         }
-        field(12;"Cash Voucher Nos";Code[20])
+        field(12; "Cash Voucher Nos"; Code[20])
         {
             TableRelation = "No. Series".Code;
         }
-        field(13;"PettyCash Nos";Code[20])
+        field(13; "PettyCash Nos"; Code[20])
         {
             TableRelation = "No. Series".Code;
         }
-        field(14;"Mobile Payment Nos";Code[20])
+        field(14; "Mobile Payment Nos"; Code[20])
         {
             TableRelation = "No. Series".Code;
         }
-        field(15;"Receipt Nos";Code[20])
+        field(15; "Receipt Nos"; Code[20])
         {
             TableRelation = "No. Series".Code;
         }
-        field(16;"Funds Transfer Nos";Code[20])
+        field(16; "Funds Transfer Nos"; Code[20])
         {
             TableRelation = "No. Series".Code;
         }
-        field(17;"Imprest Nos";Code[20])
+        field(17; "Imprest Nos"; Code[20])
         {
             TableRelation = "No. Series".Code;
         }
-        field(18;"Imprest Surrender Nos";Code[20])
+        field(18; "Imprest Surrender Nos"; Code[20])
         {
             TableRelation = "No. Series".Code;
         }
-        field(19;"Claim Nos";Code[20])
+        field(19; "Claim Nos"; Code[20])
         {
             TableRelation = "No. Series".Code;
         }
-        field(20;"Travel Advance Nos";Code[20])
+        field(20; "Travel Advance Nos"; Code[20])
         {
             TableRelation = "No. Series".Code;
         }
-        field(21;"Travel Surrender Nos";Code[20])
+        field(21; "Travel Surrender Nos"; Code[20])
         {
+            TableRelation = "No. Series".Code;
+        }
+        field(22; "Salary Processing Nos"; Code[50])
+        {
+            DataClassification = ToBeClassified;
             TableRelation = "No. Series".Code;
         }
     }
 
     keys
     {
-        key(Key1;"Primary Key")
+        key(Key1; "Primary Key")
         {
             Clustered = true;
         }

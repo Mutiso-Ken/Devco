@@ -53,7 +53,22 @@ Codeunit 51516022 "SURESTEP Factory"
         end;
         exit(branchCode);
     end;
-
+    procedure FnGetChargeFee(ProductCode: Code[50]; InsuredAmount: Decimal; ChargeType: Code[100]) FCharged: Decimal
+    begin
+        if ObjLoanProductSetup.Get(ProductCode) then begin
+            ObjProductCharges.Reset;
+            ObjProductCharges.SetRange(ObjProductCharges."Product Code", ProductCode);
+            ObjProductCharges.SetRange(ObjProductCharges.Code, ChargeType);
+            if ObjProductCharges.Find('-') then begin
+                if ObjProductCharges."Use Perc" = true then begin
+                    FCharged := InsuredAmount * (ObjProductCharges.Percentage / 100);
+                end
+                else
+                    FCharged := ObjProductCharges.Amount;
+            end;
+        end;
+        exit(FCharged);
+    end;
     procedure FnGetAccountUserBranch(UserAccount: Code[50]) branchCode: Code[20]
     begin
         UserSetup.Reset;

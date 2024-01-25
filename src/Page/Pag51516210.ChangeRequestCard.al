@@ -51,12 +51,7 @@ Page 51516210 "Change Request Card"
                     ApplicationArea = Basic;
                     Editable = AccountNoEditable;
                     Style = StrongAccent;
-                    trigger OnValidate()
-                    var
-                        Customer: Record Customer;
-                    begin
-
-                    end;
+                   
                 }
                 field("Captured by"; "Captured by")
                 {
@@ -389,65 +384,65 @@ Page 51516210 "Change Request Card"
                     if (Status <> Status::Approved) then begin
                         Error('Change Request Must be Approved First');
                     end;
-                    if ((Type = Type::"FOSA Change") or (Type = Type::"M-Banking Change")) then begin
+                    // if ((Type = Type::"FOSA Change") or (Type = Type::"M-Banking Change")) then begin
 
-                        vend.Reset;
-                        vend.SetRange(vend."No.", "Account No");
-                        if vend.Find('-') then begin
-                            if "Name(New Value)" <> '' then
-                                vend.Name := "Name(New Value)";
-                            vend."Global Dimension 2 Code" := Branch;
-                            if "Address(New Value)" <> '' then
-                                vend.Address := "Address(New Value)";
+                    //     vend.Reset;
+                    //     vend.SetRange(vend."No.", "Account No");
+                    //     if vend.Find('-') then begin
+                    //         if "Name(New Value)" <> '' then
+                    //             vend.Name := "Name(New Value)";
+                    //         vend."Global Dimension 2 Code" := Branch;
+                    //         if "Address(New Value)" <> '' then
+                    //             vend.Address := "Address(New Value)";
 
-                            if "Email(New Value)" <> '' then
-                                vend."E-Mail" := "Email(New Value)";
-                            vend."E-Mail (Personal)" := "Email(New Value)";
-                            vend.Status := "Status (New Value)";
-                            if "Mobile No(New Value)" <> '' then
-                                vend."Mobile Phone No" := "Mobile No(New Value)";
-                            vend."Mobile Phone No" := Memb."Mobile Phone No";
-                            vend."Phone No." := "Mobile No(New Value)";
+                    //         if "Email(New Value)" <> '' then
+                    //             vend."E-Mail" := "Email(New Value)";
+                    //         vend."E-Mail (Personal)" := "Email(New Value)";
+                    //         vend.Status := "Status (New Value)";
+                    //         if "Mobile No(New Value)" <> '' then
+                    //             vend."Mobile Phone No" := "Mobile No(New Value)";
+                    //         vend."Mobile Phone No" := Memb."Mobile Phone No";
+                    //         vend."Phone No." := "Mobile No(New Value)";
 
-                            if "ID No(New Value)" <> '' then
-                                vend."ID No." := "ID No(New Value)";
+                    //         if "ID No(New Value)" <> '' then
+                    //             vend."ID No." := "ID No(New Value)";
 
-                            if "City(New Value)" <> '' then
-                                vend.City := "City(New Value)";
-                            if "Section(New Value)" <> '' then
-                                vend.Section := "Section(New Value)";
-                            if "Card Expiry Date" <> 0D then
-                                vend."Card Expiry Date" := "Card Expiry Date";
-                            if "Card No(New Value)" <> '' then
-                                vend."Card No." := "Card No(New Value)";
-                            if "Card No(New Value)" <> '' then
-                                vend."ATM No." := "Card No(New Value)";
-                            if "Card Valid From" <> 0D then
-                                vend."Card Valid From" := "Card Valid From";
-                            if "Card Valid To" <> 0D then
-                                vend."Card Valid To" := "Card Valid To";
-                            if "Marital Status(New Value)" <> "marital status(new value)"::" " then
-                                vend."Marital Status" := "Marital Status(New Value)";
-                            if "Responsibility Centers" <> '' then
-                                vend."Responsibility Center" := "Responsibility Centers";
-                            if "Phone No." <> '' then
-                                vend."Phone No." := "Phone No.(New)";
-                            if "Mpesa mobile No.(New)" <> '' then
-                                vend."MPESA Mobile No" := "Mpesa mobile No.(New)";
-                            if "SMS Notification (New)" = true then
-                                vend."Sms Notification" := true;
-                            if "Phone No.(New)" <> '' then
-                                vend."Phone No." := "Phone No.(New)";
+                    //         if "City(New Value)" <> '' then
+                    //             vend.City := "City(New Value)";
+                    //         if "Section(New Value)" <> '' then
+                    //             vend.Section := "Section(New Value)";
+                    //         if "Card Expiry Date" <> 0D then
+                    //             vend."Card Expiry Date" := "Card Expiry Date";
+                    //         if "Card No(New Value)" <> '' then
+                    //             vend."Card No." := "Card No(New Value)";
+                    //         if "Card No(New Value)" <> '' then
+                    //             vend."ATM No." := "Card No(New Value)";
+                    //         if "Card Valid From" <> 0D then
+                    //             vend."Card Valid From" := "Card Valid From";
+                    //         if "Card Valid To" <> 0D then
+                    //             vend."Card Valid To" := "Card Valid To";
+                    //         if "Marital Status(New Value)" <> "marital status(new value)"::" " then
+                    //             vend."Marital Status" := "Marital Status(New Value)";
+                    //         if "Responsibility Centers" <> '' then
+                    //             vend."Responsibility Center" := "Responsibility Centers";
+                    //         if "Phone No." <> '' then
+                    //             vend."Phone No." := "Phone No.(New)";
+                    //         if "Mpesa mobile No.(New)" <> '' then
+                    //             vend."MPESA Mobile No" := "Mpesa mobile No.(New)";
+                    //         if "SMS Notification (New)" = true then
+                    //             vend."Sms Notification" := true;
+                    //         if "Phone No.(New)" <> '' then
+                    //             vend."Phone No." := "Phone No.(New)";
 
-                            // vend."Phone No.." := "Mobile No(New Value)";
-                            vend.Blocked := "Blocked (New)";
-                            vend.Status := "Status.(New)";
-                            vend.Modify;
-                            /*
+                    //         // vend."Phone No.." := "Mobile No(New Value)";
+                    //         vend.Blocked := "Blocked (New)";
+                    //         vend.Status := "Status.(New)";
+                    //         vend.Modify;
+                    //         /*
 
-                       */
-                        end;
-                    end;
+                    //    */
+                    //     end;
+                    // end;
 
 
                     if Type = Type::"BOSA Change" then begin
@@ -706,14 +701,14 @@ Page 51516210 "Change Request Card"
         MobileVisible := false;
         nxkinvisible := false;
 
-        if Type = Type::"M-Banking Change" then begin
-            MobileVisible := true;
-        end;
+        // if Type = Type::"M-Banking Change" then begin
+        //     MobileVisible := true;
+        // end;
 
-        if Type = Type::"ATM Change" then begin
-            AccountVisible := true;
-            nxkinvisible := true;
-        end;
+        // if Type = Type::"ATM Change" then begin
+        //     AccountVisible := true;
+        //     nxkinvisible := true;
+        // end;
 
         if Type = Type::"BOSA Change" then begin
             AccountVisible := true;
@@ -730,14 +725,14 @@ Page 51516210 "Change Request Card"
         MobileVisible := false;
         nxkinvisible := false;
 
-        if Type = Type::"M-Banking Change" then begin
-            MobileVisible := true;
-        end;
+        // if Type = Type::"M-Banking Change" then begin
+        //     MobileVisible := true;
+        // end;
 
-        if Type = Type::"ATM Change" then begin
-            AccountVisible := true;
-            nxkinvisible := false;
-        end;
+        // if Type = Type::"ATM Change" then begin
+        //     AccountVisible := true;
+        //     nxkinvisible := false;
+        // end;
 
         if Type = Type::"BOSA Change" then begin
             AccountVisible := true;

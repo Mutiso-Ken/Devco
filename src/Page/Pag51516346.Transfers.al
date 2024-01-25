@@ -42,11 +42,6 @@ Page 51516346 "Transfers"
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Posted; Posted)
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
                 field(Approved; Approved)
                 {
                     ApplicationArea = Basic;

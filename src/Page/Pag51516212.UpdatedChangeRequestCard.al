@@ -27,23 +27,23 @@ Page 51516212 "Updated Change Request Card"
                         AtmVisible := false;
                         nxkinvisible := false;
 
-                        if Type = Type::"M-Banking Change" then begin
-                            MobileVisible := true;
-                        end;
+                        // if Type = Type::"M-Banking Change" then begin
+                        //     MobileVisible := true;
+                        // end;
 
-                        if Type = Type::"ATM Change" then begin
-                            AtmVisible := true;
-                        end;
+                        // if Type = Type::"ATM Change" then begin
+                        //     AtmVisible := true;
+                        // end;
 
                         if Type = Type::"BOSA Change" then begin
                             AccountVisible := true;
                             nxkinvisible := true;
                         end;
 
-                        if Type = Type::"FOSA Change" then begin
-                            AccountVisible := true;
-                            nxkinvisible := true;
-                        end;
+                        // if Type = Type::"FOSA Change" then begin
+                        //     AccountVisible := true;
+                        //     nxkinvisible := true;
+                        // end;
                     end;
                 }
                 field("Account No"; "Account No")
@@ -420,23 +420,23 @@ Page 51516212 "Updated Change Request Card"
         AtmVisible := false;
         nxkinvisible := false;
 
-        if Type = Type::"M-Banking Change" then begin
-            MobileVisible := true;
-        end;
+        // if Type = Type::"M-Banking Change" then begin
+        //     MobileVisible := true;
+        // end;
 
-        if Type = Type::"ATM Change" then begin
-            AtmVisible := true;
-        end;
+        // if Type = Type::"ATM Change" then begin
+        //     AtmVisible := true;
+        // end;
 
         if Type = Type::"BOSA Change" then begin
             AccountVisible := true;
             nxkinvisible := true;
         end;
 
-        if Type = Type::"FOSA Change" then begin
-            AccountVisible := true;
-            nxkinvisible := true;
-        end;
+        // if Type = Type::"FOSA Change" then begin
+        //     AccountVisible := true;
+        //     nxkinvisible := true;
+        // end;
 
         UpdateControl();
     end;
@@ -448,23 +448,23 @@ Page 51516212 "Updated Change Request Card"
         AtmVisible := false;
         nxkinvisible := false;
 
-        if Type = Type::"M-Banking Change" then begin
-            MobileVisible := true;
-        end;
+        // if Type = Type::"M-Banking Change" then begin
+        //     MobileVisible := true;
+        // end;
 
-        if Type = Type::"ATM Change" then begin
-            AtmVisible := true;
-        end;
+        // if Type = Type::"ATM Change" then begin
+        //     AtmVisible := true;
+        // end;
 
         if Type = Type::"BOSA Change" then begin
             AccountVisible := true;
             nxkinvisible := true;
         end;
 
-        if Type = Type::"FOSA Change" then begin
-            AccountVisible := true;
-            nxkinvisible := true;
-        end;
+        // if Type = Type::"FOSA Change" then begin
+        //     AccountVisible := true;
+        //     nxkinvisible := true;
+        // end;
 
         UpdateControl();
     end;
