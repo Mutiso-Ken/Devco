@@ -19,39 +19,39 @@ Table 51516230 "Loans Register"
                         "No. Series" := '';
                     end;
 
-                end else
-                    if Source = Source::MICRO then begin
-                        if "Loan  No." <> xRec."Loan  No." then begin
-                            SalesSetup.Get;
-                            NoSeriesMgt.TestManual(SalesSetup."Micro Loans");
-                            "No. Series" := '';
-                        end;
+                    // end else
+                    //     if Source = Source::MICRO then begin
+                    //         if "Loan  No." <> xRec."Loan  No." then begin
+                    //             SalesSetup.Get;
+                    //             NoSeriesMgt.TestManual(SalesSetup."Micro Loans");
+                    //             "No. Series" := '';
+                    //         end;
 
 
-                    end else
-                        if (Source = Source::FOSA) AND ("Loan Product Type" <> 'OVERDRAFT') AND ("Loan Product Type" <> 'OKOA') then begin
-                            if "Loan  No." <> xRec."Loan  No." then begin
-                                SalesSetup.Get;
-                                NoSeriesMgt.TestManual(SalesSetup."FOSA Loans Nos");
-                                "No. Series" := '';
-                            end;
-                        end
-                        else
-                            if (Source = Source::FOSA) AND ("Loan Product Type" = 'OVERDRAFT') AND ("Loan Product Type" <> 'OKOA') then begin
-                                if "Loan  No." <> xRec."Loan  No." then begin
-                                    SalesSetup.Get;
-                                    NoSeriesMgt.TestManual(SalesSetup."OVerdraft Nos");
-                                    "No. Series" := '';
-                                end;
-                            end
-                            else
-                                if (Source = Source::FOSA) AND ("Loan Product Type" <> 'OVERDRAFT') AND ("Loan Product Type" = 'OKOA') then begin
-                                    if "Loan  No." <> xRec."Loan  No." then begin
-                                        SalesSetup.Get;
-                                        NoSeriesMgt.TestManual(SalesSetup."Okoa No.");
-                                        "No. Series" := '';
-                                    end;
-                                end
+                    //     end else
+                    //         if (Source = Source::FOSA) AND ("Loan Product Type" <> 'OVERDRAFT') AND ("Loan Product Type" <> 'OKOA') then begin
+                    //             if "Loan  No." <> xRec."Loan  No." then begin
+                    //                 SalesSetup.Get;
+                    //                 NoSeriesMgt.TestManual(SalesSetup."FOSA Loans Nos");
+                    //                 "No. Series" := '';
+                    //             end;
+                    //         end
+                    //         else
+                    //             if (Source = Source::FOSA) AND ("Loan Product Type" = 'OVERDRAFT') AND ("Loan Product Type" <> 'OKOA') then begin
+                    //                 if "Loan  No." <> xRec."Loan  No." then begin
+                    //                     SalesSetup.Get;
+                    //                     NoSeriesMgt.TestManual(SalesSetup."OVerdraft Nos");
+                    //                     "No. Series" := '';
+                    //                 end;
+                    //             end
+                    //             else
+                    //                 if (Source = Source::FOSA) AND ("Loan Product Type" <> 'OVERDRAFT') AND ("Loan Product Type" = 'OKOA') then begin
+                    //                     if "Loan  No." <> xRec."Loan  No." then begin
+                    //                         SalesSetup.Get;
+                    //                         NoSeriesMgt.TestManual(SalesSetup."Okoa No.");
+                    //                         "No. Series" := '';
+                    //                     end;
+                end
                 //SURESTEP
 
             end;
@@ -1446,10 +1446,14 @@ Table 51516230 "Loans Register"
         {
             TableRelation = "Sacco Employers";
         }
+        field(68096; "Loans Category Previous Year"; Enum LoansCategorySASRA)
+        {
+            DataClassification = ToBeClassified;
+        }
         field(69001; "Loans Category-SASRA"; Enum LoansCategorySASRA)
         {
-            CalcFormula = lookup("Loan Classification Calculator"."SASRA Loan Category" where("Loan No" = field("Loan  No.")));
-            FieldClass = FlowField;
+            // CalcFormula = lookup("Loan Classification Calculator"."SASRA Loan Category" where("Loan No" = field("Loan  No.")));
+            // FieldClass = FlowField;
         }
         field(69002; "Bela Branch"; Code[100])
         {
@@ -1953,18 +1957,18 @@ Table 51516230 "Loans Register"
         }
         field(69193; "Amount in Arrears"; Decimal)
         {
-            CalcFormula = lookup("Loan Classification Calculator"."Amount In Arrears" where("Loan No" = field("Loan  No.")));
-            FieldClass = FlowField;
+            // CalcFormula = lookup("Loan Classification Calculator"."Amount In Arrears" where("Loan No" = field("Loan  No.")));
+            // FieldClass = FlowField;
         }
         field(69194; "No of Months in Arrears"; Integer)
         {
-            CalcFormula = lookup("Loan Classification Calculator"."No of months In Arrears" where("Loan No" = field("Loan  No.")));
-            FieldClass = FlowField;
+            // CalcFormula = lookup("Loan Classification Calculator"."No of months In Arrears" where("Loan No" = field("Loan  No.")));
+            // FieldClass = FlowField;
         }
         field(69195; "No of Days in Arrears"; Integer)
         {
-            CalcFormula = lookup("Loan Classification Calculator"."No of Days In Arrears" where("Loan No" = field("Loan  No.")));
-            FieldClass = FlowField;
+            // CalcFormula = lookup("Loan Classification Calculator"."No of Days In Arrears" where("Loan No" = field("Loan  No.")));
+            // FieldClass = FlowField;
         }
         field(69196; "Sacco Insider"; Boolean)
         {
@@ -2000,7 +2004,7 @@ Table 51516230 "Loans Register"
         }
         field(69202; "Outstanding Insurance"; Decimal)
         {
-        
+
         }
         field(69203; "Loan Insurance Charged"; Decimal)
         {
@@ -2095,6 +2099,14 @@ Table 51516230 "Loans Register"
                                                                   Reversed = const(false)));
             Editable = false;
             FieldClass = FlowField;
+        }
+        field(69220; NHIF; Code[50])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(69221; NSSF; Code[50])
+        {
+            DataClassification = ToBeClassified;
         }
         field(69230; "Account Category"; enum "Memb App Acc Categ")
         {

@@ -34,11 +34,13 @@ Page 51516245 "Loan Application Card"
                     ApplicationArea = Basic;
                     Editable = AccountNoEditable;
                     Style = StrongAccent;
+                    Visible = false;
                 }
 
                 field("Account Category"; "Account Category")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Client Name"; "Client Name")
                 {
@@ -110,12 +112,18 @@ Page 51516245 "Loan Application Card"
                     Caption = 'Approved Amount';
                     Editable = false;
                     ShowMandatory = true;
+                    Visible = false;
 
 
                     trigger OnValidate()
                     begin
                         TestField(Posted, false);
                     end;
+                }
+                field("Recommended Amount"; "Recommended Amount")
+                {
+                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Main Sector"; "Main Sector")
                 {

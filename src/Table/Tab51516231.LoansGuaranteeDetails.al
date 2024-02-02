@@ -196,6 +196,11 @@ Table 51516231 "Loans Guarantee Details"
         {
             DataClassification = ToBeClassified;
         }
+            field(40;LoanCount;Integer)
+        {
+            CalcFormula = count("Loans Guarantee Details" where ("Loan No"=field("Loan No")));
+            FieldClass = FlowField;
+        }
     }
 
     keys

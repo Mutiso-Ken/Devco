@@ -32,6 +32,7 @@ Page 51516221 "Membership Application Card"
                     //Enabled = membertypeEditable;
                     ShowMandatory = true;
                     //Editable = NameEditable;
+                    Visible = false;
 
                     trigger OnValidate()
                     begin
@@ -52,6 +53,7 @@ Page 51516221 "Membership Application Card"
                     end;
 
                 }
+
                 field("Second Name"; "Second Name")
                 {
                     ApplicationArea = Basic;
@@ -78,6 +80,17 @@ Page 51516221 "Membership Application Card"
                     Editable = false;
                     Style = StrongAccent;
                     ShowMandatory = true;
+                }
+                field(Nationality; Nationality)
+                {
+                    ApplicationArea = Basic;
+                    Editable = CityEditable;
+                    trigger OnValidate()
+                    var
+                        myInt: Integer;
+                    begin
+                        UpdateControls;
+                    end;
                 }
                 field(Town; Town)
                 {
@@ -137,6 +150,14 @@ Page 51516221 "Membership Application Card"
                     ApplicationArea = Basic;
                     Editable = IDNoEditable;
                     ShowMandatory = true;
+                }
+                field("ID/Passport No"; "ID NO/Passport 2")
+                {
+                    ApplicationArea = Basic;
+                    Editable = passpoetEditable;
+                    Visible = passpoetEditable;
+                    ShowMandatory = true;
+                    Caption = 'Passport';
                 }
                 field("Date of Birth"; "Date of Birth")
                 {
@@ -314,12 +335,7 @@ Page 51516221 "Membership Application Card"
                     Editable = FistnameEditable;
                     ShowMandatory = true;
                 }
-                field("ID/Passport No"; "ID NO/Passport 2")
-                {
-                    ApplicationArea = Basic;
-                    Editable = passpoetEditable;
-                    ShowMandatory = true;
-                }
+
                 field("Member Gender"; Gender2)
                 {
                     ApplicationArea = Basic;
@@ -1037,6 +1053,12 @@ Page 51516221 "Membership Application Card"
 
 
         //Account types.
+        If Nationality = Nationality::"Non-Kenyan" then begin
+            passpoetEditable := true;
+        end;
+        if Nationality = Nationality::Kenyan then begin
+            passpoetEditable := false;
+        end;
         if "Account Category" = "account category"::Single then begin
             NameEditable := true;
             AddressEditable := true;
@@ -1096,7 +1118,7 @@ Page 51516221 "Membership Application Card"
             gender2editable := false;
             HomePostalCode2Editable := false;
             town2Editable := false;
-            passpoetEditable := false;
+            passpoetEditable := true;
             maritalstatus2Editable := false;
             payrollno2editable := false;
             Employercode2Editable := false;

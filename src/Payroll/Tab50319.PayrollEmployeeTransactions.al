@@ -272,14 +272,14 @@ table 50319 "Payroll Employee Transactions."
         }
         field(59; "Interest Rate"; Decimal)
         { }
-        field(60; InterestPaid; Boolean)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(70; LoanPaid; Boolean)
-        {
-            DataClassification = ToBeClassified;
-        }
+        // field(60; InterestPaid; Boolean)
+        // {
+        //     DataClassification = ToBeClassified;
+        // }
+        // field(70; LoanPaid; Boolean)
+        // {
+        //     DataClassification = ToBeClassified;
+        // }
         field(71; Appfee; Boolean)
         {
             DataClassification = ToBeClassified;

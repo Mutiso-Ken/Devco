@@ -104,7 +104,7 @@ Page 51516226 "Member List"
             }
             group(ActionGroup1102755007)
             {
-                action(Statement)
+                action(DetailedStatement)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Detailed Statement';
@@ -172,7 +172,7 @@ Page 51516226 "Member List"
                 {
                     ApplicationArea = Basic;
                     Promoted = true;
-                    visible = false;
+                    //visible = false;
                     PromotedCategory = "Report";
 
                     trigger OnAction()
@@ -181,6 +181,22 @@ Page 51516226 "Member List"
                         Cust.SetRange(Cust."No.", "No.");
                         if Cust.Find('-') then
                             Report.Run(51516303, true, false, Cust);
+                    end;
+                }
+                action(Statement)
+                {
+                    ApplicationArea = Basic;
+                    Promoted = true;
+                    //visible = false;
+                    Caption='Member Statement';
+                    PromotedCategory = "Report";
+
+                    trigger OnAction()
+                    begin
+                        Cust.Reset;
+                        Cust.SetRange(Cust."No.", "No.");
+                        if Cust.Find('-') then
+                            Report.Run(51001, true, false, Cust);
                     end;
                 }
 

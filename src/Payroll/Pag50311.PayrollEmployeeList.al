@@ -26,11 +26,11 @@ Page 50311 "Payroll Employee List."
                     ApplicationArea = Basic;
                     Caption = 'Sacco Membership No.';
                 }
-                field("Full Name";"Full Name")
+                field("Full Name"; "Full Name")
                 {
                     ApplicationArea = Basic;
                 }
-          
+
                 field("Exit Staff"; "Exit Staff")
                 {
                     ApplicationArea = Basic;
@@ -178,7 +178,7 @@ Page 50311 "Payroll Employee List."
                                 until ObjPayrollEmployeeTransIII.Next = 0;
                             end;
                             // FnRunUpdateInterest(ObjPayrollEmployees."No.");
-                            FnRunUpdateNewMemberLoans(ObjPayrollEmployees."No.");//==================================================================Insert Staff New Loans
+                            FnRunUpdateNewMemberLoans(ObjPayrollEmployees."Payroll No");//==================================================================Insert Staff New Loans
 
 
                             //Insert Deposit Contribution
@@ -201,23 +201,23 @@ Page 50311 "Payroll Employee List."
                                     ObjEmployeeTransactions.DeleteAll;
                                 end;
                                 //============================================Delete Entries For the Same Period
-                                ObjCust.CalcFields(ObjCust."Benevolent Fund");
-                                ObjPayrollEmployeeTrans.Init;
-                                ObjPayrollEmployeeTrans."Sacco Membership No." := ObjPayrollEmployees."Payroll No";
-                                ObjPayrollEmployeeTrans."No." := ObjPayrollEmployees."No.";
-                                ObjPayrollEmployeeTrans."Loan Number" := '';
-                                ObjPayrollEmployeeTrans."Transaction Code" := ObjTransactionCodes."Transaction Code";
-                                ObjPayrollEmployeeTrans."Transaction Name" := ObjTransactionCodes."Transaction Name";
-                                ObjPayrollEmployeeTrans."Transaction Type" := ObjTransactionCodes."Transaction Type";
-                                ObjPayrollEmployeeTrans."Payroll Period" := VarOpenPeriod;
-                                ObjPayrollEmployeeTrans."Period Month" := varPeriodMonth;
-                                ObjPayrollEmployeeTrans."Period Year" := VarPeriodYear;
-                                ObjPayrollEmployeeTrans.Amount := 200;
-                                ObjPayrollEmployeeTrans."Amount(LCY)" := 200;
-                                ObjPayrollEmployeeTrans.Balance := ObjCust."Benevolent Fund";
-                                ObjPayrollEmployeeTrans."Balance(LCY)" := ObjCust."Benevolent Fund";
-                                ObjPayrollEmployeeTrans."Amtzd Loan Repay Amt" := 0;
-                                ObjPayrollEmployeeTrans.Insert;
+                                // ObjCust.CalcFields(ObjCust."Benevolent Fund");
+                                // ObjPayrollEmployeeTrans.Init;
+                                // ObjPayrollEmployeeTrans."Sacco Membership No." := ObjPayrollEmployees."Payroll No";
+                                // ObjPayrollEmployeeTrans."No." := ObjPayrollEmployees."No.";
+                                // ObjPayrollEmployeeTrans."Loan Number" := '';
+                                // ObjPayrollEmployeeTrans."Transaction Code" := ObjTransactionCodes."Transaction Code";
+                                // ObjPayrollEmployeeTrans."Transaction Name" := ObjTransactionCodes."Transaction Name";
+                                // ObjPayrollEmployeeTrans."Transaction Type" := ObjTransactionCodes."Transaction Type";
+                                // ObjPayrollEmployeeTrans."Payroll Period" := VarOpenPeriod;
+                                // ObjPayrollEmployeeTrans."Period Month" := varPeriodMonth;
+                                // ObjPayrollEmployeeTrans."Period Year" := VarPeriodYear;
+                                // ObjPayrollEmployeeTrans.Amount := 200;
+                                // ObjPayrollEmployeeTrans."Amount(LCY)" := 200;
+                                // ObjPayrollEmployeeTrans.Balance := ObjCust."Benevolent Fund";
+                                // ObjPayrollEmployeeTrans."Balance(LCY)" := ObjCust."Benevolent Fund";
+                                // ObjPayrollEmployeeTrans."Amtzd Loan Repay Amt" := 0;
+                                // ObjPayrollEmployeeTrans.Insert;
 
 
                             end;
@@ -410,145 +410,14 @@ Page 50311 "Payroll Employee List."
             VarPeriodMonth := Date2dmy(VarOpenPeriod, 2);
             VarPeriodYear := Date2dmy(VarOpenPeriod, 3);
         end;
-        //app fee
+
+
         ObjPayrollEmployeeTrans.Reset;
         ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Sacco Membership No.", VarMemberNo);
         ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans."Payroll Period", '%1', VarOpenPeriod);
-        ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans.Appfee, '%1', true);
         if ObjPayrollEmployeeTrans.Find('-') then begin
             ObjPayrollEmployeeTrans.DeleteAll();
         end;
-
-
-        ObjLoans.CalcFields(ObjLoans."Out. Loan Application fee");
-        ObjLoans.Reset;
-        ObjLoans.SetRange(ObjLoans."Client Code", VarMemberNo);
-        ObjLoans.SetFilter(ObjLoans."Out. Loan Application fee", '>%1', 0);
-        if ObjLoans.FindSet then begin
-            repeat
-                ObjLoans.CalcFields(ObjLoans."Out. Loan Application fee");
-                if ObjLoans."Exempt From Payroll Deduction" = false then //***Insert New Loan to Payroll Deduction***
-                begin
-
-                    ObjPayrollEmployeeTrans.Reset;
-                    ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Sacco Membership No.", VarMemberNo);
-                    ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Loan Number", ObjLoans."Loan  No.");
-                    ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans."Payroll Period", '%1', VarOpenPeriod);
-                    ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Transaction Code", 'INT');
-
-                    if not ObjPayrollEmployeeTrans.FindSet then begin
-                        ObjTransactionCodes.Reset;
-                        ObjTransactionCodes.SetRange(ObjTransactionCodes."Loan Product", ObjLoans."Loan Product Type");
-                        if ObjTransactionCodes.FindSet then begin
-                            ObjPayrollEmployeeTrans."Sacco Membership No." := ObjLoans."Client Code";
-                            ObjPayrollEmployeeTrans."No." := VarMemberNo;
-                            ObjPayrollEmployeeTrans."Loan Number" := ObjLoans."Loan  No.";
-
-                            ObjPayrollEmployeeTrans."Transaction Code" := 'LOAN APP FEE';
-                            ObjPayrollEmployeeTrans."Transaction Name" := ObjTransactionCodes."Transaction Name";
-                            ObjPayrollEmployeeTrans."Transaction Type" := ObjTransactionCodes."Transaction Type";
-                            ObjPayrollEmployeeTrans."Payroll Period" := VarOpenPeriod;
-                            ObjPayrollEmployeeTrans.Amount := ObjLoans."Out. Loan Application fee";
-                            ObjPayrollEmployeeTrans.Appfee := true;
-                            ObjPayrollEmployeeTrans."Period Month" := VarPeriodMonth;
-                            ObjPayrollEmployeeTrans."Period Year" := VarPeriodYear;
-                            ObjPayrollEmployeeTrans.Balance := ObjLoans."Out. Loan Application fee";
-                            ObjPayrollEmployeeTrans."Balance(LCY)" := ObjLoans."Outstanding Balance";
-                            ObjPayrollEmployeeTrans."Amtzd Loan Repay Amt" := VarAmortizationAmount;
-                            ObjPayrollEmployeeTrans.Insert;
-                        end;
-                    end;
-                end;
-                if ObjLoans."Exempt From Payroll Deduction" = true then //***Delete Loans Exempted from Payroll****
-                begin
-                    ObjPayrollEmployeeTrans.Reset;
-                    ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Sacco Membership No.", VarMemberNo);
-                    ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Loan Number", ObjLoans."Loan  No.");
-                    ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans."Payroll Period", '%1', VarOpenPeriod);
-                    ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans."Payroll Period", 'INTEREST');
-                    if ObjPayrollEmployeeTrans.FindSet = false then begin
-                        ObjPayrollEmployeeTrans.Delete;
-                    end
-                end;
-            until ObjLoans.Next = 0;
-        end;
-
-        //End of insurance charged
-        //app fee
-        //insurance charged
-        ObjPayrollEmployeeTrans.Reset;
-        ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Sacco Membership No.", VarMemberNo);
-        ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans."Payroll Period", '%1', VarOpenPeriod);
-        ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans.InsuranceCharged, '%1', true);
-        if ObjPayrollEmployeeTrans.Find('-') then begin
-            ObjPayrollEmployeeTrans.DeleteAll();
-        end;
-
-
-        ObjLoans.CalcFields(ObjLoans."Outstanding Insurance");
-        ObjLoans.Reset;
-        ObjLoans.SetRange(ObjLoans."Client Code", VarMemberNo);
-        ObjLoans.SetFilter(ObjLoans."Outstanding Insurance", '>%1', 0);
-        if ObjLoans.FindSet then begin
-            repeat
-                ObjLoans.CalcFields(ObjLoans."Outstanding Insurance");
-                if ObjLoans."Exempt From Payroll Deduction" = false then //***Insert New Loan to Payroll Deduction***
-                begin
-
-                    ObjPayrollEmployeeTrans.Reset;
-                    ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Sacco Membership No.", VarMemberNo);
-                    ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Loan Number", ObjLoans."Loan  No.");
-                    ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans."Payroll Period", '%1', VarOpenPeriod);
-                    ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Transaction Code", 'INT');
-
-                    if not ObjPayrollEmployeeTrans.FindSet then begin
-                        ObjTransactionCodes.Reset;
-                        ObjTransactionCodes.SetRange(ObjTransactionCodes."Loan Product", ObjLoans."Loan Product Type");
-                        if ObjTransactionCodes.FindSet then begin
-                            ObjPayrollEmployeeTrans."Sacco Membership No." := ObjLoans."Client Code";
-                            ObjPayrollEmployeeTrans."No." := VarMemberNo;
-                            ObjPayrollEmployeeTrans."Loan Number" := ObjLoans."Loan  No.";
-                            ObjPayrollEmployeeTrans."Transaction Code" := 'LOAN INSURANCE';
-
-                            ObjPayrollEmployeeTrans."Transaction Name" := ObjTransactionCodes."Transaction Name";
-                            ObjPayrollEmployeeTrans."Transaction Type" := ObjTransactionCodes."Transaction Type";
-                            ObjPayrollEmployeeTrans."Payroll Period" := VarOpenPeriod;
-                            ObjPayrollEmployeeTrans.Amount := ObjLoans."Outstanding Insurance";
-                            ObjPayrollEmployeeTrans.InsuranceCharged := true;
-
-                            ObjPayrollEmployeeTrans."Period Month" := VarPeriodMonth;
-                            ObjPayrollEmployeeTrans."Period Year" := VarPeriodYear;
-                            ObjPayrollEmployeeTrans.Balance := ObjLoans."Outstanding Insurance";
-                            ObjPayrollEmployeeTrans."Balance(LCY)" := ObjLoans."Outstanding Insurance";
-                            ObjPayrollEmployeeTrans."Amtzd Loan Repay Amt" := VarAmortizationAmount;
-                            ObjPayrollEmployeeTrans.Insert;
-                        end;
-                    end;
-                end;
-                if ObjLoans."Exempt From Payroll Deduction" = true then //***Delete Loans Exempted from Payroll****
-                begin
-                    ObjPayrollEmployeeTrans.Reset;
-                    ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Sacco Membership No.", VarMemberNo);
-                    ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Loan Number", ObjLoans."Loan  No.");
-                    ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans."Payroll Period", '%1', VarOpenPeriod);
-                    ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans."Payroll Period", 'INTEREST');
-                    if ObjPayrollEmployeeTrans.FindSet = false then begin
-                        ObjPayrollEmployeeTrans.Delete;
-                    end
-                end;
-            until ObjLoans.Next = 0;
-        end;
-
-        //End of insurance charged
-        //interest Charged
-        ObjPayrollEmployeeTrans.Reset;
-        ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Sacco Membership No.", VarMemberNo);
-        ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans."Payroll Period", '%1', VarOpenPeriod);
-        ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans.InterestPaid, '%1', true);
-        if ObjPayrollEmployeeTrans.Find('-') then begin
-            ObjPayrollEmployeeTrans.DeleteAll();
-        end;
-
 
         ObjLoans.CalcFields(ObjLoans."Outstanding Balance", ObjLoans."Oustanding Interest");
         ObjLoans.Reset;
@@ -559,36 +428,26 @@ Page 50311 "Payroll Employee List."
                 ObjLoans.CalcFields(ObjLoans."Outstanding Balance", ObjLoans."Oustanding Interest");
                 if ObjLoans."Exempt From Payroll Deduction" = false then //***Insert New Loan to Payroll Deduction***
                 begin
-
+Message('yes');
                     ObjPayrollEmployeeTrans.Reset;
                     ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Sacco Membership No.", VarMemberNo);
                     ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Loan Number", ObjLoans."Loan  No.");
                     ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans."Payroll Period", '%1', VarOpenPeriod);
-                    ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Transaction Code", 'INT');
-
                     if not ObjPayrollEmployeeTrans.FindSet then begin
                         ObjTransactionCodes.Reset;
-                        ObjTransactionCodes.SetRange(ObjTransactionCodes."Loan Product", ObjLoans."Loan Product Type");
+                        ObjTransactionCodes.SetRange(ObjTransactionCodes."Transaction Code", 'INTEREST');
                         if ObjTransactionCodes.FindSet then begin
                             ObjPayrollEmployeeTrans."Sacco Membership No." := ObjLoans."Client Code";
                             ObjPayrollEmployeeTrans."No." := VarMemberNo;
                             ObjPayrollEmployeeTrans."Loan Number" := ObjLoans."Loan  No.";
-                            if (ObjLoans."Loan Product Type" = 'DL') then begin
-                                ObjPayrollEmployeeTrans."Transaction Code" := 'INT DEVELOPMENT'
-                            end else
-                                if ObjLoans."Loan Product Type" = 'EL' then begin
-                                    ObjPayrollEmployeeTrans."Transaction Code" := 'INT EMERGENCY'
-                                end;
+                            ObjPayrollEmployeeTrans."Transaction Code" := 'Interest';
                             ObjPayrollEmployeeTrans."Transaction Name" := ObjTransactionCodes."Transaction Name";
                             ObjPayrollEmployeeTrans."Transaction Type" := ObjTransactionCodes."Transaction Type";
                             ObjPayrollEmployeeTrans."Payroll Period" := VarOpenPeriod;
                             ObjPayrollEmployeeTrans.Amount := ObjLoans."Oustanding Interest";
-                            ObjPayrollEmployeeTrans.InterestPaid := true;
-
                             ObjPayrollEmployeeTrans."Period Month" := VarPeriodMonth;
                             ObjPayrollEmployeeTrans."Period Year" := VarPeriodYear;
                             ObjPayrollEmployeeTrans.Balance := ObjLoans."Oustanding Interest";
-
                             ObjPayrollEmployeeTrans."Balance(LCY)" := ObjLoans."Oustanding Interest";
                             ObjPayrollEmployeeTrans."Amtzd Loan Repay Amt" := VarAmortizationAmount;
                             ObjPayrollEmployeeTrans.Insert;
@@ -601,22 +460,11 @@ Page 50311 "Payroll Employee List."
                     ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Sacco Membership No.", VarMemberNo);
                     ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Loan Number", ObjLoans."Loan  No.");
                     ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans."Payroll Period", '%1', VarOpenPeriod);
-                    ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans."Payroll Period", 'INTEREST');
                     if ObjPayrollEmployeeTrans.FindSet = false then begin
                         ObjPayrollEmployeeTrans.Delete;
                     end
                 end;
             until ObjLoans.Next = 0;
-        end;
-
-        //End Of Interest Charged
-        //delete loans
-        ObjPayrollEmployeeTrans.Reset;
-        ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Sacco Membership No.", VarMemberNo);
-        ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans."Payroll Period", '%1', VarOpenPeriod);
-        ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans.LoanPaid, '%1', true);
-        if ObjPayrollEmployeeTrans.Find('-') then begin
-            ObjPayrollEmployeeTrans.DeleteAll();
         end;
 
         ObjLoans.CalcFields(ObjLoans."Outstanding Balance", ObjLoans."Oustanding Interest");
@@ -625,100 +473,52 @@ Page 50311 "Payroll Employee List."
         ObjLoans.SetFilter(ObjLoans."Outstanding Balance", '>%1', 0);
         if ObjLoans.FindSet then begin
             repeat
-                ObjLoans.CalcFields(ObjLoans."Outstanding Balance", ObjLoans."Oustanding Interest");
-                ObjTransactionCodesII.Reset;
-                ObjTransactionCodesII.SetRange(ObjTransactionCodesII."Loan Product", ObjLoans."Loan Product Type");
-                if ObjTransactionCodesII.Findset = false then begin
-                    FnRunCreateLoanProductinTransactionCodes(ObjLoans."Loan Product Type", ObjLoans.Interest, ObjLoans."Loan Product Type Name");//=================Create New Transaction Code
-                end;
+            begin
+                ObjPayrollEmployeeTrans.Reset;
+                ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Sacco Membership No.", VarMemberNo);
+                ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Loan Number", ObjLoans."Loan  No.");
+                ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans."Payroll Period", '%1', VarOpenPeriod);
+                ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Transaction Code", 'INT');
+                if not ObjPayrollEmployeeTrans.FindSet then begin
+                    ObjTransactionCodes.Reset;
+                      ObjTransactionCodes.SetRange(ObjTransactionCodes."Transaction Code", 'LOAN');
+                    if ObjTransactionCodes.FindSet then begin
+                        ObjPayrollEmployeeTrans.Init;
+                        ObjPayrollEmployeeTrans."Sacco Membership No." := ObjLoans."Client Code";
+                        ObjPayrollEmployeeTrans."No." := VarMemberNo;
+                        ObjPayrollEmployeeTrans."Loan Number" := ObjLoans."Loan  No.";
+                        ObjPayrollEmployeeTrans."Transaction Code" := 'Loan';
+                        ObjPayrollEmployeeTrans."Transaction Name" := ObjTransactionCodes."Transaction Name";
+                        ObjPayrollEmployeeTrans."Transaction Type" := ObjTransactionCodes."Transaction Type";
+                        ObjPayrollEmployeeTrans."Payroll Period" := VarOpenPeriod;
+                        if ObjLoans."Outstanding Balance" < ObjLoans."Loan Principle Repayment" then begin
+                            ObjPayrollEmployeeTrans.Amount := ObjLoans."Outstanding Balance"
+                        end else
+                            if ObjLoans."Outstanding Balance" > ObjLoans."Loan Principle Repayment" then begin
+                                ObjPayrollEmployeeTrans.Amount := ObjLoans."Loan Principle Repayment";
+                            end;
+                        ObjPayrollEmployeeTrans."Period Month" := VarPeriodMonth;
+                        ObjPayrollEmployeeTrans."Period Year" := VarPeriodYear;
+                        ObjPayrollEmployeeTrans.Balance := ObjLoans."Outstanding Balance";
+                        ObjPayrollEmployeeTrans."Balance(LCY)" := ObjLoans."Outstanding Balance";
+                        ObjPayrollEmployeeTrans."Amtzd Loan Repay Amt" := VarAmortizationAmount;
 
-                if ObjLoans."Exempt From Payroll Deduction" = false then //***Insert New Loan to Payroll Deduction***
-                begin
-                    ObjPayrollEmployeeTrans.Reset;
-                    ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Sacco Membership No.", VarMemberNo);
-                    ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Loan Number", ObjLoans."Loan  No.");
-                    ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans."Payroll Period", '%1', VarOpenPeriod);
-                    ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Transaction Code", 'INT');
-                    if not ObjPayrollEmployeeTrans.FindSet then begin
-                        ObjTransactionCodes.Reset;
-                        ObjTransactionCodes.SetRange(ObjTransactionCodes."Loan Product", ObjLoans."Loan Product Type");
-                        if ObjTransactionCodes.FindSet then begin
-                            ObjPayrollEmployeeTrans.Init;
-                            ObjPayrollEmployeeTrans."Sacco Membership No." := ObjLoans."Client Code";
-                            ObjPayrollEmployeeTrans."No." := VarMemberNo;
-                            ObjPayrollEmployeeTrans."Loan Number" := ObjLoans."Loan  No.";
-                            ObjPayrollEmployeeTrans."Transaction Code" := ObjLoans."Loan Product Type";
-                            ObjPayrollEmployeeTrans."Transaction Name" := ObjTransactionCodes."Transaction Name";
-                            ObjPayrollEmployeeTrans."Transaction Type" := ObjTransactionCodes."Transaction Type";
-                            ObjPayrollEmployeeTrans.LoanPaid := true;
-                            ObjPayrollEmployeeTrans."Payroll Period" := VarOpenPeriod;
-                            if ObjLoans."Outstanding Balance" < ObjLoans."Loan Principle Repayment" then begin
-                                ObjPayrollEmployeeTrans.Amount := ObjLoans."Outstanding Balance"
-                            end else
-                                if ObjLoans."Outstanding Balance" > ObjLoans."Loan Principle Repayment" then begin
-                                    ObjPayrollEmployeeTrans.Amount := ObjLoans."Loan Principle Repayment";
-                                end;
-                            ObjPayrollEmployeeTrans."Period Month" := VarPeriodMonth;
-                            ObjPayrollEmployeeTrans."Period Year" := VarPeriodYear;
-                            ObjPayrollEmployeeTrans.Balance := ObjLoans."Outstanding Balance";
-                            ObjPayrollEmployeeTrans."Balance(LCY)" := ObjLoans."Outstanding Balance";
-                            ObjPayrollEmployeeTrans."Amtzd Loan Repay Amt" := VarAmortizationAmount;
-
-                            ObjPayrollEmployeeTrans.Insert;
-                        end;
+                        ObjPayrollEmployeeTrans.Insert;
                     end;
                 end;
-                if ObjLoans."Exempt From Payroll Deduction" = true then //***Delete Loans Exempted from Payroll****
-                begin
-                    ObjPayrollEmployeeTrans.Reset;
-                    ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Sacco Membership No.", VarMemberNo);
-                    ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Loan Number", ObjLoans."Loan  No.");
-                    ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans."Payroll Period", '%1', VarOpenPeriod);
-                    if ObjPayrollEmployeeTrans.FindSet = false then begin
-                        ObjPayrollEmployeeTrans.Delete;
-                    end
-                end;
+            end;
+            if ObjLoans."Exempt From Payroll Deduction" = true then //***Delete Loans Exempted from Payroll****
+            begin
+                ObjPayrollEmployeeTrans.Reset;
+                ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Sacco Membership No.", VarMemberNo);
+                ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."Loan Number", ObjLoans."Loan  No.");
+                ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans."Payroll Period", '%1', VarOpenPeriod);
+                if ObjPayrollEmployeeTrans.FindSet = false then begin
+                    ObjPayrollEmployeeTrans.Delete;
+                end
+            end;
             until ObjLoans.Next = 0;
         end;
-
-
-
-
-        // VarLoanDueAmount := 0;
-        // ObjPayrollEmployeeTrans.Reset;
-        // ObjPayrollEmployeeTrans.SetRange(ObjPayrollEmployeeTrans."No.", VarMemberNo);
-        // ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans."Payroll Period", '%1', VarOpenPeriod);
-        // ObjPayrollEmployeeTrans.SetFilter(ObjPayrollEmployeeTrans."Loan Number", '<>%1', '');
-        // if ObjPayrollEmployeeTrans.FindSet then begin
-        //     repeat
-        //         VarLoanDueAmount := 0;
-        //         VarMonthlyInstalments := 0;
-
-        //         VarLoanDueAmount := SFactory.FnRunLoanAmountDuePayroll(ObjPayrollEmployeeTrans."Loan Number");
-        //         //===========================================================================================Get Monthly Instalment
-        //         VarDateFilter := Format(VarOpenPeriod) + '..' + Format(CalcDate('CM', VarOpenPeriod));
-        //         ObjLoanSchedule.Reset;
-        //         ObjLoanSchedule.SetRange(ObjLoanSchedule."Loan No.", ObjPayrollEmployeeTrans."Loan Number");
-        //         ObjLoanSchedule.SetFilter(ObjLoanSchedule."Repayment Date", VarDateFilter);
-        //         if ObjLoanSchedule.FindSet then begin
-        //             VarMonthlyInstalments := ObjLoanSchedule."Monthly Repayment";
-        //         end;
-
-
-        //         if ObjLoans.Get(ObjPayrollEmployeeTrans."Loan Number") then begin
-
-        //             ObjLoans.CalcFields(ObjLoans."Outstanding Balance");
-
-
-        //             if (VarLoanDueAmount < VarMonthlyInstalments) and (ObjLoans."Outstanding Balance" > VarMonthlyInstalments) then
-        //                 VarLoanDueAmount := VarMonthlyInstalments;
-
-        //             ObjPayrollEmployeeTrans.Amount := VarLoanDueAmount;//SFactory.FnRunLoanAmountDuePayroll(ObjPayrollEmployeeTrans."Loan Number");
-        //             ObjPayrollEmployeeTrans.Balance := ObjLoans."Outstanding Balance";
-        //             ObjPayrollEmployeeTrans.Modify;
-        //         end;
-        //     until ObjPayrollEmployeeTrans.Next = 0;
-        // end;
 
 
         //=============================================================Delete Cleared Loans

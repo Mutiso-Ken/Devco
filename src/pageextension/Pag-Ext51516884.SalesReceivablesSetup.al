@@ -9,6 +9,18 @@ pageextension 51516884 "Sales & Receivables Setup" extends "Sales & Receivables 
             {
                 ApplicationArea = all;
             }
+            field("Collateral Register No"; "Collateral Register No")
+            {
+                ApplicationArea = all;
+            }
+            field("Custodian No."; "Custodian No.")
+            {
+                ApplicationArea = all;
+            }
+            field("Safe Custody Package Nos"; "Safe Custody Package Nos")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 

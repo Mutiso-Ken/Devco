@@ -73,7 +73,7 @@ Report 51516477 "Loans Repayment Schedule New"
             column(Loans__Repayment_Method_Caption; FieldCaption("Repayment Method"))
             {
             }
-            column(INST; INST)
+            column(INST; "Loans Register".Installments)
             {
             }
             dataitem("Loan Repayment Schedule"; "Loan Repayment Schedule")
@@ -154,6 +154,7 @@ Report 51516477 "Loans Repayment Schedule New"
 
                 trigger OnAfterGetRecord()
                 begin
+                    // SFactory.FnGenerateRepaymentSchedule("Loan No.");
                     Cust.Reset;
                     Cust.SetRange(Cust."No.", "Loans Register"."Employer Code");
                     if Cust.Find('-') then begin
@@ -187,7 +188,7 @@ Report 51516477 "Loans Repayment Schedule New"
 
             trigger OnAfterGetRecord()
             begin
-                
+
             end;
         }
     }
@@ -217,6 +218,7 @@ Report 51516477 "Loans Repayment Schedule New"
     end;
 
     var
+        SFactory: Codeunit "SURESTEP Factory";
         LastFieldNo: Integer;
         FooterPrinted: Boolean;
         TotalFor: label 'Total for ';

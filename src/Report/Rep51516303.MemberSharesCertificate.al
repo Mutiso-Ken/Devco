@@ -12,10 +12,10 @@ Report 51516303 "Member Shares Certificate"
             column(ReportForNavId_1102755000; 1102755000)
             {
             }
-            column(TotalChangamka; TotalChangamka)
+            column(TotalCurrectshares; TotalCurrectshares)
             {
             }
-            column(TotalComputer; TotalComputer)
+            column(TotalSharecap; TotalSharecap)
             {
             }
             column(TotalLift; TotalLift)
@@ -92,26 +92,18 @@ Report 51516303 "Member Shares Certificate"
             begin
                 MembersReg.Reset;
                 MembersReg.SetRange(MembersReg."No.", "Members Register"."No.");
-                MembersReg.SetAutocalcFields(MembersReg."Changamka Shares", MembersReg."Computer Shares", MembersReg."Lift Shares", MembersReg."Tamba Shares", MembersReg."Fosa Shares", MembersReg."Pepea Shares", MembersReg."van Shares");
+                MembersReg.SetAutocalcFields( MembersReg."Current Shares",MembersReg."Share Capital");
                 if MembersReg.Find('-') then begin
-                    TotalChangamka := 0;
-                    TotalComputer := 0;
-                    TotalLift := 0;
-                    TotalTamba := 0;
-                    TotalFOSA := 0;
-                    TotalPepea := 0;
-                    TotalVan := 0;
-                    TotalShares := MembersReg."Changamka Shares" + MembersReg."Computer Shares" + MembersReg."Lift Shares" + MembersReg."Tamba Shares" + MembersReg."Fosa Shares" + MembersReg."Pepea Shares" + MembersReg."van Shares";
-                    CertificateNo := 'JYS' + Format(MembersReg."No.");
+                    TotalCurrectshares := 0;
+                    TotalSharecap := 0;
+                   
+                    TotalShares := MembersReg."Current Shares"+MembersReg."Share Capital";
+                    CertificateNo := 'DEVS' + Format(MembersReg."No.");
                     IDnoMember := MembersReg."ID No.";
                     FullName := MembersReg.Name;
-                    TotalChangamka := MembersReg."Changamka Shares";
-                    TotalComputer := MembersReg."Computer Shares";
-                    TotalLift := MembersReg."Lift Shares";
-                    TotalTamba := MembersReg."Tamba Shares";
-                    TotalFOSA := MembersReg."Fosa Shares";
-                    TotalPepea := MembersReg."Pepea Shares";
-                    TotalVan := MembersReg."van Shares";
+                    TotalCurrectshares := MembersReg."Current Shares";
+                    TotalSharecap:=MembersReg."Share Capital";
+                  
                     //................................................
                     //Amount into words
                     CheckReport.InitTextVariable;
@@ -126,8 +118,8 @@ Report 51516303 "Member Shares Certificate"
                 TotalShares := 0;
                 CertificateNo := '';
                 IDnoMember := '';
-                TotalChangamka := 0;
-                TotalComputer := 0;
+                TotalCurrectshares := 0;
+                TotalSharecap := 0;
                 TotalLift := 0;
                 TotalTamba := 0;
                 TotalFOSA := 0;
@@ -236,8 +228,8 @@ Report 51516303 "Member Shares Certificate"
         FullName: Text[100];
         CheckReport: Report Check;
         NumberText: array[2] of Text[120];
-        TotalChangamka: Decimal;
-        TotalComputer: Decimal;
+        TotalCurrectshares: Decimal;
+        TotalSharecap: Decimal;
         TotalLift: Decimal;
         TotalTamba: Decimal;
         TotalFOSA: Decimal;

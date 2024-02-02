@@ -13,7 +13,7 @@ Page 51516487 "Devco Sacco Main Role Center"
             part(Control75; "Headline RC Accountant")
             {
                 ApplicationArea = All;
-                Visible = false;
+                Visible = true;
 
             }
 
@@ -121,7 +121,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                 Caption = 'Chart of Accounts';
                 RunObject = Page "Chart of Accounts";
                 ToolTip = 'Open the chart of accounts.';
-                Visible = false;
+                Visible = true;
             }
             action("Bank Accounts List")
             {
@@ -141,25 +141,15 @@ Page 51516487 "Devco Sacco Main Role Center"
                 RunObject = Page "Member List";
                 ToolTip = 'View or edit detailed information for the Members.';
             }
-            action(FOSAAccounts)
+            action(Loans)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'FOSA Accounts';
-                Image = Vendor;
-                Visible = false;
-                RunObject = Page "Account Details Master";
-                ToolTip = 'View or edit detailed information for the FOSA Savings Accounts.';
+                Caption = 'Credits';
+                Image = Loaner;
+                Visible = true;
+                RunObject = Page "Loans Posted List";
+                ToolTip = 'View or edit detailed information for the Credits Accounts.';
 
-            }
-            action(FOSAAccountsBalance)
-            {
-                ApplicationArea = Basic, Suite;
-                Caption = 'FOSA Account Balances';
-                Image = Balance;
-                RunObject = Page "Vendor List";
-                RunPageView = WHERE("Balance (LCY)" = FILTER(<> 0));
-                ToolTip = 'View a summary of the bank account balance in different periods.';
-                Visible = false;
             }
             action("Bulk Sms")
             {
@@ -258,6 +248,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                         ApplicationArea = Basic, Suite;
                         Caption = 'Treasury Management';
                         RunObject = page "Treasury List";
+                        Visible = false;
 
                     }
                     action("Voucher Cash Payments")
@@ -358,23 +349,66 @@ Page 51516487 "Devco Sacco Main Role Center"
                         ApplicationArea = Basic, Suite;
                         Caption = 'Deposits Return';
                         Image = Report;
-                        RunObject = report "Deposit Return SASRA";
+                        RunObject = report "Deposit returnN";
                     }
-                    // action("Agency Returns-SASRA")
-                    // {
-                    //     ApplicationArea = Basic, Suite;
-                    //     Caption = 'Agency Report';
-                    //     Visible = true;
-                    //     RunObject = report "Agency Report-SASRA";
-                    // }
+
                     action("Loans Defaulter Aging-SASRA")
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Loans Defaulter Aging';
                         RunObject = report "Loans Defaulter Aging - SASRA";
                     }
+                    action("Statement of Financial Position")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Statement of Financial Position';
+                        RunObject = report "STATEMENT OF FINANCIAL P";
+                        ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
+                    }
+                    action("Form2F Statement of CompIncome")
+                    {
+                        ApplicationArea = Basic, Suite;
+
+                        RunObject = report "Form2F Statement of CompIncome";
+                        ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
+                    }
+                    action("Liquidity Statement")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Liquidity Statement';
+                        RunObject = report Liquidity;
+                        ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
+                    }
+                     action("Investiment Return")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Investiment Return';
+                        RunObject =report "RETURN ON INVESTMENT";
+                        ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
+                    }
+                      action("Sectorial Lending Report")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Sectorial Lending Report';
+                        RunObject = report "SECTORAL LENDING";
+                        ToolTip = 'View or Generate Agency Returns for a given period.';
+                    }
 
 
+                    action("Insider Lending Report")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Insider Lending Report';
+                        RunObject =report "Insider Lending & Perf Return";
+                        ToolTip = 'View or Generate Agency Returns for a given period.';
+                    }
+                    action("Capital Adequacy Return")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Capital Adequacy Return';
+                        RunObject = report "CAPITAL ADEQUACY RETURN";
+                        ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
+                    }
                     action("Loans Provisioning Summary-SASRA")
                     {
                         ApplicationArea = Basic, Suite;
@@ -387,11 +421,11 @@ Page 51516487 "Devco Sacco Main Role Center"
                         Caption = 'Loan Sectorial Lending';
                         RunObject = REPORT "Loan Sectoral Lending Report";
                     }
-                    action("Loans Insider Lending-SASRA")
+                    action("Risk Class of Assets")
                     {
                         ApplicationArea = Basic, Suite;
-                        Caption = 'Loans Insider Lending';
-                        RunObject = report "Insider Lending";
+                        // Caption = 'Loans Insider Lending';
+                        RunObject = report "Risk Class Of Assets & Prov";
                     }
                 }
                 //..........................................................................................................................................
@@ -620,38 +654,38 @@ Page 51516487 "Devco Sacco Main Role Center"
                     }
 
 
-                    action("Capital Adequacy Return")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Capital Adequacy Return';
-                        RunObject = Page "Chart of Accounts";
-                        ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
-                    }
+                    // action("Capital Adequacy Return")
+                    // {
+                    //     ApplicationArea = Basic, Suite;
+                    //     Caption = 'Capital Adequacy Return';
+                    //     RunObject = Page "Chart of Accounts";
+                    //     ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
+                    // }
 
 
-                    action("Liquidity Statement")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Liquidity Statement';
-                        RunObject = Page "Chart of Accounts";
-                        ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
-                    }
+                    // action("Liquidity Statement")
+                    // {
+                    //     ApplicationArea = Basic, Suite;
+                    //     Caption = 'Liquidity Statement';
+                    //     RunObject = Page "Chart of Accounts";
+                    //     ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
+                    // }
 
-                    action("Investiment Return")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Investiment Return';
-                        RunObject = Page "Chart of Accounts";
-                        ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
-                    }
+                    // action("Investiment Return")
+                    // {
+                    //     ApplicationArea = Basic, Suite;
+                    //     Caption = 'Investiment Return';
+                    //     RunObject = Page "Chart of Accounts";
+                    //     ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
+                    // }
 
-                    action("Statement of Financial Position")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Statement of Financial Position';
-                        RunObject = Page "Chart of Accounts";
-                        ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
-                    }
+                    // action("Statement of Financial Position")
+                    // {
+                    //     ApplicationArea = Basic, Suite;
+                    //     Caption = 'Statement of Financial Position';
+                    //     RunObject = Page "Chart of Accounts";
+                    //     ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
+                    // }
 
                     action("Statement Of Comprehensive Income")
                     {
@@ -661,30 +695,30 @@ Page 51516487 "Devco Sacco Main Role Center"
                         ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
                     }
 
-                    action("Agency Returns Report")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Agency Returns Report';
-                        RunObject = Page "Chart of Accounts";
-                        ToolTip = 'View or Generate Agency Returns for a given period.';
-                    }
+                    // action("Agency Returns Report")
+                    // {
+                    //     ApplicationArea = Basic, Suite;
+                    //     Caption = 'Agency Returns Report';
+                    //     RunObject = Page "Chart of Accounts";
+                    //     ToolTip = 'View or Generate Agency Returns for a given period.';
+                    // }
 
-                    action("Sectorial Lending Report")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Sectorial Lending Report';
-                        RunObject = Page "Chart of Accounts";
-                        ToolTip = 'View or Generate Agency Returns for a given period.';
-                    }
+                    // action("Sectorial Lending Report")
+                    // {
+                    //     ApplicationArea = Basic, Suite;
+                    //     Caption = 'Sectorial Lending Report';
+                    //     RunObject = Page "Chart of Accounts";
+                    //     ToolTip = 'View or Generate Agency Returns for a given period.';
+                    // }
 
 
-                    action("Insider Lending Report")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Insider Lending Report';
-                        RunObject = Page "Chart of Accounts";
-                        ToolTip = 'View or Generate Agency Returns for a given period.';
-                    }
+                    // action("Insider Lending Report")
+                    // {
+                    //     ApplicationArea = Basic, Suite;
+                    //     Caption = 'Insider Lending Report';
+                    //     RunObject = Page "Chart of Accounts";
+                    //     ToolTip = 'View or Generate Agency Returns for a given period.';
+                    // }
 
 
                     action("GL Accounts Net Change Report")
@@ -732,6 +766,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                     }
                 }
 
+
                 group("G/L Budgets")
                 {
                     Caption = 'G/L Budgets';
@@ -747,7 +782,21 @@ Page 51516487 "Devco Sacco Main Role Center"
 
             }
 
+            // group("Safe Custody management")
+            // {
+            //     action("Safe Custody Custodians")
+            //     {
+            //         ApplicationArea = All;
 
+            //         RunObject = page "Safe Custodian List";
+            //     }
+            //     action("Safe Custody Custodian Register")
+            //     {
+            //         ApplicationArea = All;
+
+            //         RunObject = page ApplyNewSafeCustody;
+            //     }
+            // }
 
             group("Cash Management New")
             {
@@ -1027,7 +1076,26 @@ Page 51516487 "Devco Sacco Main Role Center"
 
                             RunObject = report "Next of Kin Report";
                         }
-
+                        // action("Member shares Report")
+                        // {
+                        //     ApplicationArea = all;
+                        //     RunObject = report "Member Share Capital Statement";
+                        // }
+                        //     action("Member Deposits Report")
+                        // {
+                        //     ApplicationArea = all;
+                        //     RunObject = report "Members Deposits Statement";
+                        // }
+                        //     action("Member Detailed Statement")
+                        // {
+                        //     ApplicationArea = all;
+                        //     RunObject = report "Member Detailed Statement";
+                        // }
+                        //     action("Member Accounts Statement")
+                        // {
+                        //     ApplicationArea = all;
+                        //     RunObject = report "Member Account Statement";
+                        // }
                     }
 
 
@@ -1293,29 +1361,36 @@ Page 51516487 "Devco Sacco Main Role Center"
 
                 group("Collateral Management")
                 {
-                    visible = false;
+                    // visible = false;
                     action(Collateralreg)
                     {
                         Caption = 'Loan Collateral Register';
                         Image = Register;
                         RunObject = page "Loan Collateral Register List";
                     }
-                    action(Collateralmvmt)
+                    action(CollateralSch)
                     {
-                        Caption = 'Loan Collateral Movement';
-                        //RunObject = page "Collateral Movement List";
+                        Caption = 'Loan Collateral Depreciation Schedule';
+                        RunObject = page "Collateral Depr. Schedule";
+                        Visible = false;
+                    }
+                    action(collateralsetup)
+                    {
+                        Caption = 'Loan collateral Setup';
+                        RunObject = page "Loan Collateral Setup";
+                        Visible = false;
                     }
 
-                    group(CollateralReports)
-                    {
-                        Caption = 'Collateral Movement';
-                        action(ColateralsReport)
-                        {
-                            Caption = 'Collateral Report';
-                            //RunObject = report "Collaterals Report";
-                        }
+                    // group(CollateralReports)
+                    // {
+                    //     Caption = 'Collateral Movement';
+                    //     action(ColateralsReport)
+                    //     {
+                    //         Caption = 'Collateral Report';
+                    //         RunObject = report "Collaterals Report";
+                    //     }
 
-                    }
+                    // }
                     group(ArchiveCollateral)
                     {
                         Caption = 'Archive';
@@ -1323,6 +1398,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                         {
                             Caption = 'Effective Collateral Movement';
                             //RunObject = page "Effected Collateral Movement";
+                            Visible = false;
                         }
                     }
 

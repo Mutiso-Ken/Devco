@@ -20,8 +20,8 @@ Table 51516233 "Loan Collateral Details"
         field(2; Type; Option)
         {
             NotBlank = true;
-            OptionCaption = ' ,Shares,Deposits,Collateral,Fixed Deposit';
-            OptionMembers = " ",Shares,Deposits,Collateral,"Fixed Deposit";
+            // OptionCaption = ' ,Shares,Deposits,Collateral,Fixed Deposit';
+            OptionMembers = Collateral,"Fixed Deposit";
         }
         field(3; "Security Details"; Text[150])
         {
@@ -38,21 +38,20 @@ Table 51516233 "Loan Collateral Details"
 
             trigger OnValidate()
             begin
-                //"Guarantee Value":=Value*0.7;
-                if Type = Type::"Fixed Deposit" then
-                    Error('The cannot change the value for fixed deposit');
-                //IF SecSetup.GET(Code) THEN BEGIN
-                SecSetup.Reset;
-                SecSetup.SetRange(SecSetup.Code, Code);
-                if SecSetup.Find('-') then begin
+                // //"Guarantee Value":=Value*0.7;
+                // if Type = Type::"Fixed Deposit" then
+                //     Error('The cannot change the value for fixed deposit');
+                // //IF SecSetup.GET(Code) THEN BEGIN
+                // SecSetup.Reset;
+                // SecSetup.SetRange(SecSetup.Code, Code);
+                // if SecSetup.Find('-') then begin
+                //     Type := SecSetup.Type;
+                //     "Security Details" := SecSetup."Security Description";
+                //     "Collateral Multiplier" := SecSetup."Collateral Multiplier";
+                //     "Guarantee Value" := (Value * "Collateral Multiplier") / 100;
+                //     Category := SecSetup.Category;
 
-                    Type := SecSetup.Type;
-                    "Security Details" := SecSetup."Security Description";
-                    "Collateral Multiplier" := SecSetup."Collateral Multiplier";
-                    "Guarantee Value" := (Value * "Collateral Multiplier") / 100;
-                    Category := SecSetup.Category;
-
-                end;
+                // end;
                 //END;
             end;
         }
@@ -62,20 +61,21 @@ Table 51516233 "Loan Collateral Details"
         }
         field(8; "Code"; Code[20])
         {
-            TableRelation = "Loan Collateral Set-up".Code;
+            TableRelation = "Loan Collateral Register"."Document No";
 
             trigger OnValidate()
             begin
                 //IF SecSetup.GET(Code) THEN BEGIN
-                SecSetup.Reset;
-                SecSetup.SetRange(SecSetup.Code, Code);
-                if SecSetup.Find('-') then begin
-
-                    Type := SecSetup.Type;
-                    "Security Details" := SecSetup."Security Description";
-                    "Collateral Multiplier" := SecSetup."Collateral Multiplier";
-                    "Guarantee Value" := Value * "Collateral Multiplier";
-                    Category := SecSetup.Category;
+                CollateralRegister.Reset;
+                CollateralRegister.SetRange(CollateralRegister."Document No", Code);
+                if CollateralRegister.Find('-') then begin
+                    Name := CollateralRegister."Collateral Description";
+                    Value := CollateralRegister."Asset Value";
+                    "Assesment Done By":=CollateralRegister."Received By";
+                    // "Security Details" := SecSetup."Security Description";
+                    // "Collateral Multiplier" := SecSetup."Collateral Multiplier";
+                    // "Guarantee Value" := Value * "Collateral Multiplier";
+                    // Category := SecSetup.Category;
 
                 end;
                 //END;
@@ -83,45 +83,39 @@ Table 51516233 "Loan Collateral Details"
         }
         field(9; Category; Option)
         {
-            OptionCaption = ' ,Cash,Government Securities,Corporate Bonds,Equity,Morgage Securities,Assets';
-            OptionMembers = " ",Cash,"Government Securities","Corporate Bonds",Equity,"Morgage Securities",Assets;
+            // OptionCaption = ' ,Cash,Government Securities,Corporate Bonds,Equity,Morgage Securities,Assets';
+            OptionMembers = " ",Assets,Cash,"Government Securities","Corporate Bonds",Equity,"Morgage Securities";//,Assets;
         }
         field(10; "Collateral Multiplier"; Decimal)
         {
 
             trigger OnValidate()
             begin
-                "Guarantee Value" := "Collateral Multiplier" * Value;
+                "Guarantee Value" := (Value * "Collateral Multiplier") / 100;
             end;
         }
-        field(11; "View Document"; Code[20])
-        {
-
-            trigger OnValidate()
-            begin
-                Hyperlink('C:\SAMPLIR.DOC');
-            end;
-        }
-        field(12; "Assesment Done"; Boolean)
-        {
-        }
-        // field(13; "Account No"; Code[20])
+        // field(11; "View Document"; Code[20])
         // {
-        //     TableRelation = Vendor."No." where("Vendor Posting Group" = const('FIXED'));
 
         //     trigger OnValidate()
         //     begin
-        //         if Vendor.Get("Account No") then begin
-        //             Vendor.CalcFields(Vendor."Balance (LCY)");
-        //             Value := Vendor."Balance (LCY)";
-        //         end;
+        //         Hyperlink('C:\SAMPLIR.DOC');
         //     end;
         // }
+        field(12; "Assesment Done By"; Code[30])
+        {
+        }
+        field(13; "Name"; Text[50])
+        {
+            DataClassification = ToBeClassified;
+        }
+
+
     }
 
     keys
     {
-        key(Key1; "Loan No", Type, "Security Details", "Code")
+        key(Key1; "Loan No", "Security Details", "Code")
         {
             Clustered = true;
         }
@@ -134,6 +128,6 @@ Table 51516233 "Loan Collateral Details"
     var
         LoanApplications: Record "Loans Register";
         SecSetup: Record "Loan Collateral Set-up";
-        Vendor: Record Vendor;
+        CollateralRegister: Record "Loan Collateral Register";
 }
 

@@ -339,6 +339,7 @@ Page 51516254 "Loans Posted Card"
                 {
                     ApplicationArea = Basic;
                     Promoted = true;
+                    Caption = 'Detailed Member Statement';
                     PromotedCategory = "process";
                     Image = report;
 
@@ -363,7 +364,7 @@ Page 51516254 "Loans Posted Card"
                         Cust.SetRange(Cust."No.", "Client Code");
                         Cust.SetFilter(Cust."Loan Product Filter", "Loan Product Type");
                         Cust.SetFilter(Cust."Loan No. Filter", "Loan  No.");
-                        Report.Run(51516609, true, false);
+                        Report.Run(51516227, true, false);
                     end;
                 }
                 action("View Schedule")
@@ -377,7 +378,7 @@ Page 51516254 "Loans Posted Card"
 
                     trigger OnAction()
                     begin
-                        if not Posted then
+                        if Posted then
                             SFactory.FnGenerateRepaymentSchedule("Loan  No.");
 
                         LoanApp.Reset;

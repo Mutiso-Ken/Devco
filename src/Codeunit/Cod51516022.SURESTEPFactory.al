@@ -53,6 +53,7 @@ Codeunit 51516022 "SURESTEP Factory"
         end;
         exit(branchCode);
     end;
+
     procedure FnGetChargeFee(ProductCode: Code[50]; InsuredAmount: Decimal; ChargeType: Code[100]) FCharged: Decimal
     begin
         if ObjLoanProductSetup.Get(ProductCode) then begin
@@ -69,6 +70,7 @@ Codeunit 51516022 "SURESTEP Factory"
         end;
         exit(FCharged);
     end;
+
     procedure FnGetAccountUserBranch(UserAccount: Code[50]) branchCode: Code[20]
     begin
         UserSetup.Reset;
@@ -563,13 +565,14 @@ Codeunit 51516022 "SURESTEP Factory"
                     RSchedule."Loan No." := LoansRec."Loan  No.";
                     RSchedule."Loan Amount" := LoanAmount;
                     RSchedule."Instalment No" := InstalNo;
-                    RSchedule."Repayment Date" := RunDate;
-                    //RSchedule."Repayment Date" := CalcDate('CM', RunDate);
+                    //RSchedule."Repayment Date" := RunDate;
+                     RSchedule."Repayment Date" := CalcDate('CM', RunDate);
                     RSchedule."Member No." := LoansRec."Client Code";
                     RSchedule."Loan Category" := LoansRec."Loan Product Type";
                     RSchedule."Monthly Repayment" := LInterest + LPrincipal;
                     RSchedule."Monthly Interest" := LInterest;
                     RSchedule."Principal Repayment" := LPrincipal;
+                    RSchedule."Loan Balance" := LBalance;
                     RSchedule.Insert;
                     WhichDay := Date2dwy(RSchedule."Repayment Date", 1);
                 until LBalance < 1;

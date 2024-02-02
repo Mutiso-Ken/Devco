@@ -11,6 +11,10 @@ tableextension 51516077 "sales&receivablesetupext" extends "Sales & Receivables 
         {
             TableRelation = "No. Series";
         }
+        field(5003; "Custodian No."; Code[50])
+        {
+           TableRelation = "No. Series";
+        }
         field(50001; "Safe Custody Package Nos"; Code[20])
         {
             TableRelation = "No. Series";

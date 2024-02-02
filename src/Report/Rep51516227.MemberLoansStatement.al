@@ -2,6 +2,7 @@
 Report 51516227 "Member Loans Statement"
 {
     DefaultLayout = RDLC;
+    ApplicationArea=all;
     RDLCLayout = './Layouts/MemberLoansStatement.rdlc';
 
     dataset

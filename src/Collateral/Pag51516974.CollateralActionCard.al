@@ -31,14 +31,25 @@ Page 51516974 "Collateral Action Card"
                 field("Collateral Type"; "Collateral Type")
                 {
                     ApplicationArea = Basic;
+                    Visible=false;
                 }
                 field("Collateral Description"; "Collateral Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Collateral Posting Group"; "Collateral Posting Group")
+                     field("Action"; Action)
                 {
                     ApplicationArea = Basic;
+
+                    trigger OnValidate()
+                    begin
+                        FnGetVisibility();
+                    end;
+                }
+                field("Asset Value"; "Asset Value")
+                {
+                    ApplicationArea = Basic;
+                   
                 }
                 field("Date Received"; "Date Received")
                 {
@@ -48,10 +59,7 @@ Page 51516974 "Collateral Action Card"
                 {
                     ApplicationArea = Basic;
                 }
-                field("Reference No"; "Reference No")
-                {
-                    ApplicationArea = Basic;
-                }
+                
                 field("Received By"; "Received By")
                 {
                     ApplicationArea = Basic;
@@ -104,18 +112,19 @@ Page 51516974 "Collateral Action Card"
                 {
                     ApplicationArea = Basic;
                 }
-                field("Insurance Vendor No."; "Insurance Vendor No.")
+                field("Insurance Company";"Insurance Company")
                 {
                     ApplicationArea = Basic;
                 }
             }
             group("Depreciation Details")
             {
-                field("Asset Value"; "Asset Value")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
+                Visible=false;
+                // field("Asset Value"; "Asset Value")
+                // {
+                //     ApplicationArea = Basic;
+                //     Editable = false;
+                // }
                 field("Depreciation Completion Date"; "Depreciation Completion Date")
                 {
                     ApplicationArea = Basic;
@@ -143,19 +152,19 @@ Page 51516974 "Collateral Action Card"
                     Editable = false;
                 }
             }
-            group("Actions")
-            {
-                Caption = 'Actions';
-                field("Action"; Action)
-                {
-                    ApplicationArea = Basic;
+            // group("Actions")
+            // {
+            //     Caption = 'Actions';
+            //     field("Action"; Action)
+            //     {
+            //         ApplicationArea = Basic;
 
-                    trigger OnValidate()
-                    begin
-                        FnGetVisibility();
-                    end;
-                }
-            }
+            //         trigger OnValidate()
+            //         begin
+            //             FnGetVisibility();
+            //         end;
+            //     }
+            // }
             group("Received at HQ")
             {
                 Visible = ReceivedAtHQVisible;
@@ -343,7 +352,7 @@ Page 51516974 "Collateral Action Card"
             {
                 ApplicationArea = Basic;
                 Image = Calculate;
-
+Visible=false;
                 trigger OnAction()
                 begin
 
@@ -494,16 +503,26 @@ Page 51516974 "Collateral Action Card"
                     //=============End of Update Year 6 Depreciation==========================
                 end;
             }
-            action("Depreciation Schedule")
+            action("Release Collateral")
             {
                 ApplicationArea = Basic;
                 Image = Form;
+                trigger OnAction()
+                var
+                    myInt: Integer;
+                begin
+                    "Released By":=UserId;
+                    "Date Released":=Today;
+                    Released:=true;
+
+                end;
             }
             action("Charge PackageLodge Fee")
             {
                 ApplicationArea = Basic;
                 Caption = 'Charge Package Lodge Fee';
                 Image = Post;
+                Visible=false;
 
                 trigger OnAction()
                 begin
@@ -552,101 +571,102 @@ Page 51516974 "Collateral Action Card"
                     Message('Charge Amount of %1 Deducted Successfuly', LodgeFee);
                 end;
             }
-            action("Lodge Package")
-            {
-                ApplicationArea = Basic;
-                Image = LinkAccount;
+            // action("Lodge Package")
+            // {
+            //     ApplicationArea = Basic;
+            //     Image = LinkAccount;
+            //     Visible=false;
 
-                trigger OnAction()
-                begin
-                    if Action <> Action::"Booked to Safe Custody" then
-                        Error('This is action is only applicable to Safe Custody booking');
+            //     trigger OnAction()
+            //     begin
+            //         if Action <> Action::"Booked to Safe Custody" then
+            //             Error('This is action is only applicable to Safe Custody booking');
 
-                    if ("Lodged By(Custodian 1)" <> '') and ("Lodged By(Custodian 2)" <> '') then
-                        Error('This Package has already been lodged');
+            //         if ("Lodged By(Custodian 1)" <> '') and ("Lodged By(Custodian 2)" <> '') then
+            //             Error('This Package has already been lodged');
 
-                    ObjCustodians.Reset;
-                    ObjCustodians.SetRange(ObjCustodians."User ID", UserId);
-                    if ObjCustodians.FindSet = true then begin
-                        if ("Lodged By(Custodian 1)" = '') and ("Lodged By(Custodian 2)" <> UserId) then begin
-                            "Lodged By(Custodian 1)" := UserId
-                        end else
-                            if ("Lodged By(Custodian 2)" = '') and ("Lodged By(Custodian 1)" <> UserId) then begin
-                                "Lodged By(Custodian 2)" := UserId
-                            end else
-                                Error('You are not authorized to lodge Packages')
-                    end;
+            //         ObjCustodians.Reset;
+            //         ObjCustodians.SetRange(ObjCustodians."User ID", UserId);
+            //         if ObjCustodians.FindSet = true then begin
+            //             if ("Lodged By(Custodian 1)" = '') and ("Lodged By(Custodian 2)" <> UserId) then begin
+            //                 "Lodged By(Custodian 1)" := UserId
+            //             end else
+            //                 if ("Lodged By(Custodian 2)" = '') and ("Lodged By(Custodian 1)" <> UserId) then begin
+            //                     "Lodged By(Custodian 2)" := UserId
+            //                 end else
+            //                     Error('You are not authorized to lodge Packages')
+            //         end;
 
-                    if ("Lodged By(Custodian 1)" <> '') and ("Lodged By(Custodian 2)" <> '') then begin
-                        "Date Lodged" := Today;
-                        "Time Lodged" := Time;
+            //         if ("Lodged By(Custodian 1)" <> '') and ("Lodged By(Custodian 2)" <> '') then begin
+            //             "Date Lodged" := Today;
+            //             "Time Lodged" := Time;
 
-                        //===========Create A Package in Safe Custody Module=======================
-                        if ObjNoSeries.Get then begin
-                            ObjNoSeries.TestField(ObjNoSeries."Safe Custody Package Nos");
-                            VarPackageNo := NoSeriesMgt.GetNextNo(ObjNoSeries."Safe Custody Package Nos", 0D, true);
+            //             //===========Create A Package in Safe Custody Module=======================
+            //             if ObjNoSeries.Get then begin
+            //                 ObjNoSeries.TestField(ObjNoSeries."Safe Custody Package Nos");
+            //                 VarPackageNo := NoSeriesMgt.GetNextNo(ObjNoSeries."Safe Custody Package Nos", 0D, true);
 
-                            ObjPackage.Init;
-                            ObjPackage."Package ID" := VarPackageNo;
-                            ObjPackage."Package Type" := "Package Type";
-                            ObjPackage."Charge Account" := "Charge Account";
-                            ObjPackage."Charge Account Name" := "Member Name";
-                            ObjPackage."Lodged By(Custodian 1)" := "Lodged By(Custodian 1)";
-                            ObjPackage."Lodged By(Custodian 2)" := "Lodged By(Custodian 2)";
-                            ObjPackage."Date Lodged" := "Date Lodged";
-                            ObjPackage."Time Lodged" := "Time Lodged";
-                            ObjPackage.Insert;
-                            Message('A Package has been created on Safe Custody Packages List# Package No%1', VarPackageNo);
-                        end;
-                    end;
-                    //===========End Create A Package in Safe Custody Module=======================
+            //                 ObjPackage.Init;
+            //                 ObjPackage."Package ID" := VarPackageNo;
+            //                // ObjPackage."Package Type" := "Package Type";
+            //                 ObjPackage."Charge Account" := "Charge Account";
+            //                 ObjPackage."Charge Account Name" := "Member Name";
+            //                 ObjPackage."Lodged By(Custodian 1)" := "Lodged By(Custodian 1)";
+            //                 ObjPackage."Lodged By(Custodian 2)" := "Lodged By(Custodian 2)";
+            //                 ObjPackage."Date Lodged" := "Date Lodged";
+            //                 ObjPackage."Time Lodged" := "Time Lodged";
+            //                 ObjPackage.Insert;
+            //                 Message('A Package has been created on Safe Custody Packages List# Package No%1', VarPackageNo);
+            //             end;
+            //         end;
+            //         //===========End Create A Package in Safe Custody Module=======================
 
-                    /*//Update Lodge Details on Items
-                    ObjItems.RESET;
-                    ObjItems.SETRANGE(ObjItems."Package ID","Package ID");
-                    IF ObjItems.FINDSET THEN BEGIN
-                      REPEAT
-                        ObjItems."Lodged By(Custodian 1)":="Lodged By(Custodian 1)";
-                        ObjItems."Lodged By(Custodian 2)":="Lodged By(Custodian 2)";
-                        ObjItems."Date Lodged":="Date Lodged";
-                        ObjItems.MODIFY;
-                        UNTIL ObjItems.NEXT=0;
-                      END;
-                      */
+            //         /*//Update Lodge Details on Items
+            //         ObjItems.RESET;
+            //         ObjItems.SETRANGE(ObjItems."Package ID","Package ID");
+            //         IF ObjItems.FINDSET THEN BEGIN
+            //           REPEAT
+            //             ObjItems."Lodged By(Custodian 1)":="Lodged By(Custodian 1)";
+            //             ObjItems."Lodged By(Custodian 2)":="Lodged By(Custodian 2)";
+            //             ObjItems."Date Lodged":="Date Lodged";
+            //             ObjItems.MODIFY;
+            //             UNTIL ObjItems.NEXT=0;
+            //           END;
+            //           */
 
-                end;
-            }
-            action(RetrievePackage)
-            {
-                ApplicationArea = Basic;
-                Caption = 'Retrieve Package';
+            //     end;
+            // }
+//             action(RetrievePackage)
+//             {
+//                 ApplicationArea = Basic;
+//                 Caption = 'Retrieve Package';
+// Visible=false;
+//                 trigger OnAction()
+//                 begin
+//                     if Action <> Action::"Booked to Safe Custody" then
+//                         Error('This is action is only applicable to Safe Custody booking');
 
-                trigger OnAction()
-                begin
-                    if Action <> Action::"Booked to Safe Custody" then
-                        Error('This is action is only applicable to Safe Custody booking');
+//                     if ("Lodged By(Custodian 1)" <> '') and ("Lodged By(Custodian 2)" <> '') then
+//                         Error('This Package has already been Retrieved');
 
-                    if ("Lodged By(Custodian 1)" <> '') and ("Lodged By(Custodian 2)" <> '') then
-                        Error('This Package has already been Retrieved');
+//                     ObjCustodians.Reset;
+//                     ObjCustodians.SetRange(ObjCustodians."User ID", UserId);
+//                     if ObjCustodians.FindSet = true then begin
+//                         if ("Released By(Custodian 1)" = '') and ("Released By(Custodian 2)" <> UserId) then begin
+//                             "Released By(Custodian 1)" := UserId
+//                         end else
+//                             if ("Released By(Custodian 2)" = '') and ("Released By(Custodian 1)" <> UserId) then begin
+//                                 "Released By(Custodian 2)" := UserId
+//                             end else
+//                                 Error('You are not authorized to Retrieve Packages')
+//                     end;
 
-                    ObjCustodians.Reset;
-                    ObjCustodians.SetRange(ObjCustodians."User ID", UserId);
-                    if ObjCustodians.FindSet = true then begin
-                        if ("Released By(Custodian 1)" = '') and ("Released By(Custodian 2)" <> UserId) then begin
-                            "Released By(Custodian 1)" := UserId
-                        end else
-                            if ("Released By(Custodian 2)" = '') and ("Released By(Custodian 1)" <> UserId) then begin
-                                "Released By(Custodian 2)" := UserId
-                            end else
-                                Error('You are not authorized to Retrieve Packages')
-                    end;
-
-                    if ("Released By(Custodian 1)" <> '') and ("Released By(Custodian 2)" <> '') then begin
-                        "Date Released from SafeCustody" := Today;
-                        "Time Released from SafeCustody" := Time;
-                    end;
-                end;
-            }
+//                     if ("Released By(Custodian 1)" <> '') and ("Released By(Custodian 2)" <> '') then begin
+//                         "Date Released from SafeCustody" := Today;
+//                         "Time Released from SafeCustody" := Time;
+//                     end;
+//                 end;
+//             }
         }
         area(Promoted)
         {
@@ -655,15 +675,15 @@ Page 51516974 "Collateral Action Card"
                 actionref("Calculate Depreciation_Promoted"; "Calculate Depreciation")
                 {
                 }
-                actionref("Depreciation Schedule_Promoted"; "Depreciation Schedule")
+                actionref("ReleaseCollateral";"Release Collateral")
                 {
                 }
                 actionref("Charge PackageLodge Fee_Promoted"; "Charge PackageLodge Fee")
                 {
                 }
-                actionref("Lodge Package_Promoted"; "Lodge Package")
-                {
-                }
+                // actionref("Lodge Package_Promoted"; "Lodge Package")
+                // {
+                // }
             }
         }
     }
@@ -694,7 +714,7 @@ Page 51516974 "Collateral Action Card"
         IssuetoMemberVisible: Boolean;
         IssuetoAuctioneerVisible: Boolean;
         SafeCustodyVisible: Boolean;
-        ObjCustodians: Record "Safe Custody Custodians";
+        // ObjCustodians: Record "Safe Custody Custodians";
         ObjVendors: Record Vendor;
         AvailableBal: Decimal;
         ObjAccTypes: Record "Account Types-Saving Products";
@@ -713,7 +733,7 @@ Page 51516974 "Collateral Action Card"
         ObjNoSeries: Record "Sacco No. Series";
         VarPackageNo: Code[20];
         NoSeriesMgt: Codeunit NoSeriesManagement;
-        ObjPackage: Record "Safe Custody Package Register";
+        // ObjPackage: Record "Safe Custody Package Register";
         ObjCollateralMovement: Record "Collateral Movement Register";
 
     local procedure FnGetVisibility()

@@ -266,7 +266,7 @@ tableextension 51516079 "CustomerExt" extends Customer
         field(68043; "Registration Fee Paid"; Decimal)
         {
             CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
-                                                                           "Transaction Type" = const("Registration Fee"), 
+                                                                           "Transaction Type" = const("Registration Fee"),
                                                                            "Posting Date" = field("Date Filter"), Reversed = const(false)));
             Editable = false;
             FieldClass = FlowField;
@@ -550,11 +550,14 @@ tableextension 51516079 "CustomerExt" extends Customer
         {
             FieldClass = Normal;
         }
-        // field(68112; "Account Category"; Option)
-        // {
-        //     OptionCaption = 'Individual,Joint,Corporate,Group,Junior';
-        //     OptionMembers = SINGLE,Joint,Corporate,Group,Junior;
-        // }
+        field(68116; "Share Capital"; Decimal)
+        {
+            CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
+                                                                   "Transaction Type" = filter("Shares Capital"),
+                                                                   "Posting Date" = field("Date Filter"), Reversed = const(false)));
+            Editable = false;
+            FieldClass = FlowField;
+        }
         field(68112; "Account Category"; Option)
         {
             OptionCaption = 'Individual,Joint,Corporate,Group,Junior';

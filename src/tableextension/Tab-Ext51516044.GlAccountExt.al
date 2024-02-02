@@ -21,5 +21,61 @@ tableextension 51516044 "GlAccountExt" extends "G/L Account"
             Editable = false;
             FieldClass = FlowField;
         }
+     
+        field(54252; StatementOfFP; Option)
+        {
+            OptionCaption = '  ,Cashinhand,Cashatbank,GrossLoanPortfolio,PropertyEquipment,AllowanceforLoanLoss,PrepaymentsSundryReceivables,Investmentincompanies,IntangibleAssets,Other Assets';
+            OptionMembers = "  ",Cashinhand,Cashatbank,GrossLoanPortfolio,PropertyEquipment,AllowanceforLoanLoss,PrepaymentsSundryReceivables,Investmentincompanies,IntangibleAssets,"Other Assets";
+        }
+        field(54253; StatementOfFP2; Option)
+        {
+            OptionCaption = '  ,Nonwithdrawabledeposits,TaxPayable,DeferredTaxLiability,OtherLiabilities,ExternalBorrowings,ShareCapital,StatutoryReserve,OtherReserves,RevaluationReserves,PrioryarRetainedEarnings,CurrentYrSurplus';
+            OptionMembers = "  ",Nonwithdrawabledeposits,TaxPayable,DeferredTaxLiability,OtherLiabilities,ExternalBorrowings,ShareCapital,StatutoryReserve,OtherReserves,RevaluationReserves,PrioryarRetainedEarnings,CurrentYrSurplus;
+        }
+        field(54254; "Form2F(Statement of C Income)"; Option)
+        {
+            OptionCaption = ' ,InterestonLoanPortfolio,FeesCommissiononLoanPortfolio,GovernmentSecurities,InvestmentinCompaniesshares,nterestExpenseonDeposits,DividendExpenses,OtherFinancialExpense,FeesCommissionExpense,OtherExpense,ProvisionforLoanLosses';
+            OptionMembers = " ",InterestonLoanPortfolio,FeesCommissiononLoanPortfolio,GovernmentSecurities,InvestmentinCompaniesshares,nterestExpenseonDeposits,DividendExpenses,OtherFinancialExpense,FeesCommissionExpense,OtherExpense,ProvisionforLoanLosses;
+        }
+        field(54255; "Form2F1(Statement of C Income)"; Option)
+        {
+            OptionCaption = '  ,PersonnelExpenses,GovernanceExpenses,MarketingExpenses,DepreciationandAmortizationCharges,AdministrativeExpenses,Taxes,NonOperatingIncome,NonOperatingExpense,OtherFinancialExpense,ValueofLoansRecovered';
+            OptionMembers = "  ",PersonnelExpenses,GovernanceExpenses,MarketingExpenses,DepreciationandAmortizationCharges,AdministrativeExpenses,Taxes,NonOperatingIncome,NonOperatingExpense,OtherFinancialExpense,ValueofLoansRecovered;
+        }
+        field(54256; "Capital adequecy"; Option)
+        {
+            OptionCaption = '  ,ShareCapital,StatutoryReserve,RetainedEarnings,LoansandAdvances,Cash,InvestmentsinSubsidiary,Otherreserves,GovernmentSecurities,DepositsandBalancesatOtherInstitutions,Otherassets,PropertyandEquipment,TotalDepositsLiabilities,Investments,NetSurplusaftertax';
+            OptionMembers = "  ",ShareCapital,StatutoryReserve,RetainedEarnings,LoansandAdvances,Cash,InvestmentsinSubsidiary,Otherreserves,GovernmentSecurities,DepositsandBalancesatOtherInstitutions,Otherassets,"PropertyandEquipment ",TotalDepositsLiabilities,Investments,NetSurplusaftertax;
+        }
+        field(54257; Liquidity; Option)
+        {
+            OptionCaption = ' ,LocalNotes,BankBalances,GovSecurities,balanceswithotherfinancialinsti,TotalOtherliabilitiesNew,TimeDeposits';
+            OptionMembers = " ",LocalNotes,BankBalances,GovSecurities,balanceswithotherfinancialinsti,TotalOtherliabilitiesNew,TimeDeposits;
+        }
+        field(54258; "Form2E(investment)"; Option)
+        {
+            OptionCaption = '  ,Core_Capital,Equityinvestment,Otherinvestments,subsidiaryandrelatedentities,otherassets,totaldeposits';
+            OptionMembers = "  ",Core_Capital,Equityinvestment,Otherinvestments,subsidiaryandrelatedentities,otherassets,totaldeposits;
+        }
+        field(54259; "Form 2H other disc"; Option)
+        {
+            OptionCaption = '  ,AllowanceForLoanLoss,Core_Capital,Deposits liabilities';
+            OptionMembers = "  ",AllowanceForLoanLoss,Core_Capital,"Deposits liabilities";
+        }
+        field(54260; "Form2E(investment)New"; Option)
+        {
+            OptionCaption = '  ,Nonearningassets,Landbuilding';
+            OptionMembers = "  ",Nonearningassets,Landbuilding;
+        }
+        field(54261; "Form2E(investment)Land"; Option)
+        {
+            OptionCaption = ' ,LandBuilding';
+            OptionMembers = " ",LandBuilding;
+        }
+        field(54262; ChangesInEquity; Option)
+        {
+            OptionCaption = ' ,ShareCapital,StatutoryReserve,GeneralReserve,RevaluationReserve,RetainedEarnings,honararia';
+            OptionMembers = " ",ShareCapital,StatutoryReserve,GeneralReserve,RevaluationReserve,RetainedEarnings,honararia;
+        }
     }
 }

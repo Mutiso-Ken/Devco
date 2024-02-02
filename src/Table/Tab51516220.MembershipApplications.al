@@ -298,16 +298,16 @@ Table 51516220 "Membership Applications"
         field(68030; Department; Code[20])
         {
             TableRelation = "Member Departments"."No.";
-              trigger OnValidate()
+            trigger OnValidate()
             var
-               Dep: Record "Member Departments";
+                Dep: Record "Member Departments";
             begin
                 Dep.Reset;
-                Dep.SetRange(Dep."No.",Department);
+                Dep.SetRange(Dep."No.", Department);
 
                 if Dep.FindSet then begin
                     if Dep.FindFirst then begin
-                       Department := Dep.Department;
+                        Department := Dep.Department;
                     end;
                 end;
             end;
@@ -945,8 +945,12 @@ Table 51516220 "Membership Applications"
         {
 
         }
-       
-     
+        field(69216; Nationality; Option)
+        {
+            DataClassification = ToBeClassified;
+            OptionMembers = Kenyan,"Non-Kenyan";
+        }
+
 
     }
 

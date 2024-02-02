@@ -246,7 +246,7 @@ Page 51516253 "Loans Posted List"
                         Cust.SetRange(Cust."No.", "Client Code");
                         Cust.SetFilter(Cust."Loan Product Filter", "Loan Product Type");
                         Cust.SetFilter(Cust."Loan No. Filter", "Loan  No.");
-                        Report.Run(51516609, true, false, Cust);
+                        Report.Run(51516227, true, false, Cust);
                     end;
                 }
                 action("View Schedule")
@@ -260,11 +260,18 @@ Page 51516253 "Loans Posted List"
 
                     trigger OnAction()
                     begin
-                        LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
-                        if LoanApp.Find('-') then begin
-                            Report.Run(51516477, true, false, LoanApp);
-                        end;
+                        // LoanApp.Reset();
+                        // LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
+                        // if LoanApp.Find('-') then
+                        repeat
+                            SFactory.FnGenerateRepaymentSchedule(LoanApp."Loan  No.");
+
+                        until LoanApp.Next = 0;
+                        Message('done');
+                         Report.Run(51516477, true, false,LoanApp);
+
+
+
                     end;
                 }
                 separator(Action8)

@@ -491,105 +491,41 @@ Page 51516921 "Loan Reschedule Card"
                             Error('You Can not post a loan that is not fully Approved')
                         end else
                             if Confirm('Are you Sure you want to reschedule this Loan', false) = true then begin
-
-                                GenJournalLine.Init;
-                                LineNo := LineNo + 10000;
-                                GenJournalLine."Journal Template Name" := 'PAYMENTS';
-                                GenJournalLine."Journal Batch Name" := 'LOANS';
-                                GenJournalLine."Line No." := LineNo + 10000;
-                                GenJournalLine."Document No." := "Loan  No.";
-                                GenJournalLine."Posting Date" := "Loan Disbursement Date";
-                                GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
-                                GenJournalLine."Account No." := "Client Code";
-                                GenJournalLine.Validate(GenJournalLine."Account No.");
-                               // GenJournalLine.Description := 'loan Rescheduled' + '' + "Loan to Reschedule";
-                                GenJournalLine.Amount := ("Approved Amount") * -1;
-                                GenJournalLine.Validate(GenJournalLine.Amount);
-                                GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
-                                GenJournalLine."Shortcut Dimension 2 Code" := "Branch Code";
-                                GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::Repayment;
-                                //GenJournalLine."Loan No" := "Loan to Reschedule";
-                                //GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                                //GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                                if GenJournalLine.Amount <> 0 then
-                                    GenJournalLine.Insert;
+                                TemplateName := 'PAYMENTS';
+                                BatchName := 'LOANS';
 
 
+                                LoanApps.Reset;
+                                LoanApps.SetRange(LoanApps."Loan  No.", "Loan  No.");
+                                if LoanApps.FindSet then begin
+                                    FnInsertBOSALines(LoanApps, LoanApps."Loan  No.");
 
 
+                                    //Post
+                                    GenJournalLine.Reset;
+                                    GenJournalLine.SetRange("Journal Template Name", 'PAYMENTS');
+                                    GenJournalLine.SetRange("Journal Batch Name", 'LOANS');
+                                    if GenJournalLine.Find('-') then begin
+                                        Codeunit.Run(Codeunit::"Gen. Jnl.-Post Sacco", GenJournalLine);
+                                    end;
 
-                                GenJournalLine.Init;
-                                LineNo := LineNo + 10000;
-                                GenJournalLine."Journal Template Name" := 'PAYMENTS';
-                                GenJournalLine."Journal Batch Name" := 'LOANS';
-                                GenJournalLine."Line No." := LineNo + 10000;
-                                GenJournalLine."Document No." := "Loan  No.";
-                                GenJournalLine."Posting Date" := "Loan Disbursement Date";
-                                GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
-                                GenJournalLine."Account No." := "Client Code";
-                                GenJournalLine.Validate(GenJournalLine."Account No.");
-                                GenJournalLine.Description := 'loan Rescheduled';
-                                GenJournalLine.Amount := "Approved Amount" + ("Approved Amount" * (0.08));
-                                GenJournalLine.Validate(GenJournalLine.Amount);
-                                GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
-                                GenJournalLine."Shortcut Dimension 2 Code" := "Branch Code";
-                                GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::Loan;
-                                //GenJournalLine."Loan No" := "Loan to Reschedule";
-                                // GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                                // GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                                if GenJournalLine.Amount <> 0 then
-                                    GenJournalLine.Insert;
+                                    Posted := true;
+                                    "Loan Status" := "loan status"::Issued;
+                                    "Approval Status" := "approval status"::Approved;
+                                    Modify;
 
-                                //Rescheduling Charges
+                                    //Post New
 
-                                GenJournalLine.Init;
-                                LineNo := LineNo + 10000;
-                                GenJournalLine."Journal Template Name" := 'PAYMENTS';
-                                GenJournalLine."Journal Batch Name" := 'LOANS';
-                                GenJournalLine."Line No." := LineNo + 10000;
-                                GenJournalLine."Document No." := "Loan  No.";
-                                GenJournalLine."Posting Date" := "Loan Disbursement Date";
-                                GenJournalLine."Account Type" := GenJournalLine."account type"::"G/L Account";
-                                GenJournalLine."Account No." := '5430';
-                                GenJournalLine.Validate(GenJournalLine."Account No.");
-                                GenJournalLine.Description := 'loan Rescheduled charge' + '' + "Loan  No.";
-                                GenJournalLine.Amount := ("Approved Amount" * (0.08)) * -1;
-                                GenJournalLine.Validate(GenJournalLine.Amount);
-                                GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
-                                GenJournalLine."Shortcut Dimension 2 Code" := "Branch Code";
-                                // GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                                // GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                                if GenJournalLine.Amount <> 0 then
-                                    GenJournalLine.Insert;
-                                //End Rescheduling Charges
+                                    "Loan Rescheduled Date" := "Loan Disbursement Date";
+                                    "Loan Rescheduled By" := UserId;
+                                    "Loan Reschedule" := true;
+                                    Modify;
+                                    Message('Loan Rescheduled successfully.');
 
-
-
-                                //Post
-                                GenJournalLine.Reset;
-                                GenJournalLine.SetRange("Journal Template Name", 'PAYMENTS');
-                                GenJournalLine.SetRange("Journal Batch Name", 'LOANS');
-                                if GenJournalLine.Find('-') then begin
-                                    Codeunit.Run(Codeunit::"Gen. Jnl.-Post Sacco", GenJournalLine);
+                                end else begin
+                                    exit;
                                 end;
-
-                                Posted := true;
-                                "Loan Status" := "loan status"::Issued;
-                                "Approval Status" := "approval status"::Approved;
-                                Modify;
-
-                                //Post New
-
-                                "Loan Rescheduled Date" := "Loan Disbursement Date";
-                                "Loan Rescheduled By" := UserId;
-                                "Loan Reschedule" := true;
-                                Modify;
-                                Message('Loan Rescheduled successfully.');
-
-                            end else begin
-                                exit;
                             end;
-
 
                     end;
                 }
@@ -767,6 +703,7 @@ Page 51516921 "Loan Reschedule Card"
         PeriodPrRepayment: Decimal;
         GenBatch: Record "Gen. Journal Batch";
         LineNo: Integer;
+        SFactory: Codeunit "SURESTEP Factory";
         GnljnlineCopy: Record "Gen. Journal Line";
         NewLNApplicNo: Code[10];
         Cust: Record Customer;
@@ -802,6 +739,8 @@ Page 51516921 "Loan Reschedule Card"
         GLPosting: Codeunit "Gen. Jnl.-Post Line";
         LoanTopUp: Record "Loan Offset Details";
         Vend: Record Vendor;
+        TemplateName: Code[20];
+        BatchName: Code[20];
         BOSAInt: Decimal;
         TopUpComm: Decimal;
         DActivity: Code[20];
@@ -884,6 +823,8 @@ Page 51516921 "Loan Reschedule Card"
         PartPayTotal: Decimal;
         AmountPayable: Decimal;
         CompanyInfo: Record "Company Information";
+        DirbursementDate: date;
+        VarAmounttoDisburse: Decimal;
 
 
     procedure UpdateControl()
@@ -961,6 +902,146 @@ Page 51516921 "Loan Reschedule Card"
 
     procedure LoanAppPermisions()
     begin
+    end;
+
+    local procedure FnInsertBOSALines(var LoanApps: Record "Loans Register"; LoanNo: Code[30])
+    var
+        EndMonth: Date;
+        RemainingDays: Integer;
+        TMonthDays: Integer;
+        Sfactorycode: Codeunit "SURESTEP Factory";
+    begin
+        //--------------------Generate Schedule
+        Sfactorycode.FnGenerateRepaymentSchedule("Loan  No.");
+        DirbursementDate := "Loan Disbursement Date";
+        VarAmounttoDisburse := "Approved Amount";
+        //....................PRORATED DAYS
+        EndMonth := CALCDATE('-1D', CALCDATE('1M', DMY2DATE(1, DATE2DMY(Today, 2), DATE2DMY(Today, 3))));
+        RemainingDays := (EndMonth - Today) + 1;
+        TMonthDays := DATE2DMY(EndMonth, 1);
+        //....................Ensure that If Batch doesnt exist then create
+        IF NOT GenBatch.GET(TemplateName, BatchName) THEN BEGIN
+            GenBatch.INIT;
+            GenBatch."Journal Template Name" := TemplateName;
+            GenBatch.Name := BatchName;
+            GenBatch.INSERT;
+        END;
+        //....................Reset General Journal Lines
+        GenJournalLine.RESET;
+        GenJournalLine.SETRANGE("Journal Template Name", TemplateName);
+        GenJournalLine.SETRANGE("Journal Batch Name", BatchName);
+        GenJournalLine.DELETEALL;
+        //....................Loan Posting Lines
+        GenSetUp.GET;
+        DActivity := '';
+        DBranch := '';
+        IF Cust.GET(LoanApps."Client Code") THEN BEGIN
+            DActivity := Cust."Global Dimension 1 Code";
+            DBranch := Cust."Global Dimension 2 Code";
+        END;
+        //**************Loan Principal Posting**********************************
+        LineNo := LineNo + 10000;
+        SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, "Loan  No.", LineNo, GenJournalLine."Transaction Type"::Loan,
+        GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, VarAmounttoDisburse, 'BOSA', LoanApps."Loan  No.",
+       'Loan Disbursement - ' + LoanApps."Loan Product Type", LoanApps."Loan  No.");
+
+        //--------------------------------RECOVER OVERDRAFT()-------------------------------------------------------
+        //Code Here
+        //***************************Loan Product Charges code
+        PCharges.Reset();
+        PCharges.SETRANGE(PCharges."Product Code", "Loan Product Type");
+        IF PCharges.FIND('-') THEN BEGIN
+            REPEAT
+                PCharges.TESTFIELD(PCharges."G/L Account");
+                LineNo := LineNo + 10000;
+                GenJournalLine.INIT;
+                GenJournalLine."Journal Template Name" := TemplateName;
+                GenJournalLine."Journal Batch Name" := BatchName;
+                GenJournalLine."Line No." := LineNo;
+                GenJournalLine."Account Type" := GenJournalLine."Account Type"::"G/L Account";
+                GenJournalLine."Account No." := PCharges."G/L Account";
+                GenJournalLine.VALIDATE(GenJournalLine."Account No.");
+                GenJournalLine."Document No." := "Loan  No.";
+                GenJournalLine."External Document No." := "Loan  No.";
+                GenJournalLine."Posting Date" := DirbursementDate;
+                GenJournalLine.Description := PCharges.Description + '-' + Format("Loan  No.");
+
+                IF PCharges."Use Perc" = TRUE THEN BEGIN
+                    GenJournalLine.Amount := ("Approved Amount" * (PCharges.Percentage / 100)) * -1
+                END ELSE
+                    IF PCharges."Use Perc" = false then begin
+                        if ("Approved Amount" >= 1000000) and (PCharges."Above 1M" = true) then
+                            GenJournalLine.Amount := PCharges.Amount2 * -1
+                        else
+                            GenJournalLine.Amount := PCharges.Amount * -1
+                    end;
+                GenJournalLine.VALIDATE(GenJournalLine.Amount);
+                // GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
+                // GenJournalLine."Bal. Account No." := " ";
+                // GenJournalLine.VALIDATE(GenJournalLine."Bal. Account No.");
+                GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
+                GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
+                IF GenJournalLine.Amount <> 0 THEN
+                    GenJournalLine.INSERT;
+            UNTIL PCharges.NEXT = 0;
+        END;
+
+        //...................Cater for Loan Offset Now !
+        CalcFields("Top Up Amount");
+        if "Top Up Amount" > 0 then begin
+            LoanTopUp.RESET;
+            LoanTopUp.SETRANGE(LoanTopUp."Loan No.", "Loan  No.");
+            IF LoanTopUp.FIND('-') THEN BEGIN
+                repeat
+
+                    LineNo := LineNo + 10000;
+                    SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, "Loan  No.", LineNo, GenJournalLine."Transaction Type"::Repayment,
+                    GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, LoanTopUp."Principle Top Up" * -1, 'BOSA', LoanApps."Loan  No.",
+                    'Loan OffSet By - ' + LoanApps."Loan  No.", LoanTopUp."Loan Top Up");
+
+
+                    //..................Recover Interest On Top Up
+                    LineNo := LineNo + 10000;
+                    SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, "Loan  No.", LineNo, GenJournalLine."Transaction Type"::"Interest Paid",
+                    GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, LoanTopUp."Interest Top Up" * -1, 'BOSA', LoanApps."Loan  No.",
+                    'Interest Due Paid on top up - ', LoanTopUp."Loan Top Up");
+
+                    //If there is top up commission charged write it here start
+                    LineNo := LineNo + 10000;
+                    SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ",
+                    GenJournalLine."Account Type"::"G/L Account", GenSetUp."Top up Account", DirbursementDate, LoanTopUp.Commision * -1, 'BOSA', "Batch No.",
+                    'Commision on top up - ', LoanTopUp."Loan Top Up");
+
+                    //If there is top up commission charged write it here end
+                    VarAmounttoDisburse := VarAmounttoDisburse - (LoanTopUp."Principle Top Up" + LoanTopUp."Interest Top Up" + LoanTopUp.Commision);
+
+                UNTIL LoanTopUp.NEXT = 0;
+            END;
+        end;
+        //If there is top up commission charged write it here start
+        //If there is top up commission charged write it here end
+        //end of code
+
+
+        //.....Valuation
+
+        LineNo := LineNo + 10000;
+        SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ",
+        GenJournalLine."Account Type"::"G/L Account", GenSetUp."Asset Valuation Cost", DirbursementDate, LoanApps."Valuation Cost" * -1, 'BOSA', "Batch No.",
+        'Loan Principle Amount ' + Format(LoanApps."Loan  No."), '');
+
+        VarAmounttoDisburse := VarAmounttoDisburse - LoanApps."Valuation Cost";
+        //..Legal Fees
+        LineNo := LineNo + 10000;
+        SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ",
+        GenJournalLine."Account Type"::"G/L Account", GenSetUp."Legal Fees", DirbursementDate, LoanApps."Legal Cost" * -1, 'BOSA', "Batch No.",
+        'Loan Principle Amount ' + Format(LoanApps."Loan  No."), '');
+        VarAmounttoDisburse := VarAmounttoDisburse - LoanApps."Legal Cost";
+        //------------------------------------2. CREDIT MEMBER BANK A/C---------------------------------------------------------------------------------------------
+        LineNo := LineNo + 10000;
+        SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, "Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ",
+        GenJournalLine."Account Type"::"Bank Account", LoanApps."Paying Bank Account No", DirbursementDate, VarAmounttoDisburse * -1, 'BOSA', LoanApps."Loan  No.",
+        'Loan Principle Amount ' + Format("Loan  No."), '');
     end;
 }
 

@@ -1539,7 +1539,6 @@
             <FixedRowHeaders>true</FixedRowHeaders>
             <KeepTogether>true</KeepTogether>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>0cm</Top>
             <Height>4.16032cm</Height>
             <Width>19.20057cm</Width>
             <Style>

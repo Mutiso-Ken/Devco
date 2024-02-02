@@ -7,5 +7,6 @@ pageextension 51516875 "workflowsExt" extends Workflows
     begin
         CustomWorkFlowEvents.AddEventsToLib();
         WorkflowRepsonse.AddResponsePredecessors();
+        Message('done');
     end;
 }

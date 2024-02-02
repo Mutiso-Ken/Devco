@@ -10,47 +10,54 @@ Page 51516248 "Loan Collateral Security"
         {
             repeater(Control1102756000)
             {
-                field("Code";Code)
+                field("Loan No"; "Loan No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Type;Type)
+                field("Code"; Code)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Security Details";"Security Details")
+                field(Type; Type)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Value;Value)
+                field(Name; Name)
+                {
+                    ApplicationArea = Basic;
+
+                }
+                field(Value; Value)
                 {
                     ApplicationArea = Basic;
                 }
-                // field("Account No";"Account No")
+
+                field(Category; Category)
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Collateral Multiplier"; "Collateral Multiplier")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Guarantee Value"; "Guarantee Value")
+                {
+                    ApplicationArea = Basic;
+                }
+                // field("View Document"; "View Document")
                 // {
                 //     ApplicationArea = Basic;
+                //     Editable = false;
                 // }
-                field(Category;Category)
+                field("Assesment Done By"; "Assesment Done By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Guarantee Value";"Guarantee Value")
+                field(Remarks; Remarks)
                 {
                     ApplicationArea = Basic;
                 }
-                field("View Document";"View Document")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field(Remarks;Remarks)
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Collateral Multiplier";"Collateral Multiplier")
-                {
-                    ApplicationArea = Basic;
-                }
+
             }
         }
     }

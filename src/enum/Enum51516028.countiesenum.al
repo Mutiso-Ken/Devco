@@ -1,4 +1,4 @@
-enum 51516028 counties_enum
+enum 51516028 "counties_enum"
 {
     Extensible = true;
 

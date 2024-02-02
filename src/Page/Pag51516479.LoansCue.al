@@ -29,7 +29,15 @@ Page 51516479 "Loans Cue"
                     Image = none;
                     Style = Favorable;
                     StyleExpr = true;
-                     DrillDownPageId = "Loans Posted List";
+                    DrillDownPageId = "Loans Posted List";
+                }
+                field("Cleared Loans"; "Cleared Loans")
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Loans Posted List";
                 }
 
                 field("Pending Loans"; "Pending Loans")
@@ -40,6 +48,106 @@ Page 51516479 "Loans Cue"
                     StyleExpr = true;
                     DrillDownPageId = "Loan List";
                 }
+                field("ASSET LOAN"; "ASSET LOAN")
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Loan List";
+                }
+                field("COLLEGE LOAN"; "COLLEGE LOAN")
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Loan List";
+                }
+                field(DEBOOSTER; DEBOOSTER)
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Loan List";
+                }
+                field(EMERGENCY; EMERGENCY)
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Loan List";
+                }
+                field(FURNITURE; FURNITURE)
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Loan List";
+                }
+                field(HOUSEHOLD; HOUSEHOLD)
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Loan List";
+
+                }
+                field(IPF; IPF)
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Loan List";
+                }
+                field(KARIBU; KARIBU)
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Loan List";
+                }
+                field(LIKIZO; LIKIZO)
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Loan List";
+                }
+                field(MAKEOVER; MAKEOVER)
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Loan List";
+
+                }
+                field(NORMAL; NORMAL)
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Loan List";
+                }
+                field(PREMIUM; PREMIUM)
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Loan List";
+                }
+
+
 
             }
 

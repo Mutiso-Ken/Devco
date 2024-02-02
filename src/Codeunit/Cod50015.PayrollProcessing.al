@@ -72,7 +72,7 @@ Codeunit 50015 "Payroll Processing"
         if HrEmployee.Find('-') then
             VitalSetup.FindFirst;
         with VitalSetup do begin
-            curReliefPersonal := "Tax Relief";
+            // curReliefPersonal := "Tax Relief";
             curReliefInsurance := "Insurance Relief";
             // curReliefMorgage := HrEmployee."Morgage Relief";
             NSSFR := 0;
@@ -170,9 +170,8 @@ Codeunit 50015 "Payroll Processing"
         fnInitialize;
         fnGetJournalDet(strEmpCode);
         //PayrollType
-        Message('StrEmpCode %1', strEmpCode);
         PayrollType := PayrollCode;
-        Message('PayrollType %1', PayrollType);
+
         // if EmployeeP.Get(strEmpCode) then
         //     Management := EmployeeP."Managerial Position";
 
@@ -255,21 +254,19 @@ Codeunit 50015 "Payroll Processing"
                     prTransactionCodes.Reset;
                     prTransactionCodes.SetRange(prTransactionCodes."Transaction Code", prEmployeeTransactions."Transaction Code");
                     prTransactionCodes.SetRange(prTransactionCodes."Transaction Type", prTransactionCodes."transaction type"::Income);
-                    prTransactionCodes.SETRANGE(prTransactionCodes."Special Transaction", prTransactionCodes."Special Transaction"::Ignore);
+                    //prTransactionCodes.SETRANGE(prTransactionCodes."Special Transaction",prTransactionCodes."Special Transaction"::Ignore);
                     if prTransactionCodes.Find('-') then begin
                         curTransAmount := 0;
                         curTransBalance := 0;
                         strTransDescription := '';
                         strExtractedFrml := '';
                         if prTransactionCodes."Is Formulae" then begin
-                            // if Management then
-                            //         strExtractedFrml := fnPureFormula(strEmpCode, intMonth, intYear, prTransactionCodes."Formula for Management Prov")
-                            //     else
-                            strExtractedFrml := fnPureFormula(strEmpCode, intMonth, intYear, prTransactionCodes.Formulae);
+                            if Management then
+                                //     strExtractedFrml := fnPureFormula(strEmpCode, intMonth, intYear, prTransactionCodes."Formula for Management Prov")
+                                // else
+                                strExtractedFrml := fnPureFormula(strEmpCode, intMonth, intYear, prTransactionCodes.Formulae);
 
-                            curTransAmount := ROUND(fnFormulaResult(strExtractedFrml), 0.05, '<');
-                            Message('CurTransAmount %1', curTransAmount);
-                            //Get the calculated amount
+                            curTransAmount := ROUND(fnFormulaResult(strExtractedFrml), 0.05, '<'); //Get the calculated amount
 
                         end else begin
                             curTransAmount := prEmployeeTransactions.Amount;
@@ -305,14 +302,15 @@ Codeunit 50015 "Payroll Processing"
 
 
                         //Add Non Taxable Here
-                        if (not prTransactionCodes.Taxable) and (prTransactionCodes."Special Transaction" =
-                        prTransactionCodes."special transaction"::Ignore) then
-                            curNonTaxable := curNonTaxable + curTransAmount;
+                        // if (not prTransactionCodes.Taxable) and (prTransactionCodes."Special Transaction" =
+                        // prTransactionCodes."special transaction"::Ignore) then
+                        //     curNonTaxable := curNonTaxable + curTransAmount;
+
 
                         //Added to ensure special transaction that are not taxable are not inlcuded in list of Allowances
-                        // if (not prTransactionCodes.Taxable) and (prTransactionCodes."Special Transaction" <>
-                        // prTransactionCodes."special transaction"::Ignore) then
-                        //     curTransAmount := 0;
+                        if (not prTransactionCodes.Taxable) and (prTransactionCodes."Special Transaction" <>
+                        prTransactionCodes."special transaction"::Ignore) then
+                            curTransAmount := 0;
 
 
                         curTotAllowances := curTotAllowances + curTransAmount; //Sum-up all the allowances
@@ -541,7 +539,7 @@ Codeunit 50015 "Payroll Processing"
             curTaxablePay := curGrossTaxable - (curSalaryArrears + curDefinedContrib + curMaxPensionContrib + curHOSP + curNonTaxable + curOOI)
 
         else
-            curTaxablePay := curGrossTaxable - (curSalaryArrears + curDefinedContrib + curNonTaxable);
+            curTaxablePay := curGrossTaxable - (curSalaryArrears + curDefinedContrib);
         //Taxable Benefit
         txBenefitAmt := 0;
         if EmpSalary.Get(strEmpCode) then begin
@@ -564,7 +562,7 @@ Codeunit 50015 "Payroll Processing"
                 end;
             end;
         end;
-        curTransAmount := curTaxablePay;
+        curTransAmount := curTaxablePay + txBenefitAmt + NSSFR;
         strTransDescription := 'Taxable Pay';
         TGroup := 'TAX CALCULATIONS';
         TGroupOrder := 6;
@@ -580,29 +578,18 @@ Codeunit 50015 "Payroll Processing"
             HrEmployee.CalcFields(HrEmployee."Cummulative NHIF");
         SFR := ROUND(HrEmployee."Cummulative NHIF" * 0.15, 1, '=');
         curTaxablePay := curTaxablePay + txBenefitAmt;
-
-
-        //Get the Tax charged for the month
-
-        if curPensionStaff + curDefinedContrib > curMaxPensionContrib then
-            curTaxablePay := curTaxablePay + txBenefitAmt + curDefinedContrib
-        else
-            curTaxablePay := curTaxablePay + txBenefitAmt;
-
-        curTaxablePay := curTaxablePay + txBenefitAmt;
-        curTaxCharged := fnGetEmployeePaye(curTaxablePay);
+        curTaxCharged := fnGetEmployeePaye(curTaxablePay) - (curInsuranceReliefAmount + curReliefPersonal + CurrInsuranceRel);
         strTransDescription := 'Tax Charged';
         TGroup := 'TAX CALCULATIONS';
         TGroupOrder := 6;
         TSubGroupOrder := 7;
-        curTransAmount := curTaxCharged;
         fnUpdatePeriodTrans(strEmpCode, 'TXCHRG', TGroup, TGroupOrder, TSubGroupOrder, strTransDescription,
         curTransAmount, 0, intMonth, intYear, '', '', SelectedPeriod, Dept, '', Journalpostas::" ", Journalpostingtype::" ", '',
         Coopparameters::none);
 
-        curPAYE := (curTaxCharged) - NhifRelief;
-        if not blnPaysPaye then curPAYE := 0;
-        curTransAmount := curPAYE - curReliefPersonal;
+        curPAYE := (curTaxCharged) - NhifRelief;//- curReliefPersonal;
+        if not blnPaysPaye then curPAYE := 0; //Get statutory Exemption for the staff. If exempted from tax, set PAYE=0
+        curTransAmount := curPAYE;//+curTransAmount2;
         if curPAYE < 0 then curTransAmount := 0;
         strTransDescription := 'P.A.Y.E';
         TGroup := 'STATUTORIES';
@@ -641,6 +628,7 @@ Codeunit 50015 "Payroll Processing"
         prEmployeeTransactions.SetRange(prEmployeeTransactions."No.", strEmpCode);
         prEmployeeTransactions.SetRange(prEmployeeTransactions."Period Month", intMonth);
         prEmployeeTransactions.SetRange(prEmployeeTransactions."Period Year", intYear);
+        // prEmployeeTransactions.SetRange(prEmployeeTransactions."Loan Number", '');
         prEmployeeTransactions.SetRange(prEmployeeTransactions.Suspended, false);
         if prEmployeeTransactions.Find('-') then begin
             curTotalDeductions := 0;
@@ -648,7 +636,7 @@ Codeunit 50015 "Payroll Processing"
                 prTransactionCodes.Reset;
                 prTransactionCodes.SetRange(prTransactionCodes."Transaction Code", prEmployeeTransactions."Transaction Code");
                 prTransactionCodes.SetRange(prTransactionCodes."Transaction Type", prTransactionCodes."transaction type"::Deduction);
-                // prTransactionCodes.SetRange(prTransactionCodes."IsCo-Op/LnRep", true);
+                //prTransactionCodes.SetRange(prTransactionCodes."IsCo-Op/LnRep", true);
                 if prTransactionCodes.Find('-') then begin
                     curTransAmount := 0;
                     curTransBalance := 0;
@@ -663,7 +651,6 @@ Codeunit 50015 "Payroll Processing"
 
                     end else begin
                         curTransAmount := prEmployeeTransactions.Amount;
-                        Message('CurTransAmount %1', curTransAmount);
                         curTransBalance := prEmployeeTransactions.Balance;
 
                     end;
@@ -708,23 +695,23 @@ Codeunit 50015 "Payroll Processing"
                 end;
 
             until prEmployeeTransactions.Next = 0;
-
-            curTotalDeductionsEffect := ROUND(curTotalDeductions, 0.01, '=') + ROUND(curNSSF, 0.01, '=') + ROUND(curNHIF, 0.01, '=') +
-                                    ROUND(curPAYE) + ROUND(curPayeArrears, 0.01, '=') + ROUND(PayPension, 0.01, '=') + Round(CUrrHousingLevy, 0.01, '=');
-
-            curTransBalance := curTotalDeductions;
-            strTransCode := 'TOT-DED';
-            strTransDescription := 'TOTAL DEDUCTION';
-            TGroup := 'DEDUCTIONS';
-            TGroupOrder := 8;
-            TSubGroupOrder := 9;
-            fnUpdatePeriodTrans(strEmpCode, strTransCode, TGroup, TGroupOrder, TSubGroupOrder,
-              strTransDescription, curTotalDeductionsEffect, curTransBalance, intMonth, intYear,
-              prEmployeeTransactions.Membership, prEmployeeTransactions."Reference No", SelectedPeriod, Dept,
-              '', Journalpostas::" ", Journalpostingtype::" ", '', Coopparameters::none)
-
-            //END GET TOTAL DEDUCTIONS
         end;
+        curTotalDeductionsEffect := ROUND(curTotalDeductions, 0.01, '=') + ROUND(curNSSF, 0.01, '=') + ROUND(curNHIF, 0.01, '=') +
+                                ROUND(curPAYE) + ROUND(curPayeArrears, 0.01, '=') + ROUND(PayPension, 0.01, '=') + Round(CUrrHousingLevy, 0.01, '=');
+
+        curTransBalance := curTotalDeductions;
+        strTransCode := 'TOT-DED';
+        strTransDescription := 'TOTAL DEDUCTION';
+        TGroup := 'DEDUCTIONS';
+        TGroupOrder := 8;
+        TSubGroupOrder := 9;
+        fnUpdatePeriodTrans(strEmpCode, strTransCode, TGroup, TGroupOrder, TSubGroupOrder,
+          strTransDescription, curTotalDeductionsEffect, curTransBalance, intMonth, intYear,
+          prEmployeeTransactions.Membership, prEmployeeTransactions."Reference No", SelectedPeriod, Dept,
+          '', Journalpostas::" ", Journalpostingtype::" ", '', Coopparameters::none);
+
+        //END GET TOTAL DEDUCTIONS
+
 
         if curGrossPay > 24000 then
             curNetPay := curGrossPay - curTotalDeductionsEffect;
@@ -838,8 +825,8 @@ Codeunit 50015 "Payroll Processing"
                             if prTransactionCodes."Is Formulae" then begin
                                 strExtractedFrml := '';
                                 if Management then
-                                    strExtractedFrml := fnPureFormula(strEmpCode, intMonth, intYear, prTransactionCodes."Formula for Management Prov")
-                                else
+                                    //     strExtractedFrml := fnPureFormula(strEmpCode, intMonth, intYear, prTransactionCodes."Formula for Management Prov")
+                                    // else
                                     strExtractedFrml := fnPureFormula(strEmpCode, intMonth, intYear, prTransactionCodes.Formulae);
 
                                 SpecialTransAmount := SpecialTransAmount + (fnFormulaResult(strExtractedFrml)); //Get the calculated amount
@@ -1003,7 +990,7 @@ Codeunit 50015 "Payroll Processing"
         AccSchedMgt: Codeunit AccSchedManagement;
     begin
         // Results :=
-        AccSchedMgt.EvaluateExpression(true, strFormula, AccSchedLine, ColumnLayout, CalcAddCurr);
+        //  AccSchedMgt.EvaluateExpression(true, strFormula, AccSchedLine, ColumnLayout, CalcAddCurr);
     end;
 
 
@@ -1613,7 +1600,7 @@ Codeunit 50015 "Payroll Processing"
                 NSSFEMPyee := PostingGroup."SSF Employee Account";
                 NHIFEMPyee := PostingGroup."NHIF Employee Account";
                 PensionEMPyer := PostingGroup."Pension Employer Acc";
-                HousingLevyEmployee := PostingGroup."EmployeeHousingLevy";
+                HousingLevyEmployee := PostingGroup.EmployeeHousingLevy;
                 HosingLevyEmployer := PostingGroup."Employer Housing Levy";
                 GrossPayAccount := PostingGroup."Gross Pay";
 

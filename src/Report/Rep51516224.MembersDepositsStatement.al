@@ -3,6 +3,7 @@ Report 51516224 "Members Deposits Statement"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './Layouts/MemberDepositsStatement.rdlc';
+    ApplicationArea=all;
 
     dataset
     {
