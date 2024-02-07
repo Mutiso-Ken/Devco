@@ -10,7 +10,7 @@ Page 51516487 "Devco Sacco Main Role Center"
         area(rolecenter)
         {
 
-            part(Control75; "Headline RC Accountant")
+            part(Control75; "Custom Headline")
             {
                 ApplicationArea = All;
                 Visible = true;
@@ -112,6 +112,15 @@ Page 51516487 "Devco Sacco Main Role Center"
         area(reporting)
         {
 
+        }
+        area(Creation)
+        {
+            action("Process Checkoff")
+            {
+                ApplicationArea = basic, suite;
+                Caption = 'Process checkoff';
+                RunObject = page "Bosa Receipt line-Checkoff";
+            }
         }
         area(embedding)
         {
@@ -1402,7 +1411,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                         Caption = 'Member Accounts';
                         RunObject = Page "Member List";
                         ToolTip = 'View Member Accounts';
-                        Visible=false;
+                        Visible = false;
                     }
                     group("Account Opening")
                     {
@@ -3537,7 +3546,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                         RunObject = page "Payroll Employee List";
                         tooltip = 'Open Payroll Employees list';
                     }
-                   
+
                     action("Payroll Earnings List.")
                     {
                         RunObject = page "Payroll Earnings List";
@@ -3562,7 +3571,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                         ApplicationArea = All;
 
                     }
-              
+
                 }
                 group(PayrollReports)
                 {
