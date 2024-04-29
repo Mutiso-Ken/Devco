@@ -73,6 +73,7 @@ report 50013 "Sacco Information"
             {
 
             }
+            column(Asat; Asat) { }
         }
         dataitem("Board of Directors"; "Board of Directors")
         {
@@ -100,7 +101,7 @@ report 50013 "Sacco Information"
                 DateExpr := '<-1y>';
                 InputDate := Asat;
 
-                EndofLastyear := CalcDate(DateFormula, Asat);
+                EndofLastyear := Asat;
                 CurrentYear := Date2DMY(EndofLastyear, 3);
                 LastYearButOne := CalcDate(DateExpr, EndofLastyear);
                 PreviousYear := CurrentYear - 1;

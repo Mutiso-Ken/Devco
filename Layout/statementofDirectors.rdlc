@@ -301,7 +301,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value> Approved by the board of directors on ___________________</Value>
+                    <Value> Approved by the board of directors on  ...../..../  </Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Times New Roman</FontFamily>
@@ -313,19 +313,19 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>=First(Fields!Now.Value, "DataSet_Result")</Value>
+                    <Value>=Fields!Now.Value</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>12pt</FontSize>
                       <FontWeight>Normal</FontWeight>
-                      <Format>dd MMMM yyyy</Format>
+                      <Format>0;(0)</Format>
                       <TextDecoration>None</TextDecoration>
                       <Color>#000000</Color>
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>  and signed on its behalf by:</Value>
+                    <Value> and signed on its behalf by:</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Times New Roman</FontFamily>

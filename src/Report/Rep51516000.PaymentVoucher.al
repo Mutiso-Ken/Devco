@@ -7,266 +7,265 @@ Report 51516000 "Payment Voucher"
 
     dataset
     {
-        dataitem("Payment Header";"Payment Header")
+        dataitem("Payment Header"; "Payment Header")
         {
             DataItemTableView = sorting("No.");
             RequestFilterFields = "No.";
             column(ReportForNavId_6437; 6437)
             {
             }
-            column(DOCNAME;DOCNAME)
+            column(DOCNAME; DOCNAME)
             {
             }
-            column(Payments_Header__No__;"No.")
+            column(Payments_Header__No__; "No.")
             {
             }
-            column(CurrCode;CurrCode)
+            column(CurrCode; CurrCode)
             {
             }
-            column(StrCopyText;StrCopyText)
+            column(StrCopyText; StrCopyText)
             {
             }
-            column(Payments_Header__Cheque_No__;"Cheque No")
+            column(Payments_Header__Cheque_No__; "Cheque No")
             {
             }
-            column(Payments_Header_Payee;Payee)
+            column(Payments_Header_Payee; Payee)
             {
             }
-            column(Payments_Header__Payments_Header__Date;"Posting Date")
+            column(Payments_Header__Payments_Header__Date; "Posting Date")
             {
             }
-            column(Payments_Header__Global_Dimension_1_Code_;"Global Dimension 1 Code")
+            column(Payments_Header__Global_Dimension_1_Code_; "Global Dimension 1 Code")
             {
             }
-            column(Payments_Header__Shortcut_Dimension_2_Code_;"Global Dimension 2 Code")
+            column(Payments_Header__Shortcut_Dimension_2_Code_; "Global Dimension 2 Code")
             {
             }
-            column(USERID;UserId)
+            column(USERID; UserId)
             {
             }
-            column(NumberText_1_;NumberText[1])
+            column(NumberText_1_; NumberText[1])
             {
             }
-            column(TTotal;TTotal)
+            column(TTotal; TTotal)
             {
             }
-            column(TIME_PRINTED_____FORMAT_TIME_;'TIME PRINTED:' + Format(Time))
-            {
-                AutoFormatType = 1;
-            }
-            column(DATE_PRINTED_____FORMAT_TODAY_0_4_;'DATE PRINTED:' + Format(Today,0,4))
+            column(TIME_PRINTED_____FORMAT_TIME_; 'TIME PRINTED:' + Format(Time))
             {
                 AutoFormatType = 1;
             }
-            column(CurrCode_Control1102756010;CurrCode)
-            {
-            }
-            column(CurrCode_Control1102756012;CurrCode)
-            {
-            }
-            column(Approved_;'Approved')
+            column(DATE_PRINTED_____FORMAT_TODAY_0_4_; 'DATE PRINTED:' + Format(Today, 0, 4))
             {
                 AutoFormatType = 1;
             }
-            column(Approval_Status_____;'Approval Status'+':')
+            column(CurrCode_Control1102756010; CurrCode)
+            {
+            }
+            column(CurrCode_Control1102756012; CurrCode)
+            {
+            }
+            column(Approved_; 'Approved')
             {
                 AutoFormatType = 1;
             }
-            column(TIME_PRINTED_____FORMAT_TIME__Control1102755003;'TIME PRINTED:' + Format(Time))
+            column(Approval_Status_____; 'Approval Status' + ':')
             {
                 AutoFormatType = 1;
             }
-            column(DATE_PRINTED_____FORMAT_TODAY_0_4__Control1102755004;'DATE PRINTED:' + Format(Today,0,4))
+            column(TIME_PRINTED_____FORMAT_TIME__Control1102755003; 'TIME PRINTED:' + Format(Time))
             {
                 AutoFormatType = 1;
             }
-            column(USERID_Control1102755012;UserId)
+            column(DATE_PRINTED_____FORMAT_TODAY_0_4__Control1102755004; 'DATE PRINTED:' + Format(Today, 0, 4))
+            {
+                AutoFormatType = 1;
+            }
+            column(USERID_Control1102755012; UserId)
             {
             }
-            column(NumberText_1__Control1102755016;NumberText[1])
+            column(NumberText_1__Control1102755016; NumberText[1])
             {
             }
-            column(TTotal_Control1102755034;TTotal)
+            column(TTotal_Control1102755034; TTotal)
             {
             }
-            column(CurrCode_Control1102755035;CurrCode)
+            column(CurrCode_Control1102755035; CurrCode)
             {
             }
-            column(CurrCode_Control1102755037;CurrCode)
+            column(CurrCode_Control1102755037; CurrCode)
             {
             }
-            column(VATCaption;VATCaptionLbl)
+            column(VATCaption; VATCaptionLbl)
             {
             }
-            column(PAYMENT_DETAILSCaption;PAYMENT_DETAILSCaptionLbl)
+            column(PAYMENT_DETAILSCaption; PAYMENT_DETAILSCaptionLbl)
             {
             }
-            column(AMOUNTCaption;AMOUNTCaptionLbl)
+            column(AMOUNTCaption; AMOUNTCaptionLbl)
             {
             }
-            column(NET_AMOUNTCaption;NET_AMOUNTCaptionLbl)
+            column(NET_AMOUNTCaption; NET_AMOUNTCaptionLbl)
             {
             }
-            column(W_TAXCaption;W_TAXCaptionLbl)
+            column(W_TAXCaption; W_TAXCaptionLbl)
             {
             }
-            column(Document_No___Caption;Document_No___CaptionLbl)
+            column(Document_No___Caption; Document_No___CaptionLbl)
             {
             }
-            column(Currency_Caption;Currency_CaptionLbl)
+            column(Currency_Caption; Currency_CaptionLbl)
             {
             }
-            column(Payment_To_Caption;Payment_To_CaptionLbl)
+            column(Payment_To_Caption; Payment_To_CaptionLbl)
             {
             }
-            column(Document_Date_Caption;Document_Date_CaptionLbl)
+            column(Document_Date_Caption; Document_Date_CaptionLbl)
             {
             }
-            column(Cheque_No__Caption;Cheque_No__CaptionLbl)
+            column(Cheque_No__Caption; Cheque_No__CaptionLbl)
             {
             }
-            column(Payments_Header__Global_Dimension_1_Code_Caption;FieldCaption("Global Dimension 1 Code"))
+            column(Payments_Header__Global_Dimension_1_Code_Caption; FieldCaption("Global Dimension 1 Code"))
             {
             }
-            column(Payments_Header__Shortcut_Dimension_2_Code_Caption;FieldCaption("Global Dimension 2 Code"))
+            column(Payments_Header__Shortcut_Dimension_2_Code_Caption; FieldCaption("Global Dimension 2 Code"))
             {
             }
-            column(R_CENTERCaption;R_CENTERCaptionLbl)
+            column(R_CENTERCaption; R_CENTERCaptionLbl)
             {
             }
-            column(PROJECTCaption;PROJECTCaptionLbl)
+            column(PROJECTCaption; PROJECTCaptionLbl)
             {
             }
-            column(TotalCaption;TotalCaptionLbl)
+            column(TotalCaption; TotalCaptionLbl)
             {
             }
-            column(Printed_By_Caption;Printed_By_CaptionLbl)
+            column(Printed_By_Caption; Printed_By_CaptionLbl)
             {
             }
-            column(Amount_in_wordsCaption;Amount_in_wordsCaptionLbl)
+            column(Amount_in_wordsCaption; Amount_in_wordsCaptionLbl)
             {
             }
-            column(EmptyStringCaption;EmptyStringCaptionLbl)
+            column(EmptyStringCaption; EmptyStringCaptionLbl)
             {
             }
-            column(EmptyStringCaption_Control1102755013;EmptyStringCaption_Control1102755013Lbl)
+            column(EmptyStringCaption_Control1102755013; EmptyStringCaption_Control1102755013Lbl)
             {
             }
-            column(Amount_in_wordsCaption_Control1102755021;Amount_in_wordsCaption_Control1102755021Lbl)
+            column(Amount_in_wordsCaption_Control1102755021; Amount_in_wordsCaption_Control1102755021Lbl)
             {
             }
-            column(Printed_By_Caption_Control1102755026;Printed_By_Caption_Control1102755026Lbl)
+            column(Printed_By_Caption_Control1102755026; Printed_By_Caption_Control1102755026Lbl)
             {
             }
-            column(TotalCaption_Control1102755033;TotalCaption_Control1102755033Lbl)
+            column(TotalCaption_Control1102755033; TotalCaption_Control1102755033Lbl)
             {
             }
-            column(Signature_Caption;Signature_CaptionLbl)
+            column(Signature_Caption; Signature_CaptionLbl)
             {
             }
-            column(Date_Caption;Date_CaptionLbl)
+            column(Date_Caption; Date_CaptionLbl)
             {
             }
-            column(Name_Caption;Name_CaptionLbl)
+            column(Name_Caption; Name_CaptionLbl)
             {
             }
-            column(RecipientCaption;RecipientCaptionLbl)
+            column(RecipientCaption; RecipientCaptionLbl)
             {
             }
-            column(CompanyInfoName;CompanyInfo.Name)
+            column(CompanyInfoName; CompanyInfo.Name)
             {
             }
-            column(CompanyInfoAddress;CompanyInfo.Address)
+            column(CompanyInfoAddress; CompanyInfo.Address)
             {
             }
-            column(CompanyInfoPhone;CompanyInfo."Phone No.")
+            column(CompanyInfoPhone; CompanyInfo."Phone No.")
             {
             }
-            column(CompanyInfoPic;CompanyInfo.Picture)
+            column(CompanyInfoPic; CompanyInfo.Picture)
             {
             }
-            column(CompanyEmail;CompanyInfo."E-Mail")
+            column(CompanyEmail; CompanyInfo."E-Mail")
             {
             }
-            column(CompanyWebPage;CompanyInfo."Home Page")
+            column(CompanyWebPage; CompanyInfo."Home Page")
             {
             }
-            column(Bank;"Bank Account")
+            column(Bank; "Bank Account")
             {
                 IncludeCaption = true;
             }
-            column(BankName;"Bank Account Name")
+            column(BankName; "Bank Account Name")
             {
                 IncludeCaption = true;
             }
-            column(PayMode;"Payment Mode")
+            column(PayMode; "Payment Mode")
             {
                 IncludeCaption = true;
             }
-            dataitem("Payment Line";"Payment Line")
+            dataitem("Payment Line"; "Payment Line")
             {
-                DataItemLink = "Document No"=field("No.");
-                DataItemTableView = sorting("Line No","Document No") order(ascending);
+                DataItemLink = "Document No" = field("No.");
+                DataItemTableView = sorting("Line No", "Document No") order(ascending);
                 column(ReportForNavId_3474; 3474)
                 {
                 }
-                column(Payment_Line__Net_Amount__;"Net Amount" )
+                column(Payment_Line__Net_Amount__; "Net Amount")
                 {
                 }
-                column(Payment_Line_Amount;Amount)
+                column(Payment_Line_Amount; Amount)
                 {
                 }
-                column(Transaction_Name_______Account_No________Account_Name_____;"Transaction Type Description")
+                column(Transaction_Name_______Account_No________Account_Name_____; "Transaction Type Description")
                 {
                 }
-                column(AccountNo_PaymentLine;"Account No.")
+                column(AccountNo_PaymentLine; "Account No.")
                 {
                 }
-                column(AccountName_PaymentLine;"Account Name")
+                column(AccountName_PaymentLine; "Account Name")
                 {
                 }
-                column(Payment_remarks;"Payment Line"."Payment Description")
+                column(Payment_remarks; "Payment Line"."Payment Description")
                 {
                 }
-                column(Payment_Line__Withholding_Tax_Amount_;"W/TAX Amount")
+                column(Payment_Line__Withholding_Tax_Amount_; "W/TAX Amount")
                 {
                 }
-                column(Payment_Line__VAT_Amount_;"VAT Amount")
+                column(Payment_Line__VAT_Amount_; "VAT Amount")
                 {
                 }
-                column(Payment_Line__Global_Dimension_1_Code_;"Global Dimension 1 Code")
+                column(Payment_Line__Global_Dimension_1_Code_; "Global Dimension 1 Code")
                 {
                 }
-                column(Payment_Line__Shortcut_Dimension_2_Code_;"Global Dimension 2 Code")
+                column(Payment_Line__Shortcut_Dimension_2_Code_; "Global Dimension 2 Code")
                 {
                 }
-                column(Payment_Line_Line_No_;"Line No")
+                column(Payment_Line_Line_No_; "Line No")
                 {
                 }
-                column(Payment_Line_No;"Document No")
+                column(Payment_Line_No; "Document No")
                 {
                 }
-                column(Payment_Line_Type;"Payment Type")
+                column(Payment_Line_Type; "Payment Type")
                 {
                 }
 
                 trigger OnAfterGetRecord()
                 begin
                     DimVal.Reset;
-                    DimVal.SetRange(DimVal."Dimension Code",'DEPARTMENT');
-                    DimVal.SetRange(DimVal.Code,"Payment Header"."Global Dimension 2 Code");
-                    DimValName:='';
-                    if DimVal.FindFirst then
-                      begin
-                        DimValName:=DimVal.Name;
-                      end;
+                    DimVal.SetRange(DimVal."Dimension Code", 'DEPARTMENT');
+                    DimVal.SetRange(DimVal.Code, "Payment Header"."Global Dimension 2 Code");
+                    DimValName := '';
+                    if DimVal.FindFirst then begin
+                        DimValName := DimVal.Name;
+                    end;
 
-                    TTotal:=TTotal + "Net Amount" ;
+                    TTotal := TTotal + "Net Amount";
                 end;
             }
-            dataitem(Total;"Integer")
+            dataitem(Total; "Integer")
             {
-                DataItemTableView = sorting(Number) order(ascending) where(Number=const(1));
+                DataItemTableView = sorting(Number) order(ascending) where(Number = const(1));
                 column(ReportForNavId_3476; 3476)
                 {
                 }
@@ -278,52 +277,52 @@ Report 51516000 "Payment Voucher"
 
                 end;
             }
-            dataitem("Integer";"Integer")
+            dataitem("Integer"; "Integer")
             {
-                DataItemTableView = sorting(Number) order(ascending) where(Number=const(1));
+                DataItemTableView = sorting(Number) order(ascending) where(Number = const(1));
                 column(ReportForNavId_5444; 5444)
                 {
                 }
             }
-            dataitem("Approval Entry";"Approval Entry")
+            dataitem("Approval Entry"; "Approval Entry")
             {
-                DataItemLink = "Document No."=field("No.");
-                DataItemTableView = where(Status=const(Approved));
+                DataItemLink = "Document No." = field("No.");
+                DataItemTableView = where(Status = const(Approved));
                 column(ReportForNavId_1000000014; 1000000014)
                 {
                 }
-                column(SequenceNo_ApprovalEntry;"Approval Entry"."Sequence No.")
+                column(SequenceNo_ApprovalEntry; "Approval Entry"."Sequence No.")
                 {
                 }
-                column(LastDateTimeModified_ApprovalEntry;"Approval Entry"."Last Date-Time Modified")
+                column(LastDateTimeModified_ApprovalEntry; "Approval Entry"."Last Date-Time Modified")
                 {
                 }
-                column(ApproverID_ApprovalEntry;"Approval Entry"."Approver ID")
+                column(ApproverID_ApprovalEntry; "Approval Entry"."Approver ID")
                 {
                 }
-                column(SenderID_ApprovalEntry;"Approval Entry"."Sender ID")
+                column(SenderID_ApprovalEntry; "Approval Entry"."Sender ID")
                 {
                 }
             }
-            dataitem(CreationApprovalEntry;"Approval Entry")
+            dataitem(CreationApprovalEntry; "Approval Entry")
             {
-                DataItemTableView = where(Status=const(Approved));
+                DataItemTableView = where(Status = const(Approved));
                 column(ReportForNavId_1000000025; 1000000025)
                 {
                 }
-                column(SequenceNo_CreationApprovalEntry;CreationApprovalEntry."Sequence No.")
+                column(SequenceNo_CreationApprovalEntry; CreationApprovalEntry."Sequence No.")
                 {
                 }
-                column(SenderID_CreationApprovalEntry;CreationApprovalEntry."Sender ID")
+                column(SenderID_CreationApprovalEntry; CreationApprovalEntry."Sender ID")
                 {
                 }
-                column(ApproverID_CreationApprovalEntry;CreationApprovalEntry."Approver ID")
+                column(ApproverID_CreationApprovalEntry; CreationApprovalEntry."Approver ID")
                 {
                 }
-                column(DateTimeSentforApproval_CreationApprovalEntry;CreationApprovalEntry."Date-Time Sent for Approval")
+                column(DateTimeSentforApproval_CreationApprovalEntry; CreationApprovalEntry."Date-Time Sent for Approval")
                 {
                 }
-                column(LastDateTimeModified_CreationApprovalEntry;CreationApprovalEntry."Last Date-Time Modified")
+                column(LastDateTimeModified_CreationApprovalEntry; CreationApprovalEntry."Last Date-Time Modified")
                 {
                 }
 
@@ -335,17 +334,17 @@ Report 51516000 "Payment Voucher"
 
             trigger OnAfterGetRecord()
             begin
-                StrCopyText:='';
+                StrCopyText := '';
                 /*IF "No. Printed">=1 THEN
                   BEGIN
                     StrCopyText:='DUPLICATE';
                   END;
                 TTotal:=0;*/
-                
-                 DOCNAME:='PAYMENT VOUCHER';
-                
+
+                DOCNAME := 'PAYMENT VOUCHER';
+
                 //End;
-                CalcFields("Payment Header".Amount,"Payment Header"."Net Amount","Payment Header"."WithHolding Tax Amount");
+                CalcFields("Payment Header".Amount, "Payment Header"."Net Amount", "Payment Header"."WithHolding Tax Amount");
                 EnglishLanguageCode := 1033;
                 //CheckReport.InitTextVariable();
                 //CheckReport.FormatNoTextENU(NumberText,("Payment Header"."Net Amount"));
@@ -367,7 +366,7 @@ Report 51516000 "Payment Voucher"
             begin
 
                 LastFieldNo := FieldNo("No.");
-                CurrCode:='KES';
+                CurrCode := 'KES';
             end;
         }
     }
@@ -401,8 +400,8 @@ Report 51516000 "Payment Voucher"
         DimVal: Record "Dimension Value";
         DimValName: Text[30];
         TTotal: Decimal;
-       // CheckReport: Report UnknownReport10400;
-        NumberText: array [2] of Text[80];
+        // CheckReport: Report UnknownReport10400;
+        NumberText: array[2] of Text[80];
         STotal: Decimal;
         InvoiceCurrCode: Code[10];
         CurrCode: Code[10];

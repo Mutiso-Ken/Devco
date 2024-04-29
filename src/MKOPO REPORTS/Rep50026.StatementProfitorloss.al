@@ -13,11 +13,19 @@ report 50026 StatementProfitorloss
             {
 
             }
+            column(PersonalExpenses; PersonalExpenses)
+            {
+
+            }
+            column(LPersonalExpenses; LPersonalExpenses)
+            {
+
+            }
             column(InterestonLoans; InterestonLoans)
             {
 
             }
-            column(Otherincome; Otherincome)
+            column(InvestmentIncome; InvestmentIncome)
             {
 
             }
@@ -54,15 +62,15 @@ report 50026 StatementProfitorloss
             {
 
             }
-            column(OtherOperatingExpenses; OtherOperatingExpenses)
+            column(OperatingExpenses; OperatingExpenses)
             {
 
             }
-            column(LOtherOperatingExpenses; LOtherOperatingExpenses)
+            column(LOperatingExpenses; LOperatingExpenses)
             {
 
             }
-            column(otheradministrativeexpenses; otheradministrativeexpenses)
+            column(administrativeexpenses; administrativeexpenses)
             {
 
             }
@@ -106,12 +114,22 @@ report 50026 StatementProfitorloss
             {
 
             }
+            column(DepreciationAmmortisation; DepreciationAmmortisation)
+            {
+
+            }
+            column(LDepreciationAmmortisation; LDepreciationAmmortisation)
+            {
+
+            }
+
+
             ///last year but One
             column(LInterestonLoans; LInterestonLoans)
             {
 
             }
-            column(LOtherincome; LOtherincome)
+            column(LInvestmentIncome; LInvestmentIncome)
             {
 
             }
@@ -144,12 +162,19 @@ report 50026 StatementProfitorloss
             {
 
             }
+            column(FinancialExpense; FinancialExpense)
+            {
 
+            }
+            column(LFinancialExpense; LFinancialExpense)
+            {
+
+            }
             column(Lstaffcosts; Lstaffcosts)
             {
 
             }
-            column(Lotheradministrativeexpenses; Lotheradministrativeexpenses)
+            column(Ladministrativeexpenses; Ladministrativeexpenses)
             {
 
             }
@@ -217,7 +242,7 @@ report 50026 StatementProfitorloss
                 DateExpr := '<-1y>';
                 InputDate := Asat;
 
-                EndofLastyear := CalcDate(DateFormula, Asat);
+                EndofLastyear := InputDate;
                 CurrentYear := Date2DMY(EndofLastyear, 3);
                 LastYearButOne := CalcDate(DateExpr, EndofLastyear);
                 PreviousYear := CurrentYear - 1;
@@ -227,12 +252,12 @@ report 50026 StatementProfitorloss
                 //Interest on Loans
                 InterestonLoans := 0;
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)", '%1', GLAccount."form2f(statement of c income)"::InterestonLoanPortfolio);
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::InterestOnLoans);
                 if GLAccount.FindSet then begin
                     repeat
                         GLEntry.Reset;
                         GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1>', EndofLastyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
                             InterestonLoans += -1 * GLEntry.Amount;
@@ -243,7 +268,7 @@ report 50026 StatementProfitorloss
 
                 LInterestonLoans := 0;
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)", '%1', GLAccount."form2f(statement of c income)"::InterestonLoanPortfolio);
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::InterestOnLoans);
                 if GLAccount.FindSet then begin
                     repeat
                         GLEntry.Reset;
@@ -256,42 +281,11 @@ report 50026 StatementProfitorloss
 
                     until GLAccount.Next = 0;
                 end;
-                //OtherInterestIncome
-                Otherincome := 0;
-                GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)", '%1', GLAccount."form2f(statement of c income)"::OtherInterestIncome);
-                if GLAccount.FindSet then begin
-                    repeat
-                        GLEntry.Reset;
-                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
-                        if GLEntry.FindSet then begin
-                            GLEntry.CalcSums(Amount);
-                            Otherincome += -1 * GLEntry.Amount;
-                        end;
 
-                    until GLAccount.Next = 0;
-                end;
-
-                LOtherincome := 0;
-                GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)", '%1', GLAccount."form2f(statement of c income)"::OtherInterestIncome);
-                if GLAccount.FindSet then begin
-                    repeat
-                        GLEntry.Reset;
-                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
-                        if GLEntry.FindSet then begin
-                            GLEntry.CalcSums(Amount);
-                            LOtherincome += -1 * GLEntry.Amount;
-                        end;
-
-                    until GLAccount.Next = 0;
-                end;
                 //Interest Exepenses
                 InterestExpenses := 0;
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)", '%1', GLAccount."form2f(statement of c income)"::InterestExpenses);
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::InterestExpenses);
                 if GLAccount.FindSet then begin
                     repeat
                         GLEntry.Reset;
@@ -307,7 +301,7 @@ report 50026 StatementProfitorloss
 
                 LInterestExpenses := 0;
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)", '%1', GLAccount."form2f(statement of c income)"::InterestExpenses);
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::InterestExpenses);
                 if GLAccount.FindSet then begin
                     repeat
                         GLEntry.Reset;
@@ -320,42 +314,13 @@ report 50026 StatementProfitorloss
 
                     until GLAccount.Next = 0;
                 end;
-                //Netfeeincome
-                NetFeeandcommission := 0;
-                GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)", '%1', GLAccount."form2f(statement of c income)"::NetFeeandcommission);
-                if GLAccount.FindSet then begin
-                    repeat
-                        GLEntry.Reset;
-                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
-                        if GLEntry.FindSet then begin
-                            GLEntry.CalcSums(Amount);
-                            NetFeeandcommission += -1 * GLEntry.Amount;
-                        end;
 
-                    until GLAccount.Next = 0;
-                end;
 
-                LNetFeeandcommission := 0;
-                GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)", '%1', GLAccount."form2f(statement of c income)"::InterestExpenses);
-                if GLAccount.FindSet then begin
-                    repeat
-                        GLEntry.Reset;
-                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', LastYearButOne);
-                        if GLEntry.FindSet then begin
-                            GLEntry.CalcSums(Amount);
-                            LNetFeeandcommission += -1 * GLEntry.Amount;
-                        end;
 
-                    until GLAccount.Next = 0;
-                end;
                 //Otheroperatingincome
                 OtherOperatingincome := 0;
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)", '%1', GLAccount."form2f(statement of c income)"::OtherOperatingincome);
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::OtherOperatingincome);
                 if GLAccount.FindSet then begin
                     repeat
                         GLEntry.Reset;
@@ -371,7 +336,7 @@ report 50026 StatementProfitorloss
 
                 OtherOperatingincome := 0;
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)", '%1', GLAccount."form2f(statement of c income)"::OtherOperatingincome);
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::OtherOperatingincome);
                 if GLAccount.FindSet then begin
                     repeat
                         GLEntry.Reset;
@@ -380,6 +345,261 @@ report 50026 StatementProfitorloss
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
                             LOtherOperatingincome += -1 * GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+                //OtherInterestIncome
+                InvestmentIncome := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::InvestmentIncome);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            InvestmentIncome += -1 * GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+
+                LInvestmentIncome := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::InvestmentIncome);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            LInvestmentIncome += -1 * GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+                Governanceexpenses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::GorvernanceExpenses);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            Governanceexpenses += -1 * GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+
+                LGovernanceexpenses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::GorvernanceExpenses);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            LGovernanceexpenses += -1 * GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+
+                administrativeexpenses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::AdministrationExpenses);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            administrativeexpenses += -1 * GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+
+                Ladministrativeexpenses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::AdministrationExpenses);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            Ladministrativeexpenses += -1 * GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+                PersonalExpenses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::PersonelExpenses);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            PersonalExpenses += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+
+                LPersonalExpenses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::PersonelExpenses);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            LPersonalExpenses += -1 * GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+
+                OperatingExpenses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::OperatingExpenses);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            OperatingExpenses += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+
+                LOperatingExpenses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::OperatingExpenses);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            LOperatingExpenses += -1 * GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+
+                FinancialExpense := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::FinancialExpense);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            FinancialExpense += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+
+                LFinancialExpense := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::FinancialExpense);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            LFinancialExpense += -1 * GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+
+                Makertingexpenses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::MarketingExpenses);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            Makertingexpenses += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+
+                LMakertingexpenses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::MarketingExpenses);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            LMakertingexpenses += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+
+
+                DepreciationAmmortisation := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::DepreciationAmmortisation);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            DepreciationAmmortisation += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+
+                LDepreciationAmmortisation := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::DepreciationAmmortisation);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            LDepreciationAmmortisation += GLEntry.Amount;
                         end;
 
                     until GLAccount.Next = 0;
@@ -420,6 +640,12 @@ report 50026 StatementProfitorloss
         }
     }
     var
+        DepreciationAmmortisation: Decimal;
+        LDepreciationAmmortisation: Decimal;
+        PersonalExpenses: Decimal;
+        LPersonalExpenses: Decimal;
+        FinancialExpense: Decimal;
+        LFinancialExpense: Decimal;
         DateFilter: Text;
         LDatefilter: Text;
         Date: Date;
@@ -432,17 +658,17 @@ report 50026 StatementProfitorloss
         CurrentYear: Integer;
         PreviousYear: Integer;
         InterestonLoans: Decimal;
-        Otherincome: Decimal;
+        InvestmentIncome: Decimal;
         InterestExpenses: Decimal;
         NetFeeandcommission: Decimal;
         OtherOperatingincome: Decimal;
-        OtherOperatingExpenses: Decimal;
+        OperatingExpenses: Decimal;
         Gainloassasrisongfromderecongnition: Decimal;
         ImpairmentLosses: Decimal;
         Governanceexpenses: Decimal;
         Makertingexpenses: Decimal;
         staffcosts: Decimal;
-        otheradministrativeexpenses: Decimal;
+        administrativeexpenses: Decimal;
         profitorLossbeforetax: Decimal;
         NotRecGainLossonPropertyandequipmenrevaluation: Decimal;
         NotRecGainlossonequityinstatFVTOCI: Decimal;
@@ -456,17 +682,17 @@ report 50026 StatementProfitorloss
 
         //Last Year
         LInterestonLoans: Decimal;
-        LOtherincome: Decimal;
+        LInvestmentIncome: Decimal;
         LInterestExpenses: Decimal;
         LNetFeeandcommission: Decimal;
         LOtherOperatingincome: Decimal;
-        LOtherOperatingExpenses: Decimal;
+        LOperatingExpenses: Decimal;
         LGainloassasrisongfromderecongnition: Decimal;
         LImpairmentLosses: Decimal;
         LGovernanceexpenses: Decimal;
         LMakertingexpenses: Decimal;
         Lstaffcosts: Decimal;
-        Lotheradministrativeexpenses: Decimal;
+        Ladministrativeexpenses: Decimal;
         LprofitorLossbeforetax: Decimal;
         LNotRecGainLossonPropertyandequipmenrevaluation: Decimal;
         LNotRecGainlossonequityinstatFVTOCI: Decimal;

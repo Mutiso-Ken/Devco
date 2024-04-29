@@ -64,7 +64,7 @@ Table 51516003 "Receipt Line"
         field(15; "Account Type"; Option)
         {
             Editable = true;
-            OptionCaption = 'G/L Account,Customer,Vendor,Bank Account,Fixed Asset,IC Partner,Staff,Investor,Member';
+          
             OptionMembers = "G/L Account",Customer,Vendor,"Bank Account","Fixed Asset","IC Partner",Staff,Investor,Member;
 
             trigger OnValidate()

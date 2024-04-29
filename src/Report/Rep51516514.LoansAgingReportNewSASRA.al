@@ -3,6 +3,8 @@ Report 51516514 "Loans Aging Report New-SASRA"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './Layouts/Loans Aging Report New-SASRA.rdlc';
+    ApplicationArea = all;
+    UsageCategory = ReportsAndAnalysis;
 
     dataset
     {

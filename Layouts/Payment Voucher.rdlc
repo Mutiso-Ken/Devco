@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="DataSource">
@@ -53,7 +53,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Account</Value>
+                                  <Value>Account</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -65,7 +65,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Code</Value>
+                                  <Value>Code</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -99,7 +99,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Account Name</Value>
+                                  <Value>Account Name</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -134,7 +134,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Narration</Value>
+                                  <Value>Narration</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -168,7 +168,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">W/VAT Amount</Value>
+                                  <Value>W/VAT Amount</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -203,7 +203,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">W/TAX Amount</Value>
+                                  <Value>W/TAX Amount</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -238,7 +238,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=First(Fields!AMOUNTCaption.Value)</Value>
+                                  <Value>=First(Fields!AMOUNTCaption.Value)</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -273,7 +273,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Net</Value>
+                                  <Value>Net</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -287,7 +287,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Amount</Value>
+                                  <Value>Amount</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -327,7 +327,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!AccountNo_PaymentLine.Value</Value>
+                                  <Value>=Fields!AccountNo_PaymentLine.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -358,7 +358,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!AccountName_PaymentLine.Value</Value>
+                                  <Value>=Fields!AccountName_PaymentLine.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -392,7 +392,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Payment_remarks.Value</Value>
+                                  <Value>=Fields!Payment_remarks.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -426,7 +426,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Payment_Line__VAT_Amount_.Value</Value>
+                                  <Value>=Fields!Payment_Line__VAT_Amount_.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <Format>=Fields!Payment_Line__VAT_Amount_Format.Value</Format>
@@ -461,7 +461,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Payment_Line__Withholding_Tax_Amount_.Value</Value>
+                                  <Value>=Fields!Payment_Line__Withholding_Tax_Amount_.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <Format>=Fields!Payment_Line__Withholding_Tax_Amount_Format.Value</Format>
@@ -495,7 +495,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Payment_Line_Amount.Value</Value>
+                                  <Value>=Fields!Payment_Line_Amount.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <Format>=Fields!Payment_Line_AmountFormat.Value</Format>
@@ -529,7 +529,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Payment_Line__Net_Amount__.Value</Value>
+                                  <Value>=Fields!Payment_Line__Net_Amount__.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <Format>=Fields!Payment_Line__Net_Amount__Format.Value</Format>
@@ -567,7 +567,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=First(Fields!TotalCaption.Value)</Value>
+                                  <Value>=First(Fields!TotalCaption.Value)</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -599,21 +599,21 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">(</Value>
+                                  <Value>(</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!CurrCode.Value</Value>
+                                  <Value>=Fields!CurrCode.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">)</Value>
+                                  <Value>)</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -645,7 +645,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -675,7 +675,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -708,7 +708,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -740,7 +740,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -772,7 +772,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Sum(Fields!Payment_Line__Net_Amount__.Value)</Value>
+                                  <Value>=Sum(Fields!Payment_Line__Net_Amount__.Value)</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -876,7 +876,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!Document_Date_Caption.Value)</Value>
+                    <Value>=First(Fields!Document_Date_Caption.Value)</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -901,7 +901,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!Payments_Header__Payments_Header__Date.Value)</Value>
+                    <Value>=First(Fields!Payments_Header__Payments_Header__Date.Value)</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -932,7 +932,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!Payment_To_Caption.Value)</Value>
+                    <Value>=First(Fields!Payment_To_Caption.Value)</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -957,7 +957,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!Payments_Header_Payee.Value)</Value>
+                    <Value>=First(Fields!Payments_Header_Payee.Value)</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -982,7 +982,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!Cheque_No__Caption.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!Cheque_No__Caption.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1007,7 +1007,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!Payments_Header__Cheque_No__.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!Payments_Header__Cheque_No__.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1034,7 +1034,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!Amount_in_wordsCaption.Value)</Value>
+                    <Value>=First(Fields!Amount_in_wordsCaption.Value)</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1062,7 +1062,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!CurrCode.Value)</Value>
+                    <Value>=First(Fields!CurrCode.Value)</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                     </Style>
@@ -1090,7 +1090,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=Fields!NumberText_1_.Value</Value>
+                    <Value>=Fields!NumberText_1_.Value</Value>
                     <Style>
                       <FontStyle>Italic</FontStyle>
                       <FontSize>8pt</FontSize>
@@ -1116,7 +1116,7 @@
             </Style>
           </Textbox>
           <Line Name="line3">
-            <Top>12.55264cm</Top>
+            <Top>13.50514cm</Top>
             <Left>0.31739cm</Left>
             <Height>0cm</Height>
             <Width>18.14505cm</Width>
@@ -1158,7 +1158,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!DOCNAME.Value)</Value>
+                    <Value>=First(Fields!DOCNAME.Value)</Value>
                     <Style>
                       <FontSize>18pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1179,41 +1179,13 @@
               <VerticalAlign>Middle</VerticalAlign>
             </Style>
           </Textbox>
-          <Textbox Name="textbox11">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value EvaluationMode="Auto">Prepared By:</Value>
-                    <Style>
-                      <FontSize>8pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <Top>9.92439cm</Top>
-            <Left>0.31739cm</Left>
-            <Height>0.49226cm</Height>
-            <Width>2.38231cm</Width>
-            <ZIndex>13</ZIndex>
-            <Style>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>0.075cm</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Textbox Name="textbox12">
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">Authorized By:</Value>
+                    <Value>Authorized By:</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1223,11 +1195,11 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>11.27933cm</Top>
+            <Top>12.23183cm</Top>
             <Left>0.31739cm</Left>
             <Height>0.47617cm</Height>
             <Width>2.38231cm</Width>
-            <ZIndex>14</ZIndex>
+            <ZIndex>13</ZIndex>
             <Style>
               <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>0.075cm</PaddingLeft>
@@ -1236,64 +1208,12 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Line Name="line8">
-            <Top>10.41665cm</Top>
-            <Left>2.90969cm</Left>
-            <Height>0cm</Height>
-            <Width>8.49904cm</Width>
-            <ZIndex>15</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-            </Style>
-          </Line>
-          <Textbox Name="textbox13">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value EvaluationMode="Auto">Checked By:</Value>
-                    <Style>
-                      <FontSize>8pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <Top>10.59304cm</Top>
-            <Left>0.34385cm</Left>
-            <Height>0.5099cm</Height>
-            <Width>2.35585cm</Width>
-            <ZIndex>16</ZIndex>
-            <Style>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>0.075cm</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Line Name="line9">
-            <Top>11.10294cm</Top>
-            <Left>2.90969cm</Left>
-            <Height>0cm</Height>
-            <Width>8.49904cm</Width>
-            <ZIndex>17</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-            </Style>
-          </Line>
           <Line Name="line10">
-            <Top>11.75549cm</Top>
+            <Top>12.70799cm</Top>
             <Left>2.90969cm</Left>
             <Height>0cm</Height>
             <Width>8.49904cm</Width>
-            <ZIndex>18</ZIndex>
+            <ZIndex>14</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1306,7 +1226,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!Payments_Header__No__.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!Payments_Header__No__.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>18pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1322,7 +1242,7 @@
             <Left>12.89691cm</Left>
             <Height>1.08446cm</Height>
             <Width>5.30118cm</Width>
-            <ZIndex>19</ZIndex>
+            <ZIndex>15</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1335,7 +1255,7 @@
             <Left>0.19457cm</Left>
             <Height>0cm</Height>
             <Width>18.26787cm</Width>
-            <ZIndex>20</ZIndex>
+            <ZIndex>16</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1355,41 +1275,13 @@
               </RightBorder>
             </Style>
           </Line>
-          <Textbox Name="textbox14">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value EvaluationMode="Auto">ACCOUNTANT</Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <Top>9.88911cm</Top>
-            <Left>3.61848cm</Left>
-            <Height>0.49226cm</Height>
-            <Width>3.53594cm</Width>
-            <ZIndex>21</ZIndex>
-            <Style>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>0.075cm</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Textbox Name="textbox16">
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">Signature:</Value>
+                    <Value>Signature:</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1399,11 +1291,11 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>9.31606cm</Top>
-            <Left>13.51122cm</Left>
+            <Top>9.87169cm</Top>
+            <Left>11.58101cm</Left>
             <Height>0.49226cm</Height>
             <Width>2.08073cm</Width>
-            <ZIndex>22</ZIndex>
+            <ZIndex>17</ZIndex>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>0.075cm</PaddingRight>
@@ -1412,23 +1304,11 @@
             </Style>
           </Textbox>
           <Line Name="line14">
-            <Top>10.31708cm</Top>
-            <Left>12.15276cm</Left>
+            <Top>11.26958cm</Top>
+            <Left>11.58101cm</Left>
             <Height>0cm</Height>
             <Width>6.04533cm</Width>
-            <ZIndex>23</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-            </Style>
-          </Line>
-          <Line Name="line15">
-            <Top>11.10294cm</Top>
-            <Left>12.1263cm</Left>
-            <Height>0cm</Height>
-            <Width>6.04533cm</Width>
-            <ZIndex>24</ZIndex>
+            <ZIndex>18</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1436,11 +1316,11 @@
             </Style>
           </Line>
           <Line Name="line16">
-            <Top>11.75549cm</Top>
+            <Top>12.70799cm</Top>
             <Left>12.15276cm</Left>
             <Height>0cm</Height>
             <Width>6.01887cm</Width>
-            <ZIndex>25</ZIndex>
+            <ZIndex>19</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1453,7 +1333,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">Received By:</Value>
+                    <Value>Received By:</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1463,11 +1343,11 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>13.04322cm</Top>
+            <Top>14.31322cm</Top>
             <Left>0.37024cm</Left>
             <Height>0.49226cm</Height>
             <Width>1.92922cm</Width>
-            <ZIndex>26</ZIndex>
+            <ZIndex>20</ZIndex>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>0.075cm</PaddingRight>
@@ -1481,7 +1361,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">ID No.:</Value>
+                    <Value>ID No.:</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1491,11 +1371,11 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>13.04322cm</Top>
+            <Top>14.31322cm</Top>
             <Left>9.43263cm</Left>
             <Height>0.49226cm</Height>
             <Width>1.05939cm</Width>
-            <ZIndex>27</ZIndex>
+            <ZIndex>21</ZIndex>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>0.075cm</PaddingRight>
@@ -1509,7 +1389,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">Signature:</Value>
+                    <Value>Signature:</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1519,11 +1399,11 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>13.04322cm</Top>
+            <Top>14.31322cm</Top>
             <Left>13.158cm</Left>
             <Height>0.49226cm</Height>
             <Width>1.63818cm</Width>
-            <ZIndex>28</ZIndex>
+            <ZIndex>22</ZIndex>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>0.075cm</PaddingRight>
@@ -1532,11 +1412,11 @@
             </Style>
           </Textbox>
           <Line Name="line17">
-            <Top>13.53548cm</Top>
+            <Top>14.80548cm</Top>
             <Left>2.41554cm</Left>
             <Height>0cm</Height>
             <Width>6.91154cm</Width>
-            <ZIndex>29</ZIndex>
+            <ZIndex>23</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1544,11 +1424,11 @@
             </Style>
           </Line>
           <Line Name="line18">
-            <Top>13.53548cm</Top>
+            <Top>14.80548cm</Top>
             <Left>10.53221cm</Left>
             <Height>0cm</Height>
             <Width>2.51345cm</Width>
-            <ZIndex>30</ZIndex>
+            <ZIndex>24</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1556,11 +1436,11 @@
             </Style>
           </Line>
           <Line Name="line19">
-            <Top>13.53548cm</Top>
+            <Top>14.80548cm</Top>
             <Left>14.82244cm</Left>
             <Height>0cm</Height>
             <Width>3.34919cm</Width>
-            <ZIndex>31</ZIndex>
+            <ZIndex>25</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1572,7 +1452,7 @@
             <Left>0.37031cm</Left>
             <Height>0cm</Height>
             <Width>17.82778cm</Width>
-            <ZIndex>32</ZIndex>
+            <ZIndex>26</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1592,68 +1472,12 @@
               </RightBorder>
             </Style>
           </Line>
-          <Textbox Name="textbox15">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value EvaluationMode="Auto">FINANCE $ ADMINISTRATION OFFICER</Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <Top>10.61068cm</Top>
-            <Left>3.61848cm</Left>
-            <Height>0.49226cm</Height>
-            <Width>7.06078cm</Width>
-            <ZIndex>33</ZIndex>
-            <Style>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>0.075cm</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="textbox20">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value EvaluationMode="Auto">CEO/REGISTRAR</Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <Top>11.27933cm</Top>
-            <Left>3.61848cm</Left>
-            <Height>0.49226cm</Height>
-            <Width>5.0176cm</Width>
-            <ZIndex>34</ZIndex>
-            <Style>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>0.075cm</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Line Name="line7">
             <Top>5.61652cm</Top>
             <Left>0.17119cm</Left>
             <Height>0cm</Height>
             <Width>18.26787cm</Width>
-            <ZIndex>35</ZIndex>
+            <ZIndex>27</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1693,7 +1517,7 @@
             <Left>0.37031cm</Left>
             <Height>0.423cm</Height>
             <Width>4.16541cm</Width>
-            <ZIndex>36</ZIndex>
+            <ZIndex>28</ZIndex>
             <Style>
               <VerticalAlign>Middle</VerticalAlign>
             </Style>
@@ -1704,7 +1528,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!BankName.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!BankName.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1720,13 +1544,82 @@
             <Left>4.80906cm</Left>
             <Height>0.423cm</Height>
             <Width>7.86764cm</Width>
-            <ZIndex>37</ZIndex>
+            <ZIndex>29</ZIndex>
             <Style>
               <VerticalAlign>Middle</VerticalAlign>
             </Style>
           </Textbox>
+          <Textbox Name="textbox13">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Prepared By:</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>10.77732cm</Top>
+            <Left>0.31739cm</Left>
+            <Height>0.49226cm</Height>
+            <Width>2.38231cm</Width>
+            <ZIndex>30</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>0.075cm</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="UserID2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value xml:space="preserve">             </Value>
+                    <Style>
+                      <FontFamily>Cambria</FontFamily>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=User!UserID</Value>
+                    <Style>
+                      <FontFamily>Cambria</FontFamily>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>UserID</rd:DefaultName>
+            <Top>10.77732cm</Top>
+            <Left>2.6997cm</Left>
+            <Height>0.49226cm</Height>
+            <Width>5.70146cm</Width>
+            <ZIndex>31</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Style>Solid</Style>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>14.41827cm</Height>
+        <Height>15.18556cm</Height>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1747,7 +1640,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=First(Fields!CompanyInfoName.Value, "DataSet_Result")</Value>
+                      <Value>=First(Fields!CompanyInfoName.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontSize>28pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -1781,7 +1674,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=First(Fields!CompanyInfoAddress.Value, "DataSet_Result")</Value>
+                      <Value>=First(Fields!CompanyInfoAddress.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontSize>12pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -1830,12 +1723,53 @@
             </Border>
           </Style>
         </PageHeader>
+        <PageFooter>
+          <Height>0.60854cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="ExecutionTime">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!ExecutionTime</Value>
+                      <Style>
+                        <FontFamily>Cambria</FontFamily>
+                        <FontSize>7pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>ExecutionTime</rd:DefaultName>
+              <Top>0.10583cm</Top>
+              <Left>0.31739cm</Left>
+              <Height>0.38833cm</Height>
+              <Width>2.5cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
         <LeftMargin>1cm</LeftMargin>
-        <RightMargin>0cm</RightMargin>
-        <TopMargin>0cm</TopMargin>
-        <BottomMargin>0cm</BottomMargin>
         <Style />
       </Page>
     </ReportSection>
@@ -1869,6 +1803,29 @@
       <Prompt>PayModeCaption</Prompt>
     </ReportParameter>
   </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>1</NumberOfColumns>
+      <NumberOfRows>3</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>BankCaption</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>BankNameCaption</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>PayModeCaption</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""

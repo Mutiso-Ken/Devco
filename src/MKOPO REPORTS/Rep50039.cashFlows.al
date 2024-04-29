@@ -42,7 +42,7 @@ report 50039 cashFlows
                 DateExpr := '<-1y>';
                 InputDate := Asat;
 
-                EndofLastyear := CalcDate(DateFormula, Asat);
+                EndofLastyear := InputDate;
                 CurrentYear := Date2DMY(EndofLastyear, 3);
                 LastYearButOne := CalcDate(DateExpr, EndofLastyear);
                 PreviousYear := CurrentYear - 1;

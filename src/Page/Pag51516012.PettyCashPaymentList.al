@@ -4,6 +4,7 @@ Page 51516012 "PettyCash Payment List"
     ApplicationArea = Basic;
     CardPageID = "PettyCash Payment Card";
     DeleteAllowed = false;
+    RefreshOnActivate = true;
     PageType = List;
     SourceTable = "Payment Header";
     SourceTableView = where("Payment Type" = const("Petty Cash"),
@@ -36,12 +37,12 @@ Page 51516012 "PettyCash Payment List"
                 {
                     ApplicationArea = Basic;
                 }
-               
+
                 field("Amount(LCY)"; "Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                 field(Cashier; Cashier)
+                field(Cashier; Cashier)
                 {
                     ApplicationArea = Basic;
                 }

@@ -6,10 +6,6 @@ Codeunit 50123 BackOfficePORTAL
         str: BigText;
     begin
 
-        //MESSAGE(fnSendOtp(''));
-        //MESSAGE(fnLoanCalculator(30000, 12, 'EMERGENCY'));
-        //MESSAGE(fnGetNextofkin('1584'));
-
     end;
 
     var
@@ -614,17 +610,9 @@ Codeunit 50123 BackOfficePORTAL
     begin
         objLoanRegister.Reset;
         objLoanRegister.SetRange("Client Code", MemberNo);
-        //objLoanRegister.SETRANGE("Loan Status",objLoanRegister."Loan Status"::Appraisal);
-        //objLoanRegister.SETRANGE("Loan Status",objLoanRegister."Loan Status"::Approval1);
-        //objLoanRegister.SETRANGE("Loan Status",objLoanRegister."Loan Status"::Approved);
-        //objLoanRegister.SETRANGE("Loan Status",objLoanRegister."Loan Status"::"Being Repaid");
+        objLoanRegister.SetRange(objLoanRegister.Posted, true);
         if objLoanRegister.Find('-') then begin
-            //objLoanRegister.SETCURRENTKEY("Application Date");
-            //objLoanRegister.ASCENDING(FALSE);
-
             repeat
-                //Loanperiod:=Kentoursfactory.KnGetCurrentPeriodForLoan(objLoanRegister."Loan  No.");
-
                 objLoanRegister.CalcFields("Outstanding Balance");
                 loanlist := loanlist + '::::' + objLoanRegister."Loan Product Type" + ':' + Format(objLoanRegister."Outstanding Balance") + ':' + Format(objLoanRegister."Loan Status") + ':' + Format(objLoanRegister.Installments) + ':'
                   + Format(objLoanRegister.Installments - Loanperiod) + ':' + Format(objLoanRegister."Approved Amount") + ':' + Format(objLoanRegister."Requested Amount") + ':' + objLoanRegister."Loan  No." + '::::';

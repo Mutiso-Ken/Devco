@@ -253,7 +253,7 @@ Report 50400 "Loans Defaulter Aging - SASRA"
                     // EndMonthDate := CalcDate(ExprDate, AsAt);
 
                     Arrears := LBal - ExpectedBalance;
-                    if (Arrears < 0) or (Loans."Loan Disbursement Date" > Loans."Repayment Start Date") then begin
+                    if (Arrears < 0) or (AsAt > Loans."Repayment Start Date") then begin
                         Arrears := 0
                     end
                     else begin

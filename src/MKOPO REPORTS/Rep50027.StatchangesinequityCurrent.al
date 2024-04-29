@@ -14,35 +14,42 @@ report 50027 StatchangesinequityCurrent
             {
 
             }
-            column(EndofLastyear;EndofLastyear)
+            column(EndofLastyear; EndofLastyear)
             {
-                
+
             }
-            column(LastYearButOne;LastYearButOne)
+            column(LastYearButOne; LastYearButOne)
             {
-                
+
             }
-            column(PreviousYear;PreviousYear)
+            column(PreviousYear; PreviousYear)
             {
-                
+
             }
-            column(CurrentYear;CurrentYear)
+            column(CurrentYear; CurrentYear)
             {
-                
+
             }
+            column(StartofPreviousyear; StartofPreviousyear) { }
+            column(StartofLastYearButOne; StartofLastYearButOne) { }
             trigger OnAfterGetRecord()
             var
                 myInt: Integer;
                 DateExpr: Text;
                 InputDate: Date;
                 DateFormula: Text;
+                DateFormulaOne: text;
+                DateFormulaTwo: Text;
 
             begin
                 DateFormula := '<-CY-1D>';
                 DateExpr := '<-1y>';
                 InputDate := Asat;
+                DateFormulaOne := '<-CY>';
 
-                EndofLastyear := CalcDate(DateFormula, Asat);
+                EndofLastyear := InputDate;
+                StartofPreviousyear := CalcDate(DateFormulaOne, AsAt);
+                StartofLastYearButOne := CalcDate(DateFormulaTwo, AsAt);
                 CurrentYear := Date2DMY(EndofLastyear, 3);
                 LastYearButOne := CalcDate(DateExpr, EndofLastyear);
                 PreviousYear := CurrentYear - 1;
@@ -86,7 +93,10 @@ report 50027 StatchangesinequityCurrent
         AsAt: Date;
         PreviousYear: Integer;
         CurrentYear: Integer;
+        StartofPreviousyear: Date;
         EndofLastyear: date;
         LastYearButOne: Date;
+        StartofLastYearButOne: Date;
+
 
 }

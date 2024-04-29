@@ -98,6 +98,10 @@ pageextension 51516628 "ChartOfAccountsCardExt" extends "G/L Account Card"
                 {
                     ApplicationArea = all;
                 }
+                field(Incomes; Incomes)
+                {
+                    ApplicationArea = all;
+                }
             }
         }
 

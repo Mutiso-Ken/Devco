@@ -11,6 +11,76 @@
       <rd:DataSourceID>6cbf1124-57c6-4007-8ebf-009ae8fdef7c</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="Sacco_CEO_Name">
+          <DataField>Sacco_CEO_Name</DataField>
+        </Field>
+        <Field Name="CompanyName">
+          <DataField>CompanyName</DataField>
+        </Field>
+        <Field Name="Date_Filter">
+          <DataField>Date_Filter</DataField>
+        </Field>
+        <Field Name="EndofLastyear">
+          <DataField>EndofLastyear</DataField>
+        </Field>
+        <Field Name="CompanyAddress">
+          <DataField>CompanyAddress</DataField>
+        </Field>
+        <Field Name="CompanyPhone">
+          <DataField>CompanyPhone</DataField>
+        </Field>
+        <Field Name="CompanyPic">
+          <DataField>CompanyPic</DataField>
+        </Field>
+        <Field Name="CompanyEmail">
+          <DataField>CompanyEmail</DataField>
+        </Field>
+        <Field Name="Floor_Number">
+          <DataField>Floor_Number</DataField>
+        </Field>
+        <Field Name="Building_Number">
+          <DataField>Building_Number</DataField>
+        </Field>
+        <Field Name="Street_Road">
+          <DataField>Street_Road</DataField>
+        </Field>
+        <Field Name="P_O_Box">
+          <DataField>P_O_Box</DataField>
+        </Field>
+        <Field Name="PrincipalBankBox">
+          <DataField>PrincipalBankBox</DataField>
+        </Field>
+        <Field Name="IndAuditorBOX">
+          <DataField>IndAuditorBOX</DataField>
+        </Field>
+        <Field Name="Independent_Auditor">
+          <DataField>Independent_Auditor</DataField>
+        </Field>
+        <Field Name="PrincipalBankers">
+          <DataField>PrincipalBankers</DataField>
+        </Field>
+        <Field Name="LegalAdvisorsName">
+          <DataField>LegalAdvisorsName</DataField>
+        </Field>
+        <Field Name="Asat">
+          <DataField>Asat</DataField>
+        </Field>
+        <Field Name="NameDirectors">
+          <DataField>NameDirectors</DataField>
+        </Field>
+        <Field Name="NameSupervisory">
+          <DataField>NameSupervisory</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -1308,7 +1378,7 @@
                       </Style>
                     </TextRun>
                     <TextRun>
-                      <Value>=First(Fields!EndofLastyear.Value, "DataSet_Result")</Value>
+                      <Value>=First(Fields!Asat.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontStyle>Italic</FontStyle>
                         <FontFamily>Calibri</FontFamily>
@@ -1348,6 +1418,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -1387,71 +1463,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="Sacco_CEO_Name">
-          <DataField>Sacco_CEO_Name</DataField>
-        </Field>
-        <Field Name="CompanyName">
-          <DataField>CompanyName</DataField>
-        </Field>
-        <Field Name="Date_Filter">
-          <DataField>Date_Filter</DataField>
-        </Field>
-        <Field Name="EndofLastyear">
-          <DataField>EndofLastyear</DataField>
-        </Field>
-        <Field Name="CompanyAddress">
-          <DataField>CompanyAddress</DataField>
-        </Field>
-        <Field Name="CompanyPhone">
-          <DataField>CompanyPhone</DataField>
-        </Field>
-        <Field Name="CompanyPic">
-          <DataField>CompanyPic</DataField>
-        </Field>
-        <Field Name="CompanyEmail">
-          <DataField>CompanyEmail</DataField>
-        </Field>
-        <Field Name="Floor_Number">
-          <DataField>Floor_Number</DataField>
-        </Field>
-        <Field Name="Building_Number">
-          <DataField>Building_Number</DataField>
-        </Field>
-        <Field Name="Street_Road">
-          <DataField>Street_Road</DataField>
-        </Field>
-        <Field Name="P_O_Box">
-          <DataField>P_O_Box</DataField>
-        </Field>
-        <Field Name="PrincipalBankBox">
-          <DataField>PrincipalBankBox</DataField>
-        </Field>
-        <Field Name="IndAuditorBOX">
-          <DataField>IndAuditorBOX</DataField>
-        </Field>
-        <Field Name="Independent_Auditor">
-          <DataField>Independent_Auditor</DataField>
-        </Field>
-        <Field Name="PrincipalBankers">
-          <DataField>PrincipalBankers</DataField>
-        </Field>
-        <Field Name="LegalAdvisorsName">
-          <DataField>LegalAdvisorsName</DataField>
-        </Field>
-        <Field Name="NameDirectors">
-          <DataField>NameDirectors</DataField>
-        </Field>
-        <Field Name="NameSupervisory">
-          <DataField>NameSupervisory</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>

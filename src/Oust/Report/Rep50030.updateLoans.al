@@ -17,10 +17,17 @@ report 50030 updateLoans
                 Loans: Record "Loans Register";
                 Cust: Record Customer;
             begin
-                Loans.SetRange(Loans."Client Code", Cust."No.");
-                If cust.get("Client Code") then begin
-                    "Client Name" := Cust.Name;
-                    "Loans Register".Modify(true);
+                // Loans.SetRange(Loans."Client Code", Cust."No.");
+                // If cust.get("Client Code") then begin
+                //     "Client Name" := Cust.Name;
+                //     "Loans Register".Modify(true);
+                // end;
+
+
+                 Loans.Reset();
+                Loans.SetRange(Loans."Loan  No.", "Loan  No.");
+                if Loans.FindSet() then begin
+                    Loans.Repayment := Loans."Loan Principle Repayment" + "Loan Interest Repayment";
                 end;
             end;
         }

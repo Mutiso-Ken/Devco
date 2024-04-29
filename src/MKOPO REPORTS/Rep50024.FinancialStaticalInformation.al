@@ -25,9 +25,17 @@ report 50024 FinancialStaticalInformation
             column(LDepositAmount; (LDepositAmount * -1)) { }
             column(LoanandAdvances; LoanandAdvances) { }
             column(LLoanandAdvances; LLoanandAdvances) { }
-            column(InterestonMemberdeposits; InterestonMemberdeposits) { }
-            column(LInterestonMemberdeposits; LInterestonMemberdeposits) { }
+            column(InterestonMemberdeposits; (InterestonMemberdeposits * -1)) { }
+            column(LInterestonMemberdeposits; (LInterestonMemberdeposits * -1)) { }
+            column(IntCurrentDeposits; IntCurrentDeposits)
+            {
 
+            }
+
+            column(IntShareCapital; IntShareCapital)
+            {
+
+            }
             column(FinancialAssets; FinancialAssets) { }
             column(LFinancialAssets; LFinancialAssets) { }
             column(TotalRevenue; TotalRevenue) { }
@@ -62,6 +70,7 @@ report 50024 FinancialStaticalInformation
             column(TotalExpensesTotalAssets; TotalExpensesTotalAssets) { }
             column(LTotalExpensesTotalAssets; LTotalExpensesTotalAssets) { }
             column(DividendsTotalRevenue; DividendsTotalRevenue) { }
+            column(LDividendsTotalRevenue; LDividendsTotalRevenue) { }
             column(NoSaccoBraches; NoSaccoBraches)
             {
 
@@ -86,11 +95,16 @@ report 50024 FinancialStaticalInformation
                 DateExpr: Text;
 
             begin
+
+
+                GenSetup.Get();
+                IntCurrentDeposits := (GenSetup."Interest on Share Capital(%)" * 0.01);
+                IntShareCapital := (GenSetup."Interest On Current Shares" * 0.01);
                 DateFormula := '<-CY-1D>';
                 DateExpr := '<-1y>';
                 InputDate := Asat;
 
-                EndofLastyear := CalcDate(DateFormula, Asat);
+                EndofLastyear :=Asat;
                 CurrentYear := Date2DMY(EndofLastyear, 3);
                 LastYearButOne := CalcDate(DateExpr, EndofLastyear);
                 PreviousYear := CurrentYear - 1;
@@ -798,26 +812,68 @@ report 50024 FinancialStaticalInformation
                     until GLAccount.Next = 0;
 
                 end;
+                LiquidAssetstoTotalassetsshorttermliabilities := 0;
+                LLiquidAssetstoTotalassetsshorttermliabilities := 0;
+                LiquidAssetsTotalAssets := 0;
+                LiquidAssetsTotalAssets := 0;
+                LLiquidAssetsTotalAssets := 0;
 
-                LiquidAssetstoTotalassetsshorttermliabilities := (Cashatbank / shortTermLiabilities) * 100;
-                LLiquidAssetstoTotalassetsshorttermliabilities := (LCashatbank / LshortTermLiabilities) * 100;
-                LiquidAssetsTotalAssets := (Cashatbank / TotalAssets) * 100;
-                LLiquidAssetsTotalAssets := (LCashatbank / LTotalAssets) * 100;
+                if shortTermLiabilities <> 0 then begin
+                    LiquidAssetstoTotalassetsshorttermliabilities := ((Cashatbank / shortTermLiabilities) * 100);
+                end;
 
-                GrossLoansdeposits := (LoanandAdvances / Nonwithdrawabledeposits) * 100;
-                LGrossLoansdeposits := (LLoanandAdvances / LNonwithdrawabledeposits) * 100;
+                if LshortTermLiabilities <> 0 then begin
+                    LLiquidAssetstoTotalassetsshorttermliabilities := ((LCashatbank / LshortTermLiabilities) * 100);
+                end;
 
-                LGrossLoansTotalAssets := (LLoanandAdvances / LTotalAssets) * 100;
-                GrossLoansTotalAssets := (LoanandAdvances / TotalAssets) * 100;
+                if TotalAssets <> 0 then begin
+                    LiquidAssetsTotalAssets := ((Cashatbank / TotalAssets) * 100);
+                end;
 
-                TotalExpensesTotalRevenue := (TotalExpenses / TotalRevenue) * 100;
-                LTotalExpensesTotalRevenue := (LTotalExpenses / LTotalRevenue) * 100;
+                if LTotalAssets <> 0 then begin
+                    LLiquidAssetsTotalAssets := ((LCashatbank / LTotalAssets) * 100);
+                end;
 
-                TotalExpensesTotalAssets := (TotalExpenses / TotalAssets) * 100;
-                LTotalExpensesTotalAssets := (LTotalExpenses / LTotalAssets) * 100;
+                if Nonwithdrawabledeposits <> 0 then begin
+                    GrossLoansdeposits := ((LoanandAdvances / Nonwithdrawabledeposits) * 100);
+                end;
 
-                DividendsTotalRevenue := (InterestonMemberdeposits / TotalRevenue) * 100;
-                LDividendsTotalRevenue := (LInterestonMemberdeposits / LTotalRevenue) * 100;
+                if LNonwithdrawabledeposits <> 0 then begin
+                    LGrossLoansdeposits := ((LLoanandAdvances / LNonwithdrawabledeposits) * 100);
+                end;
+
+                if LTotalAssets <> 0 then begin
+                    LGrossLoansTotalAssets := ((LLoanandAdvances / LTotalAssets) * 100);
+                end;
+
+                if TotalAssets <> 0 then begin
+                    GrossLoansTotalAssets := ((LoanandAdvances / TotalAssets) * 100);
+                end;
+
+                if TotalRevenue <> 0 then begin
+                    TotalExpensesTotalRevenue := ((TotalExpenses / TotalRevenue) * 100);
+                end;
+
+                if LTotalRevenue <> 0 then begin
+                    LTotalExpensesTotalRevenue := ((LTotalExpenses / LTotalRevenue) * 100);
+                end;
+
+                if TotalAssets <> 0 then begin
+                    TotalExpensesTotalAssets := ((TotalExpenses / TotalAssets) * 100);
+                end;
+
+                if LTotalAssets <> 0 then begin
+                    LTotalExpensesTotalAssets := ((LTotalExpenses / LTotalAssets) * 100);
+                end;
+
+                if TotalRevenue <> 0 then begin
+                    DividendsTotalRevenue := ((InterestonMemberdeposits / TotalRevenue) * 100);
+                end;
+
+                if LTotalRevenue <> 0 then begin
+                    LDividendsTotalRevenue := ((LInterestonMemberdeposits / LTotalRevenue) * 100);
+                end;
+
 
 
 
@@ -843,6 +899,8 @@ report 50024 FinancialStaticalInformation
     }
 
     var
+        GenSetup: Record "Sacco General Set-Up";
+
         TotalRevenue: Decimal;
         DividendsTotalRevenue: Decimal;
         LDividendsTotalRevenue: Decimal;
@@ -857,8 +915,8 @@ report 50024 FinancialStaticalInformation
         LGrossLoansTotalAssets: Decimal;
         GrossLoansdeposits: Decimal;
         LGrossLoansdeposits: Decimal;
-
-
+        IntCurrentDeposits: Decimal;
+        IntShareCapital: Decimal;
         Cust: Record Customer;
         Active: Integer;
         Dormant: Integer;
@@ -897,8 +955,8 @@ report 50024 FinancialStaticalInformation
         Otherinvestments: Decimal;
         StartDate: Date;
         CurrentYear: Integer;
-        shortTermLiabilities: Integer;
-        LshortTermLiabilities: Integer;
+        shortTermLiabilities: Decimal;
+        LshortTermLiabilities: Decimal;
         PreviousYear: Integer;
         EndofLastyear: date;
         LastYearButOne: Date;

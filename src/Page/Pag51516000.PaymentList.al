@@ -4,6 +4,7 @@ Page 51516000 "Payment List"
     ApplicationArea = Basic;
     CardPageID = "Payment Card";
     DeleteAllowed = false;
+    RefreshOnActivate=true;
     PageType = List;
     SourceTable = "Payment Header";
     SourceTableView = where("Payment Type" = const(Normal),

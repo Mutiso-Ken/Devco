@@ -99,6 +99,13 @@ tableextension 51516044 "GlAccountExt" extends "G/L Account"
             OptionMembers = " ","Personnel Expenses","Personnel Revenue";
         }
 
+        //Income
+        field(54268; Incomes; Option)
+        {
+            OptionMembers=" ",InterestOnLoans,InterestExpenses,OtherOperatingIncome,InvestmentIncome,GorvernanceExpenses,AdministrationExpenses,PersonelExpenses,OperatingExpenses,FinancialExpense,MarketingExpenses,DepreciationAmmortisation;
+            DataClassification = ToBeClassified;
+        }
+
 
     }
     // trigger OnBeforeModify()

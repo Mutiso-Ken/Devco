@@ -3,6 +3,8 @@ Page 51516013 "PettyCash Payment Card"
 {
     PageType = Card;
     SourceTable = "Payment Header";
+    
+    RefreshOnActivate = true;
     Caption = 'Petty Cash Application';
     SourceTableView = where("Payment Type" = const("Petty Cash"),
                             Posted = const(false));
@@ -250,6 +252,7 @@ Page 51516013 "PettyCash Payment Card"
         TableID: Integer;
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         PHeader: Record "Payment Header";
+        X:page "Accountant Role Center";
 
     local procedure CheckRequiredItems()
     begin

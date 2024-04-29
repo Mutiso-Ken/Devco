@@ -651,7 +651,7 @@
               </Filter>
             </Filters>
             <Top>4.78812cm</Top>
-            <Left>0.37031cm</Left>
+            <Left>0.44197cm</Left>
             <Height>2.3631cm</Height>
             <Width>17.3357cm</Width>
             <Style />
@@ -673,7 +673,7 @@
               </Paragraph>
             </Paragraphs>
             <Top>3.33242cm</Top>
-            <Left>0.34385cm</Left>
+            <Left>0.41551cm</Left>
             <Height>0.423cm</Height>
             <Width>4.1918cm</Width>
             <ZIndex>1</ZIndex>
@@ -701,7 +701,7 @@
               </Paragraph>
             </Paragraphs>
             <Top>3.33242cm</Top>
-            <Left>4.7826cm</Left>
+            <Left>4.85427cm</Left>
             <Height>0.423cm</Height>
             <Width>7.86764cm</Width>
             <ZIndex>2</ZIndex>
@@ -729,7 +729,7 @@
               </Paragraph>
             </Paragraphs>
             <Top>2.73303cm</Top>
-            <Left>0.37024cm</Left>
+            <Left>0.4419cm</Left>
             <Height>0.423cm</Height>
             <Width>4.23597cm</Width>
             <ZIndex>3</ZIndex>
@@ -754,7 +754,7 @@
               </Paragraph>
             </Paragraphs>
             <Top>2.73303cm</Top>
-            <Left>4.7826cm</Left>
+            <Left>4.85427cm</Left>
             <Height>0.423cm</Height>
             <Width>7.79708cm</Width>
             <ZIndex>4</ZIndex>
@@ -779,7 +779,7 @@
               </Paragraph>
             </Paragraphs>
             <Top>3.93181cm</Top>
-            <Left>0.34385cm</Left>
+            <Left>0.41551cm</Left>
             <Height>0.423cm</Height>
             <Width>4.16541cm</Width>
             <ZIndex>5</ZIndex>
@@ -806,7 +806,7 @@
               </Paragraph>
             </Paragraphs>
             <Top>3.93181cm</Top>
-            <Left>4.7826cm</Left>
+            <Left>4.85427cm</Left>
             <Height>0.423cm</Height>
             <Width>7.86764cm</Width>
             <ZIndex>6</ZIndex>
@@ -831,7 +831,7 @@
               </Paragraph>
             </Paragraphs>
             <Top>7.48986cm</Top>
-            <Left>0.37031cm</Left>
+            <Left>0.44197cm</Left>
             <Height>0.4724cm</Height>
             <Width>3.53723cm</Width>
             <ZIndex>7</ZIndex>
@@ -858,7 +858,7 @@
               </Paragraph>
             </Paragraphs>
             <Top>7.48986cm</Top>
-            <Left>3.9781cm</Left>
+            <Left>4.04976cm</Left>
             <Height>0.46012cm</Height>
             <Width>1.5873cm</Width>
             <ZIndex>8</ZIndex>
@@ -889,7 +889,7 @@
               </Paragraph>
             </Paragraphs>
             <Top>7.48986cm</Top>
-            <Left>5.60067cm</Left>
+            <Left>5.67234cm</Left>
             <Height>0.46012cm</Height>
             <Width>11.08664cm</Width>
             <ZIndex>9</ZIndex>
@@ -901,37 +901,12 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Line Name="line3">
-            <Top>11.55162cm</Top>
-            <Left>0.31739cm</Left>
-            <Height>0cm</Height>
-            <Width>17.38862cm</Width>
-            <ZIndex>10</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-                <Width>2.25pt</Width>
-              </Border>
-              <TopBorder>
-                <Width>2.25pt</Width>
-              </TopBorder>
-              <BottomBorder>
-                <Width>2.25pt</Width>
-              </BottomBorder>
-              <LeftBorder>
-                <Width>2.25pt</Width>
-              </LeftBorder>
-              <RightBorder>
-                <Width>2.25pt</Width>
-              </RightBorder>
-            </Style>
-          </Line>
           <Line Name="line4">
             <Top>13.02504cm</Top>
-            <Left>0.31746cm</Left>
+            <Left>0.38912cm</Left>
             <Height>0cm</Height>
             <Width>0cm</Width>
-            <ZIndex>11</ZIndex>
+            <ZIndex>10</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -957,14 +932,144 @@
               </Paragraph>
             </Paragraphs>
             <Top>1.57835cm</Top>
-            <Left>2.07931cm</Left>
+            <Left>2.15097cm</Left>
             <Height>0.97829cm</Height>
             <Width>14.34896cm</Width>
-            <ZIndex>12</ZIndex>
+            <ZIndex>11</ZIndex>
             <Style>
               <VerticalAlign>Middle</VerticalAlign>
             </Style>
           </Textbox>
+          <Textbox Name="Payments_Header__No__2">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!Payments_Header__No__.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontSize>18pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.3175cm</Top>
+            <Left>12.4765cm</Left>
+            <Height>1.08446cm</Height>
+            <Width>5.30118cm</Width>
+            <ZIndex>12</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <VerticalAlign>Middle</VerticalAlign>
+            </Style>
+          </Textbox>
+          <Line Name="line5">
+            <Top>8.13865cm</Top>
+            <Left>0.26623cm</Left>
+            <Height>0cm</Height>
+            <Width>17.51144cm</Width>
+            <ZIndex>13</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+                <Width>1.5pt</Width>
+              </Border>
+              <TopBorder>
+                <Width>1.5pt</Width>
+              </TopBorder>
+              <BottomBorder>
+                <Width>1.5pt</Width>
+              </BottomBorder>
+              <LeftBorder>
+                <Width>1.5pt</Width>
+              </LeftBorder>
+              <RightBorder>
+                <Width>1.5pt</Width>
+              </RightBorder>
+            </Style>
+          </Line>
+          <Line Name="line6">
+            <Top>0.03528cm</Top>
+            <Left>0.44197cm</Left>
+            <Height>0cm</Height>
+            <Width>17.3357cm</Width>
+            <ZIndex>14</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+                <Width>2.25pt</Width>
+              </Border>
+              <TopBorder>
+                <Width>2.25pt</Width>
+              </TopBorder>
+              <BottomBorder>
+                <Width>2.25pt</Width>
+              </BottomBorder>
+              <LeftBorder>
+                <Width>2.25pt</Width>
+              </LeftBorder>
+              <RightBorder>
+                <Width>2.25pt</Width>
+              </RightBorder>
+            </Style>
+          </Line>
+          <Line Name="line7">
+            <Top>4.6111cm</Top>
+            <Left>0.29577cm</Left>
+            <Height>0cm</Height>
+            <Width>17.4819cm</Width>
+            <ZIndex>15</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+                <Width>1.5pt</Width>
+              </Border>
+              <TopBorder>
+                <Width>1.5pt</Width>
+              </TopBorder>
+              <BottomBorder>
+                <Width>1.5pt</Width>
+              </BottomBorder>
+              <LeftBorder>
+                <Width>1.5pt</Width>
+              </LeftBorder>
+              <RightBorder>
+                <Width>1.5pt</Width>
+              </RightBorder>
+            </Style>
+          </Line>
+          <Line Name="line3">
+            <Top>12.04017cm</Top>
+            <Left>0.3175cm</Left>
+            <Height>0cm</Height>
+            <Width>18.14505cm</Width>
+            <ZIndex>16</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+                <Width>2.25pt</Width>
+              </Border>
+              <TopBorder>
+                <Width>2.25pt</Width>
+              </TopBorder>
+              <BottomBorder>
+                <Width>2.25pt</Width>
+              </BottomBorder>
+              <LeftBorder>
+                <Width>2.25pt</Width>
+              </LeftBorder>
+              <RightBorder>
+                <Width>2.25pt</Width>
+              </RightBorder>
+            </Style>
+          </Line>
           <Textbox Name="textbox11">
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
@@ -981,11 +1086,11 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>8.92337cm</Top>
-            <Left>0.31739cm</Left>
+            <Top>9.41192cm</Top>
+            <Left>0.3175cm</Left>
             <Height>0.49226cm</Height>
             <Width>2.38231cm</Width>
-            <ZIndex>13</ZIndex>
+            <ZIndex>17</ZIndex>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>0.075cm</PaddingRight>
@@ -1009,11 +1114,11 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>10.27831cm</Top>
-            <Left>0.31739cm</Left>
+            <Top>10.76686cm</Top>
+            <Left>0.3175cm</Left>
             <Height>0.47617cm</Height>
             <Width>2.38231cm</Width>
-            <ZIndex>14</ZIndex>
+            <ZIndex>18</ZIndex>
             <Style>
               <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>0.075cm</PaddingLeft>
@@ -1022,153 +1127,18 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Line Name="line8">
-            <Top>9.41563cm</Top>
-            <Left>2.90969cm</Left>
-            <Height>0cm</Height>
-            <Width>8.49904cm</Width>
-            <ZIndex>15</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-            </Style>
-          </Line>
-          <Textbox Name="textbox13">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Checked By:</Value>
-                    <Style>
-                      <FontSize>8pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <Top>9.59202cm</Top>
-            <Left>0.34385cm</Left>
-            <Height>0.5099cm</Height>
-            <Width>2.35585cm</Width>
-            <ZIndex>16</ZIndex>
-            <Style>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>0.075cm</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Line Name="line9">
-            <Top>10.10192cm</Top>
-            <Left>2.90969cm</Left>
-            <Height>0cm</Height>
-            <Width>8.49904cm</Width>
-            <ZIndex>17</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-            </Style>
-          </Line>
           <Line Name="line10">
-            <Top>10.75447cm</Top>
-            <Left>2.90969cm</Left>
+            <Top>11.24302cm</Top>
+            <Left>2.9098cm</Left>
             <Height>0cm</Height>
             <Width>8.49904cm</Width>
-            <ZIndex>18</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-            </Style>
-          </Line>
-          <Textbox Name="Payments_Header__No__2">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!Payments_Header__No__.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontSize>18pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Right</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>0.3175cm</Top>
-            <Left>12.40483cm</Left>
-            <Height>1.08446cm</Height>
-            <Width>5.30118cm</Width>
             <ZIndex>19</ZIndex>
             <Style>
               <Border>
-                <Style>None</Style>
-              </Border>
-              <VerticalAlign>Middle</VerticalAlign>
-            </Style>
-          </Textbox>
-          <Line Name="line5">
-            <Top>8.13865cm</Top>
-            <Left>0.19457cm</Left>
-            <Height>0cm</Height>
-            <Width>17.51144cm</Width>
-            <ZIndex>20</ZIndex>
-            <Style>
-              <Border>
                 <Style>Solid</Style>
-                <Width>1.5pt</Width>
               </Border>
-              <TopBorder>
-                <Width>1.5pt</Width>
-              </TopBorder>
-              <BottomBorder>
-                <Width>1.5pt</Width>
-              </BottomBorder>
-              <LeftBorder>
-                <Width>1.5pt</Width>
-              </LeftBorder>
-              <RightBorder>
-                <Width>1.5pt</Width>
-              </RightBorder>
             </Style>
           </Line>
-          <Textbox Name="textbox14">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>ACCOUNTANT</Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <Top>8.88809cm</Top>
-            <Left>3.61848cm</Left>
-            <Height>0.49226cm</Height>
-            <Width>3.53594cm</Width>
-            <ZIndex>21</ZIndex>
-            <Style>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>0.075cm</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Textbox Name="textbox16">
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
@@ -1185,11 +1155,11 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>8.31504cm</Top>
-            <Left>13.51122cm</Left>
+            <Top>8.40672cm</Top>
+            <Left>12.15287cm</Left>
             <Height>0.49226cm</Height>
             <Width>2.08073cm</Width>
-            <ZIndex>22</ZIndex>
+            <ZIndex>20</ZIndex>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>0.075cm</PaddingRight>
@@ -1198,23 +1168,11 @@
             </Style>
           </Textbox>
           <Line Name="line14">
-            <Top>9.31606cm</Top>
-            <Left>12.15276cm</Left>
+            <Top>9.90418cm</Top>
+            <Left>12.12641cm</Left>
             <Height>0cm</Height>
-            <Width>5.55325cm</Width>
-            <ZIndex>23</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-            </Style>
-          </Line>
-          <Line Name="line15">
-            <Top>10.10192cm</Top>
-            <Left>12.1263cm</Left>
-            <Height>0cm</Height>
-            <Width>5.57971cm</Width>
-            <ZIndex>24</ZIndex>
+            <Width>6.04533cm</Width>
+            <ZIndex>21</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1222,11 +1180,11 @@
             </Style>
           </Line>
           <Line Name="line16">
-            <Top>10.75447cm</Top>
-            <Left>12.15276cm</Left>
+            <Top>11.24302cm</Top>
+            <Left>12.15287cm</Left>
             <Height>0cm</Height>
-            <Width>5.55325cm</Width>
-            <ZIndex>25</ZIndex>
+            <Width>6.01887cm</Width>
+            <ZIndex>22</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1249,11 +1207,11 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>12.0422cm</Top>
-            <Left>0.37024cm</Left>
+            <Top>12.84825cm</Top>
+            <Left>0.37035cm</Left>
             <Height>0.49226cm</Height>
             <Width>1.92922cm</Width>
-            <ZIndex>26</ZIndex>
+            <ZIndex>23</ZIndex>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>0.075cm</PaddingRight>
@@ -1277,11 +1235,11 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>12.0422cm</Top>
-            <Left>9.43263cm</Left>
+            <Top>12.84825cm</Top>
+            <Left>9.43274cm</Left>
             <Height>0.49226cm</Height>
             <Width>1.05939cm</Width>
-            <ZIndex>27</ZIndex>
+            <ZIndex>24</ZIndex>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>0.075cm</PaddingRight>
@@ -1305,11 +1263,11 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>12.0422cm</Top>
-            <Left>13.158cm</Left>
+            <Top>12.84825cm</Top>
+            <Left>13.15811cm</Left>
             <Height>0.49226cm</Height>
             <Width>1.63818cm</Width>
-            <ZIndex>28</ZIndex>
+            <ZIndex>25</ZIndex>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>0.075cm</PaddingRight>
@@ -1318,11 +1276,11 @@
             </Style>
           </Textbox>
           <Line Name="line17">
-            <Top>12.53446cm</Top>
-            <Left>2.41554cm</Left>
+            <Top>13.34051cm</Top>
+            <Left>2.41565cm</Left>
             <Height>0cm</Height>
             <Width>6.91154cm</Width>
-            <ZIndex>29</ZIndex>
+            <ZIndex>26</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1330,11 +1288,11 @@
             </Style>
           </Line>
           <Line Name="line18">
-            <Top>12.53446cm</Top>
-            <Left>10.53221cm</Left>
+            <Top>13.34051cm</Top>
+            <Left>10.53232cm</Left>
             <Height>0cm</Height>
             <Width>2.51345cm</Width>
-            <ZIndex>30</ZIndex>
+            <ZIndex>27</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1342,132 +1300,67 @@
             </Style>
           </Line>
           <Line Name="line19">
-            <Top>12.53446cm</Top>
-            <Left>14.82244cm</Left>
+            <Top>13.34051cm</Top>
+            <Left>14.82255cm</Left>
             <Height>0cm</Height>
-            <Width>2.88357cm</Width>
-            <ZIndex>31</ZIndex>
+            <Width>3.34919cm</Width>
+            <ZIndex>28</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
               </Border>
             </Style>
           </Line>
-          <Line Name="line6">
-            <Top>0.03528cm</Top>
-            <Left>0.37031cm</Left>
-            <Height>0cm</Height>
-            <Width>17.3357cm</Width>
-            <ZIndex>32</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-                <Width>2.25pt</Width>
-              </Border>
-              <TopBorder>
-                <Width>2.25pt</Width>
-              </TopBorder>
-              <BottomBorder>
-                <Width>2.25pt</Width>
-              </BottomBorder>
-              <LeftBorder>
-                <Width>2.25pt</Width>
-              </LeftBorder>
-              <RightBorder>
-                <Width>2.25pt</Width>
-              </RightBorder>
-            </Style>
-          </Line>
-          <Textbox Name="textbox15">
+          <Textbox Name="UserID">
+            <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>FINANCE $ ADMINISTRATION OFFICER</Value>
+                    <Value xml:space="preserve">             </Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
+                      <FontFamily>Cambria</FontFamily>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=User!UserID</Value>
+                    <Style>
+                      <FontFamily>Cambria</FontFamily>
                     </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>9.60966cm</Top>
-            <Left>3.61848cm</Left>
+            <rd:DefaultName>UserID</rd:DefaultName>
+            <Top>9.41192cm</Top>
+            <Left>2.69864cm</Left>
             <Height>0.49226cm</Height>
-            <Width>7.06078cm</Width>
-            <ZIndex>33</ZIndex>
-            <Style>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>0.075cm</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="textbox20">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>CEO/REGISTRAR</Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <Top>10.27831cm</Top>
-            <Left>3.61848cm</Left>
-            <Height>0.49226cm</Height>
-            <Width>5.0176cm</Width>
-            <ZIndex>34</ZIndex>
-            <Style>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>0.075cm</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Line Name="line7">
-            <Top>4.6111cm</Top>
-            <Left>0.22411cm</Left>
-            <Height>0cm</Height>
-            <Width>17.4819cm</Width>
-            <ZIndex>35</ZIndex>
+            <Width>5.70146cm</Width>
+            <ZIndex>29</ZIndex>
             <Style>
               <Border>
-                <Style>Solid</Style>
-                <Width>1.5pt</Width>
+                <Style>None</Style>
               </Border>
-              <TopBorder>
-                <Width>1.5pt</Width>
-              </TopBorder>
               <BottomBorder>
-                <Width>1.5pt</Width>
+                <Style>Solid</Style>
               </BottomBorder>
-              <LeftBorder>
-                <Width>1.5pt</Width>
-              </LeftBorder>
-              <RightBorder>
-                <Width>1.5pt</Width>
-              </RightBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
             </Style>
-          </Line>
+          </Textbox>
         </ReportItems>
-        <Height>13.51869cm</Height>
+        <Height>14.02139cm</Height>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Body>
-      <Width>18.00172cm</Width>
+      <Width>18.78005cm</Width>
       <Page>
         <PageHeader>
           <Height>1.15625in</Height>
@@ -1495,7 +1388,7 @@
               </Paragraphs>
               <rd:DefaultName>CompanyInfoName</rd:DefaultName>
               <Top>0.42263cm</Top>
-              <Left>4.05747cm</Left>
+              <Left>4.12914cm</Left>
               <Height>1.2261cm</Height>
               <Width>13.64854cm</Width>
               <Style>
@@ -1527,7 +1420,7 @@
               </Paragraphs>
               <rd:DefaultName>CompanyInfoAddress</rd:DefaultName>
               <Top>1.71929cm</Top>
-              <Left>4.05747cm</Left>
+              <Left>4.12914cm</Left>
               <Height>0.83812cm</Height>
               <Width>9.63073cm</Width>
               <ZIndex>1</ZIndex>
@@ -1547,7 +1440,7 @@
               <MIMEType>image/jpeg</MIMEType>
               <Sizing>FitProportional</Sizing>
               <Top>0.42263cm</Top>
-              <Left>0.37024cm</Left>
+              <Left>0.4419cm</Left>
               <Height>2.37313cm</Height>
               <Width>3.51084cm</Width>
               <ZIndex>2</ZIndex>
@@ -1564,6 +1457,50 @@
             </Border>
           </Style>
         </PageHeader>
+        <PageFooter>
+          <Height>0.55562cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="ExecutionTime">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!ExecutionTime</Value>
+                      <Style>
+                        <FontFamily>Cambria</FontFamily>
+                        <FontSize>7pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>ExecutionTime</rd:DefaultName>
+              <Top>0.07056cm</Top>
+              <Left>0.3175cm</Left>
+              <Height>0.38833cm</Height>
+              <Width>2.5cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
         <LeftMargin>1cm</LeftMargin>

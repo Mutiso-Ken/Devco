@@ -143,6 +143,7 @@ Page 51516253 "Loans Posted List"
                 field("Last Pay Date"; "Last Pay Date")
                 {
                     ApplicationArea = Basic;
+                    Visible = false;
                 }
                 field(Source; Source)
                 {
@@ -153,6 +154,7 @@ Page 51516253 "Loans Posted List"
                 {
                     ApplicationArea = Basic;
                     Style = StandardAccent;
+                    Visible = false;
                 }
                 field("Loan Disbursement Date"; "Loan Disbursement Date")
                 {
@@ -172,10 +174,12 @@ Page 51516253 "Loans Posted List"
                 field("Principal In Arrears"; "Principal In Arrears")
                 {
                     ApplicationArea = Basic;
+                    Visible = false;
                 }
                 field("Interest In Arrears"; "Interest In Arrears")
                 {
                     ApplicationArea = Basic;
+                    Visible = false;
                 }
                 field("Total Amount In Arrears"; "Amount in Arrears")
                 {
@@ -185,6 +189,7 @@ Page 51516253 "Loans Posted List"
                 {
                     ApplicationArea = Basic;
                     Style = Attention;
+                    Caption = 'Loan Category';
                 }
 
             }
@@ -267,7 +272,7 @@ Page 51516253 "Loans Posted List"
                             SFactory.FnGenerateRepaymentSchedule(LoanApp."Loan  No.");
 
                         until LoanApp.Next = 0;
-                        Message('done');
+                       
                         Report.Run(51516477, true, false, LoanApp);
 
 

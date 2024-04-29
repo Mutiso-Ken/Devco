@@ -263,7 +263,7 @@ Report 50025 "State of financial Position"
                 InputDate := Asat;
                 LShareCapital := 0;
                 ShareCapital := 0;
-                EndofLastyear := CalcDate(DateFormula, Asat);
+                EndofLastyear := InputDate;
 
                 CurrentYear := Date2DMY(EndofLastyear, 3);
                 LastYearButOne := CalcDate(DateExpr, EndofLastyear);

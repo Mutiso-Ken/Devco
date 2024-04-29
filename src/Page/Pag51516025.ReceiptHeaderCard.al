@@ -86,6 +86,7 @@ Page 51516025 "Receipt Header Card"
             part(Control23; "Receipt Line")
             {
                 SubPageLink = "Document No" = field("No.");
+                ApplicationArea=all;
             }
         }
     }
