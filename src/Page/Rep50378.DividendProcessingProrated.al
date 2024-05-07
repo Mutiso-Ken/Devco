@@ -153,6 +153,7 @@ Report 50378 "Dividend Processing-Prorated"
                         DivProg.Date := ToDate;
                         DivProg."Gross Dividends" := DivTotal;
                         DivProg."Gross Interest On Deposit" := CInterest;
+                        DivProg."Gross Interest On Sharecapital" := CDiv;
                         DivProg."Qualifying Share Capital" := Cust."Shares Retained";
                         DivProg."Witholding Tax" := WthTAxTotal;
                         DivProg."Net Dividends" := DivTotal - WthTAxTotal;
@@ -199,6 +200,7 @@ Report 50378 "Dividend Processing-Prorated"
                         DivProg.Date := ToDate;
                         DivProg."Gross Dividends" := DivTotal;
                         DivProg."Gross Interest On Deposit" := CInterest;
+                        DivProg."Gross Interest On Sharecapital" := CDiv;
                         DivProg."Qualifying Share Capital" := Cust."Shares Retained";
                         DivProg."Witholding Tax" := WthTAxTotal;
                         DivProg."Net Dividends" := DivTotal - WthTAxTotal;
@@ -244,6 +246,7 @@ Report 50378 "Dividend Processing-Prorated"
                         DivProg.Date := ToDate;
                         DivProg."Gross Dividends" := DivTotal;
                         DivProg."Gross Interest On Deposit" := CInterest;
+                        DivProg."Gross Interest On Sharecapital" := CDiv;
                         DivProg."Qualifying Share Capital" := Cust."Shares Retained";
                         DivProg."Witholding Tax" := WthTAxTotal;
                         DivProg."Net Dividends" := DivTotal - WthTAxTotal;
@@ -289,6 +292,7 @@ Report 50378 "Dividend Processing-Prorated"
                         DivProg."Member No" := Customer."No.";
                         DivProg.Date := ToDate;
                         DivProg."Gross Dividends" := DivTotal;
+                        DivProg."Gross Interest On Sharecapital" := CDiv;
                         DivProg."Gross Interest On Deposit" := CInterest;
                         DivProg."Qualifying Share Capital" := Cust."Shares Retained";
                         DivProg."Witholding Tax" := WthTAxTotal;
@@ -333,6 +337,7 @@ Report 50378 "Dividend Processing-Prorated"
                         DivProg.Date := ToDate;
                         DivProg."Gross Dividends" := DivTotal;
                         DivProg."Gross Interest On Deposit" := CInterest;
+                        DivProg."Gross Interest On Sharecapital" := CDiv;
                         DivProg."Qualifying Share Capital" := Cust."Shares Retained";
                         DivProg."Witholding Tax" := WthTAxTotal;
                         DivProg."Net Dividends" := DivTotal - WthTAxTotal;
@@ -376,6 +381,7 @@ Report 50378 "Dividend Processing-Prorated"
                         DivProg.Date := ToDate;
                         DivProg."Gross Dividends" := DivTotal;
                         DivProg."Gross Interest On Deposit" := CInterest;
+                        DivProg."Gross Interest On Sharecapital" := CDiv;
                         DivProg."Qualifying Share Capital" := Cust."Shares Retained";
                         DivProg."Witholding Tax" := WthTAxTotal;
                         DivProg."Net Dividends" := DivTotal - WthTAxTotal;
@@ -419,6 +425,7 @@ Report 50378 "Dividend Processing-Prorated"
                         DivProg.Date := ToDate;
                         DivProg."Gross Dividends" := DivTotal;
                         DivProg."Gross Interest On Deposit" := CInterest;
+                        DivProg."Gross Interest On Sharecapital" := CDiv;
                         DivProg."Qualifying Share Capital" := Cust."Shares Retained";
                         DivProg."Witholding Tax" := WthTAxTotal;
                         DivProg."Net Dividends" := DivTotal - WthTAxTotal;
@@ -463,6 +470,7 @@ Report 50378 "Dividend Processing-Prorated"
                         DivProg.Date := ToDate;
                         DivProg."Gross Dividends" := DivTotal;
                         DivProg."Gross Interest On Deposit" := CInterest;
+                        DivProg."Gross Interest On Sharecapital" := CDiv;
                         DivProg."Qualifying Share Capital" := Cust."Shares Retained";
                         DivProg."Witholding Tax" := WthTAxTotal;
                         DivProg."Net Dividends" := DivTotal - WthTAxTotal;
@@ -507,6 +515,7 @@ Report 50378 "Dividend Processing-Prorated"
                         DivProg.Date := ToDate;
                         DivProg."Gross Dividends" := DivTotal;
                         DivProg."Gross Interest On Deposit" := CInterest;
+                        DivProg."Gross Interest On Sharecapital" := CDiv;
                         DivProg."Qualifying Share Capital" := Cust."Shares Retained";
                         DivProg."Witholding Tax" := WthTAxTotal;
                         DivProg."Net Dividends" := DivTotal - WthTAxTotal;
@@ -549,6 +558,7 @@ Report 50378 "Dividend Processing-Prorated"
                         DivProg."Member No" := Customer."No.";
                         DivProg.Date := ToDate;
                         DivProg."Gross Dividends" := DivTotal;
+                        DivProg."Gross Interest On Sharecapital" := CDiv;
                         DivProg."Gross Interest On Deposit" := CInterest;
                         DivProg."Qualifying Share Capital" := Cust."Shares Retained";
                         DivProg."Witholding Tax" := WthTAxTotal;
@@ -593,9 +603,11 @@ Report 50378 "Dividend Processing-Prorated"
                         DivProg."Member No" := Customer."No.";
                         DivProg.Date := ToDate;
                         DivProg."Gross Dividends" := DivTotal;
+                        DivProg."Gross Interest On Sharecapital" := CDiv;
                         DivProg."Gross Interest On Deposit" := CInterest;
                         DivProg."Qualifying Share Capital" := Cust."Shares Retained";
                         DivProg."Witholding Tax" := WthTAxTotal;
+                        DivProg."Gross Interest On Sharecapital" := CDiv;
                         DivProg."Net Dividends" := DivTotal - WthTAxTotal;
                         DivProg."Qualifying Shares" := Cust."Current Shares";
                         DivProg.Shares := Cust."Current Shares";
@@ -636,9 +648,12 @@ Report 50378 "Dividend Processing-Prorated"
                         DivProg."Member No" := Customer."No.";
                         DivProg.Date := ToDate;
                         DivProg."Gross Dividends" := DivTotal;
+
                         DivProg."Gross Interest On Deposit" := CInterest;
+                        DivProg."Gross Interest On Sharecapital" := CDiv;
                         DivProg."Qualifying Share Capital" := Cust."Shares Retained";
                         DivProg."Witholding Tax" := WthTAxTotal;
+
                         DivProg."Net Dividends" := DivTotal - WthTAxTotal;
                         DivProg."Qualifying Shares" := Cust."Current Shares";
                         DivProg.Shares := Cust."Current Shares";

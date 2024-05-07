@@ -49,7 +49,7 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>=First(Fields!EndofLastyear.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!ThisYear.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Cambria</FontFamily>
@@ -1526,7 +1526,7 @@
             <Top>2.84375in</Top>
             <Left>0.48833in</Left>
             <Height>1.45833in</Height>
-            <Width>5.64583in</Width>
+            <Width>5.64584in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1557,12 +1557,108 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>The issued and paid up share capital of the society was increased during the year from Shs. …….. to Shs. ……..</Value>
+                    <Value>The Issued and paid up share Capital of the SACCO during the financial year ended </Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>12pt</FontSize>
                       <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!Asat.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <Format>dd/MM/yyyy</Format>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value> increased to Shs. </Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <Format>dd/MM/yyyy</Format>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!ShareCapital.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <Format>#,0.00;(#,0.00)</Format>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value> (</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <Format>#,0.00;(#,0.00)</Format>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!PreviousYear.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <Format>#,0.00;(#,0.00)</Format>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value> : Kshs </Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <Format>#,0.00;(#,0.00)</Format>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!LShareCapital.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <Format>#,0.00;(#,0.00)</Format>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>)</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <Format>#,0.00;(#,0.00)</Format>
                       <TextDecoration>None</TextDecoration>
                       <Color>#000000</Color>
                     </Style>
@@ -1957,7 +2053,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value> Signature................................................. Date..............................</Value>
+                    <Value> Signature.................................................                          Date..............................</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Cambria</FontFamily>
@@ -1967,19 +2063,13 @@
                       <Color>#000000</Color>
                     </Style>
                   </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CurrentYear.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontStyle>Normal</FontStyle>
-                      <FontFamily>Cambria</FontFamily>
-                      <FontSize>12pt</FontSize>
-                      <FontWeight>Normal</FontWeight>
-                      <TextDecoration>None</TextDecoration>
-                      <Color>#000000</Color>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value>.</Value>
+                    <Value xml:space="preserve"> </Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Cambria</FontFamily>
@@ -2011,7 +2101,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value> NAIROBI</Value>
+                    <Value xml:space="preserve"> </Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Cambria</FontFamily>
@@ -2028,7 +2118,7 @@
             <rd:DefaultName>Textbox28</rd:DefaultName>
             <Top>7.35069in</Top>
             <Left>0.48833in</Left>
-            <Height>1.33333in</Height>
+            <Height>1.72916in</Height>
             <Width>6.38542in</Width>
             <ZIndex>6</ZIndex>
             <Style>
@@ -2108,7 +2198,7 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>8.79167in</Height>
+        <Height>9.65625in</Height>
         <Style />
       </Body>
       <Width>7.63416in</Width>
@@ -2165,7 +2255,7 @@
                       </Style>
                     </TextRun>
                     <TextRun>
-                      <Value>=First(Fields!EndofLastyear.Value, "DataSet_Result")</Value>
+                      <Value>=First(Fields!Asat.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontStyle>Italic</FontStyle>
                         <FontFamily>Calibri</FontFamily>
@@ -2262,8 +2352,8 @@ End Function
         <Field Name="PreviousYear">
           <DataField>PreviousYear</DataField>
         </Field>
-        <Field Name="EndofLastyear">
-          <DataField>EndofLastyear</DataField>
+        <Field Name="ThisYear">
+          <DataField>ThisYear</DataField>
         </Field>
         <Field Name="Sacco_Principal_Activities">
           <DataField>Sacco_Principal_Activities</DataField>
@@ -2303,6 +2393,18 @@ End Function
         </Field>
         <Field Name="LShareCapitalFormat">
           <DataField>LShareCapitalFormat</DataField>
+        </Field>
+        <Field Name="RetainedEarnings">
+          <DataField>RetainedEarnings</DataField>
+        </Field>
+        <Field Name="RetainedEarningsFormat">
+          <DataField>RetainedEarningsFormat</DataField>
+        </Field>
+        <Field Name="LRetainedEarnings">
+          <DataField>LRetainedEarnings</DataField>
+        </Field>
+        <Field Name="LRetainedEarningsFormat">
+          <DataField>LRetainedEarningsFormat</DataField>
         </Field>
       </Fields>
       <Query>

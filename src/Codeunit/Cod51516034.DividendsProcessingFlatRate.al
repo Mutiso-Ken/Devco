@@ -927,7 +927,7 @@ codeunit 51516034 "Dividends Processing-Flat Rate"
         QualifyingHousingShares := 0;
         CustLedgerEntry.Reset();
         CustLedgerEntry.SetRange(CustLedgerEntry."Customer No.", No);
-        CustLedgerEntry.SetRange(CustLedgerEntry."Transaction Type", CustLedgerEntry."Transaction Type"::"Housing Deposits Shares");
+        CustLedgerEntry.SetRange(CustLedgerEntry."Transaction Type", CustLedgerEntry."Transaction Type"::Investment);
         CustLedgerEntry.SetRange(CustLedgerEntry.Reversed, false);
         CustLedgerEntry.SetFilter(CustLedgerEntry."Posting Date", '%1..%2', 0D, EndDate);
         IF CustLedgerEntry.FIND('-') then begin

@@ -352,7 +352,7 @@ Report 51516223 "Member Detailed Statement"
             dataitem(HousingShares; "Cust. Ledger Entry")
             {
                 DataItemLink = "Customer No." = field("No."), "Posting Date" = field("Date Filter");
-                DataItemTableView = sorting("Transaction Type", "Loan No", "Posting Date") where("Transaction Type" = const("Housing Deposits Shares"), Reversed = filter(false));
+                DataItemTableView = sorting("Transaction Type", "Loan No", "Posting Date") where("Transaction Type" = const(Investment), Reversed = filter(false));
 
                 column(OpenBalancesHousingShares; OpenBalancesHousingShares)
                 {
@@ -693,9 +693,9 @@ Report 51516223 "Member Detailed Statement"
                 if DateFilterBF <> '' then begin
                     Cust.Reset;
                     Cust.SetRange(Cust."Customer No.", "No.");
-                    //ABEL COMMENT
+                
                     Cust.SetFilter(Cust."Date Filter", DateFilterBF);
-                    //ABEL COMMENT
+        
                     if Cust.Find('-') then begin
                         // Cust.CalcFields(Cust.sha, Cust."Current Shares", Cust."Insurance Fund", Cust."Holiday Savings");
                         // SharesBF := Cust."Current Shares";

@@ -1413,6 +1413,7 @@ Table 51516230 "Loans Register"
         {
             OptionMembers = " ","Fresh Loan",Adjustment,Reintroduction,Stoppage,"Top Up";
         }
+   
         field(68093; "ID NO"; Code[40])
         {
 

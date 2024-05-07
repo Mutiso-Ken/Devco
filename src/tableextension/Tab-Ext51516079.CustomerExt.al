@@ -743,14 +743,14 @@ tableextension 51516079 "CustomerExt" extends Customer
         field(68182; "Contact Person"; Code[20])
         {
         }
-        field(68183; "Member withdrawable Deposits"; Decimal)
-        {
-            CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
-                                                                  "Posting Date" = field("Date Filter"),
-                                                                  "Document No." = field("Document No. Filter"),
-                                                                  "Transaction Type" = const("Insurance Contribution")));
-            FieldClass = FlowField;
-        }
+        // field(68183; "Member withdrawable Deposits"; Decimal)
+        // {
+        //     CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
+        //                                                           "Posting Date" = field("Date Filter"),
+        //                                                           "Document No." = field("Document No. Filter"),
+        //                                                           "Transaction Type" = const("Insurance Contribution")));
+        //     FieldClass = FlowField;
+        // }
         field(68184; "Current Location"; Text[20])
         {
         }
@@ -799,22 +799,22 @@ tableextension 51516079 "CustomerExt" extends Customer
         field(68194; "Contact Person Phone"; Code[30])
         {
         }
-        field(68195; "Development Shares"; Decimal)
-        {
-            CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
-                                                                  "Transaction Type" = filter("Xmas Contribution"),
-                                                                  "Posting Date" = field("Date Filter")));
-            Enabled = false;
-            FieldClass = FlowField;
-        }
-        field(68196; "Fanikisha savings"; Decimal)
-        {
-            CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
-                                                                   "Transaction Type" = filter("Penalty Paid"),
-                                                                   "Posting Date" = field("Date Filter")));
-            Enabled = false;
-            FieldClass = FlowField;
-        }
+        // field(68195; "Development Shares"; Decimal)
+        // {
+        //     CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
+        //                                                           "Transaction Type" = filter("Xmas Contribution"),
+        //                                                           "Posting Date" = field("Date Filter")));
+        //     Enabled = false;
+        //     FieldClass = FlowField;
+        // }
+        // field(68196; "Fanikisha savings"; Decimal)
+        // {
+        //     CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
+        //                                                            "Transaction Type" = filter("Penalty Paid"),
+        //                                                            "Posting Date" = field("Date Filter")));
+        //     Enabled = false;
+        //     FieldClass = FlowField;
+        // }
         field(68197; "Old Fosa Account"; Code[50])
         {
         }
@@ -834,50 +834,55 @@ tableextension 51516079 "CustomerExt" extends Customer
         }
         field(68199; "Likizo Contribution"; Decimal)
         {
+
+
             CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
                                                                    "Transaction Type" = filter(Holiday_Savers),
-                                                                   "Posting Date" = field("Date Filter"),
-                                                                   "Document No." = field("Document No. Filter")));
+                                                                   "Posting Date" = field("Date Filter"), Reversed = const(false)));
             Editable = false;
-            Enabled = false;
+
             FieldClass = FlowField;
         }
         field(68203; "Alpha Savings"; Decimal)
         {
+
             CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
                                                                    "Transaction Type" = filter(Alpha_savings),
-                                                                   "Posting Date" = field("Date Filter"),
-                                                                   "Document No." = field("Document No. Filter")));
+                                                                   "Posting Date" = field("Date Filter"), Reversed = const(false)));
             Editable = false;
-            Enabled = false;
+
             FieldClass = FlowField;
         }
-        field(68205; "Property Savings"; Decimal)
-        {
-            CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
-                                                                   "Transaction Type" = filter("Property Shares"),
-                                                                   "Posting Date" = field("Date Filter"),
-                                                                   "Document No." = field("Document No. Filter")));
-            Editable = false;
-            Enabled = false;
-            FieldClass = FlowField;
-        }
+        // field(68205; "Property Savings"; Decimal)
+        // {
+        //     CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
+        //                                                            "Transaction Type" = filter("Property Shares"),
+        //                                                            "Posting Date" = field("Date Filter"),
+        //                                                            "Document No." = field("Document No. Filter")));
+        //     Editable = false;
+        //     Enabled = false;
+        //     FieldClass = FlowField;
+        // }
         field(68204; "Junior Savings One"; Decimal)
         {
+
+
             CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
                                                                    "Transaction Type" = filter(Junior_1),
-                                                                   "Posting Date" = field("Date Filter"),
-                                                                   "Document No." = field("Document No. Filter")));
+                                                                   "Posting Date" = field("Date Filter"), Reversed = const(false)));
+
+
+
             Editable = false;
             FieldClass = FlowField;
         }
 
         field(682016; "Junior Savings Two"; Decimal)
         {
+
             CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
                                                                    "Transaction Type" = filter(Junior_2),
-                                                                   "Posting Date" = field("Date Filter"),
-                                                                   "Document No." = field("Document No. Filter")));
+                                                                   "Posting Date" = field("Date Filter"), Reversed = const(false)));
             Editable = false;
             Enabled = false;
             FieldClass = FlowField;
@@ -886,8 +891,7 @@ tableextension 51516079 "CustomerExt" extends Customer
         {
             CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
                                                                    "Transaction Type" = filter(Junior3),
-                                                                   "Posting Date" = field("Date Filter"),
-                                                                   "Document No." = field("Document No. Filter")));
+                                                                   "Posting Date" = field("Date Filter"), Reversed = const(false)));
             Editable = false;
             Enabled = false;
             FieldClass = FlowField;
@@ -1145,7 +1149,7 @@ tableextension 51516079 "CustomerExt" extends Customer
         field(69088; "Housing Deposits"; Decimal)
         {
             CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
-                                                                   "Transaction Type" = filter("Housing Deposits Shares"),
+                                                                   "Transaction Type" = filter(Investment),
                                                                    "Posting Date" = field("Date Filter"),
                                                                    Reversed = filter(false),
                                                                    "Document No." = field("Document No. Filter")));

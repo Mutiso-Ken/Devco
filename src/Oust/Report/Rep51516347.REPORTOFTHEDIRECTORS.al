@@ -31,7 +31,7 @@ report 51516347 "REPORT OF THE DIRECTORS"
             {
 
             }
-            column(EndofLastyear; EndofLastyear)
+            column(ThisYear; ThisYear)
             {
 
             }
@@ -64,6 +64,8 @@ report 51516347 "REPORT OF THE DIRECTORS"
             {
 
             }
+            column(RetainedEarnings; RetainedEarnings) { }
+            column(LRetainedEarnings; LRetainedEarnings) { }
             trigger OnAfterGetRecord()
             var
                 myInt: Integer;
@@ -74,9 +76,9 @@ report 51516347 "REPORT OF THE DIRECTORS"
                 DateFormula := '<-CY-1D>';
                 DateExpr := '<-1y>';
                 InputDate := Asat;
-                EndofLastyear := CalcDate(DateFormula, Asat);
-                CurrentYear := Date2DMY(EndofLastyear, 3);
-                LastYearButOne := CalcDate(DateExpr, EndofLastyear);
+                ThisYear := Asat;
+                CurrentYear := Date2DMY(ThisYear, 3);
+                LastYear := CalcDate(DateExpr, ThisYear);
                 PreviousYear := CurrentYear - 1;
                 GenSetup.Get();
                 IntCurrentDeposits := (GenSetup."Interest on Share Capital(%)" * 0.01);
@@ -92,7 +94,7 @@ report 51516347 "REPORT OF THE DIRECTORS"
                     repeat
                         GLEntry.Reset;
                         GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', EndofLastyear);
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', ThisYear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
                             InterestonMemberdeposits += 1 * GLEntry.Amount;
@@ -107,7 +109,7 @@ report 51516347 "REPORT OF THE DIRECTORS"
                     repeat
                         GLEntry.Reset;
                         GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYearButOne);
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
                             LInterestonMemberdeposits += 1 * GLEntry.Amount;
@@ -124,7 +126,7 @@ report 51516347 "REPORT OF THE DIRECTORS"
                     repeat
                         GLEntry.Reset;
                         GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', EndofLastyear);
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', ThisYear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
                             ShareCapital += 1 * GLEntry.Amount;
@@ -139,7 +141,7 @@ report 51516347 "REPORT OF THE DIRECTORS"
                     repeat
                         GLEntry.Reset;
                         GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYearButOne);
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
                             LShareCapital += 1 * GLEntry.Amount;
@@ -147,6 +149,46 @@ report 51516347 "REPORT OF THE DIRECTORS"
                     until GLAccount.Next = 0;
                 end;
                 //Endofsharecapital
+
+
+                //Retained Earnings
+                RetainedEarnings := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.FinancedBy, '%1', GLAccount.FinancedBy::RevenueReserves);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', ThisYear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            RetainedEarnings += 1 * GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+
+                LRetainedEarnings := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.FinancedBy, '%1', GLAccount.FinancedBy::RevenueReserves);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            LRetainedEarnings += 1 * GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+
+                //End Of Retained Earnings
+
+
+                //Income Tax Expense
+
+
+                //End of Income Tax Expense
 
             end;
         }
@@ -184,6 +226,8 @@ report 51516347 "REPORT OF THE DIRECTORS"
     var
         ShareCapital: Decimal;
         LShareCapital: Decimal;
+        RetainedEarnings: Decimal;
+        LRetainedEarnings: Decimal;
         IntCurrentDeposits: Decimal;
         InterestonMemberdeposits: Decimal;
         LInterestonMemberdeposits: Decimal;
@@ -191,10 +235,10 @@ report 51516347 "REPORT OF THE DIRECTORS"
         GLAccount: Record "G/L Account";
         IntShareCapital: Decimal;
         myInt: Integer;
-        LastYearButOne: Date;
+        LastYear: Date;
         Asat: Date;
         CurrentYear: Integer;
         PreviousYear: Integer;
-        EndofLastyear: date;
+        ThisYear: date;
         GenSetup: Record "Sacco General Set-Up";
 }

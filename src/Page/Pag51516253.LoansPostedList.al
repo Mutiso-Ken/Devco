@@ -265,9 +265,9 @@ Page 51516253 "Loans Posted List"
 
                     trigger OnAction()
                     begin
-                        // LoanApp.Reset();
-                        // LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
-                        // if LoanApp.Find('-') then
+                        LoanApp.Reset();
+                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
+                        if LoanApp.Find('-') then
                         repeat
                             SFactory.FnGenerateRepaymentSchedule(LoanApp."Loan  No.");
 

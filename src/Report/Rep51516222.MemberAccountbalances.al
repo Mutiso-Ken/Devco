@@ -1,5 +1,5 @@
 #pragma warning disable AA0005, AA0008, AA0018, AA0021, AA0072, AA0137, AA0201, AA0206, AA0218, AA0228, AL0254, AL0424, AS0011, AW0006 // ForNAV settings
-Report 51516222 "Member Account  balances"
+Report 51516222 "Member Account  Balances"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './Layouts/MemberAccountbalances.rdlc';
@@ -8,7 +8,7 @@ Report 51516222 "Member Account  balances"
     {
         dataitem(member; Customer)
         {
-            RequestFilterFields = "No.", Name;
+            RequestFilterFields = "No.", Name, "Date Filter";
             column(ReportForNavId_1102755077; 1102755077)
             {
             }
@@ -20,21 +20,28 @@ Report 51516222 "Member Account  balances"
             }
 
 
-            column(CurrentShares_member; CurrentShares)
+            column(CurrentShares_member; member."Current Shares")
             {
             }
 
-            column(OutstandingBalance_member; LoansBal)
+            column(OutstandingBalance_member; Member."Outstanding Balance")
             {
             }
-            column(Shares_capital;SharesCap)
-            {
-            }
-
-            column(Outstanding_Interest; InterestBal)
+            column(Shares_capital; Member."Share Capital")
             {
             }
 
+            column(Outstanding_Interest; Member."Outstanding Interest")
+            {
+            }
+            column(LikizoContribution; Member."Holiday Savers")
+            {
+
+            }
+            column(Alpha_Savings; Member."Alpha Savings") { }
+            column(Junior_Savings_One; "Junior Savings One") { }
+            column(Junior_Savings_Two; "Junior Savings Two") { }
+            column(Junior_Savings_Three; "Junior Savings Three") { }
 
 
             column(ASAT; ASAT)
@@ -43,12 +50,13 @@ Report 51516222 "Member Account  balances"
 
             trigger OnAfterGetRecord()
             begin
-                DFilter := '01/01/05..' + Format(ASAT);
-                CalcFields("Current Shares","Share Capital","Outstanding Balance","Outstanding Interest");
-                LoansBal:="Outstanding Balance";
-                CurrentShares:="Current Shares";
-                SharesCap:="Share Capital";
-                InterestBal:="Outstanding Interest";
+
+                CalcFields("Current Shares", "Share Capital", "Outstanding Balance", "Outstanding Interest");
+                LoansBal := "Outstanding Balance";
+                CurrentShares := "Current Shares";
+                SharesCap := "Share Capital";
+                InterestBal := "Outstanding Interest";
+
 
             end;
         }
@@ -61,11 +69,7 @@ Report 51516222 "Member Account  balances"
         {
             area(content)
             {
-                field("As at"; ASAT)
-                {
-                    ApplicationArea = Basic;
-                    Caption = 'As at';
-                }
+
             }
         }
 
@@ -81,6 +85,9 @@ Report 51516222 "Member Account  balances"
     var
         CurrentShares: Decimal;
         SharesCap: Decimal;
+        HousingShares: Decimal;
+        LikizoShares: Decimal;
+
         LoansBal: Decimal;
         InterestBal: Decimal;
         Loans_RegisterCaptionLbl: label 'Loans Register';

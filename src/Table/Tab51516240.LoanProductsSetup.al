@@ -370,6 +370,9 @@ Table 51516240 "Loan Products Setup"
         field(116; "Load All Loan Interest"; Boolean)
         {
         }
+          field(117; "Max No. Of Guarantors"; Integer)
+        {
+        }
 
     }
 

@@ -795,10 +795,9 @@ permissionset 1 GeneratedPermission
         report "Loans Underpaid" = X,
         report "Manage Fixed Deposit" = X,
         // report "Mark as Processed" = X,
-    
         report "Member Account  balances" = X,
         report "Member Account Statement" = X,
-        report "Member Accounts  balances" = X,
+       // report "Member Accounts  balances" = X,
         report "Member Accounts List" = X,
         report "Member Detailed Statement" = X,
         report "Member Loans Statement" = X,

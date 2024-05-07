@@ -100,6 +100,12 @@ pageextension 51516628 "ChartOfAccountsCardExt" extends "G/L Account Card"
                 }
                 field(Incomes; Incomes)
                 {
+                    Caption = 'Incomes and Expenses';
+                    ApplicationArea = all;
+                }
+                field(Others; Others)
+                {
+                    Caption = 'Other Mkopo Paramters';
                     ApplicationArea = all;
                 }
             }

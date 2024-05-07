@@ -138,10 +138,10 @@ enum 51516022 "TransactionTypesEnum"
     {
         Caption = 'Ordinary Building Shares';
     }
-    value(34; "Housing Deposits Shares")
-    {
-        Caption = 'Housing Savings Shares';
-    }
+    // value(34; "Housing Deposits Shares")
+    // {
+    //     Caption = 'Housing Savings Shares';
+    // }
     value(35; "M Pesa Charge ")
     {
         Caption = 'M Pesa Charge ';

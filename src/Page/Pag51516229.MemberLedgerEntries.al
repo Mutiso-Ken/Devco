@@ -9,6 +9,7 @@ Page 51516229 "Member Ledger Entries"
     ModifyAllowed = false;
     PageType = List;
     SourceTable = "Cust. Ledger Entry";
+    
 
     layout
     {

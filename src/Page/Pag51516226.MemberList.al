@@ -5,7 +5,7 @@ Page 51516226 "Member List"
     Caption = 'Member List';
     CardPageID = "Member Account Card";
     Editable = false;
-DeleteAllowed=true;
+    DeleteAllowed = true;
     PageType = List;
     SourceTable = Customer;
     SourceTableView = sorting("No.")
@@ -41,10 +41,6 @@ DeleteAllowed=true;
                     Caption = 'Mobile Phone';
 
                 }
-
-
-
-
                 field(Status; Rec.Status)
                 {
                     ApplicationArea = basic;
@@ -58,18 +54,28 @@ DeleteAllowed=true;
                 {
                     Caption = 'Non-withdrawable Deposits';
                     Style = StrongAccent;
+                    ApplicationArea=Basic;
                 }
                 field("Outstanding Balance"; "Outstanding Balance")
                 {
                     Style = StrongAccent;
                     Caption = 'Oustanding Loan Balance';
+                     ApplicationArea=Basic;
                 }
                 field("Outstanding Interest"; "Outstanding Interest")
                 {
                     Style = StrongAccent;
                     Caption = 'Oustanding Loan Interest';
+                     ApplicationArea=Basic;
                 }
-
+                field("Holiday Savers"; "Holiday Savers")
+                {
+                    ApplicationArea = all;
+                }
+                field("Alpha Savings"; "Alpha Savings")
+                {
+                    ApplicationArea = all;
+                }
 
             }
         }

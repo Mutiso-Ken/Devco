@@ -754,7 +754,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                 Gnljnline.Description := 'Housing Contribution';
                 Gnljnline.Amount := AmountToDeduct * -1;
                 Gnljnline.Validate(Gnljnline.Amount);
-                Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Housing Deposits Shares";
+                Gnljnline."Transaction Type" := Gnljnline."transaction type"::Investment;
                 Gnljnline."Shortcut Dimension 1 Code" := 'BOSA';
                 Gnljnline."Shortcut Dimension 2 Code" := ObjMember."Global Dimension 2 Code";
                 Gnljnline.Validate(Gnljnline."Shortcut Dimension 1 Code");

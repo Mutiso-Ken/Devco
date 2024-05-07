@@ -29,7 +29,7 @@ Page 51516256 "Loan Disburesment Batch Card"
             {
                 ApplicationArea = Basic;
                 //Editable = DescriptionEditable;
-                Editable=true;
+                Editable = true;
             }
             field(Status; Status)
             {
@@ -474,14 +474,14 @@ Page 51516256 "Loan Disburesment Batch Card"
                             LineNo := LineNo + 10000;
                             SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::Repayment, GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, Round(LoanTopUp."Principle Top Up", 0.01, '=') * -1, 'BOSA', "Batch No.", 'Loan OffSet By - ' + LoanApps."Loan  No.", LoanTopUp."Loan Top Up");
                             //..................Recover Interest On Top Up
-                            LineNo := LineNo + 10000;
-                            SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::"Interest Paid", GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, Round(LoanTopUp."Interest Top Up", 0.01, '=') * -1, 'BOSA', "Batch No.", 'Interest Due Paid on top up - ', LoanTopUp."Loan Top Up");
+                            // LineNo := LineNo + 10000;
+                            // SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::"Interest Paid", GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, Round(LoanTopUp."Interest Top Up", 0.01, '=') * -1, 'BOSA', "Batch No.", 'Interest Due Paid on top up - ', LoanTopUp."Loan Top Up");
                             //If there is top up commission charged write it here start
                             LineNo := LineNo + 10000;
                             SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Top up Account", DirbursementDate, Round(LoanTopUp.Commision, 0.01, '=') * -1, 'BOSA', "Batch No.", 'Commision on top up - ', LoanTopUp."Loan Top Up");
                             //If there is top up commission charged write it here end
-                            AmountTop := (Round(LoanTopUp."Principle Top Up", 0.01, '=') + Round(LoanTopUp."Interest Top Up", 0.01, '=') + Round(LoanTopUp.Commision, 0.01, '='));
-                            VarAmounttoDisburse := VarAmounttoDisburse - (Round(LoanTopUp."Principle Top Up", 0.01, '=') + Round(LoanTopUp."Interest Top Up", 0.01, '=') + Round(LoanTopUp.Commision, 0.01, '='));
+                            AmountTop := (Round(LoanTopUp."Principle Top Up", 0.01, '=') + Round(LoanTopUp.Commision, 0.01, '='));
+                            VarAmounttoDisburse := VarAmounttoDisburse - (Round(LoanTopUp."Principle Top Up", 0.01, '=') + Round(LoanTopUp.Commision, 0.01, '='));
                         // VarAmounttoDisburse := VarAmounttoDisburse - ;
                         UNTIL LoanTopUp.NEXT = 0;
                     END;

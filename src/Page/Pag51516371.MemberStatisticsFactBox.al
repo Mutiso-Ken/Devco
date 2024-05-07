@@ -76,13 +76,13 @@ Page 51516371 "Member Statistics FactBox"
                     Caption = 'Holiday Savings';
 
                 }
-                field("Property Savings"; "Property Savings")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
+                // field("Property Savings"; "Property Savings")
+                // {
+                //     ApplicationArea = Basic;
+                //     Editable = false;
 
 
-                }
+                // }
                 field("Junior Savings One"; "Junior Savings One")
                 {
                     ApplicationArea = Basic;

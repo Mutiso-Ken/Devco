@@ -675,13 +675,13 @@ Page 51516487 "Devco Sacco Main Role Center"
                     action("Statement of changes of Equity Current")
                     {
                         ApplicationArea = All;
-                        RunObject = report StatchangesinequityCurrent;
+                        RunObject = report StatementOfChangesInEquity;
                     }
-                    action("Statement of changes of Equity Previous")
-                    {
-                        ApplicationArea = All;
-                        RunObject = report StatchangesinequityPrevious;
-                    }
+                    // action("Statement of changes of Equity Previous")
+                    // {
+                    //     ApplicationArea = All;
+                    //     RunObject = report StatchangesinequityPrevious;
+                    // }
                     action("Statement OF Cash Flows")
                     {
                         ApplicationArea = All;
@@ -1210,7 +1210,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                         ApplicationArea = all;
                         Caption = 'Loans Defaulter Aging-SASRA';
                         RunObject = report "SASRA Loans Classification";
-                        ToolTip = 'Loan Defaulter Aging(Risk Classification)';
+                        ToolTip = 'Loan Classification Report';
                     }
                     action("Loan Collection Targets Report")
                     {
@@ -1225,6 +1225,11 @@ Page 51516487 "Devco Sacco Main Role Center"
                         ApplicationArea = all;
                         RunObject = report "Loan Guard Report";
                         ToolTip = 'Loans Guard Report';
+                    }
+                    action("Loan defaulter List")
+                    {
+                        ApplicationArea = all;
+                        RunObject = report "Loan Defaulters List";
                     }
                     action("Loans Register")
                     {
@@ -1247,6 +1252,12 @@ Page 51516487 "Devco Sacco Main Role Center"
                     {
                         ApplicationArea = all;
                         RunObject = Report "Loans Guarantor Details Report";
+                        ToolTip = 'Loans Securities Report';
+                    }
+                    action("Secutiy Manangement Register")
+                    {
+                        ApplicationArea = all;
+                        RunObject = Report "Secutiy Manangement Register";
                         ToolTip = 'Loans Securities Report';
                     }
 

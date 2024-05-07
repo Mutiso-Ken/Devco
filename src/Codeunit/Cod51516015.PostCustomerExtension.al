@@ -65,7 +65,7 @@ codeunit 51516015 "PostCustomerExtension"
                     begin
                         PostMemb(GenJournalLine, Balancing);
                     end;
-              
+
             end;
     end;
 
@@ -76,6 +76,15 @@ codeunit 51516015 "PostCustomerExtension"
         LoanProductSetUpList: record "Loan Products Setup";
     begin
         with GenJournalLine do begin
+            MemberReg.Reset();
+            MemberReg.SetCurrentKey(MemberReg."No.");
+            MemberReg.SetRange(MemberReg."No.", GenJournalLine."Account No.");
+            if MemberReg.FindSet() then begin
+                If (MemberReg."Customer Type" <> MemberReg."Customer Type"::Checkoff) and (GenJournalLine."Transaction Type" = GenJournalLine."Transaction Type"::" ") then begin
+                    Error('Please Input a transaction Type ');
+                end;
+            end;
+           
 
             if (GenJournalLine."Transaction Type" = GenJournalLine."transaction type"::Loan) then begin
                 if GenJournalLine."Loan No" = '' then begin
@@ -374,7 +383,7 @@ codeunit 51516015 "PostCustomerExtension"
         CustLedgerEntry."Prepayment Date" := GenJournalLine."Prepayment date";
         CustLedgerEntry."Group Code" := GenJournalLine."Group Code";
         CustLedgerEntry."Document No." := GenJournalLine."Document No.";
-       // CustLedgerEntry."BLoan Officer No." := sfactory.FnGetLoanOfficerFromMemberNo(GenJournalLine."Account No.");
+        // CustLedgerEntry."BLoan Officer No." := sfactory.FnGetLoanOfficerFromMemberNo(GenJournalLine."Account No.");
     end;
 
 
