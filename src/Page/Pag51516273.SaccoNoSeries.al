@@ -97,6 +97,7 @@ Page 51516273 "Sacco No. Series"
                 {
                     ApplicationArea = Basic;
                     Caption = 'Bosa member Number';
+                    Visible = false;
                 }
                 field("Member Re-Application No.s"; "Member Re-Application No.s")
                 {
@@ -125,6 +126,8 @@ Page 51516273 "Sacco No. Series"
                 field("Last Memb No."; "Last Memb No.")
                 {
                     ApplicationArea = Basic;
+                    Editable = false;
+
                 }
                 field("Loan Recovery Nos"; "Loan Recovery Nos")
                 {

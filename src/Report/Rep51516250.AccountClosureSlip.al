@@ -240,8 +240,7 @@ Report 51516250 "Account Closure Slip"
 
 
 
-                CalcFields("Current Shares","Outstanding Balance","Insurance Fund","Accrued Interest",Customer."FOSA Outstanding Balance",
-                           "Current Investment Total",Customer."FOSA Outstanding Balance","Outstanding Interest");
+                CalcFields("Current Shares","Outstanding Balance","Outstanding Interest");
 
 
                 InsFund:="Insurance Fund";

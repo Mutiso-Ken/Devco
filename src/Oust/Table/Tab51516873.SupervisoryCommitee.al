@@ -26,6 +26,7 @@ table 51516873 "Supervisory Commitee"
         {
             Caption = 'Active';
         }
+        field(6; Designation; Text[200]) { }
 
 
     }

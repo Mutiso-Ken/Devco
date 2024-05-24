@@ -837,12 +837,12 @@ table 51516016 "Loans Register Import"
         }
         field(69020; Prepayments; Decimal)
         {
-            CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Client Code"),
-                                                                  "Transaction Type" = filter("Administration Fee"),
-                                                                  "Loan No" = field("Loan  No."),
-                                                                  "Posting Date" = field("Date filter"),
-                                                                  "Document No." = field("Document No. Filter")));
-            FieldClass = FlowField;
+            // CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Client Code"),
+            //                                                       "Transaction Type" = filter("Administration Fee"),
+            //                                                       "Loan No" = field("Loan  No."),
+            //                                                       "Posting Date" = field("Date filter"),
+            //                                                       "Document No." = field("Document No. Filter")));
+            // FieldClass = FlowField;
         }
         field(69021; "Appln. between Currencies"; Option)
         {
@@ -1086,10 +1086,10 @@ table 51516016 "Loans Register Import"
         }
         field(69067; "Loans Insurance"; Decimal)
         {
-            CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Client Code"),
-                                                                  "Transaction Type" = filter("Loan Insurance Paid"),
-                                                                  "Loan No" = field("Loan  No.")));
-            FieldClass = FlowField;
+            // CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Client Code"),
+            //                                                       "Transaction Type" = filter("Loan Insurance Paid"),
+            //                                                       "Loan No" = field("Loan  No.")));
+            // FieldClass = FlowField;
         }
         field(69068; "Last Int Date"; Date)
         {

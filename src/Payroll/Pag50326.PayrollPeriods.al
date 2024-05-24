@@ -4,7 +4,7 @@ page 50326 "Payroll Periods."
     Caption = 'Payroll Periods.';
     UsageCategory = Tasks;
     DeleteAllowed = true;
-    Editable = true;
+    Editable = false;
     PageType = Card;
     SourceTable = "Payroll Calender.";
 
@@ -18,37 +18,39 @@ page 50326 "Payroll Periods."
                 field("Period Month"; "Period Month")
                 {
                     ApplicationArea = All;
-                    Editable = true;
+                  
                 }
                 field("Period Year"; "Period Year")
                 {
                     ApplicationArea = All;
-                    Editable = true;
+                  
                 }
                 field("Period Name"; "Period Name")
                 {
                     ApplicationArea = All;
-                    Editable = true;
+                  
                 }
                 field("Date Opened"; "Date Opened")
                 {
                     ApplicationArea = All;
-                    Editable = true;
+                  
                 }
                 field("Date Closed"; "Date Closed")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                  
                 }
                 field(Closed; Closed)
                 {
-                    Editable = false;
+                  
                     ApplicationArea = All;
+                    
                 }
                 field("Payroll Code"; "Payroll Code")
                 {
                     Editable = false;
                     ApplicationArea = All;
+                    Visible=false;
                 }
             }
         }
@@ -77,27 +79,28 @@ page 50326 "Payroll Periods."
 
                     Question := 'Once a period has been closed it can NOT be opened.\It is assumed that you have PAID out salaries.\'
                     + 'Still want to close [' + strPeriodName + ']';
-                        PayrollDefined := '';
-                        PayrollType.SetCurrentKey(EntryNo);
-                        if PayrollType.FindFirst then begin
-                            NoofRecords := PayrollType.Count;
-                            repeat
-                                i += 1;
-                                PayrollDefined := PayrollDefined + '&' + PayrollType."Payroll Code";
-                                if i < NoofRecords then
-                                    PayrollDefined := PayrollDefined + ','
-                            until PayrollType.Next = 0;
-                        end;
+                    PayrollDefined := '';
+                    // PayrollType.SetCurrentKey("Payroll Code");
+                    // if PayrollType.FindFirst then begin
+                    //     NoofRecords := PayrollType.Count;
+                    //     repeat
+                    //         i += 1;
+                    //         PayrollDefined := PayrollDefined + '&' + PayrollType."Payroll Code";
+                    //         if i < NoofRecords then
+                    //             PayrollDefined := PayrollDefined + ','
+                    //     until PayrollType.Next = 0;
+                    // end;
 
 
-                        Selection := StrMenu(PayrollDefined, 3);
-                        PayrollType.Reset;
-                        PayrollType.SetRange(PayrollType.EntryNo, Selection);
-                        if PayrollType.Find('-') then begin
-                            PayrollCode := PayrollType."Payroll Code";
-                        end;
+                    // Selection := StrMenu(PayrollDefined, 3);
+                    // PayrollType.Reset;
+                    // PayrollType.SetRange(PayrollType.EntryNo, Selection);
+                    // if PayrollType.Find('-') then begin
+                    //     PayrollCode := PayrollType."Payroll Code";
+                    // end;
                     // end;
                     //End Multiple Payroll
+
 
 
 
@@ -147,8 +150,9 @@ page 50326 "Payroll Periods."
 
     procedure fnGetOpenPeriod()
     begin
+        // PayPeriod.Reset();
         PayPeriod.SetRange(PayPeriod.Closed, false);
-        if PayPeriod.Find('-') then begin
+        if PayPeriod.FindLast() then begin
             strPeriodName := PayPeriod."Period Name";
             dtOpenPeriod := PayPeriod."Date Opened";
         end;

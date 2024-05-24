@@ -16,6 +16,7 @@ Codeunit 50015 "Payroll Processing"
         NHFLACUMEN: Decimal;
         VitalSetup: Record "Payroll General Setup.";
         curReliefPersonal: Decimal;
+        currHousinglevyRelief: Decimal;
         curReliefInsurance: Decimal;
         curReliefMorgage: Decimal;
         curMaximumRelief: Decimal;
@@ -364,7 +365,8 @@ Codeunit 50015 "Payroll Processing"
             //Get the NSSF amount
             // Housing Levy curGrossPay
 
-            CUrrHousingLevy := (curGrossPay * 0.015);
+            CUrrHousingLevy := Round((curGrossPay * 0.015), 0.01, '=');
+            // currHousinglevyRelief := (CUrrHousingLevy * 0.15);
             curTransAmount := CUrrHousingLevy;
             strTransDescription := 'Housing Levy';
             TGroup := 'STATUTORIES';
@@ -378,7 +380,7 @@ Codeunit 50015 "Payroll Processing"
             //End Of Housing Levy
 
             //Employee Housing Levy
-            CurrHousingLevyEmployer := ((curGrossPay * 0.015) * 2);
+            CurrHousingLevyEmployer := (CUrrHousingLevy * 2);
             curTransAmount := CurrHousingLevyEmployer;
             strTransDescription := 'Housing Levy EMPloyee';
             TGroup := 'STATUTORIESEMPDED';
@@ -391,19 +393,21 @@ Codeunit 50015 "Payroll Processing"
             //Get the N.S.S.F amount for the month GBT
             curNssf_Base_Amount := 0;
 
-            if intNSSF_BasedOn = Intnssf_basedon::Gross then //>NHIF calculation can be based on:
-                curNssf_Base_Amount := curGrossPay;
-            if intNSSF_BasedOn = Intnssf_basedon::Basic then
-                curNssf_Base_Amount := curBasicPay;
+            //if intNSSF_BasedOn = Intnssf_basedon::Gross then //>NHIF calculation can be based on:
+            curNssf_Base_Amount := curGrossPay;
+            // if intNSSF_BasedOn = Intnssf_basedon::Basic then
+            //     curNssf_Base_Amount := curBasicPay;
 
 
 
             if blnPaysNssf then
                 // curNSSF := curNssfEmployee;
-                 if curBasicPay >= 18000 then begin
-                    curNSSF := 1080
+
+                // curNSSF := fnGetEmployeeNSSF(curNssf_Base_Amount);
+                if curBasicPay <= 36000 then begin
+                    curNSSF := curGrossPay * 0.06
                 end else
-                    if curBasicPay < 18000 then curNSSF := 6 / 100 * curBasicPay;
+                    curNSSF := 2160;
             curTransAmount := curNSSF;
             strTransDescription := 'N.S.S.F';
             TGroup := 'STATUTORIES';
@@ -479,9 +483,8 @@ Codeunit 50015 "Payroll Processing"
                 curNhif_Base_Amount := curTaxablePay;
 
             if blnPaysNhif then begin
-                //curNHIF:=450;
                 curNHIF := fnGetEmployeeNHIF(curNhif_Base_Amount);
-                // curNHIF:=320;
+
                 curTransAmount := curNHIF;
                 strTransDescription := 'N.H.I.F';
                 TGroup := 'STATUTORIES';
@@ -494,8 +497,7 @@ Codeunit 50015 "Payroll Processing"
 
             if blnGetsPAYERelief then begin
                 NhifRelief := 0;
-                //NHFLACUMEN:=fnGetEmployeeNHIF(curNhif_Base_Amount);
-                NhifRelief := curNHIF * 0.15;//(HrEmployee."Cummulative NHIF"*0.15);// curReliefPersonal + curUnusedRelief; //*****Get curUnusedRelief
+                NhifRelief := curNHIF * 0.15;
                 curTransAmount := NhifRelief;
                 strTransDescription := 'NHIF Relief';
                 TGroup := 'TAX CALCULATIONS';
@@ -533,7 +535,7 @@ Codeunit 50015 "Payroll Processing"
             curTaxablePay := curGrossTaxable - (curSalaryArrears + curDefinedContrib + curMaxPensionContrib + curHOSP + curNonTaxable + curOOI)
 
         else
-            curTaxablePay := curGrossTaxable - (curSalaryArrears + curDefinedContrib);
+            curTaxablePay := curGrossTaxable - (curSalaryArrears + curDefinedContrib);//47,600.00
         //Taxable Benefit
         txBenefitAmt := 0;
         if EmpSalary.Get(strEmpCode) then begin
@@ -584,7 +586,7 @@ Codeunit 50015 "Payroll Processing"
         curTransAmount, 0, intMonth, intYear, '', '', SelectedPeriod, Dept, '', Journalpostas::" ", Journalpostingtype::" ", '',
         Coopparameters::none);
 
-        curPAYE := (curTaxCharged - curReliefPersonal);
+        curPAYE := (curTaxCharged - curReliefPersonal - NhifRelief);
 
         if not blnPaysPaye then curPAYE := 0; //Get statutory Exemption for the staff. If exempted from tax, set PAYE=0
         curTransAmount := curPAYE;//+curTransAmount2;
@@ -694,6 +696,8 @@ Codeunit 50015 "Payroll Processing"
 
             until prEmployeeTransactions.Next = 0;
         end;
+
+
         curTotalDeductionsEffect := ROUND(curTotalDeductions, 0.01, '=') + ROUND(curNSSF, 0.01, '=') + ROUND(curNHIF, 0.01, '=') +
                                 ROUND(curPAYE) + ROUND(curPayeArrears, 0.01, '=') + ROUND(PayPension, 0.01, '=') + Round(CUrrHousingLevy, 0.01, '=');
 
@@ -769,7 +773,7 @@ Codeunit 50015 "Payroll Processing"
             "Transaction Code" := TCode;
             "Group Text" := TGroup;
             "Transaction Name" := Description;
-            Amount := ROUND(curAmount, 0.05, '<');
+            Amount := ROUND(curAmount, 0.01, '=');
             Balance := curBalance;
             "Original Amount" := Balance;
             "Group Order" := GroupOrder;
@@ -1116,7 +1120,7 @@ Codeunit 50015 "Payroll Processing"
             prPayrollPeriods.SetRange(prPayrollPeriods."Payroll Code", PayrollCode);
 
         if prPayrollPeriods.Find('-') then begin
-            prPayrollPeriods.Closed := false;
+            prPayrollPeriods.Closed := true;
             prPayrollPeriods."Date Closed" := Today;
             prPayrollPeriods.Modify;
         end;
@@ -1128,7 +1132,7 @@ Codeunit 50015 "Payroll Processing"
             "Period Year" := intNewYear;
             "Period Name" := Format(dtNewPeriod, 0, '<Month Text>') + '' + Format(intNewYear);
             "Date Opened" := dtNewPeriod;
-            Closed := true;
+            Closed := false;
             "Payroll Code" := PayrollCode;
             Insert;
         end;

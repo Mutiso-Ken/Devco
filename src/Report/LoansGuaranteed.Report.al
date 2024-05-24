@@ -43,7 +43,7 @@ Report 51516226 "Loans Guaranteed"
                 column(Name_LoanGuarantors; "Loan Guarantors".Name)
                 {
                 }
-                column(LoanBalance_LoanGuarantors; "Loan Guarantors"."Loan Balance")
+                column(LoanBalance_LoanGuarantors; "Loan Guarantors"."Loans Outstanding")
                 {
                 }
                 column(Shares_LoanGuarantors; "Loan Guarantors".Shares)
@@ -126,9 +126,12 @@ Report 51516226 "Loans Guaranteed"
                         Loans.CalcFields(Loans."Outstanding Balance");
                         MemberGuar := Loans."Client Name";
                         MemberNo := Loans."Client Code";
-                        expected := ROUND((Currdate - Loans."Issued Date") / 30, 1.0, '<');
-                        Period := Loans.Installments - expected;
+                        if Loans."Issued Date" <> 0D then begin
+                            expected := ROUND((Currdate - Loans."Issued Date") / 30, 1.0, '<');
+                            Period := Loans.Installments - expected;
 
+
+                        end;
 
                         if Cust.Get(Members."No.") then begin
                             Cust.CalcFields(Cust."Current Shares");
@@ -151,7 +154,7 @@ Report 51516226 "Loans Guaranteed"
                 field(Currdate; Currdate)
                 {
                     ApplicationArea = all;
-                    
+
                 }
             }
         }
@@ -167,12 +170,12 @@ Report 51516226 "Loans Guaranteed"
 
     trigger OnPreReport()
     begin
-        // if Members."Date Filter" = 0D then begin
-        //     Currdate := Today
-        // end
-        // else begin
-        //     Currdate := Members."Date Filter";
-        // end;
+        if Members."Date Filter" = 0D then begin
+            Currdate := Today
+        end
+        else begin
+            Currdate := Members."Date Filter";
+        end;
 
     end;
 

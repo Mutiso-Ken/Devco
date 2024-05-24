@@ -166,125 +166,125 @@ codeunit 51516015 "PostCustomerExtension"
                     end;
                 end;
             end;
-            if (GenJournalLine."Transaction Type" = GenJournalLine."transaction type"::"Partial Disbursement") then begin
-                if GenJournalLine."Loan No" = '' then begin
-                    Error('Loan No Field is empty! Loan No must be specified for %1', GenJournalLine."Account No.");
-                end;
-                LoanApp.Reset;
-                LoanApp.SetCurrentkey(LoanApp."Loan  No.");
-                LoanApp.SetRange(LoanApp."Loan  No.", GenJournalLine."Loan No");
-                if LoanApp.Find('-') then begin
-                    if LoanTypes.Get(LoanApp."Loan Product Type") then begin
-                        // LoanTypes.TestField(LoanTypes."Receivable Interest Account");
-                        // GenJournalLine."Posting Group" := LoanTypes."Receivable Interest Account";
-                        // GenJournalLine.Modify();
-                        Found := true;
-                    end;
-                end;
-            end;
-            if (GenJournalLine."Transaction Type" = GenJournalLine."transaction type"::"Loan Due") then begin
-                if GenJournalLine."Loan No" = '' then begin
-                    Error('Loan No Field is empty! Loan No must be specified for %1', GenJournalLine."Account No.");
-                end;
-                LoanApp.Reset;
-                LoanApp.SetCurrentkey(LoanApp."Loan  No.");
-                LoanApp.SetRange(LoanApp."Loan  No.", GenJournalLine."Loan No");
-                if LoanApp.Find('-') then begin
-                    if LoanTypes.Get(LoanApp."Loan Product Type") then begin
-                        // LoanTypes.TestField(LoanTypes."Receivable Interest Account");
-                        // GenJournalLine."Posting Group" := LoanTypes."Receivable Interest Account";
-                        // GenJournalLine.Modify();
-                        Found := true;
-                    end;
-                end;
-            end;
-            if (GenJournalLine."Transaction Type" = GenJournalLine."transaction type"::"Penalty Charged") then begin
-                if GenJournalLine."Loan No" = '' then begin
-                    Error('Loan No Field is empty! Loan No must be specified for %1', GenJournalLine."Account No.");
-                end;
-                LoanApp.Reset;
-                LoanApp.SetCurrentkey(LoanApp."Loan  No.");
-                LoanApp.SetRange(LoanApp."Loan  No.", GenJournalLine."Loan No");
-                if LoanApp.Find('-') then begin
-                    if LoanTypes.Get(LoanApp."Loan Product Type") then begin
-                        LoanTypes.TestField(LoanTypes."Penalty Charged Account");
-                        //FnCheckIfPostingGroupIsSetUp,If != Then SetUp
-                        GenJournalLine."Posting Group" := FnHandlePostingGroup(LoanTypes."Penalty Charged Account", 'PENALTYCHRG-' + FORMAT(COPYSTR(LoanTypes.Code, 1, 7)));
-                        ;
-                        Found := true;
-                        Found := true;
-                        GenJournalLine.Modify();
-                    end;
-                end;
-            end;
-            if (GenJournalLine."Transaction Type" = GenJournalLine."transaction type"::"Penalty Paid") then begin
-                if GenJournalLine."Loan No" = '' then begin
-                    Error('Loan No Field is empty! Loan No must be specified for %1', GenJournalLine."Account No.");
-                end;
-                LoanApp.Reset;
-                LoanApp.SetCurrentkey(LoanApp."Loan  No.");
-                LoanApp.SetRange(LoanApp."Loan  No.", GenJournalLine."Loan No");
-                if LoanApp.Find('-') then begin
-                    if LoanTypes.Get(LoanApp."Loan Product Type") then begin
-                        LoanTypes.TestField(LoanTypes."Penalty Paid Account");
-                        //FnCheckIfPostingGroupIsSetUp,If != Then SetUp
-                        GenJournalLine."Posting Group" := FnHandlePostingGroup(LoanTypes."Penalty Paid Account", 'PENALTYPAID-' + FORMAT(COPYSTR(LoanTypes.Code, 1, 6)));
-                        ;
-                        Found := true;
-                        GenJournalLine.Modify();
-                    end;
-                end;
-            end;
-            if (GenJournalLine."Transaction Type" = GenJournalLine."transaction type"::"Application Fee") then begin
-                if GenJournalLine."Loan No" = '' then begin
-                    Error('Loan No Field is empty! Loan No must be specified for %1', GenJournalLine."Account No.");
-                end;
-                LoanApp.Reset;
-                LoanApp.SetCurrentkey(LoanApp."Loan  No.");
-                LoanApp.SetRange(LoanApp."Loan  No.", GenJournalLine."Loan No");
-                if LoanApp.Find('-') then begin
-                    if LoanTypes.Get(LoanApp."Loan Product Type") then begin
-                        productcharges.Reset();
-                        productcharges.SetRange(productcharges."Product Code", LoanTypes.Code);
-                        productcharges.SetRange(productcharges.Code, 'APP');
-                        if productcharges.Find('-') then begin
-                            productcharges.TestField(productcharges."G/L Account");
-                            //FnCheckIfPostingGroupIsSetUp,If != Then SetUp
-                            GenJournalLine."Posting Group" := FnHandlePostingGroup(productcharges."G/L Account", 'APP-' + FORMAT(COPYSTR(LoanTypes.Code, 1, 10)));
-                            ;
-                            Found := true;
-                            GenJournalLine.Modify();
-                        end else begin
-                            Error('Product Charges Account Not Found. Please Contact System Administrator');
-                        end;
-                    end;
-                end;
-            end;
+            // if (GenJournalLine."Transaction Type" = GenJournalLine."transaction type"::"Partial Disbursement") then begin
+            //     if GenJournalLine."Loan No" = '' then begin
+            //         Error('Loan No Field is empty! Loan No must be specified for %1', GenJournalLine."Account No.");
+            //     end;
+            //     LoanApp.Reset;
+            //     LoanApp.SetCurrentkey(LoanApp."Loan  No.");
+            //     LoanApp.SetRange(LoanApp."Loan  No.", GenJournalLine."Loan No");
+            //     if LoanApp.Find('-') then begin
+            //         if LoanTypes.Get(LoanApp."Loan Product Type") then begin
+            //             // LoanTypes.TestField(LoanTypes."Receivable Interest Account");
+            //             // GenJournalLine."Posting Group" := LoanTypes."Receivable Interest Account";
+            //             // GenJournalLine.Modify();
+            //             Found := true;
+            //         end;
+            //     end;
+            // end;
+            // if (GenJournalLine."Transaction Type" = GenJournalLine."transaction type"::"Loan Due") then begin
+            //     if GenJournalLine."Loan No" = '' then begin
+            //         Error('Loan No Field is empty! Loan No must be specified for %1', GenJournalLine."Account No.");
+            //     end;
+            //     LoanApp.Reset;
+            //     LoanApp.SetCurrentkey(LoanApp."Loan  No.");
+            //     LoanApp.SetRange(LoanApp."Loan  No.", GenJournalLine."Loan No");
+            //     if LoanApp.Find('-') then begin
+            //         if LoanTypes.Get(LoanApp."Loan Product Type") then begin
+            //             // LoanTypes.TestField(LoanTypes."Receivable Interest Account");
+            //             // GenJournalLine."Posting Group" := LoanTypes."Receivable Interest Account";
+            //             // GenJournalLine.Modify();
+            //             Found := true;
+            //         end;
+            //     end;
+            // end;
+            // if (GenJournalLine."Transaction Type" = GenJournalLine."transaction type"::"Penalty Charged") then begin
+            //     if GenJournalLine."Loan No" = '' then begin
+            //         Error('Loan No Field is empty! Loan No must be specified for %1', GenJournalLine."Account No.");
+            //     end;
+            //     LoanApp.Reset;
+            //     LoanApp.SetCurrentkey(LoanApp."Loan  No.");
+            //     LoanApp.SetRange(LoanApp."Loan  No.", GenJournalLine."Loan No");
+            //     if LoanApp.Find('-') then begin
+            //         if LoanTypes.Get(LoanApp."Loan Product Type") then begin
+            //             LoanTypes.TestField(LoanTypes."Penalty Charged Account");
+            //             //FnCheckIfPostingGroupIsSetUp,If != Then SetUp
+            //             GenJournalLine."Posting Group" := FnHandlePostingGroup(LoanTypes."Penalty Charged Account", 'PENALTYCHRG-' + FORMAT(COPYSTR(LoanTypes.Code, 1, 7)));
+            //             ;
+            //             Found := true;
+            //             Found := true;
+            //             GenJournalLine.Modify();
+            //         end;
+            //     end;
+            // end;
+            // if (GenJournalLine."Transaction Type" = GenJournalLine."transaction type"::"Penalty Paid") then begin
+            //     if GenJournalLine."Loan No" = '' then begin
+            //         Error('Loan No Field is empty! Loan No must be specified for %1', GenJournalLine."Account No.");
+            //     end;
+            //     LoanApp.Reset;
+            //     LoanApp.SetCurrentkey(LoanApp."Loan  No.");
+            //     LoanApp.SetRange(LoanApp."Loan  No.", GenJournalLine."Loan No");
+            //     if LoanApp.Find('-') then begin
+            //         if LoanTypes.Get(LoanApp."Loan Product Type") then begin
+            //             LoanTypes.TestField(LoanTypes."Penalty Paid Account");
+            //             //FnCheckIfPostingGroupIsSetUp,If != Then SetUp
+            //             GenJournalLine."Posting Group" := FnHandlePostingGroup(LoanTypes."Penalty Paid Account", 'PENALTYPAID-' + FORMAT(COPYSTR(LoanTypes.Code, 1, 6)));
+            //             ;
+            //             Found := true;
+            //             GenJournalLine.Modify();
+            //         end;
+            //     end;
+            // end;
+            // if (GenJournalLine."Transaction Type" = GenJournalLine."transaction type"::"Application Fee") then begin
+            //     if GenJournalLine."Loan No" = '' then begin
+            //         Error('Loan No Field is empty! Loan No must be specified for %1', GenJournalLine."Account No.");
+            //     end;
+            //     LoanApp.Reset;
+            //     LoanApp.SetCurrentkey(LoanApp."Loan  No.");
+            //     LoanApp.SetRange(LoanApp."Loan  No.", GenJournalLine."Loan No");
+            //     if LoanApp.Find('-') then begin
+            //         if LoanTypes.Get(LoanApp."Loan Product Type") then begin
+            //             productcharges.Reset();
+            //             productcharges.SetRange(productcharges."Product Code", LoanTypes.Code);
+            //             productcharges.SetRange(productcharges.Code, 'APP');
+            //             if productcharges.Find('-') then begin
+            //                 productcharges.TestField(productcharges."G/L Account");
+            //                 //FnCheckIfPostingGroupIsSetUp,If != Then SetUp
+            //                 GenJournalLine."Posting Group" := FnHandlePostingGroup(productcharges."G/L Account", 'APP-' + FORMAT(COPYSTR(LoanTypes.Code, 1, 10)));
+            //                 ;
+            //                 Found := true;
+            //                 GenJournalLine.Modify();
+            //             end else begin
+            //                 Error('Product Charges Account Not Found. Please Contact System Administrator');
+            //             end;
+            //         end;
+            //     end;
+            // end;
 
-            if (GenJournalLine."Transaction Type" = GenJournalLine."transaction type"::"Appraisal Fee") then begin
-                if GenJournalLine."Loan No" = '' then begin
-                    Error('Loan No Field is empty! Loan No must be specified for %1', GenJournalLine."Account No.");
-                end;
-                LoanApp.Reset;
-                LoanApp.SetCurrentkey(LoanApp."Loan  No.");
-                LoanApp.SetRange(LoanApp."Loan  No.", GenJournalLine."Loan No");
-                if LoanApp.Find('-') then begin
-                    if LoanTypes.Get(LoanApp."Loan Product Type") then begin
-                        productcharges.Reset();
-                        productcharges.SetRange(productcharges."Product Code", LoanTypes.Code);
-                        productcharges.SetRange(productcharges.Code, 'APPR');
-                        if productcharges.Find('-') then begin
-                            productcharges.TestField(productcharges."G/L Account");
-                            GenJournalLine."Posting Group" := FnHandlePostingGroup(productcharges."G/L Account", 'APPR-' + FORMAT(COPYSTR(LoanTypes.Code, 1, 10)));
-                            ;
-                            Found := true;
-                            GenJournalLine.Modify();
-                        end else begin
-                            Error('Product Charges Account Not Found. Please Contact System Administrator');
-                        end;
-                    end;
-                end;
-            end;
+            // if (GenJournalLine."Transaction Type" = GenJournalLine."transaction type"::"Appraisal Fee") then begin
+            //     if GenJournalLine."Loan No" = '' then begin
+            //         Error('Loan No Field is empty! Loan No must be specified for %1', GenJournalLine."Account No.");
+            //     end;
+            //     LoanApp.Reset;
+            //     LoanApp.SetCurrentkey(LoanApp."Loan  No.");
+            //     LoanApp.SetRange(LoanApp."Loan  No.", GenJournalLine."Loan No");
+            //     if LoanApp.Find('-') then begin
+            //         if LoanTypes.Get(LoanApp."Loan Product Type") then begin
+            //             productcharges.Reset();
+            //             productcharges.SetRange(productcharges."Product Code", LoanTypes.Code);
+            //             productcharges.SetRange(productcharges.Code, 'APPR');
+            //             if productcharges.Find('-') then begin
+            //                 productcharges.TestField(productcharges."G/L Account");
+            //                 GenJournalLine."Posting Group" := FnHandlePostingGroup(productcharges."G/L Account", 'APPR-' + FORMAT(COPYSTR(LoanTypes.Code, 1, 10)));
+            //                 ;
+            //                 Found := true;
+            //                 GenJournalLine.Modify();
+            //             end else begin
+            //                 Error('Product Charges Account Not Found. Please Contact System Administrator');
+            //             end;
+            //         end;
+            //     end;
+            // end;
             //................................Ensure that global dimension 2(Branch) is not empty!...critical
             if GenJournalLine."Shortcut Dimension 2 Code" = '' then begin
                 GenJournalLine."Shortcut Dimension 2 Code" := '';

@@ -1074,7 +1074,7 @@ Page 51516414 "NonMember Account Card"
                                     GenJournalLine.Description := 'Cleared by deposits: ' + "No.";
                                     GenJournalLine.Amount := -ROUND(LoansR."Loans Insurance");
                                     GenJournalLine.Validate(GenJournalLine.Amount);
-                                    GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Insurance Paid";
+                                   // GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Insurance Paid";
                                     GenJournalLine."Loan No" := LoansR."Loan  No.";
                                     GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
                                     GenJournalLine."Shortcut Dimension 2 Code" := DBranch;

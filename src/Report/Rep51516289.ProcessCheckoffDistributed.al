@@ -299,7 +299,7 @@ Report 51516289 "Process Checkoff Distributed"
                 Gnljnline."Bal. Account Type":=Gnljnline."bal. account type"::"G/L Account";
                 //Gnljnline."Bal. Account No.":='20850';
                 //Gnljnline.VALIDATE(Gnljnline."Bal. Account No.");
-                Gnljnline."Transaction Type":=Gnljnline."transaction type"::"COOP Shares";
+                //Gnljnline."Transaction Type":=Gnljnline."transaction type"::"COOP Shares";
                 Gnljnline."Shortcut Dimension 1 Code":='FOSA';
                 Gnljnline."Shortcut Dimension 2 Code":='NAIROBI';
                 if Gnljnline.Amount<>0 then
@@ -446,7 +446,7 @@ Report 51516289 "Process Checkoff Distributed"
                 if Gnljnline."Account No." = '' then begin
                 Gnljnline."Account Type":=Gnljnline."account type"::Customer;
                 Gnljnline.Validate(Gnljnline."Account No.",Cust."No.");
-                Gnljnline."Transaction Type":=Gnljnline."transaction type"::Executive;
+               // Gnljnline."Transaction Type":=Gnljnline."transaction type"::Executive;
                 Gnljnline."Shortcut Dimension 1 Code":='BOSA';
                 end;
                 

@@ -150,10 +150,10 @@ Table 51516265 "BOSA Transfer Schedule"
                                                         Cust.CalcFields(Cust."Current Shares");
                                                         "Transaction Amount" := Cust."Current Shares"
                                                     end else
-                                                        if "Transaction Type" = "transaction type"::"Appraisal Fee" then
-                                                            Description := 'Appraisal Fee' else
-                                                            if "Transaction Type" = "transaction type"::"Application Fee" then
-                                                                Description := 'Application Fee' else
+                                                        // if "Transaction Type" = "transaction type"::"Appraisal Fee" then
+                                                        //     Description := 'Appraisal Fee' else
+                                                        //     if "Transaction Type" = "transaction type"::"Application Fee" then
+                                                        //         Description := 'Application Fee' else
                                                                 if "Transaction Type" = "transaction type"::"Unallocated Funds" then
                                                                     Description := 'Unallocated Funds';
 

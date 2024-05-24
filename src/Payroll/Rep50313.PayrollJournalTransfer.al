@@ -56,10 +56,10 @@ Report 50313 "Payroll JournalTransfer."
                                 SaccoTransactionType := Tntype::"Deposit Contribution";
                             if PeriodTrans."coop parameters" = PeriodTrans."coop parameters"::Welfare then
                                 SaccoTransactionType := Tntype::"Benevolent Fund";
-                            if PeriodTrans."coop parameters" = PeriodTrans."coop parameters"::"Loan Application Fee Paid" then
-                                SaccoTransactionType := Tntype::"Loan Application Fee Paid";
-                            if PeriodTrans."coop parameters" = PeriodTrans."coop parameters"::"Loan Insurance Paid" then
-                                SaccoTransactionType := Tntype::"Loan Insurance Paid";
+                            if PeriodTrans."coop parameters" = PeriodTrans."coop parameters"::Likizo then
+                                SaccoTransactionType := Tntype::Holiday_Savers;
+                            if PeriodTrans."coop parameters" = PeriodTrans."coop parameters"::"Share Capital" then
+                                SaccoTransactionType := Tntype::"Shares Capital";
 
                             if PeriodTrans."Journal Account Type" = PeriodTrans."journal account type"::Customer then begin
                                 PeriodTrans."Journal Account Type" := PeriodTrans."journal account type"::Customer;
@@ -72,15 +72,15 @@ Report 50313 "Payroll JournalTransfer."
                                 PeriodTrans."Journal Account Type" := PeriodTrans."journal account type"::Customer;
                                 SaccoTransactionType := Tntype::"Benevolent Fund";
                             end;
-                            if PeriodTrans."Transaction Code" = 'LOAN APP FEE' then begin //LOAN APP FEE //LOAN INSURANCE
-                                PeriodTrans."Journal Account Type" := PeriodTrans."journal account type"::Customer;
-                                SaccoTransactionType := Tntype::"Loan Application Fee Paid";
-                            end;
-                            if PeriodTrans."Transaction Code" = 'LOAN INSURANCE' then begin //LOAN APP FEE //LOAN INSURANCE
-                                PeriodTrans."Journal Account Type" := PeriodTrans."journal account type"::Customer;
-                                SaccoTransactionType := Tntype::"Loan Insurance Paid";
+                            // if PeriodTrans."Transaction Code" = 'LOAN APP FEE' then begin //LOAN APP FEE //LOAN INSURANCE
+                            //     PeriodTrans."Journal Account Type" := PeriodTrans."journal account type"::Customer;
+                            //     SaccoTransactionType := Tntype::"Loan Application Fee Paid";
+                            // end;
+                            // if PeriodTrans."Transaction Code" = 'LOAN INSURANCE' then begin //LOAN APP FEE //LOAN INSURANCE
+                            //     PeriodTrans."Journal Account Type" := PeriodTrans."journal account type"::Customer;
+                            //     SaccoTransactionType := Tntype::"Loan Insurance Paid";
 
-                            end;
+                            // end;
 
                             if (PeriodTrans."Transaction Code" <> 'BPAY')
                         then begin

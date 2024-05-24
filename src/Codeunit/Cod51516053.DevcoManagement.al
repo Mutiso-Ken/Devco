@@ -56,7 +56,7 @@ codeunit 51516053 "Devco Management"
                     //...........Debit Vendor A/c
                     SurestepFactory.FnCreateGnlJournalLine('GENERAL', 'SYSRECOVER', 'RECOVERY', 1000, TransactionTypes::"0", AccountType::Vendor, SurestepFactory.FnGetFosaAccount(LoansRegister."Client Code"), Today, AmountToDeduct, LoanDimension, LoansRegister."Loan  No.", 'Loan Interest Recovered to-' + Format(LoansRegister."Loan  No."), LoansRegister."Loan  No.");
                     //...........Credit Loan Account
-                    SurestepFactory.FnCreateGnlJournalLine('GENERAL', 'SYSRECOVER', 'RECOVERY', 1001, TransactionTypes::"Insurance Paid", AccountType::Customer, (LoansRegister."Client Code"), Today, -AmountToDeduct, LoanDimension, LoansRegister."Loan  No.", 'Loan Interest Recovered from-' + Format(SurestepFactory.FnGetFosaAccount(LoansRegister."Client Code")), LoansRegister."Loan  No.");
+                    //SurestepFactory.FnCreateGnlJournalLine('GENERAL', 'SYSRECOVER', 'RECOVERY', 1001, TransactionTypes::"Insurance Paid", AccountType::Customer, (LoansRegister."Client Code"), Today, -AmountToDeduct, LoanDimension, LoansRegister."Loan  No.", 'Loan Interest Recovered from-' + Format(SurestepFactory.FnGetFosaAccount(LoansRegister."Client Code")), LoansRegister."Loan  No.");
                     //...........Post Loan
                     SurestepFactory.FnPostGnlJournalLine('GENERAL', 'SYSRECOVER');
                     //********************************************Recover Principal

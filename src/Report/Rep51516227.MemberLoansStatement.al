@@ -241,7 +241,7 @@ Report 51516227 "Member Loans Statement"
 
                     trigger OnAfterGetRecord()
                     begin
-                        ClosingBalInt := ClosingBalInt + Interests.Amount;
+                        ClosingBalInt := ClosingBalInt + Interests."Amount Posted";
                         BankCodeInterest := GetBankCode(Interests);
                         //...................Get TotalInterestDue
                         ApprovedAmount_Interest := 0;

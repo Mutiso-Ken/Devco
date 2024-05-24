@@ -130,7 +130,7 @@ Report 51516223 "Member Detailed Statement"
                     column(openBalance_loan; OpenBalanceLoan)
                     {
                     }
-                    column(CLosingBalance_loan; ClosingBalanceLoan)
+                    column(CLosingBalance_loan; ClosingBalanceLoan * -1)
                     {
                     }
                     column(TransactionType_loan; loan."Transaction Type")
@@ -160,6 +160,7 @@ Report 51516223 "Member Detailed Statement"
 
                     trigger OnAfterGetRecord()
                     begin
+                        ClosingBalanceLoan := ClosingBalanceLoan - loan."Amount Posted";
                         BankCodeLoan := GetBankCode(loan);
                         //.................................
                         if loan."Amount Posted" < 0 then begin
@@ -232,7 +233,7 @@ Report 51516223 "Member Detailed Statement"
 
                     trigger OnAfterGetRecord()
                     begin
-                        ClosingBalInt := ClosingBalInt + Interests.Amount;
+                        ClosingBalInt := ClosingBalInt + Interests."Amount Posted";
                         BankCodeInterest := GetBankCode(Interests);
                         //...................Get TotalInterestDue
                         ApprovedAmount_Interest := 0;
@@ -331,7 +332,7 @@ Report 51516223 "Member Detailed Statement"
 
                 trigger OnAfterGetRecord()
                 begin
-                    CLosingBalance := CLosingBalance - Share.Amount;
+                    CLosingBalance := CLosingBalance - Share."Amount Posted";
                     BankCodeShares := GetBankCode(Share);
                     //...................................
                     if Share."Amount Posted" < 0 then begin
@@ -408,123 +409,123 @@ Report 51516223 "Member Detailed Statement"
                 end;
             }
 
-            dataitem(PepeaShares; "Cust. Ledger Entry")//
-            {
-                DataItemLink = "Customer No." = field("No."), "Posting Date" = field("Date Filter");
-                DataItemTableView = sorting("Transaction Type", "Loan No", "Posting Date") where("Transaction Type" = const("pepea Shares"), Reversed = filter(false));
+            // dataitem(PepeaShares; "Cust. Ledger Entry")//
+            // {
+            //     DataItemLink = "Customer No." = field("No."), "Posting Date" = field("Date Filter");
+            //     DataItemTableView = sorting("Transaction Type", "Loan No", "Posting Date") where("Transaction Type" = const("pepea Shares"), Reversed = filter(false));
 
-                column(OpenBalancesPepeaShares; OpenBalancesPepeaShares)
-                {
-                }
-                column(CLosingBalancesPepeaShares; ClosingBalancePepeaShares)
-                {
-                }
-                column(Description_PepeaShares; PepeaShares.Description)
-                {
-                }
-                column(DocumentNo_PepeaShares; PepeaShares."Document No.")
-                {
-                }
-                column(PostingDate_PepeaShares; PepeaShares."Posting Date")
-                {
-                }
-                column(CreditAmount_PepeaShares; PepeaShares."Credit Amount")
-                {
-                }
-                column(DebitAmount_PepeaShares; PepeaShares."Debit Amount")
-                {
-                }
-                column(Amount_PepeaShares; PepeaShares."Amount Posted")
-                {
-                }
-                column(TransactionType_PepeaShares; PepeaShares."Transaction Type")
-                {
-                }
-                column(BalAccountNo_PepeaShares; PepeaShares."Bal. Account No.")
-                {
-                }
-                column(BankCodePepeaShares; BankCodePepeaShares)
-                {
-                }
+            //     column(OpenBalancesPepeaShares; OpenBalancesPepeaShares)
+            //     {
+            //     }
+            //     column(CLosingBalancesPepeaShares; ClosingBalancePepeaShares)
+            //     {
+            //     }
+            //     column(Description_PepeaShares; PepeaShares.Description)
+            //     {
+            //     }
+            //     column(DocumentNo_PepeaShares; PepeaShares."Document No.")
+            //     {
+            //     }
+            //     column(PostingDate_PepeaShares; PepeaShares."Posting Date")
+            //     {
+            //     }
+            //     column(CreditAmount_PepeaShares; PepeaShares."Credit Amount")
+            //     {
+            //     }
+            //     column(DebitAmount_PepeaShares; PepeaShares."Debit Amount")
+            //     {
+            //     }
+            //     column(Amount_PepeaShares; PepeaShares."Amount Posted")
+            //     {
+            //     }
+            //     column(TransactionType_PepeaShares; PepeaShares."Transaction Type")
+            //     {
+            //     }
+            //     column(BalAccountNo_PepeaShares; PepeaShares."Bal. Account No.")
+            //     {
+            //     }
+            //     column(BankCodePepeaShares; BankCodePepeaShares)
+            //     {
+            //     }
 
-                trigger OnAfterGetRecord()
-                begin
-                    ClosingBalancePepeaShares := ClosingBalancePepeaShares - PepeaShares."Amount Posted";
-                    BankCodePepeaShares := GetBankCode(PepeaShares);
-                    //............................................................
-                    if PepeaShares."Amount Posted" < 0 then begin
-                        PepeaShares."Credit Amount" := (PepeaShares."Amount Posted" * -1);
-                    end else
-                        if PepeaShares."Amount Posted" > 0 then begin
-                            PepeaShares."Debit Amount" := (PepeaShares."Amount Posted");
-                        end
-                end;
+            //     trigger OnAfterGetRecord()
+            //     begin
+            //         ClosingBalancePepeaShares := ClosingBalancePepeaShares - PepeaShares."Amount Posted";
+            //         BankCodePepeaShares := GetBankCode(PepeaShares);
+            //         //............................................................
+            //         if PepeaShares."Amount Posted" < 0 then begin
+            //             PepeaShares."Credit Amount" := (PepeaShares."Amount Posted" * -1);
+            //         end else
+            //             if PepeaShares."Amount Posted" > 0 then begin
+            //                 PepeaShares."Debit Amount" := (PepeaShares."Amount Posted");
+            //             end
+            //     end;
 
-                trigger OnPreDataItem()
-                begin
-                    // ClosingBalancePepeaShares := PepeaSharesBF;
-                    // OpenBalancePepeaShares := PepeaSharesBF * -1;
-                end;
-            }
+            //     trigger OnPreDataItem()
+            //     begin
+            //         // ClosingBalancePepeaShares := PepeaSharesBF;
+            //         // OpenBalancePepeaShares := PepeaSharesBF * -1;
+            //     end;
+            // }
 
-            dataitem(FOSAShares; "Cust. Ledger Entry")//
-            {
-                DataItemLink = "Customer No." = field("No."), "Posting Date" = field("Date Filter");
-                DataItemTableView = sorting("Transaction Type", "Loan No", "Posting Date") where("Transaction Type" = const("FOSA Shares"), Reversed = filter(false));
+            // dataitem(FOSAShares; "Cust. Ledger Entry")//
+            // {
+            //     DataItemLink = "Customer No." = field("No."), "Posting Date" = field("Date Filter");
+            //     DataItemTableView = sorting("Transaction Type", "Loan No", "Posting Date") where("Transaction Type" = const("FOSA Shares"), Reversed = filter(false));
 
-                column(OpenBalancesFOSAShares; OpenBalanceFOSAShares)
-                {
-                }
-                column(CLosingBalancesFOSAShares; ClosingBalanceFOSAShares)
-                {
-                }
-                column(Description_FOSAShares; FOSAShares.Description)
-                {
-                }
-                column(DocumentNo_FOSAShares; FOSAShares."Document No.")
-                {
-                }
-                column(PostingDate_FOSAShares; FOSAShares."Posting Date")
-                {
-                }
-                column(CreditAmount_FOSAShares; FOSAShares."Credit Amount")
-                {
-                }
-                column(DebitAmount_FOSAShares; FOSAShares."Debit Amount")
-                {
-                }
-                column(Amount_FOSAShares; FOSAShares."Amount Posted")
-                {
-                }
-                column(TransactionType_FOSAShares; FOSAShares."Transaction Type")
-                {
-                }
-                column(BalAccountNo_FOSAShares; FOSAShares."Bal. Account No.")
-                {
-                }
-                column(BankCodeFOSAShares; BankCodeFOSAShares)
-                {
-                }
+            //     column(OpenBalancesFOSAShares; OpenBalanceFOSAShares)
+            //     {
+            //     }
+            //     column(CLosingBalancesFOSAShares; ClosingBalanceFOSAShares)
+            //     {
+            //     }
+            //     column(Description_FOSAShares; FOSAShares.Description)
+            //     {
+            //     }
+            //     column(DocumentNo_FOSAShares; FOSAShares."Document No.")
+            //     {
+            //     }
+            //     column(PostingDate_FOSAShares; FOSAShares."Posting Date")
+            //     {
+            //     }
+            //     column(CreditAmount_FOSAShares; FOSAShares."Credit Amount")
+            //     {
+            //     }
+            //     column(DebitAmount_FOSAShares; FOSAShares."Debit Amount")
+            //     {
+            //     }
+            //     column(Amount_FOSAShares; FOSAShares."Amount Posted")
+            //     {
+            //     }
+            //     column(TransactionType_FOSAShares; FOSAShares."Transaction Type")
+            //     {
+            //     }
+            //     column(BalAccountNo_FOSAShares; FOSAShares."Bal. Account No.")
+            //     {
+            //     }
+            //     column(BankCodeFOSAShares; BankCodeFOSAShares)
+            //     {
+            //     }
 
-                trigger OnAfterGetRecord()
-                begin
-                    ClosingBalanceFOSAShares := ClosingBalanceFOSAShares - FOSAShares."Amount Posted";
-                    BankCodeFOSAShares := GetBankCode(FOSAShares);
-                    //............................................................
-                    if FOSAShares."Amount Posted" < 0 then begin
-                        FOSAShares."Credit Amount" := (FOSAShares."Amount Posted" * -1);
-                    end else
-                        if FOSAShares."Amount Posted" > 0 then begin
-                            FOSAShares."Debit Amount" := (FOSAShares."Amount Posted");
-                        end
-                end;
+            //     trigger OnAfterGetRecord()
+            //     begin
+            //         ClosingBalanceFOSAShares := ClosingBalanceFOSAShares - FOSAShares."Amount Posted";
+            //         BankCodeFOSAShares := GetBankCode(FOSAShares);
+            //         //............................................................
+            //         if FOSAShares."Amount Posted" < 0 then begin
+            //             FOSAShares."Credit Amount" := (FOSAShares."Amount Posted" * -1);
+            //         end else
+            //             if FOSAShares."Amount Posted" > 0 then begin
+            //                 FOSAShares."Debit Amount" := (FOSAShares."Amount Posted");
+            //             end
+            //     end;
 
-                trigger OnPreDataItem()
-                begin
-                    ClosingBalanceDividend := DividendBF;
-                    OpenBalanceDividend := DividendBF * -1;
-                end;
-            }
+            //     trigger OnPreDataItem()
+            //     begin
+            //         ClosingBalanceDividend := DividendBF;
+            //         OpenBalanceDividend := DividendBF * -1;
+            //     end;
+            // }
 
             dataitem(Deposits; "Cust. Ledger Entry")
             {
@@ -572,6 +573,8 @@ Report 51516223 "Member Detailed Statement"
 
                 trigger OnAfterGetRecord()
                 begin
+
+                    ClosingBal := ClosingBal - Deposits."Amount Posted";
                     BankCodeDeposits := GetBankCode(Deposits);
                     //........................
                     if Deposits."Amount Posted" < 0 then begin
@@ -634,7 +637,7 @@ Report 51516223 "Member Detailed Statement"
 
                 trigger OnAfterGetRecord()
                 begin
-                    ClosingBalanceDividend := ClosingBalanceDividend - Dividend.Amount;
+                    ClosingBalanceDividend := ClosingBalanceDividend - Dividend."Amount Posted";
                     BankCodeDividend := GetBankCode(Dividend);
                 end;
 
@@ -661,7 +664,7 @@ Report 51516223 "Member Detailed Statement"
                 column(Name; "Loans Guarantee Details".Name)
                 {
                 }
-                column(LBalance; "Loans Guarantee Details"."Loan Balance")
+                column(LBalance; "Loans Guarantee Details"."Loans Outstanding")
                 {
                 }
                 column(Shares; "Loans Guarantee Details".Shares)
@@ -693,9 +696,9 @@ Report 51516223 "Member Detailed Statement"
                 if DateFilterBF <> '' then begin
                     Cust.Reset;
                     Cust.SetRange(Cust."Customer No.", "No.");
-                
+                    //ABEL COMMENT
                     Cust.SetFilter(Cust."Date Filter", DateFilterBF);
-        
+                    //ABEL COMMENT
                     if Cust.Find('-') then begin
                         // Cust.CalcFields(Cust.sha, Cust."Current Shares", Cust."Insurance Fund", Cust."Holiday Savings");
                         // SharesBF := Cust."Current Shares";

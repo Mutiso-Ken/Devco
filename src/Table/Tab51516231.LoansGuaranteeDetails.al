@@ -7,15 +7,12 @@ Table 51516231 "Loans Guarantee Details"
         {
             NotBlank = true;
             TableRelation = "Loans Register"."Loan  No.";
-            trigger OnValidate()
-            var
-            begin
 
-            end;
         }
         field(2; "Member No"; Code[20])
         {
             TableRelation = Customer."No.";
+            NotBlank = true;
             trigger OnValidate()
             begin
 
@@ -25,13 +22,7 @@ Table 51516231 "Loans Guarantee Details"
         {
             Editable = false;
         }
-        field(4; "Loan Balance"; Decimal)
-        {
-            CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Member No"),
-                                                                  "Transaction Type" = filter(Loan | Repayment)));
-            Editable = false;
-            FieldClass = FlowField;
-        }
+  
         field(5; Shares; Decimal)
         {
             Editable = false;
@@ -90,6 +81,13 @@ Table 51516231 "Loans Guarantee Details"
         field(15; "ID No."; Code[50])
         {
         }
+              // field(4; "Loan Balance"; Decimal)
+        // {
+        //     CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Member No"),
+        //                                                           "Transaction Type" = filter(Loan | Repayment)));
+        //     Editable = false;
+        //     FieldClass = FlowField;
+        // }
         field(16; "Outstanding Balance"; Decimal)
         {
             CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Transaction Type" = filter(Loan | Repayment),
@@ -154,12 +152,12 @@ Table 51516231 "Loans Guarantee Details"
         field(28; "Cummulative Shares2"; Decimal)
         {
         }
-        field(29; "Loan amount"; Decimal)
-        {
-            CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Loan No" = field("Loan No"),
-                                                                  "Transaction Type" = filter(Loan | Repayment)));
-            FieldClass = FlowField;
-        }
+        // field(29; "Loan amount"; Decimal)
+        // {
+        //     CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Loan No" = field("Loan No"),
+        //                                                           "Transaction Type" = filter(Loan | Repayment)));
+        //     FieldClass = FlowField;
+        // }
         field(30; "Amount Committed"; Decimal)
         {
         }
@@ -213,9 +211,12 @@ Table 51516231 "Loans Guarantee Details"
         key(Key1; "Loan No", "Member No")
         {
             Clustered = true;
-            SumIndexFields = Shares;
+            //SumIndexFields = Shares;
         }
+        key(key2; "Loan No")
+        {
 
+        }
     }
 
     fieldgroups

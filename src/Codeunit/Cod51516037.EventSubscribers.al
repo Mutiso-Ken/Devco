@@ -78,4 +78,70 @@ codeunit 51516037 "EventSubscribers"
             IsHandled := true;
         end;
     end;
+
+
+
 }
+// codeunit 50100 "OTP Event Subscriber"
+// {
+
+//     [EventSubscriber(ObjectType::Codeunit, Codeunit::"System Initialization", 'OnSetSignupContext', '', false, false)]
+//     // [EventSubscriber(ObjectType::Codeunit, 21, , '', false, false)]
+//     procedure OnBeforeLogin()
+
+//     var
+//         OTP: Text[6];
+//         user: Codeunit "User Management";
+//         UserName: Text[50];
+//     begin
+//         UserName := UserId;
+//         // Generate OTP logic (e.g., using a random number generator)
+//         OTP := GenerateOTP();
+
+//         // Store the OTP (e.g., in a table or session variable)
+//         StoreOTP(UserId, OTP);
+
+//         // Display OTP to the user (you can customize this part)
+//         Message('Your One-Time Password (OTP): %1 %2', OTP, UserName);
+//     end;
+
+//     local procedure GenerateOTP(): Text[6]
+//     var
+//         OTP: Integer;
+//     begin
+
+
+//         Randomize();
+//         OTP := Random(10000);
+//         // Implement your OTP generation logic here
+//         // For example, generate a 6-digit random number
+//         // You can use functions like RandBetween or other custom logic
+//         // Return the generated OTP
+//         exit(Format(OTP));
+//     end;
+
+//     local procedure StoreOTP(UserId: Code[50]; OTP: Text[6])
+//     begin
+//         // Implement your storage logic (e.g., save OTP in a table)
+//         // You can use a dedicated OTP table or extend the User table
+//         // Store the OTP associated with the user
+//     end;
+
+// }
+
+// codeunit 51516170 "Pre-Company Open Procedures"
+// {
+//     //Subtype = Normal;
+//     InherentPermissions=X;
+
+//  [EventSubscriber(ObjectType::Codeunit, Codeunit::LogInManagement, 'CompanyOpen', '', false, false)]
+//     procedure OnBeforeCompanyOpen()
+//     begin
+//         // Your custom logic before opening the company
+//         // For example, perform data validation or setup tasks
+//         // You can access the CompanyId parameter to identify the company being opened
+//         // Add your code here...
+//         Message('Hhhh');
+//     end;
+// }
+

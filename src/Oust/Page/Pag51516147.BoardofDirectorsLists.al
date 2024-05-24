@@ -5,7 +5,7 @@ page 51516147 "Board of Directors Lists"
     PageType = ListPart;
     SourceTable = "Board of Directors";
     UsageCategory = Lists;
-    
+
     layout
     {
         area(content)
@@ -17,6 +17,10 @@ page 51516147 "Board of Directors Lists"
                 }
                 field(Name; Rec.Name)
                 {
+                }
+                field(Designation; Designation)
+                {
+                    ApplicationArea = all;
                 }
                 field("Start Date"; Rec."Start Date")
                 {

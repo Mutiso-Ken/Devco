@@ -166,8 +166,6 @@ Page 51516260 "BOSA Receipt Card"
                         RunBal := FnRunEntranceFee(Rec, RunBal);
                         RunBal := FnRunInterest(Rec, RunBal);
                         RunBal := FnRunInsuranceContribution(Rec, RunBal);
-                        // RunBal := FnRunLoanApplicationFee(rec, RunBal);
-                        // RunBal := FnRunLoanInsurance(Rec, RunBal);
                         RunBal := FnRunPrinciple(Rec, RunBal);
                         RunBal := FnRunShareCapital(Rec, RunBal);
                         RunBal := FnRunDepositContribution(Rec, RunBal);
@@ -180,12 +178,7 @@ Page 51516260 "BOSA Receipt Card"
                             case "Excess Transaction Type" of
                                 "excess transaction type"::"Deposit Contribution":
                                     FnRunDepositContributionFromExcess(Rec, RunBal);
-                            // "excess transaction type"::"Safari Saving":
-                            //     FnRunSavingsProductExcess(Rec, RunBal, 'SAVINGS');
-                            // "excess transaction type"::"Silver Savings":
-                            //     FnRunSavingsProductExcess(Rec, RunBal, 'GOLDSAVE');
-                            // "excess transaction type"::"Junior Savings":
-                            //     FnRunSavingsProductExcess(Rec, RunBal, 'NFK-JUNIOR');
+
                             end;
 
                         end;
@@ -252,7 +245,7 @@ Page 51516260 "BOSA Receipt Card"
                     GenJournalLine.Validate(GenJournalLine."Account No.");
                     GenJournalLine."Posting Date" := "Cheque Date";
                     //GenJournalLine."Posting Date":="Transaction Date";
-                    GenJournalLine.Description :=  "Account No." + '-' + Name;
+                    GenJournalLine.Description := "Account No." + '-' + Name;
                     GenJournalLine.Validate(GenJournalLine."Currency Code");
                     ReceiptAllocations."Global Dimension 1 Code" := "Global Dimension 1 Code";
                     ReceiptAllocations."Global Dimension 2 Code" := "Global Dimension 2 Code";
@@ -457,11 +450,11 @@ Page 51516260 "BOSA Receipt Card"
             LoanApp.SetFilter(LoanApp."Date filter", Datefilter);
             if LoanApp.Find('-') then begin
                 repeat
-                    LoanApp.CALCFIELDS(LoanApp."Outstanding Interest");
-                    if (LoanApp."Outstanding Interest" > 0) then begin
+                    LoanApp.CALCFIELDS(LoanApp."Oustanding Interest");
+                    if (LoanApp."Oustanding Interest" > 0) then begin
                         if RunningBalance > 0 then begin
                             AmountToDeduct := 0;
-                            AmountToDeduct := ROUND(LoanApp."Outstanding Interest", 0.05, '>');
+                            AmountToDeduct := ROUND(LoanApp."Oustanding Interest", 0.05, '>');
                             if RunningBalance <= AmountToDeduct then
                                 AmountToDeduct := RunningBalance;
                             ObjReceiptTransactions.Init;
@@ -586,9 +579,9 @@ Page 51516260 "BOSA Receipt Card"
                 repeat
                     AmountToDeduct := 0;
                     if RunningBalance > 0 then begin
-                        LoanApp.CalcFields(LoanApp."Outstanding Balance");
+                        LoanApp.CalcFields(LoanApp."Outstanding Balance", LoanApp."Oustanding Interest");
                         if LoanApp."Outstanding Balance" > 0 then begin
-                            AmountToDeduct := LoanApp."Loan Principle Repayment";
+                            AmountToDeduct := (LoanApp.Repayment - LoanApp."Oustanding Interest");
                             if AmountToDeduct > 0 then begin
                                 if AmountToDeduct > LoanApp."Outstanding Balance" then
                                     AmountToDeduct := LoanApp."Outstanding Balance";
@@ -687,7 +680,7 @@ Page 51516260 "BOSA Receipt Card"
                 ObjMember.CalcFields(ObjMember."Shares Retained");
                 if ObjMember."Shares Retained" < GenSetup."Retained Shares" then begin
                     SharesCap := GenSetup."Retained Shares";
-                    DIFF := SharesCap - ObjMember."Shares Retained";
+                    DIFF := ObjMember."Monthly ShareCap Cont.";  //SharesCap - ObjMember."Shares Retained";
 
                     if DIFF > 1 then begin
                         if RunningBalance > 0 then begin

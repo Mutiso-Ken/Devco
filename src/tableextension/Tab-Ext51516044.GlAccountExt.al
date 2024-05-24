@@ -105,22 +105,23 @@ tableextension 51516044 "GlAccountExt" extends "G/L Account"
             OptionMembers = " ",InterestOnLoans,InterestExpenses,OtherOperatingIncome,InvestmentIncome,GorvernanceExpenses,AdministrationExpenses,PersonelExpenses,OperatingExpenses,FinancialExpense,MarketingExpenses,DepreciationAmmortisation,IncomeTaxExpense;
             DataClassification = ToBeClassified;
         }
+       
 
         field(54269; Others; option)
         {
-            OptionMembers = " ",PriorYearAdjustments,;
+            OptionMembers = " ",PriorYearAdjustments,ShortTermLiabilities;
         }
 
     }
-    // trigger OnBeforeModify()
-    // var
-    //     myInt: Integer;
-    // begin
-    //     Reset();
-    //     GLEntry.SetRange("G/L Account No.", "No.");
-    //     if not GLEntry.IsEmpty() then
-    //         Error('You cannot Change the account details because it contains transactions');
-    // end;
+    trigger OnBeforeModify()
+    var
+        myInt: Integer;
+    begin
+        Reset();
+        GLEntry.SetRange("G/L Account No.", "No.");
+        if not GLEntry.IsEmpty() then
+            Error('You cannot Change the account details because it contains transactions');
+    end;
 
     var
         GLEntry: Record "G/L Entry";

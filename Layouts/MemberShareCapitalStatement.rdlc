@@ -36,7 +36,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
             <Top>1.27792in</Top>
-            <Left>1.1023in</Left>
+            <Left>0.9773in</Left>
             <Height>0.19792in</Height>
             <Width>7.17105in</Width>
             <Style>
@@ -104,7 +104,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
             <Top>1.00708in</Top>
-            <Left>1.1023in</Left>
+            <Left>0.9773in</Left>
             <Height>0.2014in</Height>
             <Width>7.16543in</Width>
             <ZIndex>2</ZIndex>
@@ -139,7 +139,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
             <Top>0.77021in</Top>
-            <Left>1.1023in</Left>
+            <Left>0.9773in</Left>
             <Height>0.21326in</Height>
             <Width>7.16543in</Width>
             <ZIndex>3</ZIndex>
@@ -174,7 +174,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
             <Top>0.51364in</Top>
-            <Left>1.1023in</Left>
+            <Left>0.9773in</Left>
             <Height>0.21326in</Height>
             <Width>7.16543in</Width>
             <ZIndex>4</ZIndex>
@@ -209,7 +209,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
             <Top>0.26635in</Top>
-            <Left>1.1023in</Left>
+            <Left>0.9773in</Left>
             <Height>0.22368in</Height>
             <Width>7.16543in</Width>
             <ZIndex>5</ZIndex>
@@ -1220,18 +1220,18 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Amount_Shares">
+                        <Textbox Name="CLosingBalances">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Amount_Shares.Value * - 1</Value>
+                                  <Value>=Fields!CLosingBalances.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
-                                    <Format>n2</Format>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1240,7 +1240,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Amount_Shares</rd:DefaultName>
+                          <rd:DefaultName>CLosingBalances</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1444,7 +1444,7 @@
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>n2</Format>
+                                    <Format>#,0.00;(#,0.00);''</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>

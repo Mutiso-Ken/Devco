@@ -369,7 +369,7 @@ Page 51516899 "Micro_Fin_Transactions"
                                             GenJournalLine."Account No." := Transact."Account Number";
                                             GenJournalLine.Validate(GenJournalLine."Account No.");
                                             GenJournalLine."Posting Date" := "Transaction Date";
-                                            GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Penalty Paid";
+                                           // GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Penalty Paid";
                                             GenJournalLine.Description := 'CEEP Fees';
                                             GenJournalLine.Amount := -Transact."Penalty Amount";
                                             GenJournalLine.Validate(GenJournalLine.Amount);

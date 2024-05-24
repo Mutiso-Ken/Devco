@@ -525,6 +525,28 @@ Page 51516487 "Devco Sacco Main Role Center"
 
                 }
                 //............................................................................................
+
+                group("Other Financials")
+                {
+                    action("Trade Creditors")
+                    {
+                        ApplicationArea = basic, Suite;
+                        RunObject = page TradeCreditors;
+
+                    }
+                    action("Ex-Member Creditors")
+                    {
+                        ApplicationArea = basic, Suite;
+                        RunObject = page Ex_MemberCreditors;
+
+                    }
+                    action(EmployerReceivables)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Employer Receivables';
+                        RunObject = page EmployerReceivables;
+                    }
+                }
                 group("Assets Management")
                 {
                     Caption = 'Assets Management';
@@ -2070,7 +2092,7 @@ Page 51516487 "Devco Sacco Main Role Center"
             {
                 Caption = 'Fixed Assets';
                 Image = FixedAssets;
-                Visible = true;
+                Visible = false;
                 ToolTip = 'Manage depreciation and insurance of your fixed assets.';
                 action(Action17)
                 {
@@ -2197,6 +2219,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                     {
                         RunObject = page "General Journal";
                         ApplicationArea = All;
+                        Visible = false;
 
                     }
 
@@ -2737,6 +2760,11 @@ Page 51516487 "Devco Sacco Main Role Center"
                 {
                     ApplicationArea = Basic, Suite;
                     RunObject = report "System Transaction Log";
+                }
+                action("Posting Audit Trail")
+                {
+                    ApplicationArea = all;
+                    RunObject = report "Ledger enries audit Trail";
                 }
                 action("Read Log")
                 {

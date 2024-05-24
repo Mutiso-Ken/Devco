@@ -62,18 +62,34 @@ Page 51516464 "Loans DrillDown List"
                 {
                     ApplicationArea = Basic;
                 }
+                   field("Oustanding Interest"; "Oustanding Interest")
+                {
+                    ApplicationArea = Basic;
+                    Visible = true;
+                }
+
+
+                   field("Loan Monthly Principal"; Repayment)
+                {
+                    ApplicationArea = all;
+                }
                 field("Loan Principle Repayment"; "Loan Principle Repayment")
                 {
                     ApplicationArea = Basic;
+                    Visible=false;
+
                 }
                 field("Loan Interest Repayment"; "Loan Interest Repayment")
                 {
                     ApplicationArea = Basic;
+                            Visible=false;
                 }
+             
                 field("Requested Amount"; "Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
+                            Visible=false;
                 }
                 field("Approved Amount"; "Approved Amount")
                 {
@@ -86,11 +102,7 @@ Page 51516464 "Loans DrillDown List"
                     Editable = false;
                     Visible = true;
                 }
-                field("Oustanding Interest"; "Oustanding Interest")
-                {
-                    ApplicationArea = Basic;
-                    Visible = true;
-                }
+             
                 field(Installments; Installments)
                 {
                     ApplicationArea = Basic;
@@ -106,51 +118,55 @@ Page 51516464 "Loans DrillDown List"
                 {
                     ApplicationArea = Basic;
                     Editable = false;
+                    Visible=false;
                 }
-                field("Last Pay Date"; "Last Pay Date")
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Source; Source)
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Recovery Mode"; "Recovery Mode")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Loan Disbursement Date"; "Loan Disbursement Date")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Repayment Start Date"; "Repayment Start Date")
-                {
-                    ApplicationArea = Basic;
-                }
+                // field("Last Pay Date"; "Last Pay Date")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field(Source; Source)
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Recovery Mode"; "Recovery Mode")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Loan Disbursement Date"; "Loan Disbursement Date")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Repayment Start Date"; "Repayment Start Date")
+                // {
+                //     ApplicationArea = Basic;
+                // }
 
-                field("Months in Arrears"; "No of Months in Arrears")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Principal In Arrears"; "Principal In Arrears")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Interest In Arrears"; "Interest In Arrears")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Total Amount In Arrears"; "Amount in Arrears")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Loans Status"; "Loans Category-SASRA")
-                {
-                    ApplicationArea = Basic;
-                }
+                // field("Months in Arrears"; "No of Months in Arrears")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Principal In Arrears"; "Principal In Arrears")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Interest In Arrears"; "Interest In Arrears")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Total Amount In Arrears"; "Amount in Arrears")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Loans Status"; "Loans Category-SASRA")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+
 
             }
         }
     }
+    // var
+    //     "Current Loan Repayment": Decimal;
 }
 

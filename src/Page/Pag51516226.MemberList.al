@@ -54,25 +54,34 @@ Page 51516226 "Member List"
                 {
                     Caption = 'Non-withdrawable Deposits';
                     Style = StrongAccent;
-                    ApplicationArea=Basic;
+                    ApplicationArea = Basic;
                 }
                 field("Outstanding Balance"; "Outstanding Balance")
                 {
                     Style = StrongAccent;
                     Caption = 'Oustanding Loan Balance';
-                     ApplicationArea=Basic;
+                    ApplicationArea = Basic;
                 }
                 field("Outstanding Interest"; "Outstanding Interest")
                 {
                     Style = StrongAccent;
                     Caption = 'Oustanding Loan Interest';
-                     ApplicationArea=Basic;
+                    ApplicationArea = Basic;
                 }
-                field("Holiday Savers"; "Holiday Savers")
+                field("Likizo Contribution";"Likizo Contribution")
+                {
+                    ApplicationArea = all;
+                    Caption='Holiday Contribution';
+                }
+                field("Alpha Savings"; "Alpha Savings")
                 {
                     ApplicationArea = all;
                 }
-                field("Alpha Savings"; "Alpha Savings")
+                field("Un-allocated Funds"; "Un-allocated Funds")
+                {
+                    ApplicationArea = all;
+                }
+                field("Junior Savings One"; "Junior Savings One")
                 {
                     ApplicationArea = all;
                 }

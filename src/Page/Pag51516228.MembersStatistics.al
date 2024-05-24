@@ -57,13 +57,7 @@ Page 51516228 "Members Statistics"
                     Caption = 'Holiday Savings';
 
                 }
-                // field("Property Savings"; "Property Savings")
-                // {
-                //     ApplicationArea = Basic;
-                //     Editable = false;
 
-
-                // }
                 field("Junior Savings One"; "Junior Savings One")
                 {
                     ApplicationArea = Basic;
@@ -92,6 +86,21 @@ Page 51516228 "Members Statistics"
                 {
                     ApplicationArea = Basic;
                     Caption = 'Monthly Deposit Contribution';
+                }
+                field("Holiday Monthly Contribution"; "Holiday Monthly Contribution")
+                {
+                    ApplicationArea = Basic;
+                    Editable = true;
+
+
+                }
+                field("Junior Monthly Contribution"; "Junior Monthly Contribution")
+                {
+                    ApplicationArea = basic;
+                }
+                field("Alpha Monthly Contribution"; "Alpha Monthly Contribution")
+                {
+                    ApplicationArea = all;
                 }
             }
             part(Control1102755002; "Loans Sub-Page List")

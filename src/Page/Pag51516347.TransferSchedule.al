@@ -49,11 +49,11 @@ Page 51516347 "Transfer Schedule"
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Amount"; "Transaction Amount")
-                {
-                    ApplicationArea = all;
-                    Editable = false;
-                }
+                // field("Transaction Amount"; "Transaction Amount")
+                // {
+                //     ApplicationArea = all;
+                //     Editable = false;
+                // }
                 field(Amount; Amount)
                 {
                     ApplicationArea = Basic;

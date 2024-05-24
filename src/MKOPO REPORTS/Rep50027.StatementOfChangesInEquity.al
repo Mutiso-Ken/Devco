@@ -68,7 +68,7 @@ report 50027 StatementOfChangesInEquity
                 StartofThisYear := CalcDate(DateFormulaOne, AsAt);
                 StartofPreviousyear := CalcDate(DateExpr, StartofThisYear);
                 CurrentYear := Date2DMY(AsAt, 3);
-                EndofLastyear := CalcDate(DateExpr, AsAt);
+                EndofLastyear := CalcDate(DateFormula, AsAt);
                 PreviousYear := CurrentYear - 1;
 
 
@@ -84,14 +84,14 @@ report 50027 StatementOfChangesInEquity
                         GLEntry.SetFilter(GLEntry."Posting Date", '..%1', StartofThisYear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            ShareCapital += 1 * GLEntry.Amount;
+                            ShareCapital += -1 * GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
                 end;
 
                 //contribution during the Year
 
-                ShareCapital := 0;
+                contShareCapital := 0;
                 GLAccount.Reset;
                 GLAccount.SetFilter(GLAccount.FinancedBy, '%1', GLAccount.FinancedBy::Sharecapital);
                 if GLAccount.FindSet then begin
@@ -101,13 +101,13 @@ report 50027 StatementOfChangesInEquity
                         GLEntry.SetFilter(GLEntry."Posting Date", '%1..%2', StartofThisYear, AsAt);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            ShareCapital += 1 * GLEntry.Amount;
+                            contShareCapital += -1 * GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
                 end;
                 //end of contributiosn during the year
 
-                LShareCapital := 0;
+                contLShareCapital := 0;
                 GLAccount.Reset;
                 GLAccount.SetFilter(GLAccount.FinancedBy, '%1', GLAccount.FinancedBy::Sharecapital);
                 if GLAccount.FindSet then begin
@@ -117,11 +117,28 @@ report 50027 StatementOfChangesInEquity
                         GLEntry.SetFilter(GLEntry."Posting Date", '%1..%2', StartofPreviousyear, EndofLastyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            LShareCapital += 1 * GLEntry.Amount;
+                            contLShareCapital += -1 * GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
                 end;
                 //Endofsharecapital
+
+                //contribution as at end of Last year
+                LShareCapital := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.FinancedBy, '%1', GLAccount.FinancedBy::Sharecapital);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', StartofPreviousyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            LShareCapital += -1 * GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+                //contribution as at end of last year
 
                 //Prior Year Adjustments
                 PriorYearAdjustment := 0;
@@ -145,7 +162,7 @@ report 50027 StatementOfChangesInEquity
                     repeat
                         GLEntry.Reset;
                         GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', StartofPreviousyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
                             LPriorYearAdjustment += 1 * GLEntry.Amount;
@@ -179,10 +196,10 @@ report 50027 StatementOfChangesInEquity
                     repeat
                         GLEntry.Reset;
                         GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', StartofPreviousyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            LRetainedEarnings += GLEntry.Amount;
+                            LRetainedEarnings += -1 * GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
                 end;
@@ -199,7 +216,7 @@ report 50027 StatementOfChangesInEquity
                         GLEntry.SetFilter(GLEntry."Posting Date", '..%1', ThisYear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            StatutoryReserve += GLEntry.Amount;
+                            StatutoryReserve += -1 * GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
                 end;
@@ -211,10 +228,10 @@ report 50027 StatementOfChangesInEquity
                     repeat
                         GLEntry.Reset;
                         GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', StartofPreviousyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            LStatutoryReserve += GLEntry.Amount;
+                            LStatutoryReserve += -1 * GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
                 end;
@@ -223,8 +240,8 @@ report 50027 StatementOfChangesInEquity
                 //End Of Retained Earnings
 
                 //Transfer to Statutory
-                TransfertoStatury := RetainedEarnings * 0.2;
-                LTransfertoStatury := LRetainedEarnings * 0.2;
+                TransfertoStatury := -1 * (RetainedEarnings * 0.2);
+                LTransfertoStatury := -1 * (LRetainedEarnings * 0.2);
 
 
                 //End of Transfer to Statutory
@@ -277,7 +294,6 @@ report 50027 StatementOfChangesInEquity
         LTransfertoStatury: Decimal;
         StatutoryReserve: Decimal;
         LStatutoryReserve: Decimal;
-
         RetainedEarnings: Decimal;
         LRetainedEarnings: Decimal;
         PreviousYear: Integer;

@@ -14,6 +14,10 @@ report 50039 cashFlows
             {
 
             }
+            column(Cashatbank;Cashatbank){}
+            column(LCashatbank;LCashatbank){}
+            column(endCashatbank;endCashatbank){}
+            column(EndLCashatbank;EndLCashatbank){}
             column(PreviousYear; PreviousYear)
             {
 
@@ -515,6 +519,108 @@ report 50039 cashFlows
                     until GLAccount.Next = 0;
                 end;
                 //Endofsharecapital
+
+
+
+                Cashatbank := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Assets, '%1', GLAccount.Assets::CashAndEquivalents);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', StartofcurrentYear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            Cashatbank += GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+
+                end;
+                LCashatbank := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Assets, '%1', GLAccount.Assets::CashAndEquivalents);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', StartofPreviousYear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            LCashatbank += GLEntry.Amount;
+
+                        end;
+                    until GLAccount.Next = 0;
+
+                end;
+
+
+
+                Cashatbank := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Assets, '%1', GLAccount.Assets::CashAndEquivalents);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', StartofcurrentYear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            Cashatbank += GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+
+                end;
+                LCashatbank := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Assets, '%1', GLAccount.Assets::CashAndEquivalents);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', StartofPreviousYear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            LCashatbank += GLEntry.Amount;
+
+                        end;
+                    until GLAccount.Next = 0;
+
+                end;
+
+                //End of year cash and Equivalents
+
+                Cashatbank := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Assets, '%1', GLAccount.Assets::CashAndEquivalents);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                        endCashatbank += GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+
+                end;
+                LCashatbank := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Assets, '%1', GLAccount.Assets::CashAndEquivalents);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                        EndLCashatbank += GLEntry.Amount;
+
+                        end;
+                    until GLAccount.Next = 0;
+
+                end;
             end;
         }
     }
@@ -552,6 +658,11 @@ report 50039 cashFlows
 
 
     var
+        Cashatbank: Decimal;
+        LCashatbank: Decimal;
+
+        endCashatbank: Decimal;
+        EndLCashatbank: Decimal;
         AsAt: Date;
         ReceivableandPrepayments: Decimal;
         LReceivableandPrepayments: Decimal;

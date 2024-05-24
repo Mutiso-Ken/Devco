@@ -113,7 +113,8 @@ table 50335 "prPeriod Transactions."
         field(27; "coop parameters"; Option)
         {
             Description = 'to be able to report the different coop contributions -Dennis';
-            OptionMembers = "none",shares,loan,"loan Interest","Emergency loan","Application Fees","Loan Application Fee Paid","Insurance Paid","Emergency loan Interest",Welfare,Pension,NSSF,"Loan Insurance Paid";
+            OptionMembers = "None",Shares,Loan,"Share Capital",Likizo,"Loan Interest","Emergency Loan","Emergency Loan Interest",Welfare,Pension,NSSF,Overtime,"Insurance Contribution"
+            ,"Loan Application Fee Paid","Loan Insurance Paid";
         }
         field(28; "Payroll Code"; Code[20])
         {

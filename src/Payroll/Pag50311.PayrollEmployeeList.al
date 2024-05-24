@@ -159,17 +159,13 @@ Page 50311 "Payroll Employee List."
                         varPeriodMonth := Date2dmy(VarOpenPeriod, 2);
                         VarPeriodYear := Date2dmy(VarOpenPeriod, 3);
                     end;
-
+                    // end;
 
                     ObjPayrollEmployees.Reset;
                     ObjPayrollEmployees.SetRange(ObjPayrollEmployees.Status, ObjPayrollEmployees.Status::Active);
-
                     ObjPayrollEmployees.SetRange(ObjPayrollEmployees."Suspend Pay", false);
                     if ObjPayrollEmployees.FindSet then begin
                         repeat
-
-
-
                             //Shares Contribution
                             ObjTransactionCodes.Reset;
                             ObjTransactionCodes.SetRange(ObjTransactionCodes."Co-Op Parameters", ObjTransactionCodes."co-op parameters"::Shares);
@@ -177,7 +173,6 @@ Page 50311 "Payroll Employee List."
 
                                 if ObjCust.Get(ObjPayrollEmployees."Payroll No") then begin
                                     ObjCust.CalcFields(ObjCust."Current Shares");
-
                                     //============================================Delete Entries For the Same Period
                                     ObjEmployeeTransactions.Reset;
                                     ObjEmployeeTransactions.SetRange(ObjEmployeeTransactions."Payroll Period", VarOpenPeriod);
@@ -208,6 +203,85 @@ Page 50311 "Payroll Employee List."
 
                                 end;
                             end;
+                            //SharecapitalContribution
+                            ObjTransactionCodes.Reset;
+                            ObjTransactionCodes.SetRange(ObjTransactionCodes."Co-Op Parameters", ObjTransactionCodes."co-op parameters"::"Share Capital");
+                            if ObjTransactionCodes.FindSet then begin
+
+                                if ObjCust.Get(ObjPayrollEmployees."Payroll No") then begin
+                                    ObjCust.CalcFields(ObjCust."Share Capital");
+
+                                    //============================================Delete Entries For the Same Period
+                                    ObjEmployeeTransactions.Reset;
+                                    ObjEmployeeTransactions.SetRange(ObjEmployeeTransactions."Payroll Period", VarOpenPeriod);
+                                    ObjEmployeeTransactions.SetRange(ObjEmployeeTransactions."No.", ObjPayrollEmployees."No.");
+                                    ObjEmployeeTransactions.SetFilter(ObjEmployeeTransactions."Loan Number", '%1', '');
+                                    ObjEmployeeTransactions.SetRange(ObjEmployeeTransactions."Transaction Code", ObjTransactionCodes."Transaction Code");
+                                    if ObjEmployeeTransactions.FindSet then begin
+                                        ObjEmployeeTransactions.DeleteAll;
+                                    end;
+                                    //============================================Delete Entries For the Same Period
+                                    ObjCust.CalcFields(ObjCust."Share Capital");
+                                    ObjPayrollEmployeeTrans.Init;
+                                    ObjPayrollEmployeeTrans."Sacco Membership No." := ObjPayrollEmployees."Payroll No";
+                                    ObjPayrollEmployeeTrans."No." := ObjPayrollEmployees."No.";
+                                    ObjPayrollEmployeeTrans."Loan Number" := '';
+                                    ObjPayrollEmployeeTrans."Transaction Code" := ObjTransactionCodes."Transaction Code";
+                                    ObjPayrollEmployeeTrans."Transaction Name" := ObjTransactionCodes."Transaction Name";
+                                    ObjPayrollEmployeeTrans."Transaction Type" := ObjTransactionCodes."Transaction Type";
+                                    ObjPayrollEmployeeTrans."Payroll Period" := VarOpenPeriod;
+                                    ObjPayrollEmployeeTrans."Period Month" := varPeriodMonth;
+                                    ObjPayrollEmployeeTrans."Period Year" := VarPeriodYear;
+                                    ObjPayrollEmployeeTrans.Amount := ObjCust."Monthly ShareCap Cont.";
+                                    ObjPayrollEmployeeTrans."Amount(LCY)" := ObjCust."Monthly ShareCap Cont.";
+                                    ObjPayrollEmployeeTrans.Balance := ObjCust."Share Capital";
+                                    ObjPayrollEmployeeTrans."Balance(LCY)" := ObjCust."Share Capital";
+                                    ObjPayrollEmployeeTrans."Amtzd Loan Repay Amt" := 0;
+                                    ObjPayrollEmployeeTrans.Insert;
+
+                                end;
+                            end;
+                            //End of share capital
+
+                            //Likizo contribution
+                            ObjTransactionCodes.Reset;
+                            ObjTransactionCodes.SetRange(ObjTransactionCodes."Co-Op Parameters", ObjTransactionCodes."co-op parameters"::Likizo);
+                            if ObjTransactionCodes.FindSet then begin
+
+                                if ObjCust.Get(ObjPayrollEmployees."Payroll No") then begin
+                                    ObjCust.CalcFields(ObjCust."Likizo Contribution");
+
+                                    //============================================Delete Entries For the Same Period
+                                    ObjEmployeeTransactions.Reset;
+                                    ObjEmployeeTransactions.SetRange(ObjEmployeeTransactions."Payroll Period", VarOpenPeriod);
+                                    ObjEmployeeTransactions.SetRange(ObjEmployeeTransactions."No.", ObjPayrollEmployees."No.");
+                                    ObjEmployeeTransactions.SetFilter(ObjEmployeeTransactions."Loan Number", '%1', '');
+                                    ObjEmployeeTransactions.SetRange(ObjEmployeeTransactions."Transaction Code", ObjTransactionCodes."Transaction Code");
+                                    if ObjEmployeeTransactions.FindSet then begin
+                                        ObjEmployeeTransactions.DeleteAll;
+                                    end;
+                                    //============================================Delete Entries For the Same Period
+                                    ObjCust.CalcFields(ObjCust."Share Capital");
+                                    ObjPayrollEmployeeTrans.Init;
+                                    ObjPayrollEmployeeTrans."Sacco Membership No." := ObjPayrollEmployees."Payroll No";
+                                    ObjPayrollEmployeeTrans."No." := ObjPayrollEmployees."No.";
+                                    ObjPayrollEmployeeTrans."Loan Number" := '';
+                                    ObjPayrollEmployeeTrans."Transaction Code" := ObjTransactionCodes."Transaction Code";
+                                    ObjPayrollEmployeeTrans."Transaction Name" := ObjTransactionCodes."Transaction Name";
+                                    ObjPayrollEmployeeTrans."Transaction Type" := ObjTransactionCodes."Transaction Type";
+                                    ObjPayrollEmployeeTrans."Payroll Period" := VarOpenPeriod;
+                                    ObjPayrollEmployeeTrans."Period Month" := varPeriodMonth;
+                                    ObjPayrollEmployeeTrans."Period Year" := VarPeriodYear;
+                                    ObjPayrollEmployeeTrans.Amount := ObjCust."Holiday Monthly Contribution";
+                                    ObjPayrollEmployeeTrans."Amount(LCY)" := ObjCust."Holiday Monthly Contribution";
+                                    ObjPayrollEmployeeTrans.Balance := ObjCust."Likizo Contribution";
+                                    ObjPayrollEmployeeTrans."Balance(LCY)" := ObjCust."Likizo Contribution";
+                                    ObjPayrollEmployeeTrans."Amtzd Loan Repay Amt" := 0;
+                                    ObjPayrollEmployeeTrans.Insert;
+
+                                end;
+                            end;
+                            //end of Likizo
                             //Loan Deduction
                             ObjEmployeeTransactions.Reset;
                             ObjEmployeeTransactions.SetRange(ObjEmployeeTransactions."Payroll Period", VarOpenPeriod);
@@ -221,18 +295,18 @@ Page 50311 "Payroll Employee List."
                             ObjTransactionCodes.SetRange(ObjTransactionCodes."Co-Op Parameters", ObjTransactionCodes."co-op parameters"::Loan);
                             if ObjTransactionCodes.FindSet then begin
                                 ObjLoans.Reset();
-                                ObjLoans.SetRange(ObjLoans."Client Code", rec."Payroll No");
+                                ObjLoans.SetRange(ObjLoans."Client Code",  ObjPayrollEmployees."Payroll No");
                                 if ObjLoans.Find('-') then begin
                                     repeat
                                         ObjLoans.CalcFields(ObjLoans."Outstanding Balance", ObjLoans."Oustanding Interest");
                                         //============================================Delete Entries For the Same Period
 
                                         //============================================Delete Entries For the Same Period
-                                        ObjLoans.CalcFields(ObjLoans."Outstanding Balance");
+                                        ObjLoans.CalcFields(ObjLoans."Outstanding Balance",ObjLoans."Oustanding Interest");
                                         If ObjLoans."Outstanding Balance" > 0 then begin
-                                            if ObjLoans."Outstanding Balance" < ObjLoans."Loan Principle Repayment" then
+                                            if ObjLoans."Outstanding Balance" < (ObjLoans.repayment-ObjLoans."Oustanding Interest") then
                                                 VarMonthlyInstalments := ObjLoans."Outstanding Balance" else
-                                                VarMonthlyInstalments := ObjLoans."Loan Principle Repayment";
+                                                VarMonthlyInstalments := (ObjLoans.Repayment-ObjLoans."Oustanding Interest");
 
                                             ObjPayrollEmployeeTrans.Init;
                                             ObjPayrollEmployeeTrans."Sacco Membership No." := ObjPayrollEmployees."Payroll No";
@@ -268,7 +342,7 @@ Page 50311 "Payroll Employee List."
                             ObjTransactionCodes.SetRange(ObjTransactionCodes."Co-Op Parameters", ObjTransactionCodes."co-op parameters"::"Loan Interest");
                             if ObjTransactionCodes.FindSet then begin
                                 ObjLoans.Reset();
-                                ObjLoans.SetRange(ObjLoans."Client Code", rec."Payroll No");
+                                ObjLoans.SetRange(ObjLoans."Client Code",  ObjPayrollEmployees."Payroll No");
                                 if ObjLoans.Find('-') then begin
                                     repeat
                                         ObjLoans.CalcFields(ObjLoans."Outstanding Balance", ObjLoans."Oustanding Interest");
@@ -277,9 +351,6 @@ Page 50311 "Payroll Employee List."
                                         //============================================Delete Entries For the Same Period
                                         ObjLoans.CalcFields(ObjLoans."Outstanding Balance");
                                         If ObjLoans."Oustanding Interest" > 0 then begin
-                                            // if ObjLoans."Outstanding Balance" < ObjLoans."Loan Principle Repayment" then
-                                            //     VarMonthlyInstalments := ObjLoans."Outstanding Balance" else
-                                            //     VarMonthlyInstalments := ObjLoans."Loan Principle Repayment";
 
                                             ObjPayrollEmployeeTrans.Init;
                                             ObjPayrollEmployeeTrans."Sacco Membership No." := ObjPayrollEmployees."Payroll No";
@@ -326,7 +397,7 @@ Page 50311 "Payroll Employee List."
                     end;
                 end;
             }
-    
+
         }
     }
 
@@ -434,7 +505,7 @@ Page 50311 "Payroll Employee List."
         VarDateFilter: Text;
         VarEndMonthDate: Date;
 
-  
+
     local procedure FnGetClientCodeEmail(ClientCode: Code[50]): Text[100]
     var
         PayrollEmp: Record "Payroll Employee.";

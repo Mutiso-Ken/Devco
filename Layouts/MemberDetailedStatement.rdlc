@@ -378,14 +378,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="BankCodeShares">
+                        <Textbox Name="Textbox42">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!BankCodeShares.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -397,7 +397,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>BankCodeShares</rd:DefaultName>
+                          <rd:DefaultName>Textbox42</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -550,18 +550,18 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Amount_Shares">
+                        <Textbox Name="ClosingBal2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=(Fields!Amount_Shares.Value)*-1</Value>
+                                  <Value>=Fields!CLosingBalances.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
-                                    <Format>n2</Format>
+                                    <Format>#,0.00;#,0.00-;''</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -570,7 +570,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Amount_Shares</rd:DefaultName>
+                          <rd:DefaultName>ClosingBal</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -774,7 +774,7 @@
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>n2</Format>
+                                    <Format>#,0.00;(#,0.00);''</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -945,7 +945,7 @@
                 </FilterValues>
               </Filter>
             </Filters>
-            <Top>2.36772in</Top>
+            <Top>1.74272in</Top>
             <Left>0.08207in</Left>
             <Height>0.66666in</Height>
             <Width>8.26773in</Width>
@@ -984,21 +984,22 @@
                   <TextRun>
                     <Value>DETAILED MEMBER STATEMENT</Value>
                     <Style>
+                      <FontFamily>Cambria</FontFamily>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
-                  <TextAlign>Center</TextAlign>
+                  <TextAlign>Left</TextAlign>
                 </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>1.36188in</Top>
-            <Left>1.18437in</Left>
+            <Top>0.57399in</Top>
+            <Left>1.57807in</Left>
             <Height>0.19792in</Height>
-            <Width>7.18961in</Width>
+            <Width>2.27294in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1019,7 +1020,8 @@
                   <TextRun>
                     <Value>=Globals!ExecutionTime</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontFamily>Cambria</FontFamily>
+                      <FontSize>7pt</FontSize>
                       <Format>g</Format>
                     </Style>
                   </TextRun>
@@ -1032,114 +1034,9 @@
             <rd:DefaultName>Textbox4</rd:DefaultName>
             <Top>0.08396in</Top>
             <Left>6.655in</Left>
-            <Height>0.17708in</Height>
+            <Height>0.125in</Height>
             <Width>1.71292in</Width>
             <ZIndex>2</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox12">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!Company_Email.Value</Value>
-                    <Style>
-                      <FontSize>8pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>1.09104in</Top>
-            <Left>1.18437in</Left>
-            <Height>0.2014in</Height>
-            <Width>7.18961in</Width>
-            <ZIndex>3</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox14">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!Company_Phone.Value</Value>
-                    <Style>
-                      <FontSize>8pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>0.85417in</Top>
-            <Left>1.18437in</Left>
-            <Height>0.21326in</Height>
-            <Width>7.18961in</Width>
-            <ZIndex>4</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox16">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!Company_Address.Value</Value>
-                    <Style>
-                      <FontSize>8pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>0.5976in</Top>
-            <Left>1.18437in</Left>
-            <Height>0.21326in</Height>
-            <Width>7.18961in</Width>
-            <ZIndex>5</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1157,24 +1054,25 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!Company_Name.Value</Value>
+                    <Value>Devco Sacco Limited</Value>
                     <Style>
+                      <FontFamily>Cambria</FontFamily>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
-                  <TextAlign>Center</TextAlign>
+                  <TextAlign>Left</TextAlign>
                 </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
             <Top>0.35031in</Top>
-            <Left>1.18437in</Left>
+            <Left>1.57807in</Left>
             <Height>0.22368in</Height>
-            <Width>7.18961in</Width>
-            <ZIndex>6</ZIndex>
+            <Width>2.27294in</Width>
+            <ZIndex>3</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1186,11 +1084,11 @@
             </Style>
           </Textbox>
           <Line Name="Line1">
-            <Top>2.29458in</Top>
+            <Top>1.66958in</Top>
             <Left>0.09375in</Left>
             <Height>0in</Height>
             <Width>8.26167in</Width>
-            <ZIndex>7</ZIndex>
+            <ZIndex>4</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1235,7 +1133,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Unwithdrawable Deposits</Value>
+                                  <Value>Non-withdrawable Deposits</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -1560,14 +1458,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="BankCodeDeposits">
+                        <Textbox Name="Textbox43">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!BankCodeDeposits.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -1579,7 +1477,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>BankCodeDeposits</rd:DefaultName>
+                          <rd:DefaultName>Textbox43</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1673,6 +1571,7 @@
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
+                                    <Format>#,0.00;(#,0.00);''</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1738,11 +1637,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=(Fields!Amount_Deposits.Value*-1)</Value>
+                                  <Value>=Fields!ClosingBal.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
-                                    <Format>n2</Format>
+                                    <Format>#,0.00;#,0.00-;'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1955,7 +1854,7 @@
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>n2</Format>
+                                    <Format>#,0.00;(#,0.00);''</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1997,7 +1896,7 @@
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>n2</Format>
+                                    <Format>#,0.00;(#,0.00);''</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -2126,11 +2025,11 @@
                 </FilterValues>
               </Filter>
             </Filters>
-            <Top>3.03646in</Top>
+            <Top>2.41146in</Top>
             <Left>0.08207in</Left>
             <Height>0.67708in</Height>
             <Width>8.26773in</Width>
-            <ZIndex>8</ZIndex>
+            <ZIndex>5</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -2565,7 +2464,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>Loan Repayment</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -2596,34 +2495,33 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox18">
+                        <Textbox Name="Repayment_Loans">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!Repayment_Loans.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox18</rd:DefaultName>
+                          <rd:DefaultName>Repayment_Loans</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
                             </Border>
                             <TopBorder>
-                              <Color>Black</Color>
                               <Style>Solid</Style>
-                              <Width>1pt</Width>
                             </TopBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -2631,6 +2529,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -2838,7 +2737,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -3047,7 +2946,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -3101,17 +3000,18 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Amount_Loan">
+                        <Textbox Name="CLosingBalance_loan">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Amount_Loan.Value</Value>
+                                  <Value>=Fields!CLosingBalance_loan.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3120,7 +3020,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Amount_Loan</rd:DefaultName>
+                          <rd:DefaultName>CLosingBalance_loan</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -3279,12 +3179,12 @@
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>#,0.00;#,0.00-;'-'</Format>
+                                    <Format>#,0.00;#,0.00-;''</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -3321,7 +3221,7 @@
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>#,0.00;#,0.00-;'-'</Format>
+                                    <Format>#,0.00;#,0.00-;''</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3480,11 +3380,11 @@
                 <Value>=Fields!PostingDate_loan.Value</Value>
               </SortExpression>
             </SortExpressions>
-            <Top>5.15834in</Top>
+            <Top>4.53334in</Top>
             <Left>0.08207in</Left>
             <Height>1.03124in</Height>
             <Width>8.26609in</Width>
-            <ZIndex>9</ZIndex>
+            <ZIndex>6</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -4181,7 +4081,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!LoanNo_Interest.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -4431,7 +4331,7 @@
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Normal</FontWeight>
-                                    <Format>n2</Format>
+                                    <Format>#,0.00;(#,0.00);''</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4462,7 +4362,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Amount_Interest.Value</Value>
+                                  <Value>=Fields!ClosingBalInt.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -4634,7 +4534,7 @@
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>#,0.00;#,0.00-;'-'</Format>
+                                    <Format>#,0.00;#,0.00-;''</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4676,7 +4576,7 @@
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>#,0.00;#,0.00-;'-'</Format>
+                                    <Format>#,0.00;#,0.00-;''</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4835,11 +4735,11 @@
                 <Value>=Fields!PostingDate_loan.Value</Value>
               </SortExpression>
             </SortExpressions>
-            <Top>6.2in</Top>
+            <Top>5.575in</Top>
             <Left>0.0871in</Left>
             <Height>1.03124in</Height>
             <Width>8.2611in</Width>
-            <ZIndex>10</ZIndex>
+            <ZIndex>7</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -4926,7 +4826,10 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!No_Members.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>Cambria</FontFamily>
+                                    <FontSize>9pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -4996,7 +4899,10 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Name_Members.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>Cambria</FontFamily>
+                                    <FontSize>9pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -5065,7 +4971,10 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!IDNo_Members.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>Cambria</FontFamily>
+                                    <FontSize>9pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -5102,11 +5011,11 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>1.64875in</Top>
+            <Top>1.02375in</Top>
             <Left>0.11542in</Left>
             <Height>0.59376in</Height>
             <Width>3.10091in</Width>
-            <ZIndex>11</ZIndex>
+            <ZIndex>8</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5476,14 +5385,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="BankCodeDeposits2">
+                        <Textbox Name="Textbox41">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!BankCodeHousingShares.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -5495,7 +5404,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>BankCodeDeposits</rd:DefaultName>
+                          <rd:DefaultName>Textbox41</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -5589,6 +5498,7 @@
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
+                                    <Format>#,0.00;(#,0.00);''</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -5654,7 +5564,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=(Fields!Amount_HousingShares.Value*-1)</Value>
+                                  <Value>=Fields!CLosingBalancesHousingShares.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -5871,6 +5781,7 @@
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.00;(#,0.00);''</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -6041,11 +5952,11 @@
                 </FilterValues>
               </Filter>
             </Filters>
-            <Top>4.475in</Top>
+            <Top>3.85in</Top>
             <Left>0.0871in</Left>
             <Height>0.67708in</Height>
             <Width>8.26773in</Width>
-            <ZIndex>12</ZIndex>
+            <ZIndex>9</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -6548,6 +6459,7 @@
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
+                                    <Format>#,0.00;(#,0.00);''</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -6582,6 +6494,7 @@
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
+                                    <Format>#,0.00;(#,0.00);''</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -6612,7 +6525,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=(Fields!Amount_Dividend.Value * -1)</Value>
+                                  <Value>=Fields!CLosingBalancesDividend.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -6829,6 +6742,7 @@
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.00;(#,0.00);''</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -6870,6 +6784,7 @@
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.00;(#,0.00);''</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -6998,11 +6913,11 @@
                 </FilterValues>
               </Filter>
             </Filters>
-            <Top>3.73541in</Top>
+            <Top>3.11041in</Top>
             <Left>0.08958in</Left>
             <Height>0.67708in</Height>
             <Width>8.26773in</Width>
-            <ZIndex>13</ZIndex>
+            <ZIndex>10</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -7029,8 +6944,24 @@
               </RightBorder>
             </Style>
           </Tablix>
+          <Image Name="Image1">
+            <Source>Database</Source>
+            <Value>=First(Fields!Company_Picture.Value, "DataSet_Result")</Value>
+            <MIMEType>image/png</MIMEType>
+            <Sizing>FitProportional</Sizing>
+            <Top>0.08396in</Top>
+            <Left>0.11542in</Left>
+            <Height>0.68795in</Height>
+            <Width>1.19582in</Width>
+            <ZIndex>11</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
         </ReportItems>
-        <Height>7.32499in</Height>
+        <Height>6.64791in</Height>
         <Style />
       </Body>
       <Width>8.4469in</Width>
@@ -7047,9 +6978,10 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Page</Value>
+                      <Value>Pg</Value>
                       <Style>
-                        <FontSize>8pt</FontSize>
+                        <FontFamily>Cambria</FontFamily>
+                        <FontSize>7pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -7058,9 +6990,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
               <Top>0.05834in</Top>
-              <Left>3.35144in</Left>
+              <Left>0.22644in</Left>
               <Height>0.17708in</Height>
-              <Width>0.37636in</Width>
+              <Width>0.21212in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -7080,7 +7012,8 @@
                     <TextRun>
                       <Value>=Globals!PageNumber</Value>
                       <Style>
-                        <FontSize>8pt</FontSize>
+                        <FontFamily>Cambria</FontFamily>
+                        <FontSize>7pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -7091,9 +7024,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
               <Top>0.05834in</Top>
-              <Left>3.758in</Left>
+              <Left>0.45244in</Left>
               <Height>0.17708in</Height>
-              <Width>0.43719in</Width>
+              <Width>0.16636in</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -7114,7 +7047,8 @@
                     <TextRun>
                       <Value>of</Value>
                       <Style>
-                        <FontSize>8pt</FontSize>
+                        <FontFamily>Cambria</FontFamily>
+                        <FontSize>7pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -7125,9 +7059,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
               <Top>0.05834in</Top>
-              <Left>4.23508in</Left>
+              <Left>0.6188in</Left>
               <Height>0.17708in</Height>
-              <Width>0.37636in</Width>
+              <Width>0.22046in</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -7148,7 +7082,8 @@
                     <TextRun>
                       <Value>=Globals!OverallTotalPages</Value>
                       <Style>
-                        <FontSize>8pt</FontSize>
+                        <FontFamily>Cambria</FontFamily>
+                        <FontSize>7pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -7158,10 +7093,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>0.05834in</Top>
-              <Left>4.64164in</Left>
-              <Height>0.17708in</Height>
-              <Width>0.43719in</Width>
+              <Top>0.06944in</Top>
+              <Left>0.8653in</Left>
+              <Height>0.16598in</Height>
+              <Width>0.24969in</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -7573,102 +7508,6 @@ End Function
         </Field>
         <Field Name="BankCodeHousingShares">
           <DataField>BankCodeHousingShares</DataField>
-        </Field>
-        <Field Name="OpenBalancesPepeaShares">
-          <DataField>OpenBalancesPepeaShares</DataField>
-        </Field>
-        <Field Name="OpenBalancesPepeaSharesFormat">
-          <DataField>OpenBalancesPepeaSharesFormat</DataField>
-        </Field>
-        <Field Name="CLosingBalancesPepeaShares">
-          <DataField>CLosingBalancesPepeaShares</DataField>
-        </Field>
-        <Field Name="CLosingBalancesPepeaSharesFormat">
-          <DataField>CLosingBalancesPepeaSharesFormat</DataField>
-        </Field>
-        <Field Name="Description_PepeaShares">
-          <DataField>Description_PepeaShares</DataField>
-        </Field>
-        <Field Name="DocumentNo_PepeaShares">
-          <DataField>DocumentNo_PepeaShares</DataField>
-        </Field>
-        <Field Name="PostingDate_PepeaShares">
-          <DataField>PostingDate_PepeaShares</DataField>
-        </Field>
-        <Field Name="CreditAmount_PepeaShares">
-          <DataField>CreditAmount_PepeaShares</DataField>
-        </Field>
-        <Field Name="CreditAmount_PepeaSharesFormat">
-          <DataField>CreditAmount_PepeaSharesFormat</DataField>
-        </Field>
-        <Field Name="DebitAmount_PepeaShares">
-          <DataField>DebitAmount_PepeaShares</DataField>
-        </Field>
-        <Field Name="DebitAmount_PepeaSharesFormat">
-          <DataField>DebitAmount_PepeaSharesFormat</DataField>
-        </Field>
-        <Field Name="Amount_PepeaShares">
-          <DataField>Amount_PepeaShares</DataField>
-        </Field>
-        <Field Name="Amount_PepeaSharesFormat">
-          <DataField>Amount_PepeaSharesFormat</DataField>
-        </Field>
-        <Field Name="TransactionType_PepeaShares">
-          <DataField>TransactionType_PepeaShares</DataField>
-        </Field>
-        <Field Name="BalAccountNo_PepeaShares">
-          <DataField>BalAccountNo_PepeaShares</DataField>
-        </Field>
-        <Field Name="BankCodePepeaShares">
-          <DataField>BankCodePepeaShares</DataField>
-        </Field>
-        <Field Name="OpenBalancesFOSAShares">
-          <DataField>OpenBalancesFOSAShares</DataField>
-        </Field>
-        <Field Name="OpenBalancesFOSASharesFormat">
-          <DataField>OpenBalancesFOSASharesFormat</DataField>
-        </Field>
-        <Field Name="CLosingBalancesFOSAShares">
-          <DataField>CLosingBalancesFOSAShares</DataField>
-        </Field>
-        <Field Name="CLosingBalancesFOSASharesFormat">
-          <DataField>CLosingBalancesFOSASharesFormat</DataField>
-        </Field>
-        <Field Name="Description_FOSAShares">
-          <DataField>Description_FOSAShares</DataField>
-        </Field>
-        <Field Name="DocumentNo_FOSAShares">
-          <DataField>DocumentNo_FOSAShares</DataField>
-        </Field>
-        <Field Name="PostingDate_FOSAShares">
-          <DataField>PostingDate_FOSAShares</DataField>
-        </Field>
-        <Field Name="CreditAmount_FOSAShares">
-          <DataField>CreditAmount_FOSAShares</DataField>
-        </Field>
-        <Field Name="CreditAmount_FOSASharesFormat">
-          <DataField>CreditAmount_FOSASharesFormat</DataField>
-        </Field>
-        <Field Name="DebitAmount_FOSAShares">
-          <DataField>DebitAmount_FOSAShares</DataField>
-        </Field>
-        <Field Name="DebitAmount_FOSASharesFormat">
-          <DataField>DebitAmount_FOSASharesFormat</DataField>
-        </Field>
-        <Field Name="Amount_FOSAShares">
-          <DataField>Amount_FOSAShares</DataField>
-        </Field>
-        <Field Name="Amount_FOSASharesFormat">
-          <DataField>Amount_FOSASharesFormat</DataField>
-        </Field>
-        <Field Name="TransactionType_FOSAShares">
-          <DataField>TransactionType_FOSAShares</DataField>
-        </Field>
-        <Field Name="BalAccountNo_FOSAShares">
-          <DataField>BalAccountNo_FOSAShares</DataField>
-        </Field>
-        <Field Name="BankCodeFOSAShares">
-          <DataField>BankCodeFOSAShares</DataField>
         </Field>
         <Field Name="OpeningBal">
           <DataField>OpeningBal</DataField>

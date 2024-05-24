@@ -45,9 +45,10 @@ Page 51516261 "Posted BOSA Receipts List"
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted; Posted)
+                field("Cheque Date"; "Cheque Date")
                 {
                     ApplicationArea = Basic;
+                    Caption = 'Posting Date';
                 }
             }
         }

@@ -5,6 +5,8 @@ Page 51516247 "Loans Guarantee Details"
     SourceTable = "Loans Guarantee Details";
     SourceTableView = where(Substituted = const(false));
 
+    
+
     layout
     {
         area(content)
@@ -14,7 +16,7 @@ Page 51516247 "Loans Guarantee Details"
                 field("Loan No"; "Loan No")
                 {
                     Editable = false;
-                    Visible = false;
+                  
                 }
                 field("Member No"; "Member No")
                 {
@@ -31,7 +33,7 @@ Page 51516247 "Loans Guarantee Details"
                             Rec."Free Shares" := ((rec.Shares * 4) - Rec."Total Loans Guaranteed");
                             rec."ID No." := cust."ID No.";
                             rec.Date := Today;
-                            rec."Loan Balance" := FnGetPersonGuarantingLoanBal(rec."Member No");
+                            //rec."Loan Balance" := FnGetPersonGuarantingLoanBal(rec."Member No");
                             rec."Outstanding Balance" := FnGetPersonGuarantingLoanBal(rec."Member No");
                             rec."Self Guarantee" := FnIsSelfGuarantee(rec."Loan No", rec."Member No");
                         end;

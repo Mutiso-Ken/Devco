@@ -268,58 +268,58 @@ Report 51516302 "Deposits Statement"
                     OpenBalancePref := PrefSharesBF * -1;
                 end;
             }
-            dataitem(FShares; "Cust. Ledger Entry")
-            {
-                DataItemLink = "Customer No." = field("No."), "Posting Date" = field("Date Filter");
-                DataItemTableView = sorting("Transaction Type", "Loan No", "Posting Date") where("Transaction Type" = const("Partial Disbursement"), Reversed = filter(false));
-                column(ReportForNavId_1000000016; 1000000016)
-                {
-                }
-                column(OpenBalancesFs; OpenBalanceHse)
-                {
-                }
-                column(CLosingBalancesFs; CLosingBalanceHse)
-                {
-                }
-                column(DescriptionFs; FShares.Description)
-                {
-                }
-                column(DocumentNoFs; FShares."Document No.")
-                {
-                }
-                column(PostingDateFs; FShares."Posting Date")
-                {
-                }
-                column(CreditAmountFs; FShares."Credit Amount")
-                {
-                }
-                column(DebitAmountFs; FShares."Debit Amount")
-                {
-                }
-                column(AmountFs; FShares."Amount Posted")
-                {
-                }
-                column(TransactionTypeFs; FShares."Transaction Type")
-                {
-                }
+            // dataitem(FShares; "Cust. Ledger Entry")
+            // {
+            //     DataItemLink = "Customer No." = field("No."), "Posting Date" = field("Date Filter");
+            //     DataItemTableView = sorting("Transaction Type", "Loan No", "Posting Date") where("Transaction Type" = const("Partial Disbursement"), Reversed = filter(false));
+            //     column(ReportForNavId_1000000016; 1000000016)
+            //     {
+            //     }
+            //     column(OpenBalancesFs; OpenBalanceHse)
+            //     {
+            //     }
+            //     column(CLosingBalancesFs; CLosingBalanceHse)
+            //     {
+            //     }
+            //     column(DescriptionFs; FShares.Description)
+            //     {
+            //     }
+            //     column(DocumentNoFs; FShares."Document No.")
+            //     {
+            //     }
+            //     column(PostingDateFs; FShares."Posting Date")
+            //     {
+            //     }
+            //     column(CreditAmountFs; FShares."Credit Amount")
+            //     {
+            //     }
+            //     column(DebitAmountFs; FShares."Debit Amount")
+            //     {
+            //     }
+            //     column(AmountFs; FShares."Amount Posted")
+            //     {
+            //     }
+            //     column(TransactionTypeFs; FShares."Transaction Type")
+            //     {
+            //     }
 
-                trigger OnAfterGetRecord()
-                begin
-                    CLosingBalanceFs := CLosingBalanceFs - FShares."Amount Posted";
-                    if FShares."Amount Posted" < 0 then begin
-                        FShares."Credit Amount" := (FShares."Amount Posted" * -1);
-                    end else
-                        if FShares."Amount Posted" > 0 then begin
-                            FShares."Debit Amount" := (FShares."Amount Posted");
-                        end;
-                end;
+            //     trigger OnAfterGetRecord()
+            //     begin
+            //         CLosingBalanceFs := CLosingBalanceFs - FShares."Amount Posted";
+            //         if FShares."Amount Posted" < 0 then begin
+            //             FShares."Credit Amount" := (FShares."Amount Posted" * -1);
+            //         end else
+            //             if FShares."Amount Posted" > 0 then begin
+            //                 FShares."Debit Amount" := (FShares."Amount Posted");
+            //             end;
+            //     end;
 
-                trigger OnPreDataItem()
-                begin
-                    CLosingBalanceFs := HseBF;
-                    OpenBalanceFs := HseBF * -1;
-                end;
-            }
+            //     trigger OnPreDataItem()
+            //     begin
+            //         CLosingBalanceFs := HseBF;
+            //         OpenBalanceFs := HseBF * -1;
+            //     end;
+            // }
             dataitem(Cshares; "Cust. Ledger Entry")
             {
                 DataItemLink = "Customer No." = field("No."), "Posting Date" = field("Date Filter");
@@ -373,115 +373,115 @@ Report 51516302 "Deposits Statement"
                     OpenBalanceCs := ComputerSharesBF * -1;
                 end;
             }
-            dataitem(Vshares; "Cust. Ledger Entry")
-            {
-                DataItemLink = "Customer No." = field("No."), "Posting Date" = field("Date Filter");
-                DataItemTableView = sorting("Transaction Type", "Loan No", "Posting Date") where("Transaction Type" = const("Loan Guard"), Reversed = filter(false));
-                column(ReportForNavId_1102755076; 1102755076)
-                {
-                }
-                column(OpenBalancesVs; OpenBalanceVs)
-                {
-                }
-                column(CLosingBalancesVs; CLosingBalanceVs)
-                {
-                }
-                column(DescriptionVs; Vshares.Description)
-                {
-                }
-                column(DocumentNoVs; Vshares."Document No.")
-                {
-                }
-                column(PostingDateVs; Vshares."Posting Date")
-                {
-                }
-                column(CreditAmountVs; Vshares."Credit Amount")
-                {
-                }
-                column(DebitAmountVs; Vshares."Debit Amount")
-                {
-                }
-                column(AmountVs; Vshares."Amount Posted")
-                {
-                }
-                column(TransactionTypeVs; Vshares."Transaction Type")
-                {
-                    OptionCaption = ' ,Registration Fee,Loan,Repayment,Withdrawal,Interest Due,Interest Paid,Benevolent Fund,Deposit Contribution,Penalty Charged,Application Fee,Appraisal Fee,Executive,Unallocated Funds,Shares Capital,Loan Adjustment,Dividend,Withholding Tax,Administration Fee,Insurance Contribution,Prepayment,Ordinary Building Shares(2),Xmas Contribution,Penalty Paid,Dev Shares,Tax Shares,Welfare Contribution 2,Loan Penalty,Loan Guard,Preferencial Building Shares,Van Shares,Bus Shares,Computer Shares,Ordinary Building Shares,Housing Deposits Shares,M Pesa Charge ,Insurance Charge,Insurance Paid,FOSA Account,Partial Disbursement,Loan Due,FOSA Shares,Loan Form Fee,Kuscco Shares,CIC shares,COOP Shares,Pepea Shares';
-                }
+            // dataitem(Vshares; "Cust. Ledger Entry")
+            // {
+            //     DataItemLink = "Customer No." = field("No."), "Posting Date" = field("Date Filter");
+            //     DataItemTableView = sorting("Transaction Type", "Loan No", "Posting Date") where("Transaction Type" = const("Loan Guard"), Reversed = filter(false));
+            //     column(ReportForNavId_1102755076; 1102755076)
+            //     {
+            //     }
+            //     column(OpenBalancesVs; OpenBalanceVs)
+            //     {
+            //     }
+            //     column(CLosingBalancesVs; CLosingBalanceVs)
+            //     {
+            //     }
+            //     column(DescriptionVs; Vshares.Description)
+            //     {
+            //     }
+            //     column(DocumentNoVs; Vshares."Document No.")
+            //     {
+            //     }
+            //     column(PostingDateVs; Vshares."Posting Date")
+            //     {
+            //     }
+            //     column(CreditAmountVs; Vshares."Credit Amount")
+            //     {
+            //     }
+            //     column(DebitAmountVs; Vshares."Debit Amount")
+            //     {
+            //     }
+            //     column(AmountVs; Vshares."Amount Posted")
+            //     {
+            //     }
+            //     column(TransactionTypeVs; Vshares."Transaction Type")
+            //     {
+            //         OptionCaption = ' ,Registration Fee,Loan,Repayment,Withdrawal,Interest Due,Interest Paid,Benevolent Fund,Deposit Contribution,Penalty Charged,Application Fee,Appraisal Fee,Executive,Unallocated Funds,Shares Capital,Loan Adjustment,Dividend,Withholding Tax,Administration Fee,Insurance Contribution,Prepayment,Ordinary Building Shares(2),Xmas Contribution,Penalty Paid,Dev Shares,Tax Shares,Welfare Contribution 2,Loan Penalty,Loan Guard,Preferencial Building Shares,Van Shares,Bus Shares,Computer Shares,Ordinary Building Shares,Housing Deposits Shares,M Pesa Charge ,Insurance Charge,Insurance Paid,FOSA Account,Partial Disbursement,Loan Due,FOSA Shares,Loan Form Fee,Kuscco Shares,CIC shares,COOP Shares,Pepea Shares';
+            //     }
 
-                trigger OnAfterGetRecord()
-                begin
+            //     trigger OnAfterGetRecord()
+            //     begin
 
-                    //CLosingBalanceHse:=CLosingBalanceHse-Vshares."Amount Posted";
-                    CLosingBalanceVs := CLosingBalanceVs - Vshares."Amount Posted";
-                    if Vshares."Amount Posted" < 0 then begin
-                        Vshares."Credit Amount" := (Vshares."Amount Posted" * -1);
-                    end else
-                        if Vshares."Amount Posted" > 0 then begin
-                            Vshares."Debit Amount" := (Vshares."Amount Posted");
-                        end;
-                end;
+            //         //CLosingBalanceHse:=CLosingBalanceHse-Vshares."Amount Posted";
+            //         CLosingBalanceVs := CLosingBalanceVs - Vshares."Amount Posted";
+            //         if Vshares."Amount Posted" < 0 then begin
+            //             Vshares."Credit Amount" := (Vshares."Amount Posted" * -1);
+            //         end else
+            //             if Vshares."Amount Posted" > 0 then begin
+            //                 Vshares."Debit Amount" := (Vshares."Amount Posted");
+            //             end;
+            //     end;
 
-                trigger OnPreDataItem()
-                begin
-                    //CLosingBalanceHse:=HseBF;
-                    //OpenBalanceHse:=HseBF*-1;
-                    CLosingBalanceVs := VanSharesBF;
-                    OpenBalanceVs := VanSharesBF * -1;
-                end;
-            }
-            dataitem(Holiday_Savers; "Cust. Ledger Entry")
-            {
-                DataItemLink = "Customer No." = field("No."), "Posting Date" = field("Date Filter");
-                DataItemTableView = sorting("Transaction Type", "Loan No", "Posting Date") where("Transaction Type" = const(Prepayment), Reversed = filter(false));
-                column(ReportForNavId_1000000026; 1000000026)
-                {
-                }
-                column(OpenBalancesDep1; OpenBalanceDep1)
-                {
-                }
-                column(CLosingBalancesDep1; CLosingBalanceDep1)
-                {
-                }
-                column(DescriptionDep1; Holiday_Savers.Description)
-                {
-                }
-                column(DocumentNoDep1; Holiday_Savers."Document No.")
-                {
-                }
-                column(PostingDateDep1; Holiday_Savers."Posting Date")
-                {
-                }
-                column(CreditAmountDep1; Holiday_Savers."Credit Amount")
-                {
-                }
-                column(DebitAmountDep1; Holiday_Savers."Debit Amount")
-                {
-                }
-                column(AmountDep1; Holiday_Savers."Amount Posted")
-                {
-                }
-                column(TransactionTypeDep1; Holiday_Savers."Transaction Type")
-                {
-                }
+            //     trigger OnPreDataItem()
+            //     begin
+            //         //CLosingBalanceHse:=HseBF;
+            //         //OpenBalanceHse:=HseBF*-1;
+            //         CLosingBalanceVs := VanSharesBF;
+            //         OpenBalanceVs := VanSharesBF * -1;
+            //     end;
+            // }
+            // dataitem(Holiday_Savers; "Cust. Ledger Entry")
+            // {
+            //     DataItemLink = "Customer No." = field("No."), "Posting Date" = field("Date Filter");
+            //     DataItemTableView = sorting("Transaction Type", "Loan No", "Posting Date") where("Transaction Type" = const(Prepayment), Reversed = filter(false));
+            //     column(ReportForNavId_1000000026; 1000000026)
+            //     {
+            //     }
+            //     column(OpenBalancesDep1; OpenBalanceDep1)
+            //     {
+            //     }
+            //     column(CLosingBalancesDep1; CLosingBalanceDep1)
+            //     {
+            //     }
+            //     column(DescriptionDep1; Holiday_Savers.Description)
+            //     {
+            //     }
+            //     column(DocumentNoDep1; Holiday_Savers."Document No.")
+            //     {
+            //     }
+            //     column(PostingDateDep1; Holiday_Savers."Posting Date")
+            //     {
+            //     }
+            //     column(CreditAmountDep1; Holiday_Savers."Credit Amount")
+            //     {
+            //     }
+            //     column(DebitAmountDep1; Holiday_Savers."Debit Amount")
+            //     {
+            //     }
+            //     column(AmountDep1; Holiday_Savers."Amount Posted")
+            //     {
+            //     }
+            //     column(TransactionTypeDep1; Holiday_Savers."Transaction Type")
+            //     {
+            //     }
 
-                trigger OnAfterGetRecord()
-                begin
-                    CLosingBalanceHse := CLosingBalanceHse - Holiday_Savers."Amount Posted";
-                    if Holiday_Savers."Amount Posted" < 0 then begin
-                        Holiday_Savers."Credit Amount" := (Holiday_Savers."Amount Posted" * -1);
-                    end else
-                        if Holiday_Savers."Amount Posted" > 0 then begin
-                            Holiday_Savers."Debit Amount" := (Holiday_Savers."Amount Posted");
-                        end;
-                end;
+            //     trigger OnAfterGetRecord()
+            //     begin
+            //         CLosingBalanceHse := CLosingBalanceHse - Holiday_Savers."Amount Posted";
+            //         if Holiday_Savers."Amount Posted" < 0 then begin
+            //             Holiday_Savers."Credit Amount" := (Holiday_Savers."Amount Posted" * -1);
+            //         end else
+            //             if Holiday_Savers."Amount Posted" > 0 then begin
+            //                 Holiday_Savers."Debit Amount" := (Holiday_Savers."Amount Posted");
+            //             end;
+            //     end;
 
-                trigger OnPreDataItem()
-                begin
-                    CLosingBalanceHse := Dep1BF;
-                    OpenBalanceHse := Dep1BF * -1;
-                end;
-            }
+            //     trigger OnPreDataItem()
+            //     begin
+            //         CLosingBalanceHse := Dep1BF;
+            //         OpenBalanceHse := Dep1BF * -1;
+            //     end;
+            // }
             dataitem(HousingTitle; "Cust. Ledger Entry")
             {
                 DataItemLink = "Customer No." = field("No."), "Posting Date" = field("Date Filter");
@@ -534,62 +534,62 @@ Report 51516302 "Deposits Statement"
                     OpenBalanceDep2 := Dep2BF * -1;
                 end;
             }
-            dataitem(SchoolFees; "Cust. Ledger Entry")
-            {
-                DataItemLink = "Customer No." = field("No."), "Posting Date" = field("Date Filter");
-                DataItemTableView = sorting("Transaction Type", "Loan No", "Posting Date") where("Transaction Type" = const("SchFee Shares"), Reversed = filter(false));
-                PrintOnlyIfDetail = false;
-                column(ReportForNavId_14; 14)
-                {
-                }
-                column(OpeningBalSF; OpenBalanceSF)
-                {
-                }
-                column(ClosingBalSF; CLosingBalanceSF)
-                {
-                }
-                column(TransactionType_DepositsSF; SchoolFees."Transaction Type")
-                {
-                }
-                column(Amount_DepositsSF; SchoolFees."Amount Posted")
-                {
-                }
-                column(Description_DepositsSF; SchoolFees.Description)
-                {
-                }
-                column(DocumentNo_DepositsSF; SchoolFees."Document No.")
-                {
-                }
-                column(PostingDate_DepositsSF; SchoolFees."Posting Date")
-                {
-                }
-                column(DebitAmount_DepositsSF; SchoolFees."Debit Amount")
-                {
-                }
-                column(CreditAmount_DepositsSF; SchoolFees."Credit Amount")
-                {
-                }
-                column(Deposits_DescriptionSF; SchoolFees.Description)
-                {
-                }
+            // dataitem(SchoolFees; "Cust. Ledger Entry")
+            // {
+            //     DataItemLink = "Customer No." = field("No."), "Posting Date" = field("Date Filter");
+            //     DataItemTableView = sorting("Transaction Type", "Loan No", "Posting Date") where("Transaction Type" = const("SchFee Shares"), Reversed = filter(false));
+            //     PrintOnlyIfDetail = false;
+            //     column(ReportForNavId_14; 14)
+            //     {
+            //     }
+            //     column(OpeningBalSF; OpenBalanceSF)
+            //     {
+            //     }
+            //     column(ClosingBalSF; CLosingBalanceSF)
+            //     {
+            //     }
+            //     column(TransactionType_DepositsSF; SchoolFees."Transaction Type")
+            //     {
+            //     }
+            //     column(Amount_DepositsSF; SchoolFees."Amount Posted")
+            //     {
+            //     }
+            //     column(Description_DepositsSF; SchoolFees.Description)
+            //     {
+            //     }
+            //     column(DocumentNo_DepositsSF; SchoolFees."Document No.")
+            //     {
+            //     }
+            //     column(PostingDate_DepositsSF; SchoolFees."Posting Date")
+            //     {
+            //     }
+            //     column(DebitAmount_DepositsSF; SchoolFees."Debit Amount")
+            //     {
+            //     }
+            //     column(CreditAmount_DepositsSF; SchoolFees."Credit Amount")
+            //     {
+            //     }
+            //     column(Deposits_DescriptionSF; SchoolFees.Description)
+            //     {
+            //     }
 
-                trigger OnAfterGetRecord()
-                begin
-                    CLosingBalanceSF := CLosingBalanceSF + SchoolFees."Amount Posted";
-                    if SchoolFees."Amount Posted" < 0 then begin
-                        SchoolFees."Credit Amount" := (SchoolFees."Amount Posted" * -1);
-                    end else
-                        if SchoolFees."Amount Posted" > 0 then begin
-                            SchoolFees."Debit Amount" := (SchoolFees."Amount Posted");
-                        end;
-                end;
+            //     trigger OnAfterGetRecord()
+            //     begin
+            //         CLosingBalanceSF := CLosingBalanceSF + SchoolFees."Amount Posted";
+            //         if SchoolFees."Amount Posted" < 0 then begin
+            //             SchoolFees."Credit Amount" := (SchoolFees."Amount Posted" * -1);
+            //         end else
+            //             if SchoolFees."Amount Posted" > 0 then begin
+            //                 SchoolFees."Debit Amount" := (SchoolFees."Amount Posted");
+            //             end;
+            //     end;
 
-                trigger OnPreDataItem()
-                begin
-                    CLosingBalanceSF := SchoolfeesBF;
-                    OpenBalanceSF := SchoolfeesBF * -1;
-                end;
-            }
+            //     trigger OnPreDataItem()
+            //     begin
+            //         CLosingBalanceSF := SchoolfeesBF;
+            //         OpenBalanceSF := SchoolfeesBF * -1;
+            //     end;
+            // }
             dataitem(Loans; "Loans Register")
             {
                 DataItemLink = "Client Code" = field("No."), "Loan Product Type" = field("Loan Product Filter"), "Date filter" = field("Date Filter");
@@ -785,7 +785,7 @@ Report 51516302 "Deposits Statement"
                 column(Name; "Loans Guarantee Details".Name)
                 {
                 }
-                column(LBalance; "Loans Guarantee Details"."Loan Balance")
+                column(LBalance; "Loans Guarantee Details"."Loans Outstanding")
                 {
                 }
                 column(Shares; "Loans Guarantee Details".Shares)

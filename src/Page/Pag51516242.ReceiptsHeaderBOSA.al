@@ -214,25 +214,25 @@ Page 51516242 "Receipts Header-BOSA"
                                         repeat
 
                                             //Insurance Charge
-                                            Loans.CalcFields(Loans."Outstanding Balance", Loans."Interest Due", Loans."Loans Insurance", Loans."Outstanding Interest");
+                                            Loans.CalcFields(Loans."Outstanding Balance", Loans."Interest Due", Loans."Loans Insurance", Loans."Oustanding Interest");
                                             if (Loans."Outstanding Balance" > 0) and (Loans."Approved Amount" > 100000) and
                                             (Loans."Loans Insurance" > 0) then begin
 
 
 
-                                                ReceiptAllocations.Init;
-                                                ReceiptAllocations."Document No" := "Transaction No.";
-                                                ReceiptAllocations."Member No" := "Account No.";
-                                                ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::"Loan Insurance Paid";
-                                                ReceiptAllocations."Loan No." := Loans."Loan  No.";
-                                                ReceiptAllocations."Loan ID" := Loans."Loan Product Type";
-                                                ReceiptAllocations.Amount := Loans."Loans Insurance";
-                                                //MESSAGE('ReceiptAllocations.Amount is %1',ReceiptAllocations.Amount);
-                                                ReceiptAllocations."Amount Balance" := Loans."Outstanding Balance";
-                                                ReceiptAllocations."Total Amount" := ReceiptAllocations.Amount;
-                                                ReceiptAllocations."Global Dimension 1 Code" := 'BOSA';
-                                                ReceiptAllocations."Global Dimension 2 Code" := '01';
-                                                ReceiptAllocations.Insert;
+                                                // ReceiptAllocations.Init;
+                                                // ReceiptAllocations."Document No" := "Transaction No.";
+                                                // ReceiptAllocations."Member No" := "Account No.";
+                                                // ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::"Loan Insurance Paid";
+                                                // ReceiptAllocations."Loan No." := Loans."Loan  No.";
+                                                // ReceiptAllocations."Loan ID" := Loans."Loan Product Type";
+                                                // ReceiptAllocations.Amount := Loans."Loans Insurance";
+                                                // //MESSAGE('ReceiptAllocations.Amount is %1',ReceiptAllocations.Amount);
+                                                // ReceiptAllocations."Amount Balance" := Loans."Outstanding Balance";
+                                                // ReceiptAllocations."Total Amount" := ReceiptAllocations.Amount;
+                                                // ReceiptAllocations."Global Dimension 1 Code" := 'BOSA';
+                                                // ReceiptAllocations."Global Dimension 2 Code" := '01';
+                                                // ReceiptAllocations.Insert;
                                             end;
 
 
@@ -253,19 +253,19 @@ Page 51516242 "Receipts Header-BOSA"
                                                 ReceiptAllocations.Insert;
                                             end;
 
-                                            if (Loans."Outstanding Interest" > 0) then begin
+                                            if (Loans."Oustanding Interest" > 0) then begin
                                                 ReceiptAllocations.Init;
-                                                ReceiptAllocations."Document No" := "Transaction No.";
-                                                ReceiptAllocations."Member No" := "Account No.";
-                                                ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::"Insurance Contribution";
-                                                ReceiptAllocations."Loan No." := Loans."Loan  No.";
-                                                ReceiptAllocations.Amount := Loans."Outstanding Interest";
-                                                //ReceiptAllocations.Amount:=Loans."Loan Interest Repayment";
-                                                //ReceiptAllocations.Amount:=Loans."Interest Due";
-                                                ReceiptAllocations."Total Amount" := ReceiptAllocations.Amount + ReceiptAllocations."Interest Amount";
-                                                ReceiptAllocations."Global Dimension 1 Code" := 'BOSA';
-                                                ReceiptAllocations."Global Dimension 2 Code" := '01';
-                                                ReceiptAllocations.Insert;
+                                                // ReceiptAllocations."Document No" := "Transaction No.";
+                                                // ReceiptAllocations."Member No" := "Account No.";
+                                                // ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::"Insurance Contribution";
+                                                // ReceiptAllocations."Loan No." := Loans."Loan  No.";
+                                                // ReceiptAllocations.Amount := Loans."Oustanding Interest";
+                                                // //ReceiptAllocations.Amount:=Loans."Loan Interest Repayment";
+                                                // //ReceiptAllocations.Amount:=Loans."Interest Due";
+                                                // ReceiptAllocations."Total Amount" := ReceiptAllocations.Amount + ReceiptAllocations."Interest Amount";
+                                                // ReceiptAllocations."Global Dimension 1 Code" := 'BOSA';
+                                                // ReceiptAllocations."Global Dimension 2 Code" := '01';
+                                                // ReceiptAllocations.Insert;
                                             end;
 
                                             RunBal := RunBal - ReceiptAllocations.Amount;
@@ -575,12 +575,12 @@ Page 51516242 "Receipts Header-BOSA"
                                         GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
                                         GenJournalLine."Account No." := ReceiptAllocations."Member No";
                                         GenJournalLine.Validate(GenJournalLine."Account No.");
-                                        if ("Receipt Mode" = "receipt mode"::Mpesa) and (ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"FOSA Account") then begin
-                                            GenJournalLine.Amount := -Amount;
-                                            GenJournalLine."Account Type" := GenJournalLine."account type"::"G/L Account";
-                                            GenJournalLine."Account No." := GenSetup."FOSA MPESA COmm A/C";
-                                            GenJournalLine.Description := Format(ReceiptAllocations."Transaction Type") + '-' + Remarks;
-                                        end;
+                                        // if ("Receipt Mode" = "receipt mode"::Mpesa) and (ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"FOSA Account") then begin
+                                        //     GenJournalLine.Amount := -Amount;
+                                        //     GenJournalLine."Account Type" := GenJournalLine."account type"::"G/L Account";
+                                        //     GenJournalLine."Account No." := GenSetup."FOSA MPESA COmm A/C";
+                                        //     GenJournalLine.Description := Format(ReceiptAllocations."Transaction Type") + '-' + Remarks;
+                                        // end;
                                     end;
                                 end;
                                 //GenJournalLine."Prepayment date":=ReceiptAllocations."Prepayment Date";
@@ -594,12 +594,12 @@ Page 51516242 "Receipts Header-BOSA"
                                 GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
                                 GenJournalLine.Validate(GenJournalLine.Amount);
                                 //description
-                                if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Insurance Contribution" then
-                                    GenJournalLine.Description := 'Interest' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
-                                else
-                                    if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Loan Insurance Paid" then
-                                        GenJournalLine.Description := 'L-Insurance' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
-                                    else
+                                // if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Insurance Contribution" then
+                                //     GenJournalLine.Description := 'Interest' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
+                                // else
+                                //     if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Loan Insurance Paid" then
+                                //         GenJournalLine.Description := 'L-Insurance' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
+                                //     else
                                         if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Benevolent Fund" then
                                             GenJournalLine.Description := 'Insurance' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
                                         else
@@ -609,9 +609,9 @@ Page 51516242 "Receipts Header-BOSA"
                                                 if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Interest Paid" then
                                                     GenJournalLine.Description := 'Repayment' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
                                                 else
-                                                    if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Loan Insurance Paid" then
-                                                        GenJournalLine.Description := 'Unallocated' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
-                                                    else
+                                                    // if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Loan Insurance Paid" then
+                                                    //     GenJournalLine.Description := 'Unallocated' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
+                                                    // else
                                                         // if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"29" then
                                                         //     GenJournalLine.Description := 'Lukenya' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
                                                         //else

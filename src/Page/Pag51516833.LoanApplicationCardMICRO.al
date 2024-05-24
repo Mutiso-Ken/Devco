@@ -141,7 +141,7 @@ Page 51516833 "Loan Application Card - MICRO"
                                     LoanGuarantorDetailsTable.init();
                                     LoanGuarantorDetailsTable."Loan No" := "Loan  No.";
                                     LoanGuarantorDetailsTable."Member No" := Cust."No.";
-                                    LoanGuarantorDetailsTable."Loan Balance" := FnGetPersonGuarantingLoanBal(LoanGuarantorDetailsTable."Member No");
+                                    //LoanGuarantorDetailsTable."Loan Balance" := FnGetPersonGuarantingLoanBal(LoanGuarantorDetailsTable."Member No");
                                     LoanGuarantorDetailsTable."Outstanding Balance" := FnGetPersonGuarantingLoanBal(LoanGuarantorDetailsTable."Member No");
                                     LoanGuarantorDetailsTable."Group Account No." := "Group Account";
                                     LoanGuarantorDetailsTable.Shares := (Cust."Current Shares");
@@ -202,7 +202,7 @@ Page 51516833 "Loan Application Card - MICRO"
                                     LoanGuarantorDetailsTable.init();
                                     LoanGuarantorDetailsTable."Loan No" := "Loan  No.";
                                     LoanGuarantorDetailsTable."Member No" := Cust."No.";
-                                    LoanGuarantorDetailsTable."Loan Balance" := FnGetPersonGuarantingLoanBal(LoanGuarantorDetailsTable."Member No");
+                                   // LoanGuarantorDetailsTable."Loan Balance" := FnGetPersonGuarantingLoanBal(LoanGuarantorDetailsTable."Member No");
                                     LoanGuarantorDetailsTable."Outstanding Balance" := FnGetPersonGuarantingLoanBal(LoanGuarantorDetailsTable."Member No");
                                     LoanGuarantorDetailsTable."Group Account No." := "Group Account";
                                     LoanGuarantorDetailsTable.Shares := (Cust."Current Shares");

@@ -178,11 +178,11 @@ report 50010 "Payroll Payslip"
                 {
 
                 }
-                column(LoanApplicationFee; LoanApplicationFee)
+                column(LikizoContribution; LikizoContribution)
                 {
 
                 }
-                column(LoanInsuranceFee; LoanInsuranceFee)
+                column(ShareCapital; ShareCapital)
                 {
 
                 }
@@ -219,7 +219,7 @@ report 50010 "Payroll Payslip"
                     insrel := 0;
                     paye := 0;
                     Loanamounnt := 0;
-                    LoanApplicationFee := 0;
+                    LikizoContribution := 0;
                     LoanBalance := 0;
                     SaccoSharesAmunt := 0;
                     BenevolentAmount := 0;
@@ -333,27 +333,26 @@ report 50010 "Payroll Payslip"
                         until prPeriodTransactions2.Next = 0;
                     end;
 
-                    //Application fee
+                    //Likizo fee
                     prPeriodTransactions2.Reset;
                     prPeriodTransactions2.SetRange("Employee Code", "prPeriod Transactions."."Employee Code");
                     prPeriodTransactions2.SetRange("Payroll Period", "prPeriod Transactions."."Payroll Period");
-                    prPeriodTransactions2.SetRange("Transaction Code", 'LOAN APP FEE');
+                        prPeriodTransactions2.SetRange("coop parameters", "coop parameters"::Likizo); 
                     if prPeriodTransactions2.FindFirst then begin
                         repeat
-                            LoanApplicationFee := LoanApplicationFee + prPeriodTransactions2.Amount;
+                            LikizoContribution := LikizoContribution + prPeriodTransactions2.Amount;
                         until prPeriodTransactions2.Next = 0;
                     end;
 
-                    //Insurance Feee
+                    //Sharecapital Feee
 
                     prPeriodTransactions2.Reset;
                     prPeriodTransactions2.SetRange("Employee Code", "prPeriod Transactions."."Employee Code");
                     prPeriodTransactions2.SetRange("Payroll Period", "prPeriod Transactions."."Payroll Period");
-                    prPeriodTransactions2.SetRange("Transaction Code", 'LOAN INSURANCE');
-                    // prPeriodTransactions2.SetRange("coop parameters", "coop parameters"::"Loan Insurance Paid"); //LOAN APP FEE
+                     prPeriodTransactions2.SetRange("coop parameters", "coop parameters"::"Share Capital"); 
                     if prPeriodTransactions2.FindFirst then begin
                         repeat
-                            LoanInsuranceFee := LoanInsuranceFee + LoanInsuranceFee + prPeriodTransactions2.Amount;
+                            ShareCapital := ShareCapital + ShareCapital + prPeriodTransactions2.Amount;
                         until prPeriodTransactions2.Next = 0;
                     end;
 
@@ -375,8 +374,8 @@ report 50010 "Payroll Payslip"
                     end;
 
 
-                    TotalDeduction := (BenevolentAmount + SaccoSharesAmunt + LoanInsuranceFee +
-                    LoanApplicationFee + LoanInterestAmont + Loanamounnt + "Housing Levy" + NSSF + paye + NHIF);
+                    TotalDeduction := (BenevolentAmount + SaccoSharesAmunt + ShareCapital +
+                    LikizoContribution + LoanInterestAmont + Loanamounnt + "Housing Levy" + NSSF + paye + NHIF);
 
 
 
@@ -471,8 +470,8 @@ report 50010 "Payroll Payslip"
         LoanBalance: Decimal;
         SaccoSharesAmunt: Decimal;
         SaccoSharesTotal: Decimal;
-        LoanApplicationFee: Decimal;
-        LoanInsuranceFee: Decimal;
+        LikizoContribution: Decimal;
+        ShareCapital: Decimal;
         GPAY: Code[30];
         "Housing Levy": Decimal;
         INSRD: Code[30];

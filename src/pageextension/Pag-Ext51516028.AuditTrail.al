@@ -1,7 +1,7 @@
 pageextension 51516028 AuditTrail extends "Change Log Entries"
 {
 
-    Caption = 'Viwanda Audit';
+    Caption = 'Devco Sacco Audit';
     layout
     {
         modify("Date and Time")
@@ -10,7 +10,7 @@ pageextension 51516028 AuditTrail extends "Change Log Entries"
             var
                 DateTimee: DateTime;
                 LoogDate: Date;
-            begin
+            begin                                                                                                                                                                                                                                                                                                                                                                       
                 rec.Find('-');
                 repeat
                     DateTimee := "Date and Time";

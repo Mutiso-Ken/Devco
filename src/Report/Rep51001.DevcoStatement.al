@@ -118,11 +118,11 @@ Report 51001 "DevcoStatement"
                 column(OutstandingBalance_Loans; Loans."Outstanding Balance")
                 {
                 }
-                column(OustandingInterest_Loans; Loans."Outstanding Interest")
+                column(OustandingInterest_Loans; Loans."Oustanding Interest")
                 {
                 }
                 column(Issued_Date; loans."Issued Date") { }
-                column(Loan_Interest_Repayment; Loans."Outstanding Interest") { }
+                column(Loan_Interest_Repayment; Loans."Oustanding Interest") { }
                 column(Paymts; PaymtsDone) { }
                 column(PaymtsRemaining; PaymtsRemaining)
                 {

@@ -61,7 +61,7 @@ Report 51516030 "Loan Guarantors"
                     column(Name_LoanGuarantors; "Loan Guarantors".Name)
                     {
                     }
-                    column(LoanBalance_LoanGuarantors; "Loan Guarantors"."Loan Balance")
+                    column(LoanBalance_LoanGuarantors; "Loan Guarantors"."Loans Outstanding")
                     {
                     }
                     column(Shares_LoanGuarantors; "Loan Guarantors".Shares)

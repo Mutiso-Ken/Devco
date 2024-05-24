@@ -11,10 +11,16 @@ report 50024 FinancialStaticalInformation
         dataitem("Sacco Information"; "Sacco Information")
         {
             column(Code; Code) { }
+            column(RetainedEarningscoreCapital; RetainedEarningscoreCapital) { }
+            column(LRetainedEarningscoreCapital; LRetainedEarningscoreCapital) { }
             column(Active; Active) { }
             column(Dormant; Dormant) { }
             column(LActive; LActive) { }
             column(LDormant; LDormant) { }
+            column(StatutoryReserve; StatutoryReserve * -1) { }
+            column(LStatutoryReserve; LStatutoryReserve * -1) { }
+            column(Institutionalcapital; Institutionalcapital * -1) { }
+            column(LInstitutionalcapital; LInstitutionalcapital * -1) { }
             column(FemaleLNumberofEmployees; FemaleLNumberofEmployees) { }
             column(FemaleNumberofEmployees; FemaleNumberofEmployees) { }
             column(MaleLNumberofEmployees; MaleLNumberofEmployees) { }
@@ -44,14 +50,14 @@ report 50024 FinancialStaticalInformation
             column(LTotalInteresstIncome; LTotalInteresstIncome) { }
             column(TotalExpenses; TotalExpenses) { }
             column(LTotalExpenses; LTotalExpenses) { }
-            column(ShareCapital; ShareCapital) { }
-            column(LShareCapital; LShareCapital) { }
+            column(ShareCapital; ShareCapital * -1) { }
+            column(LShareCapital; LShareCapital * -1) { }
             column(Nonwithdrawabledeposits; Nonwithdrawabledeposits) { }
             column(LNonwithdrawabledeposits; LNonwithdrawabledeposits) { }
             column(CorecapitaltoAssetsRatio; CorecapitaltoAssetsRatio) { }
             column(LCorecapitaltoAssetsRatio; LCorecapitaltoAssetsRatio) { }
-            column(Corecapital; Corecapital) { }
-            column(LCorecapital; LCorecapital) { }
+            column(Corecapital; Corecapital * -1) { }
+            column(LCorecapital; LCorecapital * -1) { }
             column(CorecapitaltoDepositsRatio; CorecapitaltoDepositsRatio) { }
             column(LCorecapitaltoDepositsRatio; LCorecapitaltoDepositsRatio) { }
             column(LExternalBorrowingtoAssetsRatio; LExternalBorrowingtoAssetsRatio) { }
@@ -71,6 +77,8 @@ report 50024 FinancialStaticalInformation
             column(LTotalExpensesTotalAssets; LTotalExpensesTotalAssets) { }
             column(DividendsTotalRevenue; DividendsTotalRevenue) { }
             column(LDividendsTotalRevenue; LDividendsTotalRevenue) { }
+            column(FinancialAssetsTotalAssets; FinancialAssetsTotalAssets) { }
+            column(LFinancialAssetsTotalAssets; LFinancialAssetsTotalAssets) { }
             column(NoSaccoBraches; NoSaccoBraches)
             {
 
@@ -103,10 +111,12 @@ report 50024 FinancialStaticalInformation
                 DateFormula := '<-CY-1D>';
                 DateExpr := '<-1y>';
                 InputDate := Asat;
+                Direction := '>';
+                Precision := 0.01;
 
-                EndofLastyear :=Asat;
+                EndofLastyear := Asat;
                 CurrentYear := Date2DMY(EndofLastyear, 3);
-                LastYearButOne := CalcDate(DateExpr, EndofLastyear);
+                LastYearButOne := CalcDate(DateFormula, EndofLastyear);
                 PreviousYear := CurrentYear - 1;
                 //Date := DMY2DATE(Day,Month,Year);
 
@@ -186,7 +196,7 @@ report 50024 FinancialStaticalInformation
                     repeat
                         GLEntry.Reset;
                         GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', EndofLastyear);
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
                             Cashatbank += GLEntry.Amount;
@@ -201,7 +211,7 @@ report 50024 FinancialStaticalInformation
                     repeat
                         GLEntry.Reset;
                         GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYearButOne);
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', LastYearButOne);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
                             LCashatbank += GLEntry.Amount;
@@ -619,13 +629,14 @@ report 50024 FinancialStaticalInformation
                 //short term Liabilities
                 //LIABILITIES
                 //Member Deposits
+                Nonwithdrawabledeposits := 0;
                 GLAccount.Reset;
                 GLAccount.SetFilter(GLAccount.MkopoLiabilities, '%1', GLAccount.MkopoLiabilities::MemberDeposits);
                 if GLAccount.FindSet then begin
                     repeat
                         GLEntry.Reset;
                         GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', EndofLastyear);
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
                             Nonwithdrawabledeposits += -1 * GLEntry.Amount;
@@ -633,13 +644,14 @@ report 50024 FinancialStaticalInformation
                     until GLAccount.Next = 0;
 
                 end;
+                LNonwithdrawabledeposits := 0;
                 GLAccount.Reset;
                 GLAccount.SetFilter(GLAccount.MkopoLiabilities, '%1', GLAccount.MkopoLiabilities::MemberDeposits);
                 if GLAccount.FindSet then begin
                     repeat
                         GLEntry.Reset;
                         GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYearButOne);
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', LastYearButOne);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
                             LNonwithdrawabledeposits += -1 * GLEntry.Amount;
@@ -660,7 +672,7 @@ report 50024 FinancialStaticalInformation
                         GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', EndofLastyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            InterestonMemberdeposits += 1 * GLEntry.Amount;
+                            InterestonMemberdeposits += -1 * GLEntry.Amount;
 
                         end;
                     until GLAccount.Next = 0;
@@ -675,7 +687,7 @@ report 50024 FinancialStaticalInformation
                         GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYearButOne);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            LInterestonMemberdeposits += 1 * GLEntry.Amount;
+                            LInterestonMemberdeposits += -1 * GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
                 end;
@@ -776,14 +788,45 @@ report 50024 FinancialStaticalInformation
                     until GLAccount.Next = 0;
                 end;
                 //EndofTaxpayable
-                shortTermLiabilities := Nonwithdrawabledeposits + InterestonMemberdeposits + TradeandOtherPayables + Hononaria + TaxPayable;
-                LshortTermLiabilities := LNonwithdrawabledeposits + LInterestonMemberdeposits + LTradeandOtherPayables + LHononaria + LTaxPayable;
-                //End of short term Liabliies
+                shortTermLiabilities := 0;
+                LshortTermLiabilities := 0;
 
-
-                Cashatbank := 0;
+                shortTermLiabilities := 0;
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount.Assets, '%1', GLAccount.Assets::CashAndEquivalents);
+                GLAccount.SetFilter(GLAccount.Others, '%1', GLAccount.Others::ShortTermLiabilities);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            shortTermLiabilities += GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+
+                end;
+                LshortTermLiabilities := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Others, '%1', GLAccount.Others::ShortTermLiabilities);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', LastYearButOne);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            LshortTermLiabilities += GLEntry.Amount;
+
+                        end;
+                    until GLAccount.Next = 0;
+
+                end;
+
+                //statutory
+                StatutoryReserve := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.FinancedBy, '%1', GLAccount.FinancedBy::StatutoryReserves);
                 if GLAccount.FindSet then begin
                     repeat
                         GLEntry.Reset;
@@ -791,14 +834,13 @@ report 50024 FinancialStaticalInformation
                         GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', EndofLastyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            Cashatbank += GLEntry.Amount;
+                            StatutoryReserve += 1 * GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
-
                 end;
-                LCashatbank := 0;
+                LStatutoryReserve := 0;
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount.Assets, '%1', GLAccount.Assets::CashAndEquivalents);
+                GLAccount.SetFilter(GLAccount.FinancedBy, '%1', GLAccount.FinancedBy::StatutoryReserves);
                 if GLAccount.FindSet then begin
                     repeat
                         GLEntry.Reset;
@@ -806,72 +848,164 @@ report 50024 FinancialStaticalInformation
                         GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYearButOne);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            LCashatbank += GLEntry.Amount;
-
+                            LStatutoryReserve += 1 * GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
-
                 end;
+                //End of Statutory
+
+                //Revenue Reserves
+                RevenueReservers := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.FinancedBy, '%1', GLAccount.FinancedBy::RevenueReserves);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            RevenueReservers += 1 * GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+                LRevenueReservers := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.FinancedBy, '%1', GLAccount.FinancedBy::RevenueReserves);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYearButOne);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            LRevenueReservers += 1 * GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+                //end of Revenue reserves
+
+                Institutionalcapital := 0;
+                LInstitutionalcapital := 0;
+
+
+                Institutionalcapital := StatutoryReserve + RevenueReservers;
+                LInstitutionalcapital := LStatutoryReserve + LRevenueReservers;
+
+                Corecapital := 0;
+                LCorecapital := 0;
+                Corecapital := ShareCapital + Institutionalcapital;
+                LCorecapital := LShareCapital + LInstitutionalcapital;
+
+
                 LiquidAssetstoTotalassetsshorttermliabilities := 0;
                 LLiquidAssetstoTotalassetsshorttermliabilities := 0;
                 LiquidAssetsTotalAssets := 0;
                 LiquidAssetsTotalAssets := 0;
                 LLiquidAssetsTotalAssets := 0;
 
+                //corecapitaltoTotalassets
+                CorecapitaltoAssetsRatio := 0;
+                LCorecapitaltoAssetsRatio := 0;
+                if TotalAssets <> 0 then
+                    CorecapitaltoAssetsRatio := Corecapital / TotalAssets;
+                CorecapitaltoAssetsRatio := (Round(CorecapitaltoAssetsRatio, Precision, Direction));
+
+                if LTotalAssets <> 0 then
+                    LCorecapitaltoAssetsRatio := LCorecapital / LTotalAssets;
+                LCorecapitaltoAssetsRatio := (Round(LCorecapitaltoAssetsRatio, Precision, Direction));
+
+
+                //EndofCoreCapitalTotalAssets
+                //TotalcorecapitaltoTotalDeposits
+                CorecapitaltoDepositsRatio := 0;
+                LCorecapitaltoDepositsRatio := 0;
+
+                CorecapitaltoDepositsRatio := Corecapital / Nonwithdrawabledeposits;
+                CorecapitaltoDepositsRatio := (Round(CorecapitaltoDepositsRatio, Precision, Direction));
+
+                LCorecapitaltoDepositsRatio := LCorecapital / LNonwithdrawabledeposits;
+                LCorecapitaltoDepositsRatio := (Round(LCorecapitaltoDepositsRatio, Precision, Direction));
+
+                //LTotalcorecapitaltoTotalDeposits
+
+                //Retained Earning and disclosed Reserverscorecapital
+                RetainedEarningscoreCapital := 0;
+                LRetainedEarningscoreCapital := 0;
+
+
+                if Corecapital <> 0 then begin
+                    RetainedEarningscoreCapital := (Round(Institutionalcapital / Corecapital));
+                end;
+                if LCorecapital <> 0 then begin
+                    LRetainedEarningscoreCapital := (Round(LInstitutionalcapital / LCorecapital));
+                end;
+
+
+                FinancialAssetsTotalAssets := 0;
+                FinancialAssetsTotalAssets := Round(FinancialAssets / TotalAssets, Precision, Direction);
+
+                LFinancialAssetsTotalAssets := 0;
+                LFinancialAssetsTotalAssets := Round(LFinancialAssets / LTotalAssets, Precision, Direction);
+
+                //end Retained Earning and disclosed Reserverscorecapital
+
+
+
                 if shortTermLiabilities <> 0 then begin
-                    LiquidAssetstoTotalassetsshorttermliabilities := ((Cashatbank / shortTermLiabilities) * 100);
+                    LiquidAssetstoTotalassetsshorttermliabilities := (Cashatbank / (-shortTermLiabilities));
                 end;
 
                 if LshortTermLiabilities <> 0 then begin
-                    LLiquidAssetstoTotalassetsshorttermliabilities := ((LCashatbank / LshortTermLiabilities) * 100);
+                    LLiquidAssetstoTotalassetsshorttermliabilities := (LCashatbank / (-LshortTermLiabilities));
                 end;
 
                 if TotalAssets <> 0 then begin
-                    LiquidAssetsTotalAssets := ((Cashatbank / TotalAssets) * 100);
+                    LiquidAssetsTotalAssets := ((Cashatbank / TotalAssets));
                 end;
 
                 if LTotalAssets <> 0 then begin
-                    LLiquidAssetsTotalAssets := ((LCashatbank / LTotalAssets) * 100);
+                    LLiquidAssetsTotalAssets := ((LCashatbank / LTotalAssets));
                 end;
 
                 if Nonwithdrawabledeposits <> 0 then begin
-                    GrossLoansdeposits := ((LoanandAdvances / Nonwithdrawabledeposits) * 100);
+                    GrossLoansdeposits := (LoanandAdvances / Nonwithdrawabledeposits);
                 end;
 
                 if LNonwithdrawabledeposits <> 0 then begin
-                    LGrossLoansdeposits := ((LLoanandAdvances / LNonwithdrawabledeposits) * 100);
+                    LGrossLoansdeposits := (LLoanandAdvances / LNonwithdrawabledeposits);
                 end;
 
                 if LTotalAssets <> 0 then begin
-                    LGrossLoansTotalAssets := ((LLoanandAdvances / LTotalAssets) * 100);
+                    LGrossLoansTotalAssets := (LLoanandAdvances / LTotalAssets);
                 end;
 
                 if TotalAssets <> 0 then begin
-                    GrossLoansTotalAssets := ((LoanandAdvances / TotalAssets) * 100);
+                    GrossLoansTotalAssets := (LoanandAdvances / TotalAssets);
                 end;
 
                 if TotalRevenue <> 0 then begin
-                    TotalExpensesTotalRevenue := ((TotalExpenses / TotalRevenue) * 100);
+                    TotalExpensesTotalRevenue := (TotalExpenses / TotalRevenue);
                 end;
 
                 if LTotalRevenue <> 0 then begin
-                    LTotalExpensesTotalRevenue := ((LTotalExpenses / LTotalRevenue) * 100);
+                    LTotalExpensesTotalRevenue := (LTotalExpenses / LTotalRevenue);
                 end;
 
                 if TotalAssets <> 0 then begin
-                    TotalExpensesTotalAssets := ((TotalExpenses / TotalAssets) * 100);
+                    TotalExpensesTotalAssets := (TotalExpenses / TotalAssets);
                 end;
 
                 if LTotalAssets <> 0 then begin
-                    LTotalExpensesTotalAssets := ((LTotalExpenses / LTotalAssets) * 100);
+                    LTotalExpensesTotalAssets := (LTotalExpenses / LTotalAssets);
                 end;
 
                 if TotalRevenue <> 0 then begin
-                    DividendsTotalRevenue := ((InterestonMemberdeposits / TotalRevenue) * 100);
+                    DividendsTotalRevenue := (InterestonMemberdeposits / TotalRevenue);
                 end;
 
                 if LTotalRevenue <> 0 then begin
-                    LDividendsTotalRevenue := ((LInterestonMemberdeposits / LTotalRevenue) * 100);
+                    LDividendsTotalRevenue := (LInterestonMemberdeposits / LTotalRevenue);
                 end;
 
 
@@ -900,7 +1034,15 @@ report 50024 FinancialStaticalInformation
 
     var
         GenSetup: Record "Sacco General Set-Up";
-
+        RetainedEarningsDisclosedReserves: Decimal;
+        FinancialAssetsTotalAssets: Decimal;
+        LFinancialAssetsTotalAssets: Decimal;
+        LRetainedEarningsDisclosedReserves: Decimal;
+        Direction: Text;
+        Precision: Decimal;
+        Result: Decimal;
+        Institutionalcapital: Decimal;
+        LInstitutionalcapital: Decimal;
         TotalRevenue: Decimal;
         DividendsTotalRevenue: Decimal;
         LDividendsTotalRevenue: Decimal;
@@ -942,8 +1084,7 @@ report 50024 FinancialStaticalInformation
         LLiquidAssets: Decimal;
         GLEntry: Record "G/L Entry";
         Asat: Date;
-        CoreCapitalOldLastyear: Decimal;
-        CoreCapitalOldLastyearButone: Decimal;
+
         Corecapital: Decimal;
         LCorecapital: Decimal;
         NetSurplusaftertax: Decimal;
@@ -1073,6 +1214,8 @@ report 50024 FinancialStaticalInformation
         TotalEquity: Decimal;
         TotalLiabilitiesandEquity: Decimal;
         TotalLiabilitiesNew: Decimal;
+        RetainedEarningscoreCapital: Decimal;
+        LRetainedEarningscoreCapital: Decimal;
 
 
 

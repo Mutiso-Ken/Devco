@@ -582,7 +582,7 @@ Page 51516617 "Loan Top-Up Card-Posted"
                         GenJournalLine.Description := 'FOSA Shares';
                         GenJournalLine.Amount := (("Top Up Amount" * 0.5) / 100) * -1;
                         GenJournalLine.Validate(GenJournalLine.Amount);
-                        GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"FOSA Shares";
+                       // GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"FOSA Shares";
                         GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
                         GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
                         GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");

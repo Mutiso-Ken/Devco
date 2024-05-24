@@ -32,7 +32,7 @@ report 51516379 "Dividend Processing-Flat Rate"
                 CustomerTable.SetRange(CustomerTable."No.", Customer."No.");
                 if CustomerTable.find('-') then begin
                     repeat
-                        DividendsPorcessingCodeUnit.FnProcessDividendsFlatRate(Customer."No.", StartDate, EndDate);
+                        //DividendsPorcessingCodeUnit.FnProcessDividendsFlatRate(Customer."No.", StartDate, EndDate);
                     until CustomerTable.next = 0;
                 end;
             end;
@@ -131,7 +131,7 @@ report 51516379 "Dividend Processing-Flat Rate"
         StartDate: date;
         EndDate: date;
         UserSetUp: Record "User Setup";
-        DividendsPorcessingCodeUnit: Codeunit "Dividends Processing-Flat Rate";
+      //  DividendsPorcessingCodeUnit: Codeunit "Dividends Processing-Flat Rate";
         CustomerTable: Record Customer;
         GenJournalLine: Record "Gen. Journal Line";
 }

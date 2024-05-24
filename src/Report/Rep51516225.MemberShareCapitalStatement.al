@@ -113,7 +113,7 @@ Report 51516225 "Member Share Capital Statement"
 
                 trigger OnAfterGetRecord()
                 begin
-                    CLosingBalance := CLosingBalance - Share.Amount;
+                    CLosingBalance := CLosingBalance - Share."Amount Posted";
                     BankCodeShares := GetBankCode(Share);
                     //...................................
                     if Share."Amount Posted" < 0 then begin

@@ -502,14 +502,16 @@ Page 51516511 "Membership Exit Card"
                 LineNo := LineNo + 10000;
                 SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, Doc_No, LineNo, GenJournalLine."Transaction Type"::"Deposit Contribution",
                 GenJournalLine."Account Type"::Customer, MemberNo, "Posting Date", RunningBal, 'BOSA', MemberNo, 'Deposits on exit - ' + MemberNo, '');
+
+
+
                 //Interest Repayment
                 Loans.Reset;
                 Loans.SetRange(Loans."Client Code", MemberNo);
                 if Loans.Findset then begin
                     repeat
-                        Loans.CalcFields(Loans."Outstanding Balance", Loans."Outstanding Interest");
+                        Loans.CalcFields(Loans."Oustanding Interest");// 
                         if Loans."Oustanding Interest" > 0 then begin
-                            //...........................Recover Loan Interest
                             if Loans."Oustanding Interest" > RunningBal then
                                 InterestTobeRecovered := RunningBal else
                                 InterestTobeRecovered := Loans."Oustanding Interest";
@@ -528,7 +530,7 @@ Page 51516511 "Membership Exit Card"
                 Loans.SetRange(Loans."Client Code", MemberNo);
                 if Loans.Findset then begin
                     repeat
-                        Loans.CalcFields(Loans."Outstanding Balance", Loans."Outstanding Interest");
+                        Loans.CalcFields(Loans."Outstanding Balance", Loans."Oustanding Interest");
                         if Loans."Outstanding Balance" > 0 then begin
                             If RunningBal > Loans."Outstanding Balance" then
                                 LoanTobeRecovered := Loans."Outstanding Balance" else
@@ -646,7 +648,7 @@ Page 51516511 "Membership Exit Card"
                 Loans.SetRange(Loans."Client Code", MemberNo);
                 if Loans.Findset then begin
                     repeat
-                        Loans.CalcFields(Loans."Outstanding Balance", Loans."Outstanding Interest");
+                        Loans.CalcFields(Loans."Outstanding Balance", Loans."Oustanding Interest");
                         if Loans."Oustanding Interest" > 0 then begin
                             //...........................Recover Loan Interest
                             if Loans."Oustanding Interest" > RunningBal then
@@ -667,7 +669,7 @@ Page 51516511 "Membership Exit Card"
                 Loans.SetRange(Loans."Client Code", MemberNo);
                 if Loans.Findset then begin
                     repeat
-                        Loans.CalcFields(Loans."Outstanding Balance", Loans."Outstanding Interest");
+                        Loans.CalcFields(Loans."Outstanding Balance", Loans."Oustanding Interest");
                         if Loans."Outstanding Balance" > 0 then begin
                             if Loans."Outstanding Balance" > RunningBal then
                                 LoanTobeRecovered := RunningBal else

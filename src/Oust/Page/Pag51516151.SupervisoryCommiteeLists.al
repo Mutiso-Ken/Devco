@@ -35,6 +35,7 @@ page 51516151 "Supervisory Commitee Lists"
                 field(Active; Rec.Active)
                 {
                 }
+                field(Designation; Designation) { }
             }
         }
     }

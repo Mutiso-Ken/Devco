@@ -762,7 +762,7 @@ Page 51516277 "Paybill Processing Header"
                        // INSURANCE:=ROUND(LoanApp."Outstanding Balance"*0.00016667,1,'>');
                         //MESSAGE('INSURANCE%1',ROUND(LoanApp."Outstanding Balance"*0.00016667,1,'>'));
                         Gnljnline.Validate(Gnljnline.Amount);
-                        Gnljnline."Transaction Type":=Gnljnline."transaction type"::"Insurance Paid";
+                        //Gnljnline."Transaction Type":=Gnljnline."transaction type"::"Insurance Paid";
                         Gnljnline."Loan No":=LoanApp."Loan  No.";
                         if Gnljnline.Amount<>0 then
                         Gnljnline.Insert;

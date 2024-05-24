@@ -34,7 +34,7 @@ Report 51516222 "Member Account  Balances"
             column(Outstanding_Interest; Member."Outstanding Interest")
             {
             }
-            column(LikizoContribution; Member."Holiday Savers")
+            column(LikizoContribution; Member."Likizo Contribution")
             {
 
             }
@@ -51,7 +51,7 @@ Report 51516222 "Member Account  Balances"
             trigger OnAfterGetRecord()
             begin
 
-                CalcFields("Current Shares", "Share Capital", "Outstanding Balance", "Outstanding Interest");
+                CalcFields("Current Shares", "Share Capital", "Outstanding Balance", "Outstanding Interest","Alpha Savings","Junior Savings One","Likizo Contribution");
                 LoansBal := "Outstanding Balance";
                 CurrentShares := "Current Shares";
                 SharesCap := "Share Capital";

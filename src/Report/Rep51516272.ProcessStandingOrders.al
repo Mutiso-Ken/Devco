@@ -462,26 +462,27 @@ Report 51516272 "Process Standing Orders"
         GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Deposit Contribution"
         else if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Benevolent Fund" then
         GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Benevolent Fund"
-        else if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Insurance Contribution" then
-        GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Insurance Contribution"
+        // else if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Insurance Contribution" then
+        // GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Insurance Contribution"
 
         else if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Shares Capital" then
         GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Shares Capital"
-        else if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"FOSA Shares" then
-        GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"FOSA Shares"
-        else if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Pepea Shares" then
-        GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Pepea Shares"
+        // else 
+        // if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"FOSA Shares" then
+        // GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"FOSA Shares"
+        // else if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Pepea Shares" then
+        // GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Pepea Shares"
 
         // else if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Tambaa Shares" then
         // GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Tamba Shares"
         //.................... Added Changamka Shares .......................................................//
 
-        else if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Changamka Shares" then
-        GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Changamka Shares"
+        // else if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Changamka Shares" then
+        // GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Changamka Shares"
 
         //....................................................................................................//
-        else if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Lift Shares" then
-        GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Lift Shares"
+        // else if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Lift Shares" then
+        // GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Lift Shares"
 
         else if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::Repayment then
         GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::Repayment

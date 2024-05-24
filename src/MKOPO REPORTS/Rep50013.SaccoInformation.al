@@ -31,6 +31,7 @@ report 50013 "Sacco Information"
             column(CompanyPhone; CompanyInfo."Phone No.")
             {
             }
+            column(CompanyInfoName; CompanyInfo.Name) { }
             column(CompanyPic; CompanyInfo.Picture)
             {
             }
@@ -41,11 +42,11 @@ report 50013 "Sacco Information"
             {
 
             }
-            column(Building_Number; "Building Number")
+            column(Building_Name; "Building Name")
             {
 
             }
-            column(Street_Road; "Street/Road")
+            column(Principal_Bank_Branch;"Principal Bank Branch")
             {
 
             }
@@ -53,6 +54,7 @@ report 50013 "Sacco Information"
             {
 
             }
+            column(L_R_No_; "L.R.No.") { }
             column(PrincipalBankBox; PrincipalBankBox)
             {
 
@@ -69,10 +71,11 @@ report 50013 "Sacco Information"
             {
 
             }
-            column(LegalAdvisorsName; LegalAdvisorsName)
+            column(auditorcerfication;auditorcerfication)
             {
 
             }
+            column(Sacco_CEO_P_O_Box; "Sacco CEO P.O Box") { }
             column(Asat; Asat) { }
         }
         dataitem("Board of Directors"; "Board of Directors")
@@ -81,6 +84,7 @@ report 50013 "Sacco Information"
             {
 
             }
+            column(Designation; Designation) { }
         }
         dataitem("Supervisory Commitee"; "Supervisory Commitee")
         {
@@ -89,6 +93,7 @@ report 50013 "Sacco Information"
 
 
             }
+            column(SupervisoryDesignation; Designation) { }
             trigger OnAfterGetRecord()
             var
                 myInt: Integer;

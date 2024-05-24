@@ -792,13 +792,13 @@ Table 51516230 "Loans Register"
         }
         field(53108; "Penalty Charged"; Decimal)
         {
-            CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Client Code"),
-                                                                  "Transaction Type" = filter("Kuscco Shares" | "Withdrawable Deposits"),
-                                                                  "Loan No" = field("Loan  No."),
-                                                                  "Posting Date" = field("Date filter"),
-                                                                   Reversed = const(false)));
-            Editable = false;
-            FieldClass = FlowField;
+            // CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Client Code"),
+            //                                                       "Transaction Type" = filter("Kuscco Shares" | "Withdrawable Deposits"),
+            //                                                       "Loan No" = field("Loan  No."),
+            //                                                       "Posting Date" = field("Date filter"),
+            //                                                        Reversed = const(false)));
+            // Editable = false;
+            // FieldClass = FlowField;
         }
         field(53109; "Loan Amount"; Decimal)
         {
@@ -900,12 +900,12 @@ Table 51516230 "Loans Register"
         }
         field(53186; "Penalty Paid"; Decimal)
         {
-            CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Client Code"),
-                                                                  "Transaction Type" = filter("Withdrawable Deposits"),
-                                                                  "Loan No" = field("Loan  No."),
-                                                                  "Posting Date" = field("Date filter"),
-                                                                   Reversed = const(false)));
-            FieldClass = FlowField;
+            // CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Client Code"),
+            //                                                       "Transaction Type" = filter("Withdrawable Deposits"),
+            //                                                       "Loan No" = field("Loan  No."),
+            //                                                       "Posting Date" = field("Date filter"),
+            //                                                        Reversed = const(false)));
+            // FieldClass = FlowField;
         }
         field(53189; "Global Dimension 1 Code"; Code[20])
         {
@@ -937,13 +937,13 @@ Table 51516230 "Loans Register"
         }
         field(53193; "Loans Insurance"; Decimal)
         {
-            CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Client Code"),
-                                                                  "Transaction Type" = filter("Loan Insurance Paid"),
-                                                                  "Loan No" = field("Loan  No."),
-                                                                  "Posting Date" = field("Date filter"),
-                                                                   Reversed = const(false)));
-            Editable = false;
-            FieldClass = FlowField;
+            // CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Client Code"),
+            //                                                       "Transaction Type" = filter("Loan Insurance Paid"),
+            //                                                       "Loan No" = field("Loan  No."),
+            //                                                       "Posting Date" = field("Date filter"),
+            //                                                        Reversed = const(false)));
+            // Editable = false;
+            // FieldClass = FlowField;
         }
         field(53195; "Schedule Interest to Date"; Decimal)
         {
@@ -1102,6 +1102,9 @@ Table 51516230 "Loans Register"
                                                                    Reversed = const(false)));
             Editable = false;
             FieldClass = FlowField;
+
+
+
         }
         field(68009; "Oustanding Interest to Date"; Decimal)
         {
@@ -1413,7 +1416,7 @@ Table 51516230 "Loans Register"
         {
             OptionMembers = " ","Fresh Loan",Adjustment,Reintroduction,Stoppage,"Top Up";
         }
-   
+
         field(68093; "ID NO"; Code[40])
         {
 
@@ -2114,19 +2117,28 @@ Table 51516230 "Loans Register"
         }
         field(51516294; "Out. Loan Application fee"; Decimal)
         {
-            FieldClass = FlowField;
-            CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Transaction Type" = filter("Application Fee"), "Loan No" = field("Loan  No."), Reversed = filter(false),
-            "Posting Date" = field("Date filter"), Reversed = filter(false)));
+            // FieldClass = FlowField;
+            // CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Transaction Type" = filter("Application Fee"), "Loan No" = field("Loan  No."), Reversed = filter(false),
+            // "Posting Date" = field("Date filter"), Reversed = filter(false)));
         }
-        field(51516295; "Outstanding Interest"; Decimal)
-        {
-            CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Client Code"),
-                                                                  "Loan No" = field("Loan  No."),
-                                                                  "Transaction Type" = filter("Interest Paid" | "Interest Due"),
-                                                                  "Posting Date" = field("Date filter"),
-                                                                   Reversed = const(false)));
-            FieldClass = FlowField;
-        }
+        // field(51516295; "Outstanding Interest"; Decimal)
+        // {
+        //     CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Client Code"),
+        //                                                           "Loan No" = field("Loan  No."),
+        //                                                           "Transaction Type" = filter("Interest Paid" | "Interest Due"),
+        //                                                           "Posting Date" = field("Date filter"),
+        //                                                            Reversed = const(false)));
+
+
+
+
+
+
+
+
+
+        //     FieldClass = FlowField;
+        // }
         field(51516296; "Deboost Loan Applied"; Boolean)
         {
             DataClassification = ToBeClassified;
@@ -2146,6 +2158,16 @@ Table 51516230 "Loans Register"
         field(51516300; Appraised; Boolean)
         {
             DataClassification = ToBeClassified;
+        }
+        field(515163001; "Loan Payments"; Decimal)
+        {
+            CalcFormula = -sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Client Code"),
+                                                                  "Loan No" = field("Loan  No."),
+                                                                  "Transaction Type" = filter(Repayment),
+                                                                  "Posting Date" = field("Date filter"),
+                                                                  Reversed = const(false)));
+            Editable = false;
+            FieldClass = FlowField;
         }
 
     }

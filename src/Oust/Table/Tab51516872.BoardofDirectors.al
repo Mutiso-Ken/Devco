@@ -12,9 +12,12 @@ table 51516872 "Board of Directors"
             Caption = 'No.';
             TableRelation = customer."No." where(Board = const(true));
             trigger OnValidate()
+            var
+            //NewString: text[200];
             begin
                 if Cust.Get("No.") then begin
-                    Name := cust.Name;
+                    Name := Cust.Name;
+
                 end;
             end;
         }
@@ -22,6 +25,7 @@ table 51516872 "Board of Directors"
         {
             Caption = 'Name';
         }
+
         field(3; "Start Date"; Date)
         {
             Caption = 'Start Date';
@@ -39,6 +43,10 @@ table 51516872 "Board of Directors"
 
         }
         field(7; "Sacco CEO Name"; Blob)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(8; Designation; Text[100])
         {
             DataClassification = ToBeClassified;
         }

@@ -1,7 +1,8 @@
 table 50317 "Payroll Employee."
 {
     // version Payroll ManagementV1.0(Surestep Systems)
-
+    DrillDownPageId = "Payroll Employee List.";
+    LookupPageId = "Payroll Employee List.";
 
     fields
     {

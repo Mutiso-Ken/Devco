@@ -9616,51 +9616,6 @@ End Function
         <Field Name="TransactionType_Pref">
           <DataField>TransactionType_Pref</DataField>
         </Field>
-        <Field Name="ReportForNavId_1000000016">
-          <DataField>ReportForNavId_1000000016</DataField>
-        </Field>
-        <Field Name="OpenBalancesFs">
-          <DataField>OpenBalancesFs</DataField>
-        </Field>
-        <Field Name="OpenBalancesFsFormat">
-          <DataField>OpenBalancesFsFormat</DataField>
-        </Field>
-        <Field Name="CLosingBalancesFs">
-          <DataField>CLosingBalancesFs</DataField>
-        </Field>
-        <Field Name="CLosingBalancesFsFormat">
-          <DataField>CLosingBalancesFsFormat</DataField>
-        </Field>
-        <Field Name="DescriptionFs">
-          <DataField>DescriptionFs</DataField>
-        </Field>
-        <Field Name="DocumentNoFs">
-          <DataField>DocumentNoFs</DataField>
-        </Field>
-        <Field Name="PostingDateFs">
-          <DataField>PostingDateFs</DataField>
-        </Field>
-        <Field Name="CreditAmountFs">
-          <DataField>CreditAmountFs</DataField>
-        </Field>
-        <Field Name="CreditAmountFsFormat">
-          <DataField>CreditAmountFsFormat</DataField>
-        </Field>
-        <Field Name="DebitAmountFs">
-          <DataField>DebitAmountFs</DataField>
-        </Field>
-        <Field Name="DebitAmountFsFormat">
-          <DataField>DebitAmountFsFormat</DataField>
-        </Field>
-        <Field Name="AmountFs">
-          <DataField>AmountFs</DataField>
-        </Field>
-        <Field Name="AmountFsFormat">
-          <DataField>AmountFsFormat</DataField>
-        </Field>
-        <Field Name="TransactionTypeFs">
-          <DataField>TransactionTypeFs</DataField>
-        </Field>
         <Field Name="ReportForNavId_1102755066">
           <DataField>ReportForNavId_1102755066</DataField>
         </Field>
@@ -9706,96 +9661,6 @@ End Function
         <Field Name="TransactionTypeCshare">
           <DataField>TransactionTypeCshare</DataField>
         </Field>
-        <Field Name="ReportForNavId_1102755076">
-          <DataField>ReportForNavId_1102755076</DataField>
-        </Field>
-        <Field Name="OpenBalancesVs">
-          <DataField>OpenBalancesVs</DataField>
-        </Field>
-        <Field Name="OpenBalancesVsFormat">
-          <DataField>OpenBalancesVsFormat</DataField>
-        </Field>
-        <Field Name="CLosingBalancesVs">
-          <DataField>CLosingBalancesVs</DataField>
-        </Field>
-        <Field Name="CLosingBalancesVsFormat">
-          <DataField>CLosingBalancesVsFormat</DataField>
-        </Field>
-        <Field Name="DescriptionVs">
-          <DataField>DescriptionVs</DataField>
-        </Field>
-        <Field Name="DocumentNoVs">
-          <DataField>DocumentNoVs</DataField>
-        </Field>
-        <Field Name="PostingDateVs">
-          <DataField>PostingDateVs</DataField>
-        </Field>
-        <Field Name="CreditAmountVs">
-          <DataField>CreditAmountVs</DataField>
-        </Field>
-        <Field Name="CreditAmountVsFormat">
-          <DataField>CreditAmountVsFormat</DataField>
-        </Field>
-        <Field Name="DebitAmountVs">
-          <DataField>DebitAmountVs</DataField>
-        </Field>
-        <Field Name="DebitAmountVsFormat">
-          <DataField>DebitAmountVsFormat</DataField>
-        </Field>
-        <Field Name="AmountVs">
-          <DataField>AmountVs</DataField>
-        </Field>
-        <Field Name="AmountVsFormat">
-          <DataField>AmountVsFormat</DataField>
-        </Field>
-        <Field Name="TransactionTypeVs">
-          <DataField>TransactionTypeVs</DataField>
-        </Field>
-        <Field Name="ReportForNavId_1000000026">
-          <DataField>ReportForNavId_1000000026</DataField>
-        </Field>
-        <Field Name="OpenBalancesDep1">
-          <DataField>OpenBalancesDep1</DataField>
-        </Field>
-        <Field Name="OpenBalancesDep1Format">
-          <DataField>OpenBalancesDep1Format</DataField>
-        </Field>
-        <Field Name="CLosingBalancesDep1">
-          <DataField>CLosingBalancesDep1</DataField>
-        </Field>
-        <Field Name="CLosingBalancesDep1Format">
-          <DataField>CLosingBalancesDep1Format</DataField>
-        </Field>
-        <Field Name="DescriptionDep1">
-          <DataField>DescriptionDep1</DataField>
-        </Field>
-        <Field Name="DocumentNoDep1">
-          <DataField>DocumentNoDep1</DataField>
-        </Field>
-        <Field Name="PostingDateDep1">
-          <DataField>PostingDateDep1</DataField>
-        </Field>
-        <Field Name="CreditAmountDep1">
-          <DataField>CreditAmountDep1</DataField>
-        </Field>
-        <Field Name="CreditAmountDep1Format">
-          <DataField>CreditAmountDep1Format</DataField>
-        </Field>
-        <Field Name="DebitAmountDep1">
-          <DataField>DebitAmountDep1</DataField>
-        </Field>
-        <Field Name="DebitAmountDep1Format">
-          <DataField>DebitAmountDep1Format</DataField>
-        </Field>
-        <Field Name="AmountDep1">
-          <DataField>AmountDep1</DataField>
-        </Field>
-        <Field Name="AmountDep1Format">
-          <DataField>AmountDep1Format</DataField>
-        </Field>
-        <Field Name="TransactionTypeDep1">
-          <DataField>TransactionTypeDep1</DataField>
-        </Field>
         <Field Name="ReportForNavId_1000000036">
           <DataField>ReportForNavId_1000000036</DataField>
         </Field>
@@ -9840,54 +9705,6 @@ End Function
         </Field>
         <Field Name="TransactionTypeDep2">
           <DataField>TransactionTypeDep2</DataField>
-        </Field>
-        <Field Name="ReportForNavId_14">
-          <DataField>ReportForNavId_14</DataField>
-        </Field>
-        <Field Name="OpeningBalSF">
-          <DataField>OpeningBalSF</DataField>
-        </Field>
-        <Field Name="OpeningBalSFFormat">
-          <DataField>OpeningBalSFFormat</DataField>
-        </Field>
-        <Field Name="ClosingBalSF">
-          <DataField>ClosingBalSF</DataField>
-        </Field>
-        <Field Name="ClosingBalSFFormat">
-          <DataField>ClosingBalSFFormat</DataField>
-        </Field>
-        <Field Name="TransactionType_DepositsSF">
-          <DataField>TransactionType_DepositsSF</DataField>
-        </Field>
-        <Field Name="Amount_DepositsSF">
-          <DataField>Amount_DepositsSF</DataField>
-        </Field>
-        <Field Name="Amount_DepositsSFFormat">
-          <DataField>Amount_DepositsSFFormat</DataField>
-        </Field>
-        <Field Name="Description_DepositsSF">
-          <DataField>Description_DepositsSF</DataField>
-        </Field>
-        <Field Name="DocumentNo_DepositsSF">
-          <DataField>DocumentNo_DepositsSF</DataField>
-        </Field>
-        <Field Name="PostingDate_DepositsSF">
-          <DataField>PostingDate_DepositsSF</DataField>
-        </Field>
-        <Field Name="DebitAmount_DepositsSF">
-          <DataField>DebitAmount_DepositsSF</DataField>
-        </Field>
-        <Field Name="DebitAmount_DepositsSFFormat">
-          <DataField>DebitAmount_DepositsSFFormat</DataField>
-        </Field>
-        <Field Name="CreditAmount_DepositsSF">
-          <DataField>CreditAmount_DepositsSF</DataField>
-        </Field>
-        <Field Name="CreditAmount_DepositsSFFormat">
-          <DataField>CreditAmount_DepositsSFFormat</DataField>
-        </Field>
-        <Field Name="Deposits_DescriptionSF">
-          <DataField>Deposits_DescriptionSF</DataField>
         </Field>
         <Field Name="PrincipleBF">
           <DataField>PrincipleBF</DataField>

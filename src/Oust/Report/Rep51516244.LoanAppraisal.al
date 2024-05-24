@@ -635,6 +635,7 @@ Report 51516244 "Loan Appraisal"
                 column(ReportForNavId_4717; 4717)
                 {
                 }
+                column(Loan_No_; "Loan No.") { }
                 column(Loans_Top_up__Principle_Top_Up_; "Principle Top Up")
                 {
                 }
@@ -644,7 +645,7 @@ Report 51516244 "Loan Appraisal"
                 column(Loans_Top_up__Client_Code_; "Client Code")
                 {
                 }
-                column(Loans_Top_up__Loan_No__; "Loan No.")
+                column(Loans_Top_up__Loan_No__; "Loan Top Up")
                 {
                 }
                 column(Loans_Top_up__Total_Top_Up_; "Total Top Up")
@@ -1061,9 +1062,10 @@ Report 51516244 "Loan Appraisal"
                         Message('The utilixable salary %1 is less than Repayment %2', Psalary, Repayment);
                 end;
                 if "Deboost Loan Applied" = false then begin
-                    if (Depx < "Requested Amount") or ("Requested Amount" > CollateralGuarantee) then
-                        Recomm := Depx else
-                        Recomm := ROUND(Msalary, 100, '<');
+                    if (Depx < "Loans Register"."Requested Amount") and ("Loans Register"."Requested Amount" <= CollateralGuarantee) then
+                        Recomm := CollateralGuarantee else
+                        If (Depx >= "Loans Register"."Requested Amount") and ("Loans Register"."Requested Amount" <= CollateralGuarantee) then
+                            Recomm := ROUND(Msalary, 100, '<');
                     if (Recomm > "Loans Register"."Requested Amount") then
                         Recomm := ROUND("Loans Register"."Requested Amount", 100, '<');
                     if Recomm < 0 then begin

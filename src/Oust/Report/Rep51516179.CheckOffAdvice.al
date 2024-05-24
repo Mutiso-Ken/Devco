@@ -107,15 +107,19 @@ Report 51516179 "Check Off Advice"
             {
             }
             column(Makeover; Makeover) { }
+            column(Junior_Monthly_Contribution; "Junior Monthly Contribution") { }
+            column(AlphaSavings; AlphaSavings) { }
 
             trigger OnAfterGetRecord()
             begin
                 DOCNAME := 'EMPLOYER CHECKOFF ADVICE';
                 Prepayment := 0;
                 IntRepayment := 0;
+                AlphaSavings := 0;
                 TRepayment := 0;
                 PrincipalInterest := 0;
                 MonthlyAdvice := 0;
+                Juniorcontribution := 0;
                 Lkizo := 0;
                 normloan := 0;
                 College := 0;
@@ -126,7 +130,9 @@ Report 51516179 "Check Off Advice"
                 karibu := 0;
                 Makeover := 0;
                 Premium := 0;
-             
+                HOUSING := 0;
+                DEPOSIT := 0;
+
                 Cust.Reset;
                 Cust.SetRange(Cust."No.", "Members Register"."No.");
                 Cust.SetRange(Cust."Employer Code", "Members Register"."Employer Code");
@@ -143,8 +149,10 @@ Report 51516179 "Check Off Advice"
                         scapital := 0;
 
                     LIKIZO := Cust."Likizo Contribution";
+                    AlphaSavings := cust."Alpha Monthly Contribution";
+                    Juniorcontribution := Cust."Junior Monthly Contribution";
                     HOUSING := Cust."Housing Contribution";
-                    DEPOSIT := Cust."Monthly Contribution";
+                    DEPOSIT := Cust."Monthly Contribution" + cust."Monthly ShareCap Cont.";
                     //Alpha:=Cust."Alpha Savings";
                     /*
                     loans.RESET;
@@ -289,22 +297,22 @@ Report 51516179 "Check Off Advice"
                             AssetL := AssetL;//
                         until loans.Next = 0;
                     end;
-                    //quic fee
-                    loans.Reset;
-                    loans.SetRange(loans."Client Code", "Members Register"."No.");
-                    loans.SetRange(loans."Loan Product Type", 'LIKIZO');
-                    loans.SetFilter(loans."Outstanding Balance", '>0');
-                    loans.SetAutocalcFields(loans."Outstanding Balance");
-                    loans.SetRange(loans.Posted, true);
-                    if loans.Find('-') then begin
-                        repeat
-                            Lkizo := loans."Loan Principle Repayment" + loans."Loan Interest Repayment";
-                            Lkizo := Lkizo;//
-                        until loans.Next = 0;
-                    end;
+                    // //quic fee
+                    // loans.Reset;
+                    // loans.SetRange(loans."Client Code", "Members Register"."No.");
+                    // loans.SetRange(loans."Loan Product Type", 'LIKIZO');
+                    // loans.SetFilter(loans."Outstanding Balance", '>0');
+                    // loans.SetAutocalcFields(loans."Outstanding Balance");
+                    // loans.SetRange(loans.Posted, true);
+                    // if loans.Find('-') then begin
+                    //     repeat
+                    //         Lkizo := loans."Loan Principle Repayment" + loans."Loan Interest Repayment";
+                    //         Lkizo := Lkizo;//
+                    //     until loans.Next = 0;
+                    // end;
 
 
-                    MonthlyAdvice := scapital + LIKIZO + HOUSING + DEPOSIT + normloan + College + scfee + emmerg + Quick + karibu + AssetL + Makeover + Premium;
+                    MonthlyAdvice := HOUSING + AlphaSavings + Juniorcontribution+DEPOSIT + LIKIZO + normloan + College + scfee + emmerg + Quick + karibu + AssetL + Makeover + Premium;
 
 
                 end;
@@ -342,6 +350,7 @@ Report 51516179 "Check Off Advice"
         TRepayment: Decimal;
         PrincipalInterest: Decimal;
         MonthlyAdvice: Decimal;
+        Juniorcontribution: Decimal;
         DOCNAME: Text[30];
         CompanyInfo: Record "Company Information";
         Gsetup: Record "Sacco General Set-Up";
@@ -350,6 +359,7 @@ Report 51516179 "Check Off Advice"
         scapital: Decimal;
         minbal: Decimal;
         DEPOSIT: Decimal;
+        AlphaSavings: Decimal;
         LIKIZO: Decimal;
         HOUSING: Decimal;
         interest: Decimal;
@@ -369,6 +379,6 @@ Report 51516179 "Check Off Advice"
         Lkizo: Decimal;
         Makeover: Decimal;
         Premium: Decimal;
-      
+
 }
 

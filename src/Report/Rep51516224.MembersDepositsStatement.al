@@ -3,7 +3,7 @@ Report 51516224 "Members Deposits Statement"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './Layouts/MemberDepositsStatement.rdlc';
-    ApplicationArea=all;
+    ApplicationArea = all;
 
     dataset
     {
@@ -113,7 +113,7 @@ Report 51516224 "Members Deposits Statement"
 
                 trigger OnAfterGetRecord()
                 begin
-                    //abel ClosingBal := ClosingBal - Deposits.Amount;
+                    ClosingBal := ClosingBal - Deposits."Amount Posted";
                     BankCodeDeposits := GetBankCode(Deposits);
                     //........................
                     if Deposits."Amount Posted" < 0 then begin

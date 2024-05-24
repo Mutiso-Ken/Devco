@@ -136,6 +136,9 @@ Report 50025 "State of financial Position"
             column(TotalLiabilities; TotalLiabilities)
             {
             }
+            column(LTotalLiabilities; LTotalLiabilities)
+            {
+            }
             column(ShareCapital; ShareCapital)
             {
             }
@@ -239,12 +242,16 @@ Report 50025 "State of financial Position"
             column(TotalEquity; TotalEquity)
             {
             }
+            column(LTotalEquity; LTotalEquity)
+            {
+            }
             column(TotalLiabilitiesandEquity; TotalLiabilitiesandEquity)
             {
             }
-            column(TotalLiabilitiesNew; TotalLiabilitiesNew)
+            column(LTotalLiabilitiesandEquity; LTotalLiabilitiesandEquity)
             {
             }
+
             column(TotalAssets; TotalAssets)
             {
             }
@@ -266,7 +273,7 @@ Report 50025 "State of financial Position"
                 EndofLastyear := InputDate;
 
                 CurrentYear := Date2DMY(EndofLastyear, 3);
-                LastYearButOne := CalcDate(DateExpr, EndofLastyear);
+                LastYearButOne := CalcDate(DateFormula, EndofLastyear);
                 PreviousYear := CurrentYear - 1;
 
 
@@ -506,6 +513,8 @@ Report 50025 "State of financial Position"
                     until GLAccount.Next = 0;
 
                 end;
+                TotalAssets := 0;
+                LTotalAssets := 0;
 
                 TotalAssets := Cashatbank + ReceivableandPrepayments + LoanandAdvances + FinancialAssets + PropertyEquipment + IntangibleAssets;
                 LTotalAssets := LCashatbank + LReceivableandPrepayments + LLoanandAdvances + LFinancialAssets + LPropertyEquipment + LIntangibleAssets;
@@ -555,7 +564,7 @@ Report 50025 "State of financial Position"
                         GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', EndofLastyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            InterestonMemberdeposits += 1 * GLEntry.Amount;
+                            InterestonMemberdeposits += -1 * GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
                 end;
@@ -569,7 +578,7 @@ Report 50025 "State of financial Position"
                         GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYearButOne);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            LInterestonMemberdeposits += 1 * GLEntry.Amount;
+                            LInterestonMemberdeposits += -1 * GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
                 end;
@@ -682,7 +691,7 @@ Report 50025 "State of financial Position"
                         GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', EndofLastyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            StatutoryReserve += 1 * GLEntry.Amount;
+                            StatutoryReserve += -1 * GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
                 end;
@@ -696,7 +705,7 @@ Report 50025 "State of financial Position"
                         GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYearButOne);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            LStatutoryReserve += 1 * GLEntry.Amount;
+                            LStatutoryReserve += -1 * GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
                 end;
@@ -713,7 +722,7 @@ Report 50025 "State of financial Position"
                         GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', EndofLastyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            RevenueReservers += 1 * GLEntry.Amount;
+                            RevenueReservers += -1 * GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
                 end;
@@ -727,7 +736,7 @@ Report 50025 "State of financial Position"
                         GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYearButOne);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            LRevenueReservers += 1 * GLEntry.Amount;
+                            LRevenueReservers += -1 * GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
                 end;
@@ -743,7 +752,7 @@ Report 50025 "State of financial Position"
                         GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', EndofLastyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            ShareCapital += 1 * GLEntry.Amount;
+                            ShareCapital += -1 * GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
                 end;
@@ -757,13 +766,32 @@ Report 50025 "State of financial Position"
                         GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYearButOne);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            LShareCapital += 1 * GLEntry.Amount;
+                            LShareCapital += -1 * GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
                 end;
                 //Endofsharecapital
 
                 //End of Financed By
+                TotalLiabilities := 0;
+                LTotalLiabilities := 0;
+
+                TotalLiabilities := TradeandOtherPayables + Nonwithdrawabledeposits + InterestonMemberdeposits + Hononaria + TaxPayable;
+                LTotalLiabilities := LTradeandOtherPayables + LNonwithdrawabledeposits + LInterestonMemberdeposits + LHononaria + LTaxPayable;
+
+                TotalEquity := 0;
+                LTotalEquity := 0;
+
+                TotalEquity := StatutoryReserve + RevenueReservers + ShareCapital;
+                LTotalEquity := LStatutoryReserve + LRevenueReservers + LShareCapital;
+
+                TotalLiabilitiesandEquity := 0;
+                LTotalLiabilitiesandEquity := 0;
+
+                TotalLiabilitiesandEquity := TotalEquity + TotalLiabilities;
+                LTotalLiabilitiesandEquity := LTotalEquity + LTotalLiabilities;
+
+
 
 
 
@@ -797,16 +825,15 @@ Report 50025 "State of financial Position"
                 AccountsReceivables := TaxRecoverable + DeferredTaxAssets + RetirementBenefitAssets;
                 PropertyEquipmentOtheassets := InvestmentProperties + PropertyEquipment + PrepaidLeaseentals + OtherAssets + IntangibleAssets;
                 LPropertyEquipmentOtheassets := LInvestmentProperties + LPropertyEquipment + LPrepaidLeaseentals + LOtherAssets + LIntangibleAssets;
-                TotalAssets := CashCashEquivalent + FinancialInvestments + NetLoanPortfolio + AccountsReceivables + PropertyEquipmentOtheassets + PrepaymentsSundryReceivables;
 
 
                 AccountsPayableOtherLiabilities := TaxPayable + DividendPayable + DeferredTaxLiability + ExternalBorrowings + RetirementBenefitsLiability + OtherLiabilities;
                 EQUITY := ShareCapital + CapitalGrants;
                 RetainedEarnings := PrioryarRetainedEarnings - CurrentYearSurplus;
                 OtherEquityAccounts := StatutoryReserve + OtherReserves + RevaluationReserves + AdjustmenttoEquity + ProposedDividends;
-                TotalEquity := EQUITY + RetainedEarnings + OtherEquityAccounts;
-                TotalLiabilitiesNew := Nonwithdrawabledeposits + AccountsPayableOtherLiabilities;
-                TotalLiabilitiesandEquity := TotalEquity + TotalLiabilitiesNew;
+
+
+                TotalLiabilitiesandEquity := TotalEquity + TotalLiabilities;
             end;
 
             trigger OnPreDataItem()
@@ -914,7 +941,7 @@ Report 50025 "State of financial Position"
         OtherLiabilities: Decimal;
         DeferredTaxLiability: Decimal;
         ExternalBorrowings: Decimal;
-        TotalLiabilities: Decimal;
+        LTotalLiabilities: Decimal;
         ShareCapital: Decimal;
         LShareCapital: Decimal;
         StatutoryReserve: Decimal;
@@ -946,8 +973,10 @@ Report 50025 "State of financial Position"
         RetainedEarnings: Decimal;
         OtherEquityAccounts: Decimal;
         TotalEquity: Decimal;
+        LTotalEquity: Decimal;
         TotalLiabilitiesandEquity: Decimal;
-        TotalLiabilitiesNew: Decimal;
+        LTotalLiabilitiesandEquity: Decimal;
+        TotalLiabilities: Decimal;
         TotalAssets: Decimal;
         LTotalAssets: Decimal;
 }

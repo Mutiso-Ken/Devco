@@ -97,7 +97,7 @@ table 5018 "Payroll Transaction Code."
         field(31; "Co-Op Parameters"; Option)
         {
 
-            OptionMembers = "None",Shares,Loan,"Loan Interest","Emergency Loan","Emergency Loan Interest",Welfare,Pension,NSSF,Overtime,"Insurance Contribution"
+            OptionMembers = "None",Shares,Loan,"Share Capital",Likizo,"Loan Interest","Emergency Loan","Emergency Loan Interest",Welfare,Pension,NSSF,Overtime,"Insurance Contribution"
             ,"Loan Application Fee Paid","Loan Insurance Paid";
         }
         field(32; "IsCo-Op/LnRep"; Boolean)

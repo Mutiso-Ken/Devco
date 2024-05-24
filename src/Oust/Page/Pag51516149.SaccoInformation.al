@@ -36,27 +36,27 @@ page 51516149 "Sacco Information"
                     ApplicationArea = all;
 
                 }
+                field("Sacco CEO P.O Box"; "Sacco CEO P.O Box")
+                {
+                    ApplicationArea = all;
+                }
                 field("L.R.No."; "L.R.No.")
                 {
                     ApplicationArea = all;
 
                 }
-                field("Floor Number"; "Floor Number")
-                {
-                    ApplicationArea = all;
+                // field("Floor Number"; "Floor Number")
+                // {
+                //     ApplicationArea = all;
 
-                }
+                // }
                 field("P.O Box"; "P.O Box")
                 {
                     ApplicationArea = all;
 
                 }
-                field("Street/Road"; "Street/Road")
-                {
-                    ApplicationArea = all;
-
-                }
-                field("Building Number"; "Building Number")
+               
+                field("Building Name"; "Building Name")
                 {
                     ApplicationArea = all;
                 }
@@ -77,10 +77,15 @@ page 51516149 "Sacco Information"
                     Caption = 'Principal Bankers';
                     ApplicationArea = all;
                 }
-                field(LegalAdvisorsName; LegalAdvisorsName)
+                 field("Principal Bank Branch";"Principal Bank Branch")
                 {
                     ApplicationArea = all;
-                    Caption = 'Legal adivisors Name';
+
+                }
+                field(auditorcerfication;auditorcerfication)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Auditor Certification Name';
                 }
 
 

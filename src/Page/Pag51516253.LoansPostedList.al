@@ -69,7 +69,7 @@ Page 51516253 "Loans Posted List"
                 {
                     ApplicationArea = Basic;
                     Editable = false;
-                    visible = false;
+
                 }
 
 
@@ -98,6 +98,11 @@ Page 51516253 "Loans Posted List"
                     Editable = false;
                     Visible = true;
                     Style = Ambiguous;
+                }
+                field("Loan Payments"; "Loan Payments")
+                {
+                    ApplicationArea = all;
+                    Editable = false;
                 }
                 field("Oustanding Interest"; "Oustanding Interest")
                 {
@@ -268,11 +273,11 @@ Page 51516253 "Loans Posted List"
                         LoanApp.Reset();
                         LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
                         if LoanApp.Find('-') then
-                        repeat
-                            SFactory.FnGenerateRepaymentSchedule(LoanApp."Loan  No.");
+                            repeat
+                                SFactory.FnGenerateRepaymentSchedule(LoanApp."Loan  No.");
 
-                        until LoanApp.Next = 0;
-                       
+                            until LoanApp.Next = 0;
+
                         Report.Run(51516477, true, false, LoanApp);
 
 

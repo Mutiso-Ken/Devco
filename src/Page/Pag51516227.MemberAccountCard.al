@@ -3,7 +3,7 @@ Page 51516227 "Member Account Card"
 {
     ApplicationArea = Basic;
     Caption = 'Member Card';
-   DeleteAllowed=true;
+    DeleteAllowed = true;
     Editable = true;
     InsertAllowed = false;
     PageType = Card;
@@ -1084,7 +1084,7 @@ Page 51516227 "Member Account Card"
                         Cust.Reset;
                         Cust.SetRange(Cust."No.", "No.");
                         if Cust.Find('-') then begin
-                            Report.Run(64, true, false, Cust);
+                            Report.Run(51516226, true, false, Cust);
                         END;
                     end;
                 }
@@ -1430,28 +1430,28 @@ Page 51516227 "Member Account Card"
 
 
                                     //Loan Insurance
-                                    LineNo := LineNo + 10000;
-                                    GenJournalLine.Init;
-                                    GenJournalLine."Journal Template Name" := 'GENERAL';
-                                    GenJournalLine."Journal Batch Name" := 'Recoveries';
-                                    GenJournalLine."Line No." := LineNo;
-                                    GenJournalLine."Document No." := "No.";
-                                    GenJournalLine."Posting Date" := Today;
-                                    GenJournalLine."External Document No." := "No.";
-                                    GenJournalLine."Account Type" := GenJournalLine."bal. account type"::Customer;
-                                    GenJournalLine."Account No." := "No.";
-                                    GenJournalLine.Validate(GenJournalLine."Account No.");
-                                    GenJournalLine.Description := 'Cleared by deposits: ' + "No.";
-                                    GenJournalLine.Amount := -ROUND(LoansR."Loans Insurance");
-                                    GenJournalLine.Validate(GenJournalLine.Amount);
-                                    GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Insurance Paid";
-                                    GenJournalLine."Loan No" := LoansR."Loan  No.";
-                                    GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
-                                    GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
-                                    GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                                    GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                                    if GenJournalLine.Amount <> 0 then
-                                        GenJournalLine.Insert;
+                                    // LineNo := LineNo + 10000;
+                                    // GenJournalLine.Init;
+                                    // GenJournalLine."Journal Template Name" := 'GENERAL';
+                                    // GenJournalLine."Journal Batch Name" := 'Recoveries';
+                                    // GenJournalLine."Line No." := LineNo;
+                                    // GenJournalLine."Document No." := "No.";
+                                    // GenJournalLine."Posting Date" := Today;
+                                    // GenJournalLine."External Document No." := "No.";
+                                    // GenJournalLine."Account Type" := GenJournalLine."bal. account type"::Customer;
+                                    // GenJournalLine."Account No." := "No.";
+                                    // GenJournalLine.Validate(GenJournalLine."Account No.");
+                                    // GenJournalLine.Description := 'Cleared by deposits: ' + "No.";
+                                    // GenJournalLine.Amount := -ROUND(LoansR."Loans Insurance");
+                                    // GenJournalLine.Validate(GenJournalLine.Amount);
+                                    // GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Insurance Paid";
+                                    // GenJournalLine."Loan No" := LoansR."Loan  No.";
+                                    // GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
+                                    // GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
+                                    // GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
+                                    // GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                                    // if GenJournalLine.Amount <> 0 then
+                                    //     GenJournalLine.Insert;
 
                                     /*
                                     LineNo:=LineNo+10000;

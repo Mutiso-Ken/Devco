@@ -23,10 +23,10 @@ Table 51516246 "Receipt Allocation"
             begin
                 "Loan No." := '';
                 Amount := 0;
-                if "Transaction Type" = "transaction type"::"FOSA Account" then
-                    "Global Dimension 1 Code" := 'FOSA';
+                // if "Transaction Type" = "transaction type"::"FOSA Account" then
+                //     "Global Dimension 1 Code" := 'FOSA';
 
-                if ("Transaction Type" <> "transaction type"::"FOSA Account") and ("Transaction Type" <> "transaction type"::" ") then begin
+                if  ("Transaction Type" <> "transaction type"::" ") then begin
                     "Account Type" := "account type"::Customer
                 end else
                     "Account Type" := "account type"::Vendor;
@@ -259,9 +259,9 @@ Table 51516246 "Receipt Allocation"
 
             trigger OnValidate()
             begin
-                if "Account Type" = "account type"::Vendor then begin
-                    "Transaction Type" := "transaction type"::"FOSA Account";
-                end;
+                // if "Account Type" = "account type"::Vendor then begin
+                //     "Transaction Type" := "transaction type"::"FOSA Account";
+                // end;
             end;
         }
         field(51516162; "Loan PayOff Amount"; Decimal)

@@ -2,15 +2,15 @@ report 51516346 "Statement of Directors'RE"
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
-    DefaultLayout = RDLC;
-    RDLCLayout = './Layout/statementofDirectors.rdlc';
+    DefaultLayout = Word;
+    WordLayout = './Layout/statementofDirectors.docx';
 
 
     dataset
     {
         dataitem("Company Information"; "Company Information")
         {
-            column(Asat; Asat)
+            column(Asat; Format(Asat))
             {
 
 
@@ -19,7 +19,7 @@ report 51516346 "Statement of Directors'RE"
             {
 
             }
-            column(LastYearButOne;LastYearButOne){}
+            column(LastYearButOne; LastYearButOne) { }
             column(PreviousYear; PreviousYear)
             {
 
@@ -46,6 +46,8 @@ report 51516346 "Statement of Directors'RE"
                 LastYearButOne := CalcDate(DateExpr, EndofLastyear);
                 PreviousYear := CurrentYear - 1;
                 Now := CurrentYear + 1;
+
+
 
             end;
         }

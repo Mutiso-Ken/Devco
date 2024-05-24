@@ -28,11 +28,11 @@ table 51516874 "Sacco Information"
         {
             DataClassification = ToBeClassified;
         }
-        field(5; "Building Number"; Text[50])
+        field(5; "Building Name"; Text[50])
         {
             DataClassification = ToBeClassified;
         }
-        field(6; "Street/Road"; Text[50])
+        field(6; "Principal Bank Branch"; Text[50])
         {
             DataClassification = ToBeClassified;
         }
@@ -60,7 +60,7 @@ table 51516874 "Sacco Information"
         {
             DataClassification = ToBeClassified;
         }
-        field(13; LegalAdvisorsName; Text[50])
+        field(13; auditorcerfication; Text[50])
         {
             DataClassification = ToBeClassified;
         }
@@ -94,6 +94,10 @@ table 51516874 "Sacco Information"
             DataClassification = ToBeClassified;
         }
         field(22; "Sacco Principal Activities"; Text[150])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(23; "Sacco CEO P.O Box"; Text[80])
         {
             DataClassification = ToBeClassified;
         }

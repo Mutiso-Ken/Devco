@@ -133,6 +133,7 @@ Report 51516135 "Payroll Summary"
             }
             column(Loans; Loans) { }
             column(Deposits; Deposits) { }
+            column(Likizo; Likizo) { }
             column(Interests; Interests) { }
             column(Organization_prPeriodTransactions; "prPeriod Transactions.".Organization)
             {
@@ -216,8 +217,13 @@ Report 51516135 "Payroll Summary"
                 paye := 0;
                 "HOUSING LEVY" := 0;
                 totaldeductions := 0;
+                SaccoDeductions := 0;
                 net := 0;
                 Transfer := 0;
+                Likizo := 0;
+                Deposits := 0;
+                Interests := 0;
+                Loans := 0;
 
                 //Basic pay
                 PeriodTrans2.Reset;
@@ -315,15 +321,15 @@ Report 51516135 "Payroll Summary"
                 end;
                 //END;
                 //transfer Allowance
-                PeriodTrans2.Reset;
-                PeriodTrans2.SetRange("Transaction Code", '0011');
-                PeriodTrans2.SetRange("Employee Code", "prPeriod Transactions."."Employee Code");
-                PeriodTrans2.SetRange("Payroll Period", "prPeriod Transactions."."Payroll Period");
-                if PeriodTrans2.FindFirst then begin
-                    repeat
-                        Transfer := PeriodTrans2.Amount;
-                    until PeriodTrans2.Next = 0;
-                end;
+                // PeriodTrans2.Reset;
+                // PeriodTrans2.SetRange("Transaction Code", '0011');
+                // PeriodTrans2.SetRange("Employee Code", "prPeriod Transactions."."Employee Code");
+                // PeriodTrans2.SetRange("Payroll Period", "prPeriod Transactions."."Payroll Period");
+                // if PeriodTrans2.FindFirst then begin
+                //     repeat
+                //         Transfer := PeriodTrans2.Amount;
+                //     until PeriodTrans2.Next = 0;
+                // end;
 
                 //END Acting Allowance;
 
@@ -351,7 +357,7 @@ Report 51516135 "Payroll Summary"
 
                 //Sacco Deductions
                 PeriodTrans2.Reset;
-                PeriodTrans2.SetRange("Transaction Code", 'SHARES');
+                PeriodTrans2.SetRange("Transaction Code", 'DEPOSIT');
                 PeriodTrans2.SetRange("Employee Code", "prPeriod Transactions."."Employee Code");
                 PeriodTrans2.SetRange("Payroll Period", "prPeriod Transactions."."Payroll Period");
                 if PeriodTrans2.FindFirst then begin
@@ -360,6 +366,33 @@ Report 51516135 "Payroll Summary"
                     until PeriodTrans2.Next = 0;
                 end;
                 //Interests
+
+                //Likizo
+
+                PeriodTrans2.Reset;
+                PeriodTrans2.SetRange("Transaction Code", 'LIKIZO');
+                PeriodTrans2.SetRange("Employee Code", "prPeriod Transactions."."Employee Code");
+                PeriodTrans2.SetRange("Payroll Period", "prPeriod Transactions."."Payroll Period");
+                if PeriodTrans2.FindFirst then begin
+                    repeat
+                        Likizo := PeriodTrans2.Amount;
+                    until PeriodTrans2.Next = 0;
+                end;
+                //end of Likizo
+
+
+
+                PeriodTrans2.Reset;
+                PeriodTrans2.SetRange("Transaction Code", 'SHARE CAPITAL');
+                PeriodTrans2.SetRange("Employee Code", "prPeriod Transactions."."Employee Code");
+                PeriodTrans2.SetRange("Payroll Period", "prPeriod Transactions."."Payroll Period");
+                if PeriodTrans2.FindFirst then begin
+                    repeat
+                        Sharecapital := PeriodTrans2.Amount;
+                    until PeriodTrans2.Next = 0;
+                end;
+
+
                 PeriodTrans2.Reset;
                 PeriodTrans2.SetRange("Transaction Code", 'INTEREST');
                 PeriodTrans2.SetRange("Employee Code", "prPeriod Transactions."."Employee Code");
@@ -369,7 +402,7 @@ Report 51516135 "Payroll Summary"
                         Interests := PeriodTrans2.Amount;
                     until PeriodTrans2.Next = 0;
                 end;
-                SaccoDeductions := (Interests + Deposits + Loans);
+                SaccoDeductions := (Interests + Deposits + Loans + Likizo + Sharecapital);
                 //END;
                 SN := SN + 1;
             end;
@@ -418,11 +451,13 @@ Report 51516135 "Payroll Summary"
 
     var
         HREmployees: Record "Payroll Employee.";
+        Sharecapital: Decimal;
         SaccoDeductions: Decimal;
         employeeName: Text;
         info: Record "Company Information";
         Loans: Decimal;
         Deposits: Decimal;
+        Likizo: Decimal;
         Interests: Decimal;
         CompName: Text[50];
         Addr1: Text[50];

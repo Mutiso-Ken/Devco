@@ -73,7 +73,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                 {
                     ApplicationArea = Basic;
                 }
-          
+
                 field(Amount; Amount)
                 {
                     ApplicationArea = Basic;
@@ -194,10 +194,10 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                     Datefilter := '..' + Format("Loan CutOff Date");
                     IssueDate := "Loan CutOff Date";
                     //General Journals
-                    if FundsUSer.Get(UserId) then begin
-                        Jtemplate := FundsUSer."Receipt Journal Template";
-                        Jbatch := FundsUSer."Receipt Journal Batch";
-                    end;
+                    // if FundsUSer.Get(UserId) then begin
+                    Jtemplate := 'GENERAL';
+                    Jbatch := 'CHECKOFF';
+                    // end;
                     //Delete journal
                     Gnljnline.Reset;
                     Gnljnline.SetRange("Journal Template Name", Jtemplate);
@@ -586,43 +586,43 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
             if ObjMember.Find('-') then begin
                 //REPEAT Deducted once unless otherwise advised
                 ObjMember.CalcFields(ObjMember."Shares Retained");
-                if ObjMember."Shares Retained" < genstup."Retained Shares" then begin
-                    SHARESCAP := genstup."Retained Shares";
-                    DIFF := SHARESCAP - ObjMember."Shares Retained";
+                // if ObjMember."Shares Retained" < genstup."Retained Shares" then begin
+                //     SHARESCAP := genstup."Retained Shares";
+                DIFF := ObjMember."Monthly ShareCap Cont.";
 
-                    if DIFF > 1 then begin
-                        if RunningBalance > 0 then begin
-                            AmountToDeduct := 0;
-                            AmountToDeduct := DIFF;
-                            if DIFF > 500 then
-                                AmountToDeduct := 500;
-                            if RunningBalance <= AmountToDeduct then
-                                AmountToDeduct := RunningBalance;
+                if DIFF > 1 then begin
+                    if RunningBalance > 0 then begin
+                        AmountToDeduct := 0;
+                        AmountToDeduct := DIFF;
+                        // if DIFF > 500 then
+                        //     AmountToDeduct := 500;
+                        if RunningBalance <= AmountToDeduct then
+                            AmountToDeduct := RunningBalance;
 
-                            LineN := LineN + 10000;
-                            Gnljnline.Init;
-                            Gnljnline."Journal Template Name" := Jtemplate;
-                            Gnljnline."Journal Batch Name" := Jbatch;
-                            Gnljnline."Line No." := LineN;
-                            Gnljnline."Account Type" := Gnljnline."account type"::Customer;
-                            Gnljnline."Account No." := ObjRcptBuffer."Member No";
-                            Gnljnline.Validate(Gnljnline."Account No.");
-                            Gnljnline."Document No." := "Document No";
-                            Gnljnline."Posting Date" := "Posting date";
-                            Gnljnline.Description := 'Share Capital';
-                            Gnljnline.Amount := AmountToDeduct * -1;
-                            Gnljnline.Validate(Gnljnline.Amount);
-                            Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Shares Capital";
-                            Gnljnline."Shortcut Dimension 1 Code" := 'BOSA';
-                            Gnljnline."Shortcut Dimension 2 Code" := ObjMember."Global Dimension 2 Code";
-                            Gnljnline.Validate(Gnljnline."Shortcut Dimension 1 Code");
-                            Gnljnline.Validate(Gnljnline."Shortcut Dimension 2 Code");
-                            if Gnljnline.Amount <> 0 then
-                                Gnljnline.Insert;
-                            RunningBalance := RunningBalance - Abs(Gnljnline.Amount);
-                        end;
+                        LineN := LineN + 10000;
+                        Gnljnline.Init;
+                        Gnljnline."Journal Template Name" := Jtemplate;
+                        Gnljnline."Journal Batch Name" := Jbatch;
+                        Gnljnline."Line No." := LineN;
+                        Gnljnline."Account Type" := Gnljnline."account type"::Customer;
+                        Gnljnline."Account No." := ObjRcptBuffer."Member No";
+                        Gnljnline.Validate(Gnljnline."Account No.");
+                        Gnljnline."Document No." := "Document No";
+                        Gnljnline."Posting Date" := "Posting date";
+                        Gnljnline.Description := 'Share Capital';
+                        Gnljnline.Amount := AmountToDeduct * -1;
+                        Gnljnline.Validate(Gnljnline.Amount);
+                        Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Shares Capital";
+                        Gnljnline."Shortcut Dimension 1 Code" := 'BOSA';
+                        Gnljnline."Shortcut Dimension 2 Code" := ObjMember."Global Dimension 2 Code";
+                        Gnljnline.Validate(Gnljnline."Shortcut Dimension 1 Code");
+                        Gnljnline.Validate(Gnljnline."Shortcut Dimension 2 Code");
+                        if Gnljnline.Amount <> 0 then
+                            Gnljnline.Insert;
+                        RunningBalance := RunningBalance - Abs(Gnljnline.Amount);
                     end;
                 end;
+                // end;
                 //UNTIL RcptBufLines.NEXT=0;
             end;
 
