@@ -73,6 +73,7 @@ Report 51516280 "Post Monthly Interest."
             begin
                 PDate := "Loans Register".GetRangemax("Loans Register"."Date filter");
                 SDATE := '..' + Format(PDate);
+                DocNo:=Format(PostDate);
                 loanapp.Reset;
                 loanapp.SetRange(loanapp."Loan  No.", "Loans Register"."Loan  No.");
                 loanapp.SetFilter(loanapp."Date filter", SDATE);
@@ -98,7 +99,7 @@ Report 51516280 "Post Monthly Interest."
                                     GenJournalLine.Validate(GenJournalLine."Account No.");
                                     GenJournalLine."Document No." := DocNo;
                                     GenJournalLine."Posting Date" := PostDate;
-                                    GenJournalLine.Description := DocNo + ' ' + 'INT Charged' + ' ' + Format(PostDate);
+                                    GenJournalLine.Description := 'INT Charged' + ' ' + Format(PostDate);
                                     GenJournalLine.Amount := ROUND(loanapp."Outstanding Balance" * (loanapp.Interest / 1200), 1, '>');
                                     GenJournalLine.Validate(GenJournalLine.Amount);
                                     if LoanType.Get(loanapp."Loan Product Type") then begin
@@ -192,8 +193,8 @@ Report 51516280 "Post Monthly Interest."
                 if PostDate = 0D then
                     Error('Please create Interest period');
 
-                if DocNo = '' then
-                    Error('You must specify the Document No.');
+                // if DocNo = '' then
+                //     Error('You must specify the Document No.');
 
 
                 //delete journal line
@@ -232,12 +233,12 @@ Report 51516280 "Post Monthly Interest."
                     Caption = 'Posting Date';
                     Editable = true;
                 }
-                field(DocNo; DocNo)
-                {
-                    ApplicationArea = Basic;
-                    Caption = 'Document No.';
-                    Editable = true;
-                }
+                // field(DocNo; DocNo)
+                // {
+                //     ApplicationArea = Basic;
+                //     Caption = 'Document No.';
+                //     Editable = true;
+                // }
 
 
             }

@@ -666,6 +666,7 @@ Report 50378 "Dividend Processing-Prorated"
 
 
                 Customer."Net Dividend Payable" := DivTotal;
+                Customer."Dividend Processed Date":="From Date";
                 Customer.MODIFY;
 
                 // DivProg.RESET;

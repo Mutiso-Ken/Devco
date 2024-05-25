@@ -1565,6 +1565,7 @@ tableextension 51516079 "CustomerExt" extends Customer
         }
         field(69196; "Alpha Monthly Contribution"; Decimal) { }
         field(69197; "Junior Monthly Contribution"; Decimal) { }
+        field(69200; "Dividend Processed Date"; Date) { }
 
     }
 }
