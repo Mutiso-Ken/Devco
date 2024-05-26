@@ -7,6 +7,7 @@ pageextension 51516876 "BankAccountListExt" extends "Bank Account List"
             field("Account Type"; "Account Type")
             {
                 ApplicationArea = Basic;
+                Visible = false;
             }
 
         }

@@ -4,6 +4,7 @@ Page 51516247 "Loans Guarantee Details"
     RefreshOnActivate = false;
     SourceTable = "Loans Guarantee Details";
     SourceTableView = where(Substituted = const(false));
+    
 
     
 
@@ -74,11 +75,11 @@ Page 51516247 "Loans Guarantee Details"
                     ShowMandatory = true;
                     trigger OnValidate()
                     begin
-                        rec.CalcFields("Outstanding Balance");
-                        if "Free Shares" < "Amont Guaranteed" then
-                            Error('The Guarantor has no enough Deposits to Guarantee') else
-                            rec."Total Amount Guaranteed" := FnRunGetCummulativeAmountGuaranteed(Rec."Loan No");
-                        rec.Modify();
+                        // rec.CalcFields("Outstanding Balance");
+                        // if "Free Shares" < "Amont Guaranteed" then
+                        //     Error('The Guarantor has no enough Deposits to Guarantee') else
+                        //     rec."Total Amount Guaranteed" := FnRunGetCummulativeAmountGuaranteed(Rec."Loan No");
+                        // rec.Modify();
                     end;
                 }
                 field("Total Amount Guaranteed"; "Total Amount Guaranteed")

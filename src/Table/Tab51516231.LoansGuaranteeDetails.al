@@ -1,5 +1,7 @@
 Table 51516231 "Loans Guarantee Details"
 {
+    LookupPageId = "Loans Guarantee Details";
+    DrillDownPageId = "Loans Guarantee Details";
 
     fields
     {
@@ -13,16 +15,13 @@ Table 51516231 "Loans Guarantee Details"
         {
             TableRelation = Customer."No.";
             NotBlank = true;
-            trigger OnValidate()
-            begin
 
-            end;
         }
         field(3; Name; Text[200])
         {
             Editable = false;
         }
-  
+
         field(5; Shares; Decimal)
         {
             Editable = false;
@@ -81,7 +80,7 @@ Table 51516231 "Loans Guarantee Details"
         field(15; "ID No."; Code[50])
         {
         }
-              // field(4; "Loan Balance"; Decimal)
+        // field(4; "Loan Balance"; Decimal)
         // {
         //     CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Member No"),
         //                                                           "Transaction Type" = filter(Loan | Repayment)));
@@ -126,11 +125,6 @@ Table 51516231 "Loans Guarantee Details"
         field(22; "Substituted Guarantor"; Code[80])
         {
             TableRelation = Customer."No.";
-
-            trigger OnValidate()
-            begin
-
-            end;
         }
         field(23; "Loanees  No"; Code[30])
         {
@@ -211,9 +205,9 @@ Table 51516231 "Loans Guarantee Details"
         key(Key1; "Loan No", "Member No")
         {
             Clustered = true;
-            //SumIndexFields = Shares;
+            SumIndexFields = Shares,"Amont Guaranteed";
         }
-        key(key2; "Loan No")
+        key(key2; "Member No")
         {
 
         }
