@@ -11,12 +11,17 @@ report 50024 FinancialStaticalInformation
         dataitem("Sacco Information"; "Sacco Information")
         {
             column(Code; Code) { }
+            column(Previous_Deposits_Interest; "Previous Deposits Interest") { }
+            column(Previous_Dividends_Interest; "Previous Dividends Interest") { }
+            column(Deposits_Interest; "Deposits Interest") { }
+            column(Dividends_Interest; "Dividends Interest") { }
             column(RetainedEarningscoreCapital; RetainedEarningscoreCapital) { }
             column(LRetainedEarningscoreCapital; LRetainedEarningscoreCapital) { }
             column(Active; Active) { }
             column(Dormant; Dormant) { }
             column(LActive; LActive) { }
             column(LDormant; LDormant) { }
+
             column(StatutoryReserve; StatutoryReserve * -1) { }
             column(LStatutoryReserve; LStatutoryReserve * -1) { }
             column(Institutionalcapital; Institutionalcapital * -1) { }
@@ -31,12 +36,14 @@ report 50024 FinancialStaticalInformation
             column(LDepositAmount; (LDepositAmount * -1)) { }
             column(LoanandAdvances; LoanandAdvances) { }
             column(LLoanandAdvances; LLoanandAdvances) { }
-            column(InterestonMemberdeposits; (InterestonMemberdeposits * -1)) { }
-            column(LInterestonMemberdeposits; (LInterestonMemberdeposits * -1)) { }
+            column(InterestonMemberdeposits; (InterestonMemberdeposits)) { }
+            column(LInterestonMemberdeposits; (LInterestonMemberdeposits)) { }
             column(IntCurrentDeposits; IntCurrentDeposits)
             {
 
             }
+            column(PersonalExpenseRevenue; PersonalExpenseRevenue) { }
+            column(LPersonalExpenseRevenue; LPersonalExpenseRevenue) { }
 
             column(IntShareCapital; IntShareCapital)
             {
@@ -444,7 +451,7 @@ report 50024 FinancialStaticalInformation
                         GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', EndofLastyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            InterestonMemberdeposits += 1 * GLEntry.Amount;
+                            InterestonMemberdeposits += -1 * GLEntry.Amount;
                         end;
 
                     until GLAccount.Next = 0;
@@ -459,7 +466,7 @@ report 50024 FinancialStaticalInformation
                         GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYearButOne);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            LInterestonMemberdeposits += 1 * GLEntry.Amount;
+                            LInterestonMemberdeposits += -1 * GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
                 end;
@@ -535,7 +542,7 @@ report 50024 FinancialStaticalInformation
                 //Total Revenue
                 TotalRevenue := 0;
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount.Financials, '%1', GLAccount.Financials::Expenses);
+                GLAccount.SetFilter(GLAccount.Financials, '%1', GLAccount.Financials::Revenue);
                 if GLAccount.FindSet then begin
                     repeat
                         GLEntry.Reset;
@@ -543,14 +550,14 @@ report 50024 FinancialStaticalInformation
                         GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', EndofLastyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            TotalRevenue += 1 * GLEntry.Amount;
+                            TotalRevenue += -1 * GLEntry.Amount;
 
                         end;
                     until GLAccount.Next = 0;
                 end;
                 LTotalRevenue := 0;
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount.Financials, '%1', GLAccount.Financials::Expenses);
+                GLAccount.SetFilter(GLAccount.Financials, '%1', GLAccount.Financials::Revenue);
                 if GLAccount.FindSet then begin
                     repeat
                         GLEntry.Reset;
@@ -558,7 +565,7 @@ report 50024 FinancialStaticalInformation
                         GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYearButOne);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            LTotalRevenue += 1 * GLEntry.Amount;
+                            LTotalRevenue += -1 * GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
                 end;
@@ -566,7 +573,7 @@ report 50024 FinancialStaticalInformation
                 //Total interest Income
                 TotalInteresstIncome := 0;
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount.Financials, '%1', GLAccount.Financials::InterestIncome);
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::InterestOnLoans);
                 if GLAccount.FindSet then begin
                     repeat
                         GLEntry.Reset;
@@ -574,14 +581,14 @@ report 50024 FinancialStaticalInformation
                         GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', EndofLastyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            TotalInteresstIncome += 1 * GLEntry.Amount;
+                            TotalInteresstIncome += -1 * GLEntry.Amount;
 
                         end;
                     until GLAccount.Next = 0;
                 end;
                 LTotalInteresstIncome := 0;
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount.Financials, '%1', GLAccount.Financials::InterestIncome);
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::InterestOnLoans);
                 if GLAccount.FindSet then begin
                     repeat
                         GLEntry.Reset;
@@ -589,13 +596,51 @@ report 50024 FinancialStaticalInformation
                         GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYearButOne);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            LTotalInteresstIncome += 1 * GLEntry.Amount;
+                            LTotalInteresstIncome += -1 * GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
                 end;
                 //End Total Interest Income
+                //start of Personal Expenses
+
+                PersonalExpenses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::PersonelExpenses);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            PersonalExpenses += GLEntry.Amount;
+
+                        end;
+                    until GLAccount.Next = 0;
+
+                end;
+
+                LPersonalExpenses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::PersonelExpenses);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            LPersonalExpenses += GLEntry.Amount;
+
+                        end;
+                    until GLAccount.Next = 0;
+
+                end;
+
+
+                //End Of Personal Expenses
                 //Total Expenses
-                TotalExpenses := 0;
+                LPersonalExpenses := 0;
                 GLAccount.Reset;
                 GLAccount.SetFilter(GLAccount.Financials, '%1', GLAccount.Financials::Expenses);
                 if GLAccount.FindSet then begin
@@ -950,8 +995,15 @@ report 50024 FinancialStaticalInformation
 
                 //end Retained Earning and disclosed Reserverscorecapital
 
+                PersonalExpenseRevenue := 0;
+                if TotalRevenue <> 0 then begin
+                    PersonalExpenseRevenue := -1 * (PersonalExpenses / TotalExpenses);
+                end;
 
-
+                LPersonalExpenseRevenue := 0;
+                if LTotalRevenue <> 0 then begin
+                    LPersonalExpenseRevenue := -1 * (LPersonalExpenses / LTotalExpenses);
+                end;
                 if shortTermLiabilities <> 0 then begin
                     LiquidAssetstoTotalassetsshorttermliabilities := (Cashatbank / (-shortTermLiabilities));
                 end;
@@ -985,11 +1037,11 @@ report 50024 FinancialStaticalInformation
                 end;
 
                 if TotalRevenue <> 0 then begin
-                    TotalExpensesTotalRevenue := (TotalExpenses / TotalRevenue);
+                    TotalExpensesTotalRevenue :=  (TotalExpenses / TotalRevenue);
                 end;
 
                 if LTotalRevenue <> 0 then begin
-                    LTotalExpensesTotalRevenue := (LTotalExpenses / LTotalRevenue);
+                    LTotalExpensesTotalRevenue := -(LTotalExpenses / LTotalRevenue);
                 end;
 
                 if TotalAssets <> 0 then begin
@@ -1035,6 +1087,8 @@ report 50024 FinancialStaticalInformation
     var
         GenSetup: Record "Sacco General Set-Up";
         RetainedEarningsDisclosedReserves: Decimal;
+        PersonalExpenseRevenue: Decimal;
+        LPersonalExpenseRevenue: Decimal;
         FinancialAssetsTotalAssets: Decimal;
         LFinancialAssetsTotalAssets: Decimal;
         LRetainedEarningsDisclosedReserves: Decimal;
@@ -1128,6 +1182,8 @@ report 50024 FinancialStaticalInformation
         LPrepaidLeaseentals: Decimal;
         LIntangibleAssets: Decimal;
         LOtherAssets: Decimal;
+        PersonalExpenses: Decimal;
+        LPersonalExpenses: Decimal;
 
         LInterestonMemberDeposits: Decimal;
         InterestonMemberdeposits: Decimal;

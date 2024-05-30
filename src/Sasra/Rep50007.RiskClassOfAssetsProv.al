@@ -8,334 +8,334 @@ Report 50007 "Risk Class Of Assets & Prov"
     dataset
     {
 #pragma warning disable AL0275
-        dataitem(Company;"Company Information")
+        dataitem(Company; "Company Information")
 #pragma warning restore AL0275
         {
             column(ReportForNavId_1; 1)
             {
             }
-            column(COMPANYNAME;Company.Name)
+            column(COMPANYNAME; Company.Name)
             {
             }
-            column(AsAt;AsAt)
+            column(AsAt; AsAt)
             {
             }
-            column(LoanCount;LoanCount)
+            column(LoanCount; LoanCount)
             {
             }
-            column(LoanCountSubstandard;LoanCountSubstandard)
+            column(LoanCountSubstandard; LoanCountSubstandard)
             {
             }
-            column(LoanCountDoubtful;LoanCountDoubtful)
+            column(LoanCountDoubtful; LoanCountDoubtful)
             {
             }
-            column(LoanCountWatch;LoanCountWatch)
+            column(LoanCountWatch; LoanCountWatch)
             {
             }
-            column(LoanCountLoss;LoanCountLoss)
+            column(LoanCountLoss; LoanCountLoss)
             {
             }
-            column(OutstandingLoanPer;OutstandingLoanPer)
+            column(OutstandingLoanPer; OutstandingLoanPer)
             {
             }
-            column(OutstandingLoanwatch;OutstandingLoanwatch)
+            column(OutstandingLoanwatch; OutstandingLoanwatch)
             {
             }
-            column(OutstandingLoandoubtful;OutstandingLoandoubtful)
+            column(OutstandingLoandoubtful; OutstandingLoandoubtful)
             {
             }
-            column(OutstandingLoanSub;OutstandingLoanSub)
+            column(OutstandingLoanSub; OutstandingLoanSub)
             {
             }
-            column(OutstandingLoanloss;OutstandingLoanloss)
+            column(OutstandingLoanloss; OutstandingLoanloss)
             {
             }
             column(LoanCountResch; LoanCountResch)
             {
             }
-            column(OutstandingLoanPerResc;OutstandingLoanPerResc)
+            column(OutstandingLoanPerResc; OutstandingLoanPerResc)
             {
             }
-            column(LoanCountWatchResc;LoanCountWatchResc)
+            column(LoanCountWatchResc; LoanCountWatchResc)
             {
             }
             column(OutstandingLoanwatchResc; OutstandingLoanwatchResc)
             {
             }
-            column(LoanCountDoubtfulResc;LoanCountDoubtfulResc)
+            column(LoanCountDoubtfulResc; LoanCountDoubtfulResc)
             {
             }
-            column(OutstandingLoandoubtfulResc;OutstandingLoandoubtfulResc)
+            column(OutstandingLoandoubtfulResc; OutstandingLoandoubtfulResc)
             {
             }
-            column(LoanCountSubstandardResc;LoanCountSubstandardResc)
+            column(LoanCountSubstandardResc; LoanCountSubstandardResc)
             {
             }
-            column(OutstandingLoanSubResc;OutstandingLoanSubResc)
+            column(OutstandingLoanSubResc; OutstandingLoanSubResc)
             {
             }
-            column(LoanCountLossRec;LoanCountLossRec)
+            column(LoanCountLossRec; LoanCountLossRec)
             {
             }
-            column(OutstandingLoanlossResc;OutstandingLoanlossResc)
+            column(OutstandingLoanlossResc; OutstandingLoanlossResc)
             {
             }
-            column(ClassifiedNonRescheduledper;ClassifiedNonRescheduledper)
+            column(ClassifiedNonRescheduledper; ClassifiedNonRescheduledper)
             {
             }
-            column(ClassifiedNonRescheduledDoubtful;ClassifiedNonRescheduledDoubtful)
+            column(ClassifiedNonRescheduledDoubtful; ClassifiedNonRescheduledDoubtful)
             {
             }
-            column(ClassifiedNonRescheduledLoss;ClassifiedNonRescheduledLoss)
+            column(ClassifiedNonRescheduledLoss; ClassifiedNonRescheduledLoss)
             {
             }
-            column(ClassifiedNonRescheduledsubstandard;ClassifiedNonRescheduledsubstandard)
+            column(ClassifiedNonRescheduledsubstandard; ClassifiedNonRescheduledsubstandard)
             {
             }
-            column(ClassifiedNonRescheduledWatch;ClassifiedNonRescheduledWatch)
+            column(ClassifiedNonRescheduledWatch; ClassifiedNonRescheduledWatch)
             {
             }
-            column(ClassifiedRescheduledLoss;ClassifiedRescheduledLoss)
+            column(ClassifiedRescheduledLoss; ClassifiedRescheduledLoss)
             {
             }
-            column(ClassifiedRescheduledPer;ClassifiedRescheduledPer)
+            column(ClassifiedRescheduledPer; ClassifiedRescheduledPer)
             {
             }
-            column(ClassifiedRescheduledSubstandard;ClassifiedRescheduledSubstandard)
+            column(ClassifiedRescheduledSubstandard; ClassifiedRescheduledSubstandard)
             {
             }
-            column(ClassifiedRescheduledWatch;ClassifiedRescheduledWatch)
+            column(ClassifiedRescheduledWatch; ClassifiedRescheduledWatch)
             {
             }
-            column(ClassifiedRescheduledDoubtful;ClassifiedRescheduledDoubtful)
+            column(ClassifiedRescheduledDoubtful; ClassifiedRescheduledDoubtful)
             {
             }
-            column(subtotal;subtotal)
+            column(subtotal; subtotal)
             {
             }
-            column(TotalClassffiedRecheduled;TotalClassffiedRecheduled)
+            column(TotalClassffiedRecheduled; TotalClassffiedRecheduled)
             {
             }
-            column(TotalClassffied;TotalClassffied)
+            column(TotalClassffied; TotalClassffied)
             {
             }
-            column(subtotalRescheduled;subtotalRescheduled)
+            column(subtotalRescheduled; subtotalRescheduled)
             {
             }
-            column(Subtotalcount;Subtotalcount)
+            column(Subtotalcount; Subtotalcount)
             {
             }
-            column(SubtotalcountResc;SubtotalcountResc)
+            column(SubtotalcountResc; SubtotalcountResc)
             {
             }
-            column(GRANDTOTAL;GRANDTOTAL)
+            column(GRANDTOTAL; GRANDTOTAL)
             {
             }
-            column(GRANDTOTALCOUNT;GRANDTOTALCOUNT)
+            column(GRANDTOTALCOUNT; GRANDTOTALCOUNT)
             {
             }
-            column(GRANDTOTALCLASSIF;GRANDTOTALCLASSIF)
+            column(GRANDTOTALCLASSIF; GRANDTOTALCLASSIF)
             {
             }
-            column(YearBeginDate;YearBeginDate)
+            column(YearBeginDate; YearBeginDate)
             {
             }
-            column(FinancialYear;FinancialYear)
+            column(FinancialYear; FinancialYear)
             {
             }
 
             trigger OnAfterGetRecord()
             begin
                 //DateFilter:='..'+FORMAT(CALCDATE('-CM-1D',AsAt));
-                DateFilter:='..'+Format(AsAt);
-                FinancialYear:=Date2dmy(AsAt,3);
-                YearBeginDate:=CalcDate('-CY',AsAt);
+                DateFilter := '..' + Format(AsAt);
+                FinancialYear := Date2dmy(AsAt, 3);
+                YearBeginDate := CalcDate('-CY', AsAt);
                 //PrevMonthDate:=CUSurefactory.KnGetPreviousMonthLastDate(LoansRegister."Loan  No.",AsAt);
                 //DateFilter:='..'+FORMAT(PrevMonthDate);
                 //MESSAGE('%1',DateFilter);
                 if LoansRegister.FindFirst then begin
-                repeat
-                //Classify.FnClassifyLoansAge(LoansRegister."Loan  No.",AsAt);
-                until LoansRegister.Next=0;
+                    repeat
+                        Classify.ClassifyLoansSASRA(LoansRegister."Loan  No.", DateFilter);
+                    until LoansRegister.Next = 0;
                 end;
-                LoanCount:=0;
-                OutstandingLoanPer:=0;
+                LoanCount := 0;
+                OutstandingLoanPer := 0;
                 LoansRegisters.Reset;
-                LoansRegisters.SetRange(LoansRegisters.Rescheduled,false);
+                LoansRegisters.SetRange(LoansRegisters.Rescheduled, false);
                 //LoansRegister.SETFILTER(LoansRegister."Date filter",DateFilter);
-                LoansRegisters.SetFilter(LoansRegisters."Loans Category-SASRA",'%1',LoansRegisters."Loans Category-SASRA"::Perfoming);
-                LoansRegisters.SetFilter(LoansRegisters."Issued Date",'<=%1',AsAt);
-                LoansRegisters.SetFilter(LoansRegisters."Outstanding Balance",'>%1',0);
-                LoansRegister.SetRange(LoansRegister.Posted,true);
+                LoansRegisters.SetFilter(LoansRegisters."Loans Category-SASRA", '%1', LoansRegisters."Loans Category-SASRA"::Perfoming);
+                LoansRegisters.SetFilter(LoansRegisters."Issued Date", '<=%1', AsAt);
+                LoansRegisters.SetFilter(LoansRegisters."Outstanding Balance", '>%1', 0);
+                LoansRegister.SetRange(LoansRegister.Posted, true);
                 LoansRegisters.SetAutocalcFields("Outstanding Balance");
                 if LoansRegisters.FindFirst then begin
-                  repeat
-                    LoansRegisters.CalcFields("Outstanding Balance");
-                   // IF LoansRegisters."Outstanding Balance" <> 0 then
-                    LoanCount:=LoanCount+1;
-                    OutstandingLoanPer+=LoansRegisters."Outstanding Balance";
-                    until LoansRegisters.Next =0;
-                  end;
+                    repeat
+                        LoansRegisters.CalcFields("Outstanding Balance");
+                        // IF LoansRegisters."Outstanding Balance" <> 0 then
+                        LoanCount := LoanCount + 1;
+                        OutstandingLoanPer += LoansRegisters."Outstanding Balance";
+                    until LoansRegisters.Next = 0;
+                end;
 
-                LoanCountWatch:=0;
-                OutstandingLoanwatch:=0;
+                LoanCountWatch := 0;
+                OutstandingLoanwatch := 0;
                 LoansRegisterr.Reset;
-                LoansRegisterr.SetRange(LoansRegisterr.Rescheduled,false);
+                LoansRegisterr.SetRange(LoansRegisterr.Rescheduled, false);
                 //LoansRegisterr.SETFILTER(LoansRegisterr."Date filter",DateFilter);
-                LoansRegisterr.SetFilter(LoansRegisterr."Loans Category-SASRA",'%1',LoansRegisterr."Loans Category-SASRA"::Watch);
-                LoansRegisterr.SetFilter(LoansRegisterr."Outstanding Balance",'>%1',0);
-                LoansRegisterr.SetFilter(LoansRegisterr."Issued Date",'<=%1',AsAt);
+                LoansRegisterr.SetFilter(LoansRegisterr."Loans Category-SASRA", '%1', LoansRegisterr."Loans Category-SASRA"::Watch);
+                LoansRegisterr.SetFilter(LoansRegisterr."Outstanding Balance", '>%1', 0);
+                LoansRegisterr.SetFilter(LoansRegisterr."Issued Date", '<=%1', AsAt);
                 LoansRegisterr.SetAutocalcFields("Outstanding Balance");
                 if LoansRegisterr.FindSet then begin
-                  repeat
-                  LoanCountWatch:=LoanCountWatch+1;
-                    OutstandingLoanwatch+=LoansRegisterr."Outstanding Balance";
-                    until LoansRegisterr.Next =0;
-                  end;
-                LoanCountDoubtful:=0;
-                OutstandingLoandoubtful:=0;
+                    repeat
+                        LoanCountWatch := LoanCountWatch + 1;
+                        OutstandingLoanwatch += LoansRegisterr."Outstanding Balance";
+                    until LoansRegisterr.Next = 0;
+                end;
+                LoanCountDoubtful := 0;
+                OutstandingLoandoubtful := 0;
                 LoansRegisterp.Reset;
-                LoansRegisterp.SetRange(LoansRegisterp.Rescheduled,false);
+                LoansRegisterp.SetRange(LoansRegisterp.Rescheduled, false);
                 //LoansRegisterp.SETFILTER(LoansRegisterp."Date filter",DateFilter);
-                LoansRegisterp.SetFilter(LoansRegisterp."Loans Category-SASRA",'%1',LoansRegisterp."Loans Category-SASRA"::Doubtful);
-                LoansRegisterp.SetFilter(LoansRegisterp."Outstanding Balance",'>%1',0);
-                LoansRegisterp.SetFilter(LoansRegisterp."Issued Date",'<=%1',AsAt);
+                LoansRegisterp.SetFilter(LoansRegisterp."Loans Category-SASRA", '%1', LoansRegisterp."Loans Category-SASRA"::Doubtful);
+                LoansRegisterp.SetFilter(LoansRegisterp."Outstanding Balance", '>%1', 0);
+                LoansRegisterp.SetFilter(LoansRegisterp."Issued Date", '<=%1', AsAt);
                 LoansRegisterp.SetAutocalcFields("Outstanding Balance");
                 if LoansRegisterp.FindSet then begin
-                  repeat
-                  LoanCountDoubtful:=LoanCountDoubtful+1;
-                    OutstandingLoandoubtful+=LoansRegisterp."Outstanding Balance";
-                    until LoansRegisterp.Next =0;
-                  end;
-                LoanCountSubstandard:=0;
-                OutstandingLoanSub:=0;
+                    repeat
+                        LoanCountDoubtful := LoanCountDoubtful + 1;
+                        OutstandingLoandoubtful += LoansRegisterp."Outstanding Balance";
+                    until LoansRegisterp.Next = 0;
+                end;
+                LoanCountSubstandard := 0;
+                OutstandingLoanSub := 0;
                 LoansRegister.Reset;
-                LoansRegister.SetRange(LoansRegister.Rescheduled,false);
+                LoansRegister.SetRange(LoansRegister.Rescheduled, false);
                 //LoansRegister.SETFILTER(LoansRegister."Date filter",DateFilter);
-                LoansRegister.SetFilter(LoansRegister."Loans Category-SASRA",'%1',LoansRegister."Loans Category-SASRA"::Substandard);
-                LoansRegister.SetFilter(LoansRegister."Outstanding Balance",'>%1',0);
-                LoansRegister.SetFilter(LoansRegister."Issued Date",'<=%1',AsAt);
+                LoansRegister.SetFilter(LoansRegister."Loans Category-SASRA", '%1', LoansRegister."Loans Category-SASRA"::Substandard);
+                LoansRegister.SetFilter(LoansRegister."Outstanding Balance", '>%1', 0);
+                LoansRegister.SetFilter(LoansRegister."Issued Date", '<=%1', AsAt);
                 LoansRegister.SetAutocalcFields("Outstanding Balance");
                 if LoansRegister.FindSet then begin
-                  repeat
-                  LoanCountSubstandard:=LoanCountSubstandard+1;
-                    OutstandingLoanSub+=LoansRegister."Outstanding Balance";
-                    until LoansRegister.Next =0;
-                  end;
-                LoanCountLoss:=0;
-                OutstandingLoanloss:=0;
+                    repeat
+                        LoanCountSubstandard := LoanCountSubstandard + 1;
+                        OutstandingLoanSub += LoansRegister."Outstanding Balance";
+                    until LoansRegister.Next = 0;
+                end;
+                LoanCountLoss := 0;
+                OutstandingLoanloss := 0;
                 LoansRegister.Reset;
-                LoansRegister.SetRange(LoansRegister.Rescheduled,false);
+                LoansRegister.SetRange(LoansRegister.Rescheduled, false);
                 //LoansRegister.SETFILTER(LoansRegister."Date filter",DateFilter);
-                LoansRegister.SetFilter(LoansRegister."Loans Category-SASRA",'%1',LoansRegister."Loans Category-SASRA"::Loss);
-                LoansRegister.SetFilter(LoansRegister."Outstanding Balance",'>%1',0);
-                LoansRegister.SetFilter(LoansRegister."Issued Date",'<=%1',AsAt);
+                LoansRegister.SetFilter(LoansRegister."Loans Category-SASRA", '%1', LoansRegister."Loans Category-SASRA"::Loss);
+                LoansRegister.SetFilter(LoansRegister."Outstanding Balance", '>%1', 0);
+                LoansRegister.SetFilter(LoansRegister."Issued Date", '<=%1', AsAt);
                 LoansRegister.SetAutocalcFields("Outstanding Balance");
                 if LoansRegister.FindSet then begin
-                  repeat
-                  LoanCountLoss:=LoanCountLoss+1;
-                    OutstandingLoanloss+=LoansRegister."Outstanding Balance";
-                    until LoansRegister.Next =0;
-                  end;
+                    repeat
+                        LoanCountLoss := LoanCountLoss + 1;
+                        OutstandingLoanloss += LoansRegister."Outstanding Balance";
+                    until LoansRegister.Next = 0;
+                end;
 
                 //rescheduled loans
-                LoanCountResch:=0;
-                OutstandingLoanPerResc:=0;
+                LoanCountResch := 0;
+                OutstandingLoanPerResc := 0;
                 LoansRegister.Reset;
-                LoansRegister.SetRange(LoansRegister.Rescheduled,true);
+                LoansRegister.SetRange(LoansRegister.Rescheduled, true);
                 //LoansRegister.SETFILTER(LoansRegister."Date filter",DateFilter);
-                LoansRegister.SetFilter(LoansRegister."Loans Category-SASRA",'%1',LoansRegister."Loans Category-SASRA"::Perfoming);
-                LoansRegister.SetFilter(LoansRegister."Outstanding Balance",'>%1',0);
-                LoansRegister.SetFilter(LoansRegister."Issued Date",'<=%1',AsAt);
+                LoansRegister.SetFilter(LoansRegister."Loans Category-SASRA", '%1', LoansRegister."Loans Category-SASRA"::Perfoming);
+                LoansRegister.SetFilter(LoansRegister."Outstanding Balance", '>%1', 0);
+                LoansRegister.SetFilter(LoansRegister."Issued Date", '<=%1', AsAt);
                 LoansRegister.SetAutocalcFields("Outstanding Balance");
                 if LoansRegister.FindSet then begin
-                  repeat
-                  LoanCountResch:= LoanCountResch+1;
-                    OutstandingLoanPerResc+=LoansRegister."Outstanding Balance";
-                    until LoansRegister.Next =0;
-                  end;
-                LoanCountWatchResc:=0;
-                OutstandingLoanwatchResc:=0;
+                    repeat
+                        LoanCountResch := LoanCountResch + 1;
+                        OutstandingLoanPerResc += LoansRegister."Outstanding Balance";
+                    until LoansRegister.Next = 0;
+                end;
+                LoanCountWatchResc := 0;
+                OutstandingLoanwatchResc := 0;
                 LoansRegister.Reset;
-                LoansRegister.SetRange(LoansRegister.Rescheduled,true);
+                LoansRegister.SetRange(LoansRegister.Rescheduled, true);
                 //LoansRegister.SETFILTER(LoansRegister."Date filter",DateFilter);
-                LoansRegister.SetFilter(LoansRegister."Loans Category-SASRA",'%1',LoansRegister."Loans Category-SASRA"::Watch);
-                LoansRegister.SetFilter(LoansRegister."Outstanding Balance",'>%1',0);
-                LoansRegister.SetFilter(LoansRegister."Issued Date",'<=%1',AsAt);
+                LoansRegister.SetFilter(LoansRegister."Loans Category-SASRA", '%1', LoansRegister."Loans Category-SASRA"::Watch);
+                LoansRegister.SetFilter(LoansRegister."Outstanding Balance", '>%1', 0);
+                LoansRegister.SetFilter(LoansRegister."Issued Date", '<=%1', AsAt);
                 LoansRegister.SetAutocalcFields("Outstanding Balance");
                 if LoansRegister.FindSet then begin
-                  repeat
-                  LoanCountWatchResc:=LoanCountWatchResc+1;
-                    OutstandingLoanwatchResc+=LoansRegister."Outstanding Balance";
-                    until LoansRegister.Next =0;
-                  end;
-                LoanCountDoubtfulResc:=0;
-                OutstandingLoandoubtfulResc:=0;
+                    repeat
+                        LoanCountWatchResc := LoanCountWatchResc + 1;
+                        OutstandingLoanwatchResc += LoansRegister."Outstanding Balance";
+                    until LoansRegister.Next = 0;
+                end;
+                LoanCountDoubtfulResc := 0;
+                OutstandingLoandoubtfulResc := 0;
                 LoansRegister.Reset;
-                LoansRegister.SetRange(LoansRegister.Rescheduled,true);
+                LoansRegister.SetRange(LoansRegister.Rescheduled, true);
                 //LoansRegister.SETFILTER(LoansRegister."Date filter",DateFilter);
-                LoansRegister.SetFilter(LoansRegister."Loans Category-SASRA",'%1',LoansRegister."Loans Category-SASRA"::Doubtful);
-                LoansRegister.SetFilter(LoansRegister."Outstanding Balance",'>%1',0);
-                LoansRegister.SetFilter(LoansRegister."Issued Date",'<=%1',AsAt);
+                LoansRegister.SetFilter(LoansRegister."Loans Category-SASRA", '%1', LoansRegister."Loans Category-SASRA"::Doubtful);
+                LoansRegister.SetFilter(LoansRegister."Outstanding Balance", '>%1', 0);
+                LoansRegister.SetFilter(LoansRegister."Issued Date", '<=%1', AsAt);
                 LoansRegister.SetAutocalcFields("Outstanding Balance");
                 if LoansRegister.FindSet then begin
-                  repeat
-                  LoanCountDoubtfulResc:=LoanCountDoubtfulResc+1;
-                    OutstandingLoandoubtfulResc+=LoansRegister."Outstanding Balance";
-                    until LoansRegister.Next =0;
-                  end;
-                LoanCountSubstandardResc:=0;
-                OutstandingLoanSubResc:=0;
+                    repeat
+                        LoanCountDoubtfulResc := LoanCountDoubtfulResc + 1;
+                        OutstandingLoandoubtfulResc += LoansRegister."Outstanding Balance";
+                    until LoansRegister.Next = 0;
+                end;
+                LoanCountSubstandardResc := 0;
+                OutstandingLoanSubResc := 0;
                 LoansRegister.Reset;
-                LoansRegister.SetRange(LoansRegister.Rescheduled,true);
+                LoansRegister.SetRange(LoansRegister.Rescheduled, true);
                 //LoansRegister.SETFILTER(LoansRegister."Date filter",DateFilter);
-                LoansRegister.SetFilter(LoansRegister."Loans Category-SASRA",'%1',LoansRegister."Loans Category-SASRA"::Substandard);
-                LoansRegister.SetFilter(LoansRegister."Outstanding Balance",'>%1',0);
-                LoansRegister.SetFilter(LoansRegister."Issued Date",'<=%1',AsAt);
+                LoansRegister.SetFilter(LoansRegister."Loans Category-SASRA", '%1', LoansRegister."Loans Category-SASRA"::Substandard);
+                LoansRegister.SetFilter(LoansRegister."Outstanding Balance", '>%1', 0);
+                LoansRegister.SetFilter(LoansRegister."Issued Date", '<=%1', AsAt);
                 LoansRegister.SetAutocalcFields("Outstanding Balance");
                 if LoansRegister.FindSet then begin
-                  repeat
-                  LoanCountSubstandardResc:=LoanCountSubstandardResc+1;
-                    OutstandingLoanSubResc+=LoansRegister."Outstanding Balance";
-                    until LoansRegister.Next =0;
-                  end;
-                LoanCountLossRec:=0;
-                OutstandingLoanlossResc:=0;
+                    repeat
+                        LoanCountSubstandardResc := LoanCountSubstandardResc + 1;
+                        OutstandingLoanSubResc += LoansRegister."Outstanding Balance";
+                    until LoansRegister.Next = 0;
+                end;
+                LoanCountLossRec := 0;
+                OutstandingLoanlossResc := 0;
                 LoansRegister.Reset;
-                LoansRegister.SetRange(LoansRegister.Rescheduled,true);
+                LoansRegister.SetRange(LoansRegister.Rescheduled, true);
                 //LoansRegister.SETFILTER(LoansRegister."Date filter",DateFilter);
-                LoansRegister.SetFilter(LoansRegister."Loans Category-SASRA",'%1',LoansRegister."Loans Category-SASRA"::Loss);
-                LoansRegister.SetFilter(LoansRegister."Outstanding Balance",'>%1',0);
-                LoansRegister.SetFilter(LoansRegister."Issued Date",'<=%1',AsAt);
+                LoansRegister.SetFilter(LoansRegister."Loans Category-SASRA", '%1', LoansRegister."Loans Category-SASRA"::Loss);
+                LoansRegister.SetFilter(LoansRegister."Outstanding Balance", '>%1', 0);
+                LoansRegister.SetFilter(LoansRegister."Issued Date", '<=%1', AsAt);
                 LoansRegister.SetAutocalcFields("Outstanding Balance");
                 if LoansRegister.FindSet then begin
-                  repeat
-                  LoanCountLossRec:=LoanCountLossRec+1;
-                    OutstandingLoanlossResc+=LoansRegister."Outstanding Balance";
-                    until LoansRegister.Next =0;
-                  end;
+                    repeat
+                        LoanCountLossRec := LoanCountLossRec + 1;
+                        OutstandingLoanlossResc += LoansRegister."Outstanding Balance";
+                    until LoansRegister.Next = 0;
+                end;
 
-                ClassifiedNonRescheduledper:=ROUND(OutstandingLoanPer*1/100,0.01,'<');
-                ClassifiedNonRescheduledDoubtful:=ROUND(OutstandingLoandoubtful*50/100,0.01,'<');
-                ClassifiedNonRescheduledLoss:=ROUND(OutstandingLoanloss*100/100,0.01,'<');
-                ClassifiedNonRescheduledsubstandard:=ROUND(OutstandingLoanSub*25/100,0.01,'<');
-                ClassifiedNonRescheduledWatch:=ROUND(OutstandingLoanwatch*5/100,0.01,'<');
-                ClassifiedRescheduledLoss:=ROUND(OutstandingLoanlossResc*100/100,0.01,'<');
-                ClassifiedRescheduledPer:=ROUND(OutstandingLoanPerResc*1/100,0.01,'<');
-                ClassifiedRescheduledSubstandard:=ROUND(OutstandingLoanSubResc*25/100,0.01,'<');
-                ClassifiedRescheduledWatch:=ROUND(OutstandingLoanwatchResc*5/100,0.01,'<');
-                ClassifiedRescheduledDoubtful:=ROUND(OutstandingLoandoubtfulResc*50/100,0.01,'<');
+                ClassifiedNonRescheduledper := ROUND(OutstandingLoanPer * 1 / 100, 0.01, '<');
+                ClassifiedNonRescheduledDoubtful := ROUND(OutstandingLoandoubtful * 50 / 100, 0.01, '<');
+                ClassifiedNonRescheduledLoss := ROUND(OutstandingLoanloss * 100 / 100, 0.01, '<');
+                ClassifiedNonRescheduledsubstandard := ROUND(OutstandingLoanSub * 25 / 100, 0.01, '<');
+                ClassifiedNonRescheduledWatch := ROUND(OutstandingLoanwatch * 5 / 100, 0.01, '<');
+                ClassifiedRescheduledLoss := ROUND(OutstandingLoanlossResc * 100 / 100, 0.01, '<');
+                ClassifiedRescheduledPer := ROUND(OutstandingLoanPerResc * 1 / 100, 0.01, '<');
+                ClassifiedRescheduledSubstandard := ROUND(OutstandingLoanSubResc * 25 / 100, 0.01, '<');
+                ClassifiedRescheduledWatch := ROUND(OutstandingLoanwatchResc * 5 / 100, 0.01, '<');
+                ClassifiedRescheduledDoubtful := ROUND(OutstandingLoandoubtfulResc * 50 / 100, 0.01, '<');
 
-                subtotal:=OutstandingLoandoubtful+OutstandingLoanloss+OutstandingLoanPer+OutstandingLoanSub+OutstandingLoanwatch;
-                subtotalRescheduled:=OutstandingLoandoubtfulResc+OutstandingLoanlossResc+OutstandingLoanPerResc+OutstandingLoanSubResc+OutstandingLoanwatchResc;
-                TotalClassffied:=ClassifiedNonRescheduledDoubtful+ClassifiedNonRescheduledLoss+ClassifiedNonRescheduledper+ClassifiedNonRescheduledsubstandard+ClassifiedNonRescheduledWatch;
-                TotalClassffiedRecheduled:=ClassifiedRescheduledDoubtful+ClassifiedRescheduledPer+ClassifiedRescheduledSubstandard+ClassifiedRescheduledWatch+ClassifiedRescheduledLoss;
-                Subtotalcount:=LoanCount+LoanCountDoubtful+LoanCountLoss+LoanCountSubstandard+LoanCountWatch;
-                SubtotalcountResc:=LoanCountDoubtfulResc+LoanCountLossRec+LoanCountResch+LoanCountSubstandardResc+LoanCountWatchResc;
+                subtotal := OutstandingLoandoubtful + OutstandingLoanloss + OutstandingLoanPer + OutstandingLoanSub + OutstandingLoanwatch;
+                subtotalRescheduled := OutstandingLoandoubtfulResc + OutstandingLoanlossResc + OutstandingLoanPerResc + OutstandingLoanSubResc + OutstandingLoanwatchResc;
+                TotalClassffied := ClassifiedNonRescheduledDoubtful + ClassifiedNonRescheduledLoss + ClassifiedNonRescheduledper + ClassifiedNonRescheduledsubstandard + ClassifiedNonRescheduledWatch;
+                TotalClassffiedRecheduled := ClassifiedRescheduledDoubtful + ClassifiedRescheduledPer + ClassifiedRescheduledSubstandard + ClassifiedRescheduledWatch + ClassifiedRescheduledLoss;
+                Subtotalcount := LoanCount + LoanCountDoubtful + LoanCountLoss + LoanCountSubstandard + LoanCountWatch;
+                SubtotalcountResc := LoanCountDoubtfulResc + LoanCountLossRec + LoanCountResch + LoanCountSubstandardResc + LoanCountWatchResc;
 
-                GRANDTOTAL:=subtotal+subtotalRescheduled;
-                GRANDTOTALCOUNT:=Subtotalcount+SubtotalcountResc;
-                GRANDTOTALCLASSIF:=TotalClassffied+TotalClassffiedRecheduled;
+                GRANDTOTAL := subtotal + subtotalRescheduled;
+                GRANDTOTALCOUNT := Subtotalcount + SubtotalcountResc;
+                GRANDTOTALCLASSIF := TotalClassffied + TotalClassffiedRecheduled;
             end;
         }
     }
@@ -347,7 +347,7 @@ Report 50007 "Risk Class Of Assets & Prov"
         {
             area(content)
             {
-                field(AsAt;AsAt)
+                field(AsAt; AsAt)
                 {
                     ApplicationArea = Basic;
                     Caption = 'AsAt';
@@ -410,7 +410,7 @@ Report 50007 "Risk Class Of Assets & Prov"
         GRANDTOTAL: Decimal;
         GRANDTOTALCOUNT: Integer;
         PrevMonthDate: Date;
-        //Classify: Codeunit "Loan Age Classification";
+        Classify: Codeunit "Loan Classification-SASRA";
         LoansRegisters: Record "Loans Register";
         LoansRegisterr: Record "Loans Register";
         LoansRegisterp: Record "Loans Register";

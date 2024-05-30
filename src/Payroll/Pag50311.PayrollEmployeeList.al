@@ -428,11 +428,11 @@ Page 50311 "Payroll Employee List."
     trigger OnInit()
     begin
         //TODO
-        /*IF Usersetup.GET(USERID) THEN
+        IF Usersetup.GET(USERID) THEN
         BEGIN
-        IF Usersetup."View Payroll"=FALSE THEN ERROR ('You dont have permissions for payroll, Contact your system administrator! ')
+        IF Usersetup."Payroll User"=FALSE THEN ERROR ('You dont have permissions for payroll, Contact your system administrator! ')
         END;
-        */
+
 
     end;
 

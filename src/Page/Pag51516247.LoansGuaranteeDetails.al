@@ -1,12 +1,11 @@
 Page 51516247 "Loans Guarantee Details"
 {
     PageType = ListPart;
-    RefreshOnActivate = false;
     SourceTable = "Loans Guarantee Details";
     SourceTableView = where(Substituted = const(false));
-    
 
-    
+
+
 
     layout
     {
@@ -17,7 +16,7 @@ Page 51516247 "Loans Guarantee Details"
                 field("Loan No"; "Loan No")
                 {
                     Editable = false;
-                  
+
                 }
                 field("Member No"; "Member No")
                 {
@@ -27,7 +26,7 @@ Page 51516247 "Loans Guarantee Details"
                         cust: Record Customer;
                     begin
                         if cust.get(rec."Member No") then begin
-                            cust.CalcFields(cust."Current Shares");
+                            cust.CalcFields(cust."Current Shares", "Loans Guaranteed");
                             Rec.Name := cust.Name;
                             rec.Shares := cust."Current Shares";
                             Rec."Total Loans Guaranteed" := cust."Loans Guaranteed";
@@ -67,6 +66,7 @@ Page 51516247 "Loans Guarantee Details"
                 field("Free Shares"; "Free Shares")
                 {
                     ApplicationArea = all;
+                    Editable = false;
                 }
                 field("Amont Guaranteed"; "Amont Guaranteed")
                 {
@@ -75,11 +75,14 @@ Page 51516247 "Loans Guarantee Details"
                     ShowMandatory = true;
                     trigger OnValidate()
                     begin
-                        // rec.CalcFields("Outstanding Balance");
-                        // if "Free Shares" < "Amont Guaranteed" then
-                        //     Error('The Guarantor has no enough Deposits to Guarantee') else
-                        //     rec."Total Amount Guaranteed" := FnRunGetCummulativeAmountGuaranteed(Rec."Loan No");
-                        // rec.Modify();
+                        //rec.CalcFields("Outstanding Balance");
+                        if "Free Shares" < "Amont Guaranteed" then begin
+                            Error('The Guarantor has no enough Deposits to Guarantee')
+                        end
+                        else begin
+                            rec."Total Amount Guaranteed" := FnRunGetCummulativeAmountGuaranteed(Rec."Loan No");
+                        end;
+
                     end;
                 }
                 field("Total Amount Guaranteed"; "Total Amount Guaranteed")

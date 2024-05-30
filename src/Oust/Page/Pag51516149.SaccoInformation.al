@@ -55,7 +55,7 @@ page 51516149 "Sacco Information"
                     ApplicationArea = all;
 
                 }
-               
+
                 field("Building Name"; "Building Name")
                 {
                     ApplicationArea = all;
@@ -77,16 +77,20 @@ page 51516149 "Sacco Information"
                     Caption = 'Principal Bankers';
                     ApplicationArea = all;
                 }
-                 field("Principal Bank Branch";"Principal Bank Branch")
+                field("Principal Bank Branch"; "Principal Bank Branch")
                 {
                     ApplicationArea = all;
 
                 }
-                field(auditorcerfication;auditorcerfication)
+                field(auditorcerfication; auditorcerfication)
                 {
                     ApplicationArea = all;
                     Caption = 'Auditor Certification Name';
                 }
+                field("Dividends Interest"; "Dividends Interest") { }
+                field("Previous Dividends Interest"; "Previous Dividends Interest") { }
+                field("Deposits Interest"; "Deposits Interest") { }
+                field("Previous Deposits Interest"; "Previous Deposits Interest") { }
 
 
 

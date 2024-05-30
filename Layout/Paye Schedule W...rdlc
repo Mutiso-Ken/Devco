@@ -2516,7 +2516,7 @@
         </PageHeader>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>22.2cm</PageWidth>
-        <LeftMargin>2.1cm</LeftMargin>
+        <LeftMargin>0.5cm</LeftMargin>
         <TopMargin>1.5cm</TopMargin>
         <BottomMargin>1.5cm</BottomMargin>
         <Style />

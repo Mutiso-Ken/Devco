@@ -1,7 +1,11 @@
 #pragma warning disable AA0005, AA0008, AA0018, AA0021, AA0072, AA0137, AA0201, AA0204, AA0206, AA0218, AA0228, AL0254, AL0424, AS0011, AW0006 // ForNAV settings
-Report 51516344 "Paye Schedule W.."
+Report 51516344 
+
+
+"Paye Schedule W.."
 {
     DefaultLayout = RDLC;
+    Caption = 'Payee Report';
     RDLCLayout = './Layout/Paye Schedule W...rdlc';
 
     dataset
@@ -125,14 +129,14 @@ Report 51516344 "Paye Schedule W.."
                 objEmp.Reset;
                 objEmp.SetRange(objEmp."No.", "No.");
                 if objEmp.Find('-') then
-                    EmployeeName := objEmp.Name;
-                PinNumber := objEmp.Pin;
+                    EmployeeName := objEmp."Full Name";
+                PinNumber := objEmp."PIN No";
 
 
 
 
                 PeriodTrans.Reset;
-                PeriodTrans.SetRange(PeriodTrans."Employee Code", "No.");
+                PeriodTrans.SetRange(PeriodTrans."Employee Code", "Payroll Employee."."No.");
                 PeriodTrans.SetRange(PeriodTrans."Payroll Period", SelectedPeriod);
                 if PeriodTrans.Find('-') then
                     repeat
@@ -223,7 +227,7 @@ Report 51516344 "Paye Schedule W.."
             if UserSetup."Payroll User" = false then Error('You dont have permissions for payroll, Contact your system administrator! ')
         end;
 
-        //PeriodFilter:="prSalary Card".GETFILTER("Period Filter");
+
         if PeriodFilter = 0D then Error('You must specify the period filter');
 
         SelectedPeriod := PeriodFilter;
@@ -245,7 +249,7 @@ Report 51516344 "Paye Schedule W.."
         EmployeeName: Text[150];
         PinNumber: Text[30];
         objPeriod: Record "Payroll Calender.";
-        objEmp: Record Customer;
+        objEmp: Record "Payroll Employee.";
         HREmployees: Record "Payroll Employee.";
         SelectedPeriod: Date;
         PeriodName: Text[30];

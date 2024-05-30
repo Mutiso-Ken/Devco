@@ -137,7 +137,8 @@ Report 51516318 "payroll Deductions Report."
                 //"prPeriod Transactions".SETFILTER("Group Order",'=7|8');
                 //"prPeriod Transactions".SETFILTER("prPeriod Transactions"."Sub Group Order",'=2');
 
-                if (Amount <= 0) or ("prPeriod Transactions."."Transaction Code" = 'TOT-DED') or ("prPeriod Transactions."."Group Order" = 1) then begin
+                if (Amount <= 0) or ("prPeriod Transactions."."Transaction Code" = 'TOT-DED') //or ("prPeriod Transactions."."Group Order" = 1) 
+                then begin
 
                     CurrReport.Skip;
                 end;

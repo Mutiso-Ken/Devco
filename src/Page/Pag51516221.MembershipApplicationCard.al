@@ -1951,21 +1951,22 @@ Page 51516221 "Membership Application Card"
 
 
         //Getting the next Member Number
-        // NewMembNo := NoSeriesMgt.TryGetNextNo(ObjNoSeries."Members Nos", today);
-        // NoSeriesLine.RESET;
-        // NoSeriesLine.SETRANGE(NoSeriesLine."Series Code", ObjNoSeries."Members Nos");
-        // IF NoSeriesLine.FINDSET THEN BEGIN
-        //     NoSeriesLine."Last No. Used" := INCSTR(NoSeriesLine."Last No. Used");
-        //     NoSeriesLine."Last Date Used" := TODAY;
-        //     NoSeriesLine.MODIFY;
-        // END;
+        NewMembNo := NoSeriesMgt.TryGetNextNo(ObjNoSeries."Members Nos", today);
+        NoSeriesLine.RESET;
+        NoSeriesLine.SETRANGE(NoSeriesLine."Series Code", ObjNoSeries."Members Nos");
+        IF NoSeriesLine.FINDSET THEN BEGIN
+            NoSeriesLine."Last No. Used" := INCSTR(NoSeriesLine."Last No. Used");
+            NoSeriesLine."Last Date Used" := TODAY;
+            NoSeriesLine.MODIFY;
+        END;
+        
 
-        NewMembNo := Saccosetup."Last Memb No.";
+        //NewMembNo := Saccosetup."Last Memb No.";
 
 
 
         //Create BOSA account
-        Cust.Init;
+       Cust.Init;
         Cust."No." := Format(NewMembNo);
         Cust.Name := Name;
         if "Account Category" = "Account Category"::"Group Account" then begin

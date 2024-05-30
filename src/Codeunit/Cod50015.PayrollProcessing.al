@@ -502,7 +502,7 @@ Codeunit 50015 "Payroll Processing"
                 strTransDescription := 'NHIF Relief';
                 TGroup := 'TAX CALCULATIONS';
                 TGroupOrder := 6;
-                TSubGroupOrder := 9;
+                TSubGroupOrder := 8;
                 fnUpdatePeriodTrans(strEmpCode, 'NSNR', TGroup, TGroupOrder, TSubGroupOrder, strTransDescription,
                  curTransAmount, 0, intMonth, intYear, '', '', SelectedPeriod, Dept, '', Journalpostas::" ", Journalpostingtype::" ", '',
                  Coopparameters::none);

@@ -101,7 +101,22 @@ table 51516874 "Sacco Information"
         {
             DataClassification = ToBeClassified;
         }
-
+        field(24; "Dividends Interest"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(25; "Deposits Interest"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(26; "Previous Dividends Interest"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(27; "Previous Deposits Interest"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
 
     }
     keys

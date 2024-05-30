@@ -57,7 +57,7 @@ report 51516034 "Loan Balances Report"
             column(Outstanding_Balance; OutstandingBalance)
             {
             }
-            column(InterestPaid; "Interest Paid")
+            column(InterestPaid; "Interest Paid" * -1)
             {
             }
             column(Oustanding_Interest; OutstandingInterest)

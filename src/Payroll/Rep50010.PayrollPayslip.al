@@ -234,6 +234,7 @@ report 50010 "Payroll Payslip"
                     if PayrollCalender.FindLast then begin
                         PeriodName := PayrollCalender."Period Name";//+'-'+ FORMAT(PayrollCalender."Period Year");
                     end;
+
                     //Payments
 
 
@@ -337,7 +338,7 @@ report 50010 "Payroll Payslip"
                     prPeriodTransactions2.Reset;
                     prPeriodTransactions2.SetRange("Employee Code", "prPeriod Transactions."."Employee Code");
                     prPeriodTransactions2.SetRange("Payroll Period", "prPeriod Transactions."."Payroll Period");
-                        prPeriodTransactions2.SetRange("coop parameters", "coop parameters"::Likizo); 
+                    prPeriodTransactions2.SetRange("coop parameters", "coop parameters"::Likizo);
                     if prPeriodTransactions2.FindFirst then begin
                         repeat
                             LikizoContribution := LikizoContribution + prPeriodTransactions2.Amount;
@@ -349,7 +350,7 @@ report 50010 "Payroll Payslip"
                     prPeriodTransactions2.Reset;
                     prPeriodTransactions2.SetRange("Employee Code", "prPeriod Transactions."."Employee Code");
                     prPeriodTransactions2.SetRange("Payroll Period", "prPeriod Transactions."."Payroll Period");
-                     prPeriodTransactions2.SetRange("coop parameters", "coop parameters"::"Share Capital"); 
+                    prPeriodTransactions2.SetRange("coop parameters", "coop parameters"::"Share Capital");
                     if prPeriodTransactions2.FindFirst then begin
                         repeat
                             ShareCapital := ShareCapital + ShareCapital + prPeriodTransactions2.Amount;
@@ -428,13 +429,13 @@ report 50010 "Payroll Payslip"
 
     trigger OnInitReport()
     begin
-        /* IF UserSetup.GET(USERID) THEN BEGIN
-          IF NOT UserSetup."View Payroll" THEN
-            ERROR(PemissionDenied);
-         END ELSE BEGIN
-          ERROR(UserNotFound,USERID);
-         END;
-         */
+        IF UserSetup.GET(USERID) THEN BEGIN
+            IF NOT UserSetup."Payroll User" THEN
+                ERROR(PemissionDenied);
+        END ELSE BEGIN
+            ERROR(UserNotFound, USERID);
+        END;
+
 
     end;
 
@@ -443,17 +444,17 @@ report 50010 "Payroll Payslip"
         CompanyInfo.Get;
         CompanyInfo.CalcFields(CompanyInfo.Picture);
 
-        PayrollEmp.RESET;
-        PayrollEmp.SETRANGE(PayrollEmp.Status, PayrollEmp.Status::Active);
-        //IF PayrollEmp.FINDFIRST THEN BEGIN
-        // PayrollCalender.RESET;
-        // PayrollCalender.SETRANGE(PayrollCalender."Date Opened",PayrollEmp."Date Filter");
-        // IF PayrollCalender.FINDLAST THEN BEGIN
-        // PeriodName:=PayrollCalender."Period Name";
+        // PayrollEmp.RESET;
+        // PayrollEmp.SETRANGE(PayrollEmp.Status, PayrollEmp.Status::Active);
+        // IF PayrollEmp.FINDFIRST THEN BEGIN
+        //     PayrollCalender.RESET;
+        //     PayrollCalender.SETRANGE(PayrollCalender."Date Opened", "Payroll Period");//"prPeriod Transactions."."Payroll Period");
+        //     IF PayrollCalender.FINDLAST THEN BEGIN
+        //         PeriodName := PayrollCalender."Period Name";
+        //     END;
         // END;
-        //END;
 
-        //wanataka ionekane wapi.??
+
 
     end;
 

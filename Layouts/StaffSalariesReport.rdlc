@@ -849,7 +849,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Installments</rd:DefaultName>
@@ -857,6 +859,7 @@
                             <Border>
                               <Style>Solid</Style>
                             </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -911,6 +914,7 @@
                                   <Style>
                                     <FontFamily>Cambria</FontFamily>
                                     <FontSize>8pt</FontSize>
+                                    <Format>#,0.00;- #,0.00;'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -943,6 +947,7 @@
                                   <Style>
                                     <FontFamily>Cambria</FontFamily>
                                     <FontSize>8pt</FontSize>
+                                    <Format>#,0.00;- #,0.00;'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -960,6 +965,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -1145,7 +1151,7 @@
             <Top>1.56494in</Top>
             <Left>0.125in</Left>
             <Height>0.8125in</Height>
-            <Width>9.00542in</Width>
+            <Width>9.0054in</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>

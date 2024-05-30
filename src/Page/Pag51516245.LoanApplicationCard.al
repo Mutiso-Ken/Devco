@@ -297,7 +297,7 @@ Page 51516245 "Loan Application Card"
                 {
                     ApplicationArea = Basic;
                     // Editable = MNoEditable;
-                    Editable=true;
+                    Editable = true;
                     Style = StrongAccent;
                     ShowMandatory = true;
                 }
@@ -513,6 +513,11 @@ Page 51516245 "Loan Application Card"
         EnabledApprovalWorkflowsExist := true;
     end;
 
+    trigger OnAfterGetRecord()
+    begin
+        UpdateControl();
+    end;
+
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
         LoansR.Reset;
@@ -696,7 +701,7 @@ Page 51516245 "Loan Application Card"
 
     procedure UpdateControl()
     begin
-
+        MNoEditable := true;
         if "Loan Status" = "loan status"::Application then begin
             RecordApproved := false;
             MNoEditable := true;

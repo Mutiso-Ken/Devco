@@ -1,6 +1,7 @@
 report 51516238 "Staff Salaries Report"
 {
     UsageCategory = ReportsAndAnalysis;
+    Caption = 'Staff Loans Report';
     ApplicationArea = All;
     RDLCLayout = './Layouts/StaffSalariesReport.rdlc';
 
@@ -20,7 +21,7 @@ report 51516238 "Staff Salaries Report"
             {
                 DataItemLink = "Client Code" = field("No.");
                 DataItemTableView = sorting("Loan  No.") order(ascending) where(Posted = const(true), "Outstanding Balance" = filter(> 0));
-               // RequestFilterFields = "Loan Product Type", Source, "Client Code", "Branch Code", "Outstanding Balance", "Issued Date", "Date filter";
+                // RequestFilterFields = "Loan Product Type", Source, "Client Code", "Branch Code", "Outstanding Balance", "Issued Date", "Date filter";
 
                 column(EntryNo; EntryNo)
                 {
@@ -89,10 +90,13 @@ report 51516238 "Staff Salaries Report"
 
                 trigger OnAfterGetRecord();
                 begin
+
+
+                      LoansTable.SetAutoCalcFields(LoansTable."Outstanding Balance", LoansTable."Oustanding Interest");
                     //........................Setrange for date filter used
                     LoansTable.SetFilter(LoansTable."Date filter", DateFilterUsed);
                     if LoansTable.get(LoansRegister."Loan  No.") then begin
-                        LoansTable.SetAutoCalcFields(LoansTable."Outstanding Balance", LoansTable."Oustanding Interest");
+                      
                         MemberNo := LoansTable."Client Code";
                         MemberName := LoansTable."Client Name";
                         LoanProductType := LoansTable."Loan Product Type";

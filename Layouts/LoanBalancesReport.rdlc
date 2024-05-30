@@ -941,6 +941,7 @@
                                   <Value>=Fields!Outstanding_Balance.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -973,6 +974,7 @@
                                   <Value>=Fields!Oustanding_Interest.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1005,6 +1007,7 @@
                                   <Value>=Fields!InterestPaid.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
+                                    <Format>#,0.00;-#,0.00;'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>

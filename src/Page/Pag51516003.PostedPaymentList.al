@@ -8,10 +8,10 @@ Page 51516003 "Posted Payment List"
     ModifyAllowed = false;
     PageType = List;
     SourceTable = "Payment Header";
-    SourceTableView = where("Payment Type"=const(Normal),
-                            Posted=const(true));
+    SourceTableView = where("Payment Type" = const(Normal),
+                            Posted = const(true));
     UsageCategory = Lists;
-    
+
 
     layout
     {
@@ -19,32 +19,36 @@ Page 51516003 "Posted Payment List"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Type";"Document Type")
+                field("Document Type"; "Document Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Date";"Document Date")
+                field("Posting Date"; "Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Payee;Payee)
+                field("Date Posted"; "Date Posted")
+                {
+                    ApplicationArea = basic;
+                }
+                field(Payee; Payee)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount(LCY)";"Amount(LCY)")
+                field("Amount(LCY)"; "Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Cashier;Cashier)
+                field(Cashier; Cashier)
                 {
                     ApplicationArea = Basic;
                 }

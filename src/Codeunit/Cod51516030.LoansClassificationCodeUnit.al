@@ -3,6 +3,7 @@ Codeunit 51516030 "LoansClassificationCodeUnit"
 
     trigger OnRun()
     begin
+        //FnClassifyLoan
     end;
 
     var

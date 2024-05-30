@@ -1060,7 +1060,7 @@
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
-                                    <Format>#,0,.00;- #,0,.00;'-'</Format>
+                                    <Format>#,0.00;- #,0.00;'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1112,7 +1112,7 @@
             <Top>0.03in</Top>
             <Left>0.155in</Left>
             <Height>0.5in</Height>
-            <Width>9.45807in</Width>
+            <Width>9.45806in</Width>
             <Style>
               <Border>
                 <Style>Solid</Style>

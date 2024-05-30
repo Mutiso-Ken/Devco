@@ -43,7 +43,7 @@ Report 51516311 "Payroll Employees Report."
             column(PINNo; "Payroll Employee."."PIN No")
             {
             }
-            column(Basic_Pay; "Basic Pay") { }
+            column(Basic_Pay; "Payroll Employee."."Basic Pay") { }
             column(NSSFNo; "Payroll Employee."."NSSF No")
             {
             }

@@ -7,8 +7,8 @@ Table 51516231 "Loans Guarantee Details"
     {
         field(1; "Loan No"; Code[20])
         {
-            NotBlank = true;
             TableRelation = "Loans Register"."Loan  No.";
+            NotBlank = true;
 
         }
         field(2; "Member No"; Code[20])
@@ -34,7 +34,7 @@ Table 51516231 "Loans Guarantee Details"
 
             trigger OnValidate()
             begin
-                // TestField("Substituted Guarantor");
+                TestField("Substituted Guarantor");
             end;
         }
         field(8; Date; Date)
@@ -52,16 +52,16 @@ Table 51516231 "Loans Guarantee Details"
             trigger OnValidate()
             begin
 
-                Reset;
-                LoanApp.Reset;
-                LoanApp.SetRange(LoanApp."Loan  No.", "Loan No");
-                if LoanApp.Find('-') then begin
-                    "Amount Committed" := "Amont Guaranteed";
-                    if Loans.Get("Loan No") then
+                // Reset;
+                // LoanApp.Reset;
+                // LoanApp.SetRange(LoanApp."Loan  No.", "Loan No");
+                // if LoanApp.Find('-') then begin
+                //     "Amount Committed" := "Amont Guaranteed";
+                     if Loans.Get("Loan No") then
                         "% Proportion" := ("Amont Guaranteed" / Loans."Requested Amount") * 100;
                 end;
 
-            end;
+            // end;
         }
         field(12; "Staff/Payroll No."; Code[20])
         {
@@ -146,12 +146,12 @@ Table 51516231 "Loans Guarantee Details"
         field(28; "Cummulative Shares2"; Decimal)
         {
         }
-        // field(29; "Loan amount"; Decimal)
-        // {
-        //     CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Loan No" = field("Loan No"),
-        //                                                           "Transaction Type" = filter(Loan | Repayment)));
-        //     FieldClass = FlowField;
-        // }
+        field(29; "Loan amount"; Decimal)
+        {
+            CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Loan No" = field("Loan No"),
+                                                                  "Transaction Type" = filter(Loan | Repayment)));
+            FieldClass = FlowField;
+        }
         field(30; "Amount Committed"; Decimal)
         {
         }
@@ -205,7 +205,7 @@ Table 51516231 "Loans Guarantee Details"
         key(Key1; "Loan No", "Member No")
         {
             Clustered = true;
-            SumIndexFields = Shares,"Amont Guaranteed";
+            SumIndexFields = Shares;
         }
         key(key2; "Member No")
         {

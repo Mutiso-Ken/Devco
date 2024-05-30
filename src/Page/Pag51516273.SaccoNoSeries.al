@@ -133,10 +133,15 @@ Page 51516273 "Sacco No. Series"
                 {
                     ApplicationArea = Basic;
                 }
+                field("Change Request No"; "Change Request No")
+                {
+                    ApplicationArea = Basic;
+                }
             }
             group(FOSA)
             {
                 Caption = 'FOSA';
+                Visible = false;
                 field("FOSA Loans Nos"; "FOSA Loans Nos")
                 {
                     ApplicationArea = Basic;
@@ -213,10 +218,7 @@ Page 51516273 "Sacco No. Series"
                 {
                     ApplicationArea = Basic;
                 }
-                field("Change Request No"; "Change Request No")
-                {
-                    ApplicationArea = Basic;
-                }
+
                 field("Receipts Nos"; "Receipts Nos")
                 {
                     ApplicationArea = all;
@@ -296,6 +298,7 @@ Page 51516273 "Sacco No. Series"
             }
             group(Investor)
             {
+                Visible=false;
                 Caption = 'Investor';
                 field("Investor Application Nos"; "Investor Application Nos")
                 {
@@ -309,6 +312,7 @@ Page 51516273 "Sacco No. Series"
             group("S-PESA")
             {
                 Caption = 'S-PESA';
+                Visible=false;
                 field("MPESA Change Nos"; "MPESA Change Nos")
                 {
                     ApplicationArea = Basic;

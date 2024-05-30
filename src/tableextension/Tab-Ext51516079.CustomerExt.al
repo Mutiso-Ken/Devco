@@ -4,6 +4,7 @@ tableextension 51516079 "CustomerExt" extends Customer
     // LookupPageId = "Member List";
     fields
     {
+
         field(10001; "No. of Approved Loans"; Integer)
         {
             CalcFormula = count("Loans Register" where("Loan Status" = const(Approved),
@@ -1567,6 +1568,18 @@ tableextension 51516079 "CustomerExt" extends Customer
         field(69197; "Junior Monthly Contribution"; Decimal) { }
         field(69200; "Dividend Processed Date"; Date) { }
 
+
+
+
     }
+
+    // [Scope('personalization')]
+    //  [EventSubscriber(ObjectType::Table, Table::21, 'OnAddressLineChanged', '', true, true)]
+    // procedure TestNoSeries()
+    // begin
+
+    // end;
+  
+
 }
 

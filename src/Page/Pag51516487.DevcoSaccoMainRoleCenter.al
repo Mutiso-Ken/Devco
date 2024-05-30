@@ -308,6 +308,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                         ApplicationArea = Basic, Suite;
                         Caption = 'Payment Reconcilations';
                         RunObject = page "Posted Payment Reconciliations";
+                        Visible = false;
 
 
                     }
@@ -639,6 +640,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                         ApplicationArea = Basic, Suite;
                         Caption = 'Account Schedules';
                         RunObject = page "Account Schedule Names List";
+                        Visible = false;
                     }
 
                     action("LiquidityReport")
@@ -648,6 +650,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                         Image = Journal;
                         RunObject = report Liquidity;
                         ToolTip = 'Generate Liquidity Report for a given period.';
+                        Visible = false;
                     }
 
                 }
@@ -694,11 +697,11 @@ Page 51516487 "Devco Sacco Main Role Center"
                         Caption = 'Statement of profit or loss and other comprehensive income';
                         RunObject = report StatementProfitorloss;
                     }
-                    action("Statement of changes of Equity Current")
-                    {
-                        ApplicationArea = All;
-                        RunObject = report StatementOfChangesInEquity;
-                    }
+                    // action("Statement of changes of Equity Current")
+                    // {
+                    //     ApplicationArea = All;
+                    //     RunObject = report StatementOfChangesInEquity;
+                    // }
                     // action("Statement of changes of Equity Previous")
                     // {
                     //     ApplicationArea = All;
@@ -735,16 +738,16 @@ Page 51516487 "Devco Sacco Main Role Center"
                     action("Create Accounting Period")
                     {
                         ApplicationArea = Basic, Suite;
-                        caption = 'Create Accounting Period';
+                        caption = 'Create and Close Accounting Period';
                         RunObject = page "Accounting Periods";
                     }
 
-                    action("Update Liquidity")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        caption = 'Update Liquidity Report';
+                    // action("Update Liquidity")
+                    // {
+                    //     ApplicationArea = Basic, Suite;
+                    //     caption = 'Update Liquidity Report';
 
-                    }
+                    // }
                 }
 
 
@@ -870,6 +873,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                     Caption = 'Payment Recon. Journals';
                     Image = ApplyEntries;
                     // Promoted = true;
+
                     // PromotedCategory = Process;
                     RunObject = Page "Pmt. Reconciliation Journals";
                     ToolTip = 'Reconcile unpaid documents automatically with their related bank transactions by importing a bank statement feed or file. In the payment reconciliation journal, incoming or outgoing payments on your bank are automatically, or semi-automatically, applied to their related open customer or vendor ledger entries. Any open bank account ledger entries related to the applied customer or vendor ledger entries will be closed when you choose the Post Payments and Reconcile Bank Account action. This means that the bank account is automatically reconciled for payments that you post with the journal.';
@@ -2232,15 +2236,26 @@ Page 51516487 "Devco Sacco Main Role Center"
                         RunObject = report "Payroll Employees Report.";
                         ApplicationArea = All;
                     }
-                    action("Payroll allowances Report")
+                    // action("Payroll allowances Report")
+                    // {
+                    //     RunObject = report "payroll Allowances Report.";
+                    //     ApplicationArea = all;
+                    // }
+                    // action("payroll Deductions Report.")
+                    // {
+                    //     RunObject = report "payroll Deductions Report.";
+                    //     ApplicationArea = All;
+                    // }
+                    action("NHIF Report")
                     {
-                        RunObject = report "payroll Allowances Report.";
+                        RunObject = report "NHIF Schedule W..";
+
                         ApplicationArea = all;
                     }
-                    action("payroll Deductions Report.")
+                    action("NSSF Report")
                     {
-                        RunObject = report "payroll Deductions Report.";
-                        ApplicationArea = All;
+                        RunObject = report "NSSF Schedule W..";
+                        ApplicationArea = all;
                     }
                     action("Payroll Summary")
                     {
@@ -2249,7 +2264,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                     }
                     action("Payroll Payee")
                     {
-                        RunObject = report "Paye Schedule W..";
+                        RunObject = report "PAYE Schedule";
                         ApplicationArea = All;
                     }
                     action("P9 Report")
@@ -2260,6 +2275,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                     action("Staff Salaries Report")
                     {
                         RunObject = report "Staff Salaries Report";
+                        Caption = 'Staff Loan Report';
                         ApplicationArea = all;
                     }
 
@@ -2515,7 +2531,12 @@ Page 51516487 "Devco Sacco Main Role Center"
                     Caption = 'Finance Setups';
                     ToolTip = ' All Finance Module Setups ';
                     Visible = true;
+                    action("General Ledger setup")
+                    {
+                        ApplicationArea = Basic;
+                        RunObject = Page "General Ledger Setup";
 
+                    }
                     action("Accounting Period Setup")
                     {
                         ApplicationArea = Basic, Suite;

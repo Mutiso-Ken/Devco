@@ -326,6 +326,7 @@ codeunit 51516160 "Portal Integration"
     local procedure GetMemberRegistration(RequestJson: JsonObject) ResponseJson: JsonObject
     var
         MembershipApplication: Record "Membership Applications";
+        MemberNextofKin: Record "Member App Next Of kin";
         DataJson: JsonObject;
         FullNames: text[100];
         Phone_Number: Text[100];
@@ -343,12 +344,14 @@ codeunit 51516160 "Portal Integration"
         Kin_identifier: Text[100];
         kin_PhoneNumber: Text[100];
         Kin_EmailAddress: Text[100];
-        kin_Percentage: Text[100];
-        kin_Beneficiary: Option Yes,No;
+        kin_Percentage: Decimal;
+        kin_Beneficiary: Boolean;
         //Recruiter
         Recruiter_Identifier_Type: Text[100];
         Recruiter_identifier: Text[100];
         T_and_c_accepted: Boolean;
+        JArray: JsonArray;
+        NOKObject: JsonObject;
     begin
 
         FullNames := SelectJsonToken(RequestJson, '$.full_name').AsValue.AsText;
@@ -361,6 +364,19 @@ codeunit 51516160 "Portal Integration"
         Home_address := SelectJsonToken(RequestJson, '$.Home_address').AsValue.AsText();
         Citizen := SelectJsonToken(RequestJson, '$.Citizen').AsValue.AsText();
 
+        NOKObject := SelectArray(RequestJson, 'next_of_kin');
+        kin_Fullname := SelectJsonToken(NOKObject, '$.full_name').AsValue.AsText();
+        kin_Relationship := SelectJsonToken(NOKObject, '$.relationship').AsValue.AsText();
+        Kin_Identifiertype := SelectJsonToken(NOKObject, '$.identifier_type').AsValue.AsText();
+        Kin_identifier := SelectJsonToken(RequestJson, '$.identifier').AsValue.AsText();
+        kin_PhoneNumber := SelectJsonToken(RequestJson, '$.phone_number').AsValue.AsText();
+        Kin_EmailAddress := SelectJsonToken(RequestJson, '$.email_name').AsValue.AsText();
+        kin_Percentage := SelectJsonToken(RequestJson, '$.Percentage').AsValue.AsDecimal();
+        kin_Beneficiary := SelectJsonToken(RequestJson, '$.beneficiary').AsValue.AsBoolean();
+
+
+
+
         If FullNames <> ' ' then begin
 
             MembershipApplication.Name := FullNames;
@@ -372,8 +388,21 @@ codeunit 51516160 "Portal Integration"
             MembershipApplication."Passport No." := Passport_number;
             MembershipApplication."Home Address" := Home_address;
             MembershipApplication."Country/Region Code" := Citizen;
+            MembershipApplication.Insert();
+            //Next of kin
+            MemberNextofKin.Name := kin_Fullname;
+            MemberNextofKin.Relationship := kin_Relationship;
+            MemberNextofKin."ID No." := Kin_identifier;
+            MemberNextofKin.Telephone := kin_PhoneNumber;
+            MemberNextofKin.Email := Kin_EmailAddress;
+            MemberNextofKin."%Allocation" := kin_Percentage;
+            MemberNextofKin.Beneficiary := kin_Beneficiary;
+            MemberNextofKin.Next();
+
             SetResponseStatus(ResponseJson, 'success', 'Success', 'Request processed successfully');
         end
+
+
 
 
 
@@ -2491,6 +2520,18 @@ codeunit 51516160 "Portal Integration"
     begin
         if not JsonObject.SelectToken(Path, JsonToken) then
             Error('Could not find a token with path %1', Path);
+    end;
+
+    local procedure SelectArray(JsonObject: JsonObject; Path: text): JsonObject
+    var
+        JsonToken: JsonToken;
+        JsArray: JsonArray;
+    begin
+        JsonObject.Get(Path, JsonToken);
+        JsArray := (JsonToken.AsArray());
+        Clear(JsonToken);
+        JsArray.Get(1, JsonToken);
+        exit(JsonToken.AsObject());
     end;
 
     local procedure ValidateRequestHash(RequestJson: JsonObject)
