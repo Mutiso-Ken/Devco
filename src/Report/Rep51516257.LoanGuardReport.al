@@ -8,8 +8,8 @@ Report 51516257 "Loan Guard Report"
     {
         dataitem(Loans; "Loans Register")
         {
-            DataItemTableView = sorting("Staff No") order(ascending);
-            RequestFilterFields = Source, "Loan Product Type", "Date filter", "Application Date", "Loan Status", "Issued Date", Posted, "Batch No.", "Captured By", "Branch Code", "Outstanding Balance";
+            DataItemTableView = sorting("Staff No") order(ascending) where (Posted =const(true));
+            RequestFilterFields = "Date filter", "Issued Date";
             column(ReportForNavId_4645; 4645)
             {
             }
@@ -90,6 +90,14 @@ Report 51516257 "Loan Guard Report"
             }
             column(Loans__Top_Up_Amount__Control1000000001; "Top Up Amount")
             {
+            }
+            column(RPeriod; RPeriod)
+            {
+
+            }
+            column(currentBalance; currentBalance)
+            {
+
             }
             column(Loans_RegisterCaption; Loans_RegisterCaptionLbl)
             {
@@ -183,16 +191,27 @@ Report 51516257 "Loan Guard Report"
                         Dob := cust."Date of Birth";
                         IDno := cust."ID No.";
                     end;
-                end else
-                    if (Loans.Source = Loans.Source::FOSA) or (Loans.Source = Loans.Source::MICRO) then begin
-                        vend.Reset;
-                        vend.SetRange(vend."BOSA Account No", Loans."Client Code");
-                        if vend.Find('-') then begin
-                            Dob := vend."Date of Birth";
-                            IDno := vend."ID No.";
-                        end;
-                    end;
+                end;
+                AsAt := GetRangeMax("Date filter");
 
+
+                //RPeriod := 0;
+
+                currentBalance := 0;
+                LoanRec.Reset();
+                LoanRec.SetRange(LoanRec."Loan  No.", Loans."Loan  No.");
+                if LoanRec.FindSet() then begin
+                    repeat
+                        Loans.CalcFields(Loans."Outstanding Balance");
+                        currentBalance := Loans."Outstanding Balance";
+                        If Loans."Outstanding Balance" <= 0 then
+                            RPeriod := 0 else begin
+                            RPeriod := Installments - GetRepayment("Loan  No.", AsAt);
+                        end;
+
+
+                    until LoanRec.Next = 0;
+                end;
             end;
 
             trigger OnPreDataItem()
@@ -218,6 +237,14 @@ Report 51516257 "Loan Guard Report"
 
         layout
         {
+            // area(content)
+            // {
+            //     field(AsAt; AsAt)
+            //     {
+            //         ApplicationArea = Basic;
+            //         Caption = 'AsAt';
+            //     }
+            // }
         }
 
         actions
@@ -228,9 +255,30 @@ Report 51516257 "Loan Guard Report"
     labels
     {
     }
+    local procedure GetRepayment(LoanNos: Code[20]; DateFiltering: Date): Decimal
+    var
+        RepaymentInstallments: Decimal;
+    begin
+        RepaymentInstallments := 0;
+        RepaymentSchedule.Reset;
+        RepaymentSchedule.SetRange(RepaymentSchedule."Loan No.", LoanNos);
+        RepaymentSchedule.SetFilter(RepaymentSchedule."Repayment Date", '%1..%2', 0D, DateFiltering);
+        if RepaymentSchedule.FindLast then begin
+            repeat
+                Evaluate(RepaymentInstallments, RepaymentSchedule."Repayment Code");
+            until RepaymentSchedule.Next = 0;
+        end;
+        exit(RepaymentInstallments);
+    end;
+
 
     var
         RPeriod: Decimal;
+
+        currentBalance: Decimal;
+        AsAt: Date;
+        ExpextedRepayment: Decimal;
+        RepaymentSchedule: Record "Loan Repayment Schedule";
         BatchL: Code[100];
         Batches: Record "Loan Disburesment-Batching";
         ApprovalSetup: Record "Approval Setup";
@@ -239,7 +287,7 @@ Report 51516257 "Loan Guard Report"
         cust: Record Customer;
         BOSABal: Decimal;
         SuperBal: Decimal;
-        LAppl: Record "Loans Register";
+        LoanRec: Record "Loans Register";
         Deposits: Decimal;
         CompanyCode: Code[20];
         LoanType: Text[50];

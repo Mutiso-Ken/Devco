@@ -10,21 +10,21 @@ Table 51516247 "Receipts & Payments"
         field(2; "Account No."; Code[30])
         {
             NotBlank = true;
-            TableRelation = if ("Account Type" = const(Customer)) Customer."No."
+            TableRelation = if ("Account Type" = const(Customer)) Customer."No." where("Customer Type" = filter(Member));
             //  where(ISNormalMember = filter(true)
             // , "Employer Checkoff" = filter(false))
-            else
+            // else
             // if ("Account Type" = const(Debtor)) Customer."No." where(ISNormalMember = filter(false))
             // else
-            if ("Account Type" = const("G/L Account")) "G/L Account"."No."
-            else
+            // if ("Account Type" = const("G/L Account")) "G/L Account"."No."
+            // else
             // if ("Account Type" = const("FOSA Loan")) Customer."No." where(ISNormalMember = filter(true))
             // else
             // if ("Account Type" = const(Vendor)) Vendor."No." where("Creditor Type" = filter("FOSA Account"),
             //                                                                            Status = filter(<> Closed | Deceased),
             //                                                                            Blocked = filter(<> Payment | All))
             // else
-            if ("Account Type" = const("IC Partner")) Customer."No." where("Customer Posting Group" = filter('MICRO'));
+            // if ("Account Type" = const("IC Partner")) Customer."No." where("Customer Posting Group" = filter('MICRO'));
 
             trigger OnValidate()
             begin
@@ -42,10 +42,10 @@ Table 51516247 "Receipts & Payments"
                         Name := Mem.Name;
                 end;
 
-                if ("Account Type" = "account type"::Vendor) then begin
-                    if Vend.Get("Account No.") then
-                        Name := Vend.Name;
-                end;
+                // if ("Account Type" = "account type"::Vendor) then begin
+                //     if Vend.Get("Account No.") then
+                //         Name := Vend.Name;
+                // end;
 
                 if ("Account Type" = "account type"::"G/L Account") then begin
                     if GLAcct.Get("Account No.") then begin
@@ -121,11 +121,11 @@ Table 51516247 "Receipts & Payments"
             Editable = false;
             TableRelation = "No. Series";
         }
-        field(14; "Account Type"; enum "Gen. Journal Account Type")
+        field(14; "Account Type"; Option)
         {
 
-            // OptionCaption = 'Member,Debtor,G/L Account,FOSA Loan,Customer,Vendor,Micro';
-            // OptionMembers = Member,Debtor,"G/L Account","FOSA Loan",Customer,Vendor,Micro;
+
+            OptionMembers = Customer,"G/L Account",Vendor;
         }
         field(15; "Transaction Slip Type"; Option)
         {

@@ -2,7 +2,7 @@
 Report 51516227 "Member Loans Statement"
 {
     DefaultLayout = RDLC;
-    ApplicationArea=all;
+    ApplicationArea = all;
     RDLCLayout = './Layouts/MemberLoansStatement.rdlc';
 
     dataset
@@ -168,6 +168,8 @@ Report 51516227 "Member Loans Statement"
 
                     trigger OnAfterGetRecord()
                     begin
+
+                        ClosingBalanceLoan := ClosingBalanceLoan - loan."Amount Posted";
                         BankCodeLoan := GetBankCode(loan);
                         //.................................
                         if loan."Amount Posted" < 0 then begin

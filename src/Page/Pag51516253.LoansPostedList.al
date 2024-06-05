@@ -31,16 +31,16 @@ Page 51516253 "Loans Posted List"
                     Editable = false;
                     Style = StrongAccent;
                 }
-
-                field("Expected Date of Completion"; "Expected Date of Completion")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Application Date"; "Application Date")
+   field("Application Date"; "Application Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
+                field("Expected Date of Completion"; "Expected Date of Completion")
+                {
+                    ApplicationArea = Basic;
+                }
+             
                 field("Client Name"; "Client Name")
                 {
                     ApplicationArea = Basic;

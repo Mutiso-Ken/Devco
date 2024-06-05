@@ -27,12 +27,19 @@ Page 51516089 "Loans Sub-Page List Disburse"
                     Editable = false;
 
                 }
+
                 field("Approved Amount"; "Approved Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
+                // field("Net Amount"; "Net Amount")
+                // {
+                //     ApplicationArea = all;
+                //     Editable = false;
+                //     Style = Ambiguous;
+                // }
                 field(Repayment; Repayment)
                 {
                     ApplicationArea = Basic;

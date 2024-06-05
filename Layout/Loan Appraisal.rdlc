@@ -65,7 +65,7 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>             Signature ................................................               Date ........./........../................</Value>
+                    <Value>             Signature ................................................               Date ......................................</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -4569,6 +4569,7 @@
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -5470,6 +5471,7 @@
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -5486,9 +5488,6 @@
                             <TopBorder>
                               <Style>Solid</Style>
                             </TopBorder>
-                            <BottomBorder>
-                              <Style>None</Style>
-                            </BottomBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -6705,14 +6704,14 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Checked By :    ......................................................................     </Value>
+                    <Value>Checked By :    ......................................                </Value>
                     <Style>
                       <FontFamily>Calibri</FontFamily>
                       <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>Signature ................................................               Date ........./........../................</Value>
+                    <Value>Signature ................................................ ..........................              Date ................................</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -6724,7 +6723,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>23.113cm</Top>
+            <Top>23.748cm</Top>
             <Left>0.26141cm</Left>
             <Height>0.44125cm</Height>
             <Width>17.00112cm</Width>
@@ -6739,21 +6738,36 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox13">
+          <Textbox Name="Textbox22">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Verified By :    ......................................................................     </Value>
+                    <Value>Verified By :    .........</Value>
                     <Style>
                       <FontFamily>Calibri</FontFamily>
                       <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>Signature ................................................               Date ........./........../................</Value>
+                    <Value>C. E. O</Value>
+                    <Style>
+                      <FontFamily>Calibri</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>....................                </Value>
+                    <Style>
+                      <FontFamily>Calibri</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>Signature ................................................ ..........................              Date ................................</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -6765,85 +6779,14 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>23.55425cm</Top>
-            <Left>0.26141cm</Left>
+            <Top>24.79088cm</Top>
+            <Left>0.29497cm</Left>
             <Height>0.44125cm</Height>
-            <Width>17.01757cm</Width>
+            <Width>17.00112cm</Width>
             <ZIndex>86</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox14">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Credit Commitee Approval</Value>
-                    <Style>
-                      <FontSize>8pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox14</rd:DefaultName>
-            <Top>24.47175cm</Top>
-            <Left>0.26141cm</Left>
-            <Height>0.44125cm</Height>
-            <Width>17.00112cm</Width>
-            <ZIndex>87</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-                <Width>2pt</Width>
-              </Border>
-              <BottomBorder>
-                <Style>Double</Style>
-              </BottomBorder>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox22">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>...................................................................................................................................................................................................................</Value>
-                    <Style>
-                      <FontSize>8pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox14</rd:DefaultName>
-            <Top>25.2305cm</Top>
-            <Left>0.26141cm</Left>
-            <Height>0.49417cm</Height>
-            <Width>17.00112cm</Width>
-            <ZIndex>88</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-                <Width>2pt</Width>
               </Border>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
@@ -6858,65 +6801,49 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>...................................................................................................................................................................................................................</Value>
+                    <Value>Verified By :    .....</Value>
                     <Style>
+                      <FontFamily>Calibri</FontFamily>
                       <FontSize>8pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox14</rd:DefaultName>
-            <Top>25.72467cm</Top>
-            <Left>0.26141cm</Left>
-            <Height>0.49417cm</Height>
-            <Width>17.00112cm</Width>
-            <ZIndex>89</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <BottomBorder>
-                <Width>2pt</Width>
-              </BottomBorder>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox24">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
                   <TextRun>
-                    <Value>...................................................................................................................................................................................................................</Value>
+                    <Value>Credit Commitee</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontFamily>Calibri</FontFamily>
+                      <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>......                </Value>
+                    <Style>
+                      <FontFamily>Calibri</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>Signature ................................................ ..........................              Date ................................</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>7pt</FontSize>
+                      <TextDecoration>None</TextDecoration>
                     </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox14</rd:DefaultName>
-            <Top>26.21884cm</Top>
-            <Left>0.26141cm</Left>
-            <Height>0.49417cm</Height>
+            <rd:DefaultName>Textbox12</rd:DefaultName>
+            <Top>25.95505cm</Top>
+            <Left>0.29497cm</Left>
+            <Height>0.44125cm</Height>
             <Width>17.00112cm</Width>
-            <ZIndex>90</ZIndex>
+            <ZIndex>87</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
-              <BottomBorder>
-                <Width>2pt</Width>
-              </BottomBorder>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -6924,7 +6851,7 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>26.81539cm</Height>
+        <Height>26.50155cm</Height>
         <Style>
           <Border>
             <Style>None</Style>
@@ -6932,7 +6859,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>17.55937cm</Width>
+      <Width>17.4592cm</Width>
       <Page>
         <PageFooter>
           <Height>0.49074cm</Height>

@@ -53,17 +53,17 @@ Table 51516345 "Members Cues"
 
         field(10; "Awaiting Exit"; Integer)
         {
-               CalcFormula = count(Customer where(Status = const("Awaiting exit"), "Customer Posting Group" = filter('Member')));
+            CalcFormula = count(Customer where(Status = const("Awaiting exit"), "Customer Posting Group" = filter('Member')));
             FieldClass = FlowField;
         }
         field(13; Female; Integer)
         {
-            CalcFormula = count(Customer where(Status = const("Active"), Gender = Const(Female), "Customer Posting Group" = filter('Member')));
+            CalcFormula = count(Customer where(Gender = Const(Female), "Customer Posting Group" = filter('Member')));
             FieldClass = FlowField;
         }
         field(14; Male; Integer)
         {
-            CalcFormula = count(Customer where(Status = const("Active"), Gender = Const(Male), "Customer Posting Group" = filter('Member')));
+            CalcFormula = count(Customer where(Gender = Const(Male), "Customer Posting Group" = filter('Member')));
             FieldClass = FlowField;
         }
     }

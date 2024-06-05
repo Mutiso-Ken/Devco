@@ -404,7 +404,7 @@ Codeunit 50015 "Payroll Processing"
                 // curNSSF := curNssfEmployee;
 
                 // curNSSF := fnGetEmployeeNSSF(curNssf_Base_Amount);
-                if curBasicPay <= 36000 then begin
+                if curGrossPay <= 36000 then begin
                     curNSSF := curGrossPay * 0.06
                 end else
                     curNSSF := 2160;

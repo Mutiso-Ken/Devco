@@ -8,7 +8,7 @@ Report 51516207 "SASRA Loans Classification"
         dataitem("Loans Register"; "Loans Register")
         {
             DataItemTableView = sorting("Client Code") order(ascending) where(Posted = const(true));
-            RequestFilterFields = "Client Code", "Branch Code", "Loan Product Type", "Date filter", "Loan  No.", "Issued Date";
+            RequestFilterFields = "Client Code","Loan Product Type", "Loan  No.", "Issued Date";
             column(ReportForNavId_1120054000; 1120054000)
             {
             }
@@ -78,43 +78,13 @@ Report 51516207 "SASRA Loans Classification"
                 LoansReg.SetRange(LoansReg."Loan  No.", "Loans Register"."Loan  No.");
                 LoansReg.SetAutocalcFields(LoansReg."Scheduled Principle Payments", LoansReg."Schedule Loan Amount Issued", LoansReg."Schedule Installments", LoansReg."Outstanding Balance", LoansReg."Oustanding Interest", LoansReg."Scheduled Interest Payments", LoansReg."Interest Paid");
                 if LoansReg.Find('-') then begin
-                    //..........Expected Loan Balance
-                    //..........Expected Loan Balance
-                    ExpectedLoanBal := 0;
-                    IF (LoansReg."Loan Product Type" = 'CHRISTMAS ADV') OR (LoansReg."Loan Product Type" = 'DIVIDEND') OR (LoansReg."Loan Product Type" = 'LPO') THEN begin
-                        if (LoansReg."Loan Product Type" = 'CHRISTMAS ADV') OR (LoansReg."Loan Product Type" = 'DIVIDEND') then begin
-                            IF CalcDate('12M', LoansReg."Loan Disbursement Date") >= DateBD then begin
-                                ExpectedLoanBal := LoansReg."Approved Amount";
-                                IF LoansReg."Expected Date of Completion" <> CalcDate('12M', LoansReg."Loan Disbursement Date") then begin
-                                    LoansReg."Expected Date of Completion" := CalcDate('12M', LoansReg."Loan Disbursement Date");
-                                    LoansReg."Repayment Start Date" := CalcDate('12M', LoansReg."Loan Disbursement Date");
-                                end;
-                            end else
-                                IF CalcDate('12M', LoansReg."Loan Disbursement Date") < DateBD then begin
-                                    ExpectedLoanBal := 0;
-                                end;
-                        end else
-                            if (LoansReg."Loan Product Type" = 'LPO') then begin
-                                IF LoansReg."Expected Date of Completion" <> CalcDate('6M', LoansReg."Loan Disbursement Date") then begin
-                                    LoansReg."Expected Date of Completion" := CalcDate('6M', LoansReg."Loan Disbursement Date");
-                                    LoansReg."Repayment Start Date" := CalcDate('6M', LoansReg."Loan Disbursement Date");
-                                    if LoansReg."Expected Date of Completion" < DateBD then begin
-                                        ExpectedLoanBal := 0;
-                                    end else
-                                        if LoansReg."Expected Date of Completion" >= DateBD then begin
-                                            ExpectedLoanBal := LoansReg."Approved Amount";
-                                        end;
-                                end;
-                            end;
-                    end else begin
-                        ExpectedLoanBal := LoansReg."Schedule Loan Amount Issued" - LoansReg."Scheduled Principle Payments";
-                    end;
+
                     //...........Current Loan Balance
                     CurrentLoanBalance := 0;
                     CurrentLoanBalance := LoansReg."Outstanding Balance";
                     //...........Calculate Principle Arrears
                     LoanArrears := 0;
-                    LoanArrears := CurrentLoanBalance - ExpectedLoanBal;
+                    LoanArrears := LoansReg."Principal In Arrears";
                     if LoanArrears < 0 then begin
                         LoanArrears := 0;
                     end;
@@ -125,113 +95,68 @@ Report 51516207 "SASRA Loans Classification"
                         if InterestArrears < 0 then begin
                             InterestArrears := 0;
                         end;
-                    end else
-                        if LoansReg.Source = LoansReg.Source::FOSA then begin
-                            InterestArrears := 0;
-                            IF (LoansReg."Loan Product Type" = 'LPO') OR (LoansReg."Loan Product Type" = 'CHRISTMAS ADV') OR (LoansReg."Loan Product Type" = 'DIVIDEND') THEN begin
-                                IF (LoansReg."Loan Product Type" = 'LPO') OR (LoansReg."Loan Product Type" = 'CHRISTMAS ADV') OR (LoansReg."Loan Product Type" = 'DIVIDEND') THEN begin
-                                    IF CalcDate('12M', LoansReg."Loan Disbursement Date") < DateBD then begin
-                                        InterestArrears := LoansReg."Oustanding Interest";
-                                    end else
-                                        IF CalcDate('12M', LoansReg."Loan Disbursement Date") >= DateBD then begin
-                                            InterestArrears := 0;
-                                        end;
-                                end else
-                                    IF (LoansReg."Loan Product Type" = 'LPO') then begin
-                                        IF CalcDate('6M', LoansReg."Loan Disbursement Date") >= DateBD then begin
-                                            InterestArrears := 0;
-                                        end else
-                                            IF CalcDate('6M', LoansReg."Loan Disbursement Date") < DateBD then begin
-                                                InterestArrears := LoansReg."Oustanding Interest";
-                                            end;
+
+
+                        DaysInArrears := 0;
+                        DaysInArrears := ROUND((LoansReg."No of Months in Arrears" * 30), 1, '>');
+                        //...........................Classify Loan
+                        PerformingDisplay := 0;
+                        WatchDisplay := 0;
+                        StandardDisplay := 0;
+                        DoubtfulDisplay := 0;
+                        LossDisplay := 0;
+                        AmountInArrearsDisplay := 0;
+
+                        if (LoansReg."Expected Date of Completion" <> 0D) and (DateBD <= LoansReg."Expected Date of Completion") then begin
+                            case NoOfMonthsInArrears of
+                                0:
+                                    begin
+                                        PerformingDisplay := CurrentLoanBalance;
+                                        WatchDisplay := 0;
+                                        StandardDisplay := 0;
+                                        DoubtfulDisplay := 0;
+                                        LossDisplay := 0;
+                                        AmountInArrearsDisplay := LoanArrears;
                                     end;
-                            end else begin
-                                InterestArrears := LoansReg."Oustanding Interest";
-                            end;
-                            IF (LoansReg."Loan Product Type" = 'OVERDRAFT') then begin
-                                InterestArrears := 0;
-                                InterestArrears := LoansReg."Scheduled Interest Payments" - (LoansReg."Interest Paid" * -1);
-                            end;
-                            if InterestArrears < 0 then begin
-                                InterestArrears := 0;
-                            end;
-                        end else
-                            if LoansReg.Source = LoansReg.Source::MICRO then begin
-                                InterestArrears := 0;
-                                if loansreg."Issued Date" < 20230807D then begin
-                                    InterestArrears := LoansReg."Oustanding Interest";
-                                end else
-                                    if loansreg."Issued Date" >= 20230807D then begin
-                                        InterestArrears := (LoansReg."Scheduled Interest Payments") - ((LoansReg."Interest Paid") * -1);
+                                1:
+                                    begin
+                                        PerformingDisplay := 0;
+                                        WatchDisplay := CurrentLoanBalance;
+                                        StandardDisplay := 0;
+                                        DoubtfulDisplay := 0;
+                                        LossDisplay := 0;
+                                        AmountInArrearsDisplay := LoanArrears;
                                     end;
-                                if InterestArrears < 0 then begin
-                                    InterestArrears := 0;
+                                2, 3, 4, 5, 6:
+                                    begin
+                                        PerformingDisplay := 0;
+                                        WatchDisplay := 0;
+                                        StandardDisplay := CurrentLoanBalance;
+                                        DoubtfulDisplay := 0;
+                                        LossDisplay := 0;
+                                        AmountInArrearsDisplay := LoanArrears;
+                                    end;
+                                7, 8, 9, 10, 11, 12:
+                                    begin
+                                        PerformingDisplay := 0;
+                                        WatchDisplay := 0;
+                                        StandardDisplay := 0;
+                                        DoubtfulDisplay := CurrentLoanBalance;
+                                        LossDisplay := 0;
+                                        AmountInArrearsDisplay := LoanArrears;
+                                    end
+                                else begin
+                                    PerformingDisplay := 0;
+                                    WatchDisplay := 0;
+                                    StandardDisplay := 0;
+                                    DoubtfulDisplay := 0;
+                                    LossDisplay := CurrentLoanBalance;
+                                    AmountInArrearsDisplay := LoanArrears;
                                 end;
                             end;
-                    //..........Get The Number of Months In Arrears
-                    if LoanArrears >= 1 then begin
-                        NoOfMonthsInArrears := 0;
-                        NoOfMonthsInArrears := ROUND(LoanArrears / (LoansReg."Schedule Loan Amount Issued" / LoansReg."Schedule Installments"), 1, '>');
-                    end
-                    else
-                        if LoanArrears < 1 then begin
-                            NoOfMonthsInArrears := 0;
-                            NoOfMonthsInArrears := 0;
-                        end;
-                    DaysInArrears := 0;
-                    DaysInArrears := ROUND((LoanArrears / (LoansReg."Schedule Loan Amount Issued" / LoansReg."Schedule Installments") * 30), 1, '>');
-                    IF (LoansReg."Loan Product Type" = 'CHRISTMAS ADV') OR (LoansReg."Loan Product Type" = 'DIVIDEND') THEN begin
-                        LoansReg."Expected Date of Completion" := CalcDate('12M', LoansReg."Loan Disbursement Date");
-                    end;
-                    IF (LoansReg."Loan Product Type" = 'LPO') THEN begin
-                        LoansReg."Expected Date of Completion" := CalcDate('6M', LoansReg."Loan Disbursement Date");
-                    end;
-                    //...........................Classify Loan
-                    PerformingDisplay := 0;
-                    WatchDisplay := 0;
-                    StandardDisplay := 0;
-                    DoubtfulDisplay := 0;
-                    LossDisplay := 0;
-                    AmountInArrearsDisplay := 0;
-                    if (LoansReg."Expected Date of Completion" <> 0D) and (DateBD <= LoansReg."Expected Date of Completion") then begin
-                        case NoOfMonthsInArrears of
-                            0:
-                                begin
-                                    PerformingDisplay := CurrentLoanBalance;
-                                    WatchDisplay := 0;
-                                    StandardDisplay := 0;
-                                    DoubtfulDisplay := 0;
-                                    LossDisplay := 0;
-                                    AmountInArrearsDisplay := LoanArrears;
-                                end;
-                            1:
-                                begin
-                                    PerformingDisplay := 0;
-                                    WatchDisplay := CurrentLoanBalance;
-                                    StandardDisplay := 0;
-                                    DoubtfulDisplay := 0;
-                                    LossDisplay := 0;
-                                    AmountInArrearsDisplay := LoanArrears;
-                                end;
-                            2, 3, 4, 5, 6:
-                                begin
-                                    PerformingDisplay := 0;
-                                    WatchDisplay := 0;
-                                    StandardDisplay := CurrentLoanBalance;
-                                    DoubtfulDisplay := 0;
-                                    LossDisplay := 0;
-                                    AmountInArrearsDisplay := LoanArrears;
-                                end;
-                            7, 8, 9, 10, 11, 12:
-                                begin
-                                    PerformingDisplay := 0;
-                                    WatchDisplay := 0;
-                                    StandardDisplay := 0;
-                                    DoubtfulDisplay := CurrentLoanBalance;
-                                    LossDisplay := 0;
-                                    AmountInArrearsDisplay := LoanArrears;
-                                end
-                            else begin
+                        end
+                        else
+                            if (LoansReg."Expected Date of Completion" <> 0D) and (DateBD > LoansReg."Expected Date of Completion") then begin
                                 PerformingDisplay := 0;
                                 WatchDisplay := 0;
                                 StandardDisplay := 0;
@@ -239,30 +164,12 @@ Report 51516207 "SASRA Loans Classification"
                                 LossDisplay := CurrentLoanBalance;
                                 AmountInArrearsDisplay := LoanArrears;
                             end;
+                        if (PerformingDisplay = 0) and (WatchDisplay = 0) and (StandardDisplay = 0)
+                          and (DoubtfulDisplay = 0) and (LossDisplay = 0) OR (LoansReg."Schedule Installments" = 0) then begin
+                            CurrReport.Skip;
                         end;
-                    end
-                    else
-                        if (LoansReg."Expected Date of Completion" <> 0D) and (DateBD > LoansReg."Expected Date of Completion") then begin
-                            PerformingDisplay := 0;
-                            WatchDisplay := 0;
-                            StandardDisplay := 0;
-                            DoubtfulDisplay := 0;
-                            LossDisplay := CurrentLoanBalance;
-                            AmountInArrearsDisplay := LoanArrears;
-                        end;
-                    if (PerformingDisplay = 0) and (WatchDisplay = 0) and (StandardDisplay = 0)
-                      and (DoubtfulDisplay = 0) and (LossDisplay = 0) OR (LoansReg."Schedule Installments" = 0) then begin
-                        CurrReport.Skip;
+                        NextCount := NextCount + 1;
                     end;
-                    NextCount := NextCount + 1;
-                    // IF UserId = 'surestepdeveloper@jamii.co.ke' then begin
-                    //     MESSAGE('.expected bal..%1', ExpectedLoanBal);
-                    //     MESSAGE('.current bal..%1', CurrentLoanBalance);
-                    //     MESSAGE('.Arrears.%1', LoanArrears);
-                    //     MESSAGE('.installments.%1', LoansReg."Schedule Installments");
-                    //     MESSAGE('.noofmonths.%1', NoOfMonthsInArrears);
-                    //     MESSAGE('.monthly pay.%1', (LoansReg."Schedule Loan Amount Issued" / LoansReg."Schedule Installments"));
-                    // end;
                 end;
             end;
 

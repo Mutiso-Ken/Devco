@@ -110,6 +110,9 @@ Report 50378 "Dividend Processing-Prorated"
                 DivTotal := 0;
                 "W/Tax" := 0;
                 CommDiv := 0;
+                CInterest := 0;
+                CDiv := 0;
+
                 WtaX := 0;
                 WthTAxTotal := 0;
                 TotalPay := 0;
@@ -135,8 +138,12 @@ Report 50378 "Dividend Processing-Prorated"
                 IF Cust.FIND('-') THEN BEGIN
                     Cust.CALCFIELDS(Cust."Current Shares", Cust."Shares Retained");
                     IF (Cust."Current Shares" <> 0.01) THEN BEGIN
+                        if Cust."Shares Retained" > 0 then begin
+                            CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * ((Cust."Shares Retained"));
+                        end else begin
+                            CDiv := 0;
+                        end;
 
-                        CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * ((Cust."Shares Retained"));
                         if Cust."Current Shares" > 0 then begin
                             CInterest := (GenSetUp."Interest On Current Shares" / 100) * (Cust."Current Shares");
                         end else begin
@@ -182,7 +189,11 @@ Report 50378 "Dividend Processing-Prorated"
                     IF (Cust."Current Shares" <> 0.01) THEN BEGIN
 
 
-                        CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * ((Cust."Shares Retained"));
+                        if Cust."Shares Retained" > 0 then begin
+                            CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * ((Cust."Shares Retained"));
+                        end else begin
+                            CDiv := 0;
+                        end;
                         if Cust."Current Shares" > 0 then begin
                             CInterest := (GenSetUp."Interest On Current Shares" / 100) * ((Cust."Current Shares") * (11 / 12));
                         end else begin
@@ -227,7 +238,11 @@ Report 50378 "Dividend Processing-Prorated"
                     Cust.CALCFIELDS(Cust."Current Shares", Cust."Shares Retained");
                     IF (Cust."Current Shares" <> 0.01) THEN BEGIN
 
-                        CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * ((Cust."Shares Retained"));
+                        if Cust."Shares Retained" > 0 then begin
+                            CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * ((Cust."Shares Retained"));
+                        end else begin
+                            CDiv := 0;
+                        end;
                         if Cust."Current Shares" > 0 then begin
                             CInterest := (GenSetUp."Interest On Current Shares" / 100) * ((Cust."Current Shares") * (10 / 12));
                         end else begin
@@ -273,7 +288,11 @@ Report 50378 "Dividend Processing-Prorated"
                     Cust.CALCFIELDS(Cust."Current Shares", Cust."Shares Retained");
                     IF (Cust."Current Shares" <> 0.01) THEN BEGIN
 
-                        CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * (Cust."Shares Retained");
+                        if Cust."Shares Retained" > 0 then begin
+                            CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * ((Cust."Shares Retained"));
+                        end else begin
+                            CDiv := 0;
+                        end;
                         if Cust."Current Shares" > 0 then begin
                             CInterest := (GenSetUp."Interest On Current Shares" / 100) * ((Cust."Current Shares") * (9 / 12));
                         end else begin
@@ -282,7 +301,7 @@ Report 50378 "Dividend Processing-Prorated"
 
                         DividendsOnshareCapital := DividendsOnshareCapital + CDiv;
                         IntOnDeposits := IntOnDeposits + CInterest;
-                        DivTotal := DivTotal + (CDiv + CInterest);
+                       // DivTotal := DivTotal + (CDiv + CInterest);
                         //"Interest on Share Capital(%)"
                         //DividendsOnshareCapital := +(DividendsOnshareCapital + CDiv);
                         WtaX := (CDiv + CInterest) * (GenSetUp."Withholding Tax (%)" / 100);
@@ -320,7 +339,11 @@ Report 50378 "Dividend Processing-Prorated"
                     Cust.CALCFIELDS(Cust."Current Shares", Cust."Shares Retained");
                     IF (Cust."Current Shares" <> 0.01) THEN BEGIN
 
-                        CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * (Cust."Shares Retained");
+                        if Cust."Shares Retained" > 0 then begin
+                            CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * ((Cust."Shares Retained"));
+                        end else begin
+                            CDiv := 0;
+                        end;
                         if Cust."Current Shares" > 0 then begin
                             CInterest := (GenSetUp."Interest On Current Shares" / 100) * ((Cust."Current Shares") * (8 / 12));
                         end else begin
@@ -364,7 +387,11 @@ Report 50378 "Dividend Processing-Prorated"
                     Cust.CALCFIELDS(Cust."Current Shares", Cust."Shares Retained");
                     IF (Cust."Current Shares" <> 0.01) THEN BEGIN
 
-                        CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * (Cust."Shares Retained");
+                        if Cust."Shares Retained" > 0 then begin
+                            CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * ((Cust."Shares Retained"));
+                        end else begin
+                            CDiv := 0;
+                        end;
                         if Cust."Current Shares" > 0 then begin
                             CInterest := (GenSetUp."Interest On Current Shares" / 100) * ((Cust."Current Shares") * (7 / 12));
                         end else begin
@@ -407,8 +434,12 @@ Report 50378 "Dividend Processing-Prorated"
                 IF Cust.FIND('-') THEN BEGIN
                     Cust.CALCFIELDS(Cust."Current Shares", Cust."Shares Retained");
                     IF (Cust."Current Shares" <> 0.01) THEN BEGIN
+                        if Cust."Shares Retained" > 0 then begin
+                            CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * ((Cust."Shares Retained"));
+                        end else begin
+                            CDiv := 0;
+                        end;
 
-                        CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * (Cust."Shares Retained");
                         if Cust."Current Shares" > 0 then begin
                             CInterest := (GenSetUp."Interest On Current Shares" / 100) * ((Cust."Current Shares") * (6 / 12));
                         end else begin
@@ -453,7 +484,11 @@ Report 50378 "Dividend Processing-Prorated"
                     Cust.CALCFIELDS(Cust."Current Shares", Cust."Shares Retained");
                     IF (Cust."Current Shares" <> 0.01) THEN BEGIN
 
-                        CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * (Cust."Shares Retained");
+                        if Cust."Shares Retained" > 0 then begin
+                            CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * ((Cust."Shares Retained"));
+                        end else begin
+                            CDiv := 0;
+                        end;
                         if Cust."Current Shares" > 0 then begin
                             CInterest := (GenSetUp."Interest On Current Shares" / 100) * ((Cust."Current Shares") * (5 / 12));
                         end else begin
@@ -497,7 +532,11 @@ Report 50378 "Dividend Processing-Prorated"
                     Cust.CALCFIELDS(Cust."Current Shares", Cust."Shares Retained");
                     IF (Cust."Current Shares" <> 0.01) THEN BEGIN
 
-                        CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * (Cust."Shares Retained");
+                        if Cust."Shares Retained" > 0 then begin
+                            CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * ((Cust."Shares Retained"));
+                        end else begin
+                            CDiv := 0;
+                        end;
                         if Cust."Current Shares" > 0 then begin
                             CInterest := (GenSetUp."Interest On Current Shares" / 100) * ((Cust."Current Shares") * (4 / 12));
                         end else begin
@@ -542,8 +581,12 @@ Report 50378 "Dividend Processing-Prorated"
                     Cust.CALCFIELDS(Cust."Current Shares", Cust."Shares Retained");
                     IF (Cust."Current Shares" <> 0.01) THEN BEGIN
 
-                        WthTAxTotal := WthTAxTotal + WtaX;
-                        CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * (Cust."Shares Retained");
+
+                        if Cust."Shares Retained" > 0 then begin
+                            CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * ((Cust."Shares Retained"));
+                        end else begin
+                            CDiv := 0;
+                        end;
                         if Cust."Current Shares" > 0 then begin
                             CInterest := (GenSetUp."Interest On Current Shares" / 100) * ((Cust."Current Shares") * (3 / 12));
                         end else begin
@@ -554,6 +597,7 @@ Report 50378 "Dividend Processing-Prorated"
                         IntOnDeposits := IntOnDeposits + CInterest;
                         DividendsOnshareCapital := DividendsOnshareCapital + CDiv;
                         WtaX := (CDiv + CInterest) * (GenSetUp."Withholding Tax (%)" / 100);
+                        WthTAxTotal := WthTAxTotal + WtaX;
                         DivProg.INIT;
                         DivProg."Member No" := Customer."No.";
                         DivProg.Date := ToDate;
@@ -587,7 +631,11 @@ Report 50378 "Dividend Processing-Prorated"
                     IF (Cust."Current Shares" <> 0.01) THEN BEGIN
 
 
-                        CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * (Cust."Shares Retained");
+                        if Cust."Shares Retained" > 0 then begin
+                            CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * ((Cust."Shares Retained"));
+                        end else begin
+                            CDiv := 0;
+                        end;
                         if Cust."Current Shares" > 0 then begin
                             CInterest := (GenSetUp."Interest On Current Shares" / 100) * ((Cust."Current Shares") * (2 / 12));
                         end else begin
@@ -637,7 +685,11 @@ Report 50378 "Dividend Processing-Prorated"
                         end else begin
                             CInterest := 0;
                         end;
-                        CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * (Cust."Shares Retained");
+                        if Cust."Shares Retained" > 0 then begin
+                            CDiv := (GenSetUp."Interest on Share Capital(%)" / 100) * ((Cust."Shares Retained"));
+                        end else begin
+                            CDiv := 0;
+                        end;
 
                         IntOnDeposits := IntOnDeposits + CInterest;
                         DividendsOnshareCapital := DividendsOnshareCapital + CDiv;
@@ -666,7 +718,7 @@ Report 50378 "Dividend Processing-Prorated"
 
 
                 Customer."Net Dividend Payable" := DivTotal;
-                Customer."Dividend Processed Date":="From Date";
+                Customer."Dividend Processed Date" := "From Date";
                 Customer.MODIFY;
 
                 // DivProg.RESET;

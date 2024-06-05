@@ -914,14 +914,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Amount_Loan">
+                        <Textbox Name="CLosingBalance_loan">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Amount_Loan.Value</Value>
+                                  <Value>=Fields!CLosingBalance_loan.Value*-1</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -934,7 +934,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Amount_Loan</rd:DefaultName>
+                          <rd:DefaultName>CLosingBalance_loan</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>

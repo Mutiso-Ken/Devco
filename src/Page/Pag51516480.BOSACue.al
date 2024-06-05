@@ -74,6 +74,7 @@ Page 51516480 "BOSA Cue"
             }
             cuegroup(Gender)
             {
+              
                 field(Female; Female)
                 {
                     ApplicationArea = Basic;

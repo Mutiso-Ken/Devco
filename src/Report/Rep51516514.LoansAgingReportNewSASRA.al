@@ -2,9 +2,10 @@
 Report 51516514 "Loans Aging Report New-SASRA"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Layouts/Loans Aging Report New-SASRA.rdlc';
+    ProcessingOnly = true;
     ApplicationArea = all;
-    UsageCategory = ReportsAndAnalysis;
+    UsageCategory = Administration;
+    // RDLCLayout = './Layouts/Loans Aging Report New-SASRA.rdlc';
 
     dataset
     {
@@ -15,156 +16,162 @@ Report 51516514 "Loans Aging Report New-SASRA"
             column(BOSANo_Loans; Loans."BOSA No")
             {
             }
-            column(FORMAT_TODAY_0_4_; Format(Today, 0, 4))
-            {
-            }
-            column(COMPANYNAME; COMPANYNAME)
-            {
-            }
-            column(CurrReport_PAGENO; CurrReport.PageNo)
-            {
-            }
-            column(USERID; UserId)
-            {
-            }
-            column(Loans__Loan__No__; "Loan  No.")
-            {
-            }
-            column(Loans__Loan_Product_Type_; "Loan Product Type")
-            {
-            }
-            column(Loans_Loans__Staff_No_; Loans."Staff No")
-            {
-            }
-            column(Loans__Client_Name_; "Client Name")
-            {
-            }
-            column(Loans_Loans__Outstanding_Balance_; Loans."Outstanding Balance")
-            {
-            }
-            column(V2Month_; "2Month")
-            {
-            }
-            column(V3Month_; "3Month")
-            {
-            }
-            column(Over3Month; Over3Month)
-            {
-            }
-            column(V1Month_; "1Month")
-            {
-            }
-            column(V0Month_; "0Month")
-            {
-            }
-            column(Loans_Loans__Outstanding_Balance__Control1000000016; Loans."Outstanding Balance")
-            {
-            }
-            column(Loans__Approved_Amount_; "Approved Amount")
-            {
-            }
-            column(Loans_Loans__Interest_Due_; Loans."Interest Due")
-            {
-            }
-            column(V1MonthC_; "1MonthC")
-            {
-            }
-            column(V2MonthC_; "2MonthC")
-            {
-            }
-            column(V3MonthC_; "3MonthC")
-            {
-            }
-            column(Over3MonthC; Over3MonthC)
-            {
-            }
-            column(NoLoans; NoLoans)
-            {
-            }
-            column(GrandTotal; GrandTotal)
-            {
-            }
-            column(V0Month__Control1102760031; "0Month")
-            {
-            }
-            column(V1Month__Control1102760032; "1Month")
-            {
-            }
-            column(V2Month__Control1102760033; "2Month")
-            {
-            }
-            column(V3Month__Control1102760034; "3Month")
-            {
-            }
-            column(Over3Month_Control1102760035; Over3Month)
-            {
-            }
-            column(V0MonthC_; "0MonthC")
-            {
-            }
-            column(Loans_Aging_Analysis__SASRA_Caption; Loans_Aging_Analysis__SASRA_CaptionLbl)
-            {
-            }
-            column(CurrReport_PAGENOCaption; CurrReport_PAGENOCaptionLbl)
-            {
-            }
-            column(Loans__Loan__No__Caption; FieldCaption("Loan  No."))
-            {
-            }
-            column(Loan_TypeCaption; Loan_TypeCaptionLbl)
-            {
-            }
-            column(Staff_No_Caption; Staff_No_CaptionLbl)
-            {
-            }
-            column(Loans__Client_Name_Caption; FieldCaption("Client Name"))
-            {
-            }
-            column(Oustanding_BalanceCaption; Oustanding_BalanceCaptionLbl)
-            {
-            }
-            column(PerformingCaption; PerformingCaptionLbl)
-            {
-            }
-            column(V1___30_Days_Caption; V1___30_Days_CaptionLbl)
-            {
-            }
-            column(V0_Days_Caption; V0_Days_CaptionLbl)
-            {
-            }
-            column(WatchCaption; WatchCaptionLbl)
-            {
-            }
-            column(V31___180_Days_Caption; V31___180_Days_CaptionLbl)
-            {
-            }
-            column(SubstandardCaption; SubstandardCaptionLbl)
-            {
-            }
-            column(V181___360_Days_Caption; V181___360_Days_CaptionLbl)
-            {
-            }
-            column(DoubtfulCaption; DoubtfulCaptionLbl)
-            {
-            }
-            column(Over_360_DaysCaption; Over_360_DaysCaptionLbl)
-            {
-            }
-            column(LossCaption; LossCaptionLbl)
-            {
-            }
-            column(TotalsCaption; TotalsCaptionLbl)
-            {
-            }
-            column(CountCaption; CountCaptionLbl)
-            {
-            }
-            column(Grand_TotalCaption; Grand_TotalCaptionLbl)
-            {
-            }
-            column(Lbal; LBalance)
-            {
-            }
+            // column(FORMAT_TODAY_0_4_; Format(Today, 0, 4))
+            // {
+            // }
+            // column(COMPANYNAME; COMPANYNAME)
+            // {
+            // }
+            // column(CurrReport_PAGENO; CurrReport.PageNo)
+            // {
+            // }
+            // column(USERID; UserId)
+            // {
+            // }
+            // column(Loans__Loan__No__; "Loan  No.")
+            // {
+            // }
+            // column(Loans__Loan_Product_Type_; "Loan Product Type")
+            // {
+            // }
+            // column(Loans_Loans__Staff_No_; Loans."Staff No")
+            // {
+            // }
+            // column(Loans__Client_Name_; "Client Name")
+            // {
+            // }
+            // column(Loans_Loans__Outstanding_Balance_; Loans."Outstanding Balance")
+            // {
+            // }
+            // column(V2Month_; "2Month")
+            // {
+            // }
+            // column(V3Month_; "3Month")
+            // {
+            // }
+            // column(Over3Month; Over3Month)
+            // {
+            // }
+            // column(V1Month_; "1Month")
+            // {
+            // }
+            // column(V0Month_; "0Month")
+            // {
+            // }
+            // column(Loans_Loans__Outstanding_Balance__Control1000000016; Loans."Outstanding Balance")
+            // {
+            // }
+            // column(Loans__Approved_Amount_; "Approved Amount")
+            // {
+            // }
+            // column(Loans_Loans__Interest_Due_; Loans."Interest Due")
+            // {
+            // }
+            // column(V1MonthC_; "1MonthC")
+            // {
+            // }
+            // column(V2MonthC_; "2MonthC")
+
+
+
+
+
+
+            // {
+            // }
+            // column(V3MonthC_; "3MonthC")
+            // {
+            // }
+            // column(Over3MonthC; Over3MonthC)
+            // {
+            // }
+            // column(NoLoans; NoLoans)
+            // {
+            // }
+            // column(GrandTotal; GrandTotal)
+            // {
+            // }
+            // column(V0Month__Control1102760031; "0Month")
+            // {
+            // }
+            // column(V1Month__Control1102760032; "1Month")
+            // {
+            // }
+            // column(V2Month__Control1102760033; "2Month")
+            // {
+            // }
+            // column(V3Month__Control1102760034; "3Month")
+            // {
+            // }
+            // column(Over3Month_Control1102760035; Over3Month)
+            // {
+            // }
+            // column(V0MonthC_; "0MonthC")
+            // {
+            // }
+            // column(Loans_Aging_Analysis__SASRA_Caption; Loans_Aging_Analysis__SASRA_CaptionLbl)
+            // {
+            // }
+            // column(CurrReport_PAGENOCaption; CurrReport_PAGENOCaptionLbl)
+            // {
+            // }
+            // column(Loans__Loan__No__Caption; FieldCaption("Loan  No."))
+            // {
+            // }
+            // column(Loan_TypeCaption; Loan_TypeCaptionLbl)
+            // {
+            // }
+            // column(Staff_No_Caption; Staff_No_CaptionLbl)
+            // {
+            // }
+            // column(Loans__Client_Name_Caption; FieldCaption("Client Name"))
+            // {
+            // }
+            // column(Oustanding_BalanceCaption; Oustanding_BalanceCaptionLbl)
+            // {
+            // }
+            // column(PerformingCaption; PerformingCaptionLbl)
+            // {
+            // }
+            // column(V1___30_Days_Caption; V1___30_Days_CaptionLbl)
+            // {
+            // }
+            // column(V0_Days_Caption; V0_Days_CaptionLbl)
+            // {
+            // }
+            // column(WatchCaption; WatchCaptionLbl)
+            // {
+            // }
+            // column(V31___180_Days_Caption; V31___180_Days_CaptionLbl)
+            // {
+            // }
+            // column(SubstandardCaption; SubstandardCaptionLbl)
+            // {
+            // }
+            // column(V181___360_Days_Caption; V181___360_Days_CaptionLbl)
+            // {
+            // }
+            // column(DoubtfulCaption; DoubtfulCaptionLbl)
+            // {
+            // }
+            // column(Over_360_DaysCaption; Over_360_DaysCaptionLbl)
+            // {
+            // }
+            // column(LossCaption; LossCaptionLbl)
+            // {
+            // }
+            // column(TotalsCaption; TotalsCaptionLbl)
+            // {
+            // }
+            // column(CountCaption; CountCaptionLbl)
+            // {
+            // }
+            // column(Grand_TotalCaption; Grand_TotalCaptionLbl)
+            // {
+            // }
+            // column(Lbal; LBalance)
+            // {
+            // }
 
             trigger OnAfterGetRecord()
             begin

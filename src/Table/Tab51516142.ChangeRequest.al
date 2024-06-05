@@ -478,7 +478,7 @@ Table 51516142 "Change Request"
         {
             DataClassification = ToBeClassified;
         }
-        field(99; "Bank Code(Old)"; Code[20])
+        field(99; "Bank Code(Old)"; Code[200])
         {
             DataClassification = ToBeClassified;
             TableRelation = Banks."Bank Code";
@@ -495,7 +495,7 @@ Table 51516142 "Change Request"
 
             end;
         }
-        field(100; "Bank Code(New)"; Code[20])
+        field(100; "Bank Code(New)"; Code[200])
         {
             DataClassification = ToBeClassified;
             TableRelation = Banks."Bank Code";
@@ -511,11 +511,11 @@ Table 51516142 "Change Request"
                     "Bank Name (New)" := Banks."Bank Name";
             end;
         }
-        field(101; "Bank Account No(Old)"; Code[50])
+        field(101; "Bank Account No(Old)"; Code[200])
         {
             DataClassification = ToBeClassified;
         }
-        field(102; "Bank Account No(New)"; Code[50])
+        field(102; "Bank Account No(New)"; Code[200])
         {
             DataClassification = ToBeClassified;
         }

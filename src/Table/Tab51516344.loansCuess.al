@@ -27,13 +27,13 @@ Table 51516344 "loans Cuess"
 
         field(8; "ASSET LOAN"; Integer)
         {
-            CalcFormula = COUNT("Loans Register" WHERE("Approval Status" = CONST(Approved), "Outstanding Balance" = filter(> 0), "Loan Status" = const(Issued), "Loan Product Type" = const('ASSET LOAN')));
+            CalcFormula = COUNT("Loans Register" WHERE("Approval Status" = CONST(Approved), "Outstanding Balance" = filter(> 0), "Loan Status" = const(Issued), "Loan Product Type" = filter('ASSET LOAN')));
             FieldClass = FlowField;
 
         }
         field(9; "COLLEGE LOAN"; Integer)
         {
-            CalcFormula = count("Loans Register" where("Approval Status" = const(Approved), "Outstanding Balance" = filter(> 0), "Loan Status" = const(Issued), "Loan Product Type" = const('COLLEGE LOAN')));
+            CalcFormula = count("Loans Register" where("Approval Status" = const(Approved), "Outstanding Balance" = filter(> 0), "Loan Status" = const(Issued), "Loan Product Type" = const('COLLEGE')));
             FieldClass = FlowField;
         }
         field(10; "DEBOOSTER"; Integer)

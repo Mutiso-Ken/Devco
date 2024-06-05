@@ -331,7 +331,7 @@ Table 51516230 "Loans Register"
                     LAppCharges.DeleteAll;
 
                 "Flat rate Interest" := 0;
-                "Flat Rate Principal" := 0;
+              
                 "Total Repayment" := 0;
                 TotalMRepay := 0;
                 LPrincipal := 0;
@@ -1442,9 +1442,7 @@ Table 51516230 "Loans Register"
         field(69002; "Bela Branch"; Code[100])
         {
         }
-        field(69003; "Net Amount"; Decimal)
-        {
-        }
+  
         field(69005; "Bank Name"; Text[150])
         {
         }

@@ -33,6 +33,9 @@ page 50381 EmployerReceivables
                     Caption = 'Balance';
                     ApplicationArea = all;
                 }
+                field("Receivables Amount"; "Receivables Amount") { ApplicationArea = all; }
+                field("Credit Amount"; "Credit Amount") { ApplicationArea = all; }
+                field("Net Change"; "Net Change") { ApplicationArea = all; }
             }
         }
         area(Factboxes)

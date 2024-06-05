@@ -16,6 +16,7 @@
   "screenshots": [],
   "platform": "1.0.0.2",
   "application": "23.0.0.0",
+ 
   
   
   
@@ -31,7 +32,7 @@
   
   "resourceExposurePolicy": {
     "allowDebugging": true,
-    "allowDownloadingSource": true,
+ "allowDownloadingSource": true,
     "includeSourceInSymbolFile": true
   },
   "runtime": "12.0"

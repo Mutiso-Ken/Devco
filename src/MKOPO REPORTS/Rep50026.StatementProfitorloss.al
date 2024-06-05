@@ -342,7 +342,7 @@ report 50026 StatementProfitorloss
                     until GLAccount.Next = 0;
                 end;
 
-                OtherOperatingincome := 0;
+                LOtherOperatingincome := 0;
                 GLAccount.Reset;
                 GLAccount.SetFilter(GLAccount.Incomes, '%1', GLAccount.Incomes::OtherOperatingincome);
                 if GLAccount.FindSet then begin
@@ -491,7 +491,7 @@ report 50026 StatementProfitorloss
                     repeat
                         GLEntry.Reset;
                         GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', ThisYear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
                             OperatingExpenses += -1* GLEntry.Amount;

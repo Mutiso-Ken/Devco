@@ -13,7 +13,7 @@
             "startupObjectType": "Page",
             "port": 7049,
             "breakOnError": "All",
-            "debugServer": 4711,
+            //"debugServer": 4711,
             "launchBrowser": true,
             "enableLongRunningSqlStatements": true,
             "enableSqlInformationDebugger": true,

@@ -1567,7 +1567,14 @@ tableextension 51516079 "CustomerExt" extends Customer
         field(69196; "Alpha Monthly Contribution"; Decimal) { }
         field(69197; "Junior Monthly Contribution"; Decimal) { }
         field(69200; "Dividend Processed Date"; Date) { }
+        field(69201; "Receivables Amount"; Decimal)
+        {
 
+            CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
+                                                                  "Transaction Type" = filter(" "), "Posting Date" = field("Date Filter"), Reversed = const(false)));
+            Editable = false;
+            FieldClass = FlowField;
+        }
 
 
 
@@ -1579,7 +1586,7 @@ tableextension 51516079 "CustomerExt" extends Customer
     // begin
 
     // end;
-  
+
 
 }
 

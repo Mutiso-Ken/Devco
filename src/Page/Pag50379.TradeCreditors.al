@@ -1,13 +1,13 @@
 page 50379 TradeCreditors
 {
     ApplicationArea = Basic, Suite;
-    Caption = 'Trade Creditors';
+    Caption = 'Trade Creditors and Ex-Creditor';
     CardPageID = "Vendor Card";
     Editable = false;
     PageType = List;
     SourceTable = Vendor;
     UsageCategory = Lists;
-    SourceTableView = sorting("No.") order(ascending) where("Vendor Posting Group" = const('TCREDTORS'));
+    SourceTableView = sorting("No.") order(ascending);
 
     layout
     {

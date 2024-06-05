@@ -778,7 +778,7 @@ permissionset 1 GeneratedPermission
         report "Loan Totals Per Employer" = X,
         report "Loans Aging Report New-SASRA" = X,
         report "Loans Batch Schedule" = X,
-        report "Loans Defaulter Aging - SASRA" = X,
+        //report "Loans Defaulter Aging - SASRA" = X,
         // report "Loans Defaulters Aging - SASRA" = X,
         report "Loans Defaulters Aging -(Auto)" = X,
         report "Loans Guaranteed" = X,

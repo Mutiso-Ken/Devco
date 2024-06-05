@@ -406,7 +406,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Loans Defaulter Aging';
-                        RunObject = report "Loans Defaulter Aging - SASRA";
+                        RunObject = report "SASRA Loans Classification";
                     }
 
                     action("Sectorial Lending Report")
@@ -535,12 +535,12 @@ Page 51516487 "Devco Sacco Main Role Center"
                         RunObject = page TradeCreditors;
 
                     }
-                    action("Ex-Member Creditors")
-                    {
-                        ApplicationArea = basic, Suite;
-                        RunObject = page Ex_MemberCreditors;
+                    // action("Ex-Member Creditors")
+                    // {
+                    //     ApplicationArea = basic, Suite;
+                    //     RunObject = page Ex_MemberCreditors;
 
-                    }
+                    // }
                     action(EmployerReceivables)
                     {
                         ApplicationArea = all;
@@ -1285,6 +1285,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                         ApplicationArea = all;
                         RunObject = Report "Secutiy Manangement Register";
                         ToolTip = 'Loans Securities Report';
+                        Visible = false;
                     }
 
                 }
@@ -1557,6 +1558,11 @@ Page 51516487 "Devco Sacco Main Role Center"
                                 RunObject = report "Loan Defaulter Final Notice";
                                 Image = Report;
                             }
+                            action("Update Defaulter aging")
+                            {
+                                ApplicationArea = Basic, Suite;
+                                RunObject = report "Loans Aging Report New-SASRA";
+                            }
                         }
                     }
 
@@ -1616,6 +1622,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                     {
                         RunObject = report "Update Member Dormancy";
                         ApplicationArea = all;
+                        Visible = false;
                     }
                     group(LoanDefaulter)
                     {
@@ -1706,22 +1713,22 @@ Page 51516487 "Devco Sacco Main Role Center"
                     group(Dividends)
                     {
                         Caption = 'Dividends';
-                        group("Flat Rate")
-                        {
-                            Caption = 'Flat Rate';
-                            action("Dividends Processing-Flat Rate")
-                            {
-                                Caption = 'Dividends Processing-Flat Rate';
-                                Image = Setup;
-                                RunObject = report "Dividend Processing-Flat Rate";
-                            }
-                            action("Dividends Processing Flat Rate-List")
-                            {
-                                Caption = 'Dividends Processing Flat Rate-List';
-                                Image = Setup;
-                                RunObject = page "Dividends Processing Flat Rate";
-                            }
-                        }
+                        // group("Flat Rate")
+                        // {
+                        //     Caption = 'Flat Rate';
+                        //     action("Dividends Processing-Flat Rate")
+                        //     {
+                        //         Caption = 'Dividends Processing-Flat Rate';
+                        //         Image = Setup;
+                        //         RunObject = report "Dividend Processing-Flat Rate";
+                        //     }
+                        //     action("Dividends Processing Flat Rate-List")
+                        //     {
+                        //         Caption = 'Dividends Processing Flat Rate-List';
+                        //         Image = Setup;
+                        //         RunObject = page "Dividends Processing Flat Rate";
+                        //     }
+                        // }
                         group(Prorated)
                         {
                             Caption = 'Prorated';
@@ -2733,15 +2740,12 @@ Page 51516487 "Devco Sacco Main Role Center"
                             RunObject = report "CEEP Targets & Variance Report";
                             Visible = false;
                         }
-                        action("Update Defaulter aging")
-                        {
-                            ApplicationArea = Basic, Suite;
-                            RunObject = codeunit "Live SASRA Loan Classification";
-                        }
+
                         action("Main Automation")
                         {
                             ApplicationArea = Basic, Suite;
                             RunObject = codeunit "Main Automation";
+                            Visible = false;
                         }
                     }
                     // action("Bulk Insert Member Pics")

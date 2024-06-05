@@ -485,7 +485,7 @@ codeunit 51516160 "Portal Integration"
             Memb.Reset();
             Memb.SetRange(Memb."ID No.", UpperCase(Format(Identifier)));
             if Memb.FindFirst() then begin
-
+                memb.init;
                 SetResponseStatus(ResponseJson, 'success', 'Success', 'Member’s accounts list has been fetched successfully');
                 repeat
 
@@ -504,7 +504,7 @@ codeunit 51516160 "Portal Integration"
                     Found := true;
 
                 until Memb.Next() = 0;
-                //DataJson.Add('accounts', AccountsArray);
+                DataJson.Add('accounts', AccountsArray);
             end;
 
 
@@ -3279,47 +3279,48 @@ codeunit 51516160 "Portal Integration"
     begin
         IdentifierType := SelectJsonToken(RequestJson, '$.identifier_type').AsValue.AsText;
         Identifier := SelectJsonToken(RequestJson, '$.identifier').AsValue.AsText;
-        LoanNumber := SelectJsonToken(RequestJson, '$.loan_number').AsValue.AsText;
+        //LoanNumber := SelectJsonToken(RequestJson, '$.loan_number').AsValue.AsText;
         Found := false;
         LoanId := 1;
 
         if IdentifierType = 'MSISDN' then begin
             Customer.Reset();
             Customer.SetRange(Customer."Mobile Phone No", Identifier);
-            loanX.Reset();
-            LoanX.SetRange(LoanX."Loan  No.", LoanNumber);
-            if LoanX.FindFirst() then begin
-                SetResponseStatus(ResponseJson, 'success', 'Success', 'Member’s loans guarantors list has been fetched successfully');
-                LoanX.CalcFields(LoanX."Outstanding Balance");
-                repeat
-                    loanG.Reset();
-                    LoanG.SetRange(LoanG."Loan No", LoanX."Loan  No.");
-                    if LoanG.FindFirst() then begin
-                        repeat
-                            Members.Reset();
-                            Members.SetRange(Members."No.", LoanG."Member No");
-                            if Members.FindFirst() then begin
-                                Guarantors.Add('member_number', Members."No.");
-                                Guarantors.Add('guarantor_name', Members.Name);
-                                Guarantors.Add('phone_number', Members."Mobile Phone No");
-                                Guarantors.Add('amount_guaranteed', LoanG."Amont Guaranteed");
-                                Guarantors.Add('status', UpperCase(Format(LoanG."Acceptance Status")));
-                                Guarantors.Add('loan_balance', LoanX."Outstanding Balance");
-                                LoanArray.Add(Guarantors);
-                                Clear(Guarantors);
-                            end;
-                        until LoanG.Next() = 0;
+            if Customer.Find('-') then begin
+                loanX.Reset();
+                LoanX.SetRange(LoanX."Client Code", Customer."No.");
+                if LoanX.FindFirst() then begin
+                    SetResponseStatus(ResponseJson, 'success', 'Success', 'Member’s loans guarantors list has been fetched successfully');
+                    LoanX.CalcFields(LoanX."Outstanding Balance");
+                    repeat
+                        loanG.Reset();
+                        LoanG.SetRange(LoanG."Loan No", LoanX."Loan  No.");
+                        if LoanG.FindFirst() then begin
+                            repeat
+                                Members.Reset();
+                                Members.SetRange(Members."No.", LoanG."Member No");
+                                if Members.FindFirst() then begin
+                                    Guarantors.Add('member_number', Members."No.");
+                                    Guarantors.Add('guarantor_name', Members.Name);
+                                    Guarantors.Add('phone_number', Members."Mobile Phone No");
+                                    Guarantors.Add('amount_guaranteed', LoanG."Amont Guaranteed");
+                                    Guarantors.Add('status', UpperCase(Format(LoanG."Acceptance Status")));
+                                    Guarantors.Add('loan_balance', LoanX."Outstanding Balance");
+                                    LoanArray.Add(Guarantors);
+                                    Clear(Guarantors);
+                                end;
+                            until LoanG.Next() = 0;
 
-                    end;
-                //DataJson.Add('guarantors', LoanArray);
-                //Clear(LoanArray);
-                //DataArray.Add(DataJson);
-                //Clear(DataJson);
-                until LoanX.Next() = 0;
+                        end;
+                    //DataJson.Add('guarantors', LoanArray);
+                    //Clear(LoanArray);
+                    //DataArray.Add(DataJson);
+                    //Clear(DataJson);
+                    until LoanX.Next() = 0;
 
-            end else
-                SetResponseStatus(ResponseJson, 'error', 'Error', 'No Loan found');
-
+                end else
+                    SetResponseStatus(ResponseJson, 'error', 'Error', 'No Loan found');
+            end;
 
         end;
 

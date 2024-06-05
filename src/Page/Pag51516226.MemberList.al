@@ -229,7 +229,7 @@ Page 51516226 "Member List"
     //     EmailSubject: Text[100];
     //     Emailaddress: Text[100];
     // begin
-    //     Emailaddress := 'kmutiso39@gmail.com';
+    //     Emailaddress := ;
     //     EmailSubject := 'wee wacha';
     //     EMailBody := 'Dear <b>' + '</b>,</br></br>'+
     //         'On behalf of Devco Sacco am pleased to inform you that your application for membership has been accepted.' +'<br></br>'+

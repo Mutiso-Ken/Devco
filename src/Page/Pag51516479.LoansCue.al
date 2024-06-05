@@ -54,7 +54,7 @@ Page 51516479 "Loans Cue"
                     Image = none;
                     Style = Favorable;
                     StyleExpr = true;
-                    DrillDownPageId = "Loan List";
+                    DrillDownPageId = "Loans Posted List";
                 }
                 field("COLLEGE LOAN"; "COLLEGE LOAN")
                 {
@@ -62,27 +62,43 @@ Page 51516479 "Loans Cue"
                     Image = none;
                     Style = Favorable;
                     StyleExpr = true;
-                    DrillDownPageId = "Loan List";
+                    DrillDownPageId = "Loans Posted List";
                 }
-       
+                field("QUICK CASH"; "QUICK CASH")
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Loans Posted List";
+                }
+                field(SCH_FEES; SCH_FEES)
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'SCHOOL FEES LOAN';
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Loans Posted List";
+                }
                 field(EMERGENCY; EMERGENCY)
                 {
                     ApplicationArea = Basic;
                     Image = none;
                     Style = Favorable;
                     StyleExpr = true;
-                    DrillDownPageId = "Loan List";
+                    DrillDownPageId = "Loans Posted List";
                 }
-          
 
-     
+
+
                 field(KARIBU; KARIBU)
                 {
                     ApplicationArea = Basic;
                     Image = none;
                     Style = Favorable;
                     StyleExpr = true;
-                    DrillDownPageId = "Loan List";
+                    DrillDownPageId = "Loans Posted List";
                 }
                 field(LIKIZO; LIKIZO)
                 {
@@ -90,7 +106,7 @@ Page 51516479 "Loans Cue"
                     Image = none;
                     Style = Favorable;
                     StyleExpr = true;
-                    DrillDownPageId = "Loan List";
+                    DrillDownPageId = "Loans Posted List";
                 }
                 field(MAKEOVER; MAKEOVER)
                 {
@@ -98,7 +114,7 @@ Page 51516479 "Loans Cue"
                     Image = none;
                     Style = Favorable;
                     StyleExpr = true;
-                    DrillDownPageId = "Loan List";
+                    DrillDownPageId = "Loans Posted List";
 
                 }
                 field(NORMAL; NORMAL)
@@ -107,7 +123,7 @@ Page 51516479 "Loans Cue"
                     Image = none;
                     Style = Favorable;
                     StyleExpr = true;
-                    DrillDownPageId = "Loan List";
+                    DrillDownPageId = "Loans Posted List";
                 }
                 field(PREMIUM; PREMIUM)
                 {
@@ -115,7 +131,7 @@ Page 51516479 "Loans Cue"
                     Image = none;
                     Style = Favorable;
                     StyleExpr = true;
-                    DrillDownPageId = "Loan List";
+                    DrillDownPageId = "Loans Posted List";
                 }
 
 

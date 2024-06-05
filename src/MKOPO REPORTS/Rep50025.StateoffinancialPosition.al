@@ -793,7 +793,79 @@ Report 50025 "State of financial Position"
 
 
 
+                //Suplus
+                Surplus := 0;
+                LSurplus := 0;
 
+                //Incomes
+                Incomes := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Financials, '%1', GLAccount.Financials::Revenue);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYearButOne);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            Incomes += -1 * GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+
+                LIncomes := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Financials, '%1', GLAccount.Financials::Revenue);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYearButOne);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            LIncomes += -1 * GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+                //Expense
+                Expenses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Financials, '%1', GLAccount.Financials::Expenses);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYearButOne);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            Expenses += -1 * GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+
+                LExpenses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Financials, '%1', GLAccount.Financials::Expenses);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYearButOne);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            LExpenses += -1 * GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+
+                Surplus := Incomes - Expenses;
+                LSurplus := LIncomes - LExpenses;
+
+                //End Of Expense
+
+                //End of Incomes
+
+                //End of Suplus
 
 
 
@@ -877,7 +949,12 @@ Report 50025 "State of financial Position"
         LStatutoryReserves: Decimal;
         RevenueReservers: Decimal;
         LRevenueReservers: Decimal;
-
+        Surplus: Decimal;
+        LSurplus: Decimal;
+        Incomes: Decimal;
+        Expenses: Decimal;
+        LIncomes: Decimal;
+        LExpenses: Decimal;
         LInvestmentProperties: Decimal;
         Hononaria: Decimal;
         LHononaria: Decimal;

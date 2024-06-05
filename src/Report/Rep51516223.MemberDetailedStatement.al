@@ -69,7 +69,7 @@ Report 51516223 "Member Detailed Statement"
             dataitem(Loans; "Loans Register")
             {
                 DataItemLink = "Client Code" = field("No."), "Loan Product Type" = field("Loan Product Filter"), "Date filter" = field("Date Filter");
-                DataItemTableView = sorting("Loan  No.") where(Posted = const(true), "Loan  No." = filter(<> ''), "Outstanding Balance" = filter(> 0));
+                DataItemTableView = sorting("Loan  No.") where(Posted = const(true), "Loan  No." = filter(<> ''));//, "Outstanding Balance" = filter(> 0));
                 ;
 
                 column(PrincipleBF; PrincipleBF)
