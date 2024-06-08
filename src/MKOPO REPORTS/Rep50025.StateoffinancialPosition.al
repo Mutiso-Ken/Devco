@@ -184,10 +184,10 @@ Report 50025 "State of financial Position"
             column(LLoanandAdvances; LLoanandAdvances)
             {
             }
-            column(RevenueReservers; RevenueReservers)
+            column(RevenueReservers; (RevenueReservers + Surplus))
             {
             }
-            column(lRevenueReservers; lRevenueReservers)
+            column(lRevenueReservers; (lRevenueReservers + LSurplus))
             {
             }
             column(FinancialAssets; FinancialAssets)
@@ -726,6 +726,7 @@ Report 50025 "State of financial Position"
                         end;
                     until GLAccount.Next = 0;
                 end;
+
                 LRevenueReservers := 0;
                 GLAccount.Reset;
                 GLAccount.SetFilter(GLAccount.FinancedBy, '%1', GLAccount.FinancedBy::RevenueReserves);
@@ -805,7 +806,7 @@ Report 50025 "State of financial Position"
                     repeat
                         GLEntry.Reset;
                         GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYearButOne);
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', EndofLastyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
                             Incomes += -1 * GLEntry.Amount;
@@ -835,7 +836,7 @@ Report 50025 "State of financial Position"
                     repeat
                         GLEntry.Reset;
                         GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', LastYearButOne);
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', EndofLastyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
                             Expenses += -1 * GLEntry.Amount;
@@ -866,25 +867,6 @@ Report 50025 "State of financial Position"
                 //End of Incomes
 
                 //End of Suplus
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                 //MESSAGE(FORMAT(CurrentYearSurplus));

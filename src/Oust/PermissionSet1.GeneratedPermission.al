@@ -785,7 +785,7 @@ permissionset 1 GeneratedPermission
         report "Loans Guarantor Details Report" = X,
         report "Loans Potfolio Analysis" = X,
         report "Loans Provisioning Summary" = X,
-        report "Loans Provisioning Summarys" = X,
+        //report "Loans Provisioning Summarys" = X,
         report "Loans Register" = X,
         report "Loans Register Report" = X,
         //report "Loans Register-CEEP" = X,

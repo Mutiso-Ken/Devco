@@ -50,6 +50,7 @@ codeunit 51516160 "Portal Integration"
                         OutputJson := GetMemberDetails(RequestDataJson);
                     end;
                 'GET_ACCOUNTS':
+
                     begin
                         OutputJson := GetAccountsPortal(RequestDataJson);//Done
                     end;
@@ -93,6 +94,10 @@ codeunit 51516160 "Portal Integration"
                 'MEMBER_REGISTRATION':
                     begin
                         OutputJson := GetMemberRegistration(RequestDataJson);//iko sawa
+                    end;
+                'SEND_SMS':
+                    begin
+                        OutputJson := SendPortalSMSMessages(RequestDataJson);
                     end;
                 // 'charge-mapp-service':
                 //     begin
@@ -321,6 +326,47 @@ codeunit 51516160 "Portal Integration"
 
 
         ResponseJson.Add(Data, DataJson);
+    end;
+
+    Local procedure SendPortalSMSMessages(RequestJson: JsonObject) ResponseJson: JsonObject
+    var
+        Phone_Number: Text[100];
+        Message: Text[1000];
+        SMSMessages: Record "SMS Messages";
+        iEntryNo: Integer;
+        IdentifierType: Text;
+        Identifier: Text;
+
+    begin
+        IdentifierType := SelectJsonToken(RequestJson, '$.identifier_type').AsValue.AsText;
+        Identifier := SelectJsonToken(RequestJson, '$.identifier').AsValue.AsText;
+        Phone_Number := SelectJsonToken(RequestJson, '$.phone_number').AsValue.AsText;
+        Message := SelectJsonToken(RequestJson, '$.Message').AsValue.AsText;
+
+        if IdentifierType = 'NATIONAL_ID_NUMBER' THEN begin
+            SMSMessages.Reset;
+            if SMSMessages.Find('+') then begin
+                iEntryNo := SMSMessages."Entry No";
+                iEntryNo := iEntryNo + 1;
+            end else begin
+                iEntryNo := 1;
+            end;
+
+            SMSMessages.Init;
+            SMSMessages."Entry No" := iEntryNo;
+            SMSMessages."Account No" := '';
+            SMSMessages."Date Entered" := Today;
+            SMSMessages."Time Entered" := Time;
+            SMSMessages.Source := 'PORTAL';
+            SMSMessages."Entered By" := UserId;
+            SMSMessages."System Created Entry" := true;
+            SMSMessages."Document No" := ' ';
+            SMSMessages."Telephone No" := Phone_Number;
+            SMSMessages."Sent To Server" := SMSMessages."sent to server"::No;
+            SMSMessages."SMS Message" := Message;
+            SMSMessages.Insert;
+            
+        end;
     end;
 
     local procedure GetMemberRegistration(RequestJson: JsonObject) ResponseJson: JsonObject

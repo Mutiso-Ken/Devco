@@ -87,7 +87,7 @@ Page 51516254 "Loans Posted Card"
                 {
                     ApplicationArea = Basic;
                     //Editable = ApplcDateEditable;
-                    Editable=true;
+                    // Editable=true;
 
                     trigger OnValidate()
                     begin
@@ -240,8 +240,9 @@ Page 51516254 "Loans Posted Card"
                 field("Loan Disbursement Date"; "Loan Disbursement Date")
                 {
                     ApplicationArea = Basic;
-                    Editable = true;
+                    //Editable = true;
                 }
+                field("Issued Date"; "Issued Date") { ApplicationArea = all;}
                 field("Cheque No."; "Cheque No.")
                 {
                     ApplicationArea = Basic;
@@ -257,12 +258,12 @@ Page 51516254 "Loans Posted Card"
                 field("Repayment Start Date"; "Repayment Start Date")
                 {
                     ApplicationArea = Basic;
-                      Editable=true;
+                    //   Editable=true;
                 }
                 field("Expected Date of Completion"; "Expected Date of Completion")
                 {
                     ApplicationArea = Basic;
-                    Editable = false;
+                    // Editable = false;
                 }
                 field("External EFT"; "External EFT")
                 {

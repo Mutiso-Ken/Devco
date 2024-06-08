@@ -4,14 +4,14 @@ pageextension 51516879 "GeneralJournalLinesExt" extends "General Journal"
     {
         addafter("Credit Amount")
         {
-            // field("Debit Amounts"; "Debit Amount")
-            // {
-            //     ApplicationArea = Basic;
-            // }
-            // field("Credit Amounts"; "Credit Amount")
-            // {
-            //     ApplicationArea = Basic;
-            // }
+            field("Debit Amounts"; "Debit Amount")
+            {
+                ApplicationArea = Basic;
+            }
+            field("Credit Amounts"; "Credit Amount")
+            {
+                ApplicationArea = Basic;
+            }
             field("Transaction Type"; "Transaction Type")
             {
                 ApplicationArea = Basic;

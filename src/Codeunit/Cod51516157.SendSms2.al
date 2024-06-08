@@ -9,10 +9,14 @@ Codeunit 51516157 "SendSms2"
 
     var
         Sms: Record "SMS Messages";
+        Cust: Record Customer;
 
 
     procedure SendSms(Source: Text[30];Telephone: Text[200];Textsms: Text[200];DocumentNo: Text[100])
     begin
+
+
+ 
         /*
         Sms.RESET;
         IF Sms.FIND('+') THEN BEGIN

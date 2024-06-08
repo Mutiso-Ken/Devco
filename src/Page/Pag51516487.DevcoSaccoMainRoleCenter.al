@@ -109,6 +109,26 @@ Page 51516487 "Devco Sacco Main Role Center"
 
     actions
     {
+
+        // area(processing)
+        // {
+
+        //     Description = 'Periodic Activities';
+        //     action("Process Monthly Interest")
+        //     {
+        //         ApplicationArea = all;
+        //         Caption = 'Process Monthly Interest';
+        //         Image = Process;
+        //         RunObject = report "Post Monthly Interest.";
+        //     }
+        //     action("Process Monthly Checkoff")
+        //     {
+        //         ApplicationArea = all;
+        //         Caption = 'Process Monthly Checkoff';
+        //         Image = Process;
+        //         RunObject = page "Bosa Receipts H List-Checkoff";
+        //     }
+        // }
         area(reporting)
         {
 
@@ -409,14 +429,14 @@ Page 51516487 "Devco Sacco Main Role Center"
                         RunObject = report "SASRA Loans Classification";
                     }
 
-                    action("Sectorial Lending Report")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Sectorial Lending Report';
-                        RunObject = report "SECTORAL LENDING";
-                        ToolTip = 'View or Generate Agency Returns for a given period.';
-                        // Visible = false;
-                    }
+                    // action("Sectorial Lending Report")
+                    // {
+                    //     ApplicationArea = Basic, Suite;
+                    //     Caption = 'Sectorial Lending Report';
+                    //     RunObject = report "SECTORAL LENDING";
+                    //     ToolTip = 'View or Generate Agency Returns for a given period.';
+                    //     // Visible = false;
+                    // }
 
                     action("Risk Class of Assets")
                     {
@@ -425,12 +445,12 @@ Page 51516487 "Devco Sacco Main Role Center"
                         RunObject = report "Risk Class Of Assets & Prov";
                     }
 
-                    action("Loans Provisioning Summary-SASRA")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Loans Provisioning Summary';
-                        RunObject = report "Loans Provisioning Summarys";
-                    }
+                    // action("Loans Provisioning Summary-SASRA")
+                    // {
+                    //     ApplicationArea = Basic, Suite;
+                    //     Caption = 'Loans Provisioning Summary';
+                    //     RunObject = report "Loans Provisioning Summarys";
+                    // }
                     action("Loan Sectorial Lendng-SASRA")
                     {
                         ApplicationArea = Basic, Suite;
@@ -1705,9 +1725,10 @@ Page 51516487 "Devco Sacco Main Role Center"
                         Caption = 'Monthly Interest Processing';
                         action("Post Monthly Interest")
                         {
-                            Caption = 'Post Monthly Interest"';
+                            Caption = 'Post Monthly Interest';
                             Image = Setup;
                             RunObject = report "Post Monthly Interest.";
+                            ToolTip='Used to process Loans Monthly Interest';
                         }
                     }
                     group(Dividends)

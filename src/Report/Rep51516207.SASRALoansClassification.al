@@ -8,7 +8,7 @@ Report 51516207 "SASRA Loans Classification"
         dataitem("Loans Register"; "Loans Register")
         {
             DataItemTableView = sorting("Client Code") order(ascending) where(Posted = const(true));
-            RequestFilterFields = "Client Code","Loan Product Type", "Loan  No.", "Issued Date";
+            RequestFilterFields = "Client Code", "Loan Product Type", "Loan  No.", "Issued Date";
             column(ReportForNavId_1120054000; 1120054000)
             {
             }
@@ -78,7 +78,20 @@ Report 51516207 "SASRA Loans Classification"
                 LoansReg.SetRange(LoansReg."Loan  No.", "Loans Register"."Loan  No.");
                 LoansReg.SetAutocalcFields(LoansReg."Scheduled Principle Payments", LoansReg."Schedule Loan Amount Issued", LoansReg."Schedule Installments", LoansReg."Outstanding Balance", LoansReg."Oustanding Interest", LoansReg."Scheduled Interest Payments", LoansReg."Interest Paid");
                 if LoansReg.Find('-') then begin
-
+                    if LoansReg.Find('-') then begin
+                        repeat
+                            LoansClassificationCodeUnit.FnClassifyLoan(LoansReg."Loan  No.", AsAt);
+                        until LoansReg.Next = 0;
+                    end else
+                        if not Find('-') then begin
+                            repeat
+                                //...................Loan is not within the specified range
+                                if LoansReg.Posted = true then begin
+                                    LoansReg."Loans Category-SASRA" := LoansReg."loans category-sasra"::Perfoming;
+                                    LoansReg.Modify(true);
+                                end;
+                            until LoansReg.Next = 0;
+                        end;
                     //...........Current Loan Balance
                     CurrentLoanBalance := 0;
                     CurrentLoanBalance := LoansReg."Outstanding Balance";
@@ -106,8 +119,10 @@ Report 51516207 "SASRA Loans Classification"
                         DoubtfulDisplay := 0;
                         LossDisplay := 0;
                         AmountInArrearsDisplay := 0;
+                        NoOfMonthsInArrears := 0;
+                        NoOfMonthsInArrears := LoansReg."No of Months in Arrears";
 
-                        if (LoansReg."Expected Date of Completion" <> 0D) and (DateBD <= LoansReg."Expected Date of Completion") then begin
+                        if (LoansReg."Expected Date of Completion" <> 0D) then begin
                             case NoOfMonthsInArrears of
                                 0:
                                     begin
@@ -204,6 +219,8 @@ Report 51516207 "SASRA Loans Classification"
 
         layout
         {
+            area(content)
+            { field(AsAt; AsAt) { } }
         }
 
         actions
@@ -220,7 +237,7 @@ Report 51516207 "SASRA Loans Classification"
         RegenerateOldLoansData: Codeunit "Regenerate Schedule for loans";
     begin
         //..........................................................
-        DateFilter := "Loans Register".GetFilter("Loans Register"."Date filter");
+        DateFilter := '..' + Format(AsAt);
         if DateFilter = '' then begin
             DateFilter := '..' + Format(Today);
         end;
@@ -230,6 +247,7 @@ Report 51516207 "SASRA Loans Classification"
 
     var
         LoansReg: Record "Loans Register";
+        LoansClassificationCodeUnit: Codeunit LoansClassificationCodeUnit;
         DateFilter: Text;
         ExpectedLoanBal: Decimal;
         CurrentLoanBalance: Decimal;

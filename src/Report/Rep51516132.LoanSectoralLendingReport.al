@@ -160,7 +160,6 @@ Report 51516132 "Loan Sectoral Lending Report"
         DateTday := Format(GenLedgerSetup."Allow Posting From");
         DateTo := Format(GenLedgerSetup."Allow Posting To");
         FinacialYear := Date2dmy(StartDate, 3);
-        ;
 
     end;
 

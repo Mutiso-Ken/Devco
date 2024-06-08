@@ -32,8 +32,10 @@ Codeunit 51516030 "LoansClassificationCodeUnit"
                     LoansRegTablw."Amount in Arrears" := LoansRegTablw."Outstanding Balance";
 
                     LoansRegTablw."No of Months in Arrears" := ROUND(LoansRegTablw."Amount in Arrears" / LoansRegTablw."Loan Principle Repayment", 1, '=');
-                    LoansRegTablw."Loans Category-SASRA" := LoansRegTablw."Loans Category-SASRA"::Loss;
-                    LoansRegTablw."Loans Category-SASRA" := LoansRegTablw."loans category-sasra"::Loss;
+                    if LoansRegTablw."Outstanding Balance" > 0 then begin
+                        //--Function to Get Days In Arrears and modify;
+                        FnUpdateLoanStatusWithArrears(LoanNo, LoansRegTablw."Outstanding Balance", AsAt);
+                    end;
                 end else
                     if LoansRegTablw."Outstanding Balance" <= 0 then begin
                         LoansRegTablw."Amount in Arrears" := 0;
@@ -143,27 +145,27 @@ Codeunit 51516030 "LoansClassificationCodeUnit"
                 LoansRegTablw.Installments := 12;
             end;
             LoansReg."No of Months in Arrears" := ROUND(LoansReg."Amount in Arrears" / RepaymentScheduleAmount, 1, '=');
-            if LoansReg."No of Months in Arrears" = 0 then begin
-                LoansReg."Loans Category-SASRA" := LoansReg."Loans Category-SASRA"::Perfoming;
-                LoansReg."Loans Category-SASRA" := LoansReg."loans category-sasra"::Perfoming;
-            end else
-                if (LoansReg."No of Months in Arrears" = 1) then begin
-                    LoansReg."Loans Category-SASRA" := LoansReg."Loans Category-SASRA"::Watch;
-                    LoansReg."Loans Category-SASRA" := LoansReg."loans category-sasra"::Watch;
-                end
-                else
-                    if (LoansReg."No of Months in Arrears" > 1) and (LoansReg."No of Months in Arrears" <= 6) then begin
-                        LoansReg."Loans Category-SASRA" := LoansReg."Loans Category-SASRA"::Substandard;
-                        LoansReg."Loans Category-SASRA" := LoansReg."loans category-sasra"::Substandard;
+            // if LoansReg."No of Months in Arrears" = 0 then begin
+            //     LoansReg."Loans Category-SASRA" := LoansReg."Loans Category-SASRA"::Perfoming;
+            //     LoansReg."Loans Category-SASRA" := LoansReg."loans category-sasra"::Perfoming;
+            // end else
+            if (LoansReg."No of Months in Arrears" > 0) and (LoansReg."No of Months in Arrears" <= 1) then begin
+                // LoansReg."Loans Category-SASRA" := LoansReg."Loans Category-SASRA"::Watch;
+                LoansReg."Loans Category-SASRA" := LoansReg."loans category-sasra"::Watch;
+            end
+            else
+                if (LoansReg."No of Months in Arrears" > 1) and (LoansReg."No of Months in Arrears" <= 6) then begin
+                    // LoansReg."Loans Category-SASRA" := LoansReg."Loans Category-SASRA"::Substandard;
+                    LoansReg."Loans Category-SASRA" := LoansReg."loans category-sasra"::Substandard;
+                end else
+                    if (LoansReg."No of Months in Arrears" > 6) and (LoansReg."No of Months in Arrears" <= 12) then begin
+                        // LoansReg."Loans Category-SASRA" := LoansReg."Loans Category-SASRA"::Doubtful;
+                        LoansReg."Loans Category-SASRA" := LoansReg."loans category-sasra"::Doubtful;
                     end else
-                        if (LoansReg."No of Months in Arrears" > 6) and (LoansReg."No of Months in Arrears" <= 12) then begin
-                            LoansReg."Loans Category-SASRA" := LoansReg."Loans Category-SASRA"::Doubtful;
-                            LoansReg."Loans Category-SASRA" := LoansReg."loans category-sasra"::Doubtful;
-                        end else
-                            if (LoansReg."No of Months in Arrears" > 12) then begin
-                                LoansReg."Loans Category-SASRA" := LoansReg."Loans Category-SASRA"::Loss;
-                                LoansReg."Loans Category-SASRA" := LoansReg."loans category-sasra"::Loss;
-                            end;
+                        if (LoansReg."No of Months in Arrears" > 12) then begin
+                            // LoansReg."Loans Category-SASRA" := LoansReg."Loans Category-SASRA"::Loss;
+                            LoansReg."Loans Category-SASRA" := LoansReg."loans category-sasra"::Loss;
+                        end;
             LoansReg.Modify(true);
         end;
     end;

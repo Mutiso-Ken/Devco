@@ -46,7 +46,7 @@ codeunit 51516038 "Loan Classification-SASRA"
         LoansRegister."Principal In Arrears" := 0;
         LoansRegister."No of Days in Arrears" := 0;
         LoansRegister."No of Months in Arrears" := 0;
-        LoansRegister."Loans Category-SASRA" := LoansRegister."Loans Category-SASRA"::" ";
+        LoansRegister."Loans Category-SASRA" := LoansRegister."Loans Category-SASRA"::Perfoming;
     end;
 
     local procedure FnUpdateLoanRecordGreaterthanZeroBal(LoanNo: Code[30]; datefilter: Text[100])

@@ -243,7 +243,7 @@ Report 50400 "Loans Defaulter Aging - SASRA"
                     LSchedule.Reset;
                     LSchedule.SetRange(LSchedule."Loan No.", Loans."Loan  No.");
                     LSchedule.SetFilter(LSchedule."Repayment Date", DateFilter);
-                    if LSchedule.FindSet() then begin
+                    if LSchedule.FindLast() then begin
                         repeat
                             ExpectedBalance := LSchedule."Loan Balance";
                             varRepayment := LSchedule."Principal Repayment";
@@ -253,7 +253,7 @@ Report 50400 "Loans Defaulter Aging - SASRA"
                     // EndMonthDate := CalcDate(ExprDate, AsAt);
 
                     Arrears := LBal - ExpectedBalance;
-                    if (Arrears < 0) or (AsAt > Loans."Repayment Start Date") then begin
+                    if (Arrears < 0) then begin
                         Arrears := 0
                     end
                     else begin
