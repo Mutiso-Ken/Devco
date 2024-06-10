@@ -93,6 +93,7 @@ Report 51516207 "SASRA Loans Classification"
                             until LoansReg.Next = 0;
                         end;
                     //...........Current Loan Balance
+                    
                     CurrentLoanBalance := 0;
                     CurrentLoanBalance := LoansReg."Outstanding Balance";
                     //...........Calculate Principle Arrears

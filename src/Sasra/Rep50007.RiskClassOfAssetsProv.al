@@ -160,7 +160,7 @@ Report 50007 "Risk Class Of Assets & Prov"
                 LoansRegister.Reset;
                 LoansRegister.SetRange(LoansRegister.Rescheduled, false);
                 LoansRegister.SetFilter(LoansRegister."Loans Category-SASRA", '%1', LoansRegister."Loans Category-SASRA"::Perfoming);
-                LoansRegister.SetFilter(LoansRegister."Outstanding Balance", '>%1', 0);
+                LoansRegister.SetFilter(LoansRegister."Outstanding Balance", '<>%1', 0);
                 LoansRegister.SetRange(LoansRegister.Posted, true);
                 LoansRegister.SetAutocalcFields(LoansRegister."Outstanding Balance");
                 LoansRegister.SETFILTER(LoansRegister."Date filter", '..%1', AsAt);

@@ -7223,6 +7223,18 @@ End Function
         <Field Name="Company_Email">
           <DataField>Company_Email</DataField>
         </Field>
+        <Field Name="Outstanding_Balance">
+          <DataField>Outstanding_Balance</DataField>
+        </Field>
+        <Field Name="Outstanding_BalanceFormat">
+          <DataField>Outstanding_BalanceFormat</DataField>
+        </Field>
+        <Field Name="Current_Shares">
+          <DataField>Current_Shares</DataField>
+        </Field>
+        <Field Name="Current_SharesFormat">
+          <DataField>Current_SharesFormat</DataField>
+        </Field>
         <Field Name="PrincipleBF">
           <DataField>PrincipleBF</DataField>
         </Field>

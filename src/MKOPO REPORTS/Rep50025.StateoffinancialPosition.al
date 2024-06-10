@@ -184,10 +184,10 @@ Report 50025 "State of financial Position"
             column(LLoanandAdvances; LLoanandAdvances)
             {
             }
-            column(RevenueReservers; (RevenueReservers + Surplus))
+            column(RevenueReservers; (RevenueReservers))
             {
             }
-            column(lRevenueReservers; (lRevenueReservers + LSurplus))
+            column(lRevenueReservers; (lRevenueReservers))
             {
             }
             column(FinancialAssets; FinancialAssets)
@@ -254,6 +254,14 @@ Report 50025 "State of financial Position"
 
             column(TotalAssets; TotalAssets)
             {
+            }
+            column(Surplus; Surplus)
+            {
+
+            }
+            column(LSurplus; LSurplus)
+            {
+
             }
 
             trigger OnAfterGetRecord()
@@ -786,11 +794,7 @@ Report 50025 "State of financial Position"
                 TotalEquity := StatutoryReserve + RevenueReservers + ShareCapital;
                 LTotalEquity := LStatutoryReserve + LRevenueReservers + LShareCapital;
 
-                TotalLiabilitiesandEquity := 0;
-                LTotalLiabilitiesandEquity := 0;
 
-                TotalLiabilitiesandEquity := TotalEquity + TotalLiabilities;
-                LTotalLiabilitiesandEquity := LTotalEquity + LTotalLiabilities;
 
 
 
@@ -865,7 +869,11 @@ Report 50025 "State of financial Position"
                 //End Of Expense
 
                 //End of Incomes
+                TotalLiabilitiesandEquity := 0;
+                LTotalLiabilitiesandEquity := 0;
 
+                TotalLiabilitiesandEquity := TotalEquity + TotalLiabilities + Surplus;
+                LTotalLiabilitiesandEquity := LTotalEquity + LTotalLiabilities + LSurplus;
                 //End of Suplus
 
 

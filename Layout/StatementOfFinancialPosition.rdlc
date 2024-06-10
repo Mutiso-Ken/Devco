@@ -3087,7 +3087,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!RevenueReservers.Value</Value>
+                                  <Value>=Fields!RevenueReservers.Value+Fields!Surplus.Value</Value>
                                   <Style>
                                     <FontStyle>Normal</FontStyle>
                                     <FontFamily>Times New Roman</FontFamily>
@@ -3159,7 +3159,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!lRevenueReservers.Value</Value>
+                                  <Value>=Fields!lRevenueReservers.Value+Fields!LSurplus.Value</Value>
                                   <Style>
                                     <FontStyle>Normal</FontStyle>
                                     <FontFamily>Times New Roman</FontFamily>
@@ -3535,7 +3535,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox113">
+                        <Textbox Name="Textbox5">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -3555,7 +3555,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox113</rd:DefaultName>
+                          <rd:DefaultName>Textbox5</rd:DefaultName>
                           <Style>
                             <Border />
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3601,7 +3601,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox8">
+                        <Textbox Name="LSurplus">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -3621,7 +3621,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox8</rd:DefaultName>
+                          <rd:DefaultName>LSurplus</rd:DefaultName>
                           <Style>
                             <Border />
                             <PaddingLeft>2pt</PaddingLeft>
@@ -4566,6 +4566,18 @@ End Function
         </Field>
         <Field Name="TotalAssetsFormat">
           <DataField>TotalAssetsFormat</DataField>
+        </Field>
+        <Field Name="Surplus">
+          <DataField>Surplus</DataField>
+        </Field>
+        <Field Name="SurplusFormat">
+          <DataField>SurplusFormat</DataField>
+        </Field>
+        <Field Name="LSurplus">
+          <DataField>LSurplus</DataField>
+        </Field>
+        <Field Name="LSurplusFormat">
+          <DataField>LSurplusFormat</DataField>
         </Field>
       </Fields>
       <Query>

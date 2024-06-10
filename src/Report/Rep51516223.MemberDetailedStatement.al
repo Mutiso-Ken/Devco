@@ -66,6 +66,8 @@ Report 51516223 "Member Detailed Statement"
             column(Company_Email; Company."E-Mail")
             {
             }
+            column(Outstanding_Balance; "Outstanding Balance") { }
+            column(Current_Shares; "Current Shares") { }
             dataitem(Loans; "Loans Register")
             {
                 DataItemLink = "Client Code" = field("No."), "Loan Product Type" = field("Loan Product Filter"), "Date filter" = field("Date Filter");
