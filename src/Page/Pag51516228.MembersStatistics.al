@@ -40,10 +40,7 @@ Page 51516228 "Members Statistics"
                 {
                     ApplicationArea = Basic;
                 }
-                field("Housing Contribution"; "Housing Contribution")
-                {
-                    ApplicationArea = Basic;
-                }
+
                 field("Alpha Savings"; "Alpha Savings")
                 {
                     ApplicationArea = Basic;
@@ -93,6 +90,12 @@ Page 51516228 "Members Statistics"
                     Editable = true;
 
 
+                }
+                field("Housing Contribution"; "Investment Monthly Cont")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Housing contribution';
+                    Editable = true;
                 }
                 field("Junior Monthly Contribution"; "Junior Monthly Contribution")
                 {

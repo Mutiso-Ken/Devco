@@ -25,7 +25,7 @@ Codeunit 51516021 "SurePESABulkSMS"
 
         SMSMessages.Reset;
         SMSMessages.SetRange(SMSMessages."Sent To Server", SMSMessages."sent to server"::No);
-        SMSMessages.SetFilter(SMSMessages.Source, '%1|%2|%3|%4|%5|%6', 'MOBILETRAN', 'AGENCY', 'ATM TRANS', 'LOANS', 'MEMBAPP', 'OTP');
+        //SMSMessages.SetFilter(SMSMessages.Source, '%1|%2|%3|%4|%5|%6', 'MOBILETRAN', 'AGENCY', 'ATM TRANS', 'LOANS', 'MEMBAPP', 'OTP');
         SMSMessages.SetFilter(SMSMessages."Date Entered", '=%', TODAY);
         if SMSMessages.Find('-') then begin
 

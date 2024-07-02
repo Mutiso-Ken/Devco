@@ -232,7 +232,7 @@ Table 51516490 "General Equiries"
         {
             Description = '//surestep crm';
         }
-        field(68032;"First Name"; Text[130])
+        field(68032; "First Name"; Text[130])
         {
             Description = '//surestep crm';
         }
@@ -321,7 +321,8 @@ Table 51516490 "General Equiries"
         field(68053; "Captured On"; Date)
         {
         }
-        
+      
+
     }
 
     keys

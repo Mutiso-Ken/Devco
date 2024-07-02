@@ -73,7 +73,7 @@ Report 51516280 "Post Monthly Interest."
             begin
                 PDate := "Loans Register".GetRangemax("Loans Register"."Date filter");
                 SDATE := '..' + Format(PDate);
-                DocNo:=Format(PostDate);
+                DocNo := Format(PostDate);
                 loanapp.Reset;
                 loanapp.SetRange(loanapp."Loan  No.", "Loans Register"."Loan  No.");
                 loanapp.SetFilter(loanapp."Date filter", SDATE);
@@ -100,9 +100,9 @@ Report 51516280 "Post Monthly Interest."
                                     GenJournalLine."Document No." := DocNo;
                                     GenJournalLine."Posting Date" := PostDate;
                                     GenJournalLine.Description := 'INT Charged' + ' ' + Format(PostDate);
-                                    GenJournalLine.Amount := ROUND(loanapp."Outstanding Balance" * (loanapp.Interest / 1200), 1, '>');
-                                    GenJournalLine.Validate(GenJournalLine.Amount);
                                     if LoanType.Get(loanapp."Loan Product Type") then begin
+                                        GenJournalLine.Amount := ROUND(loanapp."Outstanding Balance" * (LoanType."Interest rate" / 1200), 1, '>');
+                                        GenJournalLine.Validate(GenJournalLine.Amount);
                                         GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"G/L Account";
                                         GenJournalLine."Bal. Account No." := LoanType."Loan Interest Account";
                                         GenJournalLine."Loan Product Type" := LoanType.Code;
@@ -120,6 +120,8 @@ Report 51516280 "Post Monthly Interest."
                                         GenJournalLine.Insert;
                                 until cust.Next = 0;
                             end;
+
+
                         end;
 
                     until loanapp.Next = 0;

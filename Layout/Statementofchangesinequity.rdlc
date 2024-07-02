@@ -324,6 +324,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -1076,6 +1077,7 @@
                                   <Value>=Fields!StatutoryReserve.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1706,15 +1708,18 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox44">
+                        <Textbox Name="Surplus">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
-                                  <Style />
+                                  <Value>=Fields!Surplus.Value</Value>
+                                  <Style>
+                                    <FontFamily>Cambria</FontFamily>
+                                    <Format>#,0.00;-#,0.00;'-'</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -1722,7 +1727,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox44</rd:DefaultName>
+                          <rd:DefaultName>Surplus</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1985,10 +1990,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!TransfertoStatury.Value</Value>
+                                  <Value>=Fields!RTransfertoStatury.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
-                                    <Format>#,0.00;(#,0.00)</Format>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -2248,15 +2253,18 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox79">
+                        <Textbox Name="Proposeddividends">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
-                                  <Style />
+                                  <Value>=Fields!Proposeddividends.Value</Value>
+                                  <Style>
+                                    <FontFamily>Cambria</FontFamily>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -2264,7 +2272,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox79</rd:DefaultName>
+                          <rd:DefaultName>Proposeddividends</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -2515,15 +2523,18 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox72">
+                        <Textbox Name="Honoraria">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
-                                  <Style />
+                                  <Value>=Fields!Honoraria.Value</Value>
+                                  <Style>
+                                    <FontFamily>Cambria</FontFamily>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -2531,7 +2542,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox72</rd:DefaultName>
+                          <rd:DefaultName>Honoraria</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -2785,7 +2796,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox65">
+                        <Textbox Name="Textbox54">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -2801,7 +2812,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox65</rd:DefaultName>
+                          <rd:DefaultName>Textbox54</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -2945,10 +2956,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!ShareCapital.Value+Fields!contShareCapital.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3023,10 +3035,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!StatutoryReserve.Value+Fields!TransfertoStatury.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3091,15 +3104,18 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox58">
+                        <Textbox Name="RetainedEarnings1">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
-                                  <Style />
+                                  <Value>=Fields!RetainedEarnings.Value+Fields!PriorYearAdjustment.Value+Fields!Surplus.Value+Fields!RTransfertoStatury.Value+Fields!Proposeddividends.Value+Fields!Honoraria.Value</Value>
+                                  <Style>
+                                    <FontFamily>Cambria</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -3107,7 +3123,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox58</rd:DefaultName>
+                          <rd:DefaultName>RetainedEarnings1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -3810,7 +3826,7 @@
                                   <Value>=Fields!LShareCapital.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
-                                    <Format>#,0.00;(#,0.00)</Format>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3831,7 +3847,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -3880,7 +3895,7 @@
                                   <Value>=Fields!LStatutoryReserve.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
-                                    <Format>#,0.00;(#,0.00)</Format>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3949,7 +3964,7 @@
                                   <Value>=Fields!LRetainedEarnings.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
-                                    <Format>#,0.00;(#,0.00)</Format>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4225,6 +4240,7 @@
                                   <Value>=Fields!LPriorYearAdjustment.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4485,15 +4501,18 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox265">
+                        <Textbox Name="LSurplus">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
-                                  <Style />
+                                  <Value>=Fields!LSurplus.Value</Value>
+                                  <Style>
+                                    <FontFamily>Cambria</FontFamily>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -4501,7 +4520,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox265</rd:DefaultName>
+                          <rd:DefaultName>LSurplus</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -4697,7 +4716,7 @@
                                   <Value>=Fields!LTransfertoStatury.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
-                                    <Format>#,0.00;(#,0.00)</Format>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4763,10 +4782,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!LTransfertoStatury.Value</Value>
+                                  <Value>=Fields!RLTransfertoStatury.Value</Value>
                                   <Style>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <Format>#,0.00;(#,0.00)</Format>
+                                    <FontFamily>Cambria</FontFamily>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -5025,15 +5044,18 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox275">
+                        <Textbox Name="LProposeddividends">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
-                                  <Style />
+                                  <Value>=Fields!LProposeddividends.Value</Value>
+                                  <Style>
+                                    <FontFamily>Cambria</FontFamily>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -5041,7 +5063,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox275</rd:DefaultName>
+                          <rd:DefaultName>LProposeddividends</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -5291,15 +5313,18 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox280">
+                        <Textbox Name="LHonoraria">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
-                                  <Style />
+                                  <Value>=Fields!LHonoraria.Value</Value>
+                                  <Style>
+                                    <FontFamily>Cambria</FontFamily>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -5307,7 +5332,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox280</rd:DefaultName>
+                          <rd:DefaultName>LHonoraria</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -5562,7 +5587,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox285">
+                        <Textbox Name="Textbox33">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -5578,7 +5603,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox285</rd:DefaultName>
+                          <rd:DefaultName>Textbox33</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -5722,10 +5747,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!LShareCapital.Value+Fields!contLShareCapital.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -5792,17 +5818,18 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox125">
+                        <Textbox Name="StatutoryReserve2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!StatutoryReserve.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -5811,7 +5838,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox125</rd:DefaultName>
+                          <rd:DefaultName>StatutoryReserve</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -5869,15 +5896,18 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox290">
+                        <Textbox Name="RetainedEarnings2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
-                                  <Style />
+                                  <Value>=Fields!RetainedEarnings.Value</Value>
+                                  <Style>
+                                    <FontFamily>Cambria</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -5885,13 +5915,14 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox290</rd:DefaultName>
+                          <rd:DefaultName>RetainedEarnings1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
                             </Border>
                             <TopBorder>
                               <Style>Solid</Style>
+                              <Width>1pt</Width>
                             </TopBorder>
                             <BottomBorder>
                               <Style>Double</Style>
@@ -6194,6 +6225,18 @@ End Function
         <Field Name="LShareCapitalFormat">
           <DataField>LShareCapitalFormat</DataField>
         </Field>
+        <Field Name="RLTransfertoStatury">
+          <DataField>RLTransfertoStatury</DataField>
+        </Field>
+        <Field Name="RLTransfertoStaturyFormat">
+          <DataField>RLTransfertoStaturyFormat</DataField>
+        </Field>
+        <Field Name="RTransfertoStatury">
+          <DataField>RTransfertoStatury</DataField>
+        </Field>
+        <Field Name="RTransfertoStaturyFormat">
+          <DataField>RTransfertoStaturyFormat</DataField>
+        </Field>
         <Field Name="contShareCapital">
           <DataField>contShareCapital</DataField>
         </Field>
@@ -6271,6 +6314,42 @@ End Function
         </Field>
         <Field Name="StartofThisYear">
           <DataField>StartofThisYear</DataField>
+        </Field>
+        <Field Name="Proposeddividends">
+          <DataField>Proposeddividends</DataField>
+        </Field>
+        <Field Name="ProposeddividendsFormat">
+          <DataField>ProposeddividendsFormat</DataField>
+        </Field>
+        <Field Name="LProposeddividends">
+          <DataField>LProposeddividends</DataField>
+        </Field>
+        <Field Name="LProposeddividendsFormat">
+          <DataField>LProposeddividendsFormat</DataField>
+        </Field>
+        <Field Name="Honoraria">
+          <DataField>Honoraria</DataField>
+        </Field>
+        <Field Name="HonorariaFormat">
+          <DataField>HonorariaFormat</DataField>
+        </Field>
+        <Field Name="LHonoraria">
+          <DataField>LHonoraria</DataField>
+        </Field>
+        <Field Name="LHonorariaFormat">
+          <DataField>LHonorariaFormat</DataField>
+        </Field>
+        <Field Name="Surplus">
+          <DataField>Surplus</DataField>
+        </Field>
+        <Field Name="SurplusFormat">
+          <DataField>SurplusFormat</DataField>
+        </Field>
+        <Field Name="LSurplus">
+          <DataField>LSurplus</DataField>
+        </Field>
+        <Field Name="LSurplusFormat">
+          <DataField>LSurplusFormat</DataField>
         </Field>
       </Fields>
       <Query>

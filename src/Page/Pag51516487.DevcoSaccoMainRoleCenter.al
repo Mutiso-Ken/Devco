@@ -340,6 +340,15 @@ Page 51516487 "Devco Sacco Main Role Center"
                         Visible = false;
 
                     }
+                    action("Bank Reconciliation Summaary Report")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Bank Reconcilations Summary Report';
+                        RunObject = report BankReconiliationsummary;
+                        //Visible = false;
+
+                    }
+
 
                     action("Payment Reconcilations JOURNALS")
                     {
@@ -587,6 +596,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                         Caption = 'Fixed Asset G/J Journal';
                         RunObject = Page "Fixed Asset G/L Journal";
                         ToolTip = 'Record Asset Movement.';
+                        visible = false;
                     }
 
 
@@ -596,6 +606,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                         Caption = 'Fixed Asset Journal';
                         RunObject = Page "Fixed Asset Journal";
                         ToolTip = 'View all Sacco Assets.';
+                        Visible = false;
                     }
 
                     action("Fixed Asset Setup")
@@ -624,11 +635,11 @@ Page 51516487 "Devco Sacco Main Role Center"
 
                         }
 
-                        action("FA Posting Group Net Change")
+                        action("Fixed Assets Book Value")
                         {
                             ApplicationArea = Basic, Suite;
-                            Caption = 'FA Posting Group Net Change';
-                            RunObject = report "FA Posting Group - Net Change";
+                            Caption = 'Fixed Assets Book Value';
+                            RunObject = report FixeAssetbookValueReport;
 
                         }
 
@@ -659,8 +670,8 @@ Page 51516487 "Devco Sacco Main Role Center"
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Account Schedules';
-                        RunObject = page "Account Schedule Names List";
-                        Visible = false;
+                        RunObject = page "Financial Reports";
+
                     }
 
                     action("LiquidityReport")
@@ -717,11 +728,12 @@ Page 51516487 "Devco Sacco Main Role Center"
                         Caption = 'Statement of profit or loss and other comprehensive income';
                         RunObject = report StatementProfitorloss;
                     }
-                    // action("Statement of changes of Equity Current")
-                    // {
-                    //     ApplicationArea = All;
-                    //     RunObject = report StatementOfChangesInEquity;
-                    // }
+                    action("Statement of changes of Equity Current")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Statement of Changes im Equity';
+                        RunObject = report StatementOfChangesInEquity;
+                    }
                     // action("Statement of changes of Equity Previous")
                     // {
                     //     ApplicationArea = All;
@@ -1670,6 +1682,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                     group(CheckOffDistributed)
                     {
                         Caption = 'Checkoff Processing-Distributed';
+                        Visible = false;
                         action("Checkoff Processing List")
                         {
                             Caption = 'Checkoff Processing List';
@@ -1703,6 +1716,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                             Caption = 'Import Sacco Jnl';
                             Image = Setup;
                             RunObject = xmlport "Import Sacco Jnl";
+                            visible = false;
                         }
                     }
                     group(CheckOffAdvice)
@@ -1728,7 +1742,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                             Caption = 'Post Monthly Interest';
                             Image = Setup;
                             RunObject = report "Post Monthly Interest.";
-                            ToolTip='Used to process Loans Monthly Interest';
+                            ToolTip = 'Used to process Loans Monthly Interest';
                         }
                     }
                     group(Dividends)
@@ -2074,6 +2088,13 @@ Page 51516487 "Devco Sacco Main Role Center"
                         RunPageView = WHERE("Lead Status" = CONST(open));
                         ToolTip = 'Unresolved Cases Enquiries';
                     }
+                    action("Member FeedBack")
+                    {
+                        Caption = 'Member FeedBacks';
+                        ApplicationArea = basic, suite;
+                        Image = Capacity;
+                        RunObject = page "Member FeedBack List";
+                    }
                     group("CRM Reports")
                     {
                         action("Resolved Cases")
@@ -2092,6 +2113,41 @@ Page 51516487 "Devco Sacco Main Role Center"
                             RunObject = report "CRM UnResolved Cases Report";
                             ToolTip = 'UnResolved Cases';
                         }
+                        action("customer Feed Back Report")
+                        {
+                            Caption = 'Customer Feed Back Report';
+                            ApplicationArea = basic, suite;
+                            Image = Report;
+                            RunObject = report MemberFeedBackReport;
+                        }
+                        action("Complaints Report")
+                        {
+
+                            ApplicationArea = basic, suite;
+                            Image = Report;
+                            RunObject = report MemberComplaintsReport;
+                        }
+                        action("Member Feedback and Satisfaction Report")
+                        {
+                            Caption = 'Member Feedback and Satisfaction Report';
+                            ApplicationArea = basic, suite;
+                            Image = Report;
+                            RunObject = report MemberFeedBackReport;
+                        }
+                        action(MemberSuggestionsReport)
+                        {
+                            Caption = 'Member Suggestions Report';
+                            ApplicationArea = all;
+                            Image = Report;
+                            RunObject = report MemberSugestionReport;
+                        }
+                        action(MemberResolutionTimeTaken)
+                        {
+                            Caption = 'Members’ resolution time taken report';
+                            ApplicationArea = all;
+                            RunObject = report MemberResolutionTimeTaken;
+                        }
+
                     }
 
                 }

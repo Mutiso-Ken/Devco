@@ -72,16 +72,6 @@ Report 50313 "Payroll JournalTransfer."
                                 PeriodTrans."Journal Account Type" := PeriodTrans."journal account type"::Customer;
                                 SaccoTransactionType := Tntype::"Benevolent Fund";
                             end;
-                            // if PeriodTrans."Transaction Code" = 'LOAN APP FEE' then begin //LOAN APP FEE //LOAN INSURANCE
-                            //     PeriodTrans."Journal Account Type" := PeriodTrans."journal account type"::Customer;
-                            //     SaccoTransactionType := Tntype::"Loan Application Fee Paid";
-                            // end;
-                            // if PeriodTrans."Transaction Code" = 'LOAN INSURANCE' then begin //LOAN APP FEE //LOAN INSURANCE
-                            //     PeriodTrans."Journal Account Type" := PeriodTrans."journal account type"::Customer;
-                            //     SaccoTransactionType := Tntype::"Loan Insurance Paid";
-
-                            // end;
-
                             if (PeriodTrans."Transaction Code" <> 'BPAY')
                         then begin
                                 CreateJnlEntry(IntegerPostAs, PeriodTrans."Journal Account Code",

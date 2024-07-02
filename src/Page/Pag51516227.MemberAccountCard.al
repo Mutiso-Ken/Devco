@@ -339,6 +339,7 @@ Page 51516227 "Member Account Card"
                 {
                     ApplicationArea = Basic;
                     Caption = 'Employer Code';
+
                 }
                 field("JointEmployer Name"; "Employer Name")
                 {

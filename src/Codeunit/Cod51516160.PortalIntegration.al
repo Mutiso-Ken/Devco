@@ -336,6 +336,7 @@ codeunit 51516160 "Portal Integration"
         iEntryNo: Integer;
         IdentifierType: Text;
         Identifier: Text;
+        DataJson: JsonObject;
 
     begin
         IdentifierType := SelectJsonToken(RequestJson, '$.identifier_type').AsValue.AsText;
@@ -344,6 +345,7 @@ codeunit 51516160 "Portal Integration"
         Message := SelectJsonToken(RequestJson, '$.Message').AsValue.AsText;
 
         if IdentifierType = 'NATIONAL_ID_NUMBER' THEN begin
+
             SMSMessages.Reset;
             if SMSMessages.Find('+') then begin
                 iEntryNo := SMSMessages."Entry No";
@@ -365,7 +367,8 @@ codeunit 51516160 "Portal Integration"
             SMSMessages."Sent To Server" := SMSMessages."sent to server"::No;
             SMSMessages."SMS Message" := Message;
             SMSMessages.Insert;
-            
+            SetResponseStatus(ResponseJson, 'success', 'Success', 'Request processed successfully');
+            ResponseJson.Add(Data, DataJson);
         end;
     end;
 
@@ -517,6 +520,7 @@ codeunit 51516160 "Portal Integration"
         FireLable: Label '+';
         Memb: record Customer;
         // MBuffer: Record "Mpesa Withdawal Buffer";
+
         AvailableBalance: Decimal;
         PendingAmount: Decimal;
     begin
@@ -531,22 +535,27 @@ codeunit 51516160 "Portal Integration"
             Memb.Reset();
             Memb.SetRange(Memb."ID No.", UpperCase(Format(Identifier)));
             if Memb.FindFirst() then begin
+
                 memb.init;
                 SetResponseStatus(ResponseJson, 'success', 'Success', 'Member’s accounts list has been fetched successfully');
                 repeat
 
-                    Memb.CalcFields(Memb."Current Shares");
+                    Memb.CalcFields(Memb."Current Shares", "Housing Deposits", "Alpha Savings", "Junior Savings One", "Likizo Contribution", "Share Capital");
                     AccountObject.Add('Account_Number', Memb."No.");
                     AccountObject.Add('Account_Name', Memb."Global Dimension 1 Code" + ' ' + 'Savings Account');
                     AccountObject.Add('Account_Type', Memb."Global Dimension 1 Code" + ' ' + 'Account');
                     AccountObject.Add('Account_Status', Memb.Status);
                     AccountObject.Add('Currency', 'KES');
                     AccountObject.Add('Deposits', Memb."Current Shares");
+                    AccountObject.Add('Alpha_Savings', Memb."Alpha Savings");
+                    AccountObject.Add('Juniour_Savings', Memb."Junior Savings One");
+                    AccountObject.Add('Housing_Contribution', Memb."Housing Deposits");
+                    AccountObject.Add('Holiday_Savings', Memb."Likizo Contribution");
+                    AccountObject.Add('ShareCapital', Memb."Share Capital");
                     AccountObject.Add('actions', 'Deposits');
                     AccountsArray.Add(AccountObject);
                     Clear(AccountObject);
                     Iterator := Iterator + 1;
-
                     Found := true;
 
                 until Memb.Next() = 0;
@@ -874,6 +883,7 @@ codeunit 51516160 "Portal Integration"
         SaccoGen: Record "Sacco General Set-Up";
         LoansRegister: Record "Loans Register";
         EntryType: Text[50];
+        Customer: Record Customer;
         loanNumber: Text;
     begin
         Iterator := 0;
@@ -883,25 +893,25 @@ codeunit 51516160 "Portal Integration"
         loanNumber := SelectJsonToken(RequestJson, '$.loan_number').AsValue.AsText;
         StartDate := SelectJsonToken(RequestJson, '$.start_date').AsValue.AsDate;
         EndDate := SelectJsonToken(RequestJson, '$.end_date').AsValue.AsDate;
-
-
-
-        if IdentifierType = 'NATIONAL_ID_NUMBER' then begin
-            LoansRegister.Reset();
-            LoansRegister.SetRange(LoansRegister."Loan  No.", loanNumber);
-            LoansRegister.SetFilter(LoansRegister."Date filter", '%1..%2', StartDate, EndDate);
-            if LoansRegister.FindFirst() then begin
+        if IdentifierType = 'MEMBER_NUMBER' THEN begin
+            Customer.Reset();
+            Customer.SetRange(Customer."No.", UpperCase(Identifier));
+            Customer.SetFilter(Customer."Date filter", '%1..%2', StartDate, EndDate);
+            Customer.SetRange(Customer."Loan No. Filter", loanNumber);
+            if Customer.FindFirst() then begin
                 SetResponseStatus(ResponseJson, 'success', 'Success', 'Member’s Loan Statement has been fetched successfully');
                 varTempBlob.CreateOutStream(OStream, TextEncoding::UTF8);
 
-                RecRef.GetTable(LoansRegister);
+                RecRef.GetTable(Customer);
                 Report.SaveAs(Report::"Member Loans Statement", '', REPORTFORMAT::Pdf, OStream, RecRef);
                 varTempBlob.CreateInStream(IStream, TextEncoding::UTF8);
                 vConvertedContent := varBase64Conversion.ToBase64(IStream);
                 DataJson.Add('pdf', vConvertedContent);
-            end else
+            end
+            else
                 SetResponseStatus(ResponseJson, 'error', 'Error', 'Account does not exist');
         end;
+        // end;
         ResponseJson.Add(Data, DataJson);
     end;
 

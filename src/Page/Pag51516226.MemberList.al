@@ -41,6 +41,10 @@ Page 51516226 "Member List"
                     Caption = 'Mobile Phone';
 
                 }
+                field("Date of Birth"; "Date of Birth")
+                {
+                    ApplicationArea = Basic;
+                }
                 field(Status; Rec.Status)
                 {
                     ApplicationArea = basic;
@@ -68,10 +72,10 @@ Page 51516226 "Member List"
                     Caption = 'Oustanding Loan Interest';
                     ApplicationArea = Basic;
                 }
-                field("Likizo Contribution";"Likizo Contribution")
+                field("Likizo Contribution"; "Likizo Contribution")
                 {
                     ApplicationArea = all;
-                    Caption='Holiday Contribution';
+                    Caption = 'Holiday Contribution';
                 }
                 field("Alpha Savings"; "Alpha Savings")
                 {

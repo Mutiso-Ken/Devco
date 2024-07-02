@@ -83,7 +83,7 @@ tableextension 51516044 "GlAccountExt" extends "G/L Account"
         }
         field(54264; MkopoLiabilities; Option)
         {
-            OptionMembers = " ",TradeandotherPayables,MemberDeposits,dividendsandInterestPayable,Honoria,Taxpayable;
+            OptionMembers = " ",TradeandotherPayables,LoanLoss,MemberDeposits,dividendsandInterestPayable,Honoria,Taxpayable;
             DataClassification = ToBeClassified;
         }
         field(54265; FinancedBy; Option)

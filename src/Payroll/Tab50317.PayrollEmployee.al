@@ -655,7 +655,7 @@ table 50317 "Payroll Employee."
 
     fieldgroups
     {
-        fieldgroup(DropDown; "No.", Surname, "First Name", "Middle Name")
+        fieldgroup(DropDown; "No.", "Full Name")
         {
         }
     }

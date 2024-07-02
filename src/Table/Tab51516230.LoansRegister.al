@@ -331,7 +331,7 @@ Table 51516230 "Loans Register"
                     LAppCharges.DeleteAll;
 
                 "Flat rate Interest" := 0;
-              
+
                 "Total Repayment" := 0;
                 TotalMRepay := 0;
                 LPrincipal := 0;
@@ -454,7 +454,7 @@ Table 51516230 "Loans Register"
 
             trigger OnValidate()
             begin
-                if Date2dmy("Loan Disbursement Date", 1) <= 15 then begin
+                if Date2dmy("Loan Disbursement Date", 1) <= 10 then begin
                     "Repayment Start Date" := CalcDate('CM', "Loan Disbursement Date");
                 end else begin
                     "Repayment Start Date" := CalcDate('CM', CalcDate('CM+1M', "Loan Disbursement Date"));
@@ -1442,7 +1442,7 @@ Table 51516230 "Loans Register"
         field(69002; "Bela Branch"; Code[100])
         {
         }
-  
+
         field(69005; "Bank Name"; Text[150])
         {
         }
@@ -1501,8 +1501,9 @@ Table 51516230 "Loans Register"
         }
         field(69024; "Recovery Mode"; Option)
         {
-            OptionCaption = 'Checkoff,Standing Order,Salary,Pension,Direct Debits,Tea,Milk,Tea Bonus,Dividend';
-            OptionMembers = Checkoff,"Standing Order",Salary,Pension,"Direct Debits",Tea,Milk,"Tea Bonus",Dividend;
+
+            OptionMembers = Checkoff,"Standing Order",Salary,Dividend,"Direct Debits";
+            ;
         }
         field(69025; "Repayment Frequency"; Option)
         {
@@ -2159,7 +2160,7 @@ Table 51516230 "Loans Register"
         }
         field(515163001; "Loan Payments"; Decimal)
         {
-            CalcFormula = -sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Client Code"),
+            CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Client Code"),
                                                                   "Loan No" = field("Loan  No."),
                                                                   "Transaction Type" = filter(Repayment),
                                                                   "Posting Date" = field("Date filter"),
@@ -2240,7 +2241,7 @@ Table 51516230 "Loans Register"
 
     fieldgroups
     {
-        fieldgroup(DropDown; "Loan  No.", "Loan Product Type", "Client Code", "Outstanding Balance", "Oustanding Interest")
+        fieldgroup(DropDown; "Loan  No.", "Loan Product Type", "Client Code", "Outstanding Balance", "Oustanding Interest", Repayment)
         {
         }
     }

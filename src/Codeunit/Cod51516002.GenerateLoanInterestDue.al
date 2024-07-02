@@ -21,13 +21,13 @@ codeunit 51516002 "GenerateLoanInterestDue"
                 if (LoansRegister."Outstanding Balance" > LoansRegister."Oustanding Interest") and (FnMemberIsDeceased(LoansRegister."Client Code")) = false then begin
                     //Charge Interest
                     if FnIsInterestRun(DocNo, LoansRegister."Loan  No.", LoansRegister."Client Code") = false then begin
-                        if ((DATE2DMY(Today, 1)) = DATE2DMY(LoansRegister."Loan Disbursement Date", 1)) and (CalcDate('1M', LoansRegister."Loan Disbursement Date") <= Today) and (LoansRegister."Recovery Mode" = LoansRegister."Recovery Mode"::"Direct Debits") then begin
+                        if ((DATE2DMY(Today, 1)) = DATE2DMY(LoansRegister."Loan Disbursement Date", 1)) and (CalcDate('1M', LoansRegister."Loan Disbursement Date") <= Today)  then begin
                             FnInsertGlEntries();
                         end;
                         //<>Direct Debits on 15th
-                        if ((15) = DATE2DMY(Today, 1)) and (CalcDate('1M', LoansRegister."Loan Disbursement Date") <= Today) and (LoansRegister."Recovery Mode" <> LoansRegister."Recovery Mode"::"Direct Debits") then begin
-                            FnInsertGlEntries();
-                        end;
+                        // if ((15) = DATE2DMY(Today, 1)) and (CalcDate('1M', LoansRegister."Loan Disbursement Date") <= Today) and (LoansRegister."Recovery Mode" <> LoansRegister."Recovery Mode"::"Direct Debits") then begin
+                        //     FnInsertGlEntries();
+                        // end;
                     end;
                 end;
             until LoansRegister.Next = 0;
@@ -55,13 +55,13 @@ codeunit 51516002 "GenerateLoanInterestDue"
                     //     FnInsertGlEntries();
                     // end;
                     if FnIsInterestRun(DocNo, LoansRegister."Loan  No.", LoansRegister."Client Code") = false then begin
-                        if ((DATE2DMY(Today, 1)) = DATE2DMY(LoansRegister."Loan Disbursement Date", 1)) and (CalcDate('1M', LoansRegister."Loan Disbursement Date") <= Today) and (LoansRegister."Recovery Mode" = LoansRegister."Recovery Mode"::"Direct Debits") then begin
+                        if ((DATE2DMY(Today, 1)) = DATE2DMY(LoansRegister."Loan Disbursement Date", 1)) and (CalcDate('1M', LoansRegister."Loan Disbursement Date") <= Today) then begin
                             FnInsertGlEntries();
                         end;
                         //<>Direct Debits on 15th
-                        if ((15) = DATE2DMY(Today, 1)) and (CalcDate('1M', LoansRegister."Loan Disbursement Date") <= Today) and (LoansRegister."Recovery Mode" <> LoansRegister."Recovery Mode"::"Direct Debits") then begin
-                            FnInsertGlEntries();
-                        end;
+                        // if ((15) = DATE2DMY(Today, 1)) and (CalcDate('1M', LoansRegister."Loan Disbursement Date") <= Today) and (LoansRegister."Recovery Mode" <> LoansRegister."Recovery Mode"::"Direct Debits") then begin
+                        //     FnInsertGlEntries();
+                        // end;
                     end;
                 end;
             until LoansRegister.Next = 0;

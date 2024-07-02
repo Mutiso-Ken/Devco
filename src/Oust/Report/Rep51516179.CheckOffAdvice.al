@@ -37,7 +37,7 @@ Report 51516179 "Check Off Advice"
             column(Insurancecontributions; Insurance)
             {
             }
-            column(LIKIZO_CONTRIBUTION; LIKIZO)
+            column(LIKIZO_CONTRIBUTION; Likizo)
             {
             }
             column(Share_Capital; scapital)
@@ -120,7 +120,7 @@ Report 51516179 "Check Off Advice"
                 PrincipalInterest := 0;
                 MonthlyAdvice := 0;
                 Juniorcontribution := 0;
-                Lkizo := 0;
+                Likizo := 0;
                 normloan := 0;
                 College := 0;
                 AssetL := 0;
@@ -140,134 +140,151 @@ Report 51516179 "Check Off Advice"
                     Gsetup.Get();
                     Cust.CalcFields(Cust."Shares Retained");
                     if Cust."Shares Retained" < Gsetup."Retained Shares" then
-                        if (Gsetup."Retained Shares" - Cust."Shares Retained") > 500 then
-                            scapital := Gsetup."Shares Contribution"
-                        else
-                            scapital := Gsetup."Retained Shares" - Cust."Shares Retained"
-
-                    else
-                        scapital := 0;
-
-                    LIKIZO := Cust."Likizo Contribution";
+                        scapital := cust."Monthly ShareCap Cont.";
+                    Likizo := Cust."Holiday Monthly Contribution";
                     AlphaSavings := cust."Alpha Monthly Contribution";
                     Juniorcontribution := Cust."Junior Monthly Contribution";
-                    HOUSING := Cust."Housing Contribution";
+                    HOUSING := Cust."Investment Monthly Cont";
                     DEPOSIT := Cust."Monthly Contribution" + cust."Monthly ShareCap Cont.";
-                    //Alpha:=Cust."Alpha Savings";
-                    /*
-                    loans.RESET;
-                    loans.SETRANGE(loans."Client Code","Members Register"."No.");
-                    IF loans.FIND('-') THEN BEGIN
 
-                      TRepayment:=0;
-                      principle:=0;
-                      interest:=0;
-
-
-                      REPEAT
-                        loans.CALCFIELDS(loans."Outstanding Balance");
-                        IF loans."Outstanding Balance" >0 THEN BEGIN
-                          principle:=principle + loans."Loan Principle Repayment";
-                          interest:=interest + loans."Loan Interest Repayment";
-                          PrincipalInterest:=loans.Repayment;
-                          TRepayment:=TRepayment + PrincipalInterest;
-                          END;  //loans."Outstanding Balance"
-                        UNTIL loans.NEXT=0;
-                      END; //loan.find
-                    END;  //cust.find
-                    */
                     //normloan
+                    TRepayment := 0;
+
                     loans.Reset;
                     loans.SetRange(loans."Client Code", "Members Register"."No.");
+                    loans.SetRange(loans."Recovery Mode",loans."Recovery Mode");
                     loans.SetRange(loans."Loan Product Type", 'NORMAL');
                     loans.SetFilter(loans."Outstanding Balance", '>0');
-                    loans.SetAutocalcFields(loans."Outstanding Balance");
+                    loans.SetAutocalcFields(loans."Outstanding Balance", loans."Oustanding Interest");
                     loans.SetRange(loans.Posted, true);
                     if loans.Find('-') then begin
                         repeat
-                            normloan := loans."Loan Principle Repayment" + loans."Loan Interest Repayment";
+                            TRepayment := Loans."Oustanding Interest" + Loans."Outstanding Balance";
+                            if TRepayment < Loans.Repayment then begin
+                                normloan := TRepayment
+                            end else begin
+                                normloan := loans.Repayment;
+                            end;
                             normloan := normloan;//
                         until loans.Next = 0;
                     end;
                     //END
                     //LCount:=LCount+1;
                     //college
+                    TRepayment := 0;
                     loans.Reset;
                     loans.SetRange(loans."Client Code", "Members Register"."No.");
                     loans.SetRange(loans."Loan Product Type", 'COLLEGE');
                     loans.SetFilter(loans."Outstanding Balance", '>0');
-                    loans.SetAutocalcFields(loans."Outstanding Balance");
+                    loans.SetAutocalcFields(loans."Outstanding Balance", loans."Oustanding Interest");
                     loans.SetRange(loans.Posted, true);
                     if loans.Find('-') then begin
                         repeat
-                            College := loans."Loan Principle Repayment" + loans."Loan Interest Repayment";
+                            TRepayment := Loans."Oustanding Interest" + Loans."Outstanding Balance";
+                            if TRepayment < Loans.Repayment then begin
+                                College := TRepayment
+                            end else Begin
+                                College += loans.Repayment;
+                            End;
+
                             College := College;//
                         until loans.Next = 0;
                     end;
                     //Make over
+                    TRepayment := 0;
                     loans.Reset;
                     loans.SetRange(loans."Client Code", "Members Register"."No.");
                     loans.SetRange(loans."Loan Product Type", 'MAKEOVER');
                     loans.SetFilter(loans."Outstanding Balance", '>0');
-                    loans.SetAutocalcFields(loans."Outstanding Balance");
+                    loans.SetAutocalcFields(loans."Outstanding Balance", loans."Oustanding Interest");
                     loans.SetRange(loans.Posted, true);
                     if loans.Find('-') then begin
                         repeat
-                            Makeover := loans."Loan Principle Repayment" + loans."Loan Interest Repayment";
+                            TRepayment := Loans."Oustanding Interest" + Loans."Outstanding Balance";
+                            if TRepayment < Loans.Repayment then begin
+                                Makeover := TRepayment;
+                            end else begin
+                                Makeover := loans.Repayment;
+                            end;
+
                             Makeover := Makeover;//
                         until loans.Next = 0;
                     end;
                     //Premium
+                    TRepayment := 0;
                     loans.Reset;
                     loans.SetRange(loans."Client Code", "Members Register"."No.");
                     loans.SetRange(loans."Loan Product Type", 'PREMIUM');
                     loans.SetFilter(loans."Outstanding Balance", '>0');
-                    loans.SetAutocalcFields(loans."Outstanding Balance");
+                    loans.SetAutocalcFields(loans."Outstanding Balance", loans."Oustanding Interest");
                     loans.SetRange(loans.Posted, true);
                     if loans.Find('-') then begin
                         repeat
-                            Premium := loans."Loan Principle Repayment" + loans."Loan Interest Repayment";
+                            TRepayment := Loans."Oustanding Interest" + Loans."Outstanding Balance";
+                            if TRepayment < Loans.Repayment then begin
+                                Premium := TRepayment;
+                            end else begin
+                                Premium := loans.Repayment;
+                            end;
                             Premium := Premium;//
                         until loans.Next = 0;
                     end;
 
                     //school fee
+                    TRepayment := 0;
                     loans.Reset;
                     loans.SetRange(loans."Client Code", "Members Register"."No.");
                     loans.SetRange(loans."Loan Product Type", 'SCH_FEES');
                     loans.SetFilter(loans."Outstanding Balance", '>0');
-                    loans.SetAutocalcFields(loans."Outstanding Balance");
+                    loans.SetAutocalcFields(loans."Outstanding Balance", loans."Oustanding Interest");
                     loans.SetRange(loans.Posted, true);
                     if loans.Find('-') then begin
                         repeat
-                            College := loans."Loan Principle Repayment" + loans."Loan Interest Repayment";
-                            College := College;//
+                            TRepayment := Loans."Oustanding Interest" + Loans."Outstanding Balance";
+                            if TRepayment < Loans.Repayment then begin
+                                scfee := TRepayment;
+                            end else begin
+                                scfee := loans.Repayment;
+                            end;
+                            scfee := scfee;//
                         until loans.Next = 0;
                     end;
                     //emmergency fee
+                    TRepayment := 0;
                     loans.Reset;
                     loans.SetRange(loans."Client Code", "Members Register"."No.");
                     loans.SetRange(loans."Loan Product Type", 'EMERGENCY');
                     loans.SetFilter(loans."Outstanding Balance", '>0');
-                    loans.SetAutocalcFields(loans."Outstanding Balance");
+                    loans.SetAutocalcFields(loans."Outstanding Balance", loans."Oustanding Interest");
                     loans.SetRange(loans.Posted, true);
                     if loans.Find('-') then begin
                         repeat
-                            emmerg := loans."Loan Principle Repayment" + loans."Loan Interest Repayment";
+                            TRepayment := Loans."Oustanding Interest" + Loans."Outstanding Balance";
+                            if TRepayment < Loans.Repayment then begin
+                                emmerg := TRepayment;
+                            end else begin
+                                emmerg := loans.Repayment;
+                            end;
                             emmerg := emmerg;//
                         until loans.Next = 0;
                     end;
 
                     //Qickcash
+                    TRepayment := 0;
                     loans.Reset;
                     loans.SetRange(loans."Client Code", "Members Register"."No.");
                     loans.SetRange(loans."Loan Product Type", 'QUICK CASH');
                     loans.SetFilter(loans."Outstanding Balance", '>0');
-                    loans.SetAutocalcFields(loans."Outstanding Balance");
+                    loans.SetAutocalcFields(loans."Outstanding Balance", loans."Oustanding Interest");
                     loans.SetRange(loans.Posted, true);
                     if loans.Find('-') then begin
                         repeat
-                            Quick := loans."Loan Principle Repayment" + loans."Loan Interest Repayment";
+                            TRepayment := Loans."Oustanding Interest" + Loans."Outstanding Balance";
+                            if TRepayment < Loans.Repayment then begin
+                                Quick := TRepayment;
+                            end else begin
+                                Quick := loans.Repayment;
+                            end;
                             Quick := Quick;//
                         until loans.Next = 0;
                     end;
@@ -275,12 +292,17 @@ Report 51516179 "Check Off Advice"
                     loans.Reset;
                     loans.SetRange(loans."Client Code", "Members Register"."No.");
                     loans.SetRange(loans."Loan Product Type", 'KARIBU');
-
-                    loans.SetAutocalcFields(loans."Outstanding Balance");
+                    loans.SetFilter(loans."Outstanding Balance", '>0');
+                    loans.SetAutocalcFields(loans."Outstanding Balance", loans."Oustanding Interest");
                     loans.SetRange(loans.Posted, true);
                     if loans.Find('-') then begin
                         repeat
-                            karibu := loans."Loan Principle Repayment" + loans."Loan Interest Repayment";
+                            TRepayment := Loans."Oustanding Interest" + Loans."Outstanding Balance";
+                            if TRepayment < Loans.Repayment then begin
+                                karibu := TRepayment;
+                            end else begin
+                                karibu := loans.Repayment;
+                            end;
                             karibu := karibu;//
                         until loans.Next = 0;
                     end;
@@ -293,26 +315,31 @@ Report 51516179 "Check Off Advice"
                     loans.SetRange(loans.Posted, true);
                     if loans.Find('-') then begin
                         repeat
-                            AssetL := loans."Loan Principle Repayment" + loans."Loan Interest Repayment";
+                            TRepayment := Loans."Oustanding Interest" + Loans."Outstanding Balance";
+                            if TRepayment < Loans.Repayment then begin
+                                AssetL := TRepayment;
+                            end else begin
+                                AssetL := loans.Repayment;
+                            end;
                             AssetL := AssetL;//
                         until loans.Next = 0;
                     end;
                     // //quic fee
                     // loans.Reset;
                     // loans.SetRange(loans."Client Code", "Members Register"."No.");
-                    // loans.SetRange(loans."Loan Product Type", 'LIKIZO');
+                    // loans.SetRange(loans."Loan Product Type", 'Likizo');
                     // loans.SetFilter(loans."Outstanding Balance", '>0');
                     // loans.SetAutocalcFields(loans."Outstanding Balance");
                     // loans.SetRange(loans.Posted, true);
                     // if loans.Find('-') then begin
                     //     repeat
-                    //         Lkizo := loans."Loan Principle Repayment" + loans."Loan Interest Repayment";
-                    //         Lkizo := Lkizo;//
+                    //         Likizo := loans."Loan Principle Repayment" + loans."Loan Interest Repayment";
+                    //         Likizo := Likizo;//
                     //     until loans.Next = 0;
                     // end;
 
 
-                    MonthlyAdvice := HOUSING + AlphaSavings + Juniorcontribution+DEPOSIT + LIKIZO + normloan + College + scfee + emmerg + Quick + karibu + AssetL + Makeover + Premium;
+                    MonthlyAdvice := HOUSING + AlphaSavings + Juniorcontribution + DEPOSIT + Likizo + normloan + College + scfee + emmerg + Quick + karibu + AssetL + Makeover + Premium;
 
 
                 end;
@@ -360,7 +387,7 @@ Report 51516179 "Check Off Advice"
         minbal: Decimal;
         DEPOSIT: Decimal;
         AlphaSavings: Decimal;
-        LIKIZO: Decimal;
+        Likizo: Decimal;
         HOUSING: Decimal;
         interest: Decimal;
         principle: Decimal;
@@ -376,7 +403,6 @@ Report 51516179 "Check Off Advice"
         Quick: Decimal;
         karibu: Decimal;
         AssetL: Decimal;
-        Lkizo: Decimal;
         Makeover: Decimal;
         Premium: Decimal;
 

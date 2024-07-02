@@ -74,7 +74,7 @@ Table 51516557 "General Equiries."
         field(27; "Resolved Time"; Time)
         {
         }
-        field(40; "Resolution Details"; text[30])
+        field(40; "Resolution Details"; text[2048])
         {
         }
         field(28; "Caller Reffered To"; Code[50])
@@ -193,9 +193,9 @@ Table 51516557 "General Equiries."
         field(69202; "Escalated User Email"; Text[50])
         {
         }
-        field(69203; "Case Resolution Details"; Text[250])
-        {
-        }
+        // field(69203; "Case Resolution Details"; Text[250])
+        // {
+        // }
         field(69204; "Case Details"; Text[250])
         {
         }
@@ -233,6 +233,7 @@ Table 51516557 "General Equiries."
             OptionCaption = ' ,Low Risk,Medium Risk,High Risk';
             OptionMembers = " ","Low Risk","Medium Risk","High Risk";
         }
+    
 
 
     }

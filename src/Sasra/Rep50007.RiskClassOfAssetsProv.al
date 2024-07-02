@@ -152,7 +152,7 @@ Report 50007 "Risk Class Of Assets & Prov"
                 YearBeginDate := CalcDate('-CY', AsAt);
                 if LoansRegister.Find('-') then begin
                     repeat
-                        Classify.ClassifyLoansSASRA(LoansRegister."Loan  No.", DateFilter);
+                        LoansClassificationCodeUnit.FnClassifyLoan(LoansRegister."Loan  No.", AsAt);
                     until LoansRegister.Next = 0;
                 end;
                 LoanCount := 0;
@@ -238,12 +238,11 @@ Report 50007 "Risk Class Of Assets & Prov"
                 OutstandingLoanPerResc := 0;
                 LoansRegister.Reset;
                 LoansRegister.SetRange(LoansRegister.Rescheduled, true);
-                //  LoansRegister.SETFILTER(LoansRegister."Date filter",DateFilter);
+                LoansRegister.SETFILTER(LoansRegister."Date filter", DateFilter);
                 LoansRegister.SetFilter(LoansRegister."Loans Category-SASRA", '%1', LoansRegister."Loans Category-SASRA"::Perfoming);
                 LoansRegister.SetFilter(LoansRegister."Outstanding Balance", '>%1', 0);
                 LoansRegister.SetFilter(LoansRegister."Issued Date", '<=%1', AsAt);
                 LoansRegister.SetAutocalcFields("Outstanding Balance");
-                LoansRegister.SETFILTER(LoansRegister."Date filter", DateFilter);
                 if LoansRegister.FindSet then begin
                     repeat
                         LoanCountResch := LoanCountResch + 1;
@@ -406,7 +405,8 @@ Report 50007 "Risk Class Of Assets & Prov"
         GRANDTOTAL: Decimal;
         GRANDTOTALCOUNT: Integer;
         PrevMonthDate: Date;
-        Classify: Codeunit "Loan Classification-SASRA";
-    
+        // Classify: Codeunit "Loan Classification-SASRA";
+        LoansClassificationCodeUnit: Codeunit LoansClassificationCodeUnit;
+
 }
 

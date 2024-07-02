@@ -59,10 +59,10 @@ Page 51516371 "Member Statistics FactBox"
                     Style = Ambiguous;
 
                 }
-                field("Housing Contribution"; "Housing Contribution")
-                {
-                    ApplicationArea = Basic;
-                }
+                // field("Housing Contribution"; "Housing Contribution")
+                // {
+                //     ApplicationArea = Basic;
+                // }
                 field("Alpha Savings"; "Alpha Savings")
                 {
                     ApplicationArea = Basic;
@@ -139,6 +139,7 @@ Page 51516371 "Member Statistics FactBox"
                 field("Housing Deposits"; "Housing Deposits")
                 {
                     Style = Ambiguous;
+                    caption='Housing Shares';
                 }
 
                 field("Dividend Amount"; "Dividend Amount")

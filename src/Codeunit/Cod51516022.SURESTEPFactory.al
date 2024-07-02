@@ -192,7 +192,7 @@ Codeunit 51516022 "SURESTEP Factory"
 
     end;
 
-    procedure FnSendSMS(SMSSource: Text; SMSBody: Text; CurrentAccountNo: Text; MobileNumber: Text)
+    procedure FnSendSMS(SMSSource: Text; SMSBody: Text[200]; CurrentAccountNo: Text; MobileNumber: Text)
     var
         SMSMessage: Record "SMS Messages";
         iEntryNo: Integer;

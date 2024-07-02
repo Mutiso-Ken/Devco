@@ -357,7 +357,7 @@ Report 51516043 "Generate Member Tea Batch"
         LoansRegister.Reset();
         LoansRegister.SetRange(LoansRegister."Client Code", BOSAAccountNo);
         LoansRegister.SetFilter(LoansRegister."Loan Disbursement Date", '..' + Format(IssueDate));
-        LoansRegister.SetRange(LoansRegister."Recovery Mode", LoansRegister."Recovery Mode"::Tea);
+        // LoansRegister.SetRange(LoansRegister."Recovery Mode", LoansRegister."Recovery Mode"::Tea);
         LoansRegister.SetFilter(LoansRegister."Loan Product Type", '<>%1', 'OVERDRAFT');
         LoansRegister.SetAutoCalcFields(LoansRegister."Outstanding Balance", LoansRegister."Oustanding Interest", LoansRegister."Interest Paid", LoansRegister."Principal Paid");
         if LoansRegister.Find('-') then begin
@@ -486,7 +486,7 @@ Report 51516043 "Generate Member Tea Batch"
         MemberBalanceAfterPrinciplePay := BalanceAfterPrincipleRecovery;
         LoansRegister.Reset();
         LoansRegister.SetRange(LoansRegister."Client Code", BOSAAccountNo);
-        LoansRegister.SetRange(LoansRegister."Recovery Mode", LoansRegister."Recovery Mode"::Tea);
+       // LoansRegister.SetRange(LoansRegister."Recovery Mode", LoansRegister."Recovery Mode"::Tea);
         LoansRegister.SetFilter(LoansRegister."Loan Product Type", '<>%1', 'OVERDRAFT');
         LoansRegister.SetFilter(LoansRegister."Loan Disbursement Date", '..' + Format(IssueDate));
         LoansRegister.SetAutoCalcFields(LoansRegister."Outstanding Balance", LoansRegister."Oustanding Interest", LoansRegister."Principal Paid");
@@ -1009,7 +1009,7 @@ Report 51516043 "Generate Member Tea Batch"
         LoansRegister.SetRange(LoansRegister."Client Code", BOSAAccountNo);
         LoansRegister.SetFilter(LoansRegister."Loan Disbursement Date", '..' + Format(IssueDate));
         LoansRegister.SetFilter(LoansRegister."Loan Product Type", '%1', 'OVERDRAFT');
-        LoansRegister.SetRange(LoansRegister."Recovery Mode", LoansRegister."Recovery Mode"::Tea);
+       // LoansRegister.SetRange(LoansRegister."Recovery Mode", LoansRegister."Recovery Mode"::Tea);
         LoansRegister.SetAutoCalcFields(LoansRegister."Outstanding Balance", LoansRegister."Oustanding Interest", LoansRegister."Interest Paid", LoansRegister."Principal Paid");
         if LoansRegister.Find('-') then begin
             repeat
@@ -1119,7 +1119,7 @@ Report 51516043 "Generate Member Tea Batch"
         LoansRegister.SetRange(LoansRegister."Client Code", BOSAAccountNo);
         LoansRegister.SetFilter(LoansRegister."Loan Disbursement Date", '..' + Format(IssueDate));
         LoansRegister.SetFilter(LoansRegister."Loan Product Type", '%1', 'OVERDRAFT');
-        LoansRegister.SetRange(LoansRegister."Recovery Mode", LoansRegister."Recovery Mode"::Tea);
+    // LoansRegister.SetRange(LoansRegister."Recovery Mode", LoansRegister."Recovery Mode"::Tea);
         LoansRegister.SetAutoCalcFields(LoansRegister."Outstanding Balance", LoansRegister."Oustanding Interest", LoansRegister."Principal Paid");
         if LoansRegister.Find('-') then begin
             repeat

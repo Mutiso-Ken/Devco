@@ -37,11 +37,14 @@ report 51516057 "MemberWithoutNextOfKin"
             trigger OnAfterGetRecord();
             var
             begin
-
+                EntryNo := EntryNo + 1;
                 NextOfKin.Reset();
                 NextOfKin.SetRange(NextOfKin."Account No", "No.");
-                if NextOfKin.FindSet() then
-                    CurrReport.Skip();
+                if NextOfKin.Find('-') then
+                    if NextOfKin.IsEmpty = false then begin
+                        CurrReport.Skip();
+                    end;
+
             end;
 
         }

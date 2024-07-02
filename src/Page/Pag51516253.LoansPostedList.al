@@ -320,10 +320,10 @@ Page 51516253 "Loans Posted List"
         }
     }
 
-    trigger OnAfterGetRecord()
-    begin
+    // trigger OnAfterGetRecord()
+    // begin
 
-    end;
+    // end;
 
     var
         i: Integer;

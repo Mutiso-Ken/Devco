@@ -178,7 +178,7 @@ Codeunit 51516018 "SURESTEPAutomation"
             LoanApp.LockTable;
             LoanApp.Reset;
             LoanApp.SetCurrentkey(Source, "Issued Date", "Loan Product Type", "Client Code", "Staff No", "Employer Code");
-            LoanApp.SetRange(LoanApp."Recovery Mode", LoanApp."recovery mode"::"Direct Debits");
+            // LoanApp.SetRange(LoanApp."Recovery Mode", LoanApp."recovery mode"::"Direct Debits");
             LoanApp.SetRange(LoanApp."Client Code", BNumber);
             if LoanApp.Find('-') then begin
                 repeat

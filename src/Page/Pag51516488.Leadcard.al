@@ -114,44 +114,44 @@ Page 51516488 "Lead card"
                     ApplicationArea = Basic;
                     Caption = 'Full Name';
                     ShowMandatory = true;
-                    Editable=false;
+                    Editable = false;
                 }
                 field("Phone No"; "Phone No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Mobile No';
                     ShowMandatory = true;
-                    Editable=false;
+                    Editable = false;
                 }
                 field("Date Of Birth"; "Date Of Birth")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Date Of Birth';
                     ShowMandatory = true;
-                    Editable=false;
+                    Editable = false;
                 }
                 field(Gender; Gender)
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
-                    Editable=false;
+                    Editable = false;
                 }
                 field(Email; Email)
                 {
                     ApplicationArea = Basic;
-                    Editable=false;
+                    Editable = false;
                 }
                 field(Address; Address)
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
-                    Editable=false;
+                    Editable = false;
                 }
                 field("ID No."; "ID No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'ID No';
-                    Editable=false;
+                    Editable = false;
                     ShowMandatory = true;
                 }
                 field("Escalate Case;"; "Escalate Case")
@@ -159,7 +159,7 @@ Page 51516488 "Lead card"
                     ApplicationArea = Basic;
                     Caption = 'Escalate Case';
                     ShowMandatory = true;
-                  
+
                     trigger OnValidate()
                     begin
                         if "Escalate Case" = true then begin
@@ -252,7 +252,7 @@ Page 51516488 "Lead card"
 
                 end;
             }
-            action("Create ")
+            action("Create")
             {
                 ApplicationArea = Basic;
                 Caption = 'Escalate Case';
@@ -311,7 +311,7 @@ Page 51516488 "Lead card"
                         Message('Action Cancelled !');
                         exit;
                     end else begin
-                        TestField("Case Resolution Details");
+                        TestField("Resolution Details");
                         if Class = Class::" " then begin
                             Error('Case Must be classified as either low,medium or high risk');
                         end;

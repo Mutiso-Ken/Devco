@@ -8,198 +8,198 @@ Report 50011 "CAPITAL ADEQUACY RETURN"
     dataset
     {
 #pragma warning disable AL0275
-        dataitem(Company;"Company Information")
+        dataitem(Company; "Company Information")
 #pragma warning restore AL0275
         {
             column(ReportForNavId_1; 1)
             {
             }
-            column(Name;Company.Name)
+            column(Name; Company.Name)
             {
             }
-            column(FinancialYear;FinancialYear)
+            column(FinancialYear; FinancialYear)
             {
             }
-            column(AsAt;AsAt)
+            column(AsAt; AsAt)
             {
             }
-            column(Date;Date)
+            column(Date; Date)
             {
             }
-            column(ShareCapital;ShareCapital)
+            column(ShareCapital; ShareCapital)
             {
             }
-            column(StatutoryReserve;StatutoryReserve)
+            column(StatutoryReserve; StatutoryReserve)
             {
             }
-            column(Otherreserves;Otherreserves)
+            column(Otherreserves; Otherreserves)
             {
             }
             column(retainedEarnins; retainedEarnins)
             {
             }
-            column(NetSurplusaftertax;NetSurplusaftertax)
+            column(NetSurplusaftertax; NetSurplusaftertax)
             {
             }
-            column(LoansandAdvances;LoansandAdvances)
+            column(LoansandAdvances; LoansandAdvances)
             {
             }
-            column(totalassetsPBSheet;totalassetsPBSheet)
+            column(totalassetsPBSheet; totalassetsPBSheet)
             {
             }
-            column(Cash;Cash)
+            column(Cash; Cash)
             {
             }
-            column(PropertyandEquipment;PropertyandEquipment)
+            column(PropertyandEquipment; PropertyandEquipment)
             {
             }
-            column(GovernmentSecurities;GovernmentSecurities)
+            column(GovernmentSecurities; GovernmentSecurities)
             {
             }
-            column(DepositsandBalancesatOtherInstitutions;DepositsandBalancesatOtherInstitutions)
+            column(DepositsandBalancesatOtherInstitutions; DepositsandBalancesatOtherInstitutions)
             {
             }
             column(Otherassets; Otherassets)
             {
             }
-            column(CapitalGrants;CapitalGrants)
+            column(CapitalGrants; CapitalGrants)
             {
             }
-            column(InvestmentsinSubsidiary;InvestmentsinSubsidiary  )
+            column(InvestmentsinSubsidiary; InvestmentsinSubsidiary)
             {
             }
-            column(OFFBALANCESHEETASSETS;OFFBALANCESHEETASSETS)
+            column(OFFBALANCESHEETASSETS; OFFBALANCESHEETASSETS)
             {
             }
-            column(TOTALOnBalanceSheet;TOTALOnBalanceSheet)
+            column(TOTALOnBalanceSheet; TOTALOnBalanceSheet)
             {
             }
-            column(Kuscoshares;Kuscoshares)
+            column(Kuscoshares; Kuscoshares)
             {
             }
-            column(OtherDeductions;OtherDeductions)
+            column(OtherDeductions; OtherDeductions)
             {
             }
-            column(Sub_Total;Sub_Total )
+            column(Sub_Total; Sub_Total)
             {
             }
-            column(TotalDeductions;TotalDeductions)
+            column(TotalDeductions; TotalDeductions)
             {
             }
-            column(CORECAPITAL;CORECAPITAL)
+            column(CORECAPITAL; CORECAPITAL)
             {
             }
-            column(RetainedearningsandDisclosedreserves;RetainedearningsandDisclosedreserves)
+            column(RetainedearningsandDisclosedreserves; RetainedearningsandDisclosedreserves)
             {
             }
-            column(TotalAssets;TotalAssets)
+            column(TotalAssets; TotalAssets)
             {
             }
-            column(TotalDepositsLiabilities;TotalDepositsLiabilities )
+            column(TotalDepositsLiabilities; TotalDepositsLiabilities)
             {
             }
-            column(CorecapitaltoAssetsRatio;CorecapitaltoAssetsRatio )
+            column(CorecapitaltoAssetsRatio; CorecapitaltoAssetsRatio)
             {
             }
-            column(MinimumCoreCapitaltoAssetsRatioRequirement;MinimumCoreCapitaltoAssetsRatioRequirement)
+            column(MinimumCoreCapitaltoAssetsRatioRequirement; MinimumCoreCapitaltoAssetsRatioRequirement)
             {
             }
-            column(Excess1;Excess1)
+            column(Excess1; Excess1)
             {
             }
-            column(RetainedearningsanddisclosedreservestoCorecapital;RetainedearningsanddisclosedreservestoCorecapital )
+            column(RetainedearningsanddisclosedreservestoCorecapital; RetainedearningsanddisclosedreservestoCorecapital)
             {
             }
-            column(MinimumRetainedearningsanddisclosed;MinimumRetainedearningsanddisclosed)
+            column(MinimumRetainedearningsanddisclosed; MinimumRetainedearningsanddisclosed)
             {
             }
-            column(Excess2;Excess2)
+            column(Excess2; Excess2)
             {
             }
-            column(CorecapitatoDepositsRatio;CorecapitatoDepositsRatio)
+            column(CorecapitatoDepositsRatio; CorecapitatoDepositsRatio)
             {
             }
-            column(MinimumCoreCapitaltoDeposits;MinimumCoreCapitaltoDeposits )
+            column(MinimumCoreCapitaltoDeposits; MinimumCoreCapitaltoDeposits)
             {
             }
-            column(Excess;Excess)
+            column(Excess; Excess)
             {
             }
-            column(investment;investment)
+            column(investment; investment)
             {
             }
-            column(DifferenceNew;DifferenceNew)
+            column(DifferenceNew; DifferenceNew)
             {
             }
 
             trigger OnAfterGetRecord()
             begin
-                
+
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Capital adequecy",'%1',GLAccount."capital adequecy"::ShareCapital);
+                GLAccount.SetFilter(GLAccount."Capital adequecy", '%1', GLAccount."capital adequecy"::ShareCapital);
                 if GLAccount.FindSet then begin
-                  repeat
-                    ShareCapitalValue:=0;
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",'<=%1',AsAt);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      ShareCapitalValue:=GLEntry.Amount*-1;
-                      end;
-                      ShareCapital:=ShareCapital+ShareCapitalValue;
-                
-                   until GLAccount.Next = 0;
-                
+                    repeat
+                        ShareCapitalValue := 0;
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            ShareCapitalValue := GLEntry.Amount * -1;
+                        end;
+                        ShareCapital := ShareCapital + ShareCapitalValue;
+
+                    until GLAccount.Next = 0;
+
                 end;
-                
+
                 // statutory reserve
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Capital adequecy",'%1',GLAccount."capital adequecy"::StatutoryReserve);
+                GLAccount.SetFilter(GLAccount."Capital adequecy", '%1', GLAccount."capital adequecy"::StatutoryReserve);
                 if GLAccount.FindSet then begin
-                  repeat
-                    ShareCapitalValue:=0;
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",'<=%1',AsAt);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      StatutoryReserve+=GLEntry.Amount*-1;
-                      end;
-                
-                   until GLAccount.Next = 0;
-                
+                    repeat
+                        ShareCapitalValue := 0;
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            StatutoryReserve += GLEntry.Amount * -1;
+                        end;
+
+                    until GLAccount.Next = 0;
+
                 end;
                 //retained earnings
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Capital adequecy",'%1',GLAccount."capital adequecy"::RetainedEarnings);
+                GLAccount.SetFilter(GLAccount."Capital adequecy", '%1', GLAccount."capital adequecy"::RetainedEarnings);
                 if GLAccount.FindSet then begin
-                  repeat
-                    ShareCapitalValue:=0;
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",'<=%1',AsAt);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      retainedEarnins+=GLEntry.Amount*-1;
-                      end;
-                
-                   until GLAccount.Next = 0;
-                
+                    repeat
+                        ShareCapitalValue := 0;
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            retainedEarnins += GLEntry.Amount * -1;
+                        end;
+
+                    until GLAccount.Next = 0;
+
                 end;
-                
-                 //current year surplus
-                NetSurplusaftertax:=0;
+
+                //current year surplus
+                NetSurplusaftertax := 0;
                 GLAccount.Reset;
-                GLAccount.SetRange(GLAccount."No.",'20800');
-                GLAccount.SetFilter(GLAccount."Date Filter",'<=%1',AsAt);
+                GLAccount.SetRange(GLAccount."No.", '20800');
+                GLAccount.SetFilter(GLAccount."Date Filter", '<=%1', AsAt);
                 if GLAccount.FindSet then begin
-                  GLAccount.CalcFields(GLAccount."Net Change");
-                  NetSurplusaftertax:=(NetSurplusaftertax+GLAccount."Net Change")*0.5;
-                  end;
-                
-                
-                 //MESSAGE('net year supp%1',NetSurplusaftertax);
+                    GLAccount.CalcFields(GLAccount."Net Change");
+                    NetSurplusaftertax := (NetSurplusaftertax + GLAccount."Net Change") * 0.5;
+                end;
+
+
+                //MESSAGE('net year supp%1',NetSurplusaftertax);
                 // GLAccount.RESET;
                 // GLAccount.SETRANGE(GLAccount."No.",'202450');
                 // GLAccount.SETFILTER(GLAccount."Date Filter",Datefilter);
@@ -211,8 +211,8 @@ Report 50011 "CAPITAL ADEQUACY RETURN"
                 //    UNTIL GLAccount.NEXT = 0;
                 //
                 //  END;
-                
-                 //Loans and Advances
+
+                //Loans and Advances
                 /* LoansRegister.RESET;
                  LoansRegister.SETFILTER(LoansRegister."Date filter",Datefilter);
                  LoansRegister.SETAUTOCALCFIELDS("Outstanding Balance");
@@ -222,230 +222,249 @@ Report 50011 "CAPITAL ADEQUACY RETURN"
                      UNTIL LoansRegister.NEXT = 0;
                 
                 END;*/
+
+
+                //allowance for loan loss
+                AllowanceforLoanLoss := 0;
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Capital adequecy",'%1',GLAccount."capital adequecy"::LoansandAdvances);
+                GLAccount.SetFilter(GLAccount.StatementOfFP, '%1', GLAccount.Statementoffp::AllowanceforLoanLoss);
                 if GLAccount.FindSet then begin
-                  repeat
-                    ShareCapitalValue:=0;
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",'<=%1',AsAt);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      LoansandAdvances+=GLEntry.Amount;
-                      end;
-                
-                   until GLAccount.Next = 0;
-                
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', Asat);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            AllowanceforLoanLoss += -GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+
                 end;
-                
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Capital adequecy", '%1', GLAccount."capital adequecy"::LoansandAdvances);
+                if GLAccount.FindSet then begin
+                    repeat
+                        ShareCapitalValue := 0;
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            LoansandAdvances += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+
+                end;
+                LoansandAdvances := LoansandAdvances - AllowanceforLoanLoss;
                 //total assets as per the balance sheet
-                totalassetsPBSheet:=0;
+                totalassetsPBSheet := 0;
                 GLAccount.Reset;
-                GLAccount.SetRange(GLAccount."No.",'14300');
-                GLAccount.SetFilter(GLAccount."Date Filter",'<=%1',AsAt);
+                GLAccount.SetRange(GLAccount."No.", '14300');
+                GLAccount.SetFilter(GLAccount."Date Filter", '<=%1', AsAt);
                 if GLAccount.FindSet then begin
-                  GLAccount.CalcFields(GLAccount."Net Change");
-                  totalassetsPBSheet:=totalassetsPBSheet+GLAccount."Net Change";
-                  end;
-                
-                  //Cash (Local + Foreign Currency)
-                  GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Capital adequecy",'%1',GLAccount."capital adequecy"::Cash);
-                if GLAccount.FindSet then begin
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",'<=%1',AsAt);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      Cash+=GLEntry.Amount;
-                      end;
-                
-                   until GLAccount.Next = 0;
-                
+                    GLAccount.CalcFields(GLAccount."Net Change");
+                    totalassetsPBSheet := totalassetsPBSheet + GLAccount."Net Change";
                 end;
-                
-                 //INVESTMENT IN SUBSIDIARY
-                 InvestmentsinSubsidiary:=0;
+
+                //Cash (Local + Foreign Currency)
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Capital adequecy",'%1',GLAccount."capital adequecy"::InvestmentsinSubsidiary);
+                GLAccount.SetFilter(GLAccount."Capital adequecy", '%1', GLAccount."capital adequecy"::Cash);
                 if GLAccount.FindSet then begin
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",'<=%1',AsAt);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      InvestmentsinSubsidiary+=GLEntry.Amount;
-                      end;
-                
-                   until GLAccount.Next = 0;
-                
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            Cash += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+
+                end;
+
+                //INVESTMENT IN SUBSIDIARY
+                InvestmentsinSubsidiary := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Capital adequecy", '%1', GLAccount."capital adequecy"::InvestmentsinSubsidiary);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            InvestmentsinSubsidiary += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+
                 end;
                 //MESSAGE('%1',InvestmentsinSubsidiary);
-                
-                 //KUSCO SHARES
-                 Kuscoshares:=0;
+
+                //KUSCO SHARES
+                Kuscoshares := 0;
                 GLAccount.Reset;
-                GLAccount.SetRange(GLAccount."No.",'12301');
+                GLAccount.SetRange(GLAccount."No.", '12301');
                 if GLAccount.FindSet then begin
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",'<=%1',AsAt);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      Kuscoshares+=GLEntry.Amount;
-                      end;
-                
-                   until GLAccount.Next = 0;
-                
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            Kuscoshares += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+
                 end;
-                
+
                 //Other reserves
-                Otherreserves:=0;
+                Otherreserves := 0;
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Capital adequecy",'%1',GLAccount."capital adequecy"::Otherreserves);
+                GLAccount.SetFilter(GLAccount."Capital adequecy", '%1', GLAccount."capital adequecy"::Otherreserves);
                 if GLAccount.FindSet then begin
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",'<=%1',AsAt);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      Otherreserves+=GLEntry.Amount*-1;
-                      end;
-                
-                   until GLAccount.Next = 0;
-                
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            Otherreserves += GLEntry.Amount * -1;
+                        end;
+
+                    until GLAccount.Next = 0;
+
                 end;
-                
+
                 //gov securities
-                GovernmentSecurities:=0;
+                GovernmentSecurities := 0;
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Capital adequecy",'%1',GLAccount."capital adequecy"::GovernmentSecurities);
+                GLAccount.SetFilter(GLAccount."Capital adequecy", '%1', GLAccount."capital adequecy"::GovernmentSecurities);
                 if GLAccount.FindSet then begin
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",'<=%1',AsAt);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      GovernmentSecurities+=GLEntry.Amount;
-                      end;
-                
-                   until GLAccount.Next = 0;
-                
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            GovernmentSecurities += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+
                 end;
-                
+
                 //balances at other institutions
-                DepositsandBalancesatOtherInstitutions:=0;
+                DepositsandBalancesatOtherInstitutions := 0;
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Capital adequecy",'%1',GLAccount."capital adequecy"::DepositsandBalancesatOtherInstitutions);
+                GLAccount.SetFilter(GLAccount."Capital adequecy", '%1', GLAccount."capital adequecy"::DepositsandBalancesatOtherInstitutions);
                 if GLAccount.FindSet then begin
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",'<=%1',AsAt);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      DepositsandBalancesatOtherInstitutions+=GLEntry.Amount;
-                      end;
-                
-                   until GLAccount.Next = 0;
-                
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            DepositsandBalancesatOtherInstitutions += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+
                 end;
-                
+
                 //other assets
-                Otherassets:=0;
+                Otherassets := 0;
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Capital adequecy",'%1',GLAccount."capital adequecy"::Otherassets);
+                GLAccount.SetFilter(GLAccount."Capital adequecy", '%1', GLAccount."capital adequecy"::Otherassets);
                 if GLAccount.FindSet then begin
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",'<=%1',AsAt);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      Otherassets+=GLEntry.Amount;
-                      end;
-                
-                   until GLAccount.Next = 0;
-                
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            Otherassets += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+
                 end;
-                
+
                 //property and equipment
-                PropertyandEquipment:=0;
+                PropertyandEquipment := 0;
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Capital adequecy",'%1',GLAccount."capital adequecy"::"PropertyandEquipment ");
+                GLAccount.SetFilter(GLAccount."Capital adequecy", '%1', GLAccount."capital adequecy"::"PropertyandEquipment ");
                 if GLAccount.FindSet then begin
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",'<=%1',AsAt);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      PropertyandEquipment+=GLEntry.Amount;
-                      end;
-                
-                   until GLAccount.Next = 0;
-                
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            PropertyandEquipment += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+
                 end;
                 //deposit liabilities
-                TotalDepositsLiabilities:=0;
+                TotalDepositsLiabilities := 0;
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Capital adequecy",'%1',GLAccount."capital adequecy"::TotalDepositsLiabilities);
+                GLAccount.SetFilter(GLAccount."Capital adequecy", '%1', GLAccount."capital adequecy"::TotalDepositsLiabilities);
                 if GLAccount.FindSet then begin
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",'<=%1',AsAt);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      TotalDepositsLiabilities+=GLEntry.Amount*-1;
-                      end;
-                
-                   until GLAccount.Next = 0;
-                
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            TotalDepositsLiabilities += GLEntry.Amount * -1;
+                        end;
+
+                    until GLAccount.Next = 0;
+
                 end;
-                
+
                 //investment
                 //TotalDepositsLiabilities:=0;
                 GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Capital adequecy",'%1',GLAccount."capital adequecy"::Investments);
+                GLAccount.SetFilter(GLAccount."Capital adequecy", '%1', GLAccount."capital adequecy"::Investments);
                 if GLAccount.FindSet then begin
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",'<=%1',AsAt);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      investment+=GLEntry.Amount;
-                      end;
-                
-                   until GLAccount.Next = 0;
-                
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            investment += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+
                 end;
-                TOTALOnBalanceSheet:=Cash+GovernmentSecurities+DepositsandBalancesatOtherInstitutions+LoansandAdvances+/*InvestmentsinSubsidiary+*/Otherassets+PropertyandEquipment+investment+Kuscoshares;
-                Sub_Total:=ShareCapital+CapitalGrants+retainedEarnins+NetSurplusaftertax+StatutoryReserve+Otherreserves;
-                TotalDeductions:=InvestmentsinSubsidiary+OtherDeductions;
+                TOTALOnBalanceSheet := Cash + GovernmentSecurities + DepositsandBalancesatOtherInstitutions + LoansandAdvances +/*InvestmentsinSubsidiary+*/Otherassets + PropertyandEquipment + investment + Kuscoshares;
+                Sub_Total := ShareCapital + CapitalGrants + retainedEarnins + NetSurplusaftertax + StatutoryReserve + Otherreserves;
+                TotalDeductions := InvestmentsinSubsidiary + OtherDeductions;
                 //MESSAGE('%1',InvestmentsinSubsidiary);
-                CORECAPITAL:=Sub_Total-InvestmentsinSubsidiary;
-                RetainedearningsandDisclosedreserves:=CapitalGrants+retainedEarnins+NetSurplusaftertax+StatutoryReserve+Otherreserves;//retainedEarnins;
-                TotalAssets:=totalassetsPBSheet+OFFBALANCESHEETASSETS;
-                CorecapitaltoAssetsRatio:=CORECAPITAL/TotalAssets;
-                MinimumCoreCapitaltoAssetsRatioRequirement:=0.08;
-                Excess1:=CorecapitaltoAssetsRatio-MinimumCoreCapitaltoAssetsRatioRequirement;
+                CORECAPITAL := Sub_Total - InvestmentsinSubsidiary;
+                RetainedearningsandDisclosedreserves := CapitalGrants + retainedEarnins + NetSurplusaftertax + StatutoryReserve + Otherreserves;//retainedEarnins;
+                totalassetsPBSheet := totalassetsPBSheet - AllowanceforLoanLoss;
+                TotalAssets := totalassetsPBSheet + OFFBALANCESHEETASSETS;
+                CorecapitaltoAssetsRatio := CORECAPITAL / TotalAssets;
+                MinimumCoreCapitaltoAssetsRatioRequirement := 0.08;
+                Excess1 := CorecapitaltoAssetsRatio - MinimumCoreCapitaltoAssetsRatioRequirement;
                 //RetainedearningsanddisclosedreservestoCorecapital :=(RetainedearningsandDisclosedreserves+StatutoryReserve+Otherreserves)/CORECAPITAL;
-                RetainedearningsanddisclosedreservestoCorecapital :=RetainedearningsandDisclosedreserves/CORECAPITAL;
+                RetainedearningsanddisclosedreservestoCorecapital := RetainedearningsandDisclosedreserves / CORECAPITAL;
                 //MESSAGE('%1',RetainedearningsanddisclosedreservestoCorecapital);
-                MinimumRetainedearningsanddisclosed:=0.5;
-                Excess2:=RetainedearningsanddisclosedreservestoCorecapital-MinimumRetainedearningsanddisclosed;
-                CorecapitatoDepositsRatio:=CORECAPITAL/TotalDepositsLiabilities;
-                MinimumCoreCapitaltoDeposits:=0.05;
-                Excess:=CorecapitatoDepositsRatio-MinimumCoreCapitaltoDeposits;
-                DifferenceNew:=TOTALOnBalanceSheet-totalassetsPBSheet;
+                MinimumRetainedearningsanddisclosed := 0.5;
+                Excess2 := RetainedearningsanddisclosedreservestoCorecapital - MinimumRetainedearningsanddisclosed;
+                CorecapitatoDepositsRatio := CORECAPITAL / TotalDepositsLiabilities;
+                MinimumCoreCapitaltoDeposits := 0.05;
+                Excess := CorecapitatoDepositsRatio - MinimumCoreCapitaltoDeposits;
+                DifferenceNew := TOTALOnBalanceSheet - totalassetsPBSheet;
 
             end;
         }
@@ -458,7 +477,7 @@ Report 50011 "CAPITAL ADEQUACY RETURN"
         {
             area(content)
             {
-                field(AsAt;AsAt)
+                field(AsAt; AsAt)
                 {
                     ApplicationArea = Basic;
                     Caption = 'As At';
@@ -482,10 +501,10 @@ Report 50011 "CAPITAL ADEQUACY RETURN"
         Datefilter:='..'+FORMAT(AsAt);
         CurrentYearFilter:=FORMAT(StartDate)+'..'+FORMAT(AsAt);
         */
-        Date:=CalcDate('-CY',AsAt);
-        Datefilter:=Format(Date)+'..'+Format(AsAt);
-        DateFilter11:=Format(Date)+'..'+Format(AsAt);
-        FinancialYear:=Date2dmy(AsAt,3);
+        Date := CalcDate('-CY', AsAt);
+        Datefilter := Format(Date) + '..' + Format(AsAt);
+        DateFilter11 := Format(Date) + '..' + Format(AsAt);
+        FinancialYear := Date2dmy(AsAt, 3);
 
     end;
 
@@ -540,5 +559,6 @@ Report 50011 "CAPITAL ADEQUACY RETURN"
         Excess: Decimal;
         DifferenceNew: Decimal;
         Kuscoshares: Decimal;
+        AllowanceforLoanLoss: Decimal;
 }
 

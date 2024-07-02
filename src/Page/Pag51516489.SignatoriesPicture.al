@@ -150,6 +150,7 @@ page 51516489 "Signatories Picture"
         DeleteExportEnabled: Boolean;
         MimeTypeTok: Label 'image/jpeg', Locked = true;
         DownloadImageTxt: label 'Download image';
+        dse:record "Fixed Asset";
 
     procedure TakeNewPicture()
     var

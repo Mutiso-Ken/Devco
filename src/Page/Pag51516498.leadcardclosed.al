@@ -214,120 +214,122 @@ Page 51516498 "lead card closed"
         }
     }
 
-    actions
-    {
-        area(creation)
-        {
-            action("Email Escalted")
-            {
-                ApplicationArea = Basic;
-                Promoted = true;
-                Image = Email;
-                PromotedIsBig = true;
-                PromotedOnly = true;
-                Caption = 'Attach Email To Delegate';
-                PromotedCategory = process;
-                RunObject = page "Email Editor";
-                Enabled = IsEscalated;
-                trigger OnAction()
-                begin
+    // actions
+    // {
+        
+    //     area(creation)
+    //     {
 
-                end;
-            }
-            action("Create ")
-            {
-                ApplicationArea = Basic;
-                Caption = 'Forward Case';
-                Image = FixedAssetLedger;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedOnly = true;
-                Enabled = IsEscalated;
-                PromotedCategory = Process;
+    //         action("Email Escalted")
+    //         {
+    //             ApplicationArea = Basic;
+    //             Promoted = true;
+    //             Image = Email;
+    //             PromotedIsBig = true;
+    //             PromotedOnly = true;
+    //             Caption = 'Attach Email To Delegate';
+    //             PromotedCategory = process;
+    //             RunObject = page "Email Editor";
+    //             Enabled = IsEscalated;
+    //             trigger OnAction()
+    //             begin
 
-                trigger OnAction()
-                begin
+    //             end;
+    //         }
+    //         action("Create ")
+    //         {
+    //             ApplicationArea = Basic;
+    //             Caption = 'Forward Case';
+    //             Image = FixedAssetLedger;
+    //             Promoted = true;
+    //             PromotedIsBig = true;
+    //             PromotedOnly = true;
+    //             Enabled = IsEscalated;
+    //             PromotedCategory = Process;
 
-                end;
-            }
-            action("Close Case;")
-            {
-                ApplicationArea = Basic;
-                Promoted = true;
-                Image = Email;
-                PromotedIsBig = true;
-                PromotedOnly = true;
-                Caption = 'Close Case';
-                PromotedCategory = process;
-                Enabled = false;
-                trigger OnAction()
-                begin
-                    if (UserId = "Captured By") or (UserId = "Delegated To") then begin
-                    end else begin
-                        Error('Only the staff who opened the case or case delegated to can close this ticket');
-                    end;
-                    //--------------------------------------------------------------------
-                    if Confirm('Are you sure to Mark this ticket as resolved?', false) = false then begin
-                        Message('Action Cancelled !');
-                        exit;
-                    end else begin
-                        Status := Status::Resolved;
-                        "Lead Status" := "Lead Status"::Closed;
-                        "Resolved by" := UserId;
-                        "Resolved Date" := today;
-                        "Resolved Time" := time;
-                        "Date Resolved" := today;
-                        "Time Resolved" := time;
-                        Modify(true);
-                        //....................................................
-                        //Send sms of case resolution
-                        FnSendSMS();
-                    end;
+    //             trigger OnAction()
+    //             begin
 
-                end;
-            }
-            action("Open Member Page")
-            {
-                ApplicationArea = Basic;
-                Promoted = true;
-                Image = Card;
-                PromotedIsBig = true;
-                PromotedOnly = true;
-                Caption = 'Open Member Page';
-                PromotedCategory = process;
-                RunObject = page "Member Account Card";
-                Enabled = IsEnabled;
-                trigger OnAction()
-                begin
+    //             end;
+    //         }
+    //         action("Close Case;")
+    //         {
+    //             ApplicationArea = Basic;
+    //             Promoted = true;
+    //             Image = Email;
+    //             PromotedIsBig = true;
+    //             PromotedOnly = true;
+    //             Caption = 'Close Case';
+    //             PromotedCategory = process;
+    //             Enabled = false;
+    //             trigger OnAction()
+    //             begin
+    //                 if (UserId = "Captured By") or (UserId = "Delegated To") then begin
+    //                 end else begin
+    //                     Error('Only the staff who opened the case or case delegated to can close this ticket');
+    //                 end;
+    //                 //--------------------------------------------------------------------
+    //                 if Confirm('Are you sure to Mark this ticket as resolved?', false) = false then begin
+    //                     Message('Action Cancelled !');
+    //                     exit;
+    //                 end else begin
+    //                     Status := Status::Resolved;
+    //                     "Lead Status" := "Lead Status"::Closed;
+    //                     "Resolved by" := UserId;
+    //                     "Resolved Date" := today;
+    //                     "Resolved Time" := time;
+    //                     "Date Resolved" := today;
+    //                     "Time Resolved" := time;
+    //                     Modify(true);
+    //                     //....................................................
+    //                     //Send sms of case resolution
+    //                     FnSendSMS();
+    //                 end;
 
-                end;
-            }
-            action("FOSA Statement")
-            {
-                ApplicationArea = Basic;
-                Promoted = true;
-                Image = Report;
-                PromotedIsBig = true;
-                PromotedOnly = true;
-                Caption = 'FOSA Statement';
-                PromotedCategory = process;
-                Enabled = IsEnabled;
-                trigger OnAction()
-                var
-                    VendorTable: Record Vendor;
-                begin
-                    VendorTable.Reset();
-                    VendorTable.SetRange(VendorTable."No.", "Fosa account");
-                    if VendorTable.Find('-') = true then begin
-                        Report.Run(51516248, true, false, VendorTable);
-                    end else
-                        if VendorTable.Find('-') = false then begin
-                            Error('There is No FOSA Account associated with this client');
-                        end
-                end;
-            }
-        }
-    }
+    //             end;
+    //         }
+    //         action("Open Member Page")
+    //         {
+    //             ApplicationArea = Basic;
+    //             Promoted = true;
+    //             Image = Card;
+    //             PromotedIsBig = true;
+    //             PromotedOnly = true;
+    //             Caption = 'Open Member Page';
+    //             PromotedCategory = process;
+    //             RunObject = page "Member Account Card";
+    //             Enabled = IsEnabled;
+    //             trigger OnAction()
+    //             begin
+
+    //             end;
+    //         }
+    //         action("FOSA Statement")
+    //         {
+    //             ApplicationArea = Basic;
+    //             Promoted = true;
+    //             Image = Report;
+    //             PromotedIsBig = true;
+    //             PromotedOnly = true;
+    //             Caption = 'FOSA Statement';
+    //             PromotedCategory = process;
+    //             Enabled = IsEnabled;
+    //             trigger OnAction()
+    //             var
+    //                 VendorTable: Record Vendor;
+    //             begin
+    //                 VendorTable.Reset();
+    //                 VendorTable.SetRange(VendorTable."No.", "Fosa account");
+    //                 if VendorTable.Find('-') = true then begin
+    //                     Report.Run(51516248, true, false, VendorTable);
+    //                 end else
+    //                     if VendorTable.Find('-') = false then begin
+    //                         Error('There is No FOSA Account associated with this client');
+    //                     end
+    //             end;
+    //         }
+    //     }
+    // }
 
     trigger OnAfterGetRecord()
     begin

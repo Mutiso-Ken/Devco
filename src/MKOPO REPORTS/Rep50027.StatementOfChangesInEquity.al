@@ -19,6 +19,8 @@ report 50027 StatementOfChangesInEquity
             }
             column(LShareCapital; LShareCapital)
             { }
+            column(RLTransfertoStatury; RLTransfertoStatury) { }
+            column(RTransfertoStatury; RTransfertoStatury) { }
 
             column(contShareCapital; contShareCapital)
             { }
@@ -51,6 +53,12 @@ report 50027 StatementOfChangesInEquity
             }
             column(StartofPreviousyear; StartofPreviousyear) { }
             column(StartofThisYear; StartofThisYear) { }
+            column(Proposeddividends; Proposeddividends) { }
+            column(LProposeddividends; LProposeddividends) { }
+            column(Honoraria; Honoraria) { }
+            column(LHonoraria; LHonoraria) { }
+            column(Surplus; Surplus) { }
+            column(LSurplus; LSurplus) { }
             trigger OnAfterGetRecord()
             var
                 myInt: Integer;
@@ -148,7 +156,7 @@ report 50027 StatementOfChangesInEquity
                     repeat
                         GLEntry.Reset;
                         GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', ThisYear);
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', AsAt);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
                             PriorYearAdjustment += 1 * GLEntry.Amount;
@@ -162,7 +170,7 @@ report 50027 StatementOfChangesInEquity
                     repeat
                         GLEntry.Reset;
                         GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', StartofPreviousyear);
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
                             LPriorYearAdjustment += 1 * GLEntry.Amount;
@@ -181,10 +189,10 @@ report 50027 StatementOfChangesInEquity
                     repeat
                         GLEntry.Reset;
                         GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', ThisYear);
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', StartofThisYear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            RetainedEarnings += GLEntry.Amount;
+                            RetainedEarnings += -1 * GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
                 end;
@@ -213,7 +221,7 @@ report 50027 StatementOfChangesInEquity
                     repeat
                         GLEntry.Reset;
                         GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', ThisYear);
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', StartofThisYear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
                             StatutoryReserve += -1 * GLEntry.Amount;
@@ -240,15 +248,167 @@ report 50027 StatementOfChangesInEquity
                 //End Of Retained Earnings
 
                 //Transfer to Statutory
-                TransfertoStatury := -1 * (RetainedEarnings * 0.2);
-                LTransfertoStatury := -1 * (LRetainedEarnings * 0.2);
+                TransfertoStatury := (RetainedEarnings * 0.2);
+                LTransfertoStatury := (LRetainedEarnings * 0.2);
+
+                RTransfertoStatury := -1 * TransfertoStatury;
+                RLTransfertoStatury := -LTransfertoStatury;
 
 
                 //End of Transfer to Statutory
 
                 //calculate surplus for the year
 
+
+                //Suplus
+
+                Surplus := 0;
+
+                //Incomes
+                Incomes := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Financials, '%1', GLAccount.Financials::Revenue);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            Incomes += -1 * GLEntry.Amount;
+
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+
+                //Expense
+                Expenses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Financials, '%1', GLAccount.Financials::Expenses);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            Expenses += GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+
+                Surplus := Incomes - Expenses;
+
+
+                //Suplus
+
+                LSurplus := 0;
+
+                //Incomes
+                Incomes := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Financials, '%1', GLAccount.Financials::Revenue);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            LIncomes += -1 * GLEntry.Amount;
+
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+
+                //Expense
+                LExpenses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.Financials, '%1', GLAccount.Financials::Expenses);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            LExpenses += GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+                LSurplus := LIncomes - LExpenses;
                 //calculate surplus for the year
+                //Proposed Dividends
+
+                //contribution as at end of Last year
+                BalSharecapital := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.FinancedBy, '%1', GLAccount.FinancedBy::Sharecapital);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            BalSharecapital += -1 * GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+
+                LBalSharecapital := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.FinancedBy, '%1', GLAccount.FinancedBy::Sharecapital);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            LBalSharecapital += -1 * GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+                SaccoInfo.Get();
+                Proposeddividends := 0;
+                LProposeddividends := 0;
+                Proposeddividends := -(BalSharecapital * (SaccoInfo."Dividends Interest" * 0.01));
+                LProposeddividends := -(LBalSharecapital * (SaccoInfo."Previous Dividends Interest" * 0.01));
+
+                //End of Proposed Dividends
+
+                //Proposed Honoraria
+                Honoraria := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.MkopoLiabilities, '%1', GLAccount.MkopoLiabilities::Honoria);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            Honoraria += GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+
+                LHonoraria := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.MkopoLiabilities, '%1', GLAccount.MkopoLiabilities::Honoria);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            LHonoraria += GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+                // End Of Proposed Honoraria
 
             end;
         }
@@ -287,11 +447,23 @@ report 50027 StatementOfChangesInEquity
 
 
     var
+        SaccoInfo: Record "Sacco Information";
+        BalanceBF:Decimal;
         AsAt: Date;
+        LSurplus: Decimal;
+        LExpenses: Decimal;
+        Expenses: Decimal;
+        Surplus: Decimal;
+        Incomes: Decimal;
+        LIncomes: Decimal;
         GLEntry: Record "G/L Entry";
         GLAccount: Record "G/L Account";
         TransfertoStatury: Decimal;
         LTransfertoStatury: Decimal;
+        RTransfertoStatury: Decimal;
+        RLTransfertoStatury: Decimal;
+        BalSharecapital: Decimal;
+        LBalSharecapital: Decimal;
         StatutoryReserve: Decimal;
         LStatutoryReserve: Decimal;
         RetainedEarnings: Decimal;
@@ -308,6 +480,11 @@ report 50027 StatementOfChangesInEquity
         contLShareCapital: Decimal;
         PriorYearAdjustment: Decimal;
         LPriorYearAdjustment: Decimal;
+        Proposeddividends: Decimal;
+        LProposeddividends: Decimal;
+        Honoraria: Decimal;
+        LHonoraria: Decimal;
+
 
 
 

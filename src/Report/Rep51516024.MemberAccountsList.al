@@ -10,7 +10,7 @@ report 51516024 "Member Accounts List"
         dataitem(Customer; Customer)
         {
             DataItemTableView = sorting("No.");
-            RequestFilterFields = "Date Filter", "No.", "Global Dimension 2 Code";
+            RequestFilterFields =  "No.",Status;
 
             column(EntryNo; EntryNo)
             {

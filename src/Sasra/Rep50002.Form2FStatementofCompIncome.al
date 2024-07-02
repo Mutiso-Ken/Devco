@@ -8,398 +8,398 @@ Report 50002 "Form2F Statement of CompIncome"
     dataset
     {
 #pragma warning disable AL0275
-        dataitem(Company;"Company Information")
+        dataitem(Company; "Company Information")
 #pragma warning restore AL0275
         {
             column(ReportForNavId_1; 1)
             {
             }
-            column(AsAt;AsAt)
+            column(AsAt; AsAt)
             {
             }
-            column(Date;Date)
+            column(Date; Date)
             {
             }
-            column(FinancialYear;FinancialYear)
+            column(FinancialYear; FinancialYear)
             {
             }
-            column(Name;Company.Name)
+            column(Name; Company.Name)
             {
             }
-            column(InterestonLoanPortfolio;InterestonLoanPortfolio)
+            column(InterestonLoanPortfolio; InterestonLoanPortfolio)
             {
             }
-            column(FeesCommissiononLoanPortfolio;FeesCommissiononLoanPortfolio)
+            column(FeesCommissiononLoanPortfolio; FeesCommissiononLoanPortfolio)
             {
             }
-            column(GovernmentSecurities;GovernmentSecurities)
+            column(GovernmentSecurities; GovernmentSecurities)
             {
             }
-            column(InvestmentinCompaniesshares;InvestmentinCompaniesshares)
+            column(InvestmentinCompaniesshares; InvestmentinCompaniesshares)
             {
             }
-            column(EquityInvestmentsinsubsidiaries;EquityInvestmentsinsubsidiaries )
+            column(EquityInvestmentsinsubsidiaries; EquityInvestmentsinsubsidiaries)
             {
             }
-            column(Derivatives;Derivatives)
+            column(Derivatives; Derivatives)
             {
             }
-            column(CollectiveinvestmentSchemes;CollectiveinvestmentSchemes)
+            column(CollectiveinvestmentSchemes; CollectiveinvestmentSchemes)
             {
             }
-            column(CommercialPapers;CommercialPapers)
+            column(CommercialPapers; CommercialPapers)
             {
             }
-            column(PlacementinBanks;PlacementinBanks)
+            column(PlacementinBanks; PlacementinBanks)
             {
             }
-            column(nterestExpenseonDeposits;nterestExpenseonDeposits)
+            column(nterestExpenseonDeposits; nterestExpenseonDeposits)
             {
             }
-            column(CostofExternalBorrowings;CostofExternalBorrowings)
+            column(CostofExternalBorrowings; CostofExternalBorrowings)
             {
             }
-            column(DividendExpenses;DividendExpenses)
+            column(DividendExpenses; DividendExpenses)
             {
             }
-            column(OtherFinancialExpense;OtherFinancialExpense)
+            column(OtherFinancialExpense; OtherFinancialExpense)
             {
             }
-            column(FeesCommissionExpense;FeesCommissionExpense)
+            column(FeesCommissionExpense; FeesCommissionExpense)
             {
             }
-            column(OtherExpense;OtherExpense)
+            column(OtherExpense; OtherExpense)
             {
             }
-            column(ProvisionforLoanLosses;ProvisionforLoanLosses)
+            column(ProvisionforLoanLosses; ProvisionforLoanLosses)
             {
             }
-            column(ValueofLoansRecovered;ValueofLoansRecovered)
+            column(ValueofLoansRecovered; ValueofLoansRecovered)
             {
             }
-            column(PersonnelExpenses;PersonnelExpenses)
+            column(PersonnelExpenses; PersonnelExpenses)
             {
             }
-            column(GovernanceExpenses;GovernanceExpenses)
+            column(GovernanceExpenses; GovernanceExpenses)
             {
             }
-            column(MarketingExpenses;MarketingExpenses)
+            column(MarketingExpenses; MarketingExpenses)
             {
             }
-            column(DepreciationandAmortizationCharges;DepreciationandAmortizationCharges)
+            column(DepreciationandAmortizationCharges; DepreciationandAmortizationCharges)
             {
             }
-            column(AdministrativeExpenses;AdministrativeExpenses)
+            column(AdministrativeExpenses; AdministrativeExpenses)
             {
             }
-            column(NonOperatingIncome;NonOperatingIncome)
+            column(NonOperatingIncome; NonOperatingIncome)
             {
             }
-            column(NonOperatingExpense;NonOperatingExpense)
+            column(NonOperatingExpense; NonOperatingExpense)
             {
             }
-            column(Taxes;Taxes )
+            column(Taxes; Taxes)
             {
             }
-            column(Donations;Donations)
+            column(Donations; Donations)
             {
             }
-            column(FinancialIncomefromLoansPortfolio;FinancialIncomefromLoansPortfolio)
+            column(FinancialIncomefromLoansPortfolio; FinancialIncomefromLoansPortfolio)
             {
             }
-            column(FinancialExpense;FinancialExpense)
+            column(FinancialExpense; FinancialExpense)
             {
             }
-            column(NetFinancialIncomeLoss;NetFinancialIncomeLoss)
+            column(NetFinancialIncomeLoss; NetFinancialIncomeLoss)
             {
             }
-            column(NetNonOperatingIncomeExpense;NetNonOperatingIncomeExpense)
+            column(NetNonOperatingIncomeExpense; NetNonOperatingIncomeExpense)
             {
             }
-            column(FinancialIncomefromInvestments;FinancialIncomefromInvestments )
+            column(FinancialIncomefromInvestments; FinancialIncomefromInvestments)
             {
             }
-            column(AllowanceforLoanLoss;AllowanceforLoanLoss)
+            column(AllowanceforLoanLoss; AllowanceforLoanLoss)
             {
             }
-            column(OperatingExpenses;OperatingExpenses)
+            column(OperatingExpenses; OperatingExpenses)
             {
             }
-            column(NetOperatingIncome;NetOperatingIncome)
+            column(NetOperatingIncome; NetOperatingIncome)
             {
             }
-            column(NetIncomeBeforeTaxesandDonations;NetIncomeBeforeTaxesandDonations)
+            column(NetIncomeBeforeTaxesandDonations; NetIncomeBeforeTaxesandDonations)
             {
             }
-            column(NetIncomeAfterTaxesbeforeDonations;NetIncomeAfterTaxesbeforeDonations)
+            column(NetIncomeAfterTaxesbeforeDonations; NetIncomeAfterTaxesbeforeDonations)
             {
             }
-            column(NetIncomeAfterTaxesandDonations;NetIncomeAfterTaxesandDonations)
+            column(NetIncomeAfterTaxesandDonations; NetIncomeAfterTaxesandDonations)
             {
             }
-            column(FinancialIncome;FinancialIncome)
+            column(FinancialIncome; FinancialIncome)
             {
             }
 
             trigger OnAfterGetRecord()
             begin
-                
-                 InterestonLoanPortfolio:=0;
-                 GLAccount.Reset;
-                 GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)",'%1',GLAccount."form2f(statement of c income)"::InterestonLoanPortfolio);
-                 if GLAccount.FindSet then begin
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",DateFilter);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      InterestonLoanPortfolio+=-1*GLEntry.Amount;
-                      end;
-                
-                  until GLAccount.Next = 0;
-                  end;
-                 //fees and commision on loan portfolio
-                 FeesCommissiononLoanPortfolio:=0;
-                 GLAccount.Reset;
-                 GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)",'%1',GLAccount."form2f(statement of c income)"::FeesCommissiononLoanPortfolio);
-                 if GLAccount.FindSet then begin
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",DateFilter);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      FeesCommissiononLoanPortfolio+=-1*GLEntry.Amount;
-                      end;
-                
-                  until GLAccount.Next = 0;
-                  end;
-                 //gov securities
-                 GovernmentSecurities:=0;
-                 GLAccount.Reset;
-                 GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)",'%1',GLAccount."form2f(statement of c income)"::GovernmentSecurities);
-                 if GLAccount.FindSet then begin
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",DateFilter);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      GovernmentSecurities+=GLEntry.Amount;
-                      end;
-                
-                  until GLAccount.Next = 0;
-                  end;
-                  //investment incompany shares
-                  InvestmentinCompaniesshares:=0;
-                  GLAccount.Reset;
-                 GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)",'%1',GLAccount."form2f(statement of c income)"::InvestmentinCompaniesshares);
-                 if GLAccount.FindSet then begin
-                
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",DateFilter);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      InvestmentinCompaniesshares+=-1*GLEntry.Amount;
-                      end;
-                
-                  until GLAccount.Next = 0;
-                  end;
-                  //nterestExpenseonDeposits
-                  nterestExpenseonDeposits:=0;
-                  GLAccount.Reset;
-                 GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)",'%1',GLAccount."form2f(statement of c income)"::nterestExpenseonDeposits);
-                 if GLAccount.FindSet then begin
-                  repeat
-                
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",DateFilter);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      nterestExpenseonDeposits+=GLEntry.Amount;
-                      end;
-                
-                  until GLAccount.Next = 0;
-                  end;
-                
-                 //dividend expenses
-                 DividendExpenses:=0;
-                  GLAccount.Reset;
-                 GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)",'%1',GLAccount."form2f(statement of c income)"::DividendExpenses);
-                 if GLAccount.FindSet then begin
-                  repeat
-                
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",DateFilter);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      DividendExpenses+=GLEntry.Amount;
-                      end;
-                
-                  until GLAccount.Next = 0;
-                  end;
-                
-                 //Other Financial Expense
-                 OtherFinancialExpense:=0;
-                  GLAccount.Reset;
-                 GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)",'%1',GLAccount."form2f(statement of c income)"::OtherFinancialExpense);
-                 if GLAccount.FindSet then begin
-                  repeat
-                
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",DateFilter);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      OtherFinancialExpense+=GLEntry.Amount;
-                      end;
-                
-                  until GLAccount.Next = 0;
-                  end;
-                
-                 //Fees & Commission Expense
-                 FeesCommissionExpense:=0;
-                  GLAccount.Reset;
-                 GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)",'%1',GLAccount."form2f(statement of c income)"::FeesCommissionExpense);
-                 if GLAccount.FindSet then begin
-                  repeat
-                
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",DateFilter);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      FeesCommissionExpense+=GLEntry.Amount;
-                      end;
-                
-                  until GLAccount.Next = 0;
-                  end;
-                
-                 //Other Expense
-                 OtherExpense:=0;
-                  GLAccount.Reset;
-                 GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)",'%1',GLAccount."form2f(statement of c income)"::OtherExpense);
-                 if GLAccount.FindSet then begin
-                  repeat
-                
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",DateFilter);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      OtherExpense+=GLEntry.Amount;
-                      end;
-                
-                  until GLAccount.Next = 0;
-                  end;
-                
-                 //Provision for Loan Losses
-                 ProvisionforLoanLosses:=0;
-                  GLAccount.Reset;
-                 GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)",'%1',GLAccount."form2f(statement of c income)"::ProvisionforLoanLosses);
-                 if GLAccount.FindSet then begin
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",DateFilter);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      ProvisionforLoanLosses+=GLEntry.Amount;
-                      end;
-                
-                  until GLAccount.Next = 0;
-                  end;
-                  //Personnel Expenses
-                  PersonnelExpenses:=0;
-                  GLAccount.Reset;
-                 GLAccount.SetFilter(GLAccount."Form2F1(Statement of C Income)",'%1',GLAccount."form2f1(statement of c income)"::PersonnelExpenses);
-                 if GLAccount.FindSet then begin
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",DateFilter);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      PersonnelExpenses+=GLEntry.Amount;
-                      end;
-                
-                  until GLAccount.Next = 0;
-                  end;
-                  //Governance Expenses
-                    GovernanceExpenses:=0;
-                  GLAccount.Reset;
-                 GLAccount.SetFilter(GLAccount."Form2F1(Statement of C Income)",'%1',GLAccount."form2f1(statement of c income)"::GovernanceExpenses);
-                 if GLAccount.FindSet then begin
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",DateFilter);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      GovernanceExpenses+=GLEntry.Amount;
-                      end;
-                
-                  until GLAccount.Next = 0;
-                  end;
-                
-                 //Marketing Expenses
-                  MarketingExpenses:=0;
-                  GLAccount.Reset;
-                 GLAccount.SetFilter(GLAccount."Form2F1(Statement of C Income)",'%1',GLAccount."form2f1(statement of c income)"::MarketingExpenses);
-                 if GLAccount.FindSet then begin
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",DateFilter);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      MarketingExpenses+=GLEntry.Amount;
-                      end;
-                
-                  until GLAccount.Next = 0;
-                  end;
-                  //DepreciationandAmortizationCharges
-                 DepreciationandAmortizationCharges:=0;
-                  GLAccount.Reset;
-                 GLAccount.SetFilter(GLAccount."Form2F1(Statement of C Income)",'%1',GLAccount."form2f1(statement of c income)"::DepreciationandAmortizationCharges);
-                 if GLAccount.FindSet then begin
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",DateFilter);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      DepreciationandAmortizationCharges+=GLEntry.Amount;
-                      end;
-                
-                  until GLAccount.Next = 0;
-                  end;
-                 //AdministrativeExpenses
-                 AdministrativeExpenses:=0;
-                  GLAccount.Reset;
-                 GLAccount.SetFilter(GLAccount."Form2F1(Statement of C Income)",'%1',GLAccount."form2f1(statement of c income)"::AdministrativeExpenses);
-                 if GLAccount.FindSet then begin
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",DateFilter);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      AdministrativeExpenses+=GLEntry.Amount;
-                      end;
-                
-                  until GLAccount.Next = 0;
-                  end;
-                
-                 //taxes
-                 Taxes:=0;
-                 Taxes:=0.15*InvestmentinCompaniesshares;
-                
+
+                InterestonLoanPortfolio := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)", '%1', GLAccount."form2f(statement of c income)"::InterestonLoanPortfolio);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", DateFilter);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            InterestonLoanPortfolio += -1 * GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+                //fees and commision on loan portfolio
+                FeesCommissiononLoanPortfolio := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)", '%1', GLAccount."form2f(statement of c income)"::FeesCommissiononLoanPortfolio);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", DateFilter);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            FeesCommissiononLoanPortfolio += -1 * GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+                //gov securities
+                GovernmentSecurities := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)", '%1', GLAccount."form2f(statement of c income)"::GovernmentSecurities);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", DateFilter);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            GovernmentSecurities += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+                //investment incompany shares
+                InvestmentinCompaniesshares := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)", '%1', GLAccount."form2f(statement of c income)"::InvestmentinCompaniesshares);
+                if GLAccount.FindSet then begin
+
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", DateFilter);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            InvestmentinCompaniesshares += -1 * GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+                //nterestExpenseonDeposits
+                nterestExpenseonDeposits := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)", '%1', GLAccount."form2f(statement of c income)"::nterestExpenseonDeposits);
+                if GLAccount.FindSet then begin
+                    repeat
+
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", DateFilter);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            nterestExpenseonDeposits += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+
+                //dividend expenses
+                DividendExpenses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)", '%1', GLAccount."form2f(statement of c income)"::DividendExpenses);
+                if GLAccount.FindSet then begin
+                    repeat
+
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", DateFilter);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            DividendExpenses += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+
+                //Other Financial Expense
+                OtherFinancialExpense := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F1(Statement of C Income)", '%1', GLAccount."Form2F1(Statement of C Income)"::OtherFinancialExpense);
+                if GLAccount.FindSet then begin
+                    repeat
+
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", DateFilter);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            OtherFinancialExpense += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+
+                //Fees & Commission Expense
+                FeesCommissionExpense := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)", '%1', GLAccount."form2f(statement of c income)"::FeesCommissionExpense);
+                if GLAccount.FindSet then begin
+                    repeat
+
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", DateFilter);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            FeesCommissionExpense += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+
+                //Other Expense
+                OtherExpense := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)", '%1', GLAccount."form2f(statement of c income)"::OtherExpense);
+                if GLAccount.FindSet then begin
+                    repeat
+
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", DateFilter);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            OtherExpense += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+
+                //Provision for Loan Losses
+                ProvisionforLoanLosses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)", '%1', GLAccount."form2f(statement of c income)"::ProvisionforLoanLosses);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", DateFilter);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            ProvisionforLoanLosses += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+                //Personnel Expenses
+                PersonnelExpenses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F1(Statement of C Income)", '%1', GLAccount."form2f1(statement of c income)"::PersonnelExpenses);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", DateFilter);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            PersonnelExpenses += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+                //Governance Expenses
+                GovernanceExpenses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F1(Statement of C Income)", '%1', GLAccount."form2f1(statement of c income)"::GovernanceExpenses);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", DateFilter);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            GovernanceExpenses += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+
+                //Marketing Expenses
+                MarketingExpenses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F1(Statement of C Income)", '%1', GLAccount."form2f1(statement of c income)"::MarketingExpenses);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", DateFilter);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            MarketingExpenses += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+                //DepreciationandAmortizationCharges
+                DepreciationandAmortizationCharges := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F1(Statement of C Income)", '%1', GLAccount."form2f1(statement of c income)"::DepreciationandAmortizationCharges);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", DateFilter);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            DepreciationandAmortizationCharges += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+                //AdministrativeExpenses
+                AdministrativeExpenses := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F1(Statement of C Income)", '%1', GLAccount."form2f1(statement of c income)"::AdministrativeExpenses);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", DateFilter);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            AdministrativeExpenses += GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+
+                //taxes
+                Taxes := 0;
+                Taxes := 0.15 * InvestmentinCompaniesshares;
+
                 /*  GLAccount.RESET;
                  GLAccount.SETFILTER(GLAccount."Form2F1(Statement of C Income)",'%1',GLAccount."Form2F1(Statement of C Income)"::Taxes);
                  IF GLAccount.FINDSET THEN BEGIN
@@ -414,54 +414,58 @@ Report 50002 "Form2F Statement of CompIncome"
                 
                   UNTIL GLAccount.NEXT = 0;
                   END;*/
-                
+
                 //nonoperating incomes
-                 Taxes:=0;
-                  GLAccount.Reset;
-                 GLAccount.SetFilter(GLAccount."Form2F1(Statement of C Income)",'%1',GLAccount."form2f1(statement of c income)"::NonOperatingIncome);
-                 if GLAccount.FindSet then begin
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",DateFilter);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      NonOperatingIncome+=-1*GLEntry.Amount;
-                      end;
-                
-                  until GLAccount.Next = 0;
-                  end;
-                  //nonoperating expense
-                    GLAccount.Reset;
-                 GLAccount.SetFilter(GLAccount."Form2F1(Statement of C Income)",'%1',GLAccount."form2f1(statement of c income)"::NonOperatingExpense);
-                 if GLAccount.FindSet then begin
-                  repeat
-                    GLEntry.Reset;
-                    GLEntry.SetRange(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SetFilter(GLEntry."Posting Date",DateFilter);
-                    if GLEntry.FindSet then begin
-                      GLEntry.CalcSums(Amount);
-                      NonOperatingExpense+=GLEntry.Amount;
-                      end;
-                  until GLAccount.Next = 0;
-                  end;
-                
-                
-                
-                FinancialIncomefromInvestments:=InvestmentinCompaniesshares+EquityInvestmentsinsubsidiaries+PlacementinBanks+Derivatives+CollectiveinvestmentSchemes+GovernmentSecurities+CommercialPapers;
-                FinancialIncomefromLoansPortfolio:=InterestonLoanPortfolio+FeesCommissiononLoanPortfolio;
-                FinancialExpense:=(DividendExpenses+nterestExpenseonDeposits+OtherFinancialExpense+OtherExpense+FeesCommissionExpense+CostofExternalBorrowings);
-                //NetNonOperatingIncomeExpense:=NonOperatingIncome+NonOperatingExpense;
-                NetNonOperatingIncomeExpense:=NonOperatingIncome-NonOperatingExpense;
-                FinancialIncome:=FinancialIncomefromLoansPortfolio+FinancialIncomefromInvestments;
-                NetFinancialIncomeLoss:=FinancialIncome+FinancialExpense;
-                AllowanceforLoanLoss:=ProvisionforLoanLosses+ValueofLoansRecovered;
-                OperatingExpenses:=GovernanceExpenses+PersonnelExpenses+MarketingExpenses+AdministrativeExpenses+DepreciationandAmortizationCharges+OtherFinancialExpense;
-                NetOperatingIncome:=NetFinancialIncomeLoss-AllowanceforLoanLoss-OperatingExpenses;
-                //NetIncomeBeforeTaxesandDonations:=NetOperatingIncome+NetNonOperatingIncomeExpense;//+NetNonOperatingIncomeExpense;
-                NetIncomeBeforeTaxesandDonations:=NetOperatingIncome-NetNonOperatingIncomeExpense;//+NetNonOperatingIncomeExpense;
-                NetIncomeAfterTaxesbeforeDonations:=NetIncomeBeforeTaxesandDonations-Taxes;
-                NetIncomeAfterTaxesandDonations:=NetIncomeAfterTaxesbeforeDonations-Donations;
+                Taxes := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F1(Statement of C Income)", '%1', GLAccount."form2f1(statement of c income)"::NonOperatingIncome);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", DateFilter);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            NonOperatingIncome += -1 * GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+                //nonoperating expense
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F1(Statement of C Income)", '%1', GLAccount."form2f1(statement of c income)"::NonOperatingExpense);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", DateFilter);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            NonOperatingExpense += GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+
+
+                NetFinancialIncomeLoss := 0;
+                FinancialIncome := 0;
+                NetOperatingIncome := 0;
+                FinancialExpense := 0;
+                OperatingExpenses := 0;
+                NetNonOperatingIncomeExpense := 0;
+                FinancialIncomefromLoansPortfolio := 0;
+                FinancialIncomefromInvestments := InvestmentinCompaniesshares + EquityInvestmentsinsubsidiaries + PlacementinBanks + Derivatives + CollectiveinvestmentSchemes + GovernmentSecurities + CommercialPapers;
+                FinancialIncomefromLoansPortfolio := InterestonLoanPortfolio + FeesCommissiononLoanPortfolio;
+                FinancialExpense := (DividendExpenses + nterestExpenseonDeposits + OtherFinancialExpense + OtherExpense + FeesCommissionExpense + CostofExternalBorrowings);
+                NetNonOperatingIncomeExpense := NonOperatingIncome - NonOperatingExpense;
+                FinancialIncome := FinancialIncomefromLoansPortfolio + FinancialIncomefromInvestments;
+                NetFinancialIncomeLoss := FinancialIncome - FinancialExpense;
+                AllowanceforLoanLoss := ProvisionforLoanLosses + ValueofLoansRecovered;
+                OperatingExpenses := GovernanceExpenses + PersonnelExpenses + MarketingExpenses + AdministrativeExpenses + DepreciationandAmortizationCharges;// + OtherFinancialExpense;
+                NetOperatingIncome := NetFinancialIncomeLoss - AllowanceforLoanLoss - OperatingExpenses;
+                NetIncomeBeforeTaxesandDonations := NetOperatingIncome + NetNonOperatingIncomeExpense;
+                NetIncomeAfterTaxesbeforeDonations := NetIncomeBeforeTaxesandDonations - Taxes;
+                NetIncomeAfterTaxesandDonations := NetIncomeAfterTaxesbeforeDonations - Donations;
 
             end;
         }
@@ -474,7 +478,7 @@ Report 50002 "Form2F Statement of CompIncome"
         {
             area(content)
             {
-                field(AsAt;AsAt)
+                field(AsAt; AsAt)
                 {
                     ApplicationArea = Basic;
                     Caption = 'AsAt';
@@ -498,11 +502,11 @@ Report 50002 "Form2F Statement of CompIncome"
         
         DateFilter11:=FORMAT(Date)+'..'+FORMAT(AsAt);
         FinancialYear:=DATE2DMY(Date,3);*/
-        
-        Date:=CalcDate('-CY',AsAt);
-        DateFilter:=Format(Date)+'..'+Format(AsAt);
-        DateFilter11:=Format(Date)+'..'+Format(AsAt);
-        FinancialYear:=Date2dmy(AsAt,3);
+
+        Date := CalcDate('-CY', AsAt);
+        DateFilter := Format(Date) + '..' + Format(AsAt);
+        DateFilter11 := Format(Date) + '..' + Format(AsAt);
+        FinancialYear := Date2dmy(AsAt, 3);
 
     end;
 

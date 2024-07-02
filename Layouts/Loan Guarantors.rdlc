@@ -480,6 +480,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -593,7 +594,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=(Fields!CurrentShares_Members.Value)*-1</Value>
+                                  <Value>=(Fields!CurrentShares_Members.Value)</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -2571,7 +2572,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Sacco Ltd</Value>
+                      <Value>Devco Sacco Ltd</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>

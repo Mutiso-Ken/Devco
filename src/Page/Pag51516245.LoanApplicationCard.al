@@ -136,13 +136,23 @@ Page 51516245 "Loan Application Card"
                     trigger OnValidate()
                     var
                         myInt: Integer;
+                        Loanoffeset: Record "Loan Offset Details";
+                        OffesetAmount: Decimal;
                     begin
                         if "Deboost Loan Applied" = true then begin
                             begin
-                                if ("Member Deposits" * Mulitiplier) < rec."Requested Amount" then begin
-                                    "Deboost Amount" := ((rec."Requested Amount" + "Existing Loan") / 3) - "Member Deposits";
+                                OffesetAmount := 0;
+                                Loanoffeset.Reset();
+                                Loanoffeset.SetRange(Loanoffeset."Loan No.", "Loan  No.");
+                                if Loanoffeset.FindSet() then begin
+                                    repeat
+                                        OffesetAmount := OffesetAmount + Loanoffeset."Principle Top Up"
+                                    Until Loanoffeset.Next = 0;
+                                end;
+                                if ("Member Deposits" * Mulitiplier) < ((rec."Requested Amount" + "Existing Loan") - OffesetAmount) then begin
+                                    "Deboost Amount" := ((((rec."Requested Amount" + ("Existing Loan" - OffesetAmount))) - ("Member Deposits" * 3)) / 3);
                                     "Deboost Commision" := "Deboost Amount" * 0.05;
-                                    Message('Debost amount %1 %2', "Deboost Amount", "Deboost Commision");
+                                    //Message('Debost amount %1 %2', "Deboost Amount", "Deboost Commision");
                                     rec.Modify;
                                 end;
                             end;
