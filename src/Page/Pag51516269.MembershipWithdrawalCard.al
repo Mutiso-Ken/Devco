@@ -17,83 +17,83 @@ Page 51516269 "Membership Withdrawal Card"
             group(General)
             {
                 Caption = 'General';
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Member No."; "Member No.")
+                field("Member No."; Rec."Member No.")
                 {
                     ApplicationArea = Basic;
                     Editable = MNoEditable;
                 }
-                field("Member Name"; "Member Name")
+                field("Member Name"; Rec."Member Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Closing Date"; "Closing Date")
+                field("Closing Date"; Rec."Closing Date")
                 {
                     ApplicationArea = Basic;
                     Editable = ClosingDateEditable;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Closure Type"; "Closure Type")
+                field("Closure Type"; Rec."Closure Type")
                 {
                     ApplicationArea = Basic;
                     Editable = ClosureTypeEditable;
                 }
-                field("Total Loan"; "Total Loan")
+                field("Total Loan"; Rec."Total Loan")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Total Interest"; "Total Interest")
+                field("Total Interest"; Rec."Total Interest")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Member Deposits"; "Member Deposits")
+                field("Member Deposits"; Rec."Member Deposits")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("BBF Amount"; "BBF Amount")
+                field("BBF Amount"; Rec."BBF Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Mode Of Disbursement"; "Mode Of Disbursement")
+                field("Mode Of Disbursement"; Rec."Mode Of Disbursement")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Paying Bank"; "Paying Bank")
+                field("Paying Bank"; Rec."Paying Bank")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cheque No."; "Cheque No.")
+                field("Cheque No."; Rec."Cheque No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("FOSA Account No."; "FOSA Account No.")
+                field("FOSA Account No."; Rec."FOSA Account No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Payee; Payee)
+                field(Payee; Rec.Payee)
                 {
                     ApplicationArea = Basic;
                 }
-                field("With Notice"; "With Notice")
+                field("With Notice"; Rec."With Notice")
                 {
                     ApplicationArea = Basic;
                     Caption = 'With Notice?';
                 }
-                field(Charges; Charges)
+                field(Charges; Rec.Charges)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -122,7 +122,7 @@ Page 51516269 "Membership Withdrawal Card"
                         ApprovalEntries: Page "Approval Entries";
                     begin
                         DocumentType := Documenttype::"Member Withdrawal";
-                        ApprovalEntries.SetRecordFilters(Database::"Membership Withdrawals", DocumentType, "No.");
+                        ApprovalEntries.SetRecordFilters(Database::"Membership Withdrawals", DocumentType, Rec."No.");
                         ApprovalEntries.Run;
                     end;
                 }
@@ -139,7 +139,7 @@ Page 51516269 "Membership Withdrawal Card"
                         text001: label 'This batch is already pending approval';
                         ApprovalMgt: Codeunit "Approvals Mgmt.";
                     begin
-                        if Status <> Status::Open then
+                        if Rec.Status <> Rec.Status::Open then
                             Error(text001);
 
 
@@ -161,7 +161,7 @@ Page 51516269 "Membership Withdrawal Card"
                         text001: label 'This batch is already pending approval';
                         ApprovalMgt: Codeunit "Approvals Mgmt.";
                     begin
-                        if Status <> Status::Open then
+                        if Rec.Status <> Rec.Status::Open then
                             Error(text001);
                         //ApprovalMgt.OnCancelMemberWithdrawalApprovalRequest(Rec);
 
@@ -178,7 +178,7 @@ Page 51516269 "Membership Withdrawal Card"
                     trigger OnAction()
                     begin
                         cust.Reset;
-                        cust.SetRange(cust."No.", "Member No.");
+                        cust.SetRange(cust."No.", Rec."Member No.");
                         if cust.Find('-') then
                             Report.Run(51516250, true, false, cust);
                     end;
@@ -215,8 +215,8 @@ Page 51516269 "Membership Withdrawal Card"
                         if Confirm('Are you absolutely sure you want to recover the loans from member deposit') = false then
                             exit;
 
-                        if cust.Get("Member No.") then begin
-                            if ("Closure Type" = "closure type"::"Withdrawal - Normal") or ("Closure Type" = "closure type"::"Withdrawal - Death(Defaulter)") or ("Closure Type" = "closure type"::"Withdrawal - Death")
+                        if cust.Get(Rec."Member No.") then begin
+                            if (Rec."Closure Type" = Rec."closure type"::"Withdrawal - Normal") or (Rec."Closure Type" = Rec."closure type"::"Withdrawal - Death(Defaulter)") or (Rec."Closure Type" = Rec."closure type"::"Withdrawal - Death")
                                then begin
                                 //cust."Withdrawal Fee":=1000;
 
@@ -232,7 +232,7 @@ Page 51516269 "Membership Withdrawal Card"
                                 TotalInsuarance := 0;
                                 RunBal := 0;
                                 runbal1 := 0;
-                                NetBal := RunBal + ("BBF Amount" + Vend.Balance - runbal1);// net deposits
+                                NetBal := RunBal + (Rec."BBF Amount" + Vend.Balance - runbal1);// net deposits
 
                                 DActivity := cust."Global Dimension 1 Code";
                                 DBranch := cust."Global Dimension 2 Code";
@@ -240,7 +240,7 @@ Page 51516269 "Membership Withdrawal Card"
 
                                 cust.CalcFields(cust."Outstanding Balance", cust."Outstanding Interest", "FOSA Outstanding Balance", "Accrued Interest", "Insurance Fund", cust."Current Shares");
                                 TotalOustanding := cust."Outstanding Balance" + cust."Outstanding Interest";
-                                RunBal := "Member Deposits";
+                                RunBal := Rec."Member Deposits";
                                 //GETTING WITHDRWAL FEE
                                 Generalsetup.Get();
                                 //cust."Withdrawal Fee":= ClosureR.Charges;
@@ -256,11 +256,11 @@ Page 51516269 "Membership Withdrawal Card"
                                 GenJournalLine."Journal Template Name" := 'GENERAL';
                                 GenJournalLine."Journal Batch Name" := 'Closure';
                                 GenJournalLine."Line No." := LineNo;
-                                GenJournalLine."Document No." := "No.";
+                                GenJournalLine."Document No." := Rec."No.";
                                 GenJournalLine."Posting Date" := Today;
-                                GenJournalLine."External Document No." := "No.";
+                                GenJournalLine."External Document No." := Rec."No.";
                                 GenJournalLine."Account Type" := GenJournalLine."bal. account type"::Customer;
-                                GenJournalLine."Account No." := "Member No.";
+                                GenJournalLine."Account No." := Rec."Member No.";
                                 GenJournalLine.Validate(GenJournalLine."Account No.");
                                 GenJournalLine.Description := 'Withdrawal Fee';
                                 //GenJournalLine.Amount:=Charges*-1; //Generalsetup."Withdrawal Fee";
@@ -287,14 +287,14 @@ Page 51516269 "Membership Withdrawal Card"
                                     GenJournalLine."Journal Template Name" := 'GENERAL';
                                     GenJournalLine."Journal Batch Name" := 'Closure';
                                     GenJournalLine."Line No." := LineNo;
-                                    GenJournalLine."Document No." := "No.";
+                                    GenJournalLine."Document No." := Rec."No.";
                                     GenJournalLine."Posting Date" := Today;
-                                    GenJournalLine."External Document No." := "No.";
+                                    GenJournalLine."External Document No." := Rec."No.";
                                     GenJournalLine."Account Type" := GenJournalLine."bal. account type"::"G/L Account";
                                     GenJournalLine."Account No." := Generalsetup."Withdrawal Fee Account";
                                     GenJournalLine.Validate(GenJournalLine."Account No.");
                                     GenJournalLine.Description := 'Withdrawal commision';
-                                    GenJournalLine.Amount := -Charges;//Generalsetup."Withdrawal Commision";
+                                    GenJournalLine.Amount := -Rec.Charges;//Generalsetup."Withdrawal Commision";
                                     GenJournalLine.Validate(GenJournalLine.Amount);
                                     //GenJournalLine."Transaction Type":=GenJournalLine."Transaction Type"::"Deposit Contribution";
                                     //GenJournalLine."Bal. Account No." :=Generalsetup."Withdrawal Fee Account";
@@ -316,14 +316,14 @@ Page 51516269 "Membership Withdrawal Card"
                                     GenJournalLine."Journal Template Name" := 'GENERAL';
                                     GenJournalLine."Journal Batch Name" := 'Closure';
                                     GenJournalLine."Line No." := LineNo;
-                                    GenJournalLine."Document No." := "No.";
+                                    GenJournalLine."Document No." := Rec."No.";
                                     GenJournalLine."Posting Date" := Today;
-                                    GenJournalLine."External Document No." := "No.";
+                                    GenJournalLine."External Document No." := Rec."No.";
                                     GenJournalLine."Account Type" := GenJournalLine."bal. account type"::"G/L Account";
                                     GenJournalLine."Account No." := Generalsetup."Excise Duty Account";
                                     GenJournalLine.Validate(GenJournalLine."Account No.");
                                     GenJournalLine.Description := 'excise Duty';
-                                    GenJournalLine.Amount := -(Charges * (Generalsetup."Excise Duty(%)" / 100));
+                                    GenJournalLine.Amount := -(Rec.Charges * (Generalsetup."Excise Duty(%)" / 100));
                                     GenJournalLine.Validate(GenJournalLine.Amount);
                                     //GenJournalLine."Transaction Type":=GenJournalLine."Transaction Type"::"Deposit Contribution";
                                     //GenJournalLine."Bal. Account No." :=Generalsetup."Withdrawal Fee Account";
@@ -344,14 +344,14 @@ Page 51516269 "Membership Withdrawal Card"
                                 GenJournalLine."Journal Template Name" := 'GENERAL';
                                 GenJournalLine."Journal Batch Name" := 'Closure';
                                 GenJournalLine."Line No." := LineNo;
-                                GenJournalLine."Document No." := "No.";
+                                GenJournalLine."Document No." := Rec."No.";
                                 GenJournalLine."Posting Date" := Today;
-                                GenJournalLine."External Document No." := "No.";
+                                GenJournalLine."External Document No." := Rec."No.";
                                 GenJournalLine."Account Type" := GenJournalLine."bal. account type"::Customer;
-                                GenJournalLine."Account No." := "Member No.";
+                                GenJournalLine."Account No." := Rec."Member No.";
                                 GenJournalLine.Validate(GenJournalLine."Account No.");
                                 GenJournalLine.Description := 'BBF amount';
-                                GenJournalLine.Amount := "BBF Amount";
+                                GenJournalLine.Amount := Rec."BBF Amount";
                                 GenJournalLine.Validate(GenJournalLine.Amount);
                                 GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Benevolent Fund";
                                 //GenJournalLine."Bal. Account No." :=Generalsetup."Withdrawal Fee Account";
@@ -367,16 +367,16 @@ Page 51516269 "Membership Withdrawal Card"
 
                                 //Totalrecovered:=Totalrecovered+GenJournalLine.Amount;
                                 //cust."Closing Deposit Balance":=(cust."Current Shares"-cust."Withdrawal Fee");
-                                if Vend.Get("FOSA Account No.") then begin
+                                if Vend.Get(Rec."FOSA Account No.") then begin
                                     Vend.CalcFields(Vend.Balance);
                                     LineNo := LineNo + 10000;
                                     GenJournalLine.Init;
                                     GenJournalLine."Journal Template Name" := 'GENERAL';
                                     GenJournalLine."Journal Batch Name" := 'Closure';
                                     GenJournalLine."Line No." := LineNo;
-                                    GenJournalLine."Document No." := "No.";
+                                    GenJournalLine."Document No." := Rec."No.";
                                     GenJournalLine."Posting Date" := Today;
-                                    GenJournalLine."External Document No." := "No.";
+                                    GenJournalLine."External Document No." := Rec."No.";
                                     GenJournalLine."Account Type" := GenJournalLine."bal. account type"::Vendor;
                                     GenJournalLine."Account No." := Vend."No.";
                                     GenJournalLine.Validate(GenJournalLine."Account No.");
@@ -399,7 +399,7 @@ Page 51516269 "Membership Withdrawal Card"
                                     //"Remaining Amount":=cust."Closing Deposit Balance";
 
                                     LoansR.Reset;
-                                    LoansR.SetRange(LoansR."Client Code", "Member No.");
+                                    LoansR.SetRange(LoansR."Client Code", Rec."Member No.");
                                     LoansR.SetRange(LoansR.Source, LoansR.Source::BOSA);
                                     if LoansR.Find('-') then begin
 
@@ -411,14 +411,14 @@ Page 51516269 "Membership Withdrawal Card"
 
 
                                     LoansR.Reset;
-                                    LoansR.SetRange(LoansR."Client Code", "Member No.");
+                                    LoansR.SetRange(LoansR."Client Code", Rec."Member No.");
                                     LoansR.SetRange(LoansR.Source, LoansR.Source::BOSA);
                                     if LoansR.Find('-') then begin
                                         repeat
                                             "AMOUNTTO BE RECOVERED" := 0;
                                             LoansR.CalcFields(LoansR."Outstanding Balance", LoansR."Oustanding Interest");
 
-                                            Linterest := "Total Interest";
+                                            Linterest := Rec."Total Interest";
 
                                             //Loan Insurance
                                             LineNo := LineNo + 10000;
@@ -426,13 +426,13 @@ Page 51516269 "Membership Withdrawal Card"
                                             GenJournalLine."Journal Template Name" := 'GENERAL';
                                             GenJournalLine."Journal Batch Name" := 'Closure';
                                             GenJournalLine."Line No." := LineNo;
-                                            GenJournalLine."Document No." := "No.";
+                                            GenJournalLine."Document No." := Rec."No.";
                                             GenJournalLine."Posting Date" := Today;
-                                            GenJournalLine."External Document No." := "No.";
+                                            GenJournalLine."External Document No." := Rec."No.";
                                             GenJournalLine."Account Type" := GenJournalLine."bal. account type"::Customer;
-                                            GenJournalLine."Account No." := "Member No.";
+                                            GenJournalLine."Account No." := Rec."Member No.";
                                             GenJournalLine.Validate(GenJournalLine."Account No.");
-                                            GenJournalLine.Description := 'Cleared by deposits: ' + "No.";
+                                            GenJournalLine.Description := 'Cleared by deposits: ' + Rec."No.";
                                             GenJournalLine.Amount := -ROUND(LoansR."Loans Insurance");
                                             GenJournalLine.Validate(GenJournalLine.Amount);
                                             //GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Insurance Paid";
@@ -455,7 +455,7 @@ Page 51516269 "Membership Withdrawal Card"
                                     "Remaining Amount" := cust."Closing Deposit Balance";
 
                                     LoansR.Reset;
-                                    LoansR.SetRange(LoansR."Client Code", "Member No.");
+                                    LoansR.SetRange(LoansR."Client Code", Rec."Member No.");
                                     LoansR.SetRange(LoansR.Source, LoansR.Source::BOSA);
                                     if LoansR.Find('-') then begin
                                         repeat
@@ -469,13 +469,13 @@ Page 51516269 "Membership Withdrawal Card"
                                             GenJournalLine."Journal Template Name" := 'GENERAL';
                                             GenJournalLine."Journal Batch Name" := 'Closure';
                                             GenJournalLine."Line No." := LineNo;
-                                            GenJournalLine."Document No." := "No.";
+                                            GenJournalLine."Document No." := Rec."No.";
                                             GenJournalLine."Posting Date" := Today;
-                                            GenJournalLine."External Document No." := "No.";
+                                            GenJournalLine."External Document No." := Rec."No.";
                                             GenJournalLine."Account Type" := GenJournalLine."bal. account type"::Customer;
-                                            GenJournalLine."Account No." := "Member No.";
+                                            GenJournalLine."Account No." := Rec."Member No.";
                                             GenJournalLine.Validate(GenJournalLine."Account No.");
-                                            GenJournalLine.Description := 'Interest Offset: ' + "No.";
+                                            GenJournalLine.Description := 'Interest Offset: ' + Rec."No.";
                                             if RunBal < Linterest then
                                                 GenJournalLine.Amount := -1 * RunBal
                                             else
@@ -528,7 +528,7 @@ Page 51516269 "Membership Withdrawal Card"
                                     //GET LOANS TO RECOVER
 
                                     LoansR.Reset;
-                                    LoansR.SetRange(LoansR."Client Code", "Member No.");
+                                    LoansR.SetRange(LoansR."Client Code", Rec."Member No.");
                                     LoansR.SetRange(LoansR.Source, LoansR.Source::BOSA);
                                     if LoansR.Find('-') then begin
                                         repeat
@@ -541,13 +541,13 @@ Page 51516269 "Membership Withdrawal Card"
                                             GenJournalLine."Journal Template Name" := 'GENERAL';
                                             GenJournalLine."Journal Batch Name" := 'Closure';
                                             GenJournalLine."Line No." := LineNo;
-                                            GenJournalLine."Document No." := "No.";
+                                            GenJournalLine."Document No." := Rec."No.";
                                             GenJournalLine."Posting Date" := Today;
-                                            GenJournalLine."External Document No." := "No.";
+                                            GenJournalLine."External Document No." := Rec."No.";
                                             GenJournalLine."Account Type" := GenJournalLine."bal. account type"::Customer;
-                                            GenJournalLine."Account No." := "Member No.";
+                                            GenJournalLine."Account No." := Rec."Member No.";
                                             GenJournalLine.Validate(GenJournalLine."Account No.");
-                                            GenJournalLine.Description := 'Loan Cleared by deposits: ' + "No.";
+                                            GenJournalLine.Description := 'Loan Cleared by deposits: ' + Rec."No.";
                                             if RunBal < Lprinciple then
                                                 GenJournalLine.Amount := -1 * RunBal
                                             else
@@ -575,13 +575,13 @@ Page 51516269 "Membership Withdrawal Card"
                                 GenJournalLine."Journal Template Name" := 'GENERAL';
                                 GenJournalLine."Journal Batch Name" := 'Closure';
                                 GenJournalLine."Line No." := LineNo;
-                                GenJournalLine."Document No." := "No.";
+                                GenJournalLine."Document No." := Rec."No.";
                                 GenJournalLine."Posting Date" := Today;
-                                GenJournalLine."External Document No." := "No.";
+                                GenJournalLine."External Document No." := Rec."No.";
                                 GenJournalLine."Account Type" := GenJournalLine."bal. account type"::Customer;
-                                GenJournalLine."Account No." := "Member No.";
+                                GenJournalLine."Account No." := Rec."Member No.";
                                 GenJournalLine.Validate(GenJournalLine."Account No.");
-                                GenJournalLine.Description := 'Loans Recovered From Shares: ' + "No.";
+                                GenJournalLine.Description := 'Loans Recovered From Shares: ' + Rec."No.";
                                 GenJournalLine.Amount := ROUND(TotalLoansOut);
                                 GenJournalLine.Validate(GenJournalLine.Amount);
                                 GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Deposit Contribution";
@@ -605,13 +605,13 @@ Page 51516269 "Membership Withdrawal Card"
                                     GenJournalLine."Journal Template Name" := 'GENERAL';
                                     GenJournalLine."Journal Batch Name" := 'Closure';
                                     GenJournalLine."Line No." := LineNo;
-                                    GenJournalLine."Document No." := "No.";
+                                    GenJournalLine."Document No." := Rec."No.";
                                     GenJournalLine."Posting Date" := Today;
-                                    GenJournalLine."External Document No." := "No.";
+                                    GenJournalLine."External Document No." := Rec."No.";
                                     GenJournalLine."Account Type" := GenJournalLine."bal. account type"::Customer;
-                                    GenJournalLine."Account No." := "Member No.";
+                                    GenJournalLine."Account No." := Rec."Member No.";
                                     GenJournalLine.Validate(GenJournalLine."Account No.");
-                                    GenJournalLine.Description := 'Account Closure No: ' + "No.";
+                                    GenJournalLine.Description := 'Account Closure No: ' + Rec."No.";
                                     GenJournalLine.Amount := RunBal;
                                     GenJournalLine.Validate(GenJournalLine.Amount);
                                     GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Deposit Contribution";
@@ -630,14 +630,14 @@ Page 51516269 "Membership Withdrawal Card"
                                     GenJournalLine."Journal Template Name" := 'GENERAL';
                                     GenJournalLine."Journal Batch Name" := 'Closure';
                                     GenJournalLine."Line No." := LineNo;
-                                    GenJournalLine."Document No." := "No.";
+                                    GenJournalLine."Document No." := Rec."No.";
                                     GenJournalLine."Posting Date" := Today;
-                                    GenJournalLine."External Document No." := "Cheque No.";
+                                    GenJournalLine."External Document No." := Rec."Cheque No.";
                                     GenJournalLine."Account Type" := GenJournalLine."bal. account type"::Vendor;
-                                    GenJournalLine."Account No." := "FOSA Account No.";
+                                    GenJournalLine."Account No." := Rec."FOSA Account No.";
                                     GenJournalLine.Validate(GenJournalLine."Account No.");
-                                    GenJournalLine.Description := 'Account Closure No: ' + "No.";
-                                    GenJournalLine.Amount := -(RunBal + "BBF Amount" + Vend.Balance - runbal1);
+                                    GenJournalLine.Description := 'Account Closure No: ' + Rec."No.";
+                                    GenJournalLine.Amount := -(RunBal + Rec."BBF Amount" + Vend.Balance - runbal1);
                                     GenJournalLine.Validate(GenJournalLine.Amount);
                                     GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
                                     GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
@@ -756,7 +756,7 @@ Page 51516269 "Membership Withdrawal Card"
 
                         //CHANGE ACCOUNT STATUS
                         cust.Reset;
-                        cust.SetRange(cust."No.", "Member No.");
+                        cust.SetRange(cust."No.", Rec."Member No.");
                         if cust.Find('-') then begin
                             cust.Status := cust.Status::Withdrawal;
                             cust.Blocked := cust.Blocked::All;
@@ -771,8 +771,8 @@ Page 51516269 "Membership Withdrawal Card"
 
                     trigger OnAction()
                     begin
-                        Status := Status::Open;
-                        Modify;
+                        Rec.Status := Rec.Status::Open;
+                        Rec.Modify;
                     end;
                 }
             }
@@ -836,25 +836,25 @@ Page 51516269 "Membership Withdrawal Card"
 
     procedure UpdateControl()
     begin
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             MNoEditable := true;
             ClosingDateEditable := false;
             ClosureTypeEditable := true;
         end;
 
-        if Status = Status::Pending then begin
+        if Rec.Status = Rec.Status::Pending then begin
             MNoEditable := false;
             ClosingDateEditable := false;
             ClosureTypeEditable := false
         end;
 
-        if Status = Status::Rejected then begin
+        if Rec.Status = Rec.Status::Rejected then begin
             MNoEditable := false;
             ClosingDateEditable := false;
             ClosureTypeEditable := false;
         end;
 
-        if Status = Status::Approved then begin
+        if Rec.Status = Rec.Status::Approved then begin
             MNoEditable := false;
             ClosingDateEditable := true;
             ClosureTypeEditable := false;

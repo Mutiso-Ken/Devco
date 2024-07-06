@@ -51,7 +51,7 @@ Report 51516222 "Member Account  Balances"
             trigger OnAfterGetRecord()
             begin
 
-                CalcFields("Current Shares", "Share Capital", "Outstanding Balance", "Outstanding Interest","Alpha Savings","Junior Savings One","Likizo Contribution");
+                CalcFields("Current Shares", "Share Capital", "Outstanding Balance", "Outstanding Interest", "Alpha Savings", "Junior Savings One", "Likizo Contribution");
                 LoansBal := "Outstanding Balance";
                 CurrentShares := "Current Shares";
                 SharesCap := "Share Capital";

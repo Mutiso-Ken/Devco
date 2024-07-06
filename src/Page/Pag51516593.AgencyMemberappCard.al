@@ -10,12 +10,12 @@ Page 51516593 "Agency Member app Card"
         {
             group(General)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
@@ -25,64 +25,64 @@ Page 51516593 "Agency Member app Card"
                     begin
                         //.....................Check If User Is Existing
                         AgencyMembers.Reset();
-                        AgencyMembers.SetRange(AgencyMembers."Account No", "Account No");
+                        AgencyMembers.SetRange(AgencyMembers."Account No", Rec."Account No");
                         if AgencyMembers.Find('-') then begin
                             Error('The member is already registered !');
                         end;
                         //............................
-                        "Created By" := UserId;
-                        "Time Applied" := time;
-                        "Date Applied" := Today;
+                        Rec."Created By" := UserId;
+                        Rec."Time Applied" := time;
+                        Rec."Date Applied" := Today;
                     end;
                 }
-                field("Account Name"; "Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field(Telephone; Telephone)
+                field(Telephone; Rec.Telephone)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("ID No"; "ID No")
+                field("ID No"; Rec."ID No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Date Applied"; "Date Applied")
+                field("Date Applied"; Rec."Date Applied")
                 {
 
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Time Applied"; "Time Applied")
+                field("Time Applied"; Rec."Time Applied")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Created By"; "Created By")
+                field("Created By"; Rec."Created By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Sent; Sent)
+                field(Sent; Rec.Sent)
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("No. Series"; "No. Series")
+                field("No. Series"; Rec."No. Series")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field(SentToServer; SentToServer)
+                field(SentToServer; Rec.SentToServer)
                 {
                     ApplicationArea = Basic;
                     Editable = false;

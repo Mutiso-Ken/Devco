@@ -11,51 +11,51 @@ Page 51516437 "Investor Group Card"
         {
             group(General)
             {
-                field("ID/Passport No";"ID/Passport No")
+                field("ID/Passport No"; Rec."ID/Passport No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Postal Code";"Postal Code")
+                field("Postal Code"; Rec."Postal Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Address;Address)
+                field(Address; Rec.Address)
                 {
                     ApplicationArea = Basic;
                 }
-                field(City;City)
+                field(City; Rec.City)
                 {
                     ApplicationArea = Basic;
                 }
-                field(County;County)
+                field(County; Rec.County)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mobile No.";"Mobile No.")
+                field("Mobile No."; Rec."Mobile No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Home Phone No.";"Home Phone No.")
+                field("Home Phone No."; Rec."Home Phone No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Email Address";"Email Address")
+                field("Email Address"; Rec."Email Address")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Pin Number";"Pin Number")
+                field("Pin Number"; Rec."Pin Number")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Photo;Photo)
+                field(Photo; Rec.Photo)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Sgnature;Sgnature)
+                field(Sgnature; Rec.Sgnature)
                 {
                     ApplicationArea = Basic;
                 }

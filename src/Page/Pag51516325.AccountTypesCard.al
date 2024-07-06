@@ -12,113 +12,113 @@ Page 51516325 "Account Types Card"
             group(General)
             {
                 Caption = 'General';
-                field("Code";Code)
+                field("Code"; Rec.Code)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Activity Code";"Activity Code")
+                field("Activity Code"; Rec."Activity Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No Prefix";"Account No Prefix")
+                field("Account No Prefix"; Rec."Account No Prefix")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Account No. Format';
                     Editable = true;
                 }
-                field(Branch;Branch)
+                field(Branch; Rec.Branch)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Branc';
                     Editable = true;
                 }
-                field("No. Series";"No. Series")
+                field("No. Series"; Rec."No. Series")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Noseries';
                     Editable = true;
                 }
-                field("Ending Series";"Ending Series")
+                field("Ending Series"; Rec."Ending Series")
                 {
                     ApplicationArea = Basic;
                     Caption = 'EndSeries';
                     Editable = true;
                 }
-                field("SMS Description";"SMS Description")
+                field("SMS Description"; Rec."SMS Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Group";"Posting Group")
+                field("Posting Group"; Rec."Posting Group")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Posting Group';
                     Editable = true;
                 }
-                field("Dormancy Period (M)";"Dormancy Period (M)")
+                field("Dormancy Period (M)"; Rec."Dormancy Period (M)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Withdrawal Interval";"Withdrawal Interval")
+                field("Withdrawal Interval"; Rec."Withdrawal Interval")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Withdrawal Penalty";"Withdrawal Penalty")
+                field("Withdrawal Penalty"; Rec."Withdrawal Penalty")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Withdrawal Interval Account";"Withdrawal Interval Account")
+                field("Withdrawal Interval Account"; Rec."Withdrawal Interval Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Requires Opening Deposit";"Requires Opening Deposit")
+                field("Requires Opening Deposit"; Rec."Requires Opening Deposit")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Allow Loan Applications";"Allow Loan Applications")
+                field("Allow Loan Applications"; Rec."Allow Loan Applications")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Use Savings Account Number";"Use Savings Account Number")
+                field("Use Savings Account Number"; Rec."Use Savings Account Number")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Fixed Deposit";"Fixed Deposit")
+                field("Fixed Deposit"; Rec."Fixed Deposit")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Minimum Balance";"Minimum Balance")
+                field("Minimum Balance"; Rec."Minimum Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Standing Orders Suspense";"Standing Orders Suspense")
+                field("Standing Orders Suspense"; Rec."Standing Orders Suspense")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bankers Cheque Account";"Bankers Cheque Account")
+                field("Bankers Cheque Account"; Rec."Bankers Cheque Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Maximum Withdrawal Amount";"Maximum Withdrawal Amount")
+                field("Maximum Withdrawal Amount"; Rec."Maximum Withdrawal Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Maximum Allowable Deposit";"Maximum Allowable Deposit")
+                field("Maximum Allowable Deposit"; Rec."Maximum Allowable Deposit")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Check Off Recovery";"Check Off Recovery")
+                field("Check Off Recovery"; Rec."Check Off Recovery")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Recovery Priority";"Recovery Priority")
+                field("Recovery Priority"; Rec."Recovery Priority")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Allow Multiple Accounts";"Allow Multiple Accounts")
+                field("Allow Multiple Accounts"; Rec."Allow Multiple Accounts")
                 {
                     ApplicationArea = Basic;
                 }
@@ -126,40 +126,40 @@ Page 51516325 "Account Types Card"
             group("Interest Computation")
             {
                 Caption = 'Interest Computation';
-                field("Earns Interest";"Earns Interest")
+                field("Earns Interest"; Rec."Earns Interest")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest Rate";"Interest Rate")
+                field("Interest Rate"; Rec."Interest Rate")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest Calc Min Balance";"Interest Calc Min Balance")
+                field("Interest Calc Min Balance"; Rec."Interest Calc Min Balance")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Interest Min. Balance';
                 }
-                field("Minimum Interest Period (M)";"Minimum Interest Period (M)")
+                field("Minimum Interest Period (M)"; Rec."Minimum Interest Period (M)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest Expense Account";"Interest Expense Account")
+                field("Interest Expense Account"; Rec."Interest Expense Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest Payable Account";"Interest Payable Account")
+                field("Interest Payable Account"; Rec."Interest Payable Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest Forfeited Account";"Interest Forfeited Account")
+                field("Interest Forfeited Account"; Rec."Interest Forfeited Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Tax On Interest";"Tax On Interest")
+                field("Tax On Interest"; Rec."Tax On Interest")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest Tax Account";"Interest Tax Account")
+                field("Interest Tax Account"; Rec."Interest Tax Account")
                 {
                     ApplicationArea = Basic;
                 }
@@ -167,165 +167,165 @@ Page 51516325 "Account Types Card"
             group(Charges)
             {
                 Caption = 'Charges';
-                field("Account Openning Fee";"Account Openning Fee")
+                field("Account Openning Fee"; Rec."Account Openning Fee")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Account Opening Fee';
                 }
-                field("Account Openning Fee Account";"Account Openning Fee Account")
+                field("Account Openning Fee Account"; Rec."Account Openning Fee Account")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Account Opening Fee Account';
                 }
-                field("Re-activation Fee";"Re-activation Fee")
+                field("Re-activation Fee"; Rec."Re-activation Fee")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Re-activation Fee Account";"Re-activation Fee Account")
+                field("Re-activation Fee Account"; Rec."Re-activation Fee Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Requires Closure Notice";"Requires Closure Notice")
+                field("Requires Closure Notice"; Rec."Requires Closure Notice")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Closure Notice Period";"Closure Notice Period")
+                field("Closure Notice Period"; Rec."Closure Notice Period")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Closing Charge";"Closing Charge")
+                field("Closing Charge"; Rec."Closing Charge")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Closing Prior Notice Charge";"Closing Prior Notice Charge")
+                field("Closing Prior Notice Charge"; Rec."Closing Prior Notice Charge")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Min Bal. Calc Frequency";"Min Bal. Calc Frequency")
+                field("Min Bal. Calc Frequency"; Rec."Min Bal. Calc Frequency")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Fee Below Minimum Balance";"Fee Below Minimum Balance")
+                field("Fee Below Minimum Balance"; Rec."Fee Below Minimum Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Fee bellow Min. Bal. Account";"Fee bellow Min. Bal. Account")
+                field("Fee bellow Min. Bal. Account"; Rec."Fee bellow Min. Bal. Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Overdraft Charge";"Overdraft Charge")
+                field("Overdraft Charge"; Rec."Overdraft Charge")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Authorised Ovedraft Charge";"Authorised Ovedraft Charge")
+                field("Authorised Ovedraft Charge"; Rec."Authorised Ovedraft Charge")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Service Charge";"Service Charge")
+                field("Service Charge"; Rec."Service Charge")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Maintenence Fee";"Maintenence Fee")
+                field("Maintenence Fee"; Rec."Maintenence Fee")
                 {
                     ApplicationArea = Basic;
                 }
-                field("External EFT Charges";"External EFT Charges")
+                field("External EFT Charges"; Rec."External EFT Charges")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Internal EFT Charges";"Internal EFT Charges")
+                field("Internal EFT Charges"; Rec."Internal EFT Charges")
                 {
                     ApplicationArea = Basic;
                 }
-                field("EFT Charges Account";"EFT Charges Account")
+                field("EFT Charges Account"; Rec."EFT Charges Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("RTGS Charges";"RTGS Charges")
+                field("RTGS Charges"; Rec."RTGS Charges")
                 {
                     ApplicationArea = Basic;
                 }
-                field("RTGS Charges Account";"RTGS Charges Account")
+                field("RTGS Charges Account"; Rec."RTGS Charges Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Statement Charge";"Statement Charge")
+                field("Statement Charge"; Rec."Statement Charge")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Savings Duration";"Savings Duration")
+                field("Savings Duration"; Rec."Savings Duration")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Savings Withdrawal penalty";"Savings Withdrawal penalty")
+                field("Savings Withdrawal penalty"; Rec."Savings Withdrawal penalty")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Savings Penalty Account";"Savings Penalty Account")
+                field("Savings Penalty Account"; Rec."Savings Penalty Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("FOSA Shares";"FOSA Shares")
+                field("FOSA Shares"; Rec."FOSA Shares")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Pass Book";"Pass Book")
+                field("Pass Book"; Rec."Pass Book")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Registration Fee";"Registration Fee")
+                field("Registration Fee"; Rec."Registration Fee")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Allow Over Draft";"Allow Over Draft")
+                field("Allow Over Draft"; Rec."Allow Over Draft")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Over Draft Interest %";"Over Draft Interest %")
+                field("Over Draft Interest %"; Rec."Over Draft Interest %")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Over Draft Interest Account";"Over Draft Interest Account")
+                field("Over Draft Interest Account"; Rec."Over Draft Interest Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Over Draft Issue Charge %";"Over Draft Issue Charge %")
+                field("Over Draft Issue Charge %"; Rec."Over Draft Issue Charge %")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Over Draft Issue Charge A/C";"Over Draft Issue Charge A/C")
+                field("Over Draft Issue Charge A/C"; Rec."Over Draft Issue Charge A/C")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Allow Multiple Over Draft";"Allow Multiple Over Draft")
+                field("Allow Multiple Over Draft"; Rec."Allow Multiple Over Draft")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ATM Placing Charge";"ATM Placing Charge")
+                field("ATM Placing Charge"; Rec."ATM Placing Charge")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ATM Replacement Charge";"ATM Replacement Charge")
+                field("ATM Replacement Charge"; Rec."ATM Replacement Charge")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Commission on Placing";"Commission on Placing")
+                field("Commission on Placing"; Rec."Commission on Placing")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Commission on Replacement";"Commission on Replacement")
+                field("Commission on Replacement"; Rec."Commission on Replacement")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Comission on ATM Cards A/C";"Comission on ATM Cards A/C")
+                field("Comission on ATM Cards A/C"; Rec."Comission on ATM Cards A/C")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ATM Post to Stock";"ATM Post to Stock")
+                field("ATM Post to Stock"; Rec."ATM Post to Stock")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ATM Bank/GL Account";"ATM Bank/GL Account")
+                field("ATM Bank/GL Account"; Rec."ATM Bank/GL Account")
                 {
                     ApplicationArea = Basic;
                 }

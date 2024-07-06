@@ -13,179 +13,179 @@ page 50310 "Payroll Employee Card."
         {
             group(General)
             {
-                field("Payroll No"; "Payroll No")
+                field("Payroll No"; Rec."Payroll No")
                 {
                     ApplicationArea = All;
                     Caption = 'Sacco Member No.';
                 }
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
                     Caption = 'Staff No';
                 }
 
-                field("Full Name"; "Full Name")
+                field("Full Name"; Rec."Full Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Employee Email"; "Employee Email")
+                field("Employee Email"; Rec."Employee Email")
                 {
                     ApplicationArea = All;
                 }
-                field("Joining Date"; "Joining Date")
+                field("Joining Date"; Rec."Joining Date")
                 {
                     ApplicationArea = All;
                     Caption = 'Appointment Date';
                     ShowMandatory = true;
                 }
-                field("Last Increment Date"; "Last Increment Date")
+                field("Last Increment Date"; Rec."Last Increment Date")
                 {
                     ApplicationArea = All;
                     Caption = 'Last Increment Date';
                     Enabled = false;
                     Visible = false;
                 }
-                field("Next Increment Date"; "Next Increment Date") //transaction priod month
+                field("Next Increment Date"; Rec."Next Increment Date") //transaction priod month
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field(Gender; Gender)
+                field(Gender; Rec.Gender)
                 {
                     ApplicationArea = All;
                 }
-                field("Date of Birth"; "Date of Birth")
+                field("Date of Birth"; Rec."Date of Birth")
                 {
                     ApplicationArea = All;
                 }
-                field(Age; Age)
+                field(Age; Rec.Age)
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Date Of Retirement"; "Date Of Retirement")
+                field("Date Of Retirement"; Rec."Date Of Retirement")
                 {
                     ApplicationArea = All;
                 }
-                field("Currency Code"; "Currency Code")
+                field("Currency Code"; Rec."Currency Code")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Global Dimension 2"; "Global Dimension 2")
+                field("Global Dimension 2"; Rec."Global Dimension 2")
                 {
                     ApplicationArea = All;
                     Caption = '"Global Dimension 2"';
                     Visible = false;
                 }
-                field("Posting Group"; "Posting Group")
+                field("Posting Group"; Rec."Posting Group")
                 {
                     ApplicationArea = All;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = All;
                 }
-                field("National ID No"; "National ID No")
-                {
-                    ApplicationArea = All;
-                    ShowMandatory = true;
-                }
-                field("NSSF No"; "NSSF No")
+                field("National ID No"; Rec."National ID No")
                 {
                     ApplicationArea = All;
                     ShowMandatory = true;
                 }
-                field("NHIF No"; "NHIF No")
+                field("NSSF No"; Rec."NSSF No")
                 {
                     ApplicationArea = All;
                     ShowMandatory = true;
                 }
-                field("PIN No"; "PIN No")
+                field("NHIF No"; Rec."NHIF No")
                 {
                     ApplicationArea = All;
                     ShowMandatory = true;
                 }
-                field(Organization; Organization)
+                field("PIN No"; Rec."PIN No")
+                {
+                    ApplicationArea = All;
+                    ShowMandatory = true;
+                }
+                field(Organization; Rec.Organization)
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field(Category; Category)
+                field(Category; Rec.Category)
                 {
                     ApplicationArea = All;
                 }
-                field("Living with disability"; "Living with disability")
-                {
-                    ApplicationArea = All;
-                    Visible = false;
-                }
-                field("Is Management"; "Is Management")
+                field("Living with disability"; Rec."Living with disability")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Payroll Categories"; "Payroll Categories")
-                {
-                    ApplicationArea = All;
-                }
-                field("Work Station"; "Work Station")
+                field("Is Management"; Rec."Is Management")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Department Code"; "Department Code")
+                field("Payroll Categories"; Rec."Payroll Categories")
                 {
                     ApplicationArea = All;
                 }
-                field(Department; Department)
+                field("Work Station"; Rec."Work Station")
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+                field("Department Code"; Rec."Department Code")
+                {
+                    ApplicationArea = All;
+                }
+                field(Department; Rec.Department)
                 {
                     applicationarea = all;
                     editable = true;
                 }
-                field(Designation; Designation)
+                field(Designation; Rec.Designation)
                 {
                     ApplicationArea = All;
                 }
             }
             group("Pay Details")
             {
-                field("Basic Pay"; "Basic Pay")
+                field("Basic Pay"; Rec."Basic Pay")
                 {
                     ApplicationArea = All;
                 }
-                field("Paid per Hour"; "Paid per Hour")
-                {
-                    ApplicationArea = All;
-                    Visible = false;
-                }
-                field("Pays PAYE"; "Pays PAYE")
-                {
-                    ApplicationArea = All;
-                }
-                field("Pays NSSF"; "Pays NSSF")
-                {
-                    ApplicationArea = All;
-                }
-                field("Pays NHIF"; "Pays NHIF")
-                {
-                    ApplicationArea = All;
-                }
-                field("Payment Mode"; "Payment Mode")
-                {
-                    ApplicationArea = All;
-                }
-                field("Insurance Premium"; "Insurance Premium")
+                field("Paid per Hour"; Rec."Paid per Hour")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field(NITA; NITA)
+                field("Pays PAYE"; Rec."Pays PAYE")
+                {
+                    ApplicationArea = All;
+                }
+                field("Pays NSSF"; Rec."Pays NSSF")
+                {
+                    ApplicationArea = All;
+                }
+                field("Pays NHIF"; Rec."Pays NHIF")
+                {
+                    ApplicationArea = All;
+                }
+                field("Payment Mode"; Rec."Payment Mode")
+                {
+                    ApplicationArea = All;
+                }
+                field("Insurance Premium"; Rec."Insurance Premium")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Pays Pension"; "Pays Pension")
+                field(NITA; Rec.NITA)
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+                field("Pays Pension"; Rec."Pays Pension")
                 {
                     ApplicationArea = All;
                     Visible = false;
@@ -193,13 +193,13 @@ page 50310 "Payroll Employee Card."
             }
             group("Bank Details")
             {
-                field("Bank Code"; "Bank Code")
+                field("Bank Code"; Rec."Bank Code")
                 {
                     ApplicationArea = All;
                     ShowMandatory = true;
                     Visible = true;
                 }
-                field("Bank Name"; "Bank Name")
+                field("Bank Name"; Rec."Bank Name")
                 {
                     ApplicationArea = All;
                     ShowMandatory = true;
@@ -209,7 +209,7 @@ page 50310 "Payroll Employee Card."
                 //     ApplicationArea = All;
                 //     ShowMandatory = true;
                 // }
-                field("Branch Name"; "Branch Name")
+                field("Branch Name"; Rec."Branch Name")
                 {
                     ApplicationArea = All;
                     ShowMandatory = true;
@@ -219,7 +219,7 @@ page 50310 "Payroll Employee Card."
                 //     ApplicationArea = All;
                 //     ShowMandatory = true;
                 // }
-                field("Bank Account No"; "Bank Account No")
+                field("Bank Account No"; Rec."Bank Account No")
                 {
                     ApplicationArea = All;
                     ShowMandatory = true;
@@ -227,7 +227,7 @@ page 50310 "Payroll Employee Card."
             }
             group("Other Details")
             {
-                field("Payslip Message"; "Payslip Message")
+                field("Payslip Message"; Rec."Payslip Message")
                 {
                     ApplicationArea = All;
                     Visible = false;
@@ -238,59 +238,59 @@ page 50310 "Payroll Employee Card."
             {
                 Editable = false;
 
-                field("Cummulative Basic Pay"; "Cummulative Basic Pay")
+                field("Cummulative Basic Pay"; Rec."Cummulative Basic Pay")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative Gross Pay"; "Cummulative Gross Pay")
+                field("Cummulative Gross Pay"; Rec."Cummulative Gross Pay")
                 {
                     ApplicationArea = All;
                 }
                 /*  field("Cummulative Allowances"; "Cummulative Allowances")
                   {
                   }*/
-                field("Cummulative Deductions"; "Cummulative Deductions")
+                field("Cummulative Deductions"; Rec."Cummulative Deductions")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative Net Pay"; "Cummulative Net Pay")
+                field("Cummulative Net Pay"; Rec."Cummulative Net Pay")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative PAYE"; "Cummulative PAYE")
+                field("Cummulative PAYE"; Rec."Cummulative PAYE")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative NSSF"; "Cummulative NSSF")
+                field("Cummulative NSSF"; Rec."Cummulative NSSF")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative Pension"; "Cummulative Pension")
-                {
-                    ApplicationArea = All;
-                    Visible = false;
-                }
-                field("Cummulative HELB"; "Cummulative HELB")
+                field("Cummulative Pension"; Rec."Cummulative Pension")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Cummulative NHIF"; "Cummulative NHIF")
+                field("Cummulative HELB"; Rec."Cummulative HELB")
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+                field("Cummulative NHIF"; Rec."Cummulative NHIF")
                 {
                     ApplicationArea = All;
                 }
             }
             group("Suspension of Payment")
             {
-                field("Suspend Pay"; "Suspend Pay")
+                field("Suspend Pay"; Rec."Suspend Pay")
                 {
                     ApplicationArea = All;
                 }
-                field("Suspend Date"; "Suspend Date")
+                field("Suspend Date"; Rec."Suspend Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Suspend Reason"; "Suspend Reason")
+                field("Suspend Reason"; Rec."Suspend Reason")
                 {
                     ApplicationArea = All;
                 }
@@ -321,7 +321,7 @@ page 50310 "Payroll Employee Card."
                     if objPeriod.Find('-') then begin
                         SelectedPeriod := objPeriod."Date Opened";
                         varPeriodMonth := objPeriod."Period Month";
-                        SalCard.Get("No.");
+                        SalCard.Get(Rec."No.");
                     end;
                     //For Multiple Payroll
                     if ContrInfo."Multiple Payroll" then begin
@@ -351,18 +351,18 @@ page 50310 "Payroll Employee Card."
                         //IF ContrInfo."Multiple Payroll" THEN BEGIN
                         ObjPayrollTransactions.Reset;
                         ObjPayrollTransactions.SetRange(ObjPayrollTransactions."Payroll Period", objPeriod."Date Opened");
-                        ObjPayrollTransactions.SetRange("Employee Code", "No.");
+                        ObjPayrollTransactions.SetRange("Employee Code", Rec."No.");
                         if ObjPayrollTransactions.Find('-') then begin
                             ObjPayrollTransactions.DeleteAll;
                         end;
                     end;
                     PayrollEmployerDed.Reset;
                     PayrollEmployerDed.SetRange(PayrollEmployerDed."Payroll Period", SelectedPeriod);
-                    PayrollEmployerDed.SetRange("Employee Code", "No.");
+                    PayrollEmployerDed.SetRange("Employee Code", Rec."No.");
                     if PayrollEmployerDed.Find('-') then PayrollEmployerDed.DeleteAll;
                     //*********************************************************************************************add interest
                     PayrollEmployDed.Reset;
-                    PayrollEmployDed.SetRange(PayrollEmployDed."No.", "No.");
+                    PayrollEmployDed.SetRange(PayrollEmployDed."No.", Rec."No.");
                     PayrollEmployDed.SetRange(PayrollEmployDed."IsCoop/LnRep", true);
                     if PayrollEmployDed.FindSet() then begin
                         repeat
@@ -375,7 +375,7 @@ page 50310 "Payroll Employee Card."
                     //                    //*********************************************************************************************add interest
                     HrEmployee.Reset;
                     HrEmployee.SetRange(HrEmployee.Status, HrEmployee.Status::Active);
-                    HrEmployee.SetRange(HrEmployee."No.", "No.");
+                    HrEmployee.SetRange(HrEmployee."No.", Rec."No.");
                     if HrEmployee.Find('-') then begin
                         ProgressWindow.Open('Processing Salary for Employee No. #1#######');
                         repeat
@@ -454,7 +454,7 @@ page 50310 "Payroll Employee Card."
             }
             action("Send P9")
             {
-                  ApplicationArea = All;
+                ApplicationArea = All;
                 Image = SendEmailPDF;
                 Promoted = true;
                 PromotedCategory = Process;
@@ -478,7 +478,7 @@ page 50310 "Payroll Employee Card."
                 trigger OnAction()
                 begin
                     PayrollEmp.Reset;
-                    PayrollEmp.SetRange(PayrollEmp."No.", "No.");
+                    PayrollEmp.SetRange(PayrollEmp."No.", Rec."No.");
                     if PayrollEmp.FindFirst then begin
                         REPORT.Run(50010, true, false, PayrollEmp);
                     end;
@@ -496,8 +496,8 @@ page 50310 "Payroll Employee Card."
 
                 trigger OnAction()
                 begin
-                    "Living with disability" := true;
-                    Modify;
+                    Rec."Living with disability" := true;
+                    Rec.Modify;
                 end;
             }
         }
@@ -570,11 +570,11 @@ page 50310 "Payroll Employee Card."
             DialogBox.Open('Sending P9 Slip to  ' + Format(Receipt."Full Name"));
             //------------------->Get Key Details of Send Email
             SendEmailTo := '';
-            SendEmailTo := FnGetClientCodeEmail("No.");
+            SendEmailTo := FnGetClientCodeEmail(Rec."No.");
             EmailSubject := '';
-            EmailSubject := 'P9 for ' + Format("Payroll Period");
+            EmailSubject := 'P9 for ' + Format(Rec."Payroll Period");
             EmailBody := '';
-            EmailBody := 'Dear <b>' + Format("Full Name") + '</b>,</br></br>' +
+            EmailBody := 'Dear <b>' + Format(Rec."Full Name") + '</b>,</br></br>' +
             'We hope this email finds you well. Please find attached your P9.' +
                 Companyinfo.Name + '</br> ' + Companyinfo.Address + '</br> ' + Companyinfo.City + '</br>' +
            Companyinfo."Post Code" + '</br>' + Companyinfo."Country/Region Code" + '</br>' +
@@ -583,7 +583,7 @@ page 50310 "Payroll Employee Card."
             //---------Attachment 1
             reportparameters := reportrun.RunRequestPage();
             //reportparameters :=  format("No.") + Format( "Payroll Period");
-            FileName := Format("Payroll Period") + '-Payslip.pdf';
+            FileName := Format(Rec."Payroll Period") + '-Payslip.pdf';
             TempBlob.CreateOutStream(Outstr);
             Report.SaveAs(Report::"P9 Report", reportparameters, ReportFormat::Pdf, Outstr);
             TempBlob.CreateInStream(Instr);
@@ -593,7 +593,7 @@ page 50310 "Payroll Employee Card."
             //.........................................
             FnEmail.Send(MailToSend);
             DialogBox.Close();
-            Message('Email Send to %1 Succesfully', "Full Name");
+            Message('Email Send to %1 Succesfully', Rec."Full Name");
         end;
     end;
 
@@ -634,11 +634,11 @@ page 50310 "Payroll Employee Card."
             DialogBox.Open('Sending Payslip to  ' + Format(Receipt."Full Name"));
             //------------------->Get Key Details of Send Email
             SendEmailTo := '';
-            SendEmailTo := FnGetClientCodeEmail("No.");
+            SendEmailTo := FnGetClientCodeEmail(Rec."No.");
             EmailSubject := '';
-            EmailSubject := 'Payslip for ' + Format("Payroll Period");
+            EmailSubject := 'Payslip for ' + Format(Rec."Payroll Period");
 
-            EmailBody := 'Dear <b>' + Format("Full Name") + '</b>,</br></br>' +
+            EmailBody := 'Dear <b>' + Format(Rec."Full Name") + '</b>,</br></br>' +
             'We hope this email finds you well. Please find attached your Payslip.' +
                 Companyinfo.Name + '</br> ' + Companyinfo.Address + '</br> ' + Companyinfo.City + '</br>' +
            Companyinfo."Post Code" + '</br>' + Companyinfo."Country/Region Code" + '</br>' +
@@ -647,7 +647,7 @@ page 50310 "Payroll Employee Card."
             //---------Attachment 1
             reportparameters := reportrun.RunRequestPage();
             //reportparameters :=  format("No.") + Format( "Payroll Period");
-            FileName := Format("Payroll Period") + '-Payslip.pdf';
+            FileName := Format(Rec."Payroll Period") + '-Payslip.pdf';
             TempBlob.CreateOutStream(Outstr);
             Report.SaveAs(Report::"Payroll Payslip", reportparameters, ReportFormat::Pdf, Outstr);
             TempBlob.CreateInStream(Instr);
@@ -657,7 +657,7 @@ page 50310 "Payroll Employee Card."
             //.........................................
             FnEmail.Send(MailToSend);
             DialogBox.Close();
-            Message('Email Send to %1 Succesfully', "Full Name");
+            Message('Email Send to %1 Succesfully', Rec."Full Name");
         end;
     end;
 

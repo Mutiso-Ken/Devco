@@ -14,32 +14,32 @@ Page 51516498 "lead card closed"
         {
             group(General)
             {
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Enquiring As"; "Calling As")
+                field("Enquiring As"; Rec."Calling As")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Enquiring As';
                     ShowMandatory = true;
                     trigger OnValidate()
                     begin
-                        if "Calling As" = "calling as"::"As Member" then begin
+                        if Rec."Calling As" = Rec."calling as"::"As Member" then begin
                             Asmember := true;
                             AsEmployer := true;
                             Ascase := true;
                             IfMember := true;
                             CurrPage.Update();
                         end;
-                        if "Calling As" = "calling as"::"As Non Member" then begin
+                        if Rec."Calling As" = Rec."calling as"::"As Non Member" then begin
                             AsNonmember := true;
                             IfMember := false;
                             Asother := true;
                             CurrPage.Update();
                         end;
-                        if "Calling As" = "calling as"::"As Staff" then begin
+                        if Rec."Calling As" = Rec."calling as"::"As Staff" then begin
                             AsEmployer := true;
                             Asother := true;
                             Ascase := true;
@@ -49,32 +49,32 @@ Page 51516498 "lead card closed"
 
                     end;
                 }
-                field("Enquiring For"; "Calling For")
+                field("Enquiring For"; Rec."Calling For")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field("Contact Mode"; "Contact Mode")
+                field("Contact Mode"; Rec."Contact Mode")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field("Case Subject"; "Case Subject")
+                field("Case Subject"; Rec."Case Subject")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field("Lead Status"; "Lead Status")
+                field("Lead Status"; Rec."Lead Status")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Captured On"; "Captured On")
+                field("Captured On"; Rec."Captured On")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -83,7 +83,7 @@ Page 51516498 "lead card closed"
             }
             group("Lead Details")
             {
-                field("Member No"; "Member No")
+                field("Member No"; Rec."Member No")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -94,51 +94,51 @@ Page 51516498 "lead card closed"
                         LoansReg: Record "Loans Register";
                     begin
                         cust.Reset();
-                        cust.SetRange(cust."No.", "Member No");
+                        cust.SetRange(cust."No.", Rec."Member No");
                         if cust.Find('-') then begin
-                            "Member Name" := cust.Name;
-                            "ID No" := cust."ID No.";
-                            "ID No." := cust."ID No.";
-                            "Phone No" := cust."Mobile Phone No";
-                            Email := cust."E-Mail (Personal)";
-                            "Date Of Birth" := cust."Date of Birth";
-                            Gender := cust.Gender;
+                            Rec."Member Name" := cust.Name;
+                            Rec."ID No" := cust."ID No.";
+                            Rec."ID No." := cust."ID No.";
+                            Rec."Phone No" := cust."Mobile Phone No";
+                            Rec.Email := cust."E-Mail (Personal)";
+                            Rec."Date Of Birth" := cust."Date of Birth";
+                            Rec.Gender := cust.Gender;
                         end;
                     end;
                 }
-                field("Member Name"; "Member Name")
+                field("Member Name"; Rec."Member Name")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Full Name';
                     ShowMandatory = true;
                 }
-                field("Phone No"; "Phone No")
+                field("Phone No"; Rec."Phone No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Mobile No';
                     ShowMandatory = true;
                 }
-                field("Date Of Birth"; "Date Of Birth")
+                field("Date Of Birth"; Rec."Date Of Birth")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Date Of Birth';
                     ShowMandatory = true;
                 }
-                field(Gender; Gender)
+                field(Gender; Rec.Gender)
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field(Email; Email)
+                field(Email; Rec.Email)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Address; Address)
+                field(Address; Rec.Address)
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'ID No';
@@ -164,7 +164,7 @@ Page 51516498 "lead card closed"
             {
                 Caption = 'Case Description';
                 Visible = IsEscalated;
-                field("Case Details"; "Case Details")
+                field("Case Details"; Rec."Case Details")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -175,7 +175,7 @@ Page 51516498 "lead card closed"
 
                     end;
                 }
-                field("Caller Reffered To"; "Caller Reffered To")
+                field("Caller Reffered To"; Rec."Caller Reffered To")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -184,21 +184,21 @@ Page 51516498 "lead card closed"
             }
             group("Case Resolution Details")
             {
-                field("Resolution Details"; "Resolution Details")
+                field("Resolution Details"; Rec."Resolution Details")
                 {
                     ShowMandatory = true;
                 }
-                field("Resolved by"; "Resolved by")
+                field("Resolved by"; Rec."Resolved by")
                 {
                     Enabled = false;
                     Style = Favorable;
                 }
-                field("Resolved Time"; "Resolved Time")
+                field("Resolved Time"; Rec."Resolved Time")
                 {
                     Enabled = false;
                     Style = Favorable;
                 }
-                field("Resolved Date"; "Resolved Date")
+                field("Resolved Date"; Rec."Resolved Date")
                 {
                     Enabled = false;
                     Style = Favorable;
@@ -216,7 +216,7 @@ Page 51516498 "lead card closed"
 
     // actions
     // {
-        
+
     //     area(creation)
     //     {
 
@@ -333,25 +333,25 @@ Page 51516498 "lead card closed"
 
     trigger OnAfterGetRecord()
     begin
-        if Status = Status::Resolved then begin
+        if Rec.Status = Rec.Status::Resolved then begin
             CurrPage.Editable := false;
             IsEnabled := false;
         end else
-            if Status <> Status::Resolved then begin
+            if Rec.Status <> Rec.Status::Resolved then begin
                 IsEnabled := true;
             end;
-        if "Calling As" = "calling as"::"As Member" then begin
+        if Rec."Calling As" = Rec."calling as"::"As Member" then begin
             Asmember := true;
             AsEmployer := true;
             Ascase := true;
             IfMember := true;
         end;
-        if "Calling As" = "calling as"::"As Non Member" then begin
+        if Rec."Calling As" = Rec."calling as"::"As Non Member" then begin
             AsNonmember := true;
             IfMember := false;
             Asother := true;
         end;
-        if "Calling As" = "calling as"::"As Staff" then begin
+        if Rec."Calling As" = Rec."calling as"::"As Staff" then begin
             AsEmployer := true;
             Asother := true;
             Ascase := true;
@@ -373,7 +373,7 @@ Page 51516498 "lead card closed"
         Asother := false;
         Ascase := false;
 
-        if "Calling As" = "calling as"::"As Non Member" then begin
+        if Rec."Calling As" = Rec."calling as"::"As Non Member" then begin
             AsNonmember := true;
             Asother := true;
         end;
@@ -381,7 +381,7 @@ Page 51516498 "lead card closed"
 
     trigger OnAfterGetCurrRecord()
     begin
-        if Status = Status::Resolved then begin
+        if Rec.Status = Rec.Status::Resolved then begin
             CurrPage.Editable := false;
 
         end;
@@ -404,10 +404,10 @@ Page 51516498 "lead card closed"
         SMSMessages.RESET;
         SMSMessages.INIT;
         SMSMessages."Entry No" := iEntryNo;
-        IF "Member No" <> '' THEN begin
-            SMSMessages."Account No" := "Member No";
+        IF Rec."Member No" <> '' THEN begin
+            SMSMessages."Account No" := Rec."Member No";
         end else
-            IF "Member No" = '' THEN begin
+            IF Rec."Member No" = '' THEN begin
                 SMSMessages."Account No" := 'NON-MEMBER';
             end;
         SMSMessages."Date Entered" := TODAY;
@@ -416,7 +416,7 @@ Page 51516498 "lead card closed"
         SMSMessages."Entered By" := UserId;
         SMSMessages."Sent To Server" := SMSMessages."Sent To Server"::No;
         SMSMessages."SMS Message" := 'Good news! Your query has been resolved. If you have any more concerns or require further assistance, please feel free to contact us.Thank you for being a valued member. Jamii Yetu Sacco.';
-        SMSMessages."Telephone No" := "Phone No";
+        SMSMessages."Telephone No" := Rec."Phone No";
         SMSMessages.INSERT;
     end;
 

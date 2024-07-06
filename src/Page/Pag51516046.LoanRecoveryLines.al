@@ -29,48 +29,48 @@ page 51516046 "Loan Recovery Lines"
                 {
                     Editable = false;
                 }
-                field("Total Amount To Recover"; "Total Amount To Recover")
+                field("Total Amount To Recover"; Rec."Total Amount To Recover")
                 {
                     Style = Strong;
                     trigger OnValidate()
                     begin
                         ABC := 0;
-                        ABC := "Total Amount To Recover";
-                        if "Total Amount To Recover" < 0 then begin
+                        ABC := Rec."Total Amount To Recover";
+                        if Rec."Total Amount To Recover" < 0 then begin
                             error('Amount recovered cannot be less than zero')
                         end else
-                            if "Total Amount To Recover" = 0 then begin
-                                "Principal Amount To Recover" := 0;
-                                "Interest Amount To Recover" := 0;
+                            if Rec."Total Amount To Recover" = 0 then begin
+                                Rec."Principal Amount To Recover" := 0;
+                                Rec."Interest Amount To Recover" := 0;
                             end else
-                                if "Total Amount To Recover" > 0 then begin
+                                if Rec."Total Amount To Recover" > 0 then begin
                                     loansreg.Reset();
-                                    loansreg.SetRange(loansreg."Loan  No.", "Loan No.");
+                                    loansreg.SetRange(loansreg."Loan  No.", Rec."Loan No.");
                                     loansreg.SetAutoCalcFields(loansreg."Outstanding Balance", loansreg."Oustanding Interest");
                                     if loansreg.Find('-') then begin
                                         if (loansreg."Loan Product Type" <> 'OVERDRAFT') OR (loansreg."Loan Product Type" <> 'OKOA') then begin
                                             if loansreg."Oustanding Interest" > 0 then begin
                                                 if ABC > loansreg."Oustanding Interest" then begin
-                                                    "Interest Amount To Recover" := loansreg."Oustanding Interest";
+                                                    Rec."Interest Amount To Recover" := loansreg."Oustanding Interest";
                                                 end else
                                                     if ABC <= loansreg."Oustanding Interest" then begin
-                                                        "Interest Amount To Recover" := ABC;
+                                                        Rec."Interest Amount To Recover" := ABC;
                                                     end;
                                             end;
-                                            ABC := ABC - "Interest Amount To Recover";
+                                            ABC := ABC - Rec."Interest Amount To Recover";
                                             if ABC > 0 then begin
                                                 IF loansreg."Outstanding Balance" > 0 THEN begin
                                                     if ABC > loansreg."Outstanding Balance" then begin
-                                                        "Principal Amount To Recover" := loansreg."Outstanding Balance";
+                                                        Rec."Principal Amount To Recover" := loansreg."Outstanding Balance";
                                                     end else
                                                         if ABC <= loansreg."Outstanding Balance" then begin
-                                                            "Principal Amount To Recover" := ABC;
+                                                            Rec."Principal Amount To Recover" := ABC;
                                                         end;
                                                 end;
                                             end;
-                                            ABC := ABC - "Principal Amount To Recover";
+                                            ABC := ABC - Rec."Principal Amount To Recover";
                                             If ABC > 0 then begin
-                                                Error('Your recovery amount of Ksh. ' + Format("Total Amount To Recover") + 'is greater than the total loan balance of Ksh. ' + Format("Outstanding Balance" + "Outstanding Interest"));
+                                                Error('Your recovery amount of Ksh. ' + Format(Rec."Total Amount To Recover") + 'is greater than the total loan balance of Ksh. ' + Format(Rec."Outstanding Balance" + Rec."Outstanding Interest"));
                                             end;
                                         end else
                                             if (loansreg."Loan Product Type" = 'OVERDRAFT') OR (loansreg."Loan Product Type" = 'OKOA') then begin
@@ -94,11 +94,11 @@ page 51516046 "Loan Recovery Lines"
                     Editable = false;
                 }
 
-                field("Principal To Recover"; "Principal Amount To Recover")
+                field("Principal To Recover"; Rec."Principal Amount To Recover")
                 {
                     Style = StandardAccent;
                 }
-                field("Interest To Recover"; "Interest Amount To Recover")
+                field("Interest To Recover"; Rec."Interest Amount To Recover")
                 {
                     Style = StandardAccent;
                 }
@@ -129,35 +129,35 @@ page 51516046 "Loan Recovery Lines"
     begin
         //If loan is due then recover outstanding Interest(Only Outstanding)
         ABC := 0;
-        ABC := "Total Amount To Recover";
-        if "Outstanding Interest" > 0 then begin
+        ABC := Rec."Total Amount To Recover";
+        if Rec."Outstanding Interest" > 0 then begin
             If FnLoanInterestIsDue() then begin
                 DueInterestIs := 0;
                 DueInterestIs := FnGetDueInterest();
                 if ABC > DueInterestIs then begin
-                    "Interest Amount To Recover" := DueInterestIs;
+                    Rec."Interest Amount To Recover" := DueInterestIs;
                 end else
                     if ABC <= DueInterestIs then begin
-                        "Interest Amount To Recover" := ABC;
+                        Rec."Interest Amount To Recover" := ABC;
                     end;
             end else
                 If not FnLoanInterestIsDue() then begin
                     if ABC > FnGetMonthlyInterest() then begin
-                        "Interest Amount To Recover" := FnGetMonthlyInterest();
+                        Rec."Interest Amount To Recover" := FnGetMonthlyInterest();
                     end else
                         if ABC <= FnGetMonthlyInterest() then begin
-                            "Interest Amount To Recover" := ABC;
+                            Rec."Interest Amount To Recover" := ABC;
                         end;
                 end;
-            ABC := ABC - "Interest Amount To Recover";
+            ABC := ABC - Rec."Interest Amount To Recover";
         end;
-        if "Outstanding Balance" > 0 then begin
+        if Rec."Outstanding Balance" > 0 then begin
             if ABC > 0 then begin
-                if ABC > "Outstanding Balance" then begin
-                    "Principal Amount To Recover" := "Outstanding Balance";
+                if ABC > Rec."Outstanding Balance" then begin
+                    Rec."Principal Amount To Recover" := Rec."Outstanding Balance";
                 end else
-                    if ABC <= "Outstanding Balance" then begin
-                        "Principal Amount To Recover" := ABC;
+                    if ABC <= Rec."Outstanding Balance" then begin
+                        Rec."Principal Amount To Recover" := ABC;
                     end;
             end;
         end;
@@ -174,7 +174,7 @@ page 51516046 "Loan Recovery Lines"
         LoanRepaymentSchedule: Record "Loan Repayment Schedule";
     begin
         LoanRepaymentSchedule.Reset();
-        LoanRepaymentSchedule.SetRange(LoanRepaymentSchedule."Loan No.", "Loan No.");
+        LoanRepaymentSchedule.SetRange(LoanRepaymentSchedule."Loan No.", Rec."Loan No.");
         LoanRepaymentSchedule.SetFilter(LoanRepaymentSchedule."Repayment Date", '%1..%2', 0D, Today);
         if LoanRepaymentSchedule.Find('-') = true then begin
             exit(true);
@@ -189,7 +189,7 @@ page 51516046 "Loan Recovery Lines"
     begin
         DueAmounts := 0;
         LoanRepaymentSchedule.Reset();
-        LoanRepaymentSchedule.SetRange(LoanRepaymentSchedule."Loan No.", "Loan No.");
+        LoanRepaymentSchedule.SetRange(LoanRepaymentSchedule."Loan No.", Rec."Loan No.");
         LoanRepaymentSchedule.SetFilter(LoanRepaymentSchedule."Repayment Date", '%1..%2', 0D, Today);
         if LoanRepaymentSchedule.Find('-') = true then begin
             repeat
@@ -205,7 +205,7 @@ page 51516046 "Loan Recovery Lines"
         LoanRepaymentSchedule: Record "Loan Repayment Schedule";
     begin
         LoanRepaymentSchedule.Reset();
-        LoanRepaymentSchedule.SetRange(LoanRepaymentSchedule."Loan No.", "Loan No.");
+        LoanRepaymentSchedule.SetRange(LoanRepaymentSchedule."Loan No.", Rec."Loan No.");
         if LoanRepaymentSchedule.Find('-') = true then begin
             exit(LoanRepaymentSchedule."Monthly Interest");
         end;

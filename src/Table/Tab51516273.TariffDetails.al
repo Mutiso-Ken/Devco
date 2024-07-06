@@ -4,30 +4,30 @@ Table 51516273 "Tariff Details"
 
     fields
     {
-        field(1;"Code";Code[20])
+        field(1; "Code"; Code[20])
         {
             Editable = true;
             NotBlank = true;
         }
-        field(2;"Lower Limit";Decimal)
+        field(2; "Lower Limit"; Decimal)
         {
             Editable = true;
         }
-        field(3;"Upper Limit";Decimal)
+        field(3; "Upper Limit"; Decimal)
         {
             Editable = true;
         }
-        field(4;"Charge Amount";Decimal)
+        field(4; "Charge Amount"; Decimal)
         {
             Editable = true;
         }
-        field(5;"Use Percentage";Boolean)
+        field(5; "Use Percentage"; Boolean)
         {
         }
-        field(6;Percentage;Decimal)
+        field(6; Percentage; Decimal)
         {
         }
-        field(7;"Transaction Type";Code[30])
+        field(7; "Transaction Type"; Code[30])
         {
             Editable = true;
             TableRelation = "Transaction Types".Code;
@@ -36,7 +36,7 @@ Table 51516273 "Tariff Details"
 
     keys
     {
-        key(Key1;"Code","Lower Limit")
+        key(Key1; "Code", "Lower Limit")
         {
             Clustered = true;
         }

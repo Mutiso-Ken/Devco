@@ -49,7 +49,7 @@ Table 51516021 "Member Acc Signatories import"
         }
         field(12; "Sections Code"; Code[20])
         {
-            
+
         }
         field(13; "Company Code"; Code[20])
         {

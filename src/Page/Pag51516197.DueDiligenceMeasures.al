@@ -12,23 +12,23 @@ Page 51516197 "Due Diligence Measures"
         {
             repeater(Group)
             {
-                field("Risk Rating Level"; "Risk Rating Level")
+                field("Risk Rating Level"; Rec."Risk Rating Level")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Risk Rating Scale"; "Risk Rating Scale")
+                field("Risk Rating Scale"; Rec."Risk Rating Scale")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Due Diligence Type"; "Due Diligence Type")
+                field("Due Diligence Type"; Rec."Due Diligence Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Due Diligence No"; "Due Diligence No")
+                field("Due Diligence No"; Rec."Due Diligence No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Due Diligence Measure"; "Due Diligence Measure")
+                field("Due Diligence Measure"; Rec."Due Diligence Measure")
                 {
                     ApplicationArea = Basic;
                 }

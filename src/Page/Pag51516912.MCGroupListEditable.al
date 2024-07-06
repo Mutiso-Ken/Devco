@@ -18,27 +18,27 @@ Page 51516912 "MC Group List-Editable"
         {
             repeater(Control1)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No."; "Phone No.")
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Recruited By"; "Recruited By")
+                field("Recruited By"; Rec."Recruited By")
                 {
                     ApplicationArea = Basic;
                 }

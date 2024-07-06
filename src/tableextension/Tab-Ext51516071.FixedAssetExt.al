@@ -217,16 +217,6 @@ tableextension 51516071 "FixedAssetExt" extends "Fixed Asset"
 
     procedure AssistEdit(OldFA: Record "Fixed Asset"): Boolean
     begin
-        with FA do begin
-            //   FA := Rec;
-            //   FASetup.Get;
-            //   FASetup.TestField("Fixed Asset Nos.");
-            //   if NoSeriesMgt.SelectSeries(FASetup."Fixed Asset Nos.",OldFA."No. Series","No. Series") then begin
-            //     NoSeriesMgt.SetSeries("No.");
-            //     Rec := FA;
-            //     exit(true);
-            //   end;
-        end;
     end;
 
     local procedure ValidateShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])

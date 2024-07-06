@@ -12,7 +12,7 @@ Page 51516514 "Member Signature"
     {
         area(content)
         {
-            field(Signature; Signature)
+            field(Signature; Rec.Signature)
             {
                 ApplicationArea = All;
                 ShowCaption = false;

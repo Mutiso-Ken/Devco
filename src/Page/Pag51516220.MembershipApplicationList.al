@@ -17,53 +17,53 @@ Page 51516220 "Membership Application List"
         {
             repeater(Control1102755000)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field("Search Name"; "Search Name")
+                field("Search Name"; Rec."Search Name")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Responsibility Centre"; "Responsibility Centre")
+                field("Responsibility Centre"; Rec."Responsibility Centre")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
 
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field("Mobile Phone No"; "Mobile Phone No")
+                field("Mobile Phone No"; Rec."Mobile Phone No")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field("Account Type"; "Account Category")
+                field("Account Type"; Rec."Account Category")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                     Visible = false;
                 }
-                field("Payroll/Staff No"; "Payroll/Staff No")
+                field("Payroll/Staff No"; Rec."Payroll/Staff No")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("User ID"; "User ID")
+                field("User ID"; Rec."User ID")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
@@ -116,7 +116,7 @@ Page 51516220 "Membership Application List"
                         ApprovalEntries: Page "Approval Entries";
                     begin
                         DocumentType := Documenttype::"Account Opening";
-                        ApprovalEntries.SetRecordFilters(Database::"Membership Applications", DocumentType, "No.");
+                        ApprovalEntries.SetRecordFilters(Database::"Membership Applications", DocumentType, Rec."No.");
                         ApprovalEntries.Run;
                     end;
                 }
@@ -133,24 +133,24 @@ Page 51516220 "Membership Application List"
                         Text001: label 'This request is already pending approval';
                     //Approvalmgt: Codeunit "Export F/O Consolidation";
                     begin
-                        if "ID No." <> '' then begin
+                        if Rec."ID No." <> '' then begin
                             Cust.Reset;
-                            Cust.SetRange(Cust."ID No.", "ID No.");
+                            Cust.SetRange(Cust."ID No.", Rec."ID No.");
                             Cust.SetRange(Cust."Customer Type", Cust."customer type"::Member);
                             if Cust.Find('-') then begin
-                                if Cust."No." <> "No." then
+                                if Cust."No." <> Rec."No." then
                                     Error('Member has already been created');
                             end;
                         end;
 
-                        TestField("No. Series");
-                        TestField("Employer Code");
-                        TestField("ID No.");
-                        TestField("Mobile Phone No");
+                        Rec.TestField("No. Series");
+                        Rec.TestField("Employer Code");
+                        Rec.TestField("ID No.");
+                        Rec.TestField("Mobile Phone No");
                         //TESTFIELD("E-Mail (Personal)");
-                        TestField("Customer Posting Group");
-                        TestField("Global Dimension 1 Code");
-                        TestField("Global Dimension 2 Code");
+                        Rec.TestField("Customer Posting Group");
+                        Rec.TestField("Global Dimension 1 Code");
+                        Rec.TestField("Global Dimension 2 Code");
                         /*
                        PictureExists:=Picture.HASVALUE;
                        SignatureExists:=Signature.HASVALUE;
@@ -159,7 +159,7 @@ Page 51516220 "Membership Application List"
                        ERROR('Kindly upload a picture & signature');
                           */
 
-                        if Status <> Status::Open then
+                        if Rec.Status <> Rec.Status::Open then
                             Error(Text001);
 
                         Doc_Type := Doc_type::"Account Opening";
@@ -203,17 +203,17 @@ Page 51516220 "Membership Application List"
 
                         if Confirm('Are you sure you want to approve account application?', false) = true then begin
 
-                            if "ID No." <> '' then begin
+                            if Rec."ID No." <> '' then begin
                                 Cust.Reset;
-                                Cust.SetRange(Cust."ID No.", "ID No.");
+                                Cust.SetRange(Cust."ID No.", Rec."ID No.");
                                 Cust.SetRange(Cust."Customer Type", Cust."customer type"::Member);
                                 if Cust.Find('-') then begin
-                                    if Cust."No." <> "No." then
+                                    if Cust."No." <> Rec."No." then
                                         Error('Member has already been created');
                                 end;
                             end;
 
-                            if Status <> Status::Approved then
+                            if Rec.Status <> Rec.Status::Approved then
                                 Error('This application has not been approved');
 
 
@@ -222,38 +222,38 @@ Page 51516220 "Membership Application List"
 
                             //Create BOSA account
                             Cust."No." := '';
-                            Cust.Name := Name;
-                            Cust.Address := Address;
-                            Cust."Post Code" := "Postal Code";
-                            Cust.County := City;
-                            Cust."Phone No." := "Phone No.";
-                            Cust."Global Dimension 1 Code" := "Global Dimension 1 Code";
-                            Cust."Global Dimension 2 Code" := "Global Dimension 2 Code";
-                            Cust."Customer Posting Group" := "Customer Posting Group";
-                            Cust."Registration Date" := "Registration Date";
+                            Cust.Name := Rec.Name;
+                            Cust.Address := Rec.Address;
+                            Cust."Post Code" := Rec."Postal Code";
+                            Cust.County := Rec.City;
+                            Cust."Phone No." := Rec."Phone No.";
+                            Cust."Global Dimension 1 Code" := Rec."Global Dimension 1 Code";
+                            Cust."Global Dimension 2 Code" := Rec."Global Dimension 2 Code";
+                            Cust."Customer Posting Group" := Rec."Customer Posting Group";
+                            Cust."Registration Date" := Rec."Registration Date";
                             Cust.Status := Cust.Status::Active;
-                            Cust."Employer Code" := "Employer Code";
-                            Cust."Date of Birth" := "Date of Birth";
-                            Cust."Station/Department" := "Station/Department";
-                            Cust."E-Mail" := "E-Mail (Personal)";
-                            Cust.Location := Location;
-                            Cust."Sub-Location" := "Sub-Location";
-                            Cust.District := District;
-                            Cust."Payroll/Staff No" := "Payroll/Staff No";
-                            Cust."ID No." := "ID No.";
-                            Cust."Mobile Phone No" := "Mobile Phone No";
-                            Cust."Marital Status" := "Marital Status";
+                            Cust."Employer Code" := Rec."Employer Code";
+                            Cust."Date of Birth" := Rec."Date of Birth";
+                            Cust."Station/Department" := Rec."Station/Department";
+                            Cust."E-Mail" := Rec."E-Mail (Personal)";
+                            Cust.Location := Rec.Location;
+                            Cust."Sub-Location" := Rec."Sub-Location";
+                            Cust.District := Rec.District;
+                            Cust."Payroll/Staff No" := Rec."Payroll/Staff No";
+                            Cust."ID No." := Rec."ID No.";
+                            Cust."Mobile Phone No" := Rec."Mobile Phone No";
+                            Cust."Marital Status" := Rec."Marital Status";
                             Cust."Customer Type" := Cust."customer type"::Member;
-                            Cust.Gender := Gender;
+                            Cust.Gender := Rec.Gender;
                             // Cust.Picture:=Picture;
                             // Cust.Signature:=Signature;
-                            Cust."Monthly Contribution" := "Monthly Contribution";
-                            Cust."Contact Person" := "Contact Person";
-                            Cust."Contact Person Phone" := "Contact Person Phone";
-                            Cust."ContactPerson Relation" := "ContactPerson Relation";
-                            Cust."Recruited By" := "Recruited By";
-                            Cust."ContactPerson Occupation" := "ContactPerson Occupation";
-                            Cust."Village/Residence" := "Village/Residence";
+                            Cust."Monthly Contribution" := Rec."Monthly Contribution";
+                            Cust."Contact Person" := Rec."Contact Person";
+                            Cust."Contact Person Phone" := Rec."Contact Person Phone";
+                            Cust."ContactPerson Relation" := Rec."ContactPerson Relation";
+                            Cust."Recruited By" := Rec."Recruited By";
+                            Cust."ContactPerson Occupation" := Rec."ContactPerson Occupation";
+                            Cust."Village/Residence" := Rec."Village/Residence";
                             Cust.Insert(true);
                             //Cust.VALIDATE(Cust."ID No.");
 
@@ -328,7 +328,7 @@ Page 51516220 "Membership Application List"
                             */
 
                             NextOfKinApp.Reset;
-                            NextOfKinApp.SetRange(NextOfKinApp."Account No", "No.");
+                            NextOfKinApp.SetRange(NextOfKinApp."Account No", Rec."No.");
                             if NextOfKinApp.Find('-') then begin
                                 repeat
                                     NextOfKin.Init;
@@ -348,7 +348,7 @@ Page 51516220 "Membership Application List"
                             end;
 
                             AccountSignApp.Reset;
-                            AccountSignApp.SetRange(AccountSignApp."Account No", "No.");
+                            AccountSignApp.SetRange(AccountSignApp."Account No", Rec."No.");
                             if AccountSignApp.Find('-') then begin
                                 repeat
                                     AccountSign.Init;
@@ -388,9 +388,9 @@ Page 51516220 "Membership Application List"
 
                             Message('Account created successfully.');
                             //END;
-                            Status := Status::Approved;
-                            "Approved By" := UserId;
-                            Modify;
+                            Rec.Status := Rec.Status::Approved;
+                            Rec."Approved By" := UserId;
+                            Rec.Modify;
                         end else
                             Error('Not approved');
 
@@ -404,8 +404,8 @@ Page 51516220 "Membership Application List"
 
     trigger OnOpenPage()
     begin
-       
-            SetRange("User ID", UserId);
+
+        Rec.SetRange("User ID", UserId);
     end;
 
     var

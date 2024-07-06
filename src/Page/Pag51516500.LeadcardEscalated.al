@@ -13,32 +13,32 @@ Page 51516500 "Lead card Escalated"
         {
             group(General)
             {
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Enquiring As"; "Calling As")
+                field("Enquiring As"; Rec."Calling As")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Enquiring As';
                     ShowMandatory = true;
                     trigger OnValidate()
                     begin
-                        if "Calling As" = "calling as"::"As Member" then begin
+                        if Rec."Calling As" = Rec."calling as"::"As Member" then begin
                             Asmember := true;
                             AsEmployer := true;
                             Ascase := true;
                             IfMember := true;
                             CurrPage.Update();
                         end;
-                        if "Calling As" = "calling as"::"As Non Member" then begin
+                        if Rec."Calling As" = Rec."calling as"::"As Non Member" then begin
                             AsNonmember := true;
                             IfMember := false;
                             Asother := true;
                             CurrPage.Update();
                         end;
-                        if "Calling As" = "calling as"::"As Staff" then begin
+                        if Rec."Calling As" = Rec."calling as"::"As Staff" then begin
                             AsEmployer := true;
                             Asother := true;
                             Ascase := true;
@@ -48,32 +48,32 @@ Page 51516500 "Lead card Escalated"
 
                     end;
                 }
-                field("Enquiring For"; "Calling For")
+                field("Enquiring For"; Rec."Calling For")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field("Contact Mode"; "Contact Mode")
+                field("Contact Mode"; Rec."Contact Mode")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field("Case Subject"; "Case Subject")
+                field("Case Subject"; Rec."Case Subject")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field("Lead Status"; "Lead Status")
+                field("Lead Status"; Rec."Lead Status")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Captured On"; "Captured On")
+                field("Captured On"; Rec."Captured On")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -82,7 +82,7 @@ Page 51516500 "Lead card Escalated"
             }
             group("Lead Details")
             {
-                field("Member No"; "Member No")
+                field("Member No"; Rec."Member No")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -93,74 +93,74 @@ Page 51516500 "Lead card Escalated"
                         LoansReg: Record "Loans Register";
                     begin
                         cust.Reset();
-                        cust.SetRange(cust."No.", "Member No");
+                        cust.SetRange(cust."No.", Rec."Member No");
                         if cust.Find('-') then begin
-                            "Member Name" := cust.Name;
-                            "ID No" := cust."ID No.";
-                            "ID No." := cust."ID No.";
-                            "Phone No" := cust."Mobile Phone No";
-                            Email := cust."E-Mail (Personal)";
-                            "Date Of Birth" := cust."Date of Birth";
-                            Gender := cust.Gender;
+                            Rec."Member Name" := cust.Name;
+                            Rec."ID No" := cust."ID No.";
+                            Rec."ID No." := cust."ID No.";
+                            Rec."Phone No" := cust."Mobile Phone No";
+                            Rec.Email := cust."E-Mail (Personal)";
+                            Rec."Date Of Birth" := cust."Date of Birth";
+                            Rec.Gender := cust.Gender;
                         end;
                     end;
                 }
-                field("Member Name"; "Member Name")
+                field("Member Name"; Rec."Member Name")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Full Name';
                     ShowMandatory = true;
                 }
-                field("Phone No"; "Phone No")
+                field("Phone No"; Rec."Phone No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Mobile No';
                     ShowMandatory = true;
                 }
-                field("Date Of Birth"; "Date Of Birth")
+                field("Date Of Birth"; Rec."Date Of Birth")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Date Of Birth';
                     ShowMandatory = true;
                 }
-                field(Gender; Gender)
+                field(Gender; Rec.Gender)
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field(Email; Email)
+                field(Email; Rec.Email)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Address; Address)
+                field(Address; Rec.Address)
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'ID No';
                     ShowMandatory = true;
                 }
 
-                field("Escalate Case;"; "Escalate Case")
+                field("Escalate Case;"; Rec."Escalate Case")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Escalate Case';
                     ShowMandatory = true;
                     trigger OnValidate()
                     begin
-                        if "Escalate Case" = true then begin
+                        if Rec."Escalate Case" = true then begin
                             IsEscalated := true;
                         end else
-                            if "Escalate Case" = false then begin
+                            if Rec."Escalate Case" = false then begin
                                 IsEscalated := false;
                             end;
-                        if "Escalate Case" <> true then begin
+                        if Rec."Escalate Case" <> true then begin
                             Escalated := true;//Allow editing
                         end;
-                        if ("Escalate Case" = true) and (Status = Status::Escalted) then begin
+                        if (Rec."Escalate Case" = true) and (Rec.Status = Rec.Status::Escalted) then begin
                             Escalated := true;//Allow editing
                         end;
                     end;
@@ -170,7 +170,7 @@ Page 51516500 "Lead card Escalated"
             {
                 Caption = 'Case Description';
                 Visible = IsEscalated;
-                field("Case Details"; "Case Details")
+                field("Case Details"; Rec."Case Details")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -181,7 +181,7 @@ Page 51516500 "Lead card Escalated"
 
                     end;
                 }
-                field("Caller Reffered To"; "Caller Reffered To")
+                field("Caller Reffered To"; Rec."Caller Reffered To")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -190,22 +190,22 @@ Page 51516500 "Lead card Escalated"
             }
             group("Case Resolution Details")
             {
-                field("Resolution Details"; "Resolution Details")
+                field("Resolution Details"; Rec."Resolution Details")
                 {
                     ShowMandatory = true;
                     Enabled = Escalated;
                 }
-                field("Resolved by"; "Resolved by")
+                field("Resolved by"; Rec."Resolved by")
                 {
                     Enabled = false;
                     Style = Favorable;
                 }
-                field("Resolved Time"; "Resolved Time")
+                field("Resolved Time"; Rec."Resolved Time")
                 {
                     Enabled = false;
                     Style = Favorable;
                 }
-                field("Resolved Date"; "Resolved Date")
+                field("Resolved Date"; Rec."Resolved Date")
                 {
                     Enabled = false;
                     Style = Favorable;
@@ -254,22 +254,22 @@ Page 51516500 "Lead card Escalated"
 
                 trigger OnAction()
                 begin
-                    if Confirm('Are you sure to Forward case to %1 ?', false, "Caller Reffered To") = false then begin
+                    if Confirm('Are you sure to Forward case to %1 ?', false, Rec."Caller Reffered To") = false then begin
                         Message('Action Aborted !');
                         exit;
                     end else begin
-                        Status := Status::Escalted;//Escalated
-                        "Lead Status" := "Lead Status"::Open;
-                        "Time Sent" := time;
-                        "Sent By" := UserId;
-                        "Escalted By" := UserId;
-                        "Escaltion Date" := today;
-                        "Escaltion time" := time;
-                        Modify(true);
+                        Rec.Status := Rec.Status::Escalted;//Escalated
+                        Rec."Lead Status" := Rec."Lead Status"::Open;
+                        Rec."Time Sent" := time;
+                        Rec."Sent By" := UserId;
+                        Rec."Escalted By" := UserId;
+                        Rec."Escaltion Date" := today;
+                        Rec."Escaltion time" := time;
+                        Rec.Modify(true);
                         //....................................................
                         //Send sms of case resolution
                         FnSendEscaltionSMS();
-                        Message('Case %1 has successfully been forwarded and staff notified.', Format(No));
+                        Message('Case %1 has successfully been forwarded and staff notified.', Format(Rec.No));
                         CurrPage.Close();
                     end;
                 end;
@@ -286,7 +286,7 @@ Page 51516500 "Lead card Escalated"
                 Enabled = true;
                 trigger OnAction()
                 begin
-                    if (UserId = "Captured By") or (UserId = "Caller Reffered To") then begin
+                    if (UserId = Rec."Captured By") or (UserId = Rec."Caller Reffered To") then begin
                     end else begin
                         Error('Only the staff who opened the case or case delegated to can close this ticket');
                     end;
@@ -295,14 +295,14 @@ Page 51516500 "Lead card Escalated"
                         Message('Action Cancelled !');
                         exit;
                     end else begin
-                        Status := Status::Resolved;
-                        "Lead Status" := "Lead Status"::Closed;
-                        "Resolved by" := UserId;
-                        "Resolved Date" := today;
-                        "Resolved Time" := time;
-                        "Date Resolved" := today;
-                        "Time Resolved" := time;
-                        Modify(true);
+                        Rec.Status := Rec.Status::Resolved;
+                        Rec."Lead Status" := Rec."Lead Status"::Closed;
+                        Rec."Resolved by" := UserId;
+                        Rec."Resolved Date" := today;
+                        Rec."Resolved Time" := time;
+                        Rec."Date Resolved" := today;
+                        Rec."Time Resolved" := time;
+                        Rec.Modify(true);
                         //....................................................
                         //Send sms of case resolution
                         FnSendSMS();
@@ -341,7 +341,7 @@ Page 51516500 "Lead card Escalated"
                     VendorTable: Record Vendor;
                 begin
                     VendorTable.Reset();
-                    VendorTable.SetRange(VendorTable."No.", "Fosa account");
+                    VendorTable.SetRange(VendorTable."No.", Rec."Fosa account");
                     if VendorTable.Find('-') = true then begin
                         Report.Run(51516248, true, false, VendorTable);
                     end else
@@ -355,48 +355,48 @@ Page 51516500 "Lead card Escalated"
 
     trigger OnAfterGetRecord()
     begin
-        if Status = Status::Resolved then begin
+        if Rec.Status = Rec.Status::Resolved then begin
             CurrPage.Editable := false;
             IsEnabled := false;
         end else
-            if Status <> Status::Resolved then begin
+            if Rec.Status <> Rec.Status::Resolved then begin
                 IsEnabled := true;
             end;
-        if "Calling As" = "calling as"::"As Member" then begin
+        if Rec."Calling As" = Rec."calling as"::"As Member" then begin
             Asmember := true;
             AsEmployer := true;
             Ascase := true;
             IfMember := true;
         end;
-        if "Calling As" = "calling as"::"As Non Member" then begin
+        if Rec."Calling As" = Rec."calling as"::"As Non Member" then begin
             AsNonmember := true;
             IfMember := false;
             Asother := true;
         end;
-        if "Calling As" = "calling as"::"As Staff" then begin
+        if Rec."Calling As" = Rec."calling as"::"As Staff" then begin
             AsEmployer := true;
             Asother := true;
             Ascase := true;
             IfMember := false;
         end;
-        if "Escalate Case" = true then begin
+        if Rec."Escalate Case" = true then begin
             IsEscalated := true;
         end else
-            if "Escalate Case" = false then begin
+            if Rec."Escalate Case" = false then begin
                 IsEscalated := false;
             end;
     end;
 
     trigger OnOpenPage()
     begin
-        if "Calling As" = "calling as"::"As Non Member" then begin
+        if Rec."Calling As" = Rec."calling as"::"As Non Member" then begin
             AsNonmember := true;
             Asother := true;
         end;
-        if "Escalate Case" <> true then begin
+        if Rec."Escalate Case" <> true then begin
             Escalated := true;//Allow editing
         end;
-        if ("Escalate Case" = true) and (Status = Status::Escalted) then begin
+        if (Rec."Escalate Case" = true) and (Rec.Status = Rec.Status::Escalted) then begin
             Escalated := true;//Allow editing
         end;
     end;
@@ -423,10 +423,10 @@ Page 51516500 "Lead card Escalated"
         SMSMessages.RESET;
         SMSMessages.INIT;
         SMSMessages."Entry No" := iEntryNo;
-        IF "Member No" <> '' THEN begin
-            SMSMessages."Account No" := "Member No";
+        IF Rec."Member No" <> '' THEN begin
+            SMSMessages."Account No" := Rec."Member No";
         end else
-            IF "Member No" = '' THEN begin
+            IF Rec."Member No" = '' THEN begin
                 SMSMessages."Account No" := 'NON-MEMBER';
             end;
         SMSMessages."Date Entered" := TODAY;
@@ -435,7 +435,7 @@ Page 51516500 "Lead card Escalated"
         SMSMessages."Entered By" := UserId;
         SMSMessages."Sent To Server" := SMSMessages."Sent To Server"::No;
         SMSMessages."SMS Message" := 'Good news! Your query has been resolved. If you have any more concerns or require further assistance, please feel free to contact us.Thank you for being a valued member. Devco Sacco';
-        SMSMessages."Telephone No" := "Phone No";
+        SMSMessages."Telephone No" := Rec."Phone No";
         SMSMessages.INSERT;
     end;
 
@@ -456,14 +456,14 @@ Page 51516500 "Lead card Escalated"
         SMSMessages.RESET;
         SMSMessages.INIT;
         SMSMessages."Entry No" := iEntryNo;
-        SMSMessages."Account No" := "Caller Reffered To";
+        SMSMessages."Account No" := Rec."Caller Reffered To";
         SMSMessages."Date Entered" := TODAY;
         SMSMessages."Time Entered" := TIME;
         SMSMessages.Source := 'CRM';
         SMSMessages."Entered By" := UserId;
         SMSMessages."Sent To Server" := SMSMessages."Sent To Server"::No;
-        SMSMessages."SMS Message" := 'Dear staff, Ticket No. ' + Format(No) + ' subject-' + Format("Calling For") + ' has been raised and requires your immediate attention. Devco Sacco';
-        SMSMessages."Telephone No" := FnGetPhoneNo("Caller Reffered To");
+        SMSMessages."SMS Message" := 'Dear staff, Ticket No. ' + Format(Rec.No) + ' subject-' + Format(Rec."Calling For") + ' has been raised and requires your immediate attention. Devco Sacco';
+        SMSMessages."Telephone No" := FnGetPhoneNo(Rec."Caller Reffered To");
         SMSMessages.INSERT;
     end;
 

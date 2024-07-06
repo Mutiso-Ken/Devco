@@ -4,50 +4,50 @@ Table 51516333 "Ssacco Transactions"
 
     fields
     {
-        field(1;"Document No.";Code[30])
+        field(1; "Document No."; Code[30])
         {
         }
-        field(2;"Transaction Date";Date)
+        field(2; "Transaction Date"; Date)
         {
         }
-        field(3;"Account No.";Code[50])
+        field(3; "Account No."; Code[50])
         {
         }
-        field(4;Description;Text[200])
+        field(4; Description; Text[200])
         {
         }
-        field(5;Amount;Decimal)
+        field(5; Amount; Decimal)
         {
         }
-        field(6;Posted;Boolean)
+        field(6; Posted; Boolean)
         {
         }
-        field(7;"Transaction Type";Option)
+        field(7; "Transaction Type"; Option)
         {
             OptionCaption = 'Withdrawal,Deposit,Balance,Ministatement,Transfer,Advance,Loan Repayment';
             OptionMembers = Withdrawal,Deposit,Balance,Ministatement,Transfer,Advance,"Loan Repayment";
         }
-        field(8;"Transaction Time";Time)
+        field(8; "Transaction Time"; Time)
         {
         }
-        field(11;"Date Posted";Date)
+        field(11; "Date Posted"; Date)
         {
         }
-        field(12;"Time Posted";Time)
+        field(12; "Time Posted"; Time)
         {
         }
-        field(25;"Entry No";Integer)
+        field(25; "Entry No"; Integer)
         {
             AutoIncrement = true;
         }
-        field(26;Comments;Text[250])
+        field(26; Comments; Text[250])
         {
         }
     }
 
     keys
     {
-        key(Key1;"Entry No")
+        key(Key1; "Entry No")
         {
             Clustered = true;
         }
@@ -64,8 +64,8 @@ Table 51516333 "Ssacco Transactions"
 
     trigger OnModify()
     begin
-        if Posted=true then begin
-        Error('You cannot modify posted MPESA transactions.');
+        if Posted = true then begin
+            Error('You cannot modify posted MPESA transactions.');
         end;
     end;
 }

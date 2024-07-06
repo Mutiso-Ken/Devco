@@ -10,19 +10,19 @@ page 51901 "Basic Pay Changes"
         {
             repeater(Group)
             {
-                field("Payroll No"; "Payroll No")
+                field("Payroll No"; Rec."Payroll No")
                 {
                 }
-                field("Old Pay"; "Old Pay")
+                field("Old Pay"; Rec."Old Pay")
                 {
                 }
-                field("New Pay"; "New Pay")
+                field("New Pay"; Rec."New Pay")
                 {
                 }
-                field("Date effected"; "Date effected")
+                field("Date effected"; Rec."Date effected")
                 {
                 }
-                field("Effected By"; "Effected By")
+                field("Effected By"; Rec."Effected By")
                 {
                 }
             }

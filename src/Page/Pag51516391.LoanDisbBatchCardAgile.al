@@ -8,7 +8,7 @@
 //     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
 //     SourceTable = "Loan Disburesment-Batching";
 //     SourceTableView = where (Posted = const(false));
-                          
+
 //     layout
 //     {
 //         area(content)
@@ -313,7 +313,7 @@
 
 //                 //     end;
 //                 // }
-                
+
 //                 separator(Action1102760045)
 //                 {
 //                 }

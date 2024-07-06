@@ -5,19 +5,19 @@ pageextension 51516884 "Sales & Receivables Setup" extends "Sales & Receivables 
         // Add changes to page layout here
         addafter("Blanket Order Nos.")
         {
-            field("BOSA Transfer Nos"; "BOSA Transfer Nos")
+            field("BOSA Transfer Nos"; Rec."BOSA Transfer Nos")
             {
                 ApplicationArea = all;
             }
-            field("Collateral Register No"; "Collateral Register No")
+            field("Collateral Register No"; Rec."Collateral Register No")
             {
                 ApplicationArea = all;
             }
-            field("Custodian No."; "Custodian No.")
+            field("Custodian No."; Rec."Custodian No.")
             {
                 ApplicationArea = all;
             }
-            field("Safe Custody Package Nos"; "Safe Custody Package Nos")
+            field("Safe Custody Package Nos"; Rec."Safe Custody Package Nos")
             {
                 ApplicationArea = all;
             }

@@ -5,8 +5,8 @@ page 51516990 "Banks List"
     PageType = List;
     SourceTable = Banks;
     UsageCategory = Administration;
-    CardPageId=Banks;
-    
+    CardPageId = Banks;
+
     layout
     {
         area(content)

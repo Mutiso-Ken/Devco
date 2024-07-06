@@ -8,8 +8,8 @@ Page 51516863 "Posted Property Receipt List"
     ModifyAllowed = false;
     PageType = List;
     SourceTable = "Receipt Header";
-    SourceTableView = where("Receipt Category"=const(Property),
-                            Posted=const(true));
+    SourceTableView = where("Receipt Category" = const(Property),
+                            Posted = const(true));
     UsageCategory = Lists;
 
     layout
@@ -18,31 +18,31 @@ Page 51516863 "Posted Property Receipt List"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Received From";"Received From")
+                field("Received From"; Rec."Received From")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount Received(LCY)";"Amount Received(LCY)")
+                field("Amount Received(LCY)"; Rec."Amount Received(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Amount";"Total Amount")
+                field("Total Amount"; Rec."Total Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("User ID";"User ID")
+                field("User ID"; Rec."User ID")
                 {
                     ApplicationArea = Basic;
                 }
@@ -56,7 +56,7 @@ Page 51516863 "Posted Property Receipt List"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-          "Receipt Category":="receipt category"::Property;
+        Rec."Receipt Category" := Rec."receipt category"::Property;
     end;
 }
 

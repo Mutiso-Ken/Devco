@@ -21,7 +21,7 @@ page 51516141 "share Capital Card"
                     ToolTip = 'Specifies the value of the No. field.';
                 }
 
-                field("Seller No"; "Seller No")
+                field("Seller No"; Rec."Seller No")
                 {
                     ApplicationArea = all;
 
@@ -33,21 +33,21 @@ page 51516141 "share Capital Card"
                     ApplicationArea = all;
                     Editable = false;
                 }
-                field("Seller Share Balance"; "Seller Share Balance")
+                field("Seller Share Balance"; Rec."Seller Share Balance")
                 {
                     ToolTip = 'Specifies the value of the Share Balance field.';
                     ApplicationArea = all;
                     Editable = false;
 
                 }
-                field("Partially Sell"; "Partially Sell")
+                field("Partially Sell"; Rec."Partially Sell")
                 {
                     ApplicationArea = all;
                     trigger OnValidate()
                     var
                         myInt: Integer;
                     begin
-                        if "Partially Sell" = false then begin
+                        if Rec."Partially Sell" = false then begin
                             partiallyVisible := false
                         end else
                             partiallyVisible := true;
@@ -83,7 +83,7 @@ page 51516141 "share Capital Card"
                     ApplicationArea = all;
                     Editable = false;
                 }
-                field("Buyer Shares Balance"; "Buyer Shares Balance")
+                field("Buyer Shares Balance"; Rec."Buyer Shares Balance")
                 {
                     ToolTip = 'Specifies the value of the Buyer Shares Amount field.';
                     ApplicationArea = all;
@@ -137,9 +137,9 @@ page 51516141 "share Capital Card"
 
                 trigger OnAction()
                 begin
-                    TestField("Buyer No.");
-                    TestField("Seller No");
-                    if "Buyer Shares Balance" > 0 then begin
+                    Rec.TestField("Buyer No.");
+                    Rec.TestField("Seller No");
+                    if Rec."Buyer Shares Balance" > 0 then begin
                         TempBatch.Reset;
                         TempBatch.SetRange(TempBatch.UserID, UserId);
                         if TempBatch.Find('-') then begin
@@ -153,10 +153,10 @@ page 51516141 "share Capital Card"
                         GenJournalLine.DELETEALL;
                         //.sharecapital Transfer Seller
                         LineNo := LineNo + 10000;
-                        SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, "No.", LineNo, GenJournalLine."Transaction Type"::"Shares Capital", GenJournalLine."Account Type"::Customer, "Seller No", "Trasaction Date", "Amount to Sell", 'BOSA', Rec."No.", 'Share Capital Tranfer' + Format("Seller No"), '');
+                        SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, Rec."No.", LineNo, GenJournalLine."Transaction Type"::"Shares Capital", GenJournalLine."Account Type"::Customer, Rec."Seller No", Rec."Trasaction Date", Rec."Amount to Sell", 'BOSA', Rec."No.", 'Share Capital Tranfer' + Format(Rec."Seller No"), '');
                         //.sharecapital Buyer
                         LineNo := LineNo + 10000;
-                        SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, "No.", LineNo, GenJournalLine."Transaction Type"::"Shares Capital", GenJournalLine."Account Type"::Customer, "Buyer No.", "Trasaction Date", "Amount to Sell" * -1, 'BOSA', Rec."No.", 'Share Capital Tranfer' + Format("Buyer Name"), '');
+                        SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, Rec."No.", LineNo, GenJournalLine."Transaction Type"::"Shares Capital", GenJournalLine."Account Type"::Customer, Rec."Buyer No.", Rec."Trasaction Date", Rec."Amount to Sell" * -1, 'BOSA', Rec."No.", 'Share Capital Tranfer' + Format(Rec."Buyer Name"), '');
 
                         GenJournalLine.SETRANGE("Journal Batch Name", BatchName);
                         if GenJournalLine.Find('-') then begin
@@ -165,7 +165,7 @@ page 51516141 "share Capital Card"
                             FnSendNotificationstoBuyer();
                             FnSendNotificationstoBuyer();
                         end;
-                        Posted := true;
+                        Rec.Posted := true;
                     end;
 
                 end;
@@ -195,12 +195,12 @@ page 51516141 "share Capital Card"
         PhoneNo: Text[250];
     begin
         Cust.Reset();
-        Cust.SetRange(Cust."No.", "Seller No");
+        Cust.SetRange(Cust."No.", Rec."Seller No");
         if Cust.Find('-') then begin
             msg := '';
-            msg := 'Dear Member, Your have transfered' + Format("Amount to Sell") + ' Share Capital to ' + Format("Buyer No.");
-            PhoneNo := FnGetPhoneNo("Seller No");
-            SendSMSMessage("Seller No", msg, PhoneNo);
+            msg := 'Dear Member, Your have transfered' + Format(Rec."Amount to Sell") + ' Share Capital to ' + Format(Rec."Buyer No.");
+            PhoneNo := FnGetPhoneNo(Rec."Seller No");
+            SendSMSMessage(Rec."Seller No", msg, PhoneNo);
         end;
     end;
 
@@ -210,12 +210,12 @@ page 51516141 "share Capital Card"
         PhoneNo: Text[250];
     begin
         Cust.Reset();
-        Cust.SetRange(Cust."No.", "Buyer No.");
+        Cust.SetRange(Cust."No.", Rec."Buyer No.");
         if Cust.Find('-') then begin
             msg := '';
-            msg := 'Dear Member, Your have Received' + Format("Amount to Sell") + ' Share Capital from ' + Format("Seller No");
-            PhoneNo := FnGetPhoneNo("Buyer No.");
-            SendSMSMessage("Buyer No.", msg, PhoneNo);
+            msg := 'Dear Member, Your have Received' + Format(Rec."Amount to Sell") + ' Share Capital from ' + Format(Rec."Seller No");
+            PhoneNo := FnGetPhoneNo(Rec."Buyer No.");
+            SendSMSMessage(Rec."Buyer No.", msg, PhoneNo);
         end;
     end;
 

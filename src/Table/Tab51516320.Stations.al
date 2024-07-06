@@ -6,14 +6,14 @@ Table 51516320 "Stations"
 
     fields
     {
-        field(1;"Code";Code[20])
+        field(1; "Code"; Code[20])
         {
             NotBlank = true;
         }
-        field(2;Description;Text[50])
+        field(2; Description; Text[50])
         {
         }
-        field(3;"Employer Code";Code[20])
+        field(3; "Employer Code"; Code[20])
         {
             //TableRelation = Table51516191.Field1;
         }
@@ -21,7 +21,7 @@ Table 51516320 "Stations"
 
     keys
     {
-        key(Key1;"Employer Code","Code")
+        key(Key1; "Employer Code", "Code")
         {
             Clustered = true;
         }

@@ -8,7 +8,7 @@ report 51516220 "Budget Comparison"
     {
         dataitem(GLAccount; "G/L Account")
         {
-           DataItemTableView = sorting("No.") where(Blocked = filter(false));
+            DataItemTableView = sorting("No.") where(Blocked = filter(false));
             column(No_; "No.") { }
             column(Name; Name) { }
             column(CurrentYear; CurrentYear) { }
@@ -45,25 +45,25 @@ report 51516220 "Budget Comparison"
                 GL.SetRange(GL."No.", "No.");
                 GL.SetFilter(GL."Date Filter", DatefilterOne);
                 if FindSet() then begin
-              
-                        GL.CalcFields(GL."Net Change");
-                        CurrAmount := GL."Net Change";
-                
+
+                    GL.CalcFields(GL."Net Change");
+                    CurrAmount := GL."Net Change";
+
                 end;
                 GL.Reset();
                 GL.SetRange(GL."No.", "No.");
                 Gl.SetFilter(GL."Date Filter", DatefilterTwo);
                 if Findset then begin
-           
-                        Gl.CalcFields(GL."Net Change");
-                        PrevAmount := GL."Net Change";
-                 
+
+                    Gl.CalcFields(GL."Net Change");
+                    PrevAmount := GL."Net Change";
+
                 end;
             end;
         }
-        
+
     }
-    
+
     requestpage
     {
         layout
@@ -87,7 +87,7 @@ report 51516220 "Budget Comparison"
         CurrYearBudgetAmount: Decimal;
         LastYearBudgetAmount: Decimal;
         Asat: Date;
-        GL:Record "G/L Account";
+        GL: Record "G/L Account";
         PreviousYear: Integer;
         CurrentEndofYear: date;
         CurrentStartofYear: date;

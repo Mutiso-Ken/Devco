@@ -4,35 +4,35 @@ Table 51516035 "Destination Rates"
 
     fields
     {
-        field(1;"Advance Code";Code[20])
+        field(1; "Advance Code"; Code[20])
         {
             NotBlank = true;
-            TableRelation = "Funds Transaction Types" where ("Transaction Type"=const(Imprest));
+            TableRelation = "Funds Transaction Types" where("Transaction Type" = const(Imprest));
         }
-        field(2;"Destination Code";Code[10])
+        field(2; "Destination Code"; Code[10])
         {
             NotBlank = true;
         }
-        field(3;Currency;Code[10])
+        field(3; Currency; Code[10])
         {
             NotBlank = false;
             TableRelation = Currency;
         }
-        field(4;"Destination Type";Option)
+        field(4; "Destination Type"; Option)
         {
             Editable = false;
             OptionMembers = "local",Foreign;
         }
-        field(5;"Daily Rate (Amount)";Decimal)
+        field(5; "Daily Rate (Amount)"; Decimal)
         {
         }
-        field(6;"Employee Job Group";Code[10])
+        field(6; "Employee Job Group"; Code[10])
         {
             Editable = true;
             NotBlank = true;
             TableRelation = "Employee Statistics Group";
         }
-        field(7;"Destination Name";Text[50])
+        field(7; "Destination Name"; Text[50])
         {
             Editable = false;
         }
@@ -40,7 +40,7 @@ Table 51516035 "Destination Rates"
 
     keys
     {
-        key(Key1;"Advance Code")
+        key(Key1; "Advance Code")
         {
             Clustered = true;
         }

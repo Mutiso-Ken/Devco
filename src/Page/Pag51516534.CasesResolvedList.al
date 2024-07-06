@@ -9,7 +9,7 @@ Page 51516534 "Cases Resolved List"
     ModifyAllowed = false;
     PageType = List;
     SourceTable = "Cases Management";
-    SourceTableView = where(Status=filter(Resolved));
+    SourceTableView = where(Status = filter(Resolved));
     UsageCategory = History;
 
     layout
@@ -18,87 +18,87 @@ Page 51516534 "Cases Resolved List"
         {
             repeater(Group)
             {
-                field("Case Number";"Case Number")
+                field("Case Number"; Rec."Case Number")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date of Complaint";"Date of Complaint")
+                field("Date of Complaint"; Rec."Date of Complaint")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Recommended Action";"Recommended Action")
+                field("Recommended Action"; Rec."Recommended Action")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Case Description";"Case Description")
+                field("Case Description"; Rec."Case Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Action Taken";"Action Taken")
+                field("Action Taken"; Rec."Action Taken")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date To Settle Case";"Date To Settle Case")
+                field("Date To Settle Case"; Rec."Date To Settle Case")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Link";"Document Link")
+                field("Document Link"; Rec."Document Link")
                 {
                     ApplicationArea = Basic;
                 }
-                field("solution Remarks";"solution Remarks")
+                field("solution Remarks"; Rec."solution Remarks")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Comments;Comments)
+                field(Comments; Rec.Comments)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Body Handling The Complaint";"Body Handling The Complaint")
+                field("Body Handling The Complaint"; Rec."Body Handling The Complaint")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Recomendations;Recomendations)
+                field(Recomendations; Rec.Recomendations)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Implications;Implications)
+                field(Implications; Rec.Implications)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Support Documents";"Support Documents")
+                field("Support Documents"; Rec."Support Documents")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Resource Assigned";"Resource Assigned")
+                field("Resource Assigned"; Rec."Resource Assigned")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Selected;Selected)
+                field(Selected; Rec.Selected)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Responsibility Center";"Responsibility Center")
+                field("Responsibility Center"; Rec."Responsibility Center")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member No";"Member No")
+                field("Member No"; Rec."Member No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Fosa Account";"Fosa Account")
+                field("Fosa Account"; Rec."Fosa Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("loan no";"loan no")
+                field("loan no"; Rec."loan no")
                 {
                     ApplicationArea = Basic;
                 }

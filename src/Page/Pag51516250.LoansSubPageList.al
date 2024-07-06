@@ -12,63 +12,63 @@ Page 51516250 "Loans Sub-Page List"
         {
             repeater(Control1000000000)
             {
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Product Type"; "Loan Product Type")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Loan Product Type Name"; "Loan Product Type Name")
+                field("Loan Product Type Name"; Rec."Loan Product Type Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
 
                 }
 
-                field("Issued Date"; "Issued Date")
+                field("Issued Date"; Rec."Issued Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StandardAccent;
                 }
 
-                field("Staff No"; "Staff No")
+                field("Staff No"; Rec."Staff No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     visible = false;
                 }
-                field("Approved Amount"; "Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Total Loan Issued"; "Total Loan Issued")
+                field("Total Loan Issued"; Rec."Total Loan Issued")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field(Repayment; Repayment)
+                field(Repayment; Rec.Repayment)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Caption = 'Monthly Repayment';
                     Style = StrongAccent;
                 }
-                field("Loan Principle Repayment"; "Loan Principle Repayment")
+                field("Loan Principle Repayment"; Rec."Loan Principle Repayment")
                 {
                     ApplicationArea = Basic;
                     Style = Strong;
 
                 }
-                field("Loan Interest Repayment"; "Loan Interest Repayment")
+                field("Loan Interest Repayment"; Rec."Loan Interest Repayment")
                 {
                     ApplicationArea = Basic;
                     Style = Strong;
@@ -76,67 +76,67 @@ Page 51516250 "Loans Sub-Page List"
                 }
 
 
-                field("Outstanding Balance"; "Outstanding Balance")
+                field("Outstanding Balance"; Rec."Outstanding Balance")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = Unfavorable;
                 }
-                field("Oustanding Interest"; "Oustanding Interest")
+                field("Oustanding Interest"; Rec."Oustanding Interest")
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
                 }
 
-                field(Installments; Installments)
+                field(Installments; Rec.Installments)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Installments';
                     Editable = false;
                 }
-                field("Expected Date of Completion"; "Expected Date of Completion")
+                field("Expected Date of Completion"; Rec."Expected Date of Completion")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StandardAccent;
                 }
-                field("Client Code"; "Client Code")
+                field("Client Code"; Rec."Client Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
 
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Source; Source)
+                field(Source; Rec.Source)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Recovery Mode"; "Recovery Mode")
+                field("Recovery Mode"; Rec."Recovery Mode")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Principal In Arrears"; "Principal In Arrears")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                    style = attention;
-                }
-                field("Interest In Arrears"; "Interest In Arrears")
+                field("Principal In Arrears"; Rec."Principal In Arrears")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     style = attention;
                 }
-                field("Loans Category-SASRA"; "Loans Category-SASRA")
+                field("Interest In Arrears"; Rec."Interest In Arrears")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                    style = attention;
+                }
+                field("Loans Category-SASRA"; Rec."Loans Category-SASRA")
                 {
                     ApplicationArea = Basic;
                     Editable = false;

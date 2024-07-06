@@ -14,27 +14,27 @@ Page 51516036 "Loans Calculator List"
         {
             repeater(Group)
             {
-                field("Loan Product Type";"Loan Product Type")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Product Description";"Product Description")
+                field("Product Description"; Rec."Product Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest rate";"Interest rate")
+                field("Interest rate"; Rec."Interest rate")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Repayment Method";"Repayment Method")
+                field("Repayment Method"; Rec."Repayment Method")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Installments;Installments)
+                field(Installments; Rec.Installments)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Repayment Start Date";"Repayment Start Date")
+                field("Repayment Start Date"; Rec."Repayment Start Date")
                 {
                     ApplicationArea = Basic;
                 }

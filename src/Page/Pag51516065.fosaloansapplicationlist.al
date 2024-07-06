@@ -15,25 +15,25 @@ page 51516065 "fosaloansapplicationlist"
         {
             repeater(Control14)
             {
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
 
                 }
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Caption = 'Loan Application Date';
                 }
-                field("Loan Product Type"; "Loan Product Type")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Client Name"; "Client Name")
+                field("Client Name"; Rec."Client Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -41,28 +41,28 @@ page 51516065 "fosaloansapplicationlist"
                 }
 
 
-                field("BOSA No"; "BOSA No")
+                field("BOSA No"; Rec."BOSA No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Requested Amount"; "Requested Amount")
+                field("Requested Amount"; Rec."Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Amount Applied';
                     Style = Unfavorable;
                 }
 
-                field("Loan Status"; "Loan Status")
+                field("Loan Status"; Rec."Loan Status")
                 {
                     ApplicationArea = Basic;
                     Style = Ambiguous;
                 }
-                field("Approval Status"; "Approval Status")
+                field("Approval Status"; Rec."Approval Status")
                 {
                     ApplicationArea = Basic;
                     Style = Ambiguous;
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
 
                 }
@@ -100,8 +100,8 @@ page 51516065 "fosaloansapplicationlist"
 
     trigger OnOpenPage()
     begin
-        SetRange("Captured By", UserId);
-        Ascending(false)
+        Rec.SetRange("Captured By", UserId);
+        Rec.Ascending(false)
         //SetFilter("Loan Product Type", '<>%1|<>%2', 'OVERDRAFT', 'OKOA');
     end;
 

@@ -53,7 +53,7 @@ Table 51516265 "BOSA Transfer Schedule"
         }
         field(4; "Destination Account Type"; enum "Bosa Transfers SourceTypeEnum")
         {
-            InitValue=true;
+            InitValue = true;
             trigger OnValidate()
             begin
 
@@ -146,16 +146,16 @@ Table 51516265 "BOSA Transfer Schedule"
                                                 Description := 'ABF Fund' else
                                                 if "Transaction Type" = "transaction type"::"Deposit Contribution" then
                                                     Description := 'Shares Contribution';
-                                                    if Cust.get("Source Account No.") then begin
-                                                        Cust.CalcFields(Cust."Current Shares");
-                                                        "Transaction Amount" := Cust."Current Shares"
-                                                    end else
-                                                        // if "Transaction Type" = "transaction type"::"Appraisal Fee" then
-                                                        //     Description := 'Appraisal Fee' else
-                                                        //     if "Transaction Type" = "transaction type"::"Application Fee" then
-                                                        //         Description := 'Application Fee' else
-                                                                if "Transaction Type" = "transaction type"::"Unallocated Funds" then
-                                                                    Description := 'Unallocated Funds';
+                if Cust.get("Source Account No.") then begin
+                    Cust.CalcFields(Cust."Current Shares");
+                    "Transaction Amount" := Cust."Current Shares"
+                end else
+                    // if "Transaction Type" = "transaction type"::"Appraisal Fee" then
+                    //     Description := 'Appraisal Fee' else
+                    //     if "Transaction Type" = "transaction type"::"Application Fee" then
+                    //         Description := 'Application Fee' else
+                    if "Transaction Type" = "transaction type"::"Unallocated Funds" then
+                        Description := 'Unallocated Funds';
 
             end;
         }
@@ -227,7 +227,7 @@ Table 51516265 "BOSA Transfer Schedule"
 
     keys
     {
-        key(Key1; "No.",DocNo, "Source Account No.", "Destination Bank No.", "Transaction Type", Loan, "Destination Account No.", Amount, "Destination Loan")
+        key(Key1; "No.", DocNo, "Source Account No.", "Destination Bank No.", "Transaction Type", Loan, "Destination Account No.", Amount, "Destination Loan")
         {
             Clustered = true;
             SumIndexFields = Amount;

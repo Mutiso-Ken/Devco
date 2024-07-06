@@ -4,86 +4,86 @@ Table 51516250 "Interest Due Period"
 
     fields
     {
-        field(1;"Interest Due Date";Date)
+        field(1; "Interest Due Date"; Date)
         {
             Caption = 'Interest Due Date';
             NotBlank = true;
 
             trigger OnValidate()
             begin
-                Name := Format("Interest Due Date",0,Text000);
+                Name := Format("Interest Due Date", 0, Text000);
             end;
         }
-        field(2;Name;Text[10])
+        field(2; Name; Text[10])
         {
             Caption = 'Name';
         }
-        field(3;"New Fiscal Year";Boolean)
+        field(3; "New Fiscal Year"; Boolean)
         {
             Caption = 'New Fiscal Year';
 
             trigger OnValidate()
             begin
-                TestField("Date Locked",false);
+                TestField("Date Locked", false);
                 if "New Fiscal Year" then begin
-                  if not InvtSetup.Get then
-                    exit;
-                  "Average Cost Calc. Type" := InvtSetup."Average Cost Calc. Type";
-                  "Average Cost Period" := InvtSetup."Average Cost Period";
+                    if not InvtSetup.Get then
+                        exit;
+                    "Average Cost Calc. Type" := InvtSetup."Average Cost Calc. Type";
+                    "Average Cost Period" := InvtSetup."Average Cost Period";
                 end else begin
-                  "Average Cost Calc. Type" := "average cost calc. type"::" ";
-                  "Average Cost Period" := "average cost period"::" ";
+                    "Average Cost Calc. Type" := "average cost calc. type"::" ";
+                    "Average Cost Period" := "average cost period"::" ";
                 end;
             end;
         }
-        field(4;Closed;Boolean)
+        field(4; Closed; Boolean)
         {
             Caption = 'Closed';
             Editable = true;
         }
-        field(5;"Date Locked";Boolean)
+        field(5; "Date Locked"; Boolean)
         {
             Caption = 'Date Locked';
             Editable = true;
         }
-        field(5804;"Average Cost Calc. Type";Option)
+        field(5804; "Average Cost Calc. Type"; Option)
         {
             Caption = 'Average Cost Calc. Type';
             Editable = false;
             OptionCaption = ' ,Item,Item & Location & Variant';
             OptionMembers = " ",Item,"Item & Location & Variant";
         }
-        field(5805;"Average Cost Period";Option)
+        field(5805; "Average Cost Period"; Option)
         {
             Caption = 'Average Cost Period';
             Editable = false;
             OptionCaption = ' ,Day,Week,Month,Quarter,Year,Accounting Period';
             OptionMembers = " ",Day,Week,Month,Quarter,Year,"Accounting Period";
         }
-        field(50000;"Closed by User";Code[20])
+        field(50000; "Closed by User"; Code[20])
         {
         }
-        field(50001;"Closing Date Time";DateTime)
+        field(50001; "Closing Date Time"; DateTime)
         {
         }
-        field(50002;"Posting Document No.";Code[20])
+        field(50002; "Posting Document No."; Code[20])
         {
         }
-        field(50003;"Interest Calcuation Date";Date)
+        field(50003; "Interest Calcuation Date"; Date)
         {
             Caption = 'Interest Calculation Date';
             NotBlank = true;
 
             trigger OnValidate()
             begin
-                Name := Format("Interest Due Date",0,Text000);
+                Name := Format("Interest Due Date", 0, Text000);
             end;
         }
     }
 
     keys
     {
-        key(Key1;"Interest Due Date")
+        key(Key1; "Interest Due Date")
         {
             Clustered = true;
         }
@@ -95,7 +95,7 @@ Table 51516250 "Interest Due Period"
 
     trigger OnDelete()
     begin
-        TestField("Date Locked",false);
+        TestField("Date Locked", false);
         UpdateAvgItems(3);
     end;
 
@@ -104,7 +104,7 @@ Table 51516250 "Interest Due Period"
 
         AccountingPeriod2 := Rec;
         if AccountingPeriod2.Find('>') then
-          AccountingPeriod2.TestField("Date Locked",false);
+            AccountingPeriod2.TestField("Date Locked", false);
         UpdateAvgItems(1);
     end;
 
@@ -116,10 +116,10 @@ Table 51516250 "Interest Due Period"
     trigger OnRename()
     begin
 
-        TestField("Date Locked",false);
+        TestField("Date Locked", false);
         AccountingPeriod2 := Rec;
         if AccountingPeriod2.Find('>') then
-          AccountingPeriod2.TestField("Date Locked",false);
+            AccountingPeriod2.TestField("Date Locked", false);
         UpdateAvgItems(4);
     end;
 

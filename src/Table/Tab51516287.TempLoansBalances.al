@@ -4,20 +4,20 @@ Table 51516287 "Temp Loans Balances"
 
     fields
     {
-        field(1;"Member No";Code[20])
+        field(1; "Member No"; Code[20])
         {
         }
-        field(2;"Loan No";Code[30])
+        field(2; "Loan No"; Code[30])
         {
         }
-        field(3;"Outstanding Balance";Decimal)
+        field(3; "Outstanding Balance"; Decimal)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Member No","Loan No")
+        key(Key1; "Member No", "Loan No")
         {
             Clustered = true;
         }

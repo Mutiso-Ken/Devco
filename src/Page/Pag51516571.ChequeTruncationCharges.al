@@ -12,19 +12,19 @@ Page 51516571 "Cheque Truncation Charges"
         {
             repeater(Group)
             {
-                field("Lower Limit";"Lower Limit")
+                field("Lower Limit"; Rec."Lower Limit")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Upper Limit";"Upper Limit")
+                field("Upper Limit"; Rec."Upper Limit")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Charges;Charges)
+                field(Charges; Rec.Charges)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Range;Range)
+                field(Range; Rec.Range)
                 {
                     ApplicationArea = Basic;
                 }

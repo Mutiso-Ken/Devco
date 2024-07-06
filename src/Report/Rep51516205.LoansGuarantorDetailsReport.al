@@ -10,7 +10,7 @@ Report 51516205 "Loans Guarantor Details Report"
         {
             CalcFields = "Outstanding Balance";
             DataItemTableView = sorting("Issued Date") where(Posted = const(true), "Outstanding Balance" = filter(> 0));
-            RequestFilterFields = "Client Code","Loan  No.", "Branch Code", "Date filter";
+            RequestFilterFields = "Client Code", "Loan  No.", "Branch Code", "Date filter";
             column(ReportForNavId_1; 1)
             {
             }

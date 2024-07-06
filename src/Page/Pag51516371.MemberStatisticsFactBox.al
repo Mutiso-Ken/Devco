@@ -11,7 +11,7 @@ Page 51516371 "Member Statistics FactBox"
     {
         area(content)
         {
-            field(Image; Image)
+            field(Image; Rec.Image)
             {
                 ApplicationArea = Basic;
                 Caption = 'Member No.';
@@ -21,32 +21,32 @@ Page 51516371 "Member Statistics FactBox"
                 Caption = 'Member Statistics FactBox';
                 Editable = false;
 
-                field("Current Shares"; "Current Shares")
+                field("Current Shares"; Rec."Current Shares")
                 {
                     Caption = 'Non-withdrawable Deposits';
                     Style = StrongAccent;
                 }
 
-                field("Outstanding Balance"; "Outstanding Balance")
+                field("Outstanding Balance"; Rec."Outstanding Balance")
                 {
                     Style = StrongAccent;
                 }
-                field("Outstanding Interest"; "Outstanding Interest")
+                field("Outstanding Interest"; Rec."Outstanding Interest")
                 {
                     Style = StrongAccent;
                 }
 
-                field("Principal Arrears"; "Principal Arrears")
+                field("Principal Arrears"; Rec."Principal Arrears")
                 {
                     Style = Unfavorable;
                     StyleExpr = true;
                 }
-                field("Interest Arrears"; "Interest Arrears")
+                field("Interest Arrears"; Rec."Interest Arrears")
                 {
                     Style = Unfavorable;
                     StyleExpr = true;
                 }
-                field("Registration Fee Paid"; "Registration Fee Paid")
+                field("Registration Fee Paid"; Rec."Registration Fee Paid")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -63,13 +63,13 @@ Page 51516371 "Member Statistics FactBox"
                 // {
                 //     ApplicationArea = Basic;
                 // }
-                field("Alpha Savings"; "Alpha Savings")
+                field("Alpha Savings"; Rec."Alpha Savings")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
 
                 }
-                field("Likizo Contribution"; "Likizo Contribution")
+                field("Likizo Contribution"; Rec."Likizo Contribution")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -83,20 +83,20 @@ Page 51516371 "Member Statistics FactBox"
 
 
                 // }
-                field("Junior Savings One"; "Junior Savings One")
+                field("Junior Savings One"; Rec."Junior Savings One")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
 
 
                 }
-                field("Junior Savings Two"; "Junior Savings Two")
+                field("Junior Savings Two"; Rec."Junior Savings Two")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
 
                 }
-                field("Junior Savings Three"; "Junior Savings Three")
+                field("Junior Savings Three"; Rec."Junior Savings Three")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -136,23 +136,23 @@ Page 51516371 "Member Statistics FactBox"
                 // {
                 //     Style = Ambiguous;
                 // }
-                field("Housing Deposits"; "Housing Deposits")
+                field("Housing Deposits"; Rec."Housing Deposits")
                 {
                     Style = Ambiguous;
-                    caption='Housing Shares';
+                    caption = 'Housing Shares';
                 }
 
-                field("Dividend Amount"; "Dividend Amount")
+                field("Dividend Amount"; Rec."Dividend Amount")
                 {
                     style = Strong;
                 }
 
-                field("Un-allocated Funds"; "Un-allocated Funds")
+                field("Un-allocated Funds"; Rec."Un-allocated Funds")
                 {
                     style = Strong;
                 }
 
-                field("Benevolent Fund"; "Benevolent Fund")
+                field("Benevolent Fund"; Rec."Benevolent Fund")
                 {
                     visible = false;
                 }
@@ -163,13 +163,13 @@ Page 51516371 "Member Statistics FactBox"
             {
                 Caption = 'File Movement FactBox';
                 visible = false;
-                field("Currect File Location"; "Currect File Location")
+                field("Currect File Location"; Rec."Currect File Location")
                 {
                 }
-                field("Loc Description"; "Loc Description")
+                field("Loc Description"; Rec."Loc Description")
                 {
                 }
-                field(User; User)
+                field(User; Rec.User)
                 {
                 }
             }
@@ -182,7 +182,7 @@ Page 51516371 "Member Statistics FactBox"
 
     trigger OnAfterGetRecord()
     begin
-        "Loan Arrears" := FnGetLoanArrears(Rec."No.");
+        Rec."Loan Arrears" := FnGetLoanArrears(Rec."No.");
     end;
 
     trigger OnOpenPage()
@@ -276,9 +276,9 @@ Page 51516371 "Member Statistics FactBox"
     procedure ChangeCustomer()
     begin
         // Change the Customer Filters
-        LatestCustLedgerEntry.SetRange("Customer No.", "No.");
+        LatestCustLedgerEntry.SetRange("Customer No.", Rec."No.");
         for I := 1 to ArrayLen(CustLedgerEntry) do
-            CustLedgerEntry[I].SetRange("Customer No.", "No.");
+            CustLedgerEntry[I].SetRange("Customer No.", Rec."No.");
     end;
 
 

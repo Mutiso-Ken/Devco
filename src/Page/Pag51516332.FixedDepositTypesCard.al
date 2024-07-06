@@ -10,27 +10,27 @@ Page 51516332 "Fixed Deposit Types Card"
         {
             group(General)
             {
-                field("Code";Code)
+                field("Code"; Rec.Code)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Duration;Duration)
+                field(Duration; Rec.Duration)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("No. of Months";"No. of Months")
+                field("No. of Months"; Rec."No. of Months")
                 {
                     ApplicationArea = Basic;
                 }
             }
-            part(Control1102755006;"Fixed Deposit Interest Rates")
+            part(Control1102755006; "Fixed Deposit Interest Rates")
             {
                 Caption = 'Interest Computation';
-                SubPageLink = Code=field(Code);
+                SubPageLink = Code = field(Code);
             }
         }
     }

@@ -18,32 +18,32 @@ Page 51516319 "Loans List - Advances"
         {
             repeater(Control14)
             {
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Product Type"; "Loan Product Type")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                    Style = StrongAccent;
-                }
-
-
-                field("Client Name"; "Client Name")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
 
-                field("Net Payment to FOSA"; "Net Payment to FOSA")
+
+                field("Client Name"; Rec."Client Name")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                    Style = StrongAccent;
+                }
+
+                field("Net Payment to FOSA"; Rec."Net Payment to FOSA")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -51,33 +51,33 @@ Page 51516319 "Loans List - Advances"
                 }
 
 
-                field("Client Code"; "Client Code")
+                field("Client Code"; Rec."Client Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     visible = false;
                 }
-                field("BOSA No"; "BOSA No")
+                field("BOSA No"; Rec."BOSA No")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
 
                 }
 
-                field("Loan Status"; "Loan Status")
+                field("Loan Status"; Rec."Loan Status")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Approval Status"; "Approval Status")
+                field("Approval Status"; Rec."Approval Status")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
@@ -231,7 +231,7 @@ Page 51516319 "Loans List - Advances"
 
     procedure FormatField(Rec: Record "Loans Register") OK: Boolean
     begin
-        if "Outstanding Balance" > 0 then begin
+        if Rec."Outstanding Balance" > 0 then begin
             if (Rec."Expected Date of Completion" < Today) then
                 exit(true)
             else
@@ -260,9 +260,9 @@ Page 51516319 "Loans List - Advances"
     trigger OnOpenPage()
     begin
         If FnCanPostLoans(UserId) = false then begin
-            SetRange("Captured By", UserId);
+            Rec.SetRange("Captured By", UserId);
         end;
-        Ascending(false)
+        Rec.Ascending(false)
     end;
 }
 

@@ -4,7 +4,7 @@ page 51516135 "CRM Case Types"
     Caption = 'CRM Case Types';
     PageType = List;
     SourceTable = "CRM Case Types";
-    
+
     layout
     {
         area(content)

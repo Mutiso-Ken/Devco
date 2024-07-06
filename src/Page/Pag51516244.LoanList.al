@@ -19,60 +19,60 @@ Page 51516244 "Loan List"
         {
             repeater(Group)
             {
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Product Type"; "Loan Product Type")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Client Code"; "Client Code")
+                field("Client Code"; Rec."Client Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member  No';
                 }
-                field("Group Code"; "Group Code")
+                field("Group Code"; Rec."Group Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Client Name"; "Client Name")
+                field("Client Name"; Rec."Client Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Requested Amount"; "Requested Amount")
+                field("Requested Amount"; Rec."Requested Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approved Amount"; "Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Status"; "Loan Status")
+                field("Loan Status"; Rec."Loan Status")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Issued Date"; "Issued Date")
+                field("Issued Date"; Rec."Issued Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Expected Date of Completion"; "Expected Date of Completion")
+                field("Expected Date of Completion"; Rec."Expected Date of Completion")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Installments; Installments)
+                field(Installments; Rec.Installments)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Repayment; Repayment)
+                field(Repayment; Rec.Repayment)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Rejection  Remark"; "Rejection  Remark")
+                field("Rejection  Remark"; Rec."Rejection  Remark")
                 {
                     ApplicationArea = Basic;
                 }

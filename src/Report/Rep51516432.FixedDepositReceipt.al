@@ -6,51 +6,51 @@ Report 51516432 "Fixed Deposit Receipt"
 
     dataset
     {
-        dataitem(Vendor;Vendor)
+        dataitem(Vendor; Vendor)
         {
             column(ReportForNavId_1000000000; 1000000000)
             {
             }
-            column(COMPANYNAME;COMPANYNAME)
+            column(COMPANYNAME; COMPANYNAME)
             {
             }
-            column(CompanyPic;CompInfo.Picture)
+            column(CompanyPic; CompInfo.Picture)
             {
             }
-            column(tODAYSdATE;Format(Today,0,4))
+            column(tODAYSdATE; Format(Today, 0, 4))
             {
             }
-            column(Name;UpperCase(Vendor.Name))
+            column(Name; UpperCase(Vendor.Name))
             {
             }
-            column(Balance;Vendor.Balance)
+            column(Balance; Vendor.Balance)
             {
             }
-            column(MaturityDate;Format(Vendor."FD Maturity Date",0,4))
+            column(MaturityDate; Format(Vendor."FD Maturity Date", 0, 4))
             {
             }
-            column(FixedType;Vendor."Fixed Deposit Type")
+            column(FixedType; Vendor."Fixed Deposit Type")
             {
             }
-            column(FDRate;FixedRate)
+            column(FDRate; FixedRate)
             {
             }
-            column(NumberText_1_;NumberText[1])
+            column(NumberText_1_; NumberText[1])
             {
             }
-            column(ID_No;Vendor."ID No.")
+            column(ID_No; Vendor."ID No.")
             {
             }
-            column(No;Vendor."No.")
+            column(No; Vendor."No.")
             {
             }
-            column(CompName;CompInfo.Name)
+            column(CompName; CompInfo.Name)
             {
             }
-            column(RegistrationDate_Vendor;Format(Vendor."Registration Date"))
+            column(RegistrationDate_Vendor; Format(Vendor."Registration Date"))
             {
             }
-            column(NegInterestRate_Vendor;Vendor."Neg. Interest Rate")
+            column(NegInterestRate_Vendor; Vendor."Neg. Interest Rate")
             {
             }
 
@@ -65,19 +65,19 @@ Report 51516432 "Fixed Deposit Receipt"
                 UNTIL
                 FDCalcRules.NEXT=0;
                 */
-                
+
                 Vendor.CalcFields(Vendor."Balance (LCY)");
-                
+
                 //Amount into words
                 CheckReport.InitTextVariable;
-                CheckReport.FormatNoText(NumberText,Vendor."Balance (LCY)",'');
+                CheckReport.FormatNoText(NumberText, Vendor."Balance (LCY)", '');
 
             end;
 
             trigger OnPreDataItem()
             begin
-                 CompInfo.Get;
-                 CompInfo.CalcFields(CompInfo.Picture);
+                CompInfo.Get;
+                CompInfo.CalcFields(CompInfo.Picture);
             end;
         }
     }
@@ -103,6 +103,6 @@ Report 51516432 "Fixed Deposit Receipt"
         FixedRate: Decimal;
         FDCalcRules: Record "FD Interest Calculation Criter";
         CheckReport: Report Check;
-        NumberText: array [2] of Text[120];
+        NumberText: array[2] of Text[120];
 }
 

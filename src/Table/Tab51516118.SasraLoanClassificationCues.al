@@ -11,51 +11,51 @@ Table 51516118 "SasraLoanClassificationCues"
         field(2; "Watchful Loans"; Integer)
         {
             //CalcFormula = COUNT("Loans Register" WHERE("Loans Category-SASRA" = CONST(Watch), "Outstanding Balance" = filter(> 0), "Loan Status" = const(Issued), Source = const(BOSA)));
-              
+
 
         }
         field(3; "Substandard Loans"; Integer)
         {
             // CalcFormula = COUNT("Loans Register" WHERE("Loans Category-SASRA" = CONST(Substandard), "Outstanding Balance" = filter(> 0), "Loan Status" = const(Issued), Source = const(BOSA)));
-              
+
         }
         field(4; "Doubtful Loans"; Integer)
         {
             //CalcFormula = COUNT("Loans Register" WHERE("Loans Category-SASRA" = CONST(doubtful), "Outstanding Balance" = filter(> 0), "Loan Status" = const(Issued), Source = const(BOSA)));
-              
+
         }
 
         field(5; "Watchful FOSA Loans"; Integer)
         {
             //CalcFormula = COUNT("Loans Register" WHERE("Loans Category-SASRA" = CONST(watch), "Outstanding Balance" = filter(> 0), "Loan Status" = const(Issued), Source = const(FOSA)));
-              
+
 
         }
         field(6; "Substandard FOSA Loans"; Integer)
         {
             //CalcFormula = COUNT("Loans Register" WHERE("Loans Category-SASRA" = CONST(Substandard), "Outstanding Balance" = filter(> 0), "Loan Status" = const(Issued), Source = const(FOSA)));
-              
+
         }
         field(7; "Doubtful FOSA Loans"; Integer)
         {
             //CalcFormula = COUNT("Loans Register" WHERE("Loans Category-SASRA" = CONST(Doubtful),"Loans Category-SASRA" = CONST(Loss),"Loans Category-SASRA" = CONST(Loss), "Outstanding Balance" = filter(> 0), "Loan Status" = const(Issued), Source = const(FOSA)));
-              
+
         }
 
 
         field(8; "Watchful MICRO Loans"; Integer)
         {
             //CalcFormula = COUNT("Loans Register" WHERE("Loans Category-SASRA" = CONST(Watch), "Outstanding Balance" = filter(> 0), "Loan Status" = const(Issued), Source = const(MICRO)));
-              
+
         }
         field(9; "Substandard MICRO Loans"; Integer)
         {
             //CalcFormula = COUNT("Loans Register" WHERE("Loans Category-SASRA" = CONST(Substandard), "Outstanding Balance" = filter(> 0), "Loan Status" = const(Issued), Source = const(MICRO)));
-              
+
         }
         field(10; "Doubtful MICRO Loans"; Integer)
         {
-              
+
             //CalcFormula = COUNT("Loans Register" WHERE("Loans Category-SASRA" = CONST(Doubtful), "Loans Category-SASRA" = CONST(Loss), "Outstanding Balance" = filter(> 0), "Loan Status" = const(Issued), Source = const(MICRO)));
         }
 

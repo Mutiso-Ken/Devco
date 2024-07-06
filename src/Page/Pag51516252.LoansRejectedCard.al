@@ -16,18 +16,18 @@ Page 51516252 "Loans Rejected Card"
             {
                 Caption = 'General';
                 Editable = false;
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Staff No"; "Staff No")
+                field("Staff No"; Rec."Staff No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Staff No';
                     Editable = false;
                 }
-                field("Client Code"; "Client Code")
+                field("Client Code"; Rec."Client Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member No';
@@ -37,81 +37,81 @@ Page 51516252 "Loans Rejected Card"
                         ClientCodeOnAfterValidate;
                     end;
                 }
-                field("Client Name"; "Client Name")
+                field("Client Name"; Rec."Client Name")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member Name';
                     Editable = false;
                 }
-                field("ID NO"; "ID NO")
+                field("ID NO"; Rec."ID NO")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Loan Product Type"; "Loan Product Type")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
-                        if "Loan Product Type" = 'BELA' then
-                            "Loan Status" := "loan status"::Approved;
+                        Rec.TestField(Posted, false);
+                        if Rec."Loan Product Type" = 'BELA' then
+                            Rec."Loan Status" := Rec."loan status"::Approved;
 
-                        if "Top Up Amount" = 0 then begin
+                        if Rec."Top Up Amount" = 0 then begin
                             LoanApp.Reset;
-                            LoanApp.SetRange(LoanApp."Client Code", "Client Code");
-                            LoanApp.SetRange(LoanApp."Loan Product Type", "Loan Product Type");
+                            LoanApp.SetRange(LoanApp."Client Code", Rec."Client Code");
+                            LoanApp.SetRange(LoanApp."Loan Product Type", Rec."Loan Product Type");
                             LoanApp.SetRange(LoanApp.Posted, true);
                             if LoanApp.Find('-') then begin
                                 repeat
                                     LoanApp.CalcFields(LoanApp."Outstanding Balance");
                                     if LoanApp."Outstanding Balance" > 0 then
                                         if Confirm('Member has an oustanding similar loan product. Do you wish to continue?') = false then
-                                            "Loan Product Type" := '';
+                                            Rec."Loan Product Type" := '';
                                 until LoanApp.Next = 0;
                             end;
                         end;
                     end;
                 }
-                field(Installments; Installments)
+                field(Installments; Rec.Installments)
                 {
                     ApplicationArea = Basic;
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field(Interest; Interest)
+                field(Interest; Rec.Interest)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Rejection  Remark"; "Rejection  Remark")
+                field("Rejection  Remark"; Rec."Rejection  Remark")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Requested Amount"; "Requested Amount")
+                field("Requested Amount"; Rec."Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Amount Applied';
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Approved Amount"; "Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Approved Amount';
@@ -119,40 +119,40 @@ Page 51516252 "Loans Rejected Card"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Recommended Amount"; "Recommended Amount")
+                field("Recommended Amount"; Rec."Recommended Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Purpose"; "Loan Purpose")
+                field("Loan Purpose"; Rec."Loan Purpose")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Remarks; Remarks)
+                field(Remarks; Rec.Remarks)
                 {
                     ApplicationArea = Basic;
                 }
-                field("External EFT"; "External EFT")
+                field("External EFT"; Rec."External EFT")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Repayment Method"; "Repayment Method")
+                field("Repayment Method"; Rec."Repayment Method")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field(Repayment; Repayment)
+                field(Repayment; Rec.Repayment)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Status"; "Loan Status")
+                field("Loan Status"; Rec."Loan Status")
                 {
                     ApplicationArea = Basic;
 
@@ -292,55 +292,55 @@ Page 51516252 "Loans Rejected Card"
 
                     end;
                 }
-                field("Batch No."; "Batch No.")
+                field("Batch No."; Rec."Batch No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Outstanding Balance"; "Outstanding Balance")
+                field("Outstanding Balance"; Rec."Outstanding Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Top Up Amount"; "Top Up Amount")
+                field("Top Up Amount"; Rec."Top Up Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Other Commitments Clearance"; "Other Commitments Clearance")
+                field("Other Commitments Clearance"; Rec."Other Commitments Clearance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Boosting Commision"; "Boosting Commision")
+                field("Boosting Commision"; Rec."Boosting Commision")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Mode of Disbursement"; "Mode of Disbursement")
+                field("Mode of Disbursement"; Rec."Mode of Disbursement")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Disbursement Date"; "Loan Disbursement Date")
+                field("Loan Disbursement Date"; Rec."Loan Disbursement Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cheque No."; "Cheque No.")
+                field("Cheque No."; Rec."Cheque No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Name"; "Bank Name")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Bank Branch"; "Bank Branch")
+                field("Bank Name"; Rec."Bank Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Expected Date of Completion"; "Expected Date of Completion")
+                field("Bank Branch"; Rec."Bank Branch")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Posted; Posted)
+                field("Expected Date of Completion"; Rec."Expected Date of Completion")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -364,8 +364,8 @@ Page 51516252 "Loans Rejected Card"
 
                     trigger OnAction()
                     begin
-                        Posted := true;
-                        Modify;
+                        Rec.Posted := true;
+                        Rec.Modify;
                     end;
                 }
                 action("Loan Appraisal")
@@ -400,59 +400,59 @@ Page 51516252 "Loans Rejected Card"
                         //IF Posted=TRUE THEN
                         //ERROR('Loan has been posted, Can only preview schedule');
 
-                        if "Repayment Frequency" = "repayment frequency"::Daily then
+                        if Rec."Repayment Frequency" = Rec."repayment frequency"::Daily then
                             Evaluate(InPeriod, '1D')
                         else
-                            if "Repayment Frequency" = "repayment frequency"::Weekly then
+                            if Rec."Repayment Frequency" = Rec."repayment frequency"::Weekly then
                                 Evaluate(InPeriod, '1W')
                             else
-                                if "Repayment Frequency" = "repayment frequency"::Monthly then
+                                if Rec."Repayment Frequency" = Rec."repayment frequency"::Monthly then
                                     Evaluate(InPeriod, '1M')
                                 else
-                                    if "Repayment Frequency" = "repayment frequency"::Quaterly then
+                                    if Rec."Repayment Frequency" = Rec."repayment frequency"::Quaterly then
                                         Evaluate(InPeriod, '1Q');
 
 
                         QCounter := 0;
                         QCounter := 3;
                         //EVALUATE(InPeriod,'1D');
-                        GrPrinciple := "Grace Period - Principle (M)";
-                        GrInterest := "Grace Period - Interest (M)";
-                        InitialGraceInt := "Grace Period - Interest (M)";
+                        GrPrinciple := Rec."Grace Period - Principle (M)";
+                        GrInterest := Rec."Grace Period - Interest (M)";
+                        InitialGraceInt := Rec."Grace Period - Interest (M)";
 
                         LoansR.Reset;
-                        LoansR.SetRange(LoansR."Loan  No.", "Loan  No.");
+                        LoansR.SetRange(LoansR."Loan  No.", Rec."Loan  No.");
                         if LoansR.Find('-') then begin
 
-                            TestField("Loan Disbursement Date");
-                            TestField("Repayment Start Date");
+                            Rec.TestField("Loan Disbursement Date");
+                            Rec.TestField("Repayment Start Date");
 
                             RSchedule.Reset;
-                            RSchedule.SetRange(RSchedule."Loan No.", "Loan  No.");
+                            RSchedule.SetRange(RSchedule."Loan No.", Rec."Loan  No.");
                             RSchedule.DeleteAll;
 
                             LoanAmount := LoansR."Approved Amount";
                             InterestRate := LoansR.Interest;
                             RepayPeriod := LoansR.Installments;
-                            InitialInstal := LoansR.Installments + "Grace Period - Principle (M)";
+                            InitialInstal := LoansR.Installments + Rec."Grace Period - Principle (M)";
                             LBalance := LoansR."Approved Amount";
-                            RunDate := "Repayment Start Date";//"Loan Disbursement Date";
-                                                              //RunDate:=CALCDATE('-1W',RunDate);
+                            RunDate := Rec."Repayment Start Date";//"Loan Disbursement Date";
+                                                                  //RunDate:=CALCDATE('-1W',RunDate);
                             InstalNo := 0;
                             //EVALUATE(RepayInterval,'1W');
                             //EVALUATE(RepayInterval,InPeriod);
 
                             //Repayment Frequency
-                            if "Repayment Frequency" = "repayment frequency"::Daily then
+                            if Rec."Repayment Frequency" = Rec."repayment frequency"::Daily then
                                 RunDate := CalcDate('-1D', RunDate)
                             else
-                                if "Repayment Frequency" = "repayment frequency"::Weekly then
+                                if Rec."Repayment Frequency" = Rec."repayment frequency"::Weekly then
                                     RunDate := CalcDate('-1W', RunDate)
                                 else
-                                    if "Repayment Frequency" = "repayment frequency"::Monthly then
+                                    if Rec."Repayment Frequency" = Rec."repayment frequency"::Monthly then
                                         RunDate := CalcDate('-1M', RunDate)
                                     else
-                                        if "Repayment Frequency" = "repayment frequency"::Quaterly then
+                                        if Rec."Repayment Frequency" = Rec."repayment frequency"::Quaterly then
                                             RunDate := CalcDate('-1Q', RunDate);
                             //Repayment Frequency
 
@@ -464,51 +464,51 @@ Page 51516252 "Loans Rejected Card"
 
 
                                 //Repayment Frequency
-                                if "Repayment Frequency" = "repayment frequency"::Daily then
+                                if Rec."Repayment Frequency" = Rec."repayment frequency"::Daily then
                                     RunDate := CalcDate('1D', RunDate)
                                 else
-                                    if "Repayment Frequency" = "repayment frequency"::Weekly then
+                                    if Rec."Repayment Frequency" = Rec."repayment frequency"::Weekly then
                                         RunDate := CalcDate('1W', RunDate)
                                     else
-                                        if "Repayment Frequency" = "repayment frequency"::Monthly then
+                                        if Rec."Repayment Frequency" = Rec."repayment frequency"::Monthly then
                                             RunDate := CalcDate('1M', RunDate)
                                         else
-                                            if "Repayment Frequency" = "repayment frequency"::Quaterly then
+                                            if Rec."Repayment Frequency" = Rec."repayment frequency"::Quaterly then
                                                 RunDate := CalcDate('1Q', RunDate);
                                 //Repayment Frequency
 
                                 //kma
-                                if "Repayment Method" = "repayment method"::Amortised then begin
-                                    TestField(Interest);
-                                    TestField(Installments);
+                                if Rec."Repayment Method" = Rec."repayment method"::Amortised then begin
+                                    Rec.TestField(Interest);
+                                    Rec.TestField(Installments);
                                     TotalMRepay := ROUND((InterestRate / 12 / 100) / (1 - Power((1 + (InterestRate / 12 / 100)), -(RepayPeriod))) * (LoanAmount), 0.05, '>');
                                     LInterest := ROUND(LBalance / 100 / 12 * InterestRate, 0.05, '>');
                                     LPrincipal := TotalMRepay - LInterest;
                                 end;
 
-                                if "Repayment Method" = "repayment method"::"Straight Line" then begin
-                                    TestField(Interest);
-                                    TestField(Installments);
+                                if Rec."Repayment Method" = Rec."repayment method"::"Straight Line" then begin
+                                    Rec.TestField(Interest);
+                                    Rec.TestField(Installments);
                                     LPrincipal := ROUND(LoanAmount / RepayPeriod, 0.05, '>');
                                     LInterest := ROUND((InterestRate / 12 / 100) * LoanAmount, 0.05, '>');
                                     //Grace Period Interest
                                     LInterest := ROUND((LInterest * InitialInstal) / (InitialInstal - InitialGraceInt), 0.05, '>');
                                 end;
 
-                                if "Repayment Method" = "repayment method"::"Reducing Balance" then begin
-                                    TestField(Interest);
-                                    TestField(Installments);
+                                if Rec."Repayment Method" = Rec."repayment method"::"Reducing Balance" then begin
+                                    Rec.TestField(Interest);
+                                    Rec.TestField(Installments);
                                     LPrincipal := ROUND(LoanAmount / RepayPeriod, 0.05, '>');
                                     LInterest := ROUND((InterestRate / 12 / 100) * LBalance, 0.05, '>');
                                 end;
 
-                                if "Repayment Method" = "repayment method"::Constants then begin
-                                    TestField(Repayment);
-                                    if LBalance < Repayment then
+                                if Rec."Repayment Method" = Rec."repayment method"::Constants then begin
+                                    Rec.TestField(Repayment);
+                                    if LBalance < Rec.Repayment then
                                         LPrincipal := LBalance
                                     else
-                                        LPrincipal := Repayment;
-                                    LInterest := Interest;
+                                        LPrincipal := Rec.Repayment;
+                                    LInterest := Rec.Interest;
                                 end;
                                 //kma
 
@@ -568,12 +568,12 @@ Page 51516252 "Loans Rejected Card"
 
                                 RSchedule.Init;
                                 RSchedule."Repayment Code" := RepayCode;
-                                RSchedule."Loan No." := "Loan  No.";
+                                RSchedule."Loan No." := Rec."Loan  No.";
                                 RSchedule."Loan Amount" := LoanAmount;
                                 RSchedule."Instalment No" := InstalNo;
                                 RSchedule."Repayment Date" := RunDate;
-                                RSchedule."Member No." := "Client Code";
-                                RSchedule."Loan Category" := "Loan Product Type";
+                                RSchedule."Member No." := Rec."Client Code";
+                                RSchedule."Loan Category" := Rec."Loan Product Type";
                                 RSchedule."Monthly Repayment" := LInterest + LPrincipal;
                                 RSchedule."Monthly Interest" := LInterest;
                                 RSchedule."Principal Repayment" := LPrincipal;
@@ -620,8 +620,8 @@ Page 51516252 "Loans Rejected Card"
                     trigger OnAction()
                     begin
                         if Confirm('Are you sure you want to mark this loan as posted?') = true then begin
-                            Posted := true;
-                            Modify;
+                            Rec.Posted := true;
+                            Rec.Modify;
                         end;
                     end;
                 }
@@ -633,13 +633,13 @@ Page 51516252 "Loans Rejected Card"
 
                     trigger OnAction()
                     begin
-                        if Posted = true then
+                        if Rec.Posted = true then
                             Error('Loan already posted.');
 
 
-                        "Loan Disbursement Date" := Today;
-                        TestField("Loan Disbursement Date");
-                        "Posting Date" := "Loan Disbursement Date";
+                        Rec."Loan Disbursement Date" := Today;
+                        Rec.TestField("Loan Disbursement Date");
+                        Rec."Posting Date" := Rec."Loan Disbursement Date";
 
 
                         if Confirm('Are you sure you want to post this loan?', true) = false then
@@ -652,7 +652,7 @@ Page 51516252 "Loans Rejected Card"
                         //PRORATED DAYS
                         
                         */
-                        if "Mode of Disbursement" = "mode of disbursement"::"Cheque" then begin
+                        if Rec."Mode of Disbursement" = Rec."mode of disbursement"::"Cheque" then begin
 
                             GenJournalLine.Reset;
                             GenJournalLine.SetRange("Journal Template Name", 'PAYMENTS');
@@ -665,7 +665,7 @@ Page 51516252 "Loans Rejected Card"
                             DActivity := 'BOSA';
                             DBranch := '';//PKKS'NAIROBI';
                             LoanApps.Reset;
-                            LoanApps.SetRange(LoanApps."Loan  No.", "Loan  No.");
+                            LoanApps.SetRange(LoanApps."Loan  No.", Rec."Loan  No.");
                             LoanApps.SetRange(LoanApps."System Created", false);
                             LoanApps.SetFilter(LoanApps."Loan Status", '<>Rejected');
                             if LoanApps.Find('-') then begin
@@ -698,7 +698,7 @@ Page 51516252 "Loans Rejected Card"
                                     LoanApps.CalcFields(LoanApps."Top Up Amount");
 
 
-                                    RunningDate := "Posting Date";
+                                    RunningDate := Rec."Posting Date";
 
 
                                     //Generate and post Approved Loan Amount
@@ -724,9 +724,9 @@ Page 51516252 "Loans Rejected Card"
                                             GenJournalLine."Account Type" := GenJournalLine."account type"::"G/L Account";
                                             GenJournalLine."Account No." := PCharges."G/L Account";
                                             GenJournalLine.Validate(GenJournalLine."Account No.");
-                                            GenJournalLine."Document No." := "Loan  No.";
+                                            GenJournalLine."Document No." := Rec."Loan  No.";
                                             GenJournalLine."External Document No." := LoanApps."Loan  No.";
-                                            GenJournalLine."Posting Date" := "Posting Date";
+                                            GenJournalLine."Posting Date" := Rec."Posting Date";
                                             GenJournalLine.Description := PCharges.Description;
                                             if PCharges."Use Perc" = true then begin
                                                 GenJournalLine.Amount := (LoanDisbAmount * PCharges.Percentage / 100) * -1;
@@ -769,11 +769,11 @@ Page 51516252 "Loans Rejected Card"
                                     GenJournalLine."Journal Batch Name" := 'LOANS';
                                     GenJournalLine."Line No." := LineNo;
                                     GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
-                                    GenJournalLine."Account No." := "Client Code";
+                                    GenJournalLine."Account No." := Rec."Client Code";
                                     GenJournalLine.Validate(GenJournalLine."Account No.");
-                                    GenJournalLine."Document No." := "Loan  No.";
-                                    GenJournalLine."External Document No." := "ID NO";
-                                    GenJournalLine."Posting Date" := "Posting Date";
+                                    GenJournalLine."Document No." := Rec."Loan  No.";
+                                    GenJournalLine."External Document No." := Rec."ID NO";
+                                    GenJournalLine."Posting Date" := Rec."Posting Date";
                                     GenJournalLine.Description := 'Principal Amount';
                                     GenJournalLine.Amount := LoanDisbAmount + TCharges;
                                     GenJournalLine.Validate(GenJournalLine.Amount);
@@ -801,8 +801,8 @@ Page 51516252 "Loans Rejected Card"
                                                     GenJournalLine."Journal Template Name" := 'PAYMENTS';
                                                     GenJournalLine."Journal Batch Name" := 'LOANS';
                                                     GenJournalLine."Line No." := LineNo;
-                                                    GenJournalLine."Document No." := "Loan  No.";
-                                                    GenJournalLine."Posting Date" := "Posting Date";
+                                                    GenJournalLine."Document No." := Rec."Loan  No.";
+                                                    GenJournalLine."Posting Date" := Rec."Posting Date";
                                                     GenJournalLine."External Document No." := LoanApps."Loan  No.";
                                                     GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
                                                     GenJournalLine."Account No." := LoanApps."Client Code";
@@ -826,8 +826,8 @@ Page 51516252 "Loans Rejected Card"
                                                     GenJournalLine."Journal Template Name" := 'PAYMENTS';
                                                     GenJournalLine."Journal Batch Name" := 'LOANS';
                                                     GenJournalLine."Line No." := LineNo;
-                                                    GenJournalLine."Document No." := "Loan  No.";
-                                                    GenJournalLine."Posting Date" := "Posting Date";
+                                                    GenJournalLine."Document No." := Rec."Loan  No.";
+                                                    GenJournalLine."Posting Date" := Rec."Posting Date";
                                                     GenJournalLine."External Document No." := LoanApps."Loan  No.";
                                                     GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
                                                     GenJournalLine."Account No." := LoanApps."Account No";
@@ -857,8 +857,8 @@ Page 51516252 "Loans Rejected Card"
                                                         GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
                                                         GenJournalLine."Account No." := LoanApps."Client Code";
                                                         GenJournalLine.Validate(GenJournalLine."Account No.");
-                                                        GenJournalLine."Document No." := "Loan  No.";
-                                                        GenJournalLine."Posting Date" := "Posting Date";
+                                                        GenJournalLine."Document No." := Rec."Loan  No.";
+                                                        GenJournalLine."Posting Date" := Rec."Posting Date";
                                                         GenJournalLine.Description := 'Interest paid ' + LoanApps."Loan  No.";
                                                         GenJournalLine.Amount := -LoanTopUp."Interest Top Up";
                                                         GenJournalLine."External Document No." := LoanApps."Loan  No.";
@@ -882,8 +882,8 @@ Page 51516252 "Loans Rejected Card"
                                                         GenJournalLine."Journal Batch Name" := 'LOANS';
                                                         GenJournalLine."Line No." := LineNo;
                                                         GenJournalLine.Validate(GenJournalLine."Account No.");
-                                                        GenJournalLine."Document No." := "Loan  No.";
-                                                        GenJournalLine."Posting Date" := "Posting Date";
+                                                        GenJournalLine."Document No." := Rec."Loan  No.";
+                                                        GenJournalLine."Posting Date" := Rec."Posting Date";
                                                         GenJournalLine.Description := 'Interest paid ' + LoanApps."Loan  No.";
                                                         GenJournalLine.Amount := LoanTopUp."Interest Top Up";
                                                         GenJournalLine."External Document No." := LoanApps."Loan  No.";
@@ -917,8 +917,8 @@ Page 51516252 "Loans Rejected Card"
                                                             GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"G/L Account";
                                                             GenJournalLine."Bal. Account No." := LoanType."Top Up Commision Account";
                                                             GenJournalLine.Validate(GenJournalLine."Account No.");
-                                                            GenJournalLine."Document No." := "Loan  No.";
-                                                            GenJournalLine."Posting Date" := "Posting Date";
+                                                            GenJournalLine."Document No." := Rec."Loan  No.";
+                                                            GenJournalLine."Posting Date" := Rec."Posting Date";
                                                             GenJournalLine.Description := 'Commision on Loan Top Up';
                                                             TopUpComm := (LoanTopUp."Principle Top Up") * (LoanType."Top Up Commision" / 100);
                                                             TotalTopupComm := TotalTopupComm + TopUpComm;
@@ -953,9 +953,9 @@ Page 51516252 "Loans Rejected Card"
                             GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
                             GenJournalLine."Account No." := LoanApps."Account No";
                             GenJournalLine.Validate(GenJournalLine."Account No.");
-                            GenJournalLine."Document No." := "Loan  No.";
-                            GenJournalLine."External Document No." := "ID NO";
-                            GenJournalLine."Posting Date" := "Posting Date";
+                            GenJournalLine."Document No." := Rec."Loan  No.";
+                            GenJournalLine."External Document No." := Rec."ID NO";
+                            GenJournalLine."Posting Date" := Rec."Posting Date";
                             GenJournalLine.Description := 'Principal Amount';
                             GenJournalLine.Amount := (LoanApps."Approved Amount") * -1;
                             GenJournalLine.Validate(GenJournalLine.Amount);
@@ -1258,8 +1258,8 @@ Page 51516252 "Loans Rejected Card"
                         */
                         //Post New
 
-                        Posted := true;
-                        Modify;
+                        Rec.Posted := true;
+                        Rec.Modify;
 
 
 
@@ -1289,19 +1289,19 @@ Page 51516252 "Loans Rejected Card"
 
                     trigger OnAction()
                     begin
-                        if "Approval Status" = "approval status"::Rejected then begin
+                        if Rec."Approval Status" = Rec."approval status"::Rejected then begin
                             if Confirm('Are you sure you want to Reappraise this loan?', false) = true then begin
 
                                 ApprovalComment.Reset;
-                                ApprovalComment.SetRange(ApprovalComment."Document No.", "Loan  No.");
+                                ApprovalComment.SetRange(ApprovalComment."Document No.", Rec."Loan  No.");
                                 if ApprovalComment.Find('-') then begin
                                     ApprovalComment.Comment := '';
                                     ApprovalComment.Modify;
                                 end
                             end;
-                            "Loan Status" := "loan status"::Application;
-                            "Approval Status" := "approval status"::Open;
-                            Modify
+                            Rec."Loan Status" := Rec."loan status"::Application;
+                            Rec."Approval Status" := Rec."approval status"::Open;
+                            Rec.Modify
                         end;
                     end;
                 }
@@ -1321,8 +1321,9 @@ Page 51516252 "Loans Rejected Card"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        Source := Source::BOSA;
-        OnAfterGetCurrRec();;
+        Rec.Source := Rec.Source::BOSA;
+        OnAfterGetCurrRec();
+        ;
     end;
 
     var
@@ -1475,7 +1476,7 @@ Page 51516252 "Loans Rejected Card"
 
     local procedure ClientCodeOnAfterValidate()
     begin
-        TestField(Posted, false);
+        Rec.TestField(Posted, false);
     end;
 
     local procedure OnAfterGetCurrRec()
@@ -1495,7 +1496,7 @@ Page 51516252 "Loans Rejected Card"
         SpecialComm := 0;
         BridgedLoans.Reset;
         BridgedLoans.SetCurrentkey(BridgedLoans."Loan No.");
-        BridgedLoans.SetRange(BridgedLoans."Loan No.", "Loan  No.");
+        BridgedLoans.SetRange(BridgedLoans."Loan No.", Rec."Loan  No.");
         if BridgedLoans.Find('-') then begin
             repeat
                 if BridgedLoans.Source = BridgedLoans.Source::FOSA then begin

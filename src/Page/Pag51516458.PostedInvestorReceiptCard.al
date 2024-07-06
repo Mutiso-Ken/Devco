@@ -14,97 +14,97 @@ Page 51516458 "Posted Investor Receipt Card"
         {
             group(General)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Date; Date)
+                field(Date; Rec.Date)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Date"; "Posting Date")
-                {
-                    ApplicationArea = Basic;
-                    ShowMandatory = true;
-                }
-                field("Currency Code"; "Currency Code")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Investor No."; "Investor No.")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Investor Name"; "Investor Name")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Interest Code"; "Interest Code")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Bank Code"; "Bank Code")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field("Bank Name"; "Bank Name")
+                field("Currency Code"; Rec."Currency Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Balance"; "Bank Balance")
+                field("Investor No."; Rec."Investor No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
-                {
-                    ApplicationArea = Basic;
-                    ShowMandatory = true;
-                }
-                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
-                {
-                    ApplicationArea = Basic;
-                    ShowMandatory = true;
-                }
-                field("Received From"; "Received From")
-                {
-                    ApplicationArea = Basic;
-                    ShowMandatory = true;
-                }
-                field(Description; Description)
+                field("Investor Name"; Rec."Investor Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount Received"; "Amount Received")
+                field("Interest Code"; Rec."Interest Code")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Bank Code"; Rec."Bank Code")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field("Amount Received(LCY)"; "Amount Received(LCY)")
+                field("Bank Name"; Rec."Bank Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Amount"; "Total Amount")
+                field("Bank Balance"; Rec."Bank Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Amount(LCY)"; "Total Amount(LCY)")
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
+                {
+                    ApplicationArea = Basic;
+                    ShowMandatory = true;
+                }
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
+                {
+                    ApplicationArea = Basic;
+                    ShowMandatory = true;
+                }
+                field("Received From"; Rec."Received From")
+                {
+                    ApplicationArea = Basic;
+                    ShowMandatory = true;
+                }
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Investor Net Amount"; "Investor Net Amount")
+                field("Amount Received"; Rec."Amount Received")
+                {
+                    ApplicationArea = Basic;
+                    ShowMandatory = true;
+                }
+                field("Amount Received(LCY)"; Rec."Amount Received(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Investor Net Amount(LCY)"; "Investor Net Amount(LCY)")
+                field("Total Amount"; Rec."Total Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("User ID"; "User ID")
+                field("Total Amount(LCY)"; Rec."Total Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status; Status)
+                field("Investor Net Amount"; Rec."Investor Net Amount")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Investor Net Amount(LCY)"; Rec."Investor Net Amount(LCY)")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("User ID"; Rec."User ID")
+                {
+                    ApplicationArea = Basic;
+                }
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
@@ -129,12 +129,12 @@ Page 51516458 "Posted Investor Receipt Card"
 
                 trigger OnAction()
                 begin
-                    if Posted then begin
+                    if Rec.Posted then begin
                         ReceiptHeader.Reset;
-                        ReceiptHeader.SetRange(ReceiptHeader."No.", "No.");
+                        ReceiptHeader.SetRange(ReceiptHeader."No.", Rec."No.");
                         if ReceiptHeader.FindFirst then
-                        Error('DEV');
-                            //Report.Run(Report::"Investor Receipt", true, false, ReceiptHeader);
+                            Error('DEV');
+                        //Report.Run(Report::"Investor Receipt", true, false, ReceiptHeader);
                     end;
                 end;
             }

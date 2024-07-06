@@ -22,25 +22,25 @@ page 51516149 "Sacco Information"
                     ToolTip = 'Specifies the value of the Code field.';
                     Visible = false;
                 }
-                field("Sacco Principal Activities"; "Sacco Principal Activities")
+                field("Sacco Principal Activities"; Rec."Sacco Principal Activities")
                 {
                     ApplicationArea = all;
                     ToolTip = 'The Sacco Principal activities';
                 }
-                field("Sacco CEO"; "Sacco CEO")
+                field("Sacco CEO"; Rec."Sacco CEO")
                 {
                     ApplicationArea = all;
                 }
-                field("Sacco CEO Name"; "Sacco CEO Name")
+                field("Sacco CEO Name"; Rec."Sacco CEO Name")
                 {
                     ApplicationArea = all;
 
                 }
-                field("Sacco CEO P.O Box"; "Sacco CEO P.O Box")
+                field("Sacco CEO P.O Box"; Rec."Sacco CEO P.O Box")
                 {
                     ApplicationArea = all;
                 }
-                field("L.R.No."; "L.R.No.")
+                field("L.R.No."; Rec."L.R.No.")
                 {
                     ApplicationArea = all;
 
@@ -50,47 +50,47 @@ page 51516149 "Sacco Information"
                 //     ApplicationArea = all;
 
                 // }
-                field("P.O Box"; "P.O Box")
+                field("P.O Box"; Rec."P.O Box")
                 {
                     ApplicationArea = all;
 
                 }
 
-                field("Building Name"; "Building Name")
+                field("Building Name"; Rec."Building Name")
                 {
                     ApplicationArea = all;
                 }
-                field("Independent Auditor"; "Independent Auditor")
+                field("Independent Auditor"; Rec."Independent Auditor")
                 {
                     ApplicationArea = all;
                 }
-                field(IndAuditorBOX; IndAuditorBOX)
+                field(IndAuditorBOX; Rec.IndAuditorBOX)
                 {
                     ApplicationArea = all;
                 }
-                field(PrincipalBankBox; PrincipalBankBox)
+                field(PrincipalBankBox; Rec.PrincipalBankBox)
                 {
                     ApplicationArea = all;
                 }
-                field(PrincipalBankers; PrincipalBankers)
+                field(PrincipalBankers; Rec.PrincipalBankers)
                 {
                     Caption = 'Principal Bankers';
                     ApplicationArea = all;
                 }
-                field("Principal Bank Branch"; "Principal Bank Branch")
+                field("Principal Bank Branch"; Rec."Principal Bank Branch")
                 {
                     ApplicationArea = all;
 
                 }
-                field(auditorcerfication; auditorcerfication)
+                field(auditorcerfication; Rec.auditorcerfication)
                 {
                     ApplicationArea = all;
                     Caption = 'Auditor Certification Name';
                 }
-                field("Dividends Interest"; "Dividends Interest") { }
-                field("Previous Dividends Interest"; "Previous Dividends Interest") { }
-                field("Deposits Interest"; "Deposits Interest") { }
-                field("Previous Deposits Interest"; "Previous Deposits Interest") { }
+                field("Dividends Interest"; Rec."Dividends Interest") { }
+                field("Previous Dividends Interest"; Rec."Previous Dividends Interest") { }
+                field("Deposits Interest"; Rec."Deposits Interest") { }
+                field("Previous Deposits Interest"; Rec."Previous Deposits Interest") { }
 
 
 

@@ -2,7 +2,7 @@ table 51516025 "Tea Bufferring Table"
 {
     Caption = 'Tea Bufferring Table';
     DataClassification = ToBeClassified;
-    
+
     fields
     {
         field(1; "Document No"; Code[50])
@@ -20,7 +20,7 @@ table 51516025 "Tea Bufferring Table"
     }
     keys
     {
-        key(PK; "Document No","Account No")
+        key(PK; "Document No", "Account No")
         {
             Clustered = true;
         }

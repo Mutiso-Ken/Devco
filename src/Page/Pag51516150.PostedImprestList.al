@@ -2,14 +2,14 @@
 Page 51516150 "Posted Imprest List"
 {
     Caption = 'Staff Travel  List';
-   // CardPageID = "Posted Imprest Request";
+    // CardPageID = "Posted Imprest Request";
     DeleteAllowed = false;
     Editable = false;
     InsertAllowed = false;
     ModifyAllowed = false;
     PageType = List;
     SourceTable = "Imprest Header";
-    SourceTableView = where(Posted=filter(true));
+    SourceTableView = where(Posted = filter(true));
 
     layout
     {
@@ -17,31 +17,31 @@ Page 51516150 "Posted Imprest List"
         {
             repeater(Control1102755000)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Date;Date)
+                field(Date; Rec.Date)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No.";"Account No.")
+                field("Account No."; Rec."Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Payee;Payee)
+                field(Payee; Rec.Payee)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Net Amount";"Total Net Amount")
+                field("Total Net Amount"; Rec."Total Net Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Surrender Status";"Surrender Status")
+                field("Surrender Status"; Rec."Surrender Status")
                 {
                     ApplicationArea = Basic;
                 }
@@ -64,8 +64,8 @@ Page 51516150 "Posted Imprest List"
                 trigger OnAction()
                 begin
                     ImprestHeader.Reset;
-                    ImprestHeader.SetRange(ImprestHeader."No.","No.");
-                    Report.Run(51516130,true,false, ImprestHeader);
+                    ImprestHeader.SetRange(ImprestHeader."No.", Rec."No.");
+                    Report.Run(51516130, true, false, ImprestHeader);
                 end;
             }
         }
@@ -74,11 +74,11 @@ Page 51516150 "Posted Imprest List"
     trigger OnAfterGetRecord()
     begin
         GLEntry.Reset;
-        GLEntry.SetRange("Document No.","No.");
+        GLEntry.SetRange("Document No.", Rec."No.");
         if not GLEntry.FindFirst then begin
-          Posted:=false;
-          Modify;
-          end;
+            Rec.Posted := false;
+            Rec.Modify;
+        end;
     end;
 
     trigger OnOpenPage()

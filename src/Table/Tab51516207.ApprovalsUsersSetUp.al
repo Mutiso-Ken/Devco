@@ -4,26 +4,26 @@ Table 51516207 "Approvals Users Set Up"
 
     fields
     {
-        field(1;"Approval Type";Option)
+        field(1; "Approval Type"; Option)
         {
             OptionMembers = Loans,"Bridging Loans","Personal Loans",Refunds,"Funeral Expenses","Withdrawals - Resignation","Withdrawals - Death","Branch Loans",Journals,"File Movement","Appeal Loans";
         }
-        field(2;Stage;Integer)
+        field(2; Stage; Integer)
         {
-           // TableRelation = Table51516199.Field2 where (Field1=field("Approval Type"));
+            // TableRelation = Table51516199.Field2 where (Field1=field("Approval Type"));
         }
-        field(3;"User ID";Code[20])
+        field(3; "User ID"; Code[20])
         {
             TableRelation = User."User Name";
         }
-        field(4;Approver;Boolean)
+        field(4; Approver; Boolean)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Approval Type",Stage,"User ID")
+        key(Key1; "Approval Type", Stage, "User ID")
         {
             Clustered = true;
         }

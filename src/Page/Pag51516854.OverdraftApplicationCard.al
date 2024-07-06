@@ -11,137 +11,137 @@ Page 51516854 "Over draft Application Card"
         {
             group(General)
             {
-                field("Over Draft No"; "Over Draft No")
+                field("Over Draft No"; Rec."Over Draft No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Application date"; "Application date")
+                field("Application date"; Rec."Application date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approved Date"; "Approved Date")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Overdraft Repayment Start Date"; "Overdraft Repayment Start Date")
+                field("Approved Date"; Rec."Approved Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Overdraft Repayment Completion"; "Overdraft Repayment Completion")
+                field("Overdraft Repayment Start Date"; Rec."Overdraft Repayment Start Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Captured by"; "Captured by")
+                field("Overdraft Repayment Completion"; Rec."Overdraft Repayment Completion")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account Name"; "Account Name")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Member No"; "Current Account No")
+                field("Captured by"; Rec."Captured by")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Outstanding Draft Per OD"; "Outstanding Draft Per OD")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Outstanding Overdraft"; "Outstanding Overdraft")
+                field("Member No"; Rec."Current Account No")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Outstanding Draft Per OD"; Rec."Outstanding Draft Per OD")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Outstanding Overdraft"; Rec."Outstanding Overdraft")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Total Outstanding Overdraft';
                     Editable = false;
                 }
-                field("Oustanding Overdraft Interest"; "Oustanding Overdraft Interest")
+                field("Oustanding Overdraft Interest"; Rec."Oustanding Overdraft Interest")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Net Overdraft"; "Net Overdraft")
+                field("Net Overdraft"; Rec."Net Overdraft")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Requested Amount';
                 }
-                field("Amount applied"; "Amount applied")
+                field("Amount applied"; Rec."Amount applied")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Recommended Amount';
                     Editable = true;
                 }
-                field("Overdraft period(Months)"; "Overdraft period(Months)")
+                field("Overdraft period(Months)"; Rec."Overdraft period(Months)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Override Interest Rate"; "Override Interest Rate")
+                field("Override Interest Rate"; Rec."Override Interest Rate")
                 {
                     ApplicationArea = Basic;
 
                     trigger OnValidate()
                     begin
                         EditableField := false;
-                        if "Override Interest Rate" then
+                        if Rec."Override Interest Rate" then
                             EditableField := true;
                     end;
                 }
-                field("Interest Rate"; "Interest Rate")
+                field("Interest Rate"; Rec."Interest Rate")
                 {
                     ApplicationArea = Basic;
                     Editable = EditableField;
                 }
-                field("Monthly Overdraft Repayment"; "Monthly Overdraft Repayment")
+                field("Monthly Overdraft Repayment"; Rec."Monthly Overdraft Repayment")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Monthly Interest Repayment"; "Monthly Interest Repayment")
+                field("Monthly Interest Repayment"; Rec."Monthly Interest Repayment")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Total Interest Charged"; "Total Interest Charged")
+                field("Total Interest Charged"; Rec."Total Interest Charged")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("ID Number"; "ID Number")
+                field("ID Number"; Rec."ID Number")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No"; "Phone No")
+                field("Phone No"; Rec."Phone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Email Address"; "Email Address")
+                field("Email Address"; Rec."Email Address")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted; Posted)
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field(Status; Status)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Overdraft Status"; "Overdraft Status")
+                field(Status; Rec.Status)
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Overdraft Status"; Rec."Overdraft Status")
                 {
                     ApplicationArea = Basic;
                     Enabled = false;
                 }
-                field("Overdraft security"; "Overdraft security")
+                field("Overdraft security"; Rec."Overdraft security")
                 {
                     ApplicationArea = Basic;
 
@@ -150,22 +150,22 @@ Page 51516854 "Over draft Application Card"
                         Landvisible := false;
                         Motorvisible := false;
                         Salaryvisible := false;
-                        if "Overdraft security" = "overdraft security"::"Motor Vehicle" then begin
+                        if Rec."Overdraft security" = Rec."overdraft security"::"Motor Vehicle" then begin
                             Motorvisible := true;
                         end;
-                        if "Overdraft security" = "overdraft security"::Land then begin
+                        if Rec."Overdraft security" = Rec."overdraft security"::Land then begin
                             Landvisible := true;
                         end;
-                        if "Overdraft security" = "overdraft security"::Salary then begin
+                        if Rec."Overdraft security" = Rec."overdraft security"::Salary then begin
                             Salaryvisible := true;
                         end;
                     end;
                 }
-                field("Do not Charge Commision"; "Do not Charge Commision")
+                field("Do not Charge Commision"; Rec."Do not Charge Commision")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Recovery Mode"; "Recovery Mode")
+                field("Recovery Mode"; Rec."Recovery Mode")
                 {
                     ApplicationArea = Basic;
                 }
@@ -174,19 +174,19 @@ Page 51516854 "Over draft Application Card"
             {
                 Caption = 'Salary';
                 Visible = Salaryvisible;
-                field("Basic salary"; "Basic salary")
+                field("Basic salary"; Rec."Basic salary")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Employer; Employer)
+                field(Employer; Rec.Employer)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Job Title"; "Job Title")
+                field("Job Title"; Rec."Job Title")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Terms Of Employment"; "Terms Of Employment")
+                field("Terms Of Employment"; Rec."Terms Of Employment")
                 {
                     ApplicationArea = Basic;
                 }
@@ -195,31 +195,31 @@ Page 51516854 "Over draft Application Card"
             {
                 Caption = 'Motor Vehicle';
                 Visible = Motorvisible;
-                field(Type; Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Registration Number"; "Registration Number")
+                field("Registration Number"; Rec."Registration Number")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Current Value"; "Current Value")
+                field("Current Value"; Rec."Current Value")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Multpliers; Multpliers)
+                field(Multpliers; Rec.Multpliers)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount to secure Overdraft"; "Amount to secure Overdraft")
+                field("Amount to secure Overdraft"; Rec."Amount to secure Overdraft")
                 {
                     ApplicationArea = Basic;
                 }
-                field(insured; insured)
+                field(insured; Rec.insured)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Insurance Company"; "Insurance Company")
+                field("Insurance Company"; Rec."Insurance Company")
                 {
                     ApplicationArea = Basic;
                 }
@@ -228,15 +228,15 @@ Page 51516854 "Over draft Application Card"
             {
                 Caption = 'Land';
                 Visible = Landvisible;
-                field("Land deed No"; "Land deed No")
+                field("Land deed No"; Rec."Land deed No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Land acrage"; "Land acrage")
+                field("Land acrage"; Rec."Land acrage")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Land location"; "Land location")
+                field("Land location"; Rec."Land location")
                 {
                     ApplicationArea = Basic;
                 }
@@ -257,20 +257,20 @@ Page 51516854 "Over draft Application Card"
                 trigger OnAction()
                 begin
 
-                    if Posted = true then begin
-                        Error("Over Draft No" + 'Already posted');
+                    if Rec.Posted = true then begin
+                        Error(Rec."Over Draft No" + 'Already posted');
                     end else
-                        TestField("Account No");
-                    TestField("Current Account No");
-                    TestField("Amount applied");
-                    TestField("Recovery Mode");
+                        Rec.TestField("Account No");
+                    Rec.TestField("Current Account No");
+                    Rec.TestField("Amount applied");
+                    Rec.TestField("Recovery Mode");
                     //TESTFIELD("Interest Rate");
-                    TestField("Overdraft period(Months)");
-                    Status := Status::Approved;
+                    Rec.TestField("Overdraft period(Months)");
+                    Rec.Status := Rec.Status::Approved;
                     Message('Approved succesfully');
-                    Modify;
-                    if Status = Status::Approved then
-                        "Approved Date" := Today;
+                    Rec.Modify;
+                    if Rec.Status = Rec.Status::Approved then
+                        Rec."Approved Date" := Today;
 
                     /*
                     IF Status<>Status::Open THEN
@@ -295,9 +295,9 @@ Page 51516854 "Over draft Application Card"
 
                 trigger OnAction()
                 begin
-                    Status := Status::Open;
+                    Rec.Status := Rec.Status::Open;
                     Message('Application rejected');
-                    Modify;
+                    Rec.Modify;
                 end;
             }
             action(Post)
@@ -308,13 +308,13 @@ Page 51516854 "Over draft Application Card"
 
                 trigger OnAction()
                 begin
-                    Status := Status::Approved;
+                    Rec.Status := Rec.Status::Approved;
                     rec.Modify(true);
-                    TestField(Status, Status::Approved);
-                    if Posted = true then begin
-                        Error("Over Draft No" + 'Already posted');
+                    Rec.TestField(Status, Rec.Status::Approved);
+                    if Rec.Posted = true then begin
+                        Error(Rec."Over Draft No" + 'Already posted');
                     end else
-                        if "Overdraft period(Months)" > 3 then begin
+                        if Rec."Overdraft period(Months)" > 3 then begin
                             Error('Overdraft Months cannot be greater than 3 Months');
                         end else
                             /*
@@ -322,34 +322,34 @@ Page 51516854 "Over draft Application Card"
                             ERROR('Overdraft Months cannot be greater than 3 Months');
                             END ELSE
                             */
-                    TestField("Account No");
-                    TestField("Approved Date");
-                    TestField("Current Account No");
+                    Rec.TestField("Account No");
+                    Rec.TestField("Approved Date");
+                    Rec.TestField("Current Account No");
                     overdraftno := '';
-                    TestField("Amount applied");
-                    TestField("Overdraft Repayment Start Date");
+                    Rec.TestField("Amount applied");
+                    Rec.TestField("Overdraft Repayment Start Date");
                     //----------------------Get Ordinary account...................................................................................
                     if vend."Account Type" = 'ORDINARY' then
                         vend.Reset;
-                    vend.SetRange(vend."No.", "Account No");
+                    vend.SetRange(vend."No.", Rec."Account No");
                     if vend.Find('-') then begin
-                        "Approved Amount" := "Amount applied";
-                        vend."Overdraft amount" := "Approved Amount";
+                        Rec."Approved Amount" := Rec."Amount applied";
+                        vend."Overdraft amount" := Rec."Approved Amount";
                         //vend."Oustanding Overdraft interest":="Total Interest Charged";
                         vend.Modify;
                     end;
                     PostOverdraft();
-                    "Posted By" := UserId;
-                    Posted := true;
-                    "Time Posted" := Time;
-                    "Overdraft Status" := "overdraft status"::Active;
-                    "Running Overdraft" := true;
+                    Rec."Posted By" := UserId;
+                    Rec.Posted := true;
+                    Rec."Time Posted" := Time;
+                    Rec."Overdraft Status" := Rec."overdraft status"::Active;
+                    Rec."Running Overdraft" := true;
                     vend.Modify;
-                    Modify;
+                    Rec.Modify;
 
                     OVED.Reset;
-                    OVED.SetRange("Account No", "Account No");
-                    OVED.SetFilter("Over Draft No", '<>%1', "Over Draft No");
+                    OVED.SetRange("Account No", Rec."Account No");
+                    OVED.SetFilter("Over Draft No", '<>%1', Rec."Over Draft No");
                     if OVED.Find('-') then begin
                         repeat
                             OVED."Overdraft Status" := OVED."overdraft status"::Inactive;
@@ -368,9 +368,9 @@ Page 51516854 "Over draft Application Card"
 
                 trigger OnAction()
                 begin
-                    TestField(Status, Status::Approved);
+                    Rec.TestField(Status, Rec.Status::Approved);
                     Cust.Reset;
-                    Cust.SetRange(Cust."Account No", "Account No");
+                    Cust.SetRange(Cust."Account No", Rec."Account No");
                     Report.Run(51516281, true, false, Cust);
                 end;
             }
@@ -422,12 +422,12 @@ Page 51516854 "Over draft Application Card"
     begin
         BATCH_TEMPLATE := 'PURCHASES';
         BATCH_NAME := 'FTRANS';
-        DOCUMENT_NO := "Over Draft No";
+        DOCUMENT_NO := Rec."Over Draft No";
         currentbal := 0;
         overdraftSetup.Get();
 
         vendoroverdraft.Reset;
-        vendoroverdraft.SetRange(vendoroverdraft."No.", "Account No");
+        vendoroverdraft.SetRange(vendoroverdraft."No.", Rec."Account No");
         if vendoroverdraft.Find('-') then begin
             vendoroverdraft.CalcFields(vendoroverdraft.Balance);
             currentbal := vendoroverdraft.Balance;
@@ -451,31 +451,31 @@ Page 51516854 "Over draft Application Card"
 
         LineNo := LineNo + 10000;
         SFactory.FnCreateGnlJournalLineBalancedCashier(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"0", GenJournalLine."account type"::Vendor,
-        "Account No", Today, "Approved Amount" * -1, 'FOSA', "Over Draft No", Format("Overdraft period(Months)") + ' Month Overdraft Issued', '',
-        GenJournalLine."account type"::"G/L Account", overdraftSetup."Control Account", "Over Draft No", GenJournalLine."overdraft codes"::"Overdraft Granted");
+        Rec."Account No", Today, Rec."Approved Amount" * -1, 'FOSA', Rec."Over Draft No", Format(Rec."Overdraft period(Months)") + ' Month Overdraft Issued', '',
+        GenJournalLine."account type"::"G/L Account", overdraftSetup."Control Account", Rec."Over Draft No", GenJournalLine."overdraft codes"::"Overdraft Granted");
 
         //2.----------------------CREDIT FOSA A/C WITH OVERDRAFT CHARGE-------------------------------------------APPROVED AMOUNT * INTEREST RATE-------------------------------------------------
 
         LineNo := LineNo + 10000;
         SFactory.FnCreateGnlJournalLineBalancedCashier(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"0", GenJournalLine."account type"::Vendor,
-        "Account No", Today, (("Approved Amount" * "Interest Rate") * -1) / 100, 'FOSA', "Over Draft No", 'Overdraft Interest', '',
-        GenJournalLine."account type"::"G/L Account", overdraftSetup."Control Account", "Over Draft No", GenJournalLine."overdraft codes"::"Overdraft Granted");
+        Rec."Account No", Today, ((Rec."Approved Amount" * Rec."Interest Rate") * -1) / 100, 'FOSA', Rec."Over Draft No", 'Overdraft Interest', '',
+        GenJournalLine."account type"::"G/L Account", overdraftSetup."Control Account", Rec."Over Draft No", GenJournalLine."overdraft codes"::"Overdraft Granted");
 
         //3.----------------------CREDIT FOSA A/C WITH FORM CHARGE---------------------------------------------------COMMISSION-------------------------------------------------
-        if not "Do not Charge Commision" then begin
+        if not Rec."Do not Charge Commision" then begin
             LineNo := LineNo + 10000;
             SFactory.FnCreateGnlJournalLineBalancedCashier(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"0", GenJournalLine."account type"::Vendor,
-            "Account No", Today, CommisionOnOverdraft * -1, 'FOSA', "Over Draft No", 'Overdraft Commision', '',
-            GenJournalLine."account type"::"G/L Account", overdraftSetup."Control Account", "Over Draft No", GenJournalLine."overdraft codes"::"Overdraft Granted");
+            Rec."Account No", Today, CommisionOnOverdraft * -1, 'FOSA', Rec."Over Draft No", 'Overdraft Commision', '',
+            GenJournalLine."account type"::"G/L Account", overdraftSetup."Control Account", Rec."Over Draft No", GenJournalLine."overdraft codes"::"Overdraft Granted");
 
             //4.----------------------DEBIT FOSA A/C(Recover Commission on Overdraft Form)--------------------------------------------------------------------------------------------
 
 
             LineNo := LineNo + 10000;
             SFactory.FnCreateGnlJournalLineBalanced(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"0", GenJournalLine."account type"::Vendor,
-            "Account No", Today, CommisionOnOverdraft, 'FOSA', "Account No", 'Commission on Overdraft', '',
+            Rec."Account No", Today, CommisionOnOverdraft, 'FOSA', Rec."Account No", 'Commission on Overdraft', '',
             GenJournalLine."account type"::"G/L Account", overdraftSetup."Commission A/c");
-            "commission charged" := true;
+            Rec."commission charged" := true;
         end;
 
 
@@ -483,9 +483,9 @@ Page 51516854 "Over draft Application Card"
 
         LineNo := LineNo + 10000;
         SFactory.FnCreateGnlJournalLineBalanced(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"0", GenJournalLine."account type"::Vendor,
-        "Account No", Today, ("Approved Amount" * "Interest Rate") / 100, 'FOSA', "Account No", 'Overdraft Int Charged', '',
+        Rec."Account No", Today, (Rec."Approved Amount" * Rec."Interest Rate") / 100, 'FOSA', Rec."Account No", 'Overdraft Int Charged', '',
         GenJournalLine."account type"::"G/L Account", overdraftSetup."Interest Income A/c");
-        "Interest Charged" := true;
+        Rec."Interest Charged" := true;
 
         GenJournalLine.Reset;
         GenJournalLine.SetRange("Journal Template Name", BATCH_TEMPLATE);

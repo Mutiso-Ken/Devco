@@ -21,7 +21,7 @@ codeunit 51516002 "GenerateLoanInterestDue"
                 if (LoansRegister."Outstanding Balance" > LoansRegister."Oustanding Interest") and (FnMemberIsDeceased(LoansRegister."Client Code")) = false then begin
                     //Charge Interest
                     if FnIsInterestRun(DocNo, LoansRegister."Loan  No.", LoansRegister."Client Code") = false then begin
-                        if ((DATE2DMY(Today, 1)) = DATE2DMY(LoansRegister."Loan Disbursement Date", 1)) and (CalcDate('1M', LoansRegister."Loan Disbursement Date") <= Today)  then begin
+                        if ((DATE2DMY(Today, 1)) = DATE2DMY(LoansRegister."Loan Disbursement Date", 1)) and (CalcDate('1M', LoansRegister."Loan Disbursement Date") <= Today) then begin
                             FnInsertGlEntries();
                         end;
                         //<>Direct Debits on 15th

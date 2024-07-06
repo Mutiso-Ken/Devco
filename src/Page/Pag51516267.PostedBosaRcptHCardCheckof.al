@@ -513,7 +513,7 @@ Page 51516267 "PostedBosa Rcpt HCard-Checkof"
     DeleteAllowed = false;
     PageType = Card;
     SourceTable = "ReceiptsProcessing_H-Checkoff";
-    SourceTableView = where(Posted=const(true));
+    SourceTableView = where(Posted = const(true));
 
     layout
     {
@@ -521,75 +521,75 @@ Page 51516267 "PostedBosa Rcpt HCard-Checkof"
         {
             group(General)
             {
-                field(No;No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Entered By";"Entered By")
+                field("Entered By"; Rec."Entered By")
                 {
                     ApplicationArea = Basic;
                     Enabled = false;
                 }
-                field("Date Entered";"Date Entered")
+                field("Date Entered"; Rec."Date Entered")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Posting date";"Posting date")
+                field("Posting date"; Rec."Posting date")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Loan CutOff Date";"Loan CutOff Date")
+                field("Loan CutOff Date"; Rec."Loan CutOff Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Remarks;Remarks)
+                field(Remarks; Rec.Remarks)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Count";"Total Count")
+                field("Total Count"; Rec."Total Count")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posted By";"Posted By")
+                field("Posted By"; Rec."Posted By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type";"Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No";"Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employer Code";"Employer Code")
+                field("Employer Code"; Rec."Employer Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document No";"Document No")
+                field("Document No"; Rec."Document No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted;Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field(Amount;Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Scheduled Amount";"Scheduled Amount")
+                field("Scheduled Amount"; Rec."Scheduled Amount")
                 {
                     ApplicationArea = Basic;
                 }
             }
-            part("Bosa receipt lines";"Bosa Receipt line-Checkoff")
+            part("Bosa receipt lines"; "Bosa Receipt line-Checkoff")
             {
-                SubPageLink = "Receipt Header No"=field(No);
+                SubPageLink = "Receipt Header No" = field(No);
             }
         }
     }
@@ -600,8 +600,8 @@ Page 51516267 "PostedBosa Rcpt HCard-Checkof"
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-           "Posting date":=Today;
-           "Date Entered":=Today;
+        Rec."Posting date" := Today;
+        Rec."Date Entered" := Today;
     end;
 
     var

@@ -13,11 +13,11 @@ Page 51516056 "Funds Tax Codes List"
         {
             repeater(Group)
             {
-                field("Tax Code";"Tax Code")
+                field("Tax Code"; Rec."Tax Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }

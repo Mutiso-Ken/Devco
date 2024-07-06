@@ -13,38 +13,38 @@ Page 51516928 "Okoa GeneralSetup"
         {
             group(General)
             {
-                field("Overdraft Nos";"Overdraft Nos")
+                field("Overdraft Nos"; Rec."Overdraft Nos")
                 {
                     ApplicationArea = Basic;
                     Caption = '<Okoa Nos>';
                 }
-                field("Overdraft Limt";"Overdraft Limt")
+                field("Overdraft Limt"; Rec."Overdraft Limt")
                 {
                     ApplicationArea = Basic;
                     Caption = '<Okoa Limt>';
                 }
-                field("Overdraft Interest  Rate";"Overdraft Interest  Rate")
+                field("Overdraft Interest  Rate"; Rec."Overdraft Interest  Rate")
                 {
                     ApplicationArea = Basic;
                     Caption = '<Okoa Interest  Rate>';
                     Visible = false;
                 }
-                field("Overdraft Maximum prd";"Overdraft Maximum prd")
+                field("Overdraft Maximum prd"; Rec."Overdraft Maximum prd")
                 {
                     ApplicationArea = Basic;
                     Caption = '<Okoa Maximum prd>';
                 }
-                field("Overdraft Commision Charged";"Overdraft Commision Charged")
+                field("Overdraft Commision Charged"; Rec."Overdraft Commision Charged")
                 {
                     ApplicationArea = Basic;
                     Caption = '<Okoa Commision Charged>';
                 }
-                field("One Month Interest Rate";"One Month Interest Rate")
+                field("One Month Interest Rate"; Rec."One Month Interest Rate")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Interest Rate<=1M';
                 }
-                field("More than Month Interest Rate";"More than Month Interest Rate")
+                field("More than Month Interest Rate"; Rec."More than Month Interest Rate")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Interest Rate >1M';
@@ -52,21 +52,21 @@ Page 51516928 "Okoa GeneralSetup"
             }
             group("Commision/Accounts")
             {
-                field("Control Account";"Control Account")
+                field("Control Account"; Rec."Control Account")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Okoa Receivable A/c';
                 }
-                field("Interest Receivable A/c";"Interest Receivable A/c")
+                field("Interest Receivable A/c"; Rec."Interest Receivable A/c")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest Income A/c";"Interest Income A/c")
+                field("Interest Income A/c"; Rec."Interest Income A/c")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Interest On Okoa A/c';
                 }
-                field("Commission A/c";"Commission A/c")
+                field("Commission A/c"; Rec."Commission A/c")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Loan Form / Okoa';

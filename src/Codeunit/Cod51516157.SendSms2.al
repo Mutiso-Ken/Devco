@@ -4,7 +4,7 @@ Codeunit 51516157 "SendSms2"
 
     trigger OnRun()
     begin
-        Report.Run(51516201,false,false);
+        Report.Run(51516201, false, false);
     end;
 
     var
@@ -12,11 +12,11 @@ Codeunit 51516157 "SendSms2"
         Cust: Record Customer;
 
 
-    procedure SendSms(Source: Text[30];Telephone: Text[200];Textsms: Text[200];DocumentNo: Text[100])
+    procedure SendSms(Source: Text[30]; Telephone: Text[200]; Textsms: Text[200]; DocumentNo: Text[100])
     begin
 
 
- 
+
         /*
         Sms.RESET;
         IF Sms.FIND('+') THEN BEGIN
@@ -42,7 +42,7 @@ Codeunit 51516157 "SendSms2"
     end;
 
 
-    procedure Replacestring(string: Text[200];findwhat: Text[30];replacewith: Text[200]) Newstring: Text[200]
+    procedure Replacestring(string: Text[200]; findwhat: Text[30]; replacewith: Text[200]) Newstring: Text[200]
     begin
         /*WHILE STRPOS(string,findwhat) > 0 DO
         string := DELSTR(string,STRPOS(string,findwhat)) + replacewith + COPYSTR(string,STRPOS(string,findwhat) + STRLEN(findwhat));

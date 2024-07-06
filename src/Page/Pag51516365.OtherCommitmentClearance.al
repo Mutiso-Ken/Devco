@@ -10,19 +10,19 @@ Page 51516365 "Other Commitment Clearance"
         {
             repeater(Group)
             {
-                field(Payee;Payee)
+                field(Payee; Rec.Payee)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bankers Cheque No";"Bankers Cheque No")
+                field("Bankers Cheque No"; Rec."Bankers Cheque No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }

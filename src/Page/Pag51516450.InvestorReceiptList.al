@@ -5,8 +5,8 @@ Page 51516450 "Investor Receipt List"
     CardPageID = "Investor Receipt Card";
     PageType = List;
     SourceTable = "Receipt Header";
-    SourceTableView = where("Receipt Category"=const(Investor),
-                            Posted=const(false));
+    SourceTableView = where("Receipt Category" = const(Investor),
+                            Posted = const(false));
     UsageCategory = Lists;
 
     layout
@@ -15,35 +15,35 @@ Page 51516450 "Investor Receipt List"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Date;Date)
+                field(Date; Rec.Date)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Name";"Bank Name")
+                field("Bank Name"; Rec."Bank Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount Received";"Amount Received")
+                field("Amount Received"; Rec."Amount Received")
                 {
                     ApplicationArea = Basic;
                 }
-                field("User ID";"User ID")
+                field("User ID"; Rec."User ID")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
@@ -57,13 +57,13 @@ Page 51516450 "Investor Receipt List"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-           "Receipt Category":="receipt category"::Investor;
+        Rec."Receipt Category" := Rec."receipt category"::Investor;
     end;
 
     trigger OnOpenPage()
     begin
-         SetRange("User ID",UserId);
-         SetRange("Receipt Category","receipt category"::Investor);
+        Rec.SetRange("User ID", UserId);
+        Rec.SetRange("Receipt Category", Rec."receipt category"::Investor);
     end;
 }
 

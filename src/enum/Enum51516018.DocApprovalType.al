@@ -1,7 +1,7 @@
 enum 51516018 "DocApprovalType"
 {
     Extensible = true;
-    
+
     value(0; Purchase)
     {
         Caption = 'Purchase';

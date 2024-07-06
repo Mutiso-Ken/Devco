@@ -8,8 +8,8 @@ Page 51516009 "Posted Cash Payment List"
     ModifyAllowed = false;
     PageType = List;
     SourceTable = "Payment Header";
-    SourceTableView = where("Payment Type"=const("Cash Purchase"),
-                            Posted=const(true));
+    SourceTableView = where("Payment Type" = const("Cash Purchase"),
+                            Posted = const(true));
     UsageCategory = Lists;
 
     layout
@@ -18,27 +18,27 @@ Page 51516009 "Posted Cash Payment List"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Type";"Document Type")
+                field("Document Type"; Rec."Document Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Date";"Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Payee;Payee)
+                field(Payee; Rec.Payee)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount(LCY)";"Amount(LCY)")
+                field("Amount(LCY)"; Rec."Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }

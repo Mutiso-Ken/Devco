@@ -14,10 +14,10 @@ report 50039 cashFlows
             {
 
             }
-            column(Cashatbank;Cashatbank){}
-            column(LCashatbank;LCashatbank){}
-            column(endCashatbank;endCashatbank){}
-            column(EndLCashatbank;EndLCashatbank){}
+            column(Cashatbank; Cashatbank) { }
+            column(LCashatbank; LCashatbank) { }
+            column(endCashatbank; endCashatbank) { }
+            column(EndLCashatbank; EndLCashatbank) { }
             column(PreviousYear; PreviousYear)
             {
 
@@ -600,7 +600,7 @@ report 50039 cashFlows
                         GLEntry.SetFilter(GLEntry."Posting Date", '..%1', AsAt);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                        endCashatbank += GLEntry.Amount;
+                            endCashatbank += GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
 
@@ -615,7 +615,7 @@ report 50039 cashFlows
                         GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                        EndLCashatbank += GLEntry.Amount;
+                            EndLCashatbank += GLEntry.Amount;
 
                         end;
                     until GLAccount.Next = 0;

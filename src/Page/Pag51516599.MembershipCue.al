@@ -10,36 +10,36 @@ Page 51516599 "Membership Cue"
         {
             cuegroup(Members)
             {
-                field("Active Members";"Active Members")
+                field("Active Members"; Rec."Active Members")
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                     Style = Favorable;
                     StyleExpr = true;
                 }
-                field("Junior Members";"Junior Members")
+                field("Junior Members"; Rec."Junior Members")
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field("Non-Active Members";"Non-Active Members")
+                field("Non-Active Members"; Rec."Non-Active Members")
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                     Style = Attention;
                     StyleExpr = true;
                 }
-                field("Dormant Members";"Dormant Members")
+                field("Dormant Members"; Rec."Dormant Members")
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field("Withdrawn Members";"Withdrawn Members")
+                field("Withdrawn Members"; Rec."Withdrawn Members")
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field("Deceased Members";"Deceased Members")
+                field("Deceased Members"; Rec."Deceased Members")
                 {
                     ApplicationArea = Basic;
                     Image = "None";
@@ -47,27 +47,27 @@ Page 51516599 "Membership Cue"
             }
             cuegroup("Members Per Branch")
             {
-                field("Maua Members";"Maua Members")
+                field("Maua Members"; Rec."Maua Members")
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field("Mutuati Members";"Mutuati Members")
+                field("Mutuati Members"; Rec."Mutuati Members")
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field("Muriri Members";"Muriri Members")
+                field("Muriri Members"; Rec."Muriri Members")
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field("KK Members";"KK Members")
+                field("KK Members"; Rec."KK Members")
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field("Mikinduri Members";"Mikinduri Members")
+                field("Mikinduri Members"; Rec."Mikinduri Members")
                 {
                     ApplicationArea = Basic;
                     Image = "None";
@@ -76,57 +76,57 @@ Page 51516599 "Membership Cue"
             cuegroup("BOSA Loans")
             {
                 Caption = 'BOSA Loans';
-                field(Development;Development)
+                field(Development; Rec.Development)
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field(Executive;Executive)
+                field(Executive; Rec.Executive)
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field(Mfadhili;Mfadhili)
+                field(Mfadhili; Rec.Mfadhili)
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field("Devt Savings";"Devt Savings")
+                field("Devt Savings"; Rec."Devt Savings")
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field(Mkombozi;Mkombozi)
+                field(Mkombozi; Rec.Mkombozi)
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field(Pepea;Pepea)
+                field(Pepea; Rec.Pepea)
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field(College;College)
+                field(College; Rec.College)
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field("School Fees";"School Fees")
+                field("School Fees"; Rec."School Fees")
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field(Digital;Digital)
+                field(Digital; Rec.Digital)
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field(Housing;Housing)
+                field(Housing; Rec.Housing)
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field(Asset;Asset)
+                field(Asset; Rec.Asset)
                 {
                     ApplicationArea = Basic;
                     Image = "None";
@@ -134,22 +134,22 @@ Page 51516599 "Membership Cue"
             }
             cuegroup("FOSA Loans")
             {
-                field("Normal Adv Loan";"Normal Adv Loan")
+                field("Normal Adv Loan"; Rec."Normal Adv Loan")
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field("Xmas Adv";"Xmas Adv")
+                field("Xmas Adv"; Rec."Xmas Adv")
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field(Crop;Crop)
+                field(Crop; Rec.Crop)
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field(MILK;MILK)
+                field(MILK; Rec.MILK)
                 {
                     ApplicationArea = Basic;
                     Image = "None";
@@ -157,17 +157,17 @@ Page 51516599 "Membership Cue"
             }
             cuegroup(CEEP)
             {
-                field("Ceep Groups";"Ceep Groups")
+                field("Ceep Groups"; Rec."Ceep Groups")
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field("Ceep Members";"Ceep Members")
+                field("Ceep Members"; Rec."Ceep Members")
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field("Ceep New";"Ceep New")
+                field("Ceep New"; Rec."Ceep New")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Ceep Loan New';
@@ -176,12 +176,12 @@ Page 51516599 "Membership Cue"
             }
             cuegroup("Staff Loans")
             {
-                field(StaffCar;StaffCar)
+                field(StaffCar; Rec.StaffCar)
                 {
                     ApplicationArea = Basic;
                     Image = "None";
                 }
-                field(StaffHousing;StaffHousing)
+                field(StaffHousing; Rec.StaffHousing)
                 {
                     ApplicationArea = Basic;
                     Image = "None";
@@ -196,10 +196,10 @@ Page 51516599 "Membership Cue"
 
     trigger OnOpenPage()
     begin
-        if not Get (UserId) then begin
-          Init;
-          "User ID" := UserId;
-          Insert;
+        if not Rec.Get(UserId) then begin
+            Rec.Init;
+            Rec."User ID" := UserId;
+            Rec.Insert;
         end;
     end;
 }

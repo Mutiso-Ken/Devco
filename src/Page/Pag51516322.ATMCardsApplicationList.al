@@ -16,59 +16,59 @@ Page 51516322 "ATM Cards Application List"
             repeater(Control15)
             {
                 Editable = false;
-                field("Account No";"Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Application Date";"Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Branch Code";"Branch Code")
+                field("Branch Code"; Rec."Branch Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type";"Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Address 1";"Address 1")
+                field("Address 1"; Rec."Address 1")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Address 2";"Address 2")
+                field("Address 2"; Rec."Address 2")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Address 3";"Address 3")
+                field("Address 3"; Rec."Address 3")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Address 4";"Address 4")
+                field("Address 4"; Rec."Address 4")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Address 5";"Address 5")
+                field("Address 5"; Rec."Address 5")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Customer ID";"Customer ID")
+                field("Customer ID"; Rec."Customer ID")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Relation Indicator";"Relation Indicator")
+                field("Relation Indicator"; Rec."Relation Indicator")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Card Type";"Card Type")
+                field("Card Type"; Rec."Card Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Request Type";"Request Type")
+                field("Request Type"; Rec."Request Type")
                 {
                     ApplicationArea = Basic;
                 }

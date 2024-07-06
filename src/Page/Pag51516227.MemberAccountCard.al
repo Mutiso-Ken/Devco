@@ -21,26 +21,26 @@ Page 51516227 "Member Account Card"
                 Caption = 'General';
                 // //Editable = true;
                 Visible = Individual;
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'ID Number';
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Phone No."; "Phone No.")
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Mobile No.';
@@ -48,135 +48,135 @@ Page 51516227 "Member Account Card"
                     Style = StrongAccent;
                 }
 
-                field(Gender; Gender)
+                field(Gender; Rec.Gender)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field(txtMarital; "Marital Status")
+                field(txtMarital; Rec."Marital Status")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Marital Status';
                     Editable = false;
                     Visible = txtMaritalVisible;
                 }
-                field("Date of Birth"; "Date of Birth")
+                field("Date of Birth"; Rec."Date of Birth")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Date of Birth';
                     Editable = false;
                 }
-                field(Age; Age)
+                field(Age; Rec.Age)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("E-Mail"; "E-Mail")
+                field("E-Mail"; Rec."E-Mail")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
 
-                field("Account Category"; "Account Category")
+                field("Account Category"; Rec."Account Category")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Payroll/Staff No"; "Payroll/Staff No")
+                field("Payroll/Staff No"; Rec."Payroll/Staff No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Employer Code"; "Employer Code")
+                field("Employer Code"; Rec."Employer Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Employer';
                     Editable = false;
                 }
 
-                field("Passport No."; "Passport No.")
+                field("Passport No."; Rec."Passport No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Address; Address)
+                field(Address; Rec.Address)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Post Code"; "Post Code")
+                field("Post Code"; Rec."Post Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Location';
                     Editable = false;
                 }
-                field("Village/Residence"; "Village/Residence")
+                field("Village/Residence"; Rec."Village/Residence")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Physical States"; "Physical States")
+                field("Physical States"; Rec."Physical States")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(City; City)
+                field(City; Rec.City)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Country/Region Code"; "Country/Region Code")
+                field("Country/Region Code"; Rec."Country/Region Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
 
-                field("Job Title"; "Job title")
+                field("Job Title"; Rec."Job title")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Title';
                     Editable = false;
                     Visible = false;
                 }
-                field("Monthly Contribution"; "Monthly Contribution")
+                field("Monthly Contribution"; Rec."Monthly Contribution")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field(PIN; Pin)
+                field(PIN; Rec.Pin)
                 {
                     ApplicationArea = Basic;
                     Caption = 'KRA PIN';
                     Editable = false;
                 }
-                field("Registration Date"; "Registration Date")
+                field("Registration Date"; Rec."Registration Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Global Dimension 1 Code"; "Global Dimension 1 Code"
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code"
                 )
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Global Dimension 2 Code"; "Global Dimension 2 Code"
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code"
                 )
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Customer Posting Group"; "Customer Posting Group")
+                field("Customer Posting Group"; Rec."Customer Posting Group")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -190,28 +190,28 @@ Page 51516227 "Member Account Card"
                             Error('You do not have permissions to change the account status.');
                     end;
                 }
-                field(Blocked; Blocked)
+                field(Blocked; Rec.Blocked)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Last Date Modified"; "Last Date Modified")
+                field("Last Date Modified"; Rec."Last Date Modified")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Sms Notification"; "Sms Notification")
+                field("Sms Notification"; Rec."Sms Notification")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Don't Charge Interest"; "Don't Charge Interest")
+                field("Don't Charge Interest"; Rec."Don't Charge Interest")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Retaine Dividends"; "Retaine Dividends")
+                field("Retaine Dividends"; Rec."Retaine Dividends")
                 {
                     ApplicationArea = all;
                     Editable = true;
@@ -220,26 +220,26 @@ Page 51516227 "Member Account Card"
             group("Group Account Details")
             {
                 Visible = groupAcc;
-                field(GroupNo; "No.")
+                field(GroupNo; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Caption = 'Group No.';
                 }
-                field(GroupName; Name)
+                field(GroupName; Rec.Name)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Group Name';
 
                 }
-                field(GroupEmail; "E-Mail (Personal)")
+                field(GroupEmail; Rec."E-Mail (Personal)")
                 {
                     ApplicationArea = Basic;
 
                     caption = ' Group Email';
 
                 }
-                field(GroupKRAPin; pin)
+                field(GroupKRAPin; Rec.pin)
                 {
                     ApplicationArea = Basic;
                     Style = Attention;
@@ -247,29 +247,29 @@ Page 51516227 "Member Account Card"
 
                     Caption = 'Group KRA Pin';
                 }
-                field("Mobile Phone No Group"; "Mobile Phone No")
+                field("Mobile Phone No Group"; Rec."Mobile Phone No")
                 {
                     ApplicationArea = Basic;
 
 
                 }
-                field("Nature of Business"; "Nature of Business")
+                field("Nature of Business"; Rec."Nature of Business")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Group Nature of Business';
 
 
                 }
-                field("Mobile Phone No 2 Group"; "Mobile No. 2")
+                field("Mobile Phone No 2 Group"; Rec."Mobile No. 2")
                 {
                     ApplicationArea = Basic;
 
                 }
-                field("Group Recruited By"; "Recruited By")
+                field("Group Recruited By"; Rec."Recruited By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Group Recruiter Name"; "Recruiter Name")
+                field("Group Recruiter Name"; Rec."Recruiter Name")
                 {
                     ApplicationArea = Basic;
 
@@ -280,79 +280,79 @@ Page 51516227 "Member Account Card"
             {
                 Visible = Jooint;
                 Caption = 'Member One Details';
-                field("JointNo."; "No.")
+                field("JointNo."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Caption = 'Joint No.';
                 }
-                field(JointTitle; Title)
+                field(JointTitle; Rec.Title)
                 {
                     ApplicationArea = Basic;
 
                     ShowMandatory = true;
                 }
-                field(JoointName; Name)
+                field(JoointName; Rec.Name)
                 {
                     ApplicationArea = Basic;
 
                     ShowMandatory = true;
                 }
-                field("JointID No."; "ID No.")
+                field("JointID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
 
                     ShowMandatory = true;
                 }
-                field("JointKRA Pin"; Pin)
+                field("JointKRA Pin"; Rec.Pin)
                 {
                     ApplicationArea = Basic;
 
                     ShowMandatory = true;
                 }
-                field(JointAddress; Address)
+                field(JointAddress; Rec.Address)
                 {
                     ApplicationArea = Basic;
 
                     ShowMandatory = true;
                 }
-                field("JointE-Mail (Personal)"; "E-Mail (Personal)")
+                field("JointE-Mail (Personal)"; Rec."E-Mail (Personal)")
                 {
                     ApplicationArea = Basic;
 
                     ShowMandatory = true;
 
                 }
-                field(JoointGender; Gender)
+                field(JoointGender; Rec.Gender)
                 {
                     ApplicationArea = Basic;
 
                     ShowMandatory = true;
                 }
-                field("JointDate of Birth"; "Date of Birth")
+                field("JointDate of Birth"; Rec."Date of Birth")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
 
-                field("JointEmployer Code"; "Employer Code")
+                field("JointEmployer Code"; Rec."Employer Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Employer Code';
 
                 }
-                field("JointEmployer Name"; "Employer Name")
+                field("JointEmployer Name"; Rec."Employer Name")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Employer Name';
 
                 }
-                field("Share Of Ownership One"; "Share Of Ownership One")
+                field("Share Of Ownership One"; Rec."Share Of Ownership One")
                 {
                     ApplicationArea = Basic;
 
                 }
-                field("Source of Income Member One"; "Source of Income Member One")
+                field("Source of Income Member One"; Rec."Source of Income Member One")
                 {
                     ApplicationArea = Basic;
 
@@ -363,101 +363,101 @@ Page 51516227 "Member Account Card"
             {
                 Caption = 'Member Two Details';
                 Visible = Jooint;
-                field("Member Title"; Title2)
+                field("Member Title"; Rec.Title2)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Title';
 
                     ShowMandatory = true;
                 }
-                field("Second Member Name"; "Second Member Name")
+                field("Second Member Name"; Rec."Second Member Name")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Name';
 
                     ShowMandatory = true;
                 }
-                field("ID/Passport No"; "ID NO/Passport 2")
+                field("ID/Passport No"; Rec."ID NO/Passport 2")
                 {
                     ApplicationArea = Basic;
 
                     ShowMandatory = true;
                 }
-                field("Member Gender"; Gender2)
+                field("Member Gender"; Rec.Gender2)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Gender';
 
                     ShowMandatory = true;
                 }
-                field("Marital Status2"; "Marital Status2")
+                field("Marital Status2"; Rec."Marital Status2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Marital Status';
 
                     ShowMandatory = true;
                 }
-                field("Date of Birth2"; "Date of Birth2")
+                field("Date of Birth2"; Rec."Date of Birth2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Date of Birth';
 
                     ShowMandatory = true;
                 }
-                field("Mobile No. 3"; "Mobile No. 3")
+                field("Mobile No. 3"; Rec."Mobile No. 3")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Mobile No.';
 
                     ShowMandatory = true;
                 }
-                field("E-Mail (Personal2)"; "E-Mail (Personal2)")
+                field("E-Mail (Personal2)"; Rec."E-Mail (Personal2)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'E-Mail Adress';
 
                 }
-                field(Address3; Address3)
+                field(Address3; Rec.Address3)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Physical Address';
 
                 }
-                field("Home Postal Code2"; "Home Postal Code2")
+                field("Home Postal Code2"; Rec."Home Postal Code2")
                 {
                     ApplicationArea = Basic;
                     Caption = ' Postal Code';
 
                 }
-                field("Home Town2"; "Home Town2")
+                field("Home Town2"; Rec."Home Town2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Town';
 
                 }
-                field("Payroll/Staff No2"; "Payroll/Staff No2")
+                field("Payroll/Staff No2"; Rec."Payroll/Staff No2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Payroll/Staff No';
 
                 }
-                field("Employer Code2"; "Employer Code2")
+                field("Employer Code2"; Rec."Employer Code2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Employer Code';
                 }
-                field("Employer Name2"; "Employer Name2")
+                field("Employer Name2"; Rec."Employer Name2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Employer Name';
 
                 }
-                field("Share Of Ownership Two"; "Share Of Ownership Two")
+                field("Share Of Ownership Two"; Rec."Share Of Ownership Two")
                 {
                     ApplicationArea = Basic;
 
                 }
-                field("Source of IncomeMember Two"; "Source of IncomeMember Two")
+                field("Source of IncomeMember Two"; Rec."Source of IncomeMember Two")
                 {
                     ApplicationArea = Basic;
 
@@ -466,24 +466,24 @@ Page 51516227 "Member Account Card"
             group("Joint Information")
             {
                 Visible = Jooint;
-                field("JointRecruited By"; "Recruited By")
+                field("JointRecruited By"; Rec."Recruited By")
                 {
                     ApplicationArea = Basic;
 
                 }
-                field("JointRecruiter Name"; "Recruiter Name")
+                field("JointRecruiter Name"; Rec."Recruiter Name")
                 {
                     ApplicationArea = Basic;
 
                 }
 
-                field(JointRelationship; JointRelationship)
+                field(JointRelationship; Rec.JointRelationship)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Relationship';
 
                 }
-                field(Reasontocreatingajointaccount; Reasontocreatingajointaccount)
+                field(Reasontocreatingajointaccount; Rec.Reasontocreatingajointaccount)
                 {
                     ApplicationArea = Basic;
 
@@ -496,30 +496,30 @@ Page 51516227 "Member Account Card"
 
                 Visible = Junior;
 
-                field("JuniorNo."; "No.")
+                field("JuniorNo."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Caption = 'Junior Account Application Number';
                 }
 
-                field(JuniorName; Name)
+                field(JuniorName; Rec.Name)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     ShowMandatory = true;
                 }
-                field("Birth Certficate No."; "Birth Certficate No.")
+                field("Birth Certficate No."; Rec."Birth Certficate No.")
                 {
                     ApplicationArea = all;
 
                 }
-                field("Guardian No."; "Guardian No.")
+                field("Guardian No."; Rec."Guardian No.")
                 {
                     ApplicationArea = all;
 
                 }
-                field("Guardian Name"; "Guardian Name")
+                field("Guardian Name"; Rec."Guardian Name")
                 {
                     ApplicationArea = all;
                     Editable = false;
@@ -532,57 +532,57 @@ Page 51516227 "Member Account Card"
                 Visible = Individual;
                 group("Member Risk Rate")
                 {
-                    field("Individual Category"; "Individual Category")
+                    field("Individual Category"; Rec."Individual Category")
                     {
                         ApplicationArea = Basic;
                     }
-                    field("Member Residency Status"; "Member Residency Status")
+                    field("Member Residency Status"; Rec."Member Residency Status")
                     {
                         ApplicationArea = Basic;
                     }
-                    field(Entities; Entities)
+                    field(Entities; Rec.Entities)
                     {
                         ApplicationArea = Basic;
                     }
-                    field("Industry Type"; "Industry Type")
+                    field("Industry Type"; Rec."Industry Type")
                     {
                         ApplicationArea = Basic;
                     }
-                    field("Length Of Relationship"; "Length Of Relationship")
+                    field("Length Of Relationship"; Rec."Length Of Relationship")
                     {
                         ApplicationArea = Basic;
                     }
-                    field("International Trade"; "International Trade")
+                    field("International Trade"; Rec."International Trade")
                     {
                         ApplicationArea = Basic;
                     }
                 }
                 group("Product Risk Rating")
                 {
-                    field("Electronic Payment"; "Electronic Payment")
+                    field("Electronic Payment"; Rec."Electronic Payment")
                     {
                         ApplicationArea = Basic;
                     }
-                    field("Accounts Type Taken"; "Accounts Type Taken")
+                    field("Accounts Type Taken"; Rec."Accounts Type Taken")
                     {
                         ApplicationArea = Basic;
                     }
-                    field("Cards Type Taken"; "Cards Type Taken")
+                    field("Cards Type Taken"; Rec."Cards Type Taken")
                     {
                         ApplicationArea = Basic;
                     }
-                    field("Others(Channels)"; "Others(Channels)")
+                    field("Others(Channels)"; Rec."Others(Channels)")
                     {
                         ApplicationArea = Basic;
                     }
-                    field("Member Risk Level"; "Member Risk Level")
+                    field("Member Risk Level"; Rec."Member Risk Level")
                     {
                         ApplicationArea = Basic;
                         Caption = 'Risk Level';
                         Editable = false;
                         StyleExpr = CoveragePercentStyle;
                     }
-                    field("Due Diligence Measure"; "Due Diligence Measure")
+                    field("Due Diligence Measure"; Rec."Due Diligence Measure")
                     {
                         ApplicationArea = Basic;
                         Editable = false;
@@ -601,54 +601,54 @@ Page 51516227 "Member Account Card"
             {
                 Caption = 'Other Details';
                 Editable = true;
-                field("Contact Person"; "Contact Person")
+                field("Contact Person"; Rec."Contact Person")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
 
-                field("Contact Person Phone"; "Contact Person Phone")
+                field("Contact Person Phone"; Rec."Contact Person Phone")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
 
-                field(Board; Board)
+                field(Board; Rec.Board)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field(Supervisory; Supervisory)
+                field(Supervisory; Rec.Supervisory)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field(staff; staff)
+                field(staff; Rec.staff)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
 
-                field("Home Page"; "Home Page")
+                field("Home Page"; Rec."Home Page")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Address 2"; "Address 2")
+                field("Address 2"; Rec."Address 2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Physical Address';
                     Editable = false;
                     Visible = false;
                 }
-                field("Mode of Dividend Payment"; "Mode of Dividend Payment")
+                field("Mode of Dividend Payment"; Rec."Mode of Dividend Payment")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Recruited By"; "Recruited By")
+                field("Recruited By"; Rec."Recruited By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -659,26 +659,26 @@ Page 51516227 "Member Account Card"
             {
                 Caption = 'Member Withdrawal Details';
 
-                field("Withdrawal Application Date"; "Withdrawal Application Date")
+                field("Withdrawal Application Date"; Rec."Withdrawal Application Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Withdrawal Date"; "Withdrawal Date")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Withdrawal Fee"; "Withdrawal Fee")
+                field("Withdrawal Date"; Rec."Withdrawal Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Reason For Membership Withdraw"; "Reason For Membership Withdraw")
+                field("Withdrawal Fee"; Rec."Withdrawal Fee")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Reason For Membership Withdraw"; Rec."Reason For Membership Withdraw")
                 {
                     ApplicationArea = Basic;
 
                 }
-                field("Status - Withdrawal App."; "Status - Withdrawal App.")
+                field("Status - Withdrawal App."; Rec."Status - Withdrawal App.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Withdrawal Status';
@@ -689,21 +689,21 @@ Page 51516227 "Member Account Card"
             {
                 Editable = false;
 
-                field("Bank Account No."; "Bank Account No.")
+                field("Bank Account No."; Rec."Bank Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Code"; "Bank Code")
+                field("Bank Code"; Rec."Bank Code")
                 {
                     ApplicationArea = Basic;
                     Caption = ' Bank Name';
                 }
-                field("Bank Name"; "Bank Name")
+                field("Bank Name"; Rec."Bank Name")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Bank Branch"; "Bank Branch")
+                field("Bank Branch"; Rec."Bank Branch")
                 {
                     ApplicationArea = Basic;
                 }
@@ -712,83 +712,83 @@ Page 51516227 "Member Account Card"
             {
                 Caption = 'File Movement Tracker';
                 visible = false;
-                field(Filelocc; Filelocc)
+                field(Filelocc; Rec.Filelocc)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Current File Location';
                     Editable = false;
                 }
-                field("Loc Description"; "Loc Description")
+                field("Loc Description"; Rec."Loc Description")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Move to"; "Move to")
+                field("Move to"; Rec."Move to")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Dispatch to:';
                 }
-                field("Move to description"; "Move to description")
+                field("Move to description"; Rec."Move to description")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(User; User)
+                field(User; Rec.User)
                 {
                     ApplicationArea = Basic;
                 }
-                field("File Movement Remarks"; "File Movement Remarks")
+                field("File Movement Remarks"; Rec."File Movement Remarks")
                 {
                     ApplicationArea = Basic;
                 }
-                field("File MVT User ID"; "File MVT User ID")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("File MVT Date"; "File MVT Date")
+                field("File MVT User ID"; Rec."File MVT User ID")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("File MVT Time"; "File MVT Time")
+                field("File MVT Date"; Rec."File MVT Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("file Received"; "file Received")
+                field("File MVT Time"; Rec."File MVT Time")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("file Received"; Rec."file Received")
                 {
                     ApplicationArea = Basic;
                     Caption = 'File Received';
                     Editable = false;
                 }
-                field("file received date"; "file received date")
+                field("file received date"; Rec."file received date")
                 {
                     ApplicationArea = Basic;
                     Caption = 'File received date';
                     Editable = false;
                 }
-                field("File received Time"; "File received Time")
+                field("File received Time"; Rec."File received Time")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("File Received by"; "File Received by")
+                field("File Received by"; Rec."File Received by")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("No Of Days"; "No Of Days")
+                field("No Of Days"; Rec."No Of Days")
                 {
                     ApplicationArea = Basic;
                     Caption = 'No of Days in Current Locaton';
                     Editable = false;
                 }
-                field("Reason for file overstay"; "Reason for file overstay")
+                field("Reason for file overstay"; Rec."Reason for file overstay")
                 {
                     ApplicationArea = Basic;
                 }
-                field("File Movement Remarks1"; "File Movement Remarks1")
+                field("File Movement Remarks1"; Rec."File Movement Remarks1")
                 {
                     ApplicationArea = Basic;
                     Caption = 'File MV General Remarks';
@@ -848,7 +848,7 @@ Page 51516227 "Member Account Card"
 
                     trigger OnAction()
                     begin
-                        ShowContact;
+                        Rec.ShowContact;
                     end;
                 }
             }
@@ -865,7 +865,7 @@ Page 51516227 "Member Account Card"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.FindFirst then begin
                             Report.Run(51516279, true, false, Cust);
                         end;
@@ -943,7 +943,7 @@ Page 51516227 "Member Account Card"
                     begin
 
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51516226, true, false, Cust);
                     end;
@@ -957,7 +957,7 @@ Page 51516227 "Member Account Card"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51516225, true, false, Cust);
                     end;
@@ -986,7 +986,7 @@ Page 51516227 "Member Account Card"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51516223, true, false, Cust);
                     end;
@@ -1002,7 +1002,7 @@ Page 51516227 "Member Account Card"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then begin
                             Report.Run(51516224, true, false, Cust);
                         END;
@@ -1018,7 +1018,7 @@ Page 51516227 "Member Account Card"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51516225, true, false, Cust);
                     end;
@@ -1033,7 +1033,7 @@ Page 51516227 "Member Account Card"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51516227, true, false, Cust);
                     end;
@@ -1050,7 +1050,7 @@ Page 51516227 "Member Account Card"
                         LoansReg: Record "Loans Register";
                     begin
                         LoansReg.Reset;
-                        LoansReg.SetRange(LoansReg."Client Code", "No.");
+                        LoansReg.SetRange(LoansReg."Client Code", Rec."No.");
                         if LoansReg.Find('-') then
                             Report.Run(51516207, true, false, LoansReg);
                     end;
@@ -1067,7 +1067,7 @@ Page 51516227 "Member Account Card"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(137, true, false, Cust);
                     end;
@@ -1083,7 +1083,7 @@ Page 51516227 "Member Account Card"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then begin
                             Report.Run(51516226, true, false, Cust);
                         END;
@@ -1098,11 +1098,11 @@ Page 51516227 "Member Account Card"
 
                     trigger OnAction()
                     begin
-                        CalcFields("Current Shares", "Outstanding Balance");
+                        Rec.CalcFields("Current Shares", "Outstanding Balance");
 
-                        if "Current Shares" >= "Outstanding Balance" then begin
+                        if Rec."Current Shares" >= Rec."Outstanding Balance" then begin
                             if Confirm('Are you sure you want to create a Withdrawal Application for this Member', false) = true then begin
-                                SurestepFactory.FnCreateMembershipWithdrawalApplication("No.", "Withdrawal Application Date", "Reason For Membership Withdraw", "Withdrawal Date");
+                                SurestepFactory.FnCreateMembershipWithdrawalApplication(Rec."No.", Rec."Withdrawal Application Date", Rec."Reason For Membership Withdraw", Rec."Withdrawal Date");
                             end;
                         end else
                             Error('The withdraw Application has been denied');
@@ -1119,7 +1119,7 @@ Page 51516227 "Member Account Card"
                     trigger OnAction()
                     begin
 
-                        if ("Current Shares" * -1) > 0 then
+                        if (Rec."Current Shares" * -1) > 0 then
                             Error('Please recover the loans from the members shares before recovering from gurantors.');
 
                         if Confirm('Are you absolutely sure you want to recover the loans from the guarantors as loans?') = false then
@@ -1136,28 +1136,28 @@ Page 51516227 "Member Account Card"
 
                         TotalRecovered := 0;
 
-                        DActivity := "Global Dimension 1 Code";
-                        DBranch := "Global Dimension 2 Code";
+                        DActivity := Rec."Global Dimension 1 Code";
+                        DBranch := Rec."Global Dimension 2 Code";
 
-                        CalcFields("Outstanding Balance", "Accrued Interest", "Insurance Fund", "Current Shares");
-
-
-                        if "Closing Deposit Balance" = 0 then
-                            "Closing Deposit Balance" := "Current Shares" * -1;
-                        if "Closing Loan Balance" = 0 then
-                            "Closing Loan Balance" := "Outstanding Balance" + "FOSA Outstanding Balance";
-                        if "Closing Insurance Balance" = 0 then
-                            "Closing Insurance Balance" := "Insurance Fund" * -1;
-                        "Withdrawal Posted" := true;
-                        Modify;
+                        Rec.CalcFields("Outstanding Balance", "Accrued Interest", "Insurance Fund", "Current Shares");
 
 
-                        CalcFields("Outstanding Balance", "Accrued Interest", "Current Shares");
+                        if Rec."Closing Deposit Balance" = 0 then
+                            Rec."Closing Deposit Balance" := Rec."Current Shares" * -1;
+                        if Rec."Closing Loan Balance" = 0 then
+                            Rec."Closing Loan Balance" := Rec."Outstanding Balance" + Rec."FOSA Outstanding Balance";
+                        if Rec."Closing Insurance Balance" = 0 then
+                            Rec."Closing Insurance Balance" := Rec."Insurance Fund" * -1;
+                        Rec."Withdrawal Posted" := true;
+                        Rec.Modify;
+
+
+                        Rec.CalcFields("Outstanding Balance", "Accrued Interest", "Current Shares");
 
 
 
                         LoansR.Reset;
-                        LoansR.SetRange(LoansR."Client Code", "No.");
+                        LoansR.SetRange(LoansR."Client Code", Rec."No.");
                         LoansR.SetRange(LoansR.Source, LoansR.Source::BOSA);
                         if LoansR.Find('-') then begin
                             repeat
@@ -1211,7 +1211,7 @@ Page 51516227 "Member Account Card"
                                             Loans."Issued Date" := Today;
                                             Loans."Loan Disbursement Date" := Today;
                                             Loans."Repayment Start Date" := Today;
-                                            Loans."Batch No." := "Batch No.";
+                                            Loans."Batch No." := Rec."Batch No.";
                                             Loans."BOSA No" := LGurantors."Member No";
                                             Loans."Recovered Loan" := LoansR."Loan  No.";
                                             Loans.Insert(true);
@@ -1320,8 +1320,8 @@ Page 51516227 "Member Account Card"
                         end;
 
 
-                        "Defaulted Loans Recovered" := true;
-                        Modify;
+                        Rec."Defaulted Loans Recovered" := true;
+                        Rec.Modify;
 
 
                         //Post New
@@ -1360,17 +1360,17 @@ Page 51516227 "Member Account Card"
                         TotalRecovered := 0;
                         TotalInsuarance := 0;
 
-                        DActivity := "Global Dimension 1 Code";
-                        DBranch := "Global Dimension 2 Code";
-                        CalcFields("Outstanding Balance", "Accrued Interest", "Current Shares");
+                        DActivity := Rec."Global Dimension 1 Code";
+                        DBranch := Rec."Global Dimension 2 Code";
+                        Rec.CalcFields("Outstanding Balance", "Accrued Interest", "Current Shares");
 
-                        CalcFields("Outstanding Balance", "Outstanding Interest", "FOSA Outstanding Balance", "Accrued Interest", "Insurance Fund", "Current Shares");
-                        TotalOustanding := "Outstanding Balance" + "Outstanding Interest";
+                        Rec.CalcFields("Outstanding Balance", "Outstanding Interest", "FOSA Outstanding Balance", "Accrued Interest", "Insurance Fund", "Current Shares");
+                        TotalOustanding := Rec."Outstanding Balance" + Rec."Outstanding Interest";
                         // GETTING WITHDRAWAL FEE
-                        if (0.15 * ("Current Shares")) > 1000 then begin
-                            "Withdrawal Fee" := 1000;
+                        if (0.15 * (Rec."Current Shares")) > 1000 then begin
+                            Rec."Withdrawal Fee" := 1000;
                         end else begin
-                            "Withdrawal Fee" := 0.15 * ("Current Shares");
+                            Rec."Withdrawal Fee" := 0.15 * (Rec."Current Shares");
                         end;
                         /*
                        // END OF GETTING WITHDRWAL FEE
@@ -1403,14 +1403,14 @@ Page 51516227 "Member Account Card"
                        TotalRecovered:=TotalRecovered+GenJournalLine.Amount;
                        */
 
-                        "Closing Deposit Balance" := ("Current Shares");
+                        Rec."Closing Deposit Balance" := (Rec."Current Shares");
 
 
-                        if "Closing Deposit Balance" > 0 then begin
-                            "Remaining Amount" := "Closing Deposit Balance";
+                        if Rec."Closing Deposit Balance" > 0 then begin
+                            "Remaining Amount" := Rec."Closing Deposit Balance";
 
                             LoansR.Reset;
-                            LoansR.SetRange(LoansR."Client Code", "No.");
+                            LoansR.SetRange(LoansR."Client Code", Rec."No.");
                             LoansR.SetRange(LoansR.Source, LoansR.Source::BOSA);
                             if LoansR.Find('-') then begin
                                 repeat
@@ -1421,7 +1421,7 @@ Page 51516227 "Member Account Card"
                             end;
 
                             LoansR.Reset;
-                            LoansR.SetRange(LoansR."Client Code", "No.");
+                            LoansR.SetRange(LoansR."Client Code", Rec."No.");
                             LoansR.SetRange(LoansR.Source, LoansR.Source::BOSA);
                             if LoansR.Find('-') then begin
                                 repeat
@@ -1496,13 +1496,13 @@ Page 51516227 "Member Account Card"
                                     GenJournalLine."Journal Template Name" := 'GENERAL';
                                     GenJournalLine."Journal Batch Name" := 'Recoveries';
                                     GenJournalLine."Line No." := LineNo;
-                                    GenJournalLine."Document No." := "No.";
+                                    GenJournalLine."Document No." := Rec."No.";
                                     GenJournalLine."Posting Date" := Today;
-                                    GenJournalLine."External Document No." := "No.";
+                                    GenJournalLine."External Document No." := Rec."No.";
                                     GenJournalLine."Account Type" := GenJournalLine."bal. account type"::Customer;
-                                    GenJournalLine."Account No." := "No.";
+                                    GenJournalLine."Account No." := Rec."No.";
                                     GenJournalLine.Validate(GenJournalLine."Account No.");
-                                    GenJournalLine.Description := 'Interest Capitalized: ' + "No.";
+                                    GenJournalLine.Description := 'Interest Capitalized: ' + Rec."No.";
                                     GenJournalLine.Amount := -ROUND(LoansR."Oustanding Interest");
                                     GenJournalLine.Validate(GenJournalLine.Amount);
                                     GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Interest Paid";
@@ -1520,13 +1520,13 @@ Page 51516227 "Member Account Card"
                                     GenJournalLine."Journal Template Name" := 'GENERAL';
                                     GenJournalLine."Journal Batch Name" := 'Recoveries';
                                     GenJournalLine."Line No." := LineNo;
-                                    GenJournalLine."Document No." := "No.";
+                                    GenJournalLine."Document No." := Rec."No.";
                                     GenJournalLine."Posting Date" := Today;
-                                    GenJournalLine."External Document No." := "No.";
+                                    GenJournalLine."External Document No." := Rec."No.";
                                     GenJournalLine."Account Type" := GenJournalLine."bal. account type"::Customer;
-                                    GenJournalLine."Account No." := "No.";
+                                    GenJournalLine."Account No." := Rec."No.";
                                     GenJournalLine.Validate(GenJournalLine."Account No.");
-                                    GenJournalLine.Description := 'Interest Capitalized: ' + "No.";
+                                    GenJournalLine.Description := 'Interest Capitalized: ' + Rec."No.";
                                     GenJournalLine.Amount := ROUND(LoansR."Oustanding Interest");
                                     GenJournalLine.Validate(GenJournalLine.Amount);
                                     GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::Loan;
@@ -1540,27 +1540,27 @@ Page 51516227 "Member Account Card"
 
                                     PrincipInt := 0;
                                     TotalLoansOut := 0;
-                                    "Closing Deposit Balance" := ("Current Shares" - TotalInsuarance);
+                                    Rec."Closing Deposit Balance" := (Rec."Current Shares" - TotalInsuarance);
 
                                     if "Remaining Amount" > 0 then begin
                                         PrincipInt := (LoansR."Outstanding Balance" + LoansR."Oustanding Interest");
-                                        TotalLoansOut := ("Outstanding Balance" + "Outstanding Interest");
+                                        TotalLoansOut := (Rec."Outstanding Balance" + Rec."Outstanding Interest");
 
                                         //Principle
                                         LineNo := LineNo + 10000;
                                         //"AMOUNTTO BE RECOVERED":=ROUND(((LoansR."Outstanding Balance"+LoansR."Oustanding Interest")/("Outstanding Balance"+"Outstanding Interest")))*"Closing Deposit Balance";
-                                        "AMOUNTTO BE RECOVERED" := ROUND((PrincipInt / TotalLoansOut) * "Closing Deposit Balance", 0.01, '=');
+                                        "AMOUNTTO BE RECOVERED" := ROUND((PrincipInt / TotalLoansOut) * Rec."Closing Deposit Balance", 0.01, '=');
                                         GenJournalLine.Init;
                                         GenJournalLine."Journal Template Name" := 'GENERAL';
                                         GenJournalLine."Journal Batch Name" := 'Recoveries';
                                         GenJournalLine."Line No." := LineNo;
-                                        GenJournalLine."Document No." := "No.";
+                                        GenJournalLine."Document No." := Rec."No.";
                                         GenJournalLine."Posting Date" := Today;
-                                        GenJournalLine."External Document No." := "No.";
+                                        GenJournalLine."External Document No." := Rec."No.";
                                         GenJournalLine."Account Type" := GenJournalLine."bal. account type"::Customer;
-                                        GenJournalLine."Account No." := "No.";
+                                        GenJournalLine."Account No." := Rec."No.";
                                         GenJournalLine.Validate(GenJournalLine."Account No.");
-                                        GenJournalLine.Description := 'Loan Against Deposits: ' + "No.";
+                                        GenJournalLine.Description := 'Loan Against Deposits: ' + Rec."No.";
                                         if "AMOUNTTO BE RECOVERED" > (LoansR."Outstanding Balance" + LoansR."Oustanding Interest") then begin
                                             if "Remaining Amount" > (LoansR."Outstanding Balance" + LoansR."Oustanding Interest") then begin
                                                 GenJournalLine.Amount := -ROUND(LoansR."Outstanding Balance" + LoansR."Oustanding Interest");
@@ -1603,11 +1603,11 @@ Page 51516227 "Member Account Card"
                         GenJournalLine."Journal Template Name" := 'GENERAL';
                         GenJournalLine."Journal Batch Name" := 'Recoveries';
                         GenJournalLine."Line No." := LineNo;
-                        GenJournalLine."Document No." := "No.";
+                        GenJournalLine."Document No." := Rec."No.";
                         GenJournalLine."Posting Date" := Today;
-                        GenJournalLine."External Document No." := "No.";
+                        GenJournalLine."External Document No." := Rec."No.";
                         GenJournalLine."Account Type" := GenJournalLine."bal. account type"::Customer;
-                        GenJournalLine."Account No." := "No.";
+                        GenJournalLine."Account No." := Rec."No.";
                         GenJournalLine.Validate(GenJournalLine."Account No.");
                         GenJournalLine.Description := 'Defaulted Loans Against Deposits';
                         GenJournalLine.Amount := (TotalRecovered - TotalInsuarance) * -1;
@@ -1622,8 +1622,8 @@ Page 51516227 "Member Account Card"
 
 
 
-                        "Defaulted Loans Recovered" := true;
-                        Modify;
+                        Rec."Defaulted Loans Recovered" := true;
+                        Rec.Modify;
 
 
                         //Post New
@@ -1665,7 +1665,7 @@ Page 51516227 "Member Account Card"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51516303, true, false, Cust);
                     end;
@@ -1682,10 +1682,10 @@ Page 51516227 "Member Account Card"
     trigger OnAfterGetRecord()
     begin
         FosaName := '';
-        if "Physical States" = "physical states"::Deaf then begin
+        if Rec."Physical States" = Rec."physical states"::Deaf then begin
             Message('This Member is Deaf')
         end else
-            if "Physical States" = "physical states"::Blind then begin
+            if Rec."Physical States" = Rec."physical states"::Blind then begin
                 Message('This Member is Deaf')
             end;
 
@@ -1730,14 +1730,14 @@ Page 51516227 "Member Account Card"
     var
         RecordFound: Boolean;
     begin
-        RecordFound := Find(Which);
-        CurrPage.Editable := RecordFound or (GetFilter("No.") = '');
+        RecordFound := Rec.Find(Which);
+        CurrPage.Editable := RecordFound or (Rec.GetFilter("No.") = '');
         exit(RecordFound);
     end;
 
     procedure UpdateControls()
     begin
-        if "Account Category" = "account category"::Individual then begin
+        if Rec."Account Category" = Rec."account category"::Individual then begin
             groupAcc := false;
             Individual := true;
             Junior := false;
@@ -1745,7 +1745,7 @@ Page 51516227 "Member Account Card"
             Jooint := false;
 
         end else
-            if "Account Category" = "account category"::Junior then begin
+            if Rec."Account Category" = Rec."account category"::Junior then begin
                 groupAcc := false;
                 Junior := true;
                 Individual := false;
@@ -1754,14 +1754,14 @@ Page 51516227 "Member Account Card"
 
             end
             else
-                if "Account Category" = "account category"::Group then begin
+                if Rec."Account Category" = Rec."account category"::Group then begin
                     Individual := false;
                     Jooint := false;
                     Junior := false;
                     groupAcc := true;
                 end else
                     //Account types.
-                    if "Account Category" = "account category"::Joint then begin
+                    if Rec."Account Category" = Rec."account category"::Joint then begin
                         Individual := false;
                         groupAcc := false;
                         Junior := false;
@@ -1784,15 +1784,15 @@ Page 51516227 "Member Account Card"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        "Customer Type" := "customer type"::Member;
-        Status := Status::Active;
-        "Customer Posting Group" := 'BOSA';
-        "Registration Date" := Today;
-        Advice := true;
-        "Advice Type" := "advice type"::"New Member";
+        Rec."Customer Type" := Rec."customer type"::Member;
+        Rec.Status := Rec.Status::Active;
+        Rec."Customer Posting Group" := 'BOSA';
+        Rec."Registration Date" := Today;
+        Rec.Advice := true;
+        Rec."Advice Type" := Rec."advice type"::"New Member";
         if GeneralSetup.Get(0) then begin
-            "Insurance Contribution" := GeneralSetup."Welfare Contribution";
-            "Registration Fee" := GeneralSetup."Registration Fee";
+            Rec."Insurance Contribution" := GeneralSetup."Welfare Contribution";
+            Rec."Registration Fee" := GeneralSetup."Registration Fee";
 
         end;
         OnAfterGetCurrRec;
@@ -1913,9 +1913,9 @@ Page 51516227 "Member Account Card"
     local procedure SetStyles()
     begin
         CoveragePercentStyle := 'Strong';
-        if "Member Risk Level" <> "member risk level"::"Low Risk" then
+        if Rec."Member Risk Level" <> Rec."member risk level"::"Low Risk" then
             CoveragePercentStyle := 'Unfavorable';
-        if "Member Risk Level" = "member risk level"::"Low Risk" then
+        if Rec."Member Risk Level" = Rec."member risk level"::"Low Risk" then
             CoveragePercentStyle := 'Favorable';
     end;
 }

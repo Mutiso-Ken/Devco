@@ -4,14 +4,14 @@ Table 51516013 "Checkoff Ctrl"
 
     fields
     {
-        field(1;"Loan No";Code[20])
+        field(1; "Loan No"; Code[20])
         {
         }
     }
 
     keys
     {
-        key(Key1;"Loan No")
+        key(Key1; "Loan No")
         {
             Clustered = true;
         }

@@ -10,13 +10,13 @@ pageextension 51516028 AuditTrail extends "Change Log Entries"
             var
                 DateTimee: DateTime;
                 LoogDate: Date;
-            begin                                                                                                                                                                                                                                                                                                                                                                       
+            begin
                 rec.Find('-');
                 repeat
-                    DateTimee := "Date and Time";
+                    DateTimee := Rec."Date and Time";
                     Loogdate := DT2DATE(DateTimee);
-                    Logdate := LoogDate;
-                    Modify();
+                    Rec.Logdate := LoogDate;
+                    Rec.Modify();
                 until rec.Next = 0;
             end;
         }
@@ -50,20 +50,20 @@ pageextension 51516028 AuditTrail extends "Change Log Entries"
         }
         addafter("Date and Time")
         {
-            field("Computer Name"; "Computer Name")
+            field("Computer Name"; Rec."Computer Name")
             {
                 ApplicationArea = all;
                 Visible = false;
             }
-            field(Logdate; Logdate)
+            field(Logdate; Rec.Logdate)
             {
                 ApplicationArea = all;
             }
-            field("Full Name"; "Full Name")
+            field("Full Name"; Rec."Full Name")
             {
                 ApplicationArea = all;
             }
-            field("Client Name"; "Client Name")
+            field("Client Name"; Rec."Client Name")
             {
                 ApplicationArea = all;
             }
@@ -106,10 +106,10 @@ pageextension 51516028 AuditTrail extends "Change Log Entries"
         begin
             rec.Find('-');
             repeat
-                DateTimee := "Date and Time";
+                DateTimee := Rec."Date and Time";
                 Loogdate := DT2DATE(DateTimee);
-                Logdate := LoogDate;
-                Modify();
+                Rec.Logdate := LoogDate;
+                Rec.Modify();
             until rec.Next = 0;
         end;
         begin
@@ -125,7 +125,7 @@ pageextension 51516028 AuditTrail extends "Change Log Entries"
     var
         ChangeLogEntry: Record "Change Log Entry";
     begin
-        if ChangeLogEntry.Get("User ID") then
+        if ChangeLogEntry.Get(Rec."User ID") then
             exit(ChangeLogEntry."Client Name")
         else
             exit('');

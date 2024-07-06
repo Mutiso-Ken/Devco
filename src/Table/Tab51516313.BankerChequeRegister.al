@@ -4,20 +4,20 @@ Table 51516313 "Banker Cheque Register"
 
     fields
     {
-        field(1;"Banker Cheque No.";Code[30])
+        field(1; "Banker Cheque No."; Code[30])
         {
         }
-        field(2;Issued;Boolean)
+        field(2; Issued; Boolean)
         {
         }
-        field(3;Cancelled;Boolean)
+        field(3; Cancelled; Boolean)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Banker Cheque No.")
+        key(Key1; "Banker Cheque No.")
         {
             Clustered = true;
         }

@@ -78,7 +78,7 @@ Table 51516222 "Member App Signatories"
 
     keys
     {
-        key(Key1;"Entry No", "Account No")
+        key(Key1; "Entry No", "Account No")
         {
             Clustered = true;
         }

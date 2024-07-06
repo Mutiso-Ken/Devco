@@ -12,12 +12,12 @@ page 51013 PayrollDepartment
         {
             repeater(GroupName)
             {
-                field(code; code)
+                field(code; Rec.code)
                 {
                     ApplicationArea = All;
 
                 }
-                field(Department; Department)
+                field(Department; Rec.Department)
                 {
                     ApplicationArea = All;
 

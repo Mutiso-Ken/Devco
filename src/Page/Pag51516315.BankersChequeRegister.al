@@ -13,22 +13,22 @@ Page 51516315 "Bankers Cheque Register"
         {
             repeater(Control5)
             {
-                field("Banker Cheque No.";"Banker Cheque No.")
+                field("Banker Cheque No."; Rec."Banker Cheque No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Issued;Issued)
+                field(Issued; Rec.Issued)
                 {
                     ApplicationArea = Basic;
                     Enabled = false;
                 }
             }
-            field(BankerCh;BankerCh)
+            field(BankerCh; BankerCh)
             {
                 ApplicationArea = Basic;
                 Visible = false;
             }
-            field(NoOfLeaves;NoOfLeaves)
+            field(NoOfLeaves; NoOfLeaves)
             {
                 ApplicationArea = Basic;
                 Visible = false;
@@ -50,19 +50,19 @@ Page 51516315 "Bankers Cheque Register"
 
                 trigger OnAction()
                 begin
-                    if Confirm('Are you sure you want to generate bankers cheque No.?',false) = false then
-                    exit;
+                    if Confirm('Are you sure you want to generate bankers cheque No.?', false) = false then
+                        exit;
 
-                    i :=0;
+                    i := 0;
 
                     repeat
-                    i := i + 1;
+                        i := i + 1;
 
-                    BankerR.Init;
-                    BankerR."Banker Cheque No.":=BankerCh;
-                    BankerR.Insert;
+                        BankerR.Init;
+                        BankerR."Banker Cheque No." := BankerCh;
+                        BankerR.Insert;
 
-                    BankerCh:=IncStr(BankerCh);
+                        BankerCh := IncStr(BankerCh);
                     until i = NoOfLeaves;
                 end;
             }

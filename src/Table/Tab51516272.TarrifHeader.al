@@ -4,13 +4,13 @@ Table 51516272 "Tarrif Header"
 
     fields
     {
-        field(1;"Code";Code[20])
+        field(1; "Code"; Code[20])
         {
         }
-        field(2;Description;Text[30])
+        field(2; Description; Text[30])
         {
         }
-        field(3;"Transaction Type";Option)
+        field(3; "Transaction Type"; Option)
         {
             OptionCaption = 'Deposit,Withdrawal';
             OptionMembers = Deposit,Withdrawal;
@@ -19,7 +19,7 @@ Table 51516272 "Tarrif Header"
 
     keys
     {
-        key(Key1;"Code")
+        key(Key1; "Code")
         {
             Clustered = true;
         }

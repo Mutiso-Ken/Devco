@@ -126,7 +126,7 @@ Report 51516237 "Loan Defaulter Final Notice"
                     column(Loan_Officer; Lofficer)
                     {
                     }
-                    dataitem("Default Notices Register";"Default Notices Register")
+                    dataitem("Default Notices Register"; "Default Notices Register")
                     {
                         column(ReportForNavId_1120054000; 1120054000)
                         {

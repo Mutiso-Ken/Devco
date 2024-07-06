@@ -18,8 +18,8 @@ page 51516151 "Supervisory Commitee Lists"
                     TableRelation = customer."No." where(Supervisory = const(true));
                     trigger OnValidate()
                     begin
-                        if Cust.Get("No.") then begin
-                            Name := cust.Name;
+                        if Cust.Get(Rec."No.") then begin
+                            Rec.Name := cust.Name;
                         end;
                     end;
                 }
@@ -35,7 +35,7 @@ page 51516151 "Supervisory Commitee Lists"
                 field(Active; Rec.Active)
                 {
                 }
-                field(Designation; Designation) { }
+                field(Designation; Rec.Designation) { }
             }
         }
     }

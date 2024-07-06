@@ -14,68 +14,68 @@ Page 51516308 "Standing Order Register"
         {
             repeater(Control1102760000)
             {
-                field("Register No.";"Register No.")
+                field("Register No."; Rec."Register No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Date;Date)
+                field(Date; Rec.Date)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Source Account No.";"Source Account No.")
+                field("Source Account No."; Rec."Source Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Destination Account Type";"Destination Account Type")
+                field("Destination Account Type"; Rec."Destination Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Destination Account No.";"Destination Account No.")
+                field("Destination Account No."; Rec."Destination Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Destination Account Name";"Destination Account Name")
+                field("Destination Account Name"; Rec."Destination Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Don't Allow Partial Deduction";"Don't Allow Partial Deduction")
+                field("Don't Allow Partial Deduction"; Rec."Don't Allow Partial Deduction")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Deduction Status";"Deduction Status")
+                field("Deduction Status"; Rec."Deduction Status")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount Deducted";"Amount Deducted")
+                field("Amount Deducted"; Rec."Amount Deducted")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount-""Amount Deducted""";Amount-"Amount Deducted")
+                field("Amount-""Amount Deducted"""; Rec.Amount - Rec."Amount Deducted")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Balance';
                 }
-                field(Remarks;Remarks)
+                field(Remarks; Rec.Remarks)
                 {
                     ApplicationArea = Basic;
                 }
-                field(EFT;EFT)
+                field(EFT; Rec.EFT)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transfered to EFT";"Transfered to EFT")
+                field("Transfered to EFT"; Rec."Transfered to EFT")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Standing Order No.";"Standing Order No.")
+                field("Standing Order No."; Rec."Standing Order No.")
                 {
                     ApplicationArea = Basic;
                 }

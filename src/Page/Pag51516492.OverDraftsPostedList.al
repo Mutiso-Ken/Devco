@@ -17,48 +17,48 @@ page 51516492 "OverDrafts Posted List"
         {
             repeater(Control14)
             {
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Product Type"; "Loan Product Type")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Client Code"; "Client Code")
+                field("Client Code"; Rec."Client Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("BOSA No"; "BOSA No")
+                field("BOSA No"; Rec."BOSA No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Client Name"; "Client Name")
+                field("Client Name"; Rec."Client Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Overdraft Installements"; "Overdraft Installements")
+                field("Overdraft Installements"; Rec."Overdraft Installements")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Status"; "Loan Status")
+                field("Loan Status"; Rec."Loan Status")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approval Status"; "Approval Status")
+                field("Approval Status"; Rec."Approval Status")
                 {
                     ApplicationArea = Basic;
                 }
@@ -79,7 +79,7 @@ page 51516492 "OverDrafts Posted List"
 
     trigger OnOpenPage()
     begin
-        Ascending(false)
+        Rec.Ascending(false)
     end;
 
     var

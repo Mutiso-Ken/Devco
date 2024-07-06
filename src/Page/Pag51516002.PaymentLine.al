@@ -10,113 +10,113 @@ Page 51516002 "Payment Line"
         {
             repeater(Group)
             {
-                field("Payment Type";"Payment Type")
+                field("Payment Type"; Rec."Payment Type")
                 {
                     ApplicationArea = Basic;
-                    TableRelation = "Funds Transaction Types"."Transaction Code" where ("Transaction Type"=const(Payment));
+                    TableRelation = "Funds Transaction Types"."Transaction Code" where("Transaction Type" = const(Payment));
                 }
-                field("<BOSA Transaction Type>";"Transaction Type")
+                field("<BOSA Transaction Type>"; Rec."Transaction Type")
                 {
                     ApplicationArea = Basic;
                     Caption = 'BOSA Transaction Type';
                 }
-                field("Account Type";"Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No.";"Account No.")
+                field("Account No."; Rec."Account No.")
                 {
                     ApplicationArea = Basic;
 
                     trigger OnValidate()
                     begin
-                        if ("Account Type"="account type"::Customer) then begin
-                        TestField("Transaction Type");
+                        if (Rec."Account Type" = Rec."account type"::Customer) then begin
+                            Rec.TestField("Transaction Type");
                         end;
                     end;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan No.";"Loan No.")
+                field("Loan No."; Rec."Loan No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payment Description";"Payment Description")
+                field("Payment Description"; Rec."Payment Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount(LCY)";"Amount(LCY)")
+                field("Amount(LCY)"; Rec."Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
-                    caption= 'Activity Type';
+                    caption = 'Activity Type';
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
-                    caption= 'Branch Code';
+                    caption = 'Branch Code';
 
                 }
-                field("VAT Code";"VAT Code")
+                field("VAT Code"; Rec."VAT Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("VAT Amount";"VAT Amount")
+                field("VAT Amount"; Rec."VAT Amount")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("VAT Amount(LCY)";"VAT Amount(LCY)")
+                field("VAT Amount(LCY)"; Rec."VAT Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("W/TAX Code";"W/TAX Code")
+                field("W/TAX Code"; Rec."W/TAX Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("W/TAX Amount";"W/TAX Amount")
+                field("W/TAX Amount"; Rec."W/TAX Amount")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("W/TAX Amount(LCY)";"W/TAX Amount(LCY)")
+                field("W/TAX Amount(LCY)"; Rec."W/TAX Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Net Amount";"Net Amount")
+                field("Net Amount"; Rec."Net Amount")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Net Amount(LCY)";"Net Amount(LCY)")
+                field("Net Amount(LCY)"; Rec."Net Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Applies-to Doc. Type";"Applies-to Doc. Type")
+                field("Applies-to Doc. Type"; Rec."Applies-to Doc. Type")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Applies-to Doc. No.";"Applies-to Doc. No.")
+                field("Applies-to Doc. No."; Rec."Applies-to Doc. No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Applies-to ID";"Applies-to ID")
+                field("Applies-to ID"; Rec."Applies-to ID")
                 {
                     ApplicationArea = Basic;
                     Visible = false;

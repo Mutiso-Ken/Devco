@@ -4,10 +4,10 @@ page 51516934 MainSector
     Caption = 'MainSector';
     PageType = List;
     SourceTable = "Main Sector";
-     Editable=true;
-    InsertAllowed=true;
+    Editable = true;
+    InsertAllowed = true;
     UsageCategory = Administration;
-    
+
     layout
     {
         area(content)

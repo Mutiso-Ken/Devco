@@ -6,9 +6,9 @@ Page 51516894 "MC Account Holders"
     PageType = List;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
     SourceTable = Customer;
-    SourceTableView = where("Customer Posting Group"=const('MICRO'),
-                            "Global Dimension 1 Code"=const('MICRO'),
-                            "Group Account"=const(false));
+    SourceTableView = where("Customer Posting Group" = const('MICRO'),
+                            "Global Dimension 1 Code" = const('MICRO'),
+                            "Group Account" = const(false));
 
     layout
     {
@@ -16,74 +16,74 @@ Page 51516894 "MC Account Holders"
         {
             group(General)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Old Account No.";"Old Account No.")
+                field("Old Account No."; Rec."Old Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Address;Address)
+                field(Address; Rec.Address)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Address 2";"Address 2")
+                field("Address 2"; Rec."Address 2")
                 {
                     ApplicationArea = Basic;
                 }
-                field(City;City)
+                field(City; Rec.City)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No.";"Phone No.")
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Country/Region Code";"Country/Region Code")
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Blocked;Blocked)
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Balance (LCY)";"Balance (LCY)")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("ID No.";"ID No.")
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Status;Status)
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Gender;Gender)
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Group Code";"Group Code")
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Date of Birth";"Date of Birth")
+                field("Country/Region Code"; Rec."Country/Region Code")
+                {
+                    ApplicationArea = Basic;
+                }
+                field(Blocked; Rec.Blocked)
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Balance (LCY)"; Rec."Balance (LCY)")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("ID No."; Rec."ID No.")
+                {
+                    ApplicationArea = Basic;
+                }
+                field(Status; Rec.Status)
+                {
+                    ApplicationArea = Basic;
+                }
+                field(Gender; Rec.Gender)
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Group Code"; Rec."Group Code")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Date of Birth"; Rec."Date of Birth")
                 {
                     ApplicationArea = Basic;
                 }

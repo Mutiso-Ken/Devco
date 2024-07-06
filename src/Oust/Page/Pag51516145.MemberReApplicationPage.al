@@ -27,13 +27,13 @@ page 51516145 "Member Re-Application Page"
                     ToolTip = 'Specifies the value of the Member Name field.';
                     Editable = false;
                 }
-                field("Share Capital"; "Share Capital")
+                field("Share Capital"; Rec."Share Capital")
                 {
                     ApplicationArea = all;
                     Editable = false;
                     Caption = 'Current Share capital';
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = all;
                     Editable = false;
@@ -98,16 +98,16 @@ page 51516145 "Member Re-Application Page"
                     myInt: Integer;
                 begin
                     Cust.reset;
-                    Cust.SetRange(Cust."No.", "Member No.");
+                    Cust.SetRange(Cust."No.", Rec."Member No.");
                     if Cust.FindSet() then begin
                         Cust.Status := Cust.Status::Active;
                         Cust."Reason For Membership Withdraw" := ' ';
                         Cust."Re-instated" := true;
-                        Cust."Rejoining Date" := "Re-Application On";
-                        Cust."Rejoined By" := "Re-Application By";
+                        Cust."Rejoining Date" := Rec."Re-Application On";
+                        Cust."Rejoined By" := Rec."Re-Application By";
                         Cust.Modify();
                     end;
-                    Reactivated := true;
+                    Rec.Reactivated := true;
 
                 end;
             }
@@ -119,7 +119,7 @@ page 51516145 "Member Re-Application Page"
                 var
                     myInt: Integer;
                 begin
-                    if Status <> Status::Open then
+                    if Rec.Status <> Rec.Status::Open then
                         Message('The docuement has already be send for approval')
                     else
                         SrestepApprovalsCodeUnit.SendMemberReapplicationRequestForApproval(rec."No.", rec);

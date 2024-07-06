@@ -14,31 +14,31 @@ page 51516950 "PaymentList"
         {
             repeater(Group)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Type"; "Document Type")
+                field("Document Type"; Rec."Document Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Date"; "Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Payee; Payee)
+                field(Payee; Rec.Payee)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount(LCY)"; "Amount(LCY)")
+                field("Amount(LCY)"; Rec."Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Cashier; Cashier)
+                field(Cashier; Rec.Cashier)
                 {
                     ApplicationArea = Basic;
                 }
@@ -52,13 +52,13 @@ page 51516950 "PaymentList"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        "Payment Mode" := "payment mode"::Cheque;
-        "Payment Type" := "payment type"::Normal;
+        Rec."Payment Mode" := Rec."payment mode"::Cheque;
+        Rec."Payment Type" := Rec."payment type"::Normal;
     end;
 
     trigger OnOpenPage()
     begin
-        SetRange(Cashier, UserId);
+        Rec.SetRange(Cashier, UserId);
     end;
 }
 

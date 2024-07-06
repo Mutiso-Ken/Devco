@@ -16,18 +16,18 @@ Page 51516619 "Loan- MICRO Pending Disburse"
             group(General)
             {
                 Caption = 'General';
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Staff No"; "Staff No")
+                field("Staff No"; Rec."Staff No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Staff No';
                     Editable = false;
                 }
-                field("Client Code"; "Client Code")
+                field("Client Code"; Rec."Client Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Account No.';
@@ -38,70 +38,70 @@ Page 51516619 "Loan- MICRO Pending Disburse"
 
                     end;
                 }
-                field("Client Name"; "Client Name")
+                field("Client Name"; Rec."Client Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Officer"; "Loan Officer")
+                field("Loan Officer"; Rec."Loan Officer")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("ID NO"; "ID NO")
+                field("ID NO"; Rec."ID NO")
                 {
                     ApplicationArea = Basic;
                     Caption = 'ID No.';
                     Editable = false;
                 }
-                field("Group Account"; "Group Account")
+                field("Group Account"; Rec."Group Account")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Group Account No.';
                     Editable = false;
                 }
-                field("Group Name"; "Group Name")
+                field("Group Name"; Rec."Group Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                     Editable = ApplcDateEditable;
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Loan Product Type"; "Loan Product Type")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Editable = LProdTypeEditable;
                 }
-                field("Shares Balance"; "Shares Balance")
+                field("Shares Balance"; Rec."Shares Balance")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                     StyleExpr = true;
                 }
-                field(Installments; Installments)
+                field(Installments; Rec.Installments)
                 {
                     ApplicationArea = Basic;
                     Editable = LProdTypeEditable;
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field(Interest; Interest)
+                field(Interest; Rec.Interest)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Requested Amount"; "Requested Amount")
+                field("Requested Amount"; Rec."Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Amount Applied';
@@ -109,15 +109,15 @@ Page 51516619 "Loan- MICRO Pending Disburse"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Recommended Amount"; "Recommended Amount")
+                field("Recommended Amount"; Rec."Recommended Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Approved Amount"; "Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Approved Amount';
@@ -128,7 +128,7 @@ Page 51516619 "Loan- MICRO Pending Disburse"
 
                     end;
                 }
-                field("Main Sector"; "Main Sector")
+                field("Main Sector"; Rec."Main Sector")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -139,17 +139,17 @@ Page 51516619 "Loan- MICRO Pending Disburse"
 
                     end;
                 }
-                field("Sub-Sector"; "Sub-Sector")
+                field("Sub-Sector"; Rec."Sub-Sector")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                     Editable = AppliedAmountEditable;
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Specific Sector"; "Specific Sector")
+                field("Specific Sector"; Rec."Specific Sector")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -157,30 +157,30 @@ Page 51516619 "Loan- MICRO Pending Disburse"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Repayment Method"; "Repayment Method")
+                field("Repayment Method"; Rec."Repayment Method")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Principle Repayment"; "Loan Principle Repayment")
+                field("Loan Principle Repayment"; Rec."Loan Principle Repayment")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Interest Repayment"; "Loan Interest Repayment")
+                field("Loan Interest Repayment"; Rec."Loan Interest Repayment")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Repayment; Repayment)
+                field(Repayment; Rec.Repayment)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Status"; "Loan Status")
+                field("Loan Status"; Rec."Loan Status")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -190,90 +190,90 @@ Page 51516619 "Loan- MICRO Pending Disburse"
                         UpdateControl();
                     end;
                 }
-                field("Batch No."; "Batch No.")
+                field("Batch No."; Rec."Batch No.")
                 {
                     ApplicationArea = Basic;
                     Editable = BatchNoEditable;
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                     StyleExpr = true;
                 }
-                field("Top Up Amount"; "Top Up Amount")
+                field("Top Up Amount"; Rec."Top Up Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                     StyleExpr = true;
                 }
-                field("Repayment Frequency"; "Repayment Frequency")
+                field("Repayment Frequency"; Rec."Repayment Frequency")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Mode of Disbursement"; "Mode of Disbursement")
+                field("Mode of Disbursement"; Rec."Mode of Disbursement")
                 {
                     ApplicationArea = Basic;
                     Editable = AppliedAmountEditable;
                 }
-                field("Loan Disbursement Date"; "Loan Disbursement Date")
+                field("Loan Disbursement Date"; Rec."Loan Disbursement Date")
                 {
                     ApplicationArea = Basic;
                     Editable = AppliedAmountEditable;
                 }
-                field(Remarks; Remarks)
+                field(Remarks; Rec.Remarks)
                 {
                     ApplicationArea = Basic;
                     Visible = true;
                     Editable = AppliedAmountEditable;
                 }
-                field("Cheque No."; "Cheque No.")
+                field("Cheque No."; Rec."Cheque No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
 
                     trigger OnValidate()
                     begin
-                        if StrLen("Cheque No.") > 6 then
+                        if StrLen(Rec."Cheque No.") > 6 then
                             Error('Document No. cannot contain More than 6 Characters.');
                     end;
                 }
-                field("Repayment Start Date"; "Repayment Start Date")
+                field("Repayment Start Date"; Rec."Repayment Start Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                     StyleExpr = true;
                 }
-                field("Expected Date of Completion"; "Expected Date of Completion")
+                field("Expected Date of Completion"; Rec."Expected Date of Completion")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                     StyleExpr = true;
                 }
-                field("External EFT"; "External EFT")
+                field("External EFT"; Rec."External EFT")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Approval Status"; "Approval Status")
+                field("Approval Status"; Rec."Approval Status")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = Unfavorable;
                     StyleExpr = true;
                 }
-                field(Posted; Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field(Source; Source)
+                field(Source; Rec.Source)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -338,32 +338,32 @@ Page 51516619 "Loan- MICRO Pending Disburse"
 
                         GSetUp.Get();
 
-                        TestField("Account No");
-                        TestField("Main Sector");
-                        TestField("Sub-Sector");
-                        TestField("Specific Sector");
+                        Rec.TestField("Account No");
+                        Rec.TestField("Main Sector");
+                        Rec.TestField("Sub-Sector");
+                        Rec.TestField("Specific Sector");
 
                         Prof.Reset;
-                        Prof.SetRange(Prof."Loan No.", "Loan  No.");
-                        Prof.SetRange(Prof."Client Code", "Client Code");
+                        Prof.SetRange(Prof."Loan No.", Rec."Loan  No.");
+                        Prof.SetRange(Prof."Client Code", Rec."Client Code");
                         if Prof.Find('-') = false then begin
                             Error('Please Insert Profitability Information');
                         end;
 
                         //***Check Appraisal Details
                         AppExp.Reset;
-                        AppExp.SetRange(AppExp.Loan, "Loan  No.");
-                        AppExp.SetRange(AppExp."Client Code", "Client Code");
+                        AppExp.SetRange(AppExp.Loan, Rec."Loan  No.");
+                        AppExp.SetRange(AppExp."Client Code", Rec."Client Code");
                         if AppExp.Find('-') = false then begin
                             Error('Please Insert Appraisal Expense Detail');
                         end;
 
 
 
-                        if LoanType.Get("Loan Product Type") then begin
+                        if LoanType.Get(Rec."Loan Product Type") then begin
                             if LoanType."Appraise Guarantors" = true then begin
                                 LGuarantors.Reset;
-                                LGuarantors.SetRange(LGuarantors."Loan No", "Loan  No.");
+                                LGuarantors.SetRange(LGuarantors."Loan No", Rec."Loan  No.");
                                 if LGuarantors.Find('-') = false then begin
                                     Error('Please Insert Loan Applicant Guarantor Information');
                                 end;
@@ -371,14 +371,14 @@ Page 51516619 "Loan- MICRO Pending Disburse"
                         end;
 
                         LoanSecurities.Reset;
-                        LoanSecurities.SetRange(LoanSecurities."Loan No", "Loan  No.");
+                        LoanSecurities.SetRange(LoanSecurities."Loan No", Rec."Loan  No.");
                         if LoanSecurities.Find('-') = false then begin
                             Error(Text002);
                         end;
 
                         TotalSecurities := 0;
                         LnSecurities.Reset;
-                        LnSecurities.SetRange(LnSecurities."Loan No", "Loan  No.");
+                        LnSecurities.SetRange(LnSecurities."Loan No", Rec."Loan  No.");
                         if LnSecurities.Find('-') then begin
                             repeat
                                 TotalSecurities := TotalSecurities;
@@ -387,24 +387,24 @@ Page 51516619 "Loan- MICRO Pending Disburse"
 
 
 
-                        TestField("Approved Amount");
-                        TestField("Loan Product Type");
+                        Rec.TestField("Approved Amount");
+                        Rec.TestField("Loan Product Type");
 
                         // if "Mode of Disbursement" <> "mode of disbursement"::"Bank Transfer" then
                         //     Error('Mode of disbursement must be Bank Transfer');
 
 
                         LoanG.Reset;
-                        LoanG.SetRange(LoanG."Loan No", "Loan  No.");
+                        LoanG.SetRange(LoanG."Loan No", Rec."Loan  No.");
                         if LoanG.Find('-') then begin
                             if LoanG.Count < GSetUp."Max Loan Guarantors BLoans" then
                                 Error(Text006);
                         end;
                         //***********************Loan Approval Workflow********************//
-                        if "Approval Status" <> "approval status"::Open then begin
+                        if Rec."Approval Status" <> Rec."approval status"::Open then begin
                             Error(Text001);
                         end else
-                            if "Approval Status" = "approval status"::Approved then
+                            if Rec."Approval Status" = Rec."approval status"::Approved then
                                 Error(Text009);
                         if Confirm('Send Approval request?', false) = false then begin
                             exit;
@@ -443,13 +443,13 @@ Page 51516619 "Loan- MICRO Pending Disburse"
 
                     trigger OnAction()
                     begin
-                        if ("Repayment Start Date" = 0D) then
+                        if (Rec."Repayment Start Date" = 0D) then
                             Error('Please enter Disbursement Date to continue');
 
-                        SFactory.FnGenerateRepaymentSchedule("Loan  No.");
+                        SFactory.FnGenerateRepaymentSchedule(Rec."Loan  No.");
 
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", Rec."Loan  No.");
                         if LoanApp.Find('-') then
                             Report.Run(51516852, true, false, LoanApp);
                     end;
@@ -497,18 +497,18 @@ Page 51516619 "Loan- MICRO Pending Disburse"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        Source := Source::MICRO;
+        Rec.Source := Rec.Source::MICRO;
     end;
 
     trigger OnNextRecord(Steps: Integer): Integer
     begin
-        if "Loan Status" = "loan status"::Approved then
+        if Rec."Loan Status" = Rec."loan status"::Approved then
             CurrPage.Editable := false;
     end;
 
     trigger OnOpenPage()
     begin
-        SetRange(Posted, false);
+        Rec.SetRange(Posted, false);
     end;
 
     var
@@ -660,7 +660,7 @@ Page 51516619 "Loan- MICRO Pending Disburse"
     begin
 
         //IF "Loan Status"="Loan Status"::Application THEN BEGIN
-        if "Approval Status" = "approval status"::Open then begin
+        if Rec."Approval Status" = Rec."approval status"::Open then begin
             CancelApproval := false;
             SendApproval := true;
             MNoEditable := true;
@@ -681,7 +681,7 @@ Page 51516619 "Loan- MICRO Pending Disburse"
         end;
 
         //IF "Loan Status"="Loan Status"::Appraisal THEN BEGIN
-        if "Approval Status" = "approval status"::Pending then begin
+        if Rec."Approval Status" = Rec."approval status"::Pending then begin
             CancelApproval := true;
             SendApproval := false;
             MNoEditable := false;
@@ -703,7 +703,7 @@ Page 51516619 "Loan- MICRO Pending Disburse"
         end;
 
         //IF "Loan Status"="Loan Status"::Rejected THEN BEGIN
-        if "Approval Status" = "approval status"::Rejected then begin
+        if Rec."Approval Status" = Rec."approval status"::Rejected then begin
             CancelApproval := false;
             SendApproval := false;
             MNoEditable := false;
@@ -725,7 +725,7 @@ Page 51516619 "Loan- MICRO Pending Disburse"
         end;
 
         //IF "Loan Status"="Loan Status"::Approved THEN BEGIN
-        if "Approval Status" = "approval status"::Approved then begin
+        if Rec."Approval Status" = Rec."approval status"::Approved then begin
             CancelApproval := false;
             SendApproval := false;
             MNoEditable := false;

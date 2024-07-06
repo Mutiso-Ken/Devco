@@ -4,34 +4,34 @@ Table 51516831 "Property No Setup"
 
     fields
     {
-        field(10;"Project Code";Code[20])
+        field(10; "Project Code"; Code[20])
         {
-            TableRelation = "Fixed Asset"."No." where ("Project Asset"=const(true));
+            TableRelation = "Fixed Asset"."No." where("Project Asset" = const(true));
         }
-        field(11;"Property Type";Code[20])
+        field(11; "Property Type"; Code[20])
         {
             TableRelation = "Property Sizes".Code;
         }
-        field(12;NoPart;Code[10])
+        field(12; NoPart; Code[10])
         {
         }
-        field(13;"Starting Date";Date)
+        field(13; "Starting Date"; Date)
         {
         }
-        field(14;"Starting No";Code[5])
+        field(14; "Starting No"; Code[5])
         {
         }
-        field(15;"Last No Used";Code[5])
+        field(15; "Last No Used"; Code[5])
         {
         }
-        field(16;"Increment By";Decimal)
+        field(16; "Increment By"; Decimal)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Project Code","Property Type")
+        key(Key1; "Project Code", "Property Type")
         {
             Clustered = true;
         }

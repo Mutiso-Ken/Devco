@@ -14,39 +14,39 @@ Page 51516324 "Account Types List"
         {
             repeater(Group)
             {
-                field("Code";Code)
+                field("Code"; Rec.Code)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Dormancy Period (M)";"Dormancy Period (M)")
+                field("Dormancy Period (M)"; Rec."Dormancy Period (M)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Entered By";"Entered By")
+                field("Entered By"; Rec."Entered By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Entered";"Date Entered")
+                field("Date Entered"; Rec."Date Entered")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Time Entered";"Time Entered")
+                field("Time Entered"; Rec."Time Entered")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Last Date Modified";"Last Date Modified")
+                field("Last Date Modified"; Rec."Last Date Modified")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Modified By";"Modified By")
+                field("Modified By"; Rec."Modified By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No Prefix";"Account No Prefix")
+                field("Account No Prefix"; Rec."Account No Prefix")
                 {
                     ApplicationArea = Basic;
                     Editable = false;

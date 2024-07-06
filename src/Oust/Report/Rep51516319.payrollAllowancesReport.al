@@ -6,124 +6,124 @@ Report 51516319 "payroll Allowances Report."
 
     dataset
     {
-        dataitem("prPeriod Transactions.";"prPeriod Transactions.")
+        dataitem("prPeriod Transactions."; "prPeriod Transactions.")
         {
-            DataItemTableView = sorting("Group Order","Transaction Code","Period Month","Period Year",Membership,"Reference No","Department Code") where("Group Text"=filter('ALLOWANCE'));
-            RequestFilterFields = "Transaction Code","Employee Code","Payroll Period";
+            DataItemTableView = sorting("Group Order", "Transaction Code", "Period Month", "Period Year", Membership, "Reference No", "Department Code") where("Group Text" = filter('ALLOWANCE'));
+            RequestFilterFields = "Transaction Code", "Employee Code", "Payroll Period";
             column(ReportForNavId_7769; 7769)
             {
             }
-            column(USERID;UserId)
+            column(USERID; UserId)
             {
             }
-            column(TODAY;Today)
+            column(TODAY; Today)
             {
             }
-            column(PeriodName;PeriodName)
+            column(PeriodName; PeriodName)
             {
             }
-            column(CurrReport_PAGENO;CurrReport.PageNo)
+            column(CurrReport_PAGENO; CurrReport.PageNo)
             {
             }
-            column(CompanyInfo_Picture;CompanyInfo.Picture)
+            column(CompanyInfo_Picture; CompanyInfo.Picture)
             {
             }
-            column(prPeriod_Transactions__Group_Text_;"Group Text")
+            column(prPeriod_Transactions__Group_Text_; "Group Text")
             {
             }
-            column(prPeriod_Transactions_Amount;Amount)
+            column(prPeriod_Transactions_Amount; Amount)
             {
             }
-            column(prPeriod_Transactions__Transaction_Name_;"Transaction Name")
+            column(prPeriod_Transactions__Transaction_Name_; "Transaction Name")
             {
             }
-            column(Allowances_ReportCaption;Allowances_ReportCaptionLbl)
+            column(Allowances_ReportCaption; Allowances_ReportCaptionLbl)
             {
             }
-            column(User_Name_Caption;User_Name_CaptionLbl)
+            column(User_Name_Caption; User_Name_CaptionLbl)
             {
             }
-            column(Print_Date_Caption;Print_Date_CaptionLbl)
+            column(Print_Date_Caption; Print_Date_CaptionLbl)
             {
             }
-            column(Period_Caption;Period_CaptionLbl)
+            column(Period_Caption; Period_CaptionLbl)
             {
             }
-            column(Page_No_Caption;Page_No_CaptionLbl)
+            column(Page_No_Caption; Page_No_CaptionLbl)
             {
             }
-            column(Transaction_Name_Caption;Transaction_Name_CaptionLbl)
+            column(Transaction_Name_Caption; Transaction_Name_CaptionLbl)
             {
             }
-            column(Period_Amount_Caption;Period_Amount_CaptionLbl)
+            column(Period_Amount_Caption; Period_Amount_CaptionLbl)
             {
             }
-            column(Prepared_by_______________________________________Date_________________Caption;Prepared_by_______________________________________Date_________________CaptionLbl)
+            column(Prepared_by_______________________________________Date_________________Caption; Prepared_by_______________________________________Date_________________CaptionLbl)
             {
             }
-            column(Checked_by________________________________________Date_________________Caption;Checked_by________________________________________Date_________________CaptionLbl)
+            column(Checked_by________________________________________Date_________________Caption; Checked_by________________________________________Date_________________CaptionLbl)
             {
             }
-            column(Authorized_by____________________________________Date_________________Caption;Authorized_by____________________________________Date_________________CaptionLbl)
+            column(Authorized_by____________________________________Date_________________Caption; Authorized_by____________________________________Date_________________CaptionLbl)
             {
             }
-            column(Approved_by______________________________________Date_________________Caption;Approved_by______________________________________Date_________________CaptionLbl)
+            column(Approved_by______________________________________Date_________________Caption; Approved_by______________________________________Date_________________CaptionLbl)
             {
             }
-            column(prPeriod_Transactions_Employee_Code;"Employee Code")
+            column(prPeriod_Transactions_Employee_Code; "Employee Code")
             {
             }
-            column(prPeriod_Transactions_Transaction_Code;"Transaction Code")
+            column(prPeriod_Transactions_Transaction_Code; "Transaction Code")
             {
             }
-            column(prPeriod_Transactions_Period_Month;"Period Month")
+            column(prPeriod_Transactions_Period_Month; "Period Month")
             {
             }
-            column(prPeriod_Transactions_Period_Year;"Period Year")
+            column(prPeriod_Transactions_Period_Year; "Period Year")
             {
             }
-            column(prPeriod_Transactions_Membership;Membership)
+            column(prPeriod_Transactions_Membership; Membership)
             {
             }
-            column(prPeriod_Transactions_Reference_No;"Reference No")
+            column(prPeriod_Transactions_Reference_No; "Reference No")
             {
             }
-            column(prPeriod_Transactions_Group_Order;"Group Order")
+            column(prPeriod_Transactions_Group_Order; "Group Order")
             {
             }
-            column(prPeriod_Transactions_Department_Code;"Department Code")
+            column(prPeriod_Transactions_Department_Code; "Department Code")
             {
             }
-            column(Employee_Code;"Employee Code")
+            column(Employee_Code; "Employee Code")
             {
             }
-            column(Employee_Name;EmployeeName)
+            column(Employee_Name; EmployeeName)
             {
             }
-            column(SN;SN)
+            column(SN; SN)
             {
             }
 
             trigger OnAfterGetRecord()
             begin
-                
-                
+
+
                 HR.Reset;
-                HR.SetRange(HR."No.","prPeriod Transactions."."Employee Code");
+                HR.SetRange(HR."No.", "prPeriod Transactions."."Employee Code");
                 if HR.Find('-') then begin
-                EmployeeName:=HR."Full Name";
+                    EmployeeName := HR."Full Name";
                 end;
-                
-                
-                "prPeriod Transactions.".SetRange("Payroll Period",SelectedPeriod);
-                "prPeriod Transactions.".SetFilter("Group Order",'=3');
+
+
+                "prPeriod Transactions.".SetRange("Payroll Period", SelectedPeriod);
+                "prPeriod Transactions.".SetFilter("Group Order", '=3');
                 //"prPeriod Transactions".SETFILTER("prPeriod Transactions"."Sub Group Order",'=2');
-                if Amount<=0 then
-                  CurrReport.Skip;
-                TotalsAllowances:=TotalsAllowances+"prPeriod Transactions.".Amount;
-                
-                
-                
+                if Amount <= 0 then
+                    CurrReport.Skip;
+                TotalsAllowances := TotalsAllowances + "prPeriod Transactions.".Amount;
+
+
+
                 /*"prPeriod Transactions".SETRANGE("Payroll Period",SelectedPeriod);
                 //"prPeriod Transactions".SETFILTER("Group Order",'=1|3');
                 //"prPeriod Transactions".SETFILTER("prPeriod Transactions"."Sub Group Order",'=2');
@@ -146,14 +146,14 @@ Report 51516319 "payroll Allowances Report."
                 IF PeriodTrans2.FIND('-') THEN
                 PrevMonth:=PeriodTrans2.Amount;
                     */
-                SN:=SN+1;
+                SN := SN + 1;
 
             end;
 
             trigger OnPreDataItem()
             begin
                 LastFieldNo := FieldNo("Period Year");
-                SN:=0;
+                SN := 0;
             end;
         }
     }
@@ -165,7 +165,7 @@ Report 51516319 "payroll Allowances Report."
         {
             area(content)
             {
-                field(DateFilter;DateFilter)
+                field(DateFilter; DateFilter)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Date Filter';
@@ -185,9 +185,8 @@ Report 51516319 "payroll Allowances Report."
 
     trigger OnInitReport()
     begin
-        if UserSetup.Get(UserId) then
-        begin
-        if UserSetup."Payroll User"=false then Error ('You dont have permissions for payroll, Contact your system administrator! ')
+        if UserSetup.Get(UserId) then begin
+            if UserSetup."Payroll User" = false then Error('You dont have permissions for payroll, Contact your system administrator! ')
         end;
     end;
 
@@ -196,18 +195,17 @@ Report 51516319 "payroll Allowances Report."
         //SelectedPeriod:="prPeriod Transactions".GETRANGEMIN("Payroll Period");
 
 
-        SelectedPeriod:=DateFilter;
+        SelectedPeriod := DateFilter;
 
         objPeriod.Reset;
-        objPeriod.SetRange(objPeriod."Date Opened",SelectedPeriod);
-        if objPeriod.Find('-') then
-        begin
-            PeriodName:=objPeriod."Period Name";
+        objPeriod.SetRange(objPeriod."Date Opened", SelectedPeriod);
+        if objPeriod.Find('-') then begin
+            PeriodName := objPeriod."Period Name";
         end;
 
 
         if CompanyInfo.Get() then
-        CompanyInfo.CalcFields(CompanyInfo.Picture);
+            CompanyInfo.CalcFields(CompanyInfo.Picture);
     end;
 
     var

@@ -10,63 +10,63 @@ Page 51516196 "Member Acc. Sign. Card Change"
         {
             group(General)
             {
-                field("Member No."; "Member No.")
+                field("Member No."; Rec."Member No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member No.';
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Group No.';
                 }
-                field(Names; Names)
+                field(Names; Rec.Names)
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field("Date Of Birth"; "Date Of Birth")
+                field("Date Of Birth"; Rec."Date Of Birth")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field("Mobile Phone No"; "Mobile Phone No")
+                field("Mobile Phone No"; Rec."Mobile Phone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Designation; Designation)
+                field(Designation; Rec.Designation)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Must Sign"; "Must Sign")
+                field("Must Sign"; Rec."Must Sign")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Must be Present"; "Must be Present")
+                field("Must be Present"; Rec."Must be Present")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Withdrawal Limit"; "Withdrawal Limit")
+                field("Withdrawal Limit"; Rec."Withdrawal Limit")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mobile Banking Limit"; "Mobile Banking Limit")
+                field("Mobile Banking Limit"; Rec."Mobile Banking Limit")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Signed Up For Mobile Banking"; "Signed Up For Mobile Banking")
+                field("Signed Up For Mobile Banking"; Rec."Signed Up For Mobile Banking")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Expiry Date"; "Expiry Date")
+                field("Expiry Date"; Rec."Expiry Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Email Address"; "Email Address")
+                field("Email Address"; Rec."Email Address")
                 {
                     ApplicationArea = Basic;
                 }

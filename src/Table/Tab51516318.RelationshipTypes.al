@@ -6,17 +6,17 @@ Table 51516318 "Relationship Types"
 
     fields
     {
-        field(1;"code";Code[30])
+        field(1; "code"; Code[30])
         {
         }
-        field(2;Describution;Text[30])
+        field(2; Describution; Text[30])
         {
         }
     }
 
     keys
     {
-        key(Key1;"code")
+        key(Key1; "code")
         {
             Clustered = true;
         }

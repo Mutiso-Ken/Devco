@@ -4,10 +4,10 @@ page 51516936 "Sub-Sector"
     Caption = 'Sub-Sector';
     PageType = List;
     SourceTable = "Sub-Sector";
-     Editable=true;
-    InsertAllowed=true;
+    Editable = true;
+    InsertAllowed = true;
     UsageCategory = Lists;
-    
+
     layout
     {
         area(content)

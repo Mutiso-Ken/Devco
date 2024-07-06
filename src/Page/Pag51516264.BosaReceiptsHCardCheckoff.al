@@ -13,72 +13,72 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
         {
             group(General)
             {
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Entered By"; "Entered By")
+                field("Entered By"; Rec."Entered By")
                 {
                     ApplicationArea = Basic;
                     Enabled = false;
                 }
-                field("Date Entered"; "Date Entered")
+                field("Date Entered"; Rec."Date Entered")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Posting date"; "Posting date")
+                field("Posting date"; Rec."Posting date")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Loan CutOff Date"; "Loan CutOff Date")
+                field("Loan CutOff Date"; Rec."Loan CutOff Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Remarks; Remarks)
+                field(Remarks; Rec.Remarks)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Count"; "Total Count")
+                field("Total Count"; Rec."Total Count")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Posted By"; "Posted By")
+                field("Posted By"; Rec."Posted By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type"; "Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
 
                     ApplicationArea = Basic;
                 }
-                field("Employer Code"; "Employer Code")
+                field("Employer Code"; Rec."Employer Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Employer Name"; "Employer Name")
+                field("Employer Name"; Rec."Employer Name")
                 {
                     ApplicationArea = all;
                     Editable = false;
                 }
-                field("Document No"; "Document No")
+                field("Document No"; Rec."Document No")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Scheduled Amount"; "Scheduled Amount")
+                field("Scheduled Amount"; Rec."Scheduled Amount")
                 {
                     ApplicationArea = Basic;
                 }
@@ -121,7 +121,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
 
 
                     RcptBufLines.Reset;
-                    RcptBufLines.SetRange(RcptBufLines."Receipt Header No", No);
+                    RcptBufLines.SetRange(RcptBufLines."Receipt Header No", Rec.No);
                     if RcptBufLines.Find('-') then begin
                         repeat
 
@@ -179,20 +179,20 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                 begin
 
                     genstup.Get();
-                    if Posted = true then
+                    if Rec.Posted = true then
                         Error('This Check Off has already been posted');
-                    if "Account No" = '' then
+                    if Rec."Account No" = '' then
                         Error('You must specify the Account No.');
-                    if "Document No" = '' then
+                    if Rec."Document No" = '' then
                         Error('You must specify the Document No.');
-                    if "Posting date" = 0D then
+                    if Rec."Posting date" = 0D then
                         Error('You must specify the Posting date.');
-                    if "Posting date" = 0D then
+                    if Rec."Posting date" = 0D then
                         Error('You must specify the Posting date.');
-                    if "Loan CutOff Date" = 0D then
+                    if Rec."Loan CutOff Date" = 0D then
                         Error('You must specify the Loan CutOff Date.');
-                    Datefilter := '..' + Format("Loan CutOff Date");
-                    IssueDate := "Loan CutOff Date";
+                    Datefilter := '..' + Format(Rec."Loan CutOff Date");
+                    IssueDate := Rec."Loan CutOff Date";
                     //General Journals
                     // if FundsUSer.Get(UserId) then begin
                     Jtemplate := 'GENERAL';
@@ -208,24 +208,24 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
 
                     RunBal := 0;
                     TotalWelfareAmount := 0;
-                    CalcFields("Scheduled Amount");
-                    if "Scheduled Amount" <> Amount then begin
+                    Rec.CalcFields("Scheduled Amount");
+                    if Rec."Scheduled Amount" <> Rec.Amount then begin
                         ERROR('Scheduled Amount Is Not Equal To Cheque Amount');
                     end;
 
-                    CalcFields("Scheduled Amount");
+                    Rec.CalcFields("Scheduled Amount");
                     LineN := LineN + 10000;
                     Gnljnline.Init;
                     Gnljnline."Journal Template Name" := Jtemplate;
                     Gnljnline."Journal Batch Name" := Jbatch;
                     Gnljnline."Line No." := LineN;
-                    Gnljnline."Account Type" := "Account Type";
-                    Gnljnline."Account No." := "Account No";
+                    Gnljnline."Account Type" := Rec."Account Type";
+                    Gnljnline."Account No." := Rec."Account No";
                     Gnljnline.Validate(Gnljnline."Account No.");
-                    Gnljnline."Document No." := "Document No";
-                    Gnljnline."Posting Date" := "Posting date";
-                    Gnljnline.Description := 'CHECKOFF ' + Remarks;
-                    Gnljnline.Amount := "Scheduled Amount";
+                    Gnljnline."Document No." := Rec."Document No";
+                    Gnljnline."Posting Date" := Rec."Posting date";
+                    Gnljnline.Description := 'CHECKOFF ' + Rec.Remarks;
+                    Gnljnline.Amount := Rec."Scheduled Amount";
                     Gnljnline.Validate(Gnljnline.Amount);
                     Gnljnline."Shortcut Dimension 1 Code" := 'BOSA';
                     Gnljnline."Shortcut Dimension 2 Code" := 'NAIROBI';
@@ -237,14 +237,14 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
 
 
                     RcptBufLines.Reset;
-                    RcptBufLines.SetRange(RcptBufLines."Receipt Header No", No);
+                    RcptBufLines.SetRange(RcptBufLines."Receipt Header No", Rec.No);
                     RcptBufLines.SetRange(RcptBufLines.Posted, false);
                     if RcptBufLines.Find('-') then begin
                         repeat
                             RunBal := 0;
                             RunBal := RcptBufLines.Amount;
-                            RunBal := FnRunInterest(RcptBufLines, RunBal, "Loan CutOff Date");
-                            RunBal := FnRunPrinciple(RcptBufLines, RunBal, "Loan CutOff Date");
+                            RunBal := FnRunInterest(RcptBufLines, RunBal, Rec."Loan CutOff Date");
+                            RunBal := FnRunPrinciple(RcptBufLines, RunBal, Rec."Loan CutOff Date");
                             RunBal := FnRunEntranceFee(RcptBufLines, RunBal);
                             RunBal := FnRunShareCapital(RcptBufLines, RunBal);
                             RunBal := FnRunDepositContribution(RcptBufLines, RunBal);
@@ -299,9 +299,9 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                 trigger OnAction()
                 begin
                     if Confirm('Are you sure you want to mark this Checkoff as Processed', false) = true then begin
-                        Posted := true;
-                        "Posted By" := UserId;
-                        Modify;
+                        Rec.Posted := true;
+                        Rec."Posted By" := UserId;
+                        Rec.Modify;
                     end;
                 end;
             }
@@ -310,8 +310,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        "Posting date" := Today;
-        "Date Entered" := Today;
+        Rec."Posting date" := Today;
+        Rec."Date Entered" := Today;
     end;
 
     var
@@ -397,8 +397,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                             Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
                             Gnljnline."Account No." := LoanApp."Client Code";
                             Gnljnline.Validate(Gnljnline."Account No.");
-                            Gnljnline."Document No." := "Document No";
-                            Gnljnline."Posting Date" := "Posting date";
+                            Gnljnline."Document No." := Rec."Document No";
+                            Gnljnline."Posting Date" := Rec."Posting date";
                             Gnljnline.Description := LoanApp."Loan Product Type" + '-Loan Interest Paid ';
                             Gnljnline.Amount := -1 * AmountToDeduct;
                             Gnljnline.Validate(Gnljnline.Amount);
@@ -490,8 +490,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                                 Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
                                 Gnljnline."Account No." := LoanApp."Client Code";
                                 Gnljnline.Validate(Gnljnline."Account No.");
-                                Gnljnline."Document No." := "Document No";
-                                Gnljnline."Posting Date" := "Posting date";
+                                Gnljnline."Document No." := Rec."Document No";
+                                Gnljnline."Posting Date" := Rec."Posting date";
                                 Gnljnline.Description := LoanApp."Loan Product Type" + '-Loan Repayment ';
                                 if RunningBalance > ScheduleRepayment then begin
                                     Gnljnline.Amount := ScheduleRepayment * -1//MonthlyRepay*-1;
@@ -549,9 +549,9 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                             Gnljnline."Account Type" := Gnljnline."account type"::Customer;
                             Gnljnline."Account No." := RcptBufLines."Member No";
                             Gnljnline.Validate(Gnljnline."Account No.");
-                            Gnljnline."Document No." := "Document No";
-                            Gnljnline."Posting Date" := "Posting date";
-                            Gnljnline.Description := 'Registration Fee ' + Remarks;
+                            Gnljnline."Document No." := Rec."Document No";
+                            Gnljnline."Posting Date" := Rec."Posting date";
+                            Gnljnline.Description := 'Registration Fee ' + Rec.Remarks;
                             Gnljnline.Amount := AmountToDeduct * -1;
                             Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Registration Fee";
                             Gnljnline."Shortcut Dimension 1 Code" := 'BOSA';
@@ -607,8 +607,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                         Gnljnline."Account Type" := Gnljnline."account type"::Customer;
                         Gnljnline."Account No." := ObjRcptBuffer."Member No";
                         Gnljnline.Validate(Gnljnline."Account No.");
-                        Gnljnline."Document No." := "Document No";
-                        Gnljnline."Posting Date" := "Posting date";
+                        Gnljnline."Document No." := Rec."Document No";
+                        Gnljnline."Posting Date" := Rec."Posting date";
                         Gnljnline.Description := 'Share Capital';
                         Gnljnline.Amount := AmountToDeduct * -1;
                         Gnljnline.Validate(Gnljnline.Amount);
@@ -657,8 +657,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                 Gnljnline."Account Type" := Gnljnline."account type"::Customer;
                 Gnljnline."Account No." := ObjRcptBuffer."Member No";
                 Gnljnline.Validate(Gnljnline."Account No.");
-                Gnljnline."Document No." := "Document No";
-                Gnljnline."Posting Date" := "Posting date";
+                Gnljnline."Document No." := Rec."Document No";
+                Gnljnline."Posting Date" := Rec."Posting date";
                 Gnljnline.Description := 'Deposits Contribution';
                 Gnljnline.Amount := AmountToDeduct * -1;
                 Gnljnline.Validate(Gnljnline.Amount);
@@ -703,8 +703,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                 Gnljnline."Account Type" := Gnljnline."account type"::Customer;
                 Gnljnline."Account No." := ObjRcptBuffer."Member No";
                 Gnljnline.Validate(Gnljnline."Account No.");
-                Gnljnline."Document No." := "Document No";
-                Gnljnline."Posting Date" := "Posting date";
+                Gnljnline."Document No." := Rec."Document No";
+                Gnljnline."Posting Date" := Rec."Posting date";
                 Gnljnline.Description := 'Holiday Savings';
                 Gnljnline.Amount := AmountToDeduct * -1;
                 Gnljnline.Validate(Gnljnline.Amount);
@@ -749,8 +749,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                 Gnljnline."Account Type" := Gnljnline."account type"::Customer;
                 Gnljnline."Account No." := ObjRcptBuffer."Member No";
                 Gnljnline.Validate(Gnljnline."Account No.");
-                Gnljnline."Document No." := "Document No";
-                Gnljnline."Posting Date" := "Posting date";
+                Gnljnline."Document No." := Rec."Document No";
+                Gnljnline."Posting Date" := Rec."Posting date";
                 Gnljnline.Description := 'Housing Contribution';
                 Gnljnline.Amount := AmountToDeduct * -1;
                 Gnljnline.Validate(Gnljnline.Amount);
@@ -837,8 +837,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                             Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
                             Gnljnline."Account No." := LoanApp."Client Code";
                             Gnljnline.Validate(Gnljnline."Account No.");
-                            Gnljnline."Document No." := "Document No";
-                            Gnljnline."Posting Date" := "Posting date";
+                            Gnljnline."Document No." := Rec."Document No";
+                            Gnljnline."Posting Date" := Rec."Posting date";
                             Gnljnline.Description := LoanApp."Loan Product Type" + '-Repayment from excess checkoff'; //TODO Change the Narrative after testing
                             Gnljnline.Amount := AmountToDeduct * -1;
                             Gnljnline.Validate(Gnljnline.Amount);
@@ -899,8 +899,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                 Gnljnline."Account Type" := Gnljnline."account type"::Customer;
                 Gnljnline."Account No." := ObjRcptBuffer."Member No";
                 Gnljnline.Validate(Gnljnline."Account No.");
-                Gnljnline."Document No." := "Document No";
-                Gnljnline."Posting Date" := "Posting date";
+                Gnljnline."Document No." := Rec."Document No";
+                Gnljnline."Posting Date" := Rec."Posting date";
                 Gnljnline.Description := 'Unallocated Funds';
                 Gnljnline.Amount := AmountToTransfer * -1;
                 Gnljnline.Validate(Gnljnline.Amount);
@@ -921,7 +921,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
         ObjVendor: Record Vendor;
     begin
         if RunningBalance > 0 then begin
-            if "Employer Code" = 'MMHSACCO' then begin
+            if Rec."Employer Code" = 'MMHSACCO' then begin
                 AmountToDeduct := RunningBalance;
                 if RunningBalance >= 200 then
                     AmountToDeduct := 200;
@@ -959,8 +959,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                 Gnljnline."Account Type" := Gnljnline."account type"::Customer;
                 Gnljnline."Account No." := ObjRcptBuffer."Member No";
                 Gnljnline.Validate(Gnljnline."Account No.");
-                Gnljnline."Document No." := "Document No";
-                Gnljnline."Posting Date" := "Posting date";
+                Gnljnline."Document No." := Rec."Document No";
+                Gnljnline."Posting Date" := Rec."Posting date";
                 Gnljnline.Description := 'Alpha Savings';
                 Gnljnline.Amount := AmountToDeduct * -1;
                 Gnljnline.Validate(Gnljnline.Amount);
@@ -1007,8 +1007,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                 Gnljnline."Account Type" := Gnljnline."account type"::Customer;
                 Gnljnline."Account No." := ObjRcptBuffer."Member No";
                 Gnljnline.Validate(Gnljnline."Account No.");
-                Gnljnline."Document No." := "Document No";
-                Gnljnline."Posting Date" := "Posting date";
+                Gnljnline."Document No." := Rec."Document No";
+                Gnljnline."Posting Date" := Rec."Posting date";
                 Gnljnline.Description := 'Junior Savings';
                 Gnljnline.Amount := AmountToDeduct * -1;
                 Gnljnline.Validate(Gnljnline.Amount);
@@ -1053,8 +1053,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                 Gnljnline."Account Type" := Gnljnline."account type"::Customer;
                 Gnljnline."Account No." := ObjRcptBuffer."Member No";
                 Gnljnline.Validate(Gnljnline."Account No.");
-                Gnljnline."Document No." := "Document No";
-                Gnljnline."Posting Date" := "Posting date";
+                Gnljnline."Document No." := Rec."Document No";
+                Gnljnline."Posting Date" := Rec."Posting date";
                 Gnljnline.Description := 'Junior Savings';
                 Gnljnline.Amount := AmountToDeduct * -1;
                 Gnljnline.Validate(Gnljnline.Amount);
@@ -1099,8 +1099,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                 Gnljnline."Account Type" := Gnljnline."account type"::Customer;
                 Gnljnline."Account No." := ObjRcptBuffer."Member No";
                 Gnljnline.Validate(Gnljnline."Account No.");
-                Gnljnline."Document No." := "Document No";
-                Gnljnline."Posting Date" := "Posting date";
+                Gnljnline."Document No." := Rec."Document No";
+                Gnljnline."Posting Date" := Rec."Posting date";
                 Gnljnline.Description := 'Junior Savings one';
                 Gnljnline.Amount := AmountToDeduct * -1;
                 Gnljnline.Validate(Gnljnline.Amount);

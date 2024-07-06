@@ -8,7 +8,7 @@ pageextension 51516885 "Company Information" extends "Company Information"
         }
         addafter(Address)
         {
-            field("Company P.I.N"; "Company P.I.N")
+            field("Company P.I.N"; Rec."Company P.I.N")
             {
                 ApplicationArea = all;
                 Caption = 'Company Information';

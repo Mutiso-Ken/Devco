@@ -15,42 +15,42 @@ page 50326 "Payroll Periods."
             repeater(Control1102755000)
             {
                 ShowCaption = false;
-                field("Period Month"; "Period Month")
+                field("Period Month"; Rec."Period Month")
                 {
                     ApplicationArea = All;
-                  
+
                 }
-                field("Period Year"; "Period Year")
+                field("Period Year"; Rec."Period Year")
                 {
                     ApplicationArea = All;
-                  
+
                 }
-                field("Period Name"; "Period Name")
+                field("Period Name"; Rec."Period Name")
                 {
                     ApplicationArea = All;
-                  
+
                 }
-                field("Date Opened"; "Date Opened")
+                field("Date Opened"; Rec."Date Opened")
                 {
                     ApplicationArea = All;
-                  
+
                 }
-                field("Date Closed"; "Date Closed")
+                field("Date Closed"; Rec."Date Closed")
                 {
                     ApplicationArea = All;
-                  
+
                 }
-                field(Closed; Closed)
+                field(Closed; Rec.Closed)
                 {
-                  
+
                     ApplicationArea = All;
-                    
+
                 }
-                field("Payroll Code"; "Payroll Code")
+                field("Payroll Code"; Rec."Payroll Code")
                 {
                     Editable = false;
                     ApplicationArea = All;
-                    Visible=false;
+                    Visible = false;
                 }
             }
         }

@@ -4,26 +4,26 @@ Table 51516327 "ATM Charges"
 
     fields
     {
-        field(1;"Transaction Type";Option)
+        field(1; "Transaction Type"; Option)
         {
             OptionCaption = 'Balance Enquiry,Mini Statement,Cash Withdrawal - Coop ATM,Cash Withdrawal - VISA ATM,Reversal,Utility Payment,POS - Normal Purchase,M-PESA Withdrawal,Airtime Purchase,POS - School Payment,POS - Purchase With Cash Back,POS - Cash Deposit,POS - Benefit Cash Withdrawal,POS - Cash Deposit to Card,POS - M Banking,POS - Cash Withdrawal,POS - Balance Enquiry,POS - Mini Statement,MINIMUM BALANCE';
             OptionMembers = "Balance Enquiry","Mini Statement","Cash Withdrawal - Coop ATM","Cash Withdrawal - VISA ATM",Reversal,"Utility Payment","POS - Normal Purchase","M-PESA Withdrawal","Airtime Purchase","POS - School Payment","POS - Purchase With Cash Back","POS - Cash Deposit","POS - Benefit Cash Withdrawal","POS - Cash Deposit to Card","POS - M Banking","POS - Cash Withdrawal","POS - Balance Enquiry","POS - Mini Statement","MINIMUM BALANCE";
         }
-        field(2;"Total Amount";Decimal)
+        field(2; "Total Amount"; Decimal)
         {
         }
-        field(3;"Sacco Amount";Decimal)
+        field(3; "Sacco Amount"; Decimal)
         {
         }
-        field(4;Source;Option)
+        field(4; Source; Option)
         {
             OptionMembers = ATM,POS;
         }
-        field(5;"Atm Bank Settlement A/C";Code[30])
+        field(5; "Atm Bank Settlement A/C"; Code[30])
         {
             TableRelation = "Bank Account";
         }
-        field(6;"Atm Income A/c";Code[30])
+        field(6; "Atm Income A/c"; Code[30])
         {
             TableRelation = "G/L Account";
         }
@@ -31,7 +31,7 @@ Table 51516327 "ATM Charges"
 
     keys
     {
-        key(Key1;"Transaction Type")
+        key(Key1; "Transaction Type")
         {
             Clustered = true;
         }

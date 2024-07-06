@@ -8,7 +8,7 @@ Page 51516218 "Member Picture-Change Req"
     {
         area(content)
         {
-            field("Picture(New Value)"; "Picture(New Value)")
+            field("Picture(New Value)"; Rec."Picture(New Value)")
             {
                 ApplicationArea = Basic, Suite;
                 ShowCaption = false;

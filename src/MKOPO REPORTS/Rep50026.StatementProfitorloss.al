@@ -462,7 +462,7 @@ report 50026 StatementProfitorloss
                         GLEntry.SetFilter(GLEntry."Posting Date", '..%1', ThisYear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            PersonalExpenses += -1 *GLEntry.Amount;
+                            PersonalExpenses += -1 * GLEntry.Amount;
                         end;
 
                     until GLAccount.Next = 0;
@@ -494,7 +494,7 @@ report 50026 StatementProfitorloss
                         GLEntry.SetFilter(GLEntry."Posting Date", '..%1', ThisYear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            OperatingExpenses += -1* GLEntry.Amount;
+                            OperatingExpenses += -1 * GLEntry.Amount;
                         end;
 
                     until GLAccount.Next = 0;
@@ -558,7 +558,7 @@ report 50026 StatementProfitorloss
                         GLEntry.SetFilter(GLEntry."Posting Date", '..%1', ThisYear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            Makertingexpenses += -1 *GLEntry.Amount;
+                            Makertingexpenses += -1 * GLEntry.Amount;
                         end;
 
                     until GLAccount.Next = 0;
@@ -574,7 +574,7 @@ report 50026 StatementProfitorloss
                         GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            LMakertingexpenses +=-1* GLEntry.Amount;
+                            LMakertingexpenses += -1 * GLEntry.Amount;
                         end;
 
                     until GLAccount.Next = 0;
@@ -591,7 +591,7 @@ report 50026 StatementProfitorloss
                         GLEntry.SetFilter(GLEntry."Posting Date", '..%1', ThisYear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            DepreciationAmmortisation +=-1* GLEntry.Amount;
+                            DepreciationAmmortisation += -1 * GLEntry.Amount;
                         end;
 
                     until GLAccount.Next = 0;
@@ -607,7 +607,7 @@ report 50026 StatementProfitorloss
                         GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            LDepreciationAmmortisation +=-1* GLEntry.Amount;
+                            LDepreciationAmmortisation += -1 * GLEntry.Amount;
                         end;
 
                     until GLAccount.Next = 0;
@@ -625,7 +625,7 @@ report 50026 StatementProfitorloss
                         GLEntry.SetFilter(GLEntry."Posting Date", '..%1', ThisYear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            IncomeTaxExpense += -1* GLEntry.Amount;
+                            IncomeTaxExpense += -1 * GLEntry.Amount;
                         end;
 
                     until GLAccount.Next = 0;
@@ -641,7 +641,7 @@ report 50026 StatementProfitorloss
                         GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            LIncomeTaxExpense += -1* GLEntry.Amount;
+                            LIncomeTaxExpense += -1 * GLEntry.Amount;
                         end;
 
                     until GLAccount.Next = 0;
@@ -661,7 +661,7 @@ report 50026 StatementProfitorloss
                         GLEntry.SetFilter(GLEntry."Posting Date", '..%1', ThisYear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            RetainedEarnings +=  GLEntry.Amount;
+                            RetainedEarnings += GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
                 end;
@@ -676,7 +676,7 @@ report 50026 StatementProfitorloss
                         GLEntry.SetFilter(GLEntry."Posting Date", '..%1', EndofLastyear);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            LRetainedEarnings +=  GLEntry.Amount;
+                            LRetainedEarnings += GLEntry.Amount;
                         end;
                     until GLAccount.Next = 0;
                 end;

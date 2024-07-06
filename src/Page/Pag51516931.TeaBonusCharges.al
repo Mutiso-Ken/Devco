@@ -10,19 +10,19 @@ Page 51516931 "Tea Bonus Charges"
         {
             repeater(Group)
             {
-                field("Charge Code";"Charge Code")
+                field("Charge Code"; Rec."Charge Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Lower Band";"Lower Band")
+                field("Lower Band"; Rec."Lower Band")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Upper Band";"Upper Band")
+                field("Upper Band"; Rec."Upper Band")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Charge;Charge)
+                field(Charge; Rec.Charge)
                 {
                     ApplicationArea = Basic;
                 }

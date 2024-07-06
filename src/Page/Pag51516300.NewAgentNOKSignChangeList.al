@@ -15,43 +15,43 @@ Page 51516300 "New Agent/NOK/Sign Change List"
         {
             repeater(Group)
             {
-                field("Document No"; "Document No")
+                field("Document No"; Rec."Document No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member No"; "Member No")
+                field("Member No"; Rec."Member No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member Name"; "Member Name")
+                field("Member Name"; Rec."Member Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type"; "Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Change Type"; "Change Type")
+                field("Change Type"; Rec."Change Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Captured On"; "Captured On")
+                field("Captured On"; Rec."Captured On")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Change Effected"; "Change Effected")
+                field("Change Effected"; Rec."Change Effected")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }

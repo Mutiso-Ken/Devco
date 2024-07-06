@@ -14,15 +14,15 @@ Page 51516345 "User Branch Set Up"
         {
             repeater(Control1102760000)
             {
-                field("User Name";"User ID")
+                field("User Name"; Rec."User ID")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Activity;Activity)
+                field(Activity; Rec.Activity)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Branch;Branch)
+                field(Branch; Rec.Branch)
                 {
                     ApplicationArea = Basic;
                 }

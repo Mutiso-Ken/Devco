@@ -9,64 +9,64 @@ Page 51516283 "Sacco Employers card"
     {
         area(content)
         {
-            field("Code";Code)
+            field("Code"; Rec.Code)
             {
                 ApplicationArea = Basic;
-        
+
             }
-            field(Description;Description)
-            {
-                ApplicationArea = Basic;
-            }
-            field("Repayment Method";"Repayment Method")
-            {
-                ApplicationArea = Basic;
-                  Visible=false;
-            }
-            field("Check Off";"Check Off")
-            {
-                ApplicationArea = Basic;
-                  Visible=false;
-            }
-            field("No. of Members";"No. of Members")
+            field(Description; Rec.Description)
             {
                 ApplicationArea = Basic;
             }
-            field(Male;Male)
+            field("Repayment Method"; Rec."Repayment Method")
+            {
+                ApplicationArea = Basic;
+                Visible = false;
+            }
+            field("Check Off"; Rec."Check Off")
+            {
+                ApplicationArea = Basic;
+                Visible = false;
+            }
+            field("No. of Members"; Rec."No. of Members")
             {
                 ApplicationArea = Basic;
             }
-            field(Female;Female)
+            field(Male; Rec.Male)
             {
                 ApplicationArea = Basic;
             }
-            field("Vote Code";"Vote Code")
-            {
-                ApplicationArea = Basic;
-                  Visible=false;
-            }
-            field("Can Guarantee Loan";"Can Guarantee Loan")
-            {
-                ApplicationArea = Basic;
-                  Visible=false;
-            }
-            field("Active Members";"Active Members")
+            field(Female; Rec.Female)
             {
                 ApplicationArea = Basic;
             }
-            field("Dormant Members";"Dormant Members")
+            field("Vote Code"; Rec."Vote Code")
+            {
+                ApplicationArea = Basic;
+                Visible = false;
+            }
+            field("Can Guarantee Loan"; Rec."Can Guarantee Loan")
+            {
+                ApplicationArea = Basic;
+                Visible = false;
+            }
+            field("Active Members"; Rec."Active Members")
             {
                 ApplicationArea = Basic;
             }
-            field(Withdrawn;Withdrawn)
+            field("Dormant Members"; Rec."Dormant Members")
             {
                 ApplicationArea = Basic;
             }
-            field(Deceased;Deceased)
+            field(Withdrawn; Rec.Withdrawn)
             {
                 ApplicationArea = Basic;
             }
-            field("Join Date";"Join Date")
+            field(Deceased; Rec.Deceased)
+            {
+                ApplicationArea = Basic;
+            }
+            field("Join Date"; Rec."Join Date")
             {
                 ApplicationArea = Basic;
             }

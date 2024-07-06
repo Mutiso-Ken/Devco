@@ -11,87 +11,87 @@ Page 51516358 "Change MPESA PIN List"
         {
             repeater(Group)
             {
-                field(No;No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Entered";"Date Entered")
+                field("Date Entered"; Rec."Date Entered")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Time Entered";"Time Entered")
+                field("Time Entered"; Rec."Time Entered")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Entered By";"Entered By")
+                field("Entered By"; Rec."Entered By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("MPESA Application No";"MPESA Application No")
+                field("MPESA Application No"; Rec."MPESA Application No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Date";"Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Customer ID No";"Customer ID No")
+                field("Customer ID No"; Rec."Customer ID No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Customer Name";"Customer Name")
+                field("Customer Name"; Rec."Customer Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("MPESA Mobile No";"MPESA Mobile No")
+                field("MPESA Mobile No"; Rec."MPESA Mobile No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("MPESA Corporate No";"MPESA Corporate No")
+                field("MPESA Corporate No"; Rec."MPESA Corporate No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Comments;Comments)
+                field(Comments; Rec.Comments)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Rejection Reason";"Rejection Reason")
+                field("Rejection Reason"; Rec."Rejection Reason")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Sent";"Date Sent")
+                field("Date Sent"; Rec."Date Sent")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Time Sent";"Time Sent")
+                field("Time Sent"; Rec."Time Sent")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Sent By";"Sent By")
+                field("Sent By"; Rec."Sent By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Rejected";"Date Rejected")
+                field("Date Rejected"; Rec."Date Rejected")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Time Rejected";"Time Rejected")
+                field("Time Rejected"; Rec."Time Rejected")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Rejected By";"Rejected By")
+                field("Rejected By"; Rec."Rejected By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Sent To Server";"Sent To Server")
+                field("Sent To Server"; Rec."Sent To Server")
                 {
                     ApplicationArea = Basic;
                 }
-                field("No. Series";"No. Series")
+                field("No. Series"; Rec."No. Series")
                 {
                     ApplicationArea = Basic;
                 }

@@ -12,11 +12,11 @@ Page 51516335 "Status Change Permisions"
         {
             repeater(Control3)
             {
-                field("Function";"Function")
+                field("Function"; Rec."Function")
                 {
                     ApplicationArea = Basic;
                 }
-                field("User Id";"User Id")
+                field("User Id"; Rec."User Id")
                 {
                     ApplicationArea = Basic;
                 }

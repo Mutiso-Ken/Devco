@@ -17,12 +17,12 @@ Page 51516892 "MC Individual Sub-List"
         {
             repeater(Control1)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
 
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
@@ -31,66 +31,66 @@ Page 51516892 "MC Individual Sub-List"
                 // {
                 //     ApplicationArea = Basic;
                 // }
-                field("Group Account Name"; "Group Account Name")
+                field("Group Account Name"; Rec."Group Account Name")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field("BOSA Account No."; "BOSA Account No.")
+                field("BOSA Account No."; Rec."BOSA Account No.")
                 {
 
                 }
-                field("Employer Code"; "Employer Code")
+                field("Employer Code"; Rec."Employer Code")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Date of Birth"; "Date of Birth")
+                field("Date of Birth"; Rec."Date of Birth")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field(Gender; Gender)
+                field(Gender; Rec.Gender)
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Current Shares"; "Current Shares")
+                field("Current Shares"; Rec."Current Shares")
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
                 }
-                field("Outstanding Balance"; "Outstanding Balance")
+                field("Outstanding Balance"; Rec."Outstanding Balance")
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
                 }
-                field("Outstanding Interest"; "Outstanding Interest")
+                field("Outstanding Interest"; Rec."Outstanding Interest")
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
                 }
-                field("Shares Retained"; "Shares Retained")
+                field("Shares Retained"; Rec."Shares Retained")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                     Style = Unfavorable;
                 }
-                field("Benevolent Fund"; "Benevolent Fund")
+                field("Benevolent Fund"; Rec."Benevolent Fund")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Current Savings"; "Current Savings")
+                field("Current Savings"; Rec."Current Savings")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Account Category"; "Account Category")
+                field("Account Category"; Rec."Account Category")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type"; "Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                     visible = false;
@@ -141,7 +141,7 @@ Page 51516892 "MC Individual Sub-List"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51516223, true, false, Cust);
                     end;

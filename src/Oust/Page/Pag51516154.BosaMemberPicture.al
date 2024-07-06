@@ -12,7 +12,7 @@ page 51516154 "Bosa Member Picture"
     {
         area(content)
         {
-            field("Specimen Passport"; "Specimen Passport")
+            field("Specimen Passport"; Rec."Specimen Passport")
             {
                 ApplicationArea = All;
                 ShowCaption = false;
@@ -63,7 +63,7 @@ page 51516154 "Bosa Member Picture"
                 //................................................................
                 begin
 
-           
+
                     // Rec.TestField(Rec."Specimen Passport");
                     // Rec.TestField(Rec.Name);
                     //......if it finds a pic,throw message to confirm if override it
@@ -102,11 +102,11 @@ page 51516154 "Bosa Member Picture"
                     ExportPath: Text;
                 begin
 
-             
+
                     Rec.TestField(rec.Name);
 
                     ToFile := DummyPictureEntity.GetDefaultMediaDescription(Rec);
-                    ExportPath := TemporaryPath + rec."ID Number/Passport Number"+ Format(rec."Specimen Passport".MediaId);
+                    ExportPath := TemporaryPath + rec."ID Number/Passport Number" + Format(rec."Specimen Passport".MediaId);
                     rec."Specimen Passport".ExportFile(ExportPath);
 
                     FileManagement.ExportImage(ExportPath, ToFile);

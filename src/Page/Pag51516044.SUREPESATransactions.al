@@ -15,56 +15,56 @@ Page 51516044 "SUREPESA Transactions"
         {
             repeater(Group)
             {
-                field("Document Date"; "Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document No"; "Document No")
+                field("Document No"; Rec."Document No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Type"; "Transaction Type")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
 
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
                 }
-                field("Posting Date"; "Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted; Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Comments; Comments)
+                field(Comments; Rec.Comments)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Telephone Number"; "Telephone Number")
+                field("Telephone Number"; Rec."Telephone Number")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name"; "Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
 
                     TableRelation = "Vendor"."Name";
                 }
-                field("Transaction Time"; "Transaction Time")
+                field("Transaction Time"; Rec."Transaction Time")
                 {
                     ApplicationArea = Basic;
                 }
@@ -79,8 +79,8 @@ Page 51516044 "SUREPESA Transactions"
 
     trigger OnOpenPage()
     begin
-        SetCurrentKey("Document Date");
-        Ascending(false);
+        Rec.SetCurrentKey("Document Date");
+        Rec.Ascending(false);
     end;
 
 }

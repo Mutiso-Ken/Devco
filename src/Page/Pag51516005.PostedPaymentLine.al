@@ -10,92 +10,92 @@ Page 51516005 "Posted Payment Line"
         {
             repeater(Group)
             {
-                field("Payment Type"; "Payment Type")
+                field("Payment Type"; Rec."Payment Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Type Description"; "Transaction Type Description")
+                field("Transaction Type Description"; Rec."Transaction Type Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type"; "Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No."; "Account No.")
+                field("Account No."; Rec."Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name"; "Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payment Description"; "Payment Description")
+                field("Payment Description"; Rec."Payment Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount(LCY)"; "Amount(LCY)")
+                field("Amount(LCY)"; Rec."Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("VAT Code"; "VAT Code")
+                field("VAT Code"; Rec."VAT Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("VAT Amount"; "VAT Amount")
+                field("VAT Amount"; Rec."VAT Amount")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
 
-                field("VAT Amount(LCY)"; "VAT Amount(LCY)")
+                field("VAT Amount(LCY)"; Rec."VAT Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("W/TAX Code"; "W/TAX Code")
+                field("W/TAX Code"; Rec."W/TAX Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("W/TAX Amount"; "W/TAX Amount")
+                field("W/TAX Amount"; Rec."W/TAX Amount")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("W/TAX Amount(LCY)"; "W/TAX Amount(LCY)")
+                field("W/TAX Amount(LCY)"; Rec."W/TAX Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Net Amount"; "Net Amount")
+                field("Net Amount"; Rec."Net Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Net Amount(LCY)"; "Net Amount(LCY)")
+                field("Net Amount(LCY)"; Rec."Net Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Applies-to Doc. Type"; "Applies-to Doc. Type")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("Applies-to Doc. No."; "Applies-to Doc. No.")
+                field("Applies-to Doc. Type"; Rec."Applies-to Doc. Type")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Applies-to ID"; "Applies-to ID")
+                field("Applies-to Doc. No."; Rec."Applies-to Doc. No.")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Applies-to ID"; Rec."Applies-to ID")
                 {
                     ApplicationArea = Basic;
                     Visible = false;

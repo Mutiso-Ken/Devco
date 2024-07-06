@@ -22,7 +22,7 @@ page 51516083 "Tea Processing Header"
                 {
                     Editable = false;
                 }
-                field("Posting Document No"; "Posting Document No")
+                field("Posting Document No"; Rec."Posting Document No")
                 {
                 }
                 field("Entered By"; Rec."Entered By")
@@ -94,7 +94,7 @@ page 51516083 "Tea Processing Header"
                         exit;
                     end else begin
                         SalaryImportedLines.Reset();
-                        SalaryImportedLines.SetRange(SalaryImportedLines."Document No", "Document No");
+                        SalaryImportedLines.SetRange(SalaryImportedLines."Document No", Rec."Document No");
                         if SalaryImportedLines.Find('-') then begin
                             SalaryImportedLines.DeleteAll();
                         end;
@@ -117,7 +117,7 @@ page 51516083 "Tea Processing Header"
                     Vendor: Record Vendor;
                 begin
                     SalaryImportedLines.Reset();
-                    SalaryImportedLines.SetRange(SalaryImportedLines."Document No", "Document No");
+                    SalaryImportedLines.SetRange(SalaryImportedLines."Document No", Rec."Document No");
                     if SalaryImportedLines.Find('-') then begin
                         repeat
                             Vendor.Reset();
@@ -158,7 +158,7 @@ page 51516083 "Tea Processing Header"
                     teabufferringtable: record "Tea Bufferring Table";
                 begin
                     SalaryImportedLines.Reset();
-                    SalaryImportedLines.SetRange(SalaryImportedLines."Document No", "Document No");
+                    SalaryImportedLines.SetRange(SalaryImportedLines."Document No", Rec."Document No");
                     IF SalaryImportedLines.Find('-') THEN begin
                         repeat
                             IF Vendor.Get(SalaryImportedLines."Account No") THEN begin
@@ -194,7 +194,7 @@ page 51516083 "Tea Processing Header"
                     // end;
                     //..............................................................
                     SalaryImportedLines.Reset();
-                    SalaryImportedLines.SetRange(SalaryImportedLines."Document No", "Document No");
+                    SalaryImportedLines.SetRange(SalaryImportedLines."Document No", Rec."Document No");
                     if SalaryImportedLines.Find('-') then begin
                         Report.Run(51516043, true, false, SalaryImportedLines);
                     end;
@@ -218,9 +218,9 @@ page 51516083 "Tea Processing Header"
                         exit;
                     end else begin
                         //.................................................
-                        IF "Notify Member(s)" = true THEN begin
+                        IF Rec."Notify Member(s)" = true THEN begin
                             PeriodicProcessingLines.Reset();
-                            PeriodicProcessingLines.SetRange(PeriodicProcessingLines."Document No", "Document No");
+                            PeriodicProcessingLines.SetRange(PeriodicProcessingLines."Document No", Rec."Document No");
                             if PeriodicProcessingLines.Find('-') then begin
                                 repeat
                                     SMSBody := 'Dear ' + Format(PeriodicProcessingLines."Member Name") + ' your account ' + Format(PeriodicProcessingLines."Account No") + ' has been credited with Ksh. ' + Format(PeriodicProcessingLines.Amount) + '.Thank you for banking with us.';
@@ -231,14 +231,14 @@ page 51516083 "Tea Processing Header"
                                 until PeriodicProcessingLines.Next = 0;
                             end;
                             //..................
-                            Posted := true;
-                            "Posted By" := UserId;
-                            Status := Status::Closed;
-                            Modify();
+                            Rec.Posted := true;
+                            Rec."Posted By" := UserId;
+                            Rec.Status := Rec.Status::Closed;
+                            Rec.Modify();
                         end else
-                            IF "Notify Member(s)" = false THEN begin
+                            IF Rec."Notify Member(s)" = false THEN begin
                                 PeriodicProcessingLines.Reset();
-                                PeriodicProcessingLines.SetRange(PeriodicProcessingLines."Document No", "Document No");
+                                PeriodicProcessingLines.SetRange(PeriodicProcessingLines."Document No", Rec."Document No");
                                 if PeriodicProcessingLines.Find('-') then begin
                                     repeat
                                         PeriodicProcessingLines.Posted := true;
@@ -247,10 +247,10 @@ page 51516083 "Tea Processing Header"
                                     until PeriodicProcessingLines.Next = 0;
                                 end;
                                 //..................
-                                Posted := true;
-                                "Posted By" := UserId;
-                                Status := Status::Closed;
-                                Modify();
+                                Rec.Posted := true;
+                                Rec."Posted By" := UserId;
+                                Rec.Status := Rec.Status::Closed;
+                                Rec.Modify();
                             end;
                     end;
                 End;
@@ -259,8 +259,8 @@ page 51516083 "Tea Processing Header"
     }
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        "Processing Type" := "Processing Type"::Tea;
-        "Posting Date" := Today;
+        Rec."Processing Type" := Rec."Processing Type"::Tea;
+        Rec."Posting Date" := Today;
     end;
 
     local procedure FnGetMobilePhone(AccountNo: Code[100]): Text

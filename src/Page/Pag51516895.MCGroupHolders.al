@@ -15,18 +15,18 @@ Page 51516895 "MC Group Holders"
         {
             group(General)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Old Account No."; "Old Account No.")
+                field("Old Account No."; Rec."Old Account No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                 }
@@ -34,79 +34,79 @@ Page 51516895 "MC Group Holders"
                 // {
                 //     ApplicationArea = Basic;
                 // }
-                field("Group Account"; "Group Account")
+                field("Group Account"; Rec."Group Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Micro Group Code"; "Micro Group Code")
+                field("Micro Group Code"; Rec."Micro Group Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Address; Address)
+                field(Address; Rec.Address)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Address 2"; "Address 2")
+                field("Address 2"; Rec."Address 2")
                 {
                     ApplicationArea = Basic;
                 }
-                field(City; City)
+                field(City; Rec.City)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No."; "Phone No.")
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Country/Region Code"; "Country/Region Code")
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Country/Region Code"; Rec."Country/Region Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Blocked; Blocked)
+                field(Blocked; Rec.Blocked)
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Certificate No.';
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Customer Type"; "Customer Type")
+                field("Customer Type"; Rec."Customer Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Debtors Type"; "Debtors Type")
+                field("Debtors Type"; Rec."Debtors Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Category"; "Account Category")
+                field("Account Category"; Rec."Account Category")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type"; "Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Officer Name"; "Loan Officer Name")
+                field("Loan Officer Name"; Rec."Loan Officer Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Registration Date"; "Registration Date")
+                field("Registration Date"; Rec."Registration Date")
                 {
                     ApplicationArea = Basic;
                 }

@@ -12,23 +12,23 @@ Page 51516274 "Deposits tier Setups"
         {
             repeater(Group)
             {
-                field("Code";Code)
+                field("Code"; Rec.Code)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Minimum Amount";"Minimum Amount")
+                field("Minimum Amount"; Rec."Minimum Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Maximum Amount";"Maximum Amount")
+                field("Maximum Amount"; Rec."Maximum Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Minimum Dep Contributions";"Minimum Dep Contributions")
+                field("Minimum Dep Contributions"; Rec."Minimum Dep Contributions")
                 {
                     ApplicationArea = Basic;
                 }

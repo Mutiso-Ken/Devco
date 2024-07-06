@@ -6,7 +6,7 @@ Page 51516873 "Posted Over draft App Card"
     ModifyAllowed = false;
     PageType = Card;
     SourceTable = "Over Draft Register";
-    SourceTableView = where(Posted=const(true));
+    SourceTableView = where(Posted = const(true));
 
     layout
     {
@@ -15,69 +15,69 @@ Page 51516873 "Posted Over draft App Card"
             group(General)
             {
                 Editable = false;
-                field("Over Draft No";"Over Draft No")
+                field("Over Draft No"; Rec."Over Draft No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Over Draft Payoff";"Over Draft Payoff")
+                field("Over Draft Payoff"; Rec."Over Draft Payoff")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Account No";"Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Application date";"Application date")
+                field("Application date"; Rec."Application date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approved Date";"Approved Date")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Captured by";"Captured by")
+                field("Approved Date"; Rec."Approved Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account Name";"Account Name")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Member No";"Current Account No")
+                field("Captured by"; Rec."Captured by")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Outstanding Overdraft";"Outstanding Overdraft")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount applied";"Amount applied")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("ID Number";"ID Number")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Phone No";"Phone No")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Email Address";"Email Address")
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Posted;Posted)
+                field("Member No"; Rec."Current Account No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Status;Status)
+                field("Outstanding Overdraft"; Rec."Outstanding Overdraft")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Amount applied"; Rec."Amount applied")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("ID Number"; Rec."ID Number")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Phone No"; Rec."Phone No")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Email Address"; Rec."Email Address")
+                {
+                    ApplicationArea = Basic;
+                }
+                field(Posted; Rec.Posted)
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -99,18 +99,18 @@ Page 51516873 "Posted Over draft App Card"
 
                 trigger OnAction()
                 begin
-                    if Posted=true then begin
-                    Error("Over Draft No"+'Already posted');
+                    if Rec.Posted = true then begin
+                        Error(Rec."Over Draft No" + 'Already posted');
                     end else
-                    TestField("Account No") ;
+                        Rec.TestField("Account No");
                     //TESTFIELD("Approved Date") ;
-                    TestField("Current Account No") ;
+                    Rec.TestField("Current Account No");
 
-                    Status:=Status::Approved;
+                    Rec.Status := Rec.Status::Approved;
                     Message('Approved succesfully');
-                    Modify;
-                    if Status=Status::Approved then
-                      "Approved Date":=Today;
+                    Rec.Modify;
+                    if Rec.Status = Rec.Status::Approved then
+                        Rec."Approved Date" := Today;
                 end;
             }
             action("Reject Request")
@@ -122,9 +122,9 @@ Page 51516873 "Posted Over draft App Card"
 
                 trigger OnAction()
                 begin
-                    Status:=Status::Open;
+                    Rec.Status := Rec.Status::Open;
                     Message('application rejected');
-                    Modify;
+                    Rec.Modify;
                 end;
             }
             action(Post)
@@ -136,59 +136,59 @@ Page 51516873 "Posted Over draft App Card"
 
                 trigger OnAction()
                 begin
-                    if Posted=true then begin
-                    Error("Over Draft No"+'Already posted');
+                    if Rec.Posted = true then begin
+                        Error(Rec."Over Draft No" + 'Already posted');
                     end else
-                    TestField("Account No") ;
-                    TestField("Approved Date") ;
-                    TestField("Current Account No") ;
-                    overdraftno:='';
-                    TestField("Amount applied");
+                        Rec.TestField("Account No");
+                    Rec.TestField("Approved Date");
+                    Rec.TestField("Current Account No");
+                    overdraftno := '';
+                    Rec.TestField("Amount applied");
                     //get Current account
-                    if vend."Account Type"='CURRENT'then
-                    vend.Reset;
-                    vend.SetRange(vend."No.","Account No");
+                    if vend."Account Type" = 'CURRENT' then
+                        vend.Reset;
+                    vend.SetRange(vend."No.", Rec."Account No");
                     //vend.SETRANGE()
-                    if vend.Find('-')then begin
-                      "Approved Amount":="Amount applied";
-                      vend."Overdraft amount":="Approved Amount";
-                      vend.Modify;
-                      end;
+                    if vend.Find('-') then begin
+                        Rec."Approved Amount" := Rec."Amount applied";
+                        vend."Overdraft amount" := Rec."Approved Amount";
+                        vend.Modify;
+                    end;
 
-                    LneNo:=LneNo+10000;
+                    LneNo := LneNo + 10000;
 
                     OverdraftAut.Init;
-                    OverdraftAut."Entry NO":=LneNo;
-                    OverdraftAut."Over Draft No":="Over Draft No";
-                    OverdraftAut."Account No":="Account No";
-                    OverdraftAut."Account Name":="Account Name";
+                    OverdraftAut."Entry NO" := LneNo;
+                    OverdraftAut."Over Draft No" := Rec."Over Draft No";
+                    OverdraftAut."Account No" := Rec."Account No";
+                    OverdraftAut."Account Name" := Rec."Account Name";
                     //IF "Outstanding Overdraft">0 THEN OverdraftAut."Approved Amount":="Outstanding Overdraft" ELSE
-                    OverdraftAut."Approved Amount":="Approved Amount";
-                    OverdraftAut."Approved Date":="Approved Date";
-                    OverdraftAut."Current Account No":="Current Account No";
-                    OverdraftAut."Captured by":="Captured by";
-                    OverdraftAut."ID Number":="ID Number";
-                    OverdraftAut."Over Draft Payoff":="Over Draft Payoff";
-                    OverdraftAut.Status:=Status::Approved;
-                    OverdraftAut."Overdraft Status":="overdraft status"::Active;
-                    OverdraftAut."Document Type":="Document Type";
-                    if "Approved Amount"<>0 then
-                     OverdraftAut.Insert(true);
+                    OverdraftAut."Approved Amount" := Rec."Approved Amount";
+                    OverdraftAut."Approved Date" := Rec."Approved Date";
+                    OverdraftAut."Current Account No" := Rec."Current Account No";
+                    OverdraftAut."Captured by" := Rec."Captured by";
+                    OverdraftAut."ID Number" := Rec."ID Number";
+                    OverdraftAut."Over Draft Payoff" := Rec."Over Draft Payoff";
+                    OverdraftAut.Status := Rec.Status::Approved;
+                    OverdraftAut."Overdraft Status" := Rec."overdraft status"::Active;
+                    OverdraftAut."Document Type" := Rec."Document Type";
+                    if Rec."Approved Amount" <> 0 then
+                        OverdraftAut.Insert(true);
                     //END;
 
-                        //end authorisation
+                    //end authorisation
 
-                      Message('Over draft successfully updated');
-                      "Posted By":=UserId;
-                      Posted:=true;
-                      "Time Posted":=Time;
-                      "Overdraft Status":="overdraft status"::Active;
-                      vend.Modify;
-                      Modify;
-                      //Postoverdraft;
-                      //END;
-                       //END;
-                      //Postoverdraft
+                    Message('Over draft successfully updated');
+                    Rec."Posted By" := UserId;
+                    Rec.Posted := true;
+                    Rec."Time Posted" := Time;
+                    Rec."Overdraft Status" := Rec."overdraft status"::Active;
+                    vend.Modify;
+                    Rec.Modify;
+                    //Postoverdraft;
+                    //END;
+                    //END;
+                    //Postoverdraft
 
                 end;
             }
@@ -201,10 +201,10 @@ Page 51516873 "Posted Over draft App Card"
 
                 trigger OnAction()
                 begin
-                    TestField(Status,Status::Approved);
+                    Rec.TestField(Status, Rec.Status::Approved);
                     Cust.Reset;
-                    Cust.SetRange(Cust."Account No","Account No");
-                    Report.Run(51516301,true,false,Cust);
+                    Cust.SetRange(Cust."Account No", Rec."Account No");
+                    Report.Run(51516301, true, false, Cust);
                 end;
             }
         }
@@ -231,26 +231,26 @@ Page 51516873 "Posted Over draft App Card"
 
         //Post New
         GenJournalLine.Reset;
-        GenJournalLine.SetRange("Journal Template Name",'GENERAL');
-        GenJournalLine.SetRange("Journal Batch Name",'OVERDRAFT');
+        GenJournalLine.SetRange("Journal Template Name", 'GENERAL');
+        GenJournalLine.SetRange("Journal Batch Name", 'OVERDRAFT');
         if GenJournalLine.Find('-') then begin
-        Codeunit.Run(Codeunit::"Gen. Jnl.-Post Sacco21",GenJournalLine);
+            Codeunit.Run(Codeunit::"Gen. Jnl.-Post Sacco21", GenJournalLine);
         end;
 
         //Post New
-        Posted:=true;
-        "Overdraft Status":="overdraft status"::Active;
-        "Supervisor Checked":=true;
-        "Date Posted":=Today;
-        "Time Posted":=Time;
-        "Posted By":=UserId;
-        Modify;
+        Rec.Posted := true;
+        Rec."Overdraft Status" := Rec."overdraft status"::Active;
+        Rec."Supervisor Checked" := true;
+        Rec."Date Posted" := Today;
+        Rec."Time Posted" := Time;
+        Rec."Posted By" := UserId;
+        Rec.Modify;
 
         Message('Overdraft  posted successfully.');
         Cust.Reset;
-        Cust.SetRange(Cust."Account No","Account No");
+        Cust.SetRange(Cust."Account No", Rec."Account No");
         if Cust.Find('-') then
-        Report.Run(51516281,false,true,Cust);
+            Report.Run(51516281, false, true, Cust);
 
 
         //END;

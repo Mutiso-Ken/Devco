@@ -4,25 +4,25 @@ Table 51516306 "FD Interest Calculation Criter"
 
     fields
     {
-        field(1;"Code";Code[30])
+        field(1; "Code"; Code[30])
         {
         }
-        field(2;"Minimum Amount";Decimal)
-        {
-            NotBlank = true;
-        }
-        field(3;"Maximum Amount";Decimal)
+        field(2; "Minimum Amount"; Decimal)
         {
             NotBlank = true;
         }
-        field(4;"Interest Rate";Decimal)
+        field(3; "Maximum Amount"; Decimal)
+        {
+            NotBlank = true;
+        }
+        field(4; "Interest Rate"; Decimal)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Code","Minimum Amount")
+        key(Key1; "Code", "Minimum Amount")
         {
             Clustered = true;
         }

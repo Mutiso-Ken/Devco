@@ -10,48 +10,48 @@ Page 51516455 "Investor Payment Line"
         {
             repeater(Group)
             {
-                field("Payment Type";"Payment Type")
+                field("Payment Type"; Rec."Payment Type")
                 {
                     ApplicationArea = Basic;
-                    TableRelation = "Funds Transaction Types"."Transaction Code" where ("Transaction Type"=const(Payment));
+                    TableRelation = "Funds Transaction Types"."Transaction Code" where("Transaction Type" = const(Payment));
                 }
-                field("Account Type";"Account Type")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Account No.";"Account No.")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
+                field("Account No."; Rec."Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payment Description";"Payment Description")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Investor Interest Code";"Investor Interest Code")
+                field("Payment Description"; Rec."Payment Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Investment Date";"Investment Date")
+                field("Investor Interest Code"; Rec."Investor Interest Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field("Investment Date"; Rec."Investment Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount(LCY)";"Amount(LCY)")
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Net Amount";"Net Amount")
+                field("Amount(LCY)"; Rec."Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Net Amount(LCY)";"Net Amount(LCY)")
+                field("Net Amount"; Rec."Net Amount")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Net Amount(LCY)"; Rec."Net Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }

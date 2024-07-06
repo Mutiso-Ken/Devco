@@ -18,47 +18,47 @@ Page 51516050 "Funds General Setup"
             }
             group(Numbering)
             {
-                field("Payment Voucher Nos"; "Payment Voucher Nos")
+                field("Payment Voucher Nos"; Rec."Payment Voucher Nos")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cash Voucher Nos"; "Cash Voucher Nos")
+                field("Cash Voucher Nos"; Rec."Cash Voucher Nos")
                 {
                     ApplicationArea = Basic;
                 }
-                field("PettyCash Nos"; "PettyCash Nos")
+                field("PettyCash Nos"; Rec."PettyCash Nos")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mobile Payment Nos"; "Mobile Payment Nos")
+                field("Mobile Payment Nos"; Rec."Mobile Payment Nos")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Receipt Nos"; "Receipt Nos")
+                field("Receipt Nos"; Rec."Receipt Nos")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Funds Transfer Nos"; "Funds Transfer Nos")
+                field("Funds Transfer Nos"; Rec."Funds Transfer Nos")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Imprest Nos"; "Imprest Nos")
+                field("Imprest Nos"; Rec."Imprest Nos")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Imprest Surrender Nos"; "Imprest Surrender Nos")
+                field("Imprest Surrender Nos"; Rec."Imprest Surrender Nos")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Claim Nos"; "Claim Nos")
+                field("Claim Nos"; Rec."Claim Nos")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Travel Advance Nos"; "Travel Advance Nos")
+                field("Travel Advance Nos"; Rec."Travel Advance Nos")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Travel Surrender Nos"; "Travel Surrender Nos")
+                field("Travel Surrender Nos"; Rec."Travel Surrender Nos")
                 {
                     ApplicationArea = Basic;
                 }

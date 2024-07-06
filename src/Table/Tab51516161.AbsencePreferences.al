@@ -4,26 +4,26 @@ Table 51516161 "Absence Preferences"
 
     fields
     {
-        field(1;"Include Weekends";Boolean)
+        field(1; "Include Weekends"; Boolean)
         {
         }
-        field(2;"Include Holidays";Boolean)
+        field(2; "Include Holidays"; Boolean)
         {
         }
-        field(3;"Year-Start Date";Date)
+        field(3; "Year-Start Date"; Date)
         {
         }
-        field(27;"doc prsent";Boolean)
+        field(27; "doc prsent"; Boolean)
         {
         }
-        field(69026;prsent;Boolean)
+        field(69026; prsent; Boolean)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Include Weekends","Include Holidays")
+        key(Key1; "Include Weekends", "Include Holidays")
         {
             Clustered = true;
         }

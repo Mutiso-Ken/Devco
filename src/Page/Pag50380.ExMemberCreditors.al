@@ -26,7 +26,7 @@ page 50380 "Ex_MemberCreditors"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the vendor''s name that appears on all related documents. For companies, specify the company''s name here, and then add the relevant people as contacts that you link to this vendor.';
                 }
-                field(Balance; Balance)
+                field(Balance; Rec.Balance)
                 {
                     ApplicationArea = All;
                 }

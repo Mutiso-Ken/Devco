@@ -6,7 +6,7 @@ Page 51516355 "Mpesa Changed"
     Editable = false;
     PageType = Card;
     SourceTable = "Change MPESA Transactions";
-    SourceTableView = where(Status=const(Approved));
+    SourceTableView = where(Status = const(Approved));
     UsageCategory = Tasks;
 
     layout
@@ -15,49 +15,49 @@ Page 51516355 "Mpesa Changed"
         {
             group(General)
             {
-                field(No;No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Date";"Transaction Date")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Initiated By";"Initiated By")
+                field("Initiated By"; Rec."Initiated By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("MPESA Receipt No";"MPESA Receipt No")
+                field("MPESA Receipt No"; Rec."MPESA Receipt No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No";"Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("New Account No";"New Account No")
+                field("New Account No"; Rec."New Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Comments;Comments)
+                field(Comments; Rec.Comments)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Reasons for rejection";"Reasons for rejection")
+                field("Reasons for rejection"; Rec."Reasons for rejection")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Approved";"Date Approved")
+                field("Date Approved"; Rec."Date Approved")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Date Rejected';
                 }
-                field("Approved By";"Approved By")
+                field("Approved By"; Rec."Approved By")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Rejected By';
                 }
-                field("Time Approved";"Time Approved")
+                field("Time Approved"; Rec."Time Approved")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Time Rejected';

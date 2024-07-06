@@ -17,50 +17,50 @@ Page 51516394 "Process Cheque clearing"
         {
             repeater(Group)
             {
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name"; "Account Name")
-                {
-                    ApplicationArea = Basic;
-                    Style = StrongAccent;
-                }
-                field("Transaction Type"; "Transaction Type")
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Amount; Amount)
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field(Cashier; Cashier)
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type"; "Account Type")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Cheque Type"; "Cheque Type")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Cheque No"; "Cheque No")
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field("Cheque Date"; "Cheque Date")
+                field(Cashier; Rec.Cashier)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Expected Maturity Date"; "Expected Maturity Date")
+                field("Account Type"; Rec."Account Type")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Cheque Type"; Rec."Cheque Type")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Cheque No"; Rec."Cheque No")
+                {
+                    ApplicationArea = Basic;
+                    Style = StrongAccent;
+                }
+                field("Cheque Date"; Rec."Cheque Date")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Expected Maturity Date"; Rec."Expected Maturity Date")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
@@ -85,8 +85,8 @@ Page 51516394 "Process Cheque clearing"
                 begin
                     if Confirm('Are you sure you want to process the selected Cheque?', false) = true then begin
                         Transactions.Reset;
-                        Transactions.SetRange(Transactions.No, No);
-                        Transactions.SetRange(Transactions."Account No", "Account No");
+                        Transactions.SetRange(Transactions.No, Rec.No);
+                        Transactions.SetRange(Transactions."Account No", Rec."Account No");
                         if Transactions.Find('-') then begin
                             if (Transactions.Status = Transactions.Status::Pending) or (Transactions.Status = Transactions.Status::Honoured) then begin
                                 Transactions."Cheque Processed" := true;

@@ -1,6 +1,6 @@
 enumextension 51516017 "ApprovalDocType" extends "Approval Document Type"
 {
-    
+
     value(100; MembershipApplication)
     {
         Caption = 'MembershipApplication';

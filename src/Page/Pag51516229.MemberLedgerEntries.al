@@ -9,7 +9,7 @@ Page 51516229 "Member Ledger Entries"
     ModifyAllowed = false;
     PageType = List;
     SourceTable = "Cust. Ledger Entry";
-    
+
 
     layout
     {
@@ -17,192 +17,192 @@ Page 51516229 "Member Ledger Entries"
         {
             repeater(Control1)
             {
-                field("Posting Date";"Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Transaction Type";"Transaction Type")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Type";"Document Type")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Document No.";"Document No.")
+                field("Document Type"; Rec."Document Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Customer No.";"Customer No.")
+                field("Document No."; Rec."Document No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan No";"Loan No")
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Description;Description)
+                field("Customer No."; Rec."Customer No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Credit Amount";"Credit Amount")
+                field("Loan No"; Rec."Loan No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Debit Amount";"Debit Amount")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Prepayment Date";"Prepayment Date")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
-                    Visible = false;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Credit Amount"; Rec."Credit Amount")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Debit Amount"; Rec."Debit Amount")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Prepayment Date"; Rec."Prepayment Date")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("IC Partner Code";"IC Partner Code")
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Salesperson Code";"Salesperson Code")
+                field("IC Partner Code"; Rec."IC Partner Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Currency Code";"Currency Code")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Original Amount";"Original Amount")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Original Amt. (LCY)";"Original Amt. (LCY)")
+                field("Salesperson Code"; Rec."Salesperson Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field(Amount;Amount)
+                field("Currency Code"; Rec."Currency Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("User ID";"User ID")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                    Visible = false;
-                }
-                field("Amount (LCY)";"Amount (LCY)")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                    Visible = false;
-                }
-                field("Remaining Amount";"Remaining Amount")
+                field("Original Amount"; Rec."Original Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Remaining Amt. (LCY)";"Remaining Amt. (LCY)")
+                field("Original Amt. (LCY)"; Rec."Original Amt. (LCY)")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Bal. Account Type";"Bal. Account Type")
+                field(Amount; Rec.Amount)
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("User ID"; Rec."User ID")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Bal. Account No.";"Bal. Account No.")
+                field("Amount (LCY)"; Rec."Amount (LCY)")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Due Date";"Due Date")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Pmt. Discount Date";"Pmt. Discount Date")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Pmt. Disc. Tolerance Date";"Pmt. Disc. Tolerance Date")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Original Pmt. Disc. Possible";"Original Pmt. Disc. Possible")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Remaining Pmt. Disc. Possible";"Remaining Pmt. Disc. Possible")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Max. Payment Tolerance";"Max. Payment Tolerance")
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Open;Open)
+                field("Remaining Amount"; Rec."Remaining Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("On Hold";"On Hold")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Source Code";"Source Code")
+                field("Remaining Amt. (LCY)"; Rec."Remaining Amt. (LCY)")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Reason Code";"Reason Code")
+                field("Bal. Account Type"; Rec."Bal. Account Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field(Reversed;Reversed)
+                field("Bal. Account No."; Rec."Bal. Account No.")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                    Visible = false;
+                }
+                field("Due Date"; Rec."Due Date")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Pmt. Discount Date"; Rec."Pmt. Discount Date")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Pmt. Disc. Tolerance Date"; Rec."Pmt. Disc. Tolerance Date")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Original Pmt. Disc. Possible"; Rec."Original Pmt. Disc. Possible")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Remaining Pmt. Disc. Possible"; Rec."Remaining Pmt. Disc. Possible")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Max. Payment Tolerance"; Rec."Max. Payment Tolerance")
+                {
+                    ApplicationArea = Basic;
+                }
+                field(Open; Rec.Open)
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("On Hold"; Rec."On Hold")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Source Code"; Rec."Source Code")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                    Visible = false;
+                }
+                field("Reason Code"; Rec."Reason Code")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                    Visible = false;
+                }
+                field(Reversed; Rec.Reversed)
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Reversed by Entry No.";"Reversed by Entry No.")
+                field("Reversed by Entry No."; Rec."Reversed by Entry No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Reversed Entry No.";"Reversed Entry No.")
+                field("Reversed Entry No."; Rec."Reversed Entry No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Entry No.";"Entry No.")
+                field("Entry No."; Rec."Entry No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -211,16 +211,16 @@ Page 51516229 "Member Ledger Entries"
         }
         area(factboxes)
         {
-            part("Member Ledger Entry FactBox";"Member Ledger Entry FactBox")
+            part("Member Ledger Entry FactBox"; "Member Ledger Entry FactBox")
             {
-                SubPageLink = "Entry No."=field("Entry No.");
+                SubPageLink = "Entry No." = field("Entry No.");
                 Visible = true;
             }
-            systempart(Control1102755003;Links)
+            systempart(Control1102755003; Links)
             {
                 Visible = false;
             }
-            systempart(Control1102755001;Notes)
+            systempart(Control1102755001; Notes)
             {
                 Visible = false;
             }
@@ -239,7 +239,7 @@ Page 51516229 "Member Ledger Entries"
                     ApplicationArea = Basic;
                     Caption = 'Reminder/Fin. Charge Entries';
                     RunObject = Page "Reminder/Fin. Charge Entries";
-                    RunPageLink = "Customer Entry No."=field("Entry No.");
+                    RunPageLink = "Customer Entry No." = field("Entry No.");
                     RunPageView = sorting("Customer Entry No.");
                 }
                 action("Applied E&ntries")
@@ -254,9 +254,9 @@ Page 51516229 "Member Ledger Entries"
                     ApplicationArea = Basic;
                     Caption = 'Detailed &Ledger Entries';
                     RunObject = Page "Detailed Cust. Ledg. Entries";
-                    RunPageLink = "Cust. Ledger Entry No."=field("Entry No."),
-                                  "Customer No."=field("Customer No.");
-                    RunPageView = sorting("Cust. Ledger Entry No.","Posting Date");
+                    RunPageLink = "Cust. Ledger Entry No." = field("Entry No."),
+                                  "Customer No." = field("Customer No.");
+                    RunPageView = sorting("Cust. Ledger Entry No.", "Posting Date");
                     ShortCutKey = 'Ctrl+F7';
                 }
             }
@@ -275,9 +275,9 @@ Page 51516229 "Member Ledger Entries"
 
                     trigger OnAction()
                     var
-                        //CustEntryApplyPostEntries: Codeunit "MembEntry-Apply Posted Entrie";
+                    //CustEntryApplyPostEntries: Codeunit "MembEntry-Apply Posted Entrie";
                     begin
-                       // CustEntryApplyPostEntries.ApplyCustEntryformEntry(Rec);
+                        // CustEntryApplyPostEntries.ApplyCustEntryformEntry(Rec);
                     end;
                 }
                 separator(Action63)
@@ -293,7 +293,7 @@ Page 51516229 "Member Ledger Entries"
                     var
                         CustEntryApplyPostedEntries: Codeunit "CustEntry-Apply Posted Entries";
                     begin
-                       // CustEntryApplyPostedEntries.UnApplyMembLedgEntry("Entry No.");
+                        // CustEntryApplyPostedEntries.UnApplyMembLedgEntry("Entry No.");
                     end;
                 }
                 separator(Action65)
@@ -310,12 +310,12 @@ Page 51516229 "Member Ledger Entries"
                         ReversalEntry: Record "Reversal Entry";
                     begin
                         Clear(ReversalEntry);
-                        if Reversed then
-                          ReversalEntry.AlreadyReversedEntry(TableCaption,"Entry No.");
-                        if "Journal Batch Name" = '' then
-                          ReversalEntry.TestFieldError;
-                        TestField("Transaction No.");
-                        ReversalEntry.ReverseTransaction("Transaction No.");
+                        if Rec.Reversed then
+                            ReversalEntry.AlreadyReversedEntry(Rec.TableCaption, Rec."Entry No.");
+                        if Rec."Journal Batch Name" = '' then
+                            ReversalEntry.TestFieldError;
+                        Rec.TestField("Transaction No.");
+                        ReversalEntry.ReverseTransaction(Rec."Transaction No.");
                     end;
                 }
             }
@@ -329,7 +329,7 @@ Page 51516229 "Member Ledger Entries"
 
                 trigger OnAction()
                 begin
-                    Navigate.SetDoc("Posting Date","Document No.");
+                    Navigate.SetDoc(Rec."Posting Date", Rec."Document No.");
                     Navigate.Run;
                 end;
             }
@@ -338,7 +338,7 @@ Page 51516229 "Member Ledger Entries"
 
     trigger OnModifyRecord(): Boolean
     begin
-        Codeunit.Run(Codeunit::"Cust. Entry-Edit",Rec);
+        Codeunit.Run(Codeunit::"Cust. Entry-Edit", Rec);
         exit(false);
     end;
 

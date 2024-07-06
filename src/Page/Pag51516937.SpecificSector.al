@@ -1,13 +1,13 @@
 page 51516937 "Specific Sector"
 {
     ApplicationArea = All;
-    Editable=true;
-    InsertAllowed=true;
+    Editable = true;
+    InsertAllowed = true;
     Caption = 'Specific Sector';
     PageType = List;
     SourceTable = "Specific-Sector";
     UsageCategory = None;
-    
+
     layout
     {
         area(content)

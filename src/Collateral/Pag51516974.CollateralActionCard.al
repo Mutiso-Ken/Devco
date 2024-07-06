@@ -10,77 +10,77 @@ Page 51516974 "Collateral Action Card"
         {
             group(General)
             {
-                field("Document No"; "Document No")
+                field("Document No"; Rec."Document No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Member No."; "Member No.")
+                field("Member No."; Rec."Member No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member Name"; "Member Name")
+                field("Member Name"; Rec."Member Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Collateral Type"; "Collateral Type")
+                field("Collateral Type"; Rec."Collateral Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Collateral Description"; "Collateral Description")
+                field("Collateral Description"; Rec."Collateral Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Collateral Posting Group"; "Collateral Posting Group")
+                field("Collateral Posting Group"; Rec."Collateral Posting Group")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
 
-                field("Asset Value"; "Asset Value")
+                field("Asset Value"; Rec."Asset Value")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Date Received"; "Date Received")
+                field("Date Received"; Rec."Date Received")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Registered Owner"; "Registered Owner")
+                field("Registered Owner"; Rec."Registered Owner")
                 {
                     ApplicationArea = Basic;
 
                 }
-                field("Reference No"; "Reference No")
+                field("Reference No"; Rec."Reference No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Registration/Reference No.';
                 }
-                field("Received By"; "Received By")
+                field("Received By"; Rec."Received By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Released"; "Date Released")
+                field("Date Released"; Rec."Date Released")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Released By"; "Released By")
+                field("Released By"; Rec."Released By")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Picture; Picture)
+                field(Picture; Rec.Picture)
                 {
                     ApplicationArea = Basic;
                     Enabled = true;
 
                 }
-                field("Last Collateral Action"; "Last Collateral Action")
+                field("Last Collateral Action"; Rec."Last Collateral Action")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -90,35 +90,35 @@ Page 51516974 "Collateral Action Card"
             group("Insurance Details")
             {
                 Visible = false;
-                field("Insurance Effective Date"; "Insurance Effective Date")
+                field("Insurance Effective Date"; Rec."Insurance Effective Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Insurance Expiration Date"; "Insurance Expiration Date")
+                field("Insurance Expiration Date"; Rec."Insurance Expiration Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Insurance Policy No."; "Insurance Policy No.")
+                field("Insurance Policy No."; Rec."Insurance Policy No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Insurance Annual Premium"; "Insurance Annual Premium")
+                field("Insurance Annual Premium"; Rec."Insurance Annual Premium")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Policy Coverage"; "Policy Coverage")
+                field("Policy Coverage"; Rec."Policy Coverage")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Value Insured"; "Total Value Insured")
+                field("Total Value Insured"; Rec."Total Value Insured")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Insurance Type"; "Insurance Type")
+                field("Insurance Type"; Rec."Insurance Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Insurance Vendor No."; "Insurance Vendor No.")
+                field("Insurance Vendor No."; Rec."Insurance Vendor No.")
                 {
                     ApplicationArea = Basic;
                 }
@@ -127,28 +127,28 @@ Page 51516974 "Collateral Action Card"
             {
                 Visible = false;
 
-                field("Depreciation Completion Date"; "Depreciation Completion Date")
+                field("Depreciation Completion Date"; Rec."Depreciation Completion Date")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Expected Date of Loan Complition';
                     Visible = false;
                 }
-                field("Depreciation Percentage"; "Depreciation Percentage")
+                field("Depreciation Percentage"; Rec."Depreciation Percentage")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Collateral Depreciation Method"; "Collateral Depreciation Method")
+                field("Collateral Depreciation Method"; Rec."Collateral Depreciation Method")
                 {
                     Visible = false;
 
                 }
-                field("Asset Depreciation Amount"; "Asset Depreciation Amount")
+                field("Asset Depreciation Amount"; Rec."Asset Depreciation Amount")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Asset Value @Loan Completion"; "Asset Value @Loan Completion")
+                field("Asset Value @Loan Completion"; Rec."Asset Value @Loan Completion")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
@@ -158,7 +158,7 @@ Page 51516974 "Collateral Action Card"
             {
                 Caption = 'Actions';
                 Visible = false;
-                field("Action"; Action)
+                field("Action"; Rec.Action)
                 {
                     ApplicationArea = Basic;
 
@@ -171,11 +171,11 @@ Page 51516974 "Collateral Action Card"
             group("Received at HQ")
             {
                 Visible = ReceivedAtHQVisible;
-                field("Received to HQ By"; "Received to HQ By")
+                field("Received to HQ By"; Rec."Received to HQ By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Received to HQ On"; "Received to HQ On")
+                field("Received to HQ On"; Rec."Received to HQ On")
                 {
                     ApplicationArea = Basic;
                 }
@@ -183,19 +183,19 @@ Page 51516974 "Collateral Action Card"
             group("Strong Room")
             {
                 Visible = StrongRoomVisible;
-                field("Lodged to Strong Room By"; "Lodged to Strong Room By")
+                field("Lodged to Strong Room By"; Rec."Lodged to Strong Room By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Lodged to Strong Room On"; "Lodged to Strong Room On")
+                field("Lodged to Strong Room On"; Rec."Lodged to Strong Room On")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Retrieved From Strong Room By"; "Retrieved From Strong Room By")
+                field("Retrieved From Strong Room By"; Rec."Retrieved From Strong Room By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Retrieved From Strong Room On"; "Retrieved From Strong Room On")
+                field("Retrieved From Strong Room On"; Rec."Retrieved From Strong Room On")
                 {
                     ApplicationArea = Basic;
                 }
@@ -203,27 +203,27 @@ Page 51516974 "Collateral Action Card"
             group(Lawyer)
             {
                 Visible = LawyerVisible;
-                field("Issued to Lawyer By"; "Issued to Lawyer By")
+                field("Issued to Lawyer By"; Rec."Issued to Lawyer By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Issued to Lawyer On"; "Issued to Lawyer On")
+                field("Issued to Lawyer On"; Rec."Issued to Lawyer On")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Lawyer Code"; "Lawyer Code")
+                field("Lawyer Code"; Rec."Lawyer Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Lawyer Name"; "Lawyer Name")
+                field("Lawyer Name"; Rec."Lawyer Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Received From Lawyer By"; "Received From Lawyer By")
+                field("Received From Lawyer By"; Rec."Received From Lawyer By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Received From Lawyer On"; "Received From Lawyer On")
+                field("Received From Lawyer On"; Rec."Received From Lawyer On")
                 {
                     ApplicationArea = Basic;
                 }
@@ -231,19 +231,19 @@ Page 51516974 "Collateral Action Card"
             group("Insurance Agent")
             {
                 Visible = InsuranceAgentVisible;
-                field("Issued to Insurance Agent By"; "Issued to Insurance Agent By")
+                field("Issued to Insurance Agent By"; Rec."Issued to Insurance Agent By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Issued to Insurance Agent On"; "Issued to Insurance Agent On")
+                field("Issued to Insurance Agent On"; Rec."Issued to Insurance Agent On")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Insurance Agent Code"; "Insurance Agent Code")
+                field("Insurance Agent Code"; Rec."Insurance Agent Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Insurance Agent Name"; "Insurance Agent Name")
+                field("Insurance Agent Name"; Rec."Insurance Agent Name")
                 {
                     ApplicationArea = Basic;
                 }
@@ -251,23 +251,23 @@ Page 51516974 "Collateral Action Card"
             group(Branch)
             {
                 Visible = BranchVisible;
-                field("Dispatched to Branch By"; "Dispatched to Branch By")
+                field("Dispatched to Branch By"; Rec."Dispatched to Branch By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Dispatched to Branch On"; "Dispatched to Branch On")
+                field("Dispatched to Branch On"; Rec."Dispatched to Branch On")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Dispatch to Branch"; "Dispatch to Branch")
+                field("Dispatch to Branch"; Rec."Dispatch to Branch")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Received at Branch By"; "Received at Branch By")
+                field("Received at Branch By"; Rec."Received at Branch By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Received at Branch On"; "Received at Branch On")
+                field("Received at Branch On"; Rec."Received at Branch On")
                 {
                     ApplicationArea = Basic;
                 }
@@ -275,11 +275,11 @@ Page 51516974 "Collateral Action Card"
             group("Issue to Member")
             {
                 Visible = IssuetoMemberVisible;
-                field("Released to Member By"; "Released to Member By")
+                field("Released to Member By"; Rec."Released to Member By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Released to Member on"; "Released to Member on")
+                field("Released to Member on"; Rec."Released to Member on")
                 {
                     ApplicationArea = Basic;
                 }
@@ -287,11 +287,11 @@ Page 51516974 "Collateral Action Card"
             group("Issued to Auctioneers")
             {
                 Visible = IssuetoAuctioneerVisible;
-                field("Issued to Auctioneer By"; "Issued to Auctioneer By")
+                field("Issued to Auctioneer By"; Rec."Issued to Auctioneer By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Issued to Auctioneer On"; "Issued to Auctioneer On")
+                field("Issued to Auctioneer On"; Rec."Issued to Auctioneer On")
                 {
                     ApplicationArea = Basic;
                 }
@@ -299,46 +299,46 @@ Page 51516974 "Collateral Action Card"
             group("Safe Custody")
             {
                 Visible = SafeCustodyVisible;
-                field("Package Type"; "Package Type")
+                field("Package Type"; Rec."Package Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Lodged By(Custodian 1)"; "Lodged By(Custodian 1)")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Lodged By(Custodian 2)"; "Lodged By(Custodian 2)")
+                field("Lodged By(Custodian 1)"; Rec."Lodged By(Custodian 1)")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Date Lodged"; "Date Lodged")
+                field("Lodged By(Custodian 2)"; Rec."Lodged By(Custodian 2)")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Time Lodged"; "Time Lodged")
+                field("Date Lodged"; Rec."Date Lodged")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Released By(Custodian 1)"; "Released By(Custodian 1)")
+                field("Time Lodged"; Rec."Time Lodged")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Released By(Custodian 2)"; "Released By(Custodian 2)")
+                field("Released By(Custodian 1)"; Rec."Released By(Custodian 1)")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Date Released from SafeCustody"; "Date Released from SafeCustody")
+                field("Released By(Custodian 2)"; Rec."Released By(Custodian 2)")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Time Released from SafeCustody"; "Time Released from SafeCustody")
+                field("Date Released from SafeCustody"; Rec."Date Released from SafeCustody")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Time Released from SafeCustody"; Rec."Time Released from SafeCustody")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -351,31 +351,31 @@ Page 51516974 "Collateral Action Card"
     {
         area(creation)
         {
-           
+
             action("Calculate Depreciation")
             {
                 ApplicationArea = Basic;
                 Image = Calculate;
                 Promoted = true;
                 PromotedCategory = Process;
- Visible = false;
+                Visible = false;
                 trigger OnAction()
                 begin
 
-                    VarNoofYears := ROUND(("Depreciation Completion Date" - Today) / 365, 1, '>');
+                    VarNoofYears := ROUND((Rec."Depreciation Completion Date" - Today) / 365, 1, '>');
 
                     //===========Update Year 1 Depreciation==================================
                     ObjCollateralDeprReg.Reset;
-                    ObjCollateralDeprReg.SetRange(ObjCollateralDeprReg."Document No", "Document No");
+                    ObjCollateralDeprReg.SetRange(ObjCollateralDeprReg."Document No", Rec."Document No");
                     if ObjCollateralDeprReg.FindSet = false then begin
-                        VarDepreciationValue := "Asset Value" * ("Depreciation Percentage" / 100);
+                        VarDepreciationValue := Rec."Asset Value" * (Rec."Depreciation Percentage" / 100);
 
                         ObjCollateralDeprReg.Init;
-                        ObjCollateralDeprReg."Document No" := "Document No";
+                        ObjCollateralDeprReg."Document No" := Rec."Document No";
                         ObjCollateralDeprReg."Transaction Date" := CalcDate('1Y', Today);
                         ObjCollateralDeprReg."Transaction Description" := 'Year 1 Depreciation';
                         ObjCollateralDeprReg."Depreciation Amount" := VarDepreciationValue;
-                        ObjCollateralDeprReg."Collateral NBV" := "Asset Value" - VarDepreciationValue;
+                        ObjCollateralDeprReg."Collateral NBV" := Rec."Asset Value" - VarDepreciationValue;
                         ObjCollateralDeprReg.Insert;
 
                     end;
@@ -385,21 +385,21 @@ Page 51516974 "Collateral Action Card"
                     //===========Update Year 2 Depreciation==================================
 
                     ObjCollateralDeprReg.Reset;
-                    ObjCollateralDeprReg.SetRange(ObjCollateralDeprReg."Document No", "Document No");
+                    ObjCollateralDeprReg.SetRange(ObjCollateralDeprReg."Document No", Rec."Document No");
                     if ObjCollateralDeprReg.FindLast then begin
                         VarCurrentNBV := ObjCollateralDeprReg."Collateral NBV";
-                        VarDepreciationValue := ObjCollateralDeprReg."Collateral NBV" * ("Depreciation Percentage" / 100);
+                        VarDepreciationValue := ObjCollateralDeprReg."Collateral NBV" * (Rec."Depreciation Percentage" / 100);
                     end;
 
                     ObjDepreciationRegister.Reset;
-                    ObjDepreciationRegister.SetRange(ObjDepreciationRegister."Document No", "Document No");
+                    ObjDepreciationRegister.SetRange(ObjDepreciationRegister."Document No", Rec."Document No");
                     if ObjDepreciationRegister.FindSet then begin
                         VarDepreciationNo := ObjDepreciationRegister.Count + 1;
                     end;
 
-                    if (CalcDate('1Y', ObjCollateralDeprReg."Transaction Date")) <= "Depreciation Completion Date" then begin
+                    if (CalcDate('1Y', ObjCollateralDeprReg."Transaction Date")) <= Rec."Depreciation Completion Date" then begin
                         ObjCollateralDeprReg.Init;
-                        ObjCollateralDeprReg."Document No" := "Document No";
+                        ObjCollateralDeprReg."Document No" := Rec."Document No";
                         ObjCollateralDeprReg."Transaction Date" := CalcDate('1Y', ObjCollateralDeprReg."Transaction Date");
                         ObjCollateralDeprReg."Transaction Description" := 'Year ' + Format(VarDepreciationNo) + ' Depreciation';
                         ObjCollateralDeprReg."Depreciation Amount" := VarDepreciationValue;
@@ -411,20 +411,20 @@ Page 51516974 "Collateral Action Card"
                     //===========Update Year 3 Depreciation==================================
 
                     ObjCollateralDeprReg.Reset;
-                    ObjCollateralDeprReg.SetRange(ObjCollateralDeprReg."Document No", "Document No");
+                    ObjCollateralDeprReg.SetRange(ObjCollateralDeprReg."Document No", Rec."Document No");
                     if ObjCollateralDeprReg.FindLast then begin
                         VarCurrentNBV := ObjCollateralDeprReg."Collateral NBV";
-                        VarDepreciationValue := ObjCollateralDeprReg."Collateral NBV" * ("Depreciation Percentage" / 100);
+                        VarDepreciationValue := ObjCollateralDeprReg."Collateral NBV" * (Rec."Depreciation Percentage" / 100);
                     end;
 
                     ObjDepreciationRegister.Reset;
-                    ObjDepreciationRegister.SetRange(ObjDepreciationRegister."Document No", "Document No");
+                    ObjDepreciationRegister.SetRange(ObjDepreciationRegister."Document No", Rec."Document No");
                     if ObjDepreciationRegister.FindSet then begin
                         VarDepreciationNo := ObjDepreciationRegister.Count + 1;
                     end;
-                    if (CalcDate('1Y', ObjCollateralDeprReg."Transaction Date")) <= "Depreciation Completion Date" then begin
+                    if (CalcDate('1Y', ObjCollateralDeprReg."Transaction Date")) <= Rec."Depreciation Completion Date" then begin
                         ObjCollateralDeprReg.Init;
-                        ObjCollateralDeprReg."Document No" := "Document No";
+                        ObjCollateralDeprReg."Document No" := Rec."Document No";
                         ObjCollateralDeprReg."Transaction Date" := CalcDate('1Y', ObjCollateralDeprReg."Transaction Date");
                         ObjCollateralDeprReg."Transaction Description" := 'Year ' + Format(VarDepreciationNo) + ' Depreciation';
                         ObjCollateralDeprReg."Depreciation Amount" := VarDepreciationValue;
@@ -436,20 +436,20 @@ Page 51516974 "Collateral Action Card"
                     //===========Update Year 4 Depreciation==================================
 
                     ObjCollateralDeprReg.Reset;
-                    ObjCollateralDeprReg.SetRange(ObjCollateralDeprReg."Document No", "Document No");
+                    ObjCollateralDeprReg.SetRange(ObjCollateralDeprReg."Document No", Rec."Document No");
                     if ObjCollateralDeprReg.FindLast then begin
                         VarCurrentNBV := ObjCollateralDeprReg."Collateral NBV";
-                        VarDepreciationValue := ObjCollateralDeprReg."Collateral NBV" * ("Depreciation Percentage" / 100);
+                        VarDepreciationValue := ObjCollateralDeprReg."Collateral NBV" * (Rec."Depreciation Percentage" / 100);
                     end;
 
                     ObjDepreciationRegister.Reset;
-                    ObjDepreciationRegister.SetRange(ObjDepreciationRegister."Document No", "Document No");
+                    ObjDepreciationRegister.SetRange(ObjDepreciationRegister."Document No", Rec."Document No");
                     if ObjDepreciationRegister.FindSet then begin
                         VarDepreciationNo := ObjDepreciationRegister.Count + 1;
                     end;
-                    if (CalcDate('1Y', ObjCollateralDeprReg."Transaction Date")) <= "Depreciation Completion Date" then begin
+                    if (CalcDate('1Y', ObjCollateralDeprReg."Transaction Date")) <= Rec."Depreciation Completion Date" then begin
                         ObjCollateralDeprReg.Init;
-                        ObjCollateralDeprReg."Document No" := "Document No";
+                        ObjCollateralDeprReg."Document No" := Rec."Document No";
                         ObjCollateralDeprReg."Transaction Date" := CalcDate('1Y', ObjCollateralDeprReg."Transaction Date");
                         ObjCollateralDeprReg."Transaction Description" := 'Year ' + Format(VarDepreciationNo) + ' Depreciation';
                         ObjCollateralDeprReg."Depreciation Amount" := VarDepreciationValue;
@@ -461,20 +461,20 @@ Page 51516974 "Collateral Action Card"
                     //===========Update Year 5 Depreciation==================================
 
                     ObjCollateralDeprReg.Reset;
-                    ObjCollateralDeprReg.SetRange(ObjCollateralDeprReg."Document No", "Document No");
+                    ObjCollateralDeprReg.SetRange(ObjCollateralDeprReg."Document No", Rec."Document No");
                     if ObjCollateralDeprReg.FindLast then begin
                         VarCurrentNBV := ObjCollateralDeprReg."Collateral NBV";
-                        VarDepreciationValue := ObjCollateralDeprReg."Collateral NBV" * ("Depreciation Percentage" / 100);
+                        VarDepreciationValue := ObjCollateralDeprReg."Collateral NBV" * (Rec."Depreciation Percentage" / 100);
                     end;
 
                     ObjDepreciationRegister.Reset;
-                    ObjDepreciationRegister.SetRange(ObjDepreciationRegister."Document No", "Document No");
+                    ObjDepreciationRegister.SetRange(ObjDepreciationRegister."Document No", Rec."Document No");
                     if ObjDepreciationRegister.FindSet then begin
                         VarDepreciationNo := ObjDepreciationRegister.Count + 1;
                     end;
-                    if (CalcDate('1Y', ObjCollateralDeprReg."Transaction Date")) <= "Depreciation Completion Date" then begin
+                    if (CalcDate('1Y', ObjCollateralDeprReg."Transaction Date")) <= Rec."Depreciation Completion Date" then begin
                         ObjCollateralDeprReg.Init;
-                        ObjCollateralDeprReg."Document No" := "Document No";
+                        ObjCollateralDeprReg."Document No" := Rec."Document No";
                         ObjCollateralDeprReg."Transaction Date" := CalcDate('1Y', ObjCollateralDeprReg."Transaction Date");
                         ObjCollateralDeprReg."Transaction Description" := 'Year ' + Format(VarDepreciationNo) + ' Depreciation';
                         ObjCollateralDeprReg."Depreciation Amount" := VarDepreciationValue;
@@ -486,20 +486,20 @@ Page 51516974 "Collateral Action Card"
                     //===========Update Year 6 Depreciation==================================
 
                     ObjCollateralDeprReg.Reset;
-                    ObjCollateralDeprReg.SetRange(ObjCollateralDeprReg."Document No", "Document No");
+                    ObjCollateralDeprReg.SetRange(ObjCollateralDeprReg."Document No", Rec."Document No");
                     if ObjCollateralDeprReg.FindLast then begin
                         VarCurrentNBV := ObjCollateralDeprReg."Collateral NBV";
-                        VarDepreciationValue := ObjCollateralDeprReg."Collateral NBV" * ("Depreciation Percentage" / 100);
+                        VarDepreciationValue := ObjCollateralDeprReg."Collateral NBV" * (Rec."Depreciation Percentage" / 100);
                     end;
 
                     ObjDepreciationRegister.Reset;
-                    ObjDepreciationRegister.SetRange(ObjDepreciationRegister."Document No", "Document No");
+                    ObjDepreciationRegister.SetRange(ObjDepreciationRegister."Document No", Rec."Document No");
                     if ObjDepreciationRegister.FindSet then begin
                         VarDepreciationNo := ObjDepreciationRegister.Count + 1;
                     end;
-                    if (CalcDate('1Y', ObjCollateralDeprReg."Transaction Date")) <= "Depreciation Completion Date" then begin
+                    if (CalcDate('1Y', ObjCollateralDeprReg."Transaction Date")) <= Rec."Depreciation Completion Date" then begin
                         ObjCollateralDeprReg.Init;
-                        ObjCollateralDeprReg."Document No" := "Document No";
+                        ObjCollateralDeprReg."Document No" := Rec."Document No";
                         ObjCollateralDeprReg."Transaction Date" := CalcDate('1Y', ObjCollateralDeprReg."Transaction Date");
                         ObjCollateralDeprReg."Transaction Description" := 'Year ' + Format(VarDepreciationNo) + ' Depreciation';
                         ObjCollateralDeprReg."Depreciation Amount" := VarDepreciationValue;
@@ -517,7 +517,7 @@ Page 51516974 "Collateral Action Card"
                 PromotedCategory = Process;
                 RunObject = Page "Collateral Depr. Schedule";
                 RunPageLink = "Document No" = field("Document No");
-                 Visible = false;
+                Visible = false;
             }
             action("Charge PackageLodge Fee")
             {
@@ -526,13 +526,13 @@ Page 51516974 "Collateral Action Card"
                 Image = Post;
                 Promoted = true;
                 PromotedCategory = Process;
- Visible = false;
+                Visible = false;
                 trigger OnAction()
                 begin
                     if Confirm('Are you sure you want to charge package Lodging Fee', false) = true then begin
 
                         ObjVendors.Reset;
-                        ObjVendors.SetRange(ObjVendors."No.", "Charge Account");
+                        ObjVendors.SetRange(ObjVendors."No.", Rec."Charge Account");
                         if ObjVendors.Find('-') then begin
                             ObjVendors.CalcFields(ObjVendors.Balance, ObjVendors."Uncleared Cheques");
                             AvailableBal := (ObjVendors.Balance - ObjVendors."Uncleared Cheques");
@@ -548,7 +548,7 @@ Page 51516974 "Collateral Action Card"
 
                         JTemplate := 'GENERAL';
                         JBatch := 'SCUSTODY';
-                        DocNo := 'Lodge_' + Format("Document No");
+                        DocNo := 'Lodge_' + Format(Rec."Document No");
                         GenSetup.Get();
                         LineNo := LineNo + 10000;
                         TransType := Transtype::" ";
@@ -556,7 +556,7 @@ Page 51516974 "Collateral Action Card"
                         BalAccountType := Balaccounttype::"G/L Account";
 
                         ObjPackageTypes.Reset;
-                        ObjPackageTypes.SetRange(ObjPackageTypes.Code, "Package Type");
+                        ObjPackageTypes.SetRange(ObjPackageTypes.Code, Rec."Package Type");
                         if ObjPackageTypes.FindSet then begin
                             LodgeFee := ObjPackageTypes."Package Charge";
                             LodgeFeeAccount := ObjPackageTypes."Package Charge Account";
@@ -565,7 +565,7 @@ Page 51516974 "Collateral Action Card"
                         if AvailableBal < LodgeFee then
                             Error('The Member has less than %1 Lodge Fee on their Account.Account Available Balance is %2', LodgeFee, AvailableBal);
 
-                        SurestepFactory.FnCreateGnlJournalLineBalanced(JTemplate, JBatch, DocNo, LineNo, TransType, Accounttype::Vendor, "Charge Account", Today, 'Package Lodge Charge_' + Format("Document No"), Balaccounttype::"G/L Account", LodgeFeeAccount,
+                        SurestepFactory.FnCreateGnlJournalLineBalanced(JTemplate, JBatch, DocNo, LineNo, TransType, Accounttype::Vendor, Rec."Charge Account", Today, 'Package Lodge Charge_' + Format(Rec."Document No"), Balaccounttype::"G/L Account", LodgeFeeAccount,
                         LodgeFee, 'BOSA', '');
 
                         SurestepFactory.FnPostGnlJournalLine(JTemplate, JBatch);
@@ -580,30 +580,30 @@ Page 51516974 "Collateral Action Card"
                 Image = LinkAccount;
                 Promoted = true;
                 PromotedCategory = Process;
- Visible = false;
+                Visible = false;
                 trigger OnAction()
                 begin
-                    if Action <> Action::"Booked to Safe Custody" then
+                    if Rec.Action <> Rec.Action::"Booked to Safe Custody" then
                         Error('This is action is only applicable to Safe Custody booking');
 
-                    if ("Lodged By(Custodian 1)" <> '') and ("Lodged By(Custodian 2)" <> '') then
+                    if (Rec."Lodged By(Custodian 1)" <> '') and (Rec."Lodged By(Custodian 2)" <> '') then
                         Error('This Package has already been lodged');
 
                     ObjCustodians.Reset;
                     ObjCustodians.SetRange(ObjCustodians."User ID", UserId);
                     if ObjCustodians.FindSet = true then begin
-                        if ("Lodged By(Custodian 1)" = '') and ("Lodged By(Custodian 2)" <> UserId) then begin
-                            "Lodged By(Custodian 1)" := UserId
+                        if (Rec."Lodged By(Custodian 1)" = '') and (Rec."Lodged By(Custodian 2)" <> UserId) then begin
+                            Rec."Lodged By(Custodian 1)" := UserId
                         end else
-                            if ("Lodged By(Custodian 2)" = '') and ("Lodged By(Custodian 1)" <> UserId) then begin
-                                "Lodged By(Custodian 2)" := UserId
+                            if (Rec."Lodged By(Custodian 2)" = '') and (Rec."Lodged By(Custodian 1)" <> UserId) then begin
+                                Rec."Lodged By(Custodian 2)" := UserId
                             end else
                                 Error('You are not authorized to lodge Packages')
                     end;
 
-                    if ("Lodged By(Custodian 1)" <> '') and ("Lodged By(Custodian 2)" <> '') then begin
-                        "Date Lodged" := Today;
-                        "Time Lodged" := Time;
+                    if (Rec."Lodged By(Custodian 1)" <> '') and (Rec."Lodged By(Custodian 2)" <> '') then begin
+                        Rec."Date Lodged" := Today;
+                        Rec."Time Lodged" := Time;
 
                         //===========Create A Package in Safe Custody Module=======================
                         if ObjNoSeries.Get then begin
@@ -612,13 +612,13 @@ Page 51516974 "Collateral Action Card"
 
                             ObjPackage.Init;
                             ObjPackage."Package ID" := VarPackageNo;
-                            ObjPackage."Package Type" := "Package Type";
-                            ObjPackage."Charge Account" := "Charge Account";
-                            ObjPackage."Charge Account Name" := "Member Name";
-                            ObjPackage."Lodged By(Custodian 1)" := "Lodged By(Custodian 1)";
-                            ObjPackage."Lodged By(Custodian 2)" := "Lodged By(Custodian 2)";
-                            ObjPackage."Date Lodged" := "Date Lodged";
-                            ObjPackage."Time Lodged" := "Time Lodged";
+                            ObjPackage."Package Type" := Rec."Package Type";
+                            ObjPackage."Charge Account" := Rec."Charge Account";
+                            ObjPackage."Charge Account Name" := Rec."Member Name";
+                            ObjPackage."Lodged By(Custodian 1)" := Rec."Lodged By(Custodian 1)";
+                            ObjPackage."Lodged By(Custodian 2)" := Rec."Lodged By(Custodian 2)";
+                            ObjPackage."Date Lodged" := Rec."Date Lodged";
+                            ObjPackage."Time Lodged" := Rec."Time Lodged";
                             ObjPackage.Insert;
                             Message('A Package has been created on Safe Custody Packages List# Package No%1', VarPackageNo);
                         end;
@@ -644,30 +644,30 @@ Page 51516974 "Collateral Action Card"
             {
                 ApplicationArea = Basic;
                 Caption = 'Retrieve Package';
- Visible = false;
+                Visible = false;
                 trigger OnAction()
                 begin
-                    if Action <> Action::"Booked to Safe Custody" then
+                    if Rec.Action <> Rec.Action::"Booked to Safe Custody" then
                         Error('This is action is only applicable to Safe Custody booking');
 
-                    if ("Lodged By(Custodian 1)" <> '') and ("Lodged By(Custodian 2)" <> '') then
+                    if (Rec."Lodged By(Custodian 1)" <> '') and (Rec."Lodged By(Custodian 2)" <> '') then
                         Error('This Package has already been Retrieved');
 
                     ObjCustodians.Reset;
                     ObjCustodians.SetRange(ObjCustodians."User ID", UserId);
                     if ObjCustodians.FindSet = true then begin
-                        if ("Released By(Custodian 1)" = '') and ("Released By(Custodian 2)" <> UserId) then begin
-                            "Released By(Custodian 1)" := UserId
+                        if (Rec."Released By(Custodian 1)" = '') and (Rec."Released By(Custodian 2)" <> UserId) then begin
+                            Rec."Released By(Custodian 1)" := UserId
                         end else
-                            if ("Released By(Custodian 2)" = '') and ("Released By(Custodian 1)" <> UserId) then begin
-                                "Released By(Custodian 2)" := UserId
+                            if (Rec."Released By(Custodian 2)" = '') and (Rec."Released By(Custodian 1)" <> UserId) then begin
+                                Rec."Released By(Custodian 2)" := UserId
                             end else
                                 Error('You are not authorized to Retrieve Packages')
                     end;
 
-                    if ("Released By(Custodian 1)" <> '') and ("Released By(Custodian 2)" <> '') then begin
-                        "Date Released from SafeCustody" := Today;
-                        "Time Released from SafeCustody" := Time;
+                    if (Rec."Released By(Custodian 1)" <> '') and (Rec."Released By(Custodian 2)" <> '') then begin
+                        Rec."Date Released from SafeCustody" := Today;
+                        Rec."Time Released from SafeCustody" := Time;
                     end;
                 end;
             }
@@ -677,9 +677,9 @@ Page 51516974 "Collateral Action Card"
     trigger OnAfterGetCurrRecord()
     begin
         FnGetVisibility();
-        CalcFields("Last Collateral Action Entry");
-        if ObjCollateralMovement.Get("Last Collateral Action Entry") then begin
-            "Last Collateral Action" := ObjCollateralMovement."Current Location";
+        Rec.CalcFields("Last Collateral Action Entry");
+        if ObjCollateralMovement.Get(Rec."Last Collateral Action Entry") then begin
+            Rec."Last Collateral Action" := ObjCollateralMovement."Current Location";
         end;
     end;
 
@@ -735,28 +735,28 @@ Page 51516974 "Collateral Action Card"
         SafeCustodyVisible := false;
 
 
-        if Action = Action::"Receive at HQ" then begin
+        if Rec.Action = Rec.Action::"Receive at HQ" then begin
             ReceivedAtHQVisible := true;
         end;
-        if (Action = Action::"Dispatch to Branch") or (Action = Action::"Receive at Branch") then begin
+        if (Rec.Action = Rec.Action::"Dispatch to Branch") or (Rec.Action = Rec.Action::"Receive at Branch") then begin
             BranchVisible := true;
         end;
-        if (Action = Action::"Issue to Lawyer") or (Action = Action::"Receive From Lawyer") then begin
+        if (Rec.Action = Rec.Action::"Issue to Lawyer") or (Rec.Action = Rec.Action::"Receive From Lawyer") then begin
             LawyerVisible := true;
         end;
-        if Action = Action::"Issue to Auctioneer" then begin
+        if Rec.Action = Rec.Action::"Issue to Auctioneer" then begin
             IssuetoAuctioneerVisible := true;
         end;
-        if Action = Action::"Issue to Insurance Agent" then begin
+        if Rec.Action = Rec.Action::"Issue to Insurance Agent" then begin
             InsuranceAgentVisible := true;
         end;
-        if Action = Action::"Release to Member" then begin
+        if Rec.Action = Rec.Action::"Release to Member" then begin
             IssuetoMemberVisible := true;
         end;
-        if Action = Action::"Retrieve From Strong Room" then begin
+        if Rec.Action = Rec.Action::"Retrieve From Strong Room" then begin
             StrongRoomVisible := true;
         end;
-        if Action = Action::"Booked to Safe Custody" then begin
+        if Rec.Action = Rec.Action::"Booked to Safe Custody" then begin
             SafeCustodyVisible := true;
         end;
     end;

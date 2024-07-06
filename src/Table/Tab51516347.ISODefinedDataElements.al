@@ -4,28 +4,28 @@ Table 51516347 "ISO-Defined Data Elements"
 
     fields
     {
-        field(1;"Data Element";Integer)
+        field(1; "Data Element"; Integer)
         {
             AutoIncrement = true;
             Editable = true;
         }
-        field(2;Type;Text[50])
+        field(2; Type; Text[50])
         {
             Editable = true;
         }
-        field(3;Usage;Text[250])
+        field(3; Usage; Text[250])
         {
             Editable = true;
         }
-        field(4;Length;Integer)
+        field(4; Length; Integer)
         {
             Editable = true;
         }
-        field(5;"Variable Field";Integer)
+        field(5; "Variable Field"; Integer)
         {
             Editable = true;
         }
-        field(6;"Variable Field Length";Integer)
+        field(6; "Variable Field Length"; Integer)
         {
             Editable = true;
         }
@@ -33,7 +33,7 @@ Table 51516347 "ISO-Defined Data Elements"
 
     keys
     {
-        key(Key1;"Data Element")
+        key(Key1; "Data Element")
         {
             Clustered = true;
         }

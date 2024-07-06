@@ -9,7 +9,7 @@ report 51516210 "Loan Defaulters List"
     {
         dataitem(Loans; "Loans Register")
         {
-            DataItemTableView = sorting("Staff No") order(ascending) where(Posted = const(true),"Loans Category-SASRA"=const(Loss));
+            DataItemTableView = sorting("Staff No") order(ascending) where(Posted = const(true), "Loans Category-SASRA" = const(Loss));
             RequestFilterFields = Source, "Loan Product Type", "Application Date", "Issued Date";
             column(ReportForNavId_4645; 4645)
             {

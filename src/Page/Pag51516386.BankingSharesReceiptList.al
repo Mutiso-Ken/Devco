@@ -4,7 +4,7 @@ Page 51516386 "Banking Shares Receipt List"
     CardPageID = "Banking Shares Card";
     PageType = List;
     SourceTable = "Banking Shares Receipt";
-    SourceTableView = where(Posted=filter(false));
+    SourceTableView = where(Posted = filter(false));
 
     layout
     {
@@ -12,67 +12,67 @@ Page 51516386 "Banking Shares Receipt List"
         {
             repeater(Group)
             {
-                field("Transaction No.";"Transaction No.")
+                field("Transaction No."; Rec."Transaction No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No.";"Account No.")
+                field("Account No."; Rec."Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cheque No.";"Cheque No.")
+                field("Cheque No."; Rec."Cheque No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cheque Date";"Cheque Date")
+                field("Cheque Date"; Rec."Cheque Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted;Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank No.";"Bank No.")
+                field("Bank No."; Rec."Bank No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("User ID";"User ID")
+                field("User ID"; Rec."User ID")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Allocated Amount";"Allocated Amount")
+                field("Allocated Amount"; Rec."Allocated Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Date";"Transaction Date")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Time";"Transaction Time")
+                field("Transaction Time"; Rec."Transaction Time")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type";"Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Slip Type";"Transaction Slip Type")
+                field("Transaction Slip Type"; Rec."Transaction Slip Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Name";"Bank Name")
+                field("Bank Name"; Rec."Bank Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Un allocated Amount";"Un allocated Amount")
+                field("Un allocated Amount"; Rec."Un allocated Amount")
                 {
                     ApplicationArea = Basic;
                 }

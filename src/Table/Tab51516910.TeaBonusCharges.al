@@ -4,23 +4,23 @@ Table 51516910 "Tea Bonus Charges"
 
     fields
     {
-        field(1;"Charge Code";Integer)
+        field(1; "Charge Code"; Integer)
         {
         }
-        field(2;"Lower Band";Decimal)
+        field(2; "Lower Band"; Decimal)
         {
         }
-        field(3;"Upper Band";Decimal)
+        field(3; "Upper Band"; Decimal)
         {
         }
-        field(4;Charge;Decimal)
+        field(4; Charge; Decimal)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Charge Code")
+        key(Key1; "Charge Code")
         {
             Clustered = true;
         }

@@ -14,7 +14,7 @@ page 51516123 "productfactbox"
         {
             group("Member Picture")
             {
-                field(Image; Image)
+                field(Image; Rec.Image)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Picture';
@@ -24,31 +24,31 @@ page 51516123 "productfactbox"
             group("Account Statistics FactBox")
             {
                 Caption = 'Account Statistics FactBox';
-                field("Account Balance"; "Account Balance")
+                field("Account Balance"; Rec."Account Balance")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Book Balance';
                 }
-                field("""Account Balance""-(""Uncleared Cheques""+""ATM Transactions""+""EFT Transactions""+MinBalance+1100)"; "Account Balance" - ("Uncleared Cheques" + "ATM Transactions" + "EFT Transactions" + MinBalance + 1100))
+                field("""Account Balance""-(""Uncleared Cheques""+""ATM Transactions""+""EFT Transactions""+MinBalance+1100)"; Rec."Account Balance" - (Rec."Uncleared Cheques" + Rec."ATM Transactions" + Rec."EFT Transactions" + MinBalance + 1100))
                 {
                     ApplicationArea = Basic;
                     Caption = 'Withdrawable Balance';
                 }
-                field("Uncleared Cheques"; "Uncleared Cheques")
+                field("Uncleared Cheques"; Rec."Uncleared Cheques")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Outstanding Overdraft"; "Outstanding Overdraft")
+                field("Outstanding Overdraft"; Rec."Outstanding Overdraft")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Oustanding Overdraft interest"; "Oustanding Overdraft interest")
+                field("Oustanding Overdraft interest"; Rec."Oustanding Overdraft interest")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Overdraft amount"; "Overdraft amount")
+                field("Overdraft amount"; Rec."Overdraft amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -65,19 +65,19 @@ page 51516123 "productfactbox"
                     StyleExpr = true;
                     Visible = false;
                 }
-                field("Outstanding Okoa Biz"; "Outstanding Loans")
+                field("Outstanding Okoa Biz"; Rec."Outstanding Loans")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Outstanding Loans"; "Outstanding Loans")
+                field("Outstanding Loans"; Rec."Outstanding Loans")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Outstanding Interest"; "Outstanding Interest")
+                field("Outstanding Interest"; Rec."Outstanding Interest")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Arrears"; "Outstanding Interest")
+                field("Loan Arrears"; Rec."Outstanding Interest")
                 {
                     ApplicationArea = Basic;
                 }
@@ -86,7 +86,7 @@ page 51516123 "productfactbox"
 
             group("Member Signature")
             {
-                field(Signature; Signature)
+                field(Signature; Rec.Signature)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Signature';
@@ -104,14 +104,14 @@ page 51516123 "productfactbox"
         ChangeCustomer;
         GetLatestPayment;
         CalculateAging;
-        CalcFields(Balance);
+        Rec.CalcFields(Balance);
         AdjustmentAmount := 0;
-        if ((Balance < 1090) and (Balance > 0)) then begin
-            AdjustmentAmount := 1090 - Balance;
+        if ((Rec.Balance < 1090) and (Rec.Balance > 0)) then begin
+            AdjustmentAmount := 1090 - Rec.Balance;
             //AvaialableOD:=AvaialableOD-AdjustmentAmount;
         end;
-        if Balance < 0 then begin
-            AdjustmentAmount := 1090 + Abs(Balance);
+        if Rec.Balance < 0 then begin
+            AdjustmentAmount := 1090 + Abs(Rec.Balance);
             //AvaialableOD:=AvaialableOD-AdjustmentAmount;
         end;
     end;
@@ -220,9 +220,9 @@ page 51516123 "productfactbox"
     procedure ChangeCustomer()
     begin
         // Change the Customer Filters
-        LatestCustLedgerEntry.SetRange("Customer No.", "No.");
+        LatestCustLedgerEntry.SetRange("Customer No.", Rec."No.");
         for I := 1 to ArrayLen(CustLedgerEntry) do
-            CustLedgerEntry[I].SetRange("Customer No.", "No.");
+            CustLedgerEntry[I].SetRange("Customer No.", Rec."No.");
     end;
 
 

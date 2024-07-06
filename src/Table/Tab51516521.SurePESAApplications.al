@@ -97,7 +97,7 @@ Table 51516521 "SurePESA Applications"
             NoSeriesMgt.InitSeries(SaccoNoSeries."SurePESA Registration Nos", xRec."No. Series", 0D, "No.", "No. Series");
 
         end
-        else  if "No." <> '' then begin
+        else if "No." <> '' then begin
             "Created By" := UserId;
             "Time Applied" := Time;
             "Date Applied" := Today;
@@ -110,6 +110,6 @@ Table 51516521 "SurePESA Applications"
         NoSeriesMgt: Codeunit NoSeriesManagement;
         Accounts: Record Vendor;
 
-        
+
 }
 

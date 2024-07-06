@@ -7,6 +7,6 @@ tableextension 51516082 "CompanyInformationExt" extends "Company Information"
             Caption = '"Company P.I.N"';
             DataClassification = ToBeClassified;
         }
-        
+
     }
 }

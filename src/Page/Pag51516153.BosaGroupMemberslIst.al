@@ -19,7 +19,7 @@ page 51516153 "Bosa Group Members List"
                 field("ID Number/Passport Number"; Rec."ID Number/Passport Number")
                 {
                     ToolTip = 'Specifies the value of the ID Number/Passport Number field.';
-                    
+
                 }
                 field(Name; Rec.Name)
                 {

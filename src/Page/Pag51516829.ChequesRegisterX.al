@@ -15,35 +15,35 @@ Page 51516829 "Cheques RegisterX"
         {
             repeater(Group)
             {
-                field("Cheque No."; "Cheque No.")
+                field("Cheque No."; Rec."Cheque No.")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field("Account No."; "Account No.")
+                field("Account No."; Rec."Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approval Date"; "Approval Date")
+                field("Approval Date"; Rec."Approval Date")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
 
                 }
-                field("Application No."; "Application No.")
+                field("Application No."; Rec."Application No.")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
 
                 }
-                field("Cancelled/Stopped By"; "Cancelled/Stopped By")
+                field("Cancelled/Stopped By"; Rec."Cancelled/Stopped By")
                 {
                     ApplicationArea = Basic;
                 }

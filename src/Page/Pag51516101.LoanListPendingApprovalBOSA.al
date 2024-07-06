@@ -19,75 +19,75 @@ page 51516101 "LoanList-Pending Approval BOSA"
         {
             repeater(Group)
             {
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Product Type"; "Loan Product Type")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
 
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Client Name"; "Client Name")
+                field("Client Name"; Rec."Client Name")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field("Client Code"; "Client Code")
+                field("Client Code"; Rec."Client Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member  No';
                 }
 
 
-                field("Group Code"; "Group Code")
+                field("Group Code"; Rec."Group Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
 
-                field("Requested Amount"; "Requested Amount")
+                field("Requested Amount"; Rec."Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Approved Amount"; "Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     ApplicationArea = Basic;
                     Style = Ambiguous;
 
                 }
-                field("Loan Status"; "Loan Status")
+                field("Loan Status"; Rec."Loan Status")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Issued Date"; "Issued Date")
+                field("Issued Date"; Rec."Issued Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Expected Date of Completion"; "Expected Date of Completion")
+                field("Expected Date of Completion"; Rec."Expected Date of Completion")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Installments; Installments)
+                field(Installments; Rec.Installments)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Repayment; Repayment)
+                field(Repayment; Rec.Repayment)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Rejection  Remark"; "Rejection  Remark")
+                field("Rejection  Remark"; Rec."Rejection  Remark")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
 
                 }
@@ -107,7 +107,7 @@ page 51516101 "LoanList-Pending Approval BOSA"
     }
     trigger OnOpenPage()
     begin
-        SetRange("Captured By", UserId);
+        Rec.SetRange("Captured By", UserId);
     end;
 }
 

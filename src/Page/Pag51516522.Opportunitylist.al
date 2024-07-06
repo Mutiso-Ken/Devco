@@ -13,51 +13,51 @@ Page 51516522 "Opportunity list."
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Search Name";"Search Name")
+                field("Search Name"; Rec."Search Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Address;Address)
+                field(Address; Rec.Address)
                 {
                     ApplicationArea = Basic;
                 }
-                field(City;City)
+                field(City; Rec.City)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No.";"Phone No.")
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Salesperson Code";"Salesperson Code")
+                field("Salesperson Code"; Rec."Salesperson Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Country/Region Code";"Country/Region Code")
+                field("Country/Region Code"; Rec."Country/Region Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Comment;Comment)
+                field(Comment; Rec.Comment)
                 {
                     ApplicationArea = Basic;
                 }
-                field(status;status)
+                field(status; Rec.status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Lead Type";"Lead Type")
+                field("Lead Type"; Rec."Lead Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("member no";"member no")
+                field("member no"; Rec."member no")
                 {
                     ApplicationArea = Basic;
                 }

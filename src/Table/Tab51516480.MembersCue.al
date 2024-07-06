@@ -4,44 +4,44 @@ Table 51516480 "Members Cue"
 
     fields
     {
-        field(1;"Primary Key";Code[20])
+        field(1; "Primary Key"; Code[20])
         {
         }
-        field(2;"Active Members";Integer)
+        field(2; "Active Members"; Integer)
         {
-            CalcFormula = count(Customer where (Status=const(Active)));
+            CalcFormula = count(Customer where(Status = const(Active)));
             FieldClass = FlowField;
         }
-        field(3;"Non-Active Members";Integer)
+        field(3; "Non-Active Members"; Integer)
         {
-            CalcFormula = count(Customer where (Status=const("Non-Active")));
+            CalcFormula = count(Customer where(Status = const("Non-Active")));
             FieldClass = FlowField;
         }
-        field(4;"Dormant Members";Integer)
+        field(4; "Dormant Members"; Integer)
         {
-            CalcFormula = count(Customer where (Status=const(Dormant)));
+            CalcFormula = count(Customer where(Status = const(Dormant)));
             FieldClass = FlowField;
         }
-        field(5;"Blocked Members";Integer)
+        field(5; "Blocked Members"; Integer)
         {
-            CalcFormula = count(Customer where (Status=const(Blocked)));
+            CalcFormula = count(Customer where(Status = const(Blocked)));
             FieldClass = FlowField;
         }
-        field(6;"Reinstated Members";Integer)
+        field(6; "Reinstated Members"; Integer)
         {
-            CalcFormula = count(Customer where (Status=const("Re-instated")));
+            CalcFormula = count(Customer where(Status = const("Re-instated")));
             FieldClass = FlowField;
         }
-        field(7;"Defaulted members";Integer)
+        field(7; "Defaulted members"; Integer)
         {
-            CalcFormula = count(Customer where (Status=const(Defaulter)));
+            CalcFormula = count(Customer where(Status = const(Defaulter)));
             FieldClass = FlowField;
         }
     }
 
     keys
     {
-        key(Key1;"Primary Key")
+        key(Key1; "Primary Key")
         {
             Clustered = true;
         }

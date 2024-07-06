@@ -10,47 +10,47 @@ Page 51516053 "Receipt Types Card"
         {
             group(General)
             {
-                field("Transaction Code";"Transaction Code")
+                field("Transaction Code"; Rec."Transaction Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Description";"Transaction Description")
+                field("Transaction Description"; Rec."Transaction Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Type";"Transaction Type")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type";"Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No";"Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Default Grouping";"Default Grouping")
+                field("Default Grouping"; Rec."Default Grouping")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Withholding Tax Code";"Withholding Tax Code")
+                field("Withholding Tax Code"; Rec."Withholding Tax Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Withholding Tax Chargeable";"Withholding Tax Chargeable")
+                field("Withholding Tax Chargeable"; Rec."Withholding Tax Chargeable")
                 {
                     ApplicationArea = Basic;
                 }
-                field("VAT Code";"VAT Code")
+                field("VAT Code"; Rec."VAT Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("VAT Chargeable";"VAT Chargeable")
+                field("VAT Chargeable"; Rec."VAT Chargeable")
                 {
                     ApplicationArea = Basic;
                 }
@@ -64,7 +64,7 @@ Page 51516053 "Receipt Types Card"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-            "Transaction Type":="transaction type"::Receipt;
+        Rec."Transaction Type" := Rec."transaction type"::Receipt;
     end;
 }
 

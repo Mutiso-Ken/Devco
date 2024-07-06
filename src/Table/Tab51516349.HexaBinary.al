@@ -4,11 +4,11 @@ Table 51516349 "Hexa Binary"
 
     fields
     {
-        field(1;Hexadecimal;Code[1])
+        field(1; Hexadecimal; Code[1])
         {
             Editable = true;
         }
-        field(2;Binary;Code[4])
+        field(2; Binary; Code[4])
         {
             Editable = true;
         }
@@ -16,11 +16,11 @@ Table 51516349 "Hexa Binary"
 
     keys
     {
-        key(Key1;Hexadecimal)
+        key(Key1; Hexadecimal)
         {
             Clustered = true;
         }
-        key(Key2;Binary)
+        key(Key2; Binary)
         {
         }
     }

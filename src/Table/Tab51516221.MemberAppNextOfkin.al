@@ -50,7 +50,7 @@ Table 51516221 "Member App Next Of kin"
             begin
 
                 Rec.CalcFields("Total Allocation");
-                
+
                 Totalallocate := Totalallocate + "Total Allocation";
                 if Totalallocate > 100 then
                     Error(' Total allocation should not  be greater than 100 %');

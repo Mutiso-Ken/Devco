@@ -4,38 +4,38 @@ Table 50027 "Loan Repayment Schedule Buffer"
 
     fields
     {
-        field(1;"Loan No";Code[30])
+        field(1; "Loan No"; Code[30])
         {
         }
-        field(2;Instalment;Integer)
+        field(2; Instalment; Integer)
         {
         }
-        field(3;"Repayment Date";Date)
+        field(3; "Repayment Date"; Date)
         {
         }
-        field(4;"Loan Balance";Decimal)
+        field(4; "Loan Balance"; Decimal)
         {
         }
-        field(5;"Monthly Repayment";Decimal)
+        field(5; "Monthly Repayment"; Decimal)
         {
         }
-        field(6;"Principle Repayment";Decimal)
+        field(6; "Principle Repayment"; Decimal)
         {
         }
-        field(7;"Monthly Interest";Decimal)
+        field(7; "Monthly Interest"; Decimal)
         {
         }
-        field(8;"Monthly Insurance";Decimal)
+        field(8; "Monthly Insurance"; Decimal)
         {
         }
-        field(9;"Entry No";Integer)
+        field(9; "Entry No"; Integer)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Loan No","Entry No")
+        key(Key1; "Loan No", "Entry No")
         {
             Clustered = true;
         }

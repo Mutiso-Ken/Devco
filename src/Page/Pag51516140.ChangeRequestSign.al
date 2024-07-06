@@ -12,7 +12,7 @@ page 51516140 "Change Request Sign"
     {
         area(content)
         {
-            field("signinature(New Value)";"signinature(New Value)")
+            field("signinature(New Value)"; Rec."signinature(New Value)")
             {
                 ApplicationArea = All;
                 Caption = 'New Signature';

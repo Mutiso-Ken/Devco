@@ -13,125 +13,125 @@ Page 51516094 "Mobile Loans"
         {
             repeater(Group)
             {
-                field("Document No"; "Document No")
+                field("Document No"; Rec."Document No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Date"; "Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Customer Name"; "Customer Name")
+                field("Customer Name"; Rec."Customer Name")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Batch No"; "Batch No")
+                field("Batch No"; Rec."Batch No")
                 {
                     ApplicationArea = Basic;
 
                 }
-                field("Loan No"; "Loan No")
+                field("Loan No"; Rec."Loan No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Amount"; "Loan Amount")
+                field("Loan Amount"; Rec."Loan Amount")
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
                 }
 
-                field("Date Entered"; "Date Entered")
+                field("Date Entered"; Rec."Date Entered")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Time Entered"; "Time Entered")
+                field("Time Entered"; Rec."Time Entered")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Entered By"; "Entered By")
+                field("Entered By"; Rec."Entered By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Sent To Server"; "Sent To Server")
+                field("Sent To Server"; Rec."Sent To Server")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Date Sent To Server"; "Date Sent To Server")
+                field("Date Sent To Server"; Rec."Date Sent To Server")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Time Sent To Server"; "Time Sent To Server")
+                field("Time Sent To Server"; Rec."Time Sent To Server")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
 
-                field("Member No"; "Member No")
+                field("Member No"; Rec."Member No")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Telephone No"; "Telephone No")
+                field("Telephone No"; Rec."Telephone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Corporate No"; "Corporate No")
+                field("Corporate No"; Rec."Corporate No")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Delivery Center"; "Delivery Center")
+                field("Delivery Center"; Rec."Delivery Center")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field(Purpose; Purpose)
+                field(Purpose; Rec.Purpose)
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("MPESA Doc No."; "MPESA Doc No.")
+                field("MPESA Doc No."; Rec."MPESA Doc No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Comments; Comments)
+                field(Comments; Rec.Comments)
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Entry No"; "Entry No")
+                field("Entry No"; Rec."Entry No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Ist Notification"; "Ist Notification")
+                field("Ist Notification"; Rec."Ist Notification")
                 {
                     ApplicationArea = Basic;
                 }
-                field("2nd Notification"; "2nd Notification")
+                field("2nd Notification"; Rec."2nd Notification")
                 {
                     ApplicationArea = Basic;
                 }
-                field("3rd Notification"; "3rd Notification")
+                field("3rd Notification"; Rec."3rd Notification")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Penalty Date"; "Penalty Date")
+                field("Penalty Date"; Rec."Penalty Date")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field(Recovery; Recovery)
+                field(Recovery; Rec.Recovery)
                 {
                     ApplicationArea = Basic;
                 }

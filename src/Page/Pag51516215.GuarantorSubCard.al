@@ -11,62 +11,62 @@ Page 51516215 "Guarantor Sub Card"
         {
             group(General)
             {
-                field("Document No"; "Document No")
+                field("Document No"; Rec."Document No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loanee Member No"; "Loanee Member No")
+                field("Loanee Member No"; Rec."Loanee Member No")
                 {
                     ApplicationArea = Basic;
                     Editable = LoaneeNoEditable;
                 }
-                field("Loanee Name"; "Loanee Name")
+                field("Loanee Name"; Rec."Loanee Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Guaranteed"; "Loan Guaranteed")
+                field("Loan Guaranteed"; Rec."Loan Guaranteed")
                 {
                     ApplicationArea = Basic;
                     Editable = LoanGuaranteedEditable;
                 }
-                field("Substituting Member"; "Substituting Member")
+                field("Substituting Member"; Rec."Substituting Member")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member to be substuted';
                     Editable = SubMemberEditable;
                 }
-                field("Substituting Member Name"; "Substituting Member Name")
+                field("Substituting Member Name"; Rec."Substituting Member Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Created By"; "Created By")
+                field("Created By"; Rec."Created By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Substituted; Substituted)
+                field(Substituted; Rec.Substituted)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Date Substituted"; "Date Substituted")
+                field("Date Substituted"; Rec."Date Substituted")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Substituted By"; "Substituted By")
+                field("Substituted By"; Rec."Substituted By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -103,11 +103,11 @@ Page 51516215 "Guarantor Sub Card"
                         text001: label 'This batch is already pending approval';
                         GuarantorshipSubstitutionL: Record "Guarantorship Substitution L";
                     begin
-                        if Status <> Status::Open then
+                        if Rec.Status <> Rec.Status::Open then
                             Error('Status must be open.');
 
-                        TestField("Loanee Member No");
-                        TestField("Loan Guaranteed");
+                        Rec.TestField("Loanee Member No");
+                        Rec.TestField("Loan Guaranteed");
 
                         GuarantorshipSubstitutionL.Reset;
                         GuarantorshipSubstitutionL.SetRange("Document No", Rec."Document No");
@@ -115,14 +115,14 @@ Page 51516215 "Guarantor Sub Card"
 
 
                         LGuarantor.Reset;
-                        LGuarantor.SetRange(LGuarantor."Loan No", "Loan Guaranteed");
-                        LGuarantor.SetRange(LGuarantor."Member No", "Substituting Member");
+                        LGuarantor.SetRange(LGuarantor."Loan No", Rec."Loan Guaranteed");
+                        LGuarantor.SetRange(LGuarantor."Member No", Rec."Substituting Member");
                         if LGuarantor.FindSet then begin
                             //Add All Replaced Amounts
                             TotalReplaced := 0;
                             GSubLine.Reset;
-                            GSubLine.SetRange(GSubLine."Document No", "Document No");
-                            GSubLine.SetRange(GSubLine."Member No", "Substituting Member");
+                            GSubLine.SetRange(GSubLine."Document No", Rec."Document No");
+                            GSubLine.SetRange(GSubLine."Member No", Rec."Substituting Member");
                             if GSubLine.FindSet then begin
                                 repeat
                                     TotalReplaced := TotalReplaced + GSubLine."Sub Amount Guaranteed";
@@ -156,7 +156,7 @@ Page 51516215 "Guarantor Sub Card"
                         text001: label 'This batch is already pending approval';
                         SrestepApprovalsCodeUnit: Codeunit SurestepApprovalsCodeUnit;
                     begin
-                        if Status <> Status::Pending then
+                        if Rec.Status <> Rec.Status::Pending then
                             Error(text001);
                         //Approval here
                         if Confirm('Cancel Approval Request?', false) = true then begin
@@ -177,13 +177,13 @@ Page 51516215 "Guarantor Sub Card"
                     trigger OnAction()
                     begin
 
-                        TestField(Status, Rec.Status::Approved);
-                        if "Created By" <> UserId then begin
+                        Rec.TestField(Status, Rec.Status::Approved);
+                        if Rec."Created By" <> UserId then begin
                             Error('Restricted! you can only process a record you created!');
                         end;
                         LGuarantor.Reset;
-                        LGuarantor.SetRange(LGuarantor."Loan No", "Loan Guaranteed");
-                        LGuarantor.SetRange(LGuarantor."Member No", "Substituting Member");
+                        LGuarantor.SetRange(LGuarantor."Loan No", Rec."Loan Guaranteed");
+                        LGuarantor.SetRange(LGuarantor."Member No", Rec."Substituting Member");
                         if LGuarantor.FindSet then begin
                             //Add All Replaced Amounts
                             if LGuarantor.Substituted = true then begin
@@ -192,8 +192,8 @@ Page 51516215 "Guarantor Sub Card"
 
                             TotalReplaced := 0;
                             GSubLine.Reset;
-                            GSubLine.SetRange(GSubLine."Document No", "Document No");
-                            GSubLine.SetRange(GSubLine."Member No", "Substituting Member");
+                            GSubLine.SetRange(GSubLine."Document No", Rec."Document No");
+                            GSubLine.SetRange(GSubLine."Member No", Rec."Substituting Member");
                             if GSubLine.FindSet then begin
                                 repeat
                                     TotalReplaced := TotalReplaced + GSubLine."Sub Amount Guaranteed";
@@ -209,19 +209,19 @@ Page 51516215 "Guarantor Sub Card"
 
                             //Create Lines
                             GSubLine.Reset;
-                            GSubLine.SetRange(GSubLine."Document No", "Document No");
-                            GSubLine.SetRange(GSubLine."Member No", "Substituting Member");
+                            GSubLine.SetRange(GSubLine."Document No", Rec."Document No");
+                            GSubLine.SetRange(GSubLine."Member No", Rec."Substituting Member");
                             if GSubLine.FindSet then begin
                                 repeat
                                     NewLGuar.Init;
-                                    NewLGuar."Loan No" := "Loan Guaranteed";
+                                    NewLGuar."Loan No" := Rec."Loan Guaranteed";
                                     NewLGuar."Member No" := GSubLine."Substitute Member";
                                     NewLGuar.Validate(NewLGuar."Member No");
                                     NewLGuar.Name := GSubLine."Substitute Member Name";
                                     NewLGuar."Amont Guaranteed" := CalculateAmountGuaranteed(GSubLine."Sub Amount Guaranteed", TotalReplaced, GSubLine."Amount Guaranteed");
                                     NewLGuar."Substituted Guarantor" := GSubLine."Member No";
-                                    NewLGuar.Shares:= GSubLine."Substitute Member Deposits";
-                                    
+                                    NewLGuar.Shares := GSubLine."Substitute Member Deposits";
+
                                     NewLGuar.Insert();
                                 until GSubLine.Next = 0;
                             end;
@@ -229,11 +229,11 @@ Page 51516215 "Guarantor Sub Card"
 
                             LGuarantor.Substituted := true;
 
-                            Substituted := true;
-                            "Date Substituted" := Today;
-                            "Substituted By" := UserId;
-                            Status := Status::Closed;
-                            if Modify() = true then begin
+                            Rec.Substituted := true;
+                            Rec."Date Substituted" := Today;
+                            Rec."Substituted By" := UserId;
+                            Rec.Status := Rec.Status::Closed;
+                            if Rec.Modify() = true then begin
                                 Message('Guarantor Substituted Succesfully');
                             end;
 
@@ -261,7 +261,7 @@ Page 51516215 "Guarantor Sub Card"
 
     trigger OnOpenPage()
     begin
-        "Application Date" := Today;
+        Rec."Application Date" := Today;
         Controls();
     end;
 
@@ -280,18 +280,18 @@ Page 51516215 "Guarantor Sub Card"
 
     local procedure FNAddRecordRestriction()
     begin
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             LoaneeNoEditable := true;
             LoanGuaranteedEditable := true;
             SubMemberEditable := true
 
         end else
-            if Status = Status::Pending then begin
+            if Rec.Status = Rec.Status::Pending then begin
                 LoaneeNoEditable := false;
                 LoanGuaranteedEditable := false;
                 SubMemberEditable := false
             end else
-                if Status = Status::Approved then begin
+                if Rec.Status = Rec.Status::Approved then begin
                     LoaneeNoEditable := false;
                     LoanGuaranteedEditable := false;
                     SubMemberEditable := false;
@@ -307,23 +307,23 @@ Page 51516215 "Guarantor Sub Card"
 
     local procedure Controls()
     begin
-        if Status = Status::Open THEN begin
+        if Rec.Status = Rec.Status::Open THEN begin
             AllowPosting := false;
             CancelApproval := false;
             SendApproval := true;
         end ELSE
-            if Status = Status::Pending THEN begin
+            if Rec.Status = Rec.Status::Pending THEN begin
                 AllowPosting := false;
                 CancelApproval := true;
                 SendApproval := false;
             end ELSE
-                if Status = Status::Approved THEN begin
+                if Rec.Status = Rec.Status::Approved THEN begin
                     AllowPosting := true;
                     CancelApproval := false;
                     SendApproval := false;
                 end
                 ELSE
-                    if Status = Status::Closed THEN begin
+                    if Rec.Status = Rec.Status::Closed THEN begin
                         AllowPosting := false;
                         CancelApproval := false;
                         SendApproval := false;

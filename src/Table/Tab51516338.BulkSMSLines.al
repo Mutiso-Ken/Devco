@@ -4,12 +4,12 @@ Table 51516338 "Bulk SMS Lines"
 
     fields
     {
-        field(1;No;Code[20])
+        field(1; No; Code[20])
         {
             NotBlank = true;
             TableRelation = "Bulk SMS Header".No;
         }
-        field(2;"Phone No";Text[50])
+        field(2; "Phone No"; Text[50])
         {
             NotBlank = true;
         }
@@ -17,7 +17,7 @@ Table 51516338 "Bulk SMS Lines"
 
     keys
     {
-        key(Key1;No,"Phone No")
+        key(Key1; No, "Phone No")
         {
             Clustered = true;
         }

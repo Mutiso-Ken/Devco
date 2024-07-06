@@ -4,22 +4,22 @@ Table 51516558 "Crm General Setup."
 
     fields
     {
-        field(1;"Primary key";Integer)
+        field(1; "Primary key"; Integer)
         {
         }
-        field(2;"Lead Nos";Code[10])
-        {
-            TableRelation = "No. Series";
-        }
-        field(3;"General Enquiries Nos";Code[10])
+        field(2; "Lead Nos"; Code[10])
         {
             TableRelation = "No. Series";
         }
-        field(4;"Cases nos";Code[10])
+        field(3; "General Enquiries Nos"; Code[10])
         {
             TableRelation = "No. Series";
         }
-        field(5;"Crm logs Nos";Code[10])
+        field(4; "Cases nos"; Code[10])
+        {
+            TableRelation = "No. Series";
+        }
+        field(5; "Crm logs Nos"; Code[10])
         {
             TableRelation = "No. Series";
         }
@@ -27,7 +27,7 @@ Table 51516558 "Crm General Setup."
 
     keys
     {
-        key(Key1;"Primary key")
+        key(Key1; "Primary key")
         {
             Clustered = true;
         }

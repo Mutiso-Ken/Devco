@@ -10,35 +10,35 @@ Page 51516243 "Receipt Allocation-BOSA"
         {
             repeater(Control1102760000)
             {
-                field("Account Type"; "Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member No"; "Member No")
+                field("Member No"; Rec."Member No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Type"; "Transaction Type")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = Basic;
 
                     trigger OnValidate()
                     begin
-                        if  ("Transaction Type" <> "transaction type"::" ") then begin
-                            "Account Type" := "account type"::Customer
+                        if (Rec."Transaction Type" <> Rec."transaction type"::" ") then begin
+                            Rec."Account Type" := Rec."account type"::Customer
                         end else
-                            "Account Type" := "account type"::Vendor;
+                            Rec."Account Type" := Rec."account type"::Vendor;
                     end;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan No."; "Loan No.")
+                field("Loan No."; Rec."Loan No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
@@ -52,7 +52,7 @@ Page 51516243 "Receipt Allocation-BOSA"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        "Account Type" := "account type"::Customer;
+        Rec."Account Type" := Rec."account type"::Customer;
     end;
 
     trigger OnOpenPage()

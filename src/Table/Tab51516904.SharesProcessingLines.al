@@ -4,34 +4,34 @@ Table 51516904 "Shares Processing  Lines"
 
     fields
     {
-        field(1;"No.";Integer)
+        field(1; "No."; Integer)
         {
             NotBlank = false;
         }
-        field(2;"Account No.";Code[20])
+        field(2; "Account No."; Code[20])
         {
-            TableRelation = Vendor."No." where ("Creditor Type"=const(Account),
-                                                "Account Type"=const('ORDINARY'));
+            TableRelation = Vendor."No." where("Creditor Type" = const(Account),
+                                                "Account Type" = const('ORDINARY'));
             ValidateTableRelation = false;
 
             trigger OnValidate()
             begin
 
                 Acc.Reset;
-                Acc.SetRange(Acc."No.","Account No.");
+                Acc.SetRange(Acc."No.", "Account No.");
                 if Acc.Find('-') then begin
-                  if "Staff No." = '' then
-                    "Staff No.":=Acc."Staff No";
-                  if Name = '' then
-                     Name:=Acc.Name;
-                    "Account Name":=Acc.Name;
-                    "Client Code":=Acc."BOSA Account No";
-                  if "Grower No." = '' then
-                    "Grower No.":=Acc."Grower No";
+                    if "Staff No." = '' then
+                        "Staff No." := Acc."Staff No";
+                    if Name = '' then
+                        Name := Acc.Name;
+                    "Account Name" := Acc.Name;
+                    "Client Code" := Acc."BOSA Account No";
+                    if "Grower No." = '' then
+                        "Grower No." := Acc."Grower No";
                 end;
             end;
         }
-        field(3;"Staff No.";Code[20])
+        field(3; "Staff No."; Code[20])
         {
 
             trigger OnValidate()
@@ -49,72 +49,72 @@ Table 51516904 "Shares Processing  Lines"
 
             end;
         }
-        field(4;Name;Text[50])
+        field(4; Name; Text[50])
         {
         }
-        field(5;Amount;Decimal)
+        field(5; Amount; Decimal)
         {
         }
-        field(6;"Account Not Found";Boolean)
+        field(6; "Account Not Found"; Boolean)
         {
         }
-        field(7;"Date Filter";Date)
+        field(7; "Date Filter"; Date)
         {
             FieldClass = FlowFilter;
         }
-        field(8;Processed;Boolean)
+        field(8; Processed; Boolean)
         {
         }
-        field(9;"Document No.";Code[20])
+        field(9; "Document No."; Code[20])
         {
         }
-        field(10;Date;Date)
+        field(10; Date; Date)
         {
         }
-        field(11;"No. Series";Code[20])
+        field(11; "No. Series"; Code[20])
         {
         }
-        field(12;"Original Account No.";Code[30])
+        field(12; "Original Account No."; Code[30])
         {
         }
-        field(13;"Multiple Salary";Boolean)
+        field(13; "Multiple Salary"; Boolean)
         {
         }
-        field(14;Reversed;Boolean)
+        field(14; Reversed; Boolean)
         {
         }
-        field(15;"Branch Reff.";Code[20])
+        field(15; "Branch Reff."; Code[20])
         {
         }
-        field(16;"Account Name";Text[50])
+        field(16; "Account Name"; Text[50])
         {
         }
-        field(17;"ID No.";Code[30])
+        field(17; "ID No."; Code[30])
         {
         }
-        field(18;"Blocked Accounts";Boolean)
+        field(18; "Blocked Accounts"; Boolean)
         {
         }
-        field(62000;"BOSA Schedule";Boolean)
+        field(62000; "BOSA Schedule"; Boolean)
         {
         }
-        field(62001;USER;Code[50])
+        field(62001; USER; Code[50])
         {
         }
-        field(62002;"Balance sl";Decimal)
+        field(62002; "Balance sl"; Decimal)
         {
-            CalcFormula = sum("Gen. Journal Line".Amount where ("Account No."=field("Account No.")));
+            CalcFormula = sum("Gen. Journal Line".Amount where("Account No." = field("Account No.")));
             FieldClass = FlowField;
         }
-        field(62003;"Client Code";Code[20])
+        field(62003; "Client Code"; Code[20])
         {
         }
-        field(62004;Type;Option)
+        field(62004; Type; Option)
         {
             OptionCaption = 'Salary,Tea Bonus,Milk';
             OptionMembers = Salary,"Tea Bonus",Milk;
         }
-        field(62005;"Grower No.";Code[20])
+        field(62005; "Grower No."; Code[20])
         {
             //The property 'ValidateTableRelation' can only be set if the property 'TableRelation' is set
             //ValidateTableRelation = false;
@@ -122,15 +122,15 @@ Table 51516904 "Shares Processing  Lines"
             trigger OnValidate()
             begin
                 Acc.Reset;
-                Acc.SetRange(Acc."Grower No","Grower No.");
+                Acc.SetRange(Acc."Grower No", "Grower No.");
                 if Acc.Find('-') then begin
-                 /* IF "Staff No." = '' THEN
-                  "Staff No.":=Acc."Staff No";
-                  IF Name = '' THEN*/
-                  Name:=Acc.Name;
-                  "Account Name":=Acc.Name;
-                  "Client Code":=Acc."BOSA Account No";
-                  "Account No.":=Acc."No.";
+                    /* IF "Staff No." = '' THEN
+                     "Staff No.":=Acc."Staff No";
+                     IF Name = '' THEN*/
+                    Name := Acc.Name;
+                    "Account Name" := Acc.Name;
+                    "Client Code" := Acc."BOSA Account No";
+                    "Account No." := Acc."No.";
                 end;
 
             end;
@@ -139,11 +139,11 @@ Table 51516904 "Shares Processing  Lines"
 
     keys
     {
-        key(Key1;"No.")
+        key(Key1; "No.")
         {
             Clustered = true;
         }
-        key(Key2;"Account No.",Date,Processed)
+        key(Key2; "Account No.", Date, Processed)
         {
             SumIndexFields = Amount;
         }
@@ -157,9 +157,9 @@ Table 51516904 "Shares Processing  Lines"
     begin
         SalBuffer.Reset;
         if SalBuffer.Find('+') then
-        "No.":=SalBuffer."No."+1;
+            "No." := SalBuffer."No." + 1;
 
-        USER:=UserId;
+        USER := UserId;
     end;
 
     var

@@ -4,11 +4,11 @@ Table 51516425 "Sacco Insiders"
 
     fields
     {
-        field(1;MemberNo;Code[100])
+        field(1; MemberNo; Code[100])
         {
             TableRelation = Customer;
         }
-        field(2;"Position in society";Option)
+        field(2; "Position in society"; Option)
         {
             OptionMembers = ,Board,Staff;
         }
@@ -16,7 +16,7 @@ Table 51516425 "Sacco Insiders"
 
     keys
     {
-        key(Key1;MemberNo)
+        key(Key1; MemberNo)
         {
             Clustered = true;
         }

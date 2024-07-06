@@ -12,23 +12,23 @@ Page 51516058 "Product Risk Rating"
         {
             repeater(Group)
             {
-                field("Product Category"; "Product Category")
+                field("Product Category"; Rec."Product Category")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Product Type Code"; "Product Type Code")
+                field("Product Type Code"; Rec."Product Type Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Product Type"; "Product Type")
+                field("Product Type"; Rec."Product Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Inherent Risk Rating"; "Inherent Risk Rating")
+                field("Inherent Risk Rating"; Rec."Inherent Risk Rating")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Risk Score"; "Risk Score")
+                field("Risk Score"; Rec."Risk Score")
                 {
                     ApplicationArea = Basic;
                 }

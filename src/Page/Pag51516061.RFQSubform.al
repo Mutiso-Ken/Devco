@@ -62,9 +62,9 @@ Page 51516061 "RFQ Subform"
 
                 trigger OnAction()
                 var
-                   // PParams: Record UnknownRecord51516058;
+                // PParams: Record UnknownRecord51516058;
                 begin
-                    
+
                     /*PParams.RESET;
                     PParams.SETRANGE(PParams."Document Type","Document Type");
                     PParams.SETRANGE(PParams."Document No.","Line No.");

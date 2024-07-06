@@ -46,6 +46,6 @@ tableextension 51516081 "detailedCustLedgExt" extends "Detailed Cust. Ledg. Entr
     trigger OnInsert()
     begin
         "Amount Posted" := Amount;
-        
+
     end;
 }

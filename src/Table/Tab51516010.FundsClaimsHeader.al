@@ -4,14 +4,14 @@ Table 51516010 "Funds Claims Header"
 
     fields
     {
-        field(10;"No.";Code[10])
+        field(10; "No."; Code[10])
         {
         }
     }
 
     keys
     {
-        key(Key1;"No.")
+        key(Key1; "No.")
         {
             Clustered = true;
         }

@@ -16,40 +16,40 @@ Page 51516259 "BOSA Receipts List"
         {
             repeater(Group)
             {
-                field("Transaction No."; "Transaction No.")
+                field("Transaction No."; Rec."Transaction No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No."; "Account No.")
+                field("Account No."; Rec."Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cheque No."; "Cheque No.")
+                field("Cheque No."; Rec."Cheque No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employer No."; "Employer No.")
+                field("Employer No."; Rec."Employer No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Receipting Bank';
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted; Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Date"; "Transaction Date")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("User ID"; "User ID")
+                field("User ID"; Rec."User ID")
                 {
                     ApplicationArea = Basic;
                 }
@@ -67,7 +67,7 @@ Page 51516259 "BOSA Receipts List"
         ObjUserSetup.SetRange("User ID", UserId);
         if ObjUserSetup.Find('-') then begin
             if ObjUserSetup."Approval Administrator" <> true then
-                SetRange("User ID", UserId);
+                Rec.SetRange("User ID", UserId);
         end;
     end;
 

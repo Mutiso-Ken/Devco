@@ -12,48 +12,48 @@ Page 51516323 "ATM Applications Card"
         {
             group(General)
             {
-                field("Account No";"Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Account Type";"Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Branch Code";"Branch Code")
+                field("Branch Code"; Rec."Branch Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Address 1";"Address 1")
+                field("Address 1"; Rec."Address 1")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Address 2";"Address 2")
+                field("Address 2"; Rec."Address 2")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Customer ID";"Customer ID")
+                field("Customer ID"; Rec."Customer ID")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Card Type";"Card Type")
+                field("Card Type"; Rec."Card Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Request Type";"Request Type")
+                field("Request Type"; Rec."Request Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Application Date";"Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Card No";"Card No")
+                field("Card No"; Rec."Card No")
                 {
                     ApplicationArea = Basic;
 
@@ -61,99 +61,99 @@ Page 51516323 "ATM Applications Card"
                     begin
 
 
-                         if StrLen("Card No") <> 16 then
-                          Error('ATM No. cannot contain More or less than 16 Characters.');
+                        if StrLen(Rec."Card No") <> 16 then
+                            Error('ATM No. cannot contain More or less than 16 Characters.');
                     end;
                 }
-                field("Date Issued";"Date Issued")
+                field("Date Issued"; Rec."Date Issued")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Limit;Limit)
+                field(Limit; Rec.Limit)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Terms Read and Understood";"Terms Read and Understood")
+                field("Terms Read and Understood"; Rec."Terms Read and Understood")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Card Issued";"Card Issued")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Form No";"Form No")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Sent To External File";"Sent To External File")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Card Status";"Card Status")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Date Activated";"Date Activated")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Date Frozen";"Date Frozen")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Replacement For Card No";"Replacement For Card No")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Has Other Accounts";"Has Other Accounts")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Phone No.";"Phone No.")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("No.";"No.")
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Collected;Collected)
+                field("Card Issued"; Rec."Card Issued")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Application Approved";"Application Approved")
+                field("Form No"; Rec."Form No")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Sent To External File"; Rec."Sent To External File")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Card Status"; Rec."Card Status")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Date Activated"; Rec."Date Activated")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Date Frozen"; Rec."Date Frozen")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Replacement For Card No"; Rec."Replacement For Card No")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Has Other Accounts"; Rec."Has Other Accounts")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Phone No."; Rec."Phone No.")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("No."; Rec."No.")
+                {
+                    ApplicationArea = Basic;
+                }
+                field(Collected; Rec.Collected)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Date Collected";"Date Collected")
-                {
-                    ApplicationArea = Basic;
-                    Editable = true;
-                }
-                field("Card Issued By";"Card Issued By")
+                field("Application Approved"; Rec."Application Approved")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Approval Date";"Approval Date")
+                field("Date Collected"; Rec."Date Collected")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("ATM Expiry Date";"ATM Expiry Date")
+                field("Card Issued By"; Rec."Card Issued By")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Approval Date"; Rec."Approval Date")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Card Issued to Customer";"Card Issued to Customer")
+                field("ATM Expiry Date"; Rec."ATM Expiry Date")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Issued to";"Issued to")
+                field("Card Issued to Customer"; Rec."Card Issued to Customer")
+                {
+                    ApplicationArea = Basic;
+                    Editable = true;
+                }
+                field("Issued to"; Rec."Issued to")
                 {
                     ApplicationArea = Basic;
                 }
@@ -177,21 +177,21 @@ Page 51516323 "ATM Applications Card"
 
                     trigger OnAction()
                     begin
-                        if Confirm('Are you sure you want to approve this application?',true)=true then begin
-                        if "Application Approved"=true then
-                        Error('This application is already approved');
-                        //TESTFIELD("No.");
-                        TestField("Account Name");
-                        //TESTFIELD("Customer ID");
-                        //TESTFIELD("Request Type C");
-                        //TESTFIELD("Phone No.");
-                        //TESTFIELD("Card Type");
+                        if Confirm('Are you sure you want to approve this application?', true) = true then begin
+                            if Rec."Application Approved" = true then
+                                Error('This application is already approved');
+                            //TESTFIELD("No.");
+                            Rec.TestField("Account Name");
+                            //TESTFIELD("Customer ID");
+                            //TESTFIELD("Request Type C");
+                            //TESTFIELD("Phone No.");
+                            //TESTFIELD("Card Type");
 
-                        "Approval Date":=Today;
-                        "Application Approved":=true;
-                        Modify;
+                            Rec."Approval Date" := Today;
+                            Rec."Application Approved" := true;
+                            Rec.Modify;
                         end else
-                        Error('Operation cancelled');
+                            Error('Operation cancelled');
                     end;
                 }
                 action("Received from bank")
@@ -203,243 +203,243 @@ Page 51516323 "ATM Applications Card"
 
                     trigger OnAction()
                     begin
-                        
-                        if Collected=true then
-                        Error('The ATM Card has already been collected');
-                        
-                        if Confirm('Are you sure you have received this ATM card from Bank?',true) = true then  begin
-                        
-                        GenJournalLine.Reset;
-                        GenJournalLine.SetRange("Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange("Journal Batch Name",'Ftrans');
-                        GenJournalLine.DeleteAll;
-                        
-                        
-                        
-                        //generalSetup.GET();
-                        
-                        generalSetup.Get;
-                        
-                        LineNo:=LineNo+10000;
-                        
-                        
-                         //Vendor Entry
-                        //IF AccountTypes.FIND('-') THEN  BEGIN
-                        GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Journal Batch Name":='Ftrans';
-                        GenJournalLine."Document No.":='ATM charge' ;
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                        GenJournalLine."Account No.":="Account No";
-                        GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Posting Date":=Today;
-                        if "Request Type"="request type"::Replacement then
-                        GenJournalLine.Description:='ATM charge-Replacement'
-                        else
-                        if "Request Type"="request type"::New then
-                        GenJournalLine.Description:='ATM charge-New'
-                        else
-                        if "Request Type"="request type"::"Re-Pin" then
-                        GenJournalLine.Description:='ATM charge-Renewal';
-                        
-                        GenJournalLine.Validate(GenJournalLine."Currency Code");
-                        if "Request Type"="request type"::Replacement then
-                        GenJournalLine.Amount:=generalSetup."ATM Card Fee-Replacement"
-                        else
-                        if "Request Type"="request type"::New then
-                        GenJournalLine.Amount:=generalSetup."ATM Card Fee-New Coop"
-                        else
-                        if "Request Type"="request type"::"Re-Pin" then
-                        GenJournalLine.Amount:=generalSetup."ATM Card Fee-Renewal";
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        //GenJournalLine."Bal. Account Type":=GenJournalLine."Bal. Account Type"::"Bank Account";
-                        //GenJournalLine."Bal. Account No.":=generalSetup."ATM Card Fee Co-op Bank";
-                        GenJournalLine."Shortcut Dimension 1 Code":='FOSA';
-                        GenJournalLine."Shortcut Dimension 2 Code":='Nairobi';
-                        //END;
-                        /*
-                        GenJournalLine.VALIDATE(GenJournalLine.Amount);
-                        GenJournalLine.VALIDATE(GenJournalLine."Bal. Account No.");
-                        GenJournalLine."Shortcut Dimension 1 Code":='FOSA';
-                        GenJournalLine."Shortcut Dimension 2 Code":='Nairobi';
-                        */
-                        
-                        if GenJournalLine.Amount<>0 then
-                        GenJournalLine.Insert;
-                        
-                        
-                        
-                        
-                        
-                        
-                        //Bank Account Entry
-                        
-                        LineNo:=LineNo+10000;
-                        
-                        //IF AccountTypes.FIND('-') THEN  BEGIN
-                        GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Journal Batch Name":='Ftrans';
-                        GenJournalLine."Document No.":='ATM charge' ;
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::"Bank Account";
-                        GenJournalLine."Account No.":=generalSetup."ATM Card Fee Co-op Bank";
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Posting Date":=Today;
-                        if "Request Type"="request type"::Replacement then
-                        GenJournalLine.Description:='ATM charge-Replacement'
-                        else
-                        if "Request Type"="request type"::New then
-                        GenJournalLine.Description:='ATM charge-New'
-                        else
-                        if "Request Type"="request type"::"Re-Pin" then
-                        GenJournalLine.Description:='ATM charge-Renewal';
-                        GenJournalLine.Validate(GenJournalLine."Currency Code");
-                        if "Request Type"="request type"::Replacement then
-                        GenJournalLine.Amount:=-generalSetup."ATM Card Co-op Bank Amount"
-                        else
-                        if "Request Type"="request type"::New then
-                        GenJournalLine.Amount:=-generalSetup."ATM Card Co-op Bank Amount"
-                        else
-                        if "Request Type"="request type"::"Re-Pin" then
-                        GenJournalLine.Amount:=-generalSetup."ATM Card Co-op Bank Amount";
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        //GenJournalLine."Bal. Account Type":=GenJournalLine."Bal. Account Type"::"G/L Account";
-                        //GenJournalLine."Bal. Account No.":=generalSetup."ATM Card Fee-Account";
-                        GenJournalLine."Shortcut Dimension 1 Code":='FOSA';
-                        GenJournalLine."Shortcut Dimension 2 Code":='Nairobi';
-                        
-                        
-                        //END;
-                        
-                        
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
-                        GenJournalLine."Shortcut Dimension 1 Code":='FOSA';
-                        GenJournalLine."Shortcut Dimension 2 Code":='Nairobi';
-                        
-                        
-                        if GenJournalLine.Amount<>0 then
-                        GenJournalLine.Insert;
-                        
-                        
-                        
-                        
-                        //Commission Entry
-                        
-                        LineNo:=LineNo+10000;
-                        
-                        //IF AccountTypes.FIND('-') THEN  BEGIN
-                        GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Journal Batch Name":='Ftrans';
-                        GenJournalLine."Document No.":='ATM charge' ;
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::"G/L Account";
-                        GenJournalLine."Account No.":=generalSetup."ATM Card Fee-Account";
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Posting Date":=Today;
-                        if "Request Type"="request type"::Replacement then
-                        GenJournalLine.Description:='ATM charge-Commission'
-                        else
-                        if "Request Type"="request type"::New then
-                        GenJournalLine.Description:='ATM charge-Commission'
-                        else
-                        if "Request Type"="request type"::"Re-Pin" then
-                        GenJournalLine.Description:='ATM charge-Commission';
-                        GenJournalLine.Validate(GenJournalLine."Currency Code");
-                        if "Request Type"="request type"::Replacement then
-                        GenJournalLine.Amount:=-generalSetup."ATM Card Fee-New Sacco"
-                        else
-                        if "Request Type"="request type"::New then
-                        GenJournalLine.Amount:=-generalSetup."ATM Card Fee-New Sacco"
-                        else
-                        if "Request Type"="request type"::"Re-Pin" then
-                        GenJournalLine.Amount:=-generalSetup."ATM Card Fee-New Sacco";
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        //GenJournalLine."Bal. Account Type":=GenJournalLine."Bal. Account Type"::"G/L Account";
-                        //GenJournalLine."Bal. Account No.":=generalSetup."ATM Card Fee-Account";
-                        GenJournalLine."Shortcut Dimension 1 Code":='FOSA';
-                        GenJournalLine."Shortcut Dimension 2 Code":='Nairobi';
-                        
-                        
-                        //END;
-                        
-                        
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
-                        GenJournalLine."Shortcut Dimension 1 Code":='FOSA';
-                        GenJournalLine."Shortcut Dimension 2 Code":='Nairobi';
-                        
-                        
-                        if GenJournalLine.Amount<>0 then
-                        GenJournalLine.Insert;
-                        
-                        
-                        //Excise Duty
-                        
-                        LineNo:=LineNo+10000;
-                        
-                        //IF AccountTypes.FIND('-') THEN  BEGIN
-                        GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Journal Batch Name":='Ftrans';
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::"G/L Account";
-                        GenJournalLine."Account No.":=generalSetup."Excise Duty Account";
-                        GenJournalLine."Document No.":='ATM charge' ;
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Posting Date":=Today;
-                        GenJournalLine.Amount:=-(generalSetup."ATM Card Fee-New Sacco"*generalSetup."Excise Duty(%)")/100;
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        //GenJournalLine."Bal. Account Type":=GenJournalLine."Bal. Account Type"::"G/L Account";
-                        //GenJournalLine."Bal. Account No.":=generalSetup."Excise Duty Account";
-                        GenJournalLine."Shortcut Dimension 1 Code":='FOSA';
-                        GenJournalLine."Shortcut Dimension 2 Code":='Nairobi';
-                        //END;
-                        
-                        
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
-                        GenJournalLine."Shortcut Dimension 1 Code":='FOSA';
-                        GenJournalLine."Shortcut Dimension 2 Code":='Nairobi';
-                        
-                        
-                        if GenJournalLine.Amount<>0 then
-                        GenJournalLine.Insert;
-                        
-                        
-                        
-                        //Post New
-                        GenJournalLine.Reset;
-                        GenJournalLine.SetRange("Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange("Journal Batch Name",'Ftrans');
-                        if GenJournalLine.Find('-') then begin
-                        
-                        Codeunit.Run(Codeunit::"Gen. Jnl.-Post Batch",GenJournalLine);
-                        
-                        //window.OPEN('Posting:,#1######################');
+
+                        if Rec.Collected = true then
+                            Error('The ATM Card has already been collected');
+
+                        if Confirm('Are you sure you have received this ATM card from Bank?', true) = true then begin
+
+                            GenJournalLine.Reset;
+                            GenJournalLine.SetRange("Journal Template Name", 'PURCHASES');
+                            GenJournalLine.SetRange("Journal Batch Name", 'Ftrans');
+                            GenJournalLine.DeleteAll;
+
+
+
+                            //generalSetup.GET();
+
+                            generalSetup.Get;
+
+                            LineNo := LineNo + 10000;
+
+
+                            //Vendor Entry
+                            //IF AccountTypes.FIND('-') THEN  BEGIN
+                            GenJournalLine.Init;
+                            GenJournalLine."Journal Template Name" := 'PURCHASES';
+                            GenJournalLine."Journal Batch Name" := 'Ftrans';
+                            GenJournalLine."Document No." := 'ATM charge';
+                            GenJournalLine."Line No." := LineNo;
+                            GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                            GenJournalLine."Account No." := Rec."Account No";
+                            GenJournalLine.Validate(GenJournalLine."Account No.");
+                            GenJournalLine."Posting Date" := Today;
+                            if Rec."Request Type" = Rec."request type"::Replacement then
+                                GenJournalLine.Description := 'ATM charge-Replacement'
+                            else
+                                if Rec."Request Type" = Rec."request type"::New then
+                                    GenJournalLine.Description := 'ATM charge-New'
+                                else
+                                    if Rec."Request Type" = Rec."request type"::"Re-Pin" then
+                                        GenJournalLine.Description := 'ATM charge-Renewal';
+
+                            GenJournalLine.Validate(GenJournalLine."Currency Code");
+                            if Rec."Request Type" = Rec."request type"::Replacement then
+                                GenJournalLine.Amount := generalSetup."ATM Card Fee-Replacement"
+                            else
+                                if Rec."Request Type" = Rec."request type"::New then
+                                    GenJournalLine.Amount := generalSetup."ATM Card Fee-New Coop"
+                                else
+                                    if Rec."Request Type" = Rec."request type"::"Re-Pin" then
+                                        GenJournalLine.Amount := generalSetup."ATM Card Fee-Renewal";
+                            GenJournalLine.Validate(GenJournalLine.Amount);
+                            //GenJournalLine."Bal. Account Type":=GenJournalLine."Bal. Account Type"::"Bank Account";
+                            //GenJournalLine."Bal. Account No.":=generalSetup."ATM Card Fee Co-op Bank";
+                            GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
+                            GenJournalLine."Shortcut Dimension 2 Code" := 'Nairobi';
+                            //END;
+                            /*
+                            GenJournalLine.VALIDATE(GenJournalLine.Amount);
+                            GenJournalLine.VALIDATE(GenJournalLine."Bal. Account No.");
+                            GenJournalLine."Shortcut Dimension 1 Code":='FOSA';
+                            GenJournalLine."Shortcut Dimension 2 Code":='Nairobi';
+                            */
+
+                            if GenJournalLine.Amount <> 0 then
+                                GenJournalLine.Insert;
+
+
+
+
+
+
+                            //Bank Account Entry
+
+                            LineNo := LineNo + 10000;
+
+                            //IF AccountTypes.FIND('-') THEN  BEGIN
+                            GenJournalLine.Init;
+                            GenJournalLine."Journal Template Name" := 'PURCHASES';
+                            GenJournalLine."Journal Batch Name" := 'Ftrans';
+                            GenJournalLine."Document No." := 'ATM charge';
+                            GenJournalLine."Account Type" := GenJournalLine."account type"::"Bank Account";
+                            GenJournalLine."Account No." := generalSetup."ATM Card Fee Co-op Bank";
+                            GenJournalLine."Line No." := LineNo;
+                            GenJournalLine.Validate(GenJournalLine."Account No.");
+                            GenJournalLine."Posting Date" := Today;
+                            if Rec."Request Type" = Rec."request type"::Replacement then
+                                GenJournalLine.Description := 'ATM charge-Replacement'
+                            else
+                                if Rec."Request Type" = Rec."request type"::New then
+                                    GenJournalLine.Description := 'ATM charge-New'
+                                else
+                                    if Rec."Request Type" = Rec."request type"::"Re-Pin" then
+                                        GenJournalLine.Description := 'ATM charge-Renewal';
+                            GenJournalLine.Validate(GenJournalLine."Currency Code");
+                            if Rec."Request Type" = Rec."request type"::Replacement then
+                                GenJournalLine.Amount := -generalSetup."ATM Card Co-op Bank Amount"
+                            else
+                                if Rec."Request Type" = Rec."request type"::New then
+                                    GenJournalLine.Amount := -generalSetup."ATM Card Co-op Bank Amount"
+                                else
+                                    if Rec."Request Type" = Rec."request type"::"Re-Pin" then
+                                        GenJournalLine.Amount := -generalSetup."ATM Card Co-op Bank Amount";
+                            GenJournalLine.Validate(GenJournalLine.Amount);
+                            //GenJournalLine."Bal. Account Type":=GenJournalLine."Bal. Account Type"::"G/L Account";
+                            //GenJournalLine."Bal. Account No.":=generalSetup."ATM Card Fee-Account";
+                            GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
+                            GenJournalLine."Shortcut Dimension 2 Code" := 'Nairobi';
+
+
+                            //END;
+
+
+                            GenJournalLine.Validate(GenJournalLine.Amount);
+                            GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
+                            GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
+                            GenJournalLine."Shortcut Dimension 2 Code" := 'Nairobi';
+
+
+                            if GenJournalLine.Amount <> 0 then
+                                GenJournalLine.Insert;
+
+
+
+
+                            //Commission Entry
+
+                            LineNo := LineNo + 10000;
+
+                            //IF AccountTypes.FIND('-') THEN  BEGIN
+                            GenJournalLine.Init;
+                            GenJournalLine."Journal Template Name" := 'PURCHASES';
+                            GenJournalLine."Journal Batch Name" := 'Ftrans';
+                            GenJournalLine."Document No." := 'ATM charge';
+                            GenJournalLine."Account Type" := GenJournalLine."account type"::"G/L Account";
+                            GenJournalLine."Account No." := generalSetup."ATM Card Fee-Account";
+                            GenJournalLine."Line No." := LineNo;
+                            GenJournalLine.Validate(GenJournalLine."Account No.");
+                            GenJournalLine."Posting Date" := Today;
+                            if Rec."Request Type" = Rec."request type"::Replacement then
+                                GenJournalLine.Description := 'ATM charge-Commission'
+                            else
+                                if Rec."Request Type" = Rec."request type"::New then
+                                    GenJournalLine.Description := 'ATM charge-Commission'
+                                else
+                                    if Rec."Request Type" = Rec."request type"::"Re-Pin" then
+                                        GenJournalLine.Description := 'ATM charge-Commission';
+                            GenJournalLine.Validate(GenJournalLine."Currency Code");
+                            if Rec."Request Type" = Rec."request type"::Replacement then
+                                GenJournalLine.Amount := -generalSetup."ATM Card Fee-New Sacco"
+                            else
+                                if Rec."Request Type" = Rec."request type"::New then
+                                    GenJournalLine.Amount := -generalSetup."ATM Card Fee-New Sacco"
+                                else
+                                    if Rec."Request Type" = Rec."request type"::"Re-Pin" then
+                                        GenJournalLine.Amount := -generalSetup."ATM Card Fee-New Sacco";
+                            GenJournalLine.Validate(GenJournalLine.Amount);
+                            //GenJournalLine."Bal. Account Type":=GenJournalLine."Bal. Account Type"::"G/L Account";
+                            //GenJournalLine."Bal. Account No.":=generalSetup."ATM Card Fee-Account";
+                            GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
+                            GenJournalLine."Shortcut Dimension 2 Code" := 'Nairobi';
+
+
+                            //END;
+
+
+                            GenJournalLine.Validate(GenJournalLine.Amount);
+                            GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
+                            GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
+                            GenJournalLine."Shortcut Dimension 2 Code" := 'Nairobi';
+
+
+                            if GenJournalLine.Amount <> 0 then
+                                GenJournalLine.Insert;
+
+
+                            //Excise Duty
+
+                            LineNo := LineNo + 10000;
+
+                            //IF AccountTypes.FIND('-') THEN  BEGIN
+                            GenJournalLine.Init;
+                            GenJournalLine."Journal Template Name" := 'PURCHASES';
+                            GenJournalLine."Journal Batch Name" := 'Ftrans';
+                            GenJournalLine."Account Type" := GenJournalLine."account type"::"G/L Account";
+                            GenJournalLine."Account No." := generalSetup."Excise Duty Account";
+                            GenJournalLine."Document No." := 'ATM charge';
+                            GenJournalLine."Line No." := LineNo;
+                            GenJournalLine.Validate(GenJournalLine."Account No.");
+                            GenJournalLine."Posting Date" := Today;
+                            GenJournalLine.Amount := -(generalSetup."ATM Card Fee-New Sacco" * generalSetup."Excise Duty(%)") / 100;
+                            GenJournalLine.Validate(GenJournalLine.Amount);
+                            //GenJournalLine."Bal. Account Type":=GenJournalLine."Bal. Account Type"::"G/L Account";
+                            //GenJournalLine."Bal. Account No.":=generalSetup."Excise Duty Account";
+                            GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
+                            GenJournalLine."Shortcut Dimension 2 Code" := 'Nairobi';
+                            //END;
+
+
+                            GenJournalLine.Validate(GenJournalLine.Amount);
+                            GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
+                            GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
+                            GenJournalLine."Shortcut Dimension 2 Code" := 'Nairobi';
+
+
+                            if GenJournalLine.Amount <> 0 then
+                                GenJournalLine.Insert;
+
+
+
+                            //Post New
+                            GenJournalLine.Reset;
+                            GenJournalLine.SetRange("Journal Template Name", 'PURCHASES');
+                            GenJournalLine.SetRange("Journal Batch Name", 'Ftrans');
+                            if GenJournalLine.Find('-') then begin
+
+                                Codeunit.Run(Codeunit::"Gen. Jnl.-Post Batch", GenJournalLine);
+
+                                //window.OPEN('Posting:,#1######################');
+                            end;
+                            //Post New
+                            Rec.Collected := true;
+                            Rec."Date Collected" := Today;
+                            Rec."Card Issued By" := UserId;
+                            Rec.Modify;
+
                         end;
-                        //Post New
-                        Collected:=true;
-                        "Date Collected":=Today;
-                        "Card Issued By":=UserId;
-                        Modify;
-                        
-                        end;
-                        
-                        
-                        
-                        Vend.Get("Account No");
-                        Vend."ATM No.":="Card No";
-                        Vend."Atm card ready":=true;
+
+
+
+                        Vend.Get(Rec."Account No");
+                        Vend."ATM No." := Rec."Card No";
+                        Vend."Atm card ready" := true;
                         Vend.Modify;
-                        
+
                         generalSetup.Get();
-                        "ATM Expiry Date":=CalcDate(generalSetup."ATM Expiry Duration",Today);
-                        
-                        
+                        Rec."ATM Expiry Date" := CalcDate(generalSetup."ATM Expiry Duration", Today);
+
+
                         /*GenJournalLine.RESET;
                         GenJournalLine.SETRANGE("Journal Template Name",'PURCHASES');
                         GenJournalLine.SETRANGE("Journal Batch Name",'Ftrans');
@@ -456,11 +456,11 @@ Page 51516323 "ATM Applications Card"
 
                     trigger OnAction()
                     begin
-                        Vend.Get("Account No");
-                        if Confirm('Are you sure you want to disable this account from ATM transactions  ?',true)=true    then
-                        Vend."ATM No.":='';
-                        Vend."Disabled By":=UserId;
-                        Vend."Last Date Modified":=Today;
+                        Vend.Get(Rec."Account No");
+                        if Confirm('Are you sure you want to disable this account from ATM transactions  ?', true) = true then
+                            Vend."ATM No." := '';
+                        Vend."Disabled By" := UserId;
+                        Vend."Last Date Modified" := Today;
                         //Vend.Blocked:=Vend.Blocked::Payment;
                         //Vend."Account Frozen":=TRUE;
                         Vend.Modify;
@@ -474,9 +474,9 @@ Page 51516323 "ATM Applications Card"
 
                     trigger OnAction()
                     begin
-                        Vend.Get("Account No");
-                        if Confirm('Are you sure you want to Enable ATM no. for this account  ?',true)=true    then
-                        Vend."ATM No.":="Card No";
+                        Vend.Get(Rec."Account No");
+                        if Confirm('Are you sure you want to Enable ATM no. for this account  ?', true) = true then
+                            Vend."ATM No." := Rec."Card No";
                         //Vend.Blocked:=Vend.Blocked::Payment;
                         //Vend."Account Frozen":=TRUE;
                         Vend.Modify;
@@ -490,16 +490,16 @@ Page 51516323 "ATM Applications Card"
 
                     trigger OnAction()
                     begin
-                         if "Card Issued to Customer"="card issued to customer"::"Card Issued to" then begin
-                        TestField("Issued to");
+                        if Rec."Card Issued to Customer" = Rec."card issued to customer"::"Card Issued to" then begin
+                            Rec.TestField("Issued to");
                         end;
 
-                         if Confirm('Are you sure you want to issue this Card?',true)=true then
-                         Collected:=true;
-                         Modify;
+                        if Confirm('Are you sure you want to issue this Card?', true) = true then
+                            Rec.Collected := true;
+                        Rec.Modify;
 
-                        Vend.Get("Account No");
-                        Vend."ATM No.":="Card No";
+                        Vend.Get(Rec."Account No");
+                        Vend."ATM No." := Rec."Card No";
                     end;
                 }
             }
@@ -512,7 +512,7 @@ Page 51516323 "ATM Applications Card"
         LineNo: Integer;
         AccountHolders: Record Vendor;
         window: Dialog;
-       // PostingCode: Codeunit "Gen. Jnl.-Post Line";
+        // PostingCode: Codeunit "Gen. Jnl.-Post Line";
         CalendarMgmt: Codeunit "Calendar Management";
         PaymentToleranceMgt: Codeunit "Payment Tolerance Management";
         CustomizedCalEntry: Record "Office/Group";

@@ -17,96 +17,96 @@ Page 51516513 "Membership Exit Card Posted"
             group(General)
             {
                 Caption = 'General';
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Member No."; "Member No.")
+                field("Member No."; Rec."Member No.")
                 {
                     ApplicationArea = Basic;
                     Editable = MNoEditable;
                 }
-                field("Member Name"; "Member Name")
+                field("Member Name"; Rec."Member Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Closing Date"; "Closing Date")
+                field("Closing Date"; Rec."Closing Date")
                 {
                     ApplicationArea = Basic;
                     Editable = ClosingDateEditable;
                 }
-                field("Posting Date"; "Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Closure Type"; "Closure Type")
+                field("Closure Type"; Rec."Closure Type")
                 {
                     ApplicationArea = Basic;
                     Editable = ClosureTypeEditable;
                 }
-                field("Exit Type"; "Exit Type")
+                field("Exit Type"; Rec."Exit Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Loan"; "Total Loan")
+                field("Total Loan"; Rec."Total Loan")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Total Loans';
                     Editable = false;
                 }
-                field("Total Interest"; "Total Interest")
+                field("Total Interest"; Rec."Total Interest")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Total Interest Due';
                     Editable = false;
                 }
-                field("Member Deposits"; "Member Deposits")
+                field("Member Deposits"; Rec."Member Deposits")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = Attention;
                     StyleExpr = true;
                 }
-                field("Share Capital"; "Share Capital")
+                field("Share Capital"; Rec."Share Capital")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = Attention;
                     StyleExpr = true;
                 }
-                field("FOSA Account No."; "FOSA Account No.")
+                field("FOSA Account No."; Rec."FOSA Account No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Payee; Payee)
+                field(Payee; Rec.Payee)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Reason For Withdrawal"; "Reason For Withdrawal")
+                field("Reason For Withdrawal"; Rec."Reason For Withdrawal")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Closed By"; "Closed By")
+                field("Closed By"; Rec."Closed By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Closed On"; "Closed On")
+                field("Closed On"; Rec."Closed On")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Notice Date"; "Notice Date")
+                field("Notice Date"; Rec."Notice Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Muturity Date"; "Muturity Date")
+                field("Muturity Date"; Rec."Muturity Date")
                 {
                     ApplicationArea = Basic;
                 }
@@ -141,7 +141,7 @@ Page 51516513 "Membership Exit Card Posted"
                     trigger OnAction()
                     begin
                         cust.Reset;
-                        cust.SetRange(cust."No.", "Member No.");
+                        cust.SetRange(cust."No.", Rec."Member No.");
                         if cust.Find('-') then
                             Report.run(51516250, true, false, cust);
                     end;
@@ -244,28 +244,28 @@ Page 51516513 "Membership Exit Card Posted"
 
     procedure UpdateControl()
     begin
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             MNoEditable := true;
             ClosingDateEditable := false;
             ClosureTypeEditable := true;
             PostingDateEditable := false;
         end;
 
-        if Status = Status::Pending then begin
+        if Rec.Status = Rec.Status::Pending then begin
             MNoEditable := false;
             ClosingDateEditable := false;
             ClosureTypeEditable := false;
             PostingDateEditable := false;
         end;
 
-        if Status = Status::Rejected then begin
+        if Rec.Status = Rec.Status::Rejected then begin
             MNoEditable := false;
             ClosingDateEditable := false;
             ClosureTypeEditable := false;
             PostingDateEditable := false;
         end;
 
-        if Status = Status::Approved then begin
+        if Rec.Status = Rec.Status::Approved then begin
             MNoEditable := false;
             ClosingDateEditable := true;
             ClosureTypeEditable := false;

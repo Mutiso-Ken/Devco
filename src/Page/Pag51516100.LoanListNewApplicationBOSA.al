@@ -18,44 +18,44 @@ page 51516100 "Loan List-New Application BOSA"
         {
             repeater(Group)
             {
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Product Type"; "Loan Product Type")
-                {
-                    ApplicationArea = Basic;
-                    Style = StrongAccent;
-                }
-                field("Application Date"; "Application Date")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Client Name"; "Client Name")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field("Client Code"; "Client Code")
+                field("Application Date"; Rec."Application Date")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Client Name"; Rec."Client Name")
+                {
+                    ApplicationArea = Basic;
+                    Style = StrongAccent;
+                }
+                field("Client Code"; Rec."Client Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member  No';
                 }
 
-                field("Requested Amount"; "Requested Amount")
+                field("Requested Amount"; Rec."Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Style = Strong;
                 }
-                field("Loan Status"; "Loan Status")
+                field("Loan Status"; Rec."Loan Status")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approval Status"; "Approval Status")
+                field("Approval Status"; Rec."Approval Status")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
 
                 }
@@ -76,7 +76,7 @@ page 51516100 "Loan List-New Application BOSA"
     }
     trigger OnOpenPage()
     begin
-        SetRange("Captured By", UserId);
+        Rec.SetRange("Captured By", UserId);
 
     end;
 }

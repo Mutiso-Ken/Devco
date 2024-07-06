@@ -45,8 +45,8 @@ page 51516047 "Loan Recovery List"
     }
     trigger OnOpenPage()
     begin
-        SetRange("Entered By", UserId);
+        Rec.SetRange("Entered By", UserId);
     end;
 
- 
+
 }

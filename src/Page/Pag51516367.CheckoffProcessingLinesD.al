@@ -10,91 +10,91 @@ Page 51516367 "Checkoff Processing Lines-D"
         {
             repeater(Group)
             {
-                field("Receipt Header No";"Receipt Header No")
+                field("Receipt Header No"; Rec."Receipt Header No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Staff/Payroll No";"Staff/Payroll No")
+                field("Staff/Payroll No"; Rec."Staff/Payroll No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member No.";"Member No.")
+                field("Member No."; Rec."Member No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan No.";"Loan No.")
+                field("Loan No."; Rec."Loan No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Type";"Loan Type")
+                field("Loan Type"; Rec."Loan Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Type";"Transaction Type")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Expected Amount";"Expected Amount")
+                field("Expected Amount"; Rec."Expected Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Balance";"Loan Balance")
+                field("Loan Balance"; Rec."Loan Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Staff Not Found";"Staff Not Found")
+                field("Staff Not Found"; Rec."Staff Not Found")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Date";"Transaction Date")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Entry No";"Entry No")
+                field("Entry No"; Rec."Entry No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted;Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Multiple Receipts";"Multiple Receipts")
+                field("Multiple Receipts"; Rec."Multiple Receipts")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employer Code";"Employer Code")
+                field("Employer Code"; Rec."Employer Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account type";"Account type")
+                field("Account type"; Rec."Account type")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Reference;Reference)
+                field(Reference; Rec.Reference)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Variance;Variance)
+                field(Variance; Rec.Variance)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loans Not found";"Loans Not found")
+                field("Loans Not found"; Rec."Loans Not found")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Filter";"Date Filter")
+                field("Date Filter"; Rec."Date Filter")
                 {
                     ApplicationArea = Basic;
                 }
-                field("No Repayment";"No Repayment")
+                field("No Repayment"; Rec."No Repayment")
                 {
                     ApplicationArea = Basic;
                 }

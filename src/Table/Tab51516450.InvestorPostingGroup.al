@@ -4,21 +4,21 @@ Table 51516450 "Investor Posting Group"
 
     fields
     {
-        field(10;"Posting Code";Code[20])
+        field(10; "Posting Code"; Code[20])
         {
         }
-        field(11;"Posting Group Description";Text[100])
+        field(11; "Posting Group Description"; Text[100])
         {
         }
-        field(12;"Investor Deposit A/C";Code[20])
-        {
-            TableRelation = "G/L Account";
-        }
-        field(13;"Interest Payables A/C";Code[20])
+        field(12; "Investor Deposit A/C"; Code[20])
         {
             TableRelation = "G/L Account";
         }
-        field(14;"Interest Expense A/C";Code[20])
+        field(13; "Interest Payables A/C"; Code[20])
+        {
+            TableRelation = "G/L Account";
+        }
+        field(14; "Interest Expense A/C"; Code[20])
         {
             TableRelation = "G/L Account";
         }
@@ -26,7 +26,7 @@ Table 51516450 "Investor Posting Group"
 
     keys
     {
-        key(Key1;"Posting Code")
+        key(Key1; "Posting Code")
         {
             Clustered = true;
         }
@@ -36,17 +36,17 @@ Table 51516450 "Investor Posting Group"
     {
     }
 
-    local procedure CheckGLAcc(AccNo: Code[20];CheckProdPostingGroup: Boolean;CheckDirectPosting: Boolean)
+    local procedure CheckGLAcc(AccNo: Code[20]; CheckProdPostingGroup: Boolean; CheckDirectPosting: Boolean)
     var
         GLAcc: Record "G/L Account";
     begin
         if AccNo <> '' then begin
-          GLAcc.Get(AccNo);
-          GLAcc.CheckGLAcc;
-          if CheckProdPostingGroup then
-            GLAcc.TestField("Gen. Prod. Posting Group");
-          if CheckDirectPosting then
-            GLAcc.TestField("Direct Posting",true);
+            GLAcc.Get(AccNo);
+            GLAcc.CheckGLAcc;
+            if CheckProdPostingGroup then
+                GLAcc.TestField("Gen. Prod. Posting Group");
+            if CheckDirectPosting then
+                GLAcc.TestField("Direct Posting", true);
         end;
     end;
 

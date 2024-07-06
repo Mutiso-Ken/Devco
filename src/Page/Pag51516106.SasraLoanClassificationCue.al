@@ -15,7 +15,7 @@ page 51516106 "Sasra Loan Classification Cue"
             cuegroup(Group1)
             {
                 Caption = 'BOSA LOANS ';
-                field("Watchful Loans"; "Watchful Loans")
+                field("Watchful Loans"; Rec."Watchful Loans")
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -24,7 +24,7 @@ page 51516106 "Sasra Loan Classification Cue"
                     // DrillDownPageId = "Loan List";
                 }
 
-                field("Substandard Loans"; "Substandard Loans")
+                field("Substandard Loans"; Rec."Substandard Loans")
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -33,7 +33,7 @@ page 51516106 "Sasra Loan Classification Cue"
                     // DrillDownPageId = "Loans Posted List";
                 }
 
-                field("Doubtful Loans"; "Doubtful Loans")
+                field("Doubtful Loans"; Rec."Doubtful Loans")
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -47,21 +47,21 @@ page 51516106 "Sasra Loan Classification Cue"
             cuegroup(Group2)
             {
                 Caption = 'FOSA LOANS ';
-                field("Watchful FOSA Loans"; "Watchful FOSA Loans")
+                field("Watchful FOSA Loans"; Rec."Watchful FOSA Loans")
                 {
                     ApplicationArea = Basic;
                     Image = none;
                     Style = Favorable;
                     StyleExpr = true;
                 }
-                field("Substandard FOSA Loans"; "Substandard FOSA Loans")
+                field("Substandard FOSA Loans"; Rec."Substandard FOSA Loans")
                 {
                     ApplicationArea = Basic;
                     Image = none;
                     Style = Favorable;
                     StyleExpr = true;
                 }
-                field("Doubtful FOSA Loans"; "Doubtful FOSA Loans")
+                field("Doubtful FOSA Loans"; Rec."Doubtful FOSA Loans")
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -75,21 +75,21 @@ page 51516106 "Sasra Loan Classification Cue"
             cuegroup(Group3)
             {
                 Caption = 'MICRO LOANS ';
-                field("Watchful MICRO loans"; "Watchful MICRO Loans")
+                field("Watchful MICRO loans"; Rec."Watchful MICRO Loans")
                 {
                     ApplicationArea = Basic;
                     Image = none;
                     Style = Favorable;
                     StyleExpr = true;
                 }
-                field("Substandard MICRO Loans"; "Substandard MICRO Loans")
+                field("Substandard MICRO Loans"; Rec."Substandard MICRO Loans")
                 {
                     ApplicationArea = Basic;
                     Image = none;
                     Style = Favorable;
                     StyleExpr = true;
                 }
-                field("Doubtful MICRO Loans"; "Doubtful MICRO Loans")
+                field("Doubtful MICRO Loans"; Rec."Doubtful MICRO Loans")
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -107,9 +107,9 @@ page 51516106 "Sasra Loan Classification Cue"
     trigger OnOpenPage()
     var
     begin
-        if not Rec.Get("Primary Key") then begin
+        if not Rec.Get(Rec."Primary Key") then begin
             Rec.Init;
-            Rec."Primary Key" := "Primary Key";
+            Rec."Primary Key" := Rec."Primary Key";
             Rec.Insert;
         end;
 

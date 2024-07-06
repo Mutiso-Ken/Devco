@@ -6,7 +6,7 @@ Page 51516353 "Mpesa Approval"
     PageType = Card;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
     SourceTable = "Change MPESA Transactions";
-    SourceTableView = where(Status=const(Pending));
+    SourceTableView = where(Status = const(Pending));
     UsageCategory = Tasks;
 
     layout
@@ -15,81 +15,81 @@ Page 51516353 "Mpesa Approval"
         {
             group(General)
             {
-                field(No;No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Transaction Date";"Transaction Date")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Time Approved";"Time Approved")
+                field("Time Approved"; Rec."Time Approved")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Send For Approval By";"Send For Approval By")
+                field("Send For Approval By"; Rec."Send For Approval By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Date Sent For Approval";"Date Sent For Approval")
+                field("Date Sent For Approval"; Rec."Date Sent For Approval")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Time Sent For Approval";"Time Sent For Approval")
+                field("Time Sent For Approval"; Rec."Time Sent For Approval")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Changed;Changed)
+                field(Changed; Rec.Changed)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Initiated By";"Initiated By")
+                field("Initiated By"; Rec."Initiated By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("MPESA Receipt No";"MPESA Receipt No")
+                field("MPESA Receipt No"; Rec."MPESA Receipt No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account No";"Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("New Account No";"New Account No")
+                field("New Account No"; Rec."New Account No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Comments;Comments)
+                field(Comments; Rec.Comments)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Reasons for rejection";"Reasons for rejection")
+                field("Reasons for rejection"; Rec."Reasons for rejection")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Approved";"Date Approved")
+                field("Date Approved"; Rec."Date Approved")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Approved By";"Approved By")
+                field("Approved By"; Rec."Approved By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -115,11 +115,11 @@ Page 51516353 "Mpesa Approval"
                     trigger OnAction()
                     begin
                         StatusPermissions.Reset;
-                        StatusPermissions.SetRange(StatusPermissions."User Id",UserId);
-                        StatusPermissions.SetRange(StatusPermissions."Function",StatusPermissions."function"::"Mpesa Change");
+                        StatusPermissions.SetRange(StatusPermissions."User Id", UserId);
+                        StatusPermissions.SetRange(StatusPermissions."Function", StatusPermissions."function"::"Mpesa Change");
                         if StatusPermissions.Find('-') = false then
-                        Error('Please contact system Admin for this permission.');
-                        
+                            Error('Please contact system Admin for this permission.');
+
                         /*
                         
                         ReversalMngt.RESET;
@@ -129,47 +129,47 @@ Page 51516353 "Mpesa Approval"
                         ERROR('Please contact system Admin for this permission')
                         END;
                         */
-                        if "Initiated By"=UpperCase(UserId) then
-                        Error('You cannot initiate and finalise same change');
-                        
+                        if Rec."Initiated By" = UpperCase(UserId) then
+                            Error('You cannot initiate and finalise same change');
+
                         if Confirm('Do you want to send for approval?') = true then begin
-                        
-                        MPESAChanges.Reset;
-                        MPESAChanges.SetRange(MPESAChanges.No,No);
-                        if MPESAChanges.Find('-') then begin
-                        
-                        if MPESAChanges."Initiated By"=UserId then begin
-                        Error('The user who initiated the transaction cannot be the same as the one who finalises it.');
-                        exit;
-                        end;
-                        
-                        MPESATransactions.Reset;
-                        MPESATransactions.SetRange(MPESATransactions."Document No.","MPESA Receipt No");
-                        if MPESATransactions.Find('-') then begin
-                        
-                        if MPESATransactions.Changed=false then begin
-                        MPESATransactions."Original Account No":=MPESATransactions."Account No.";
-                        end;
-                        
-                        MPESATransactions."Old Account No":=MPESATransactions."Account No.";
-                        MPESATransactions."Account No.":=MPESAChanges."New Account No";
-                        MPESATransactions."Change Transaction No":=MPESAChanges.No;
-                        MPESATransactions.Changed:=true;
-                        MPESATransactions."Date Changed":=Today;
-                        MPESATransactions."Time Changed":=Time;
-                        MPESATransactions."Changed By":=MPESAChanges."Initiated By";
-                        MPESATransactions."Approved By":=UserId;
-                        MPESATransactions.Modify;
-                        end;
-                        
-                        ///////////
-                        MPESAChanges.Status:=MPESAChanges.Status::Approved;
-                        MPESAChanges."Approved By":=UserId;
-                        MPESAChanges."Date Approved":=Today;
-                        MPESAChanges."Time Approved":=Time;
-                        MPESAChanges.Changed:=true;
-                        MPESAChanges.Modify;
-                        end;
+
+                            MPESAChanges.Reset;
+                            MPESAChanges.SetRange(MPESAChanges.No, Rec.No);
+                            if MPESAChanges.Find('-') then begin
+
+                                if MPESAChanges."Initiated By" = UserId then begin
+                                    Error('The user who initiated the transaction cannot be the same as the one who finalises it.');
+                                    exit;
+                                end;
+
+                                MPESATransactions.Reset;
+                                MPESATransactions.SetRange(MPESATransactions."Document No.", Rec."MPESA Receipt No");
+                                if MPESATransactions.Find('-') then begin
+
+                                    if MPESATransactions.Changed = false then begin
+                                        MPESATransactions."Original Account No" := MPESATransactions."Account No.";
+                                    end;
+
+                                    MPESATransactions."Old Account No" := MPESATransactions."Account No.";
+                                    MPESATransactions."Account No." := MPESAChanges."New Account No";
+                                    MPESATransactions."Change Transaction No" := MPESAChanges.No;
+                                    MPESATransactions.Changed := true;
+                                    MPESATransactions."Date Changed" := Today;
+                                    MPESATransactions."Time Changed" := Time;
+                                    MPESATransactions."Changed By" := MPESAChanges."Initiated By";
+                                    MPESATransactions."Approved By" := UserId;
+                                    MPESATransactions.Modify;
+                                end;
+
+                                ///////////
+                                MPESAChanges.Status := MPESAChanges.Status::Approved;
+                                MPESAChanges."Approved By" := UserId;
+                                MPESAChanges."Date Approved" := Today;
+                                MPESAChanges."Time Approved" := Time;
+                                MPESAChanges.Changed := true;
+                                MPESAChanges.Modify;
+                            end;
                         end;
 
                     end;
@@ -185,23 +185,23 @@ Page 51516353 "Mpesa Approval"
                     begin
 
                         if Confirm('Do you want to reject the transaction?') = true then begin
-                        TestField("Reasons for rejection");
-                        MPESAChanges.Reset;
-                        MPESAChanges.SetRange(MPESAChanges.No,No);
-                        if MPESAChanges.Find('-') then begin
+                            Rec.TestField("Reasons for rejection");
+                            MPESAChanges.Reset;
+                            MPESAChanges.SetRange(MPESAChanges.No, Rec.No);
+                            if MPESAChanges.Find('-') then begin
 
-                        if MPESAChanges."Initiated By"=UserId then begin
-                        Error('The user who initiated the transaction cannot be the same as the one who rejects it.');
-                        exit;
-                        end;
+                                if MPESAChanges."Initiated By" = UserId then begin
+                                    Error('The user who initiated the transaction cannot be the same as the one who rejects it.');
+                                    exit;
+                                end;
 
 
-                        MPESAChanges.Status:=MPESAChanges.Status::Rejected;
-                        MPESAChanges."Approved By":=UserId;
-                        MPESAChanges."Date Approved":=Today;
-                        MPESAChanges."Time Approved":=Time;
-                        MPESAChanges.Modify;
-                        end;
+                                MPESAChanges.Status := MPESAChanges.Status::Rejected;
+                                MPESAChanges."Approved By" := UserId;
+                                MPESAChanges."Date Approved" := Today;
+                                MPESAChanges."Time Approved" := Time;
+                                MPESAChanges.Modify;
+                            end;
                         end;
                     end;
                 }

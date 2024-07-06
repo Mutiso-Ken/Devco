@@ -12,11 +12,11 @@ Page 50001 "Sacco Insiders"
         {
             repeater(Group)
             {
-                field(MemberNo; MemberNo)
+                field(MemberNo; Rec.MemberNo)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Position in society";"Position in society")
+                field("Position in society"; Rec."Position in society")
                 {
                     ApplicationArea = Basic;
                 }

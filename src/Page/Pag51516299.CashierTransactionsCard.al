@@ -13,24 +13,24 @@ Page 51516299 "Cashier Transactions Card"
             group(Transactions)
             {
                 Caption = 'Transactions';
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
 
                     trigger OnValidate()
                     begin
-                        if Posted = true then
+                        if Rec.Posted = true then
                             Error('You cannot modify an already posted record.');
 
                         CalcAvailableBal;
 
-                        CalcFields("Uncleared Cheques");
+                        Rec.CalcFields("Uncleared Cheques");
                         // if AccP.Get("Account No") then begin
                         //     // AccP.CalcFields(AccP.Image, AccP.Signature);
                         //     Picture := AccP.Image;
@@ -42,21 +42,21 @@ Page 51516299 "Cashier Transactions Card"
                     end;
                 }
 
-                field("Account Name"; "Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
 
-                field("Transaction Type"; "Transaction Type")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
 
                     trigger OnValidate()
                     begin
-                        if Posted = true then
+                        if Rec.Posted = true then
                             Error('You cannot modify an already posted record.');
 
                         FChequeVisible := false;
@@ -67,16 +67,16 @@ Page 51516299 "Cashier Transactions Card"
                         LRefVisible := false;
 
 
-                        if TransactionTypes.Get("Transaction Type") then begin
+                        if TransactionTypes.Get(Rec."Transaction Type") then begin
                             if TransactionTypes.Type = TransactionTypes.Type::"Cheque Deposit" then begin
                                 FChequeVisible := true;
-                                if ("Account No" = '502-00-000300-00') or ("Account No" = '502-00-000303-00') then
+                                if (Rec."Account No" = '502-00-000300-00') or (Rec."Account No" = '502-00-000303-00') then
                                     BOSAReceiptChequeVisible := true;
                             end;
                             if TransactionTypes.Type = TransactionTypes.Type::"Bankers Cheque" then
                                 BChequeVisible := true;
 
-                            if "Transaction Type" = 'BOSA' then
+                            if Rec."Transaction Type" = 'BOSA' then
                                 BReceiptVisible := true;
 
                             if TransactionTypes.Type = TransactionTypes.Type::Encashment then
@@ -86,12 +86,12 @@ Page 51516299 "Cashier Transactions Card"
 
                         end;
 
-                        if "Branch Transaction" = true then begin
+                        if Rec."Branch Transaction" = true then begin
                             "Branch RefferenceVisible" := true;
                             LRefVisible := true;
                         end;
 
-                        if Acc.Get("Account No") then begin
+                        if Acc.Get(Rec."Account No") then begin
                             if Acc."Account Category" = Acc."account category"::Project then begin
                                 "Branch RefferenceVisible" := true;
                                 LRefVisible := true;
@@ -102,7 +102,7 @@ Page 51516299 "Cashier Transactions Card"
                         CalcAvailableBal;
                     end;
                 }
-                field("Transaction Description"; "Transaction Description")
+                field("Transaction Description"; Rec."Transaction Description")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -110,7 +110,7 @@ Page 51516299 "Cashier Transactions Card"
 
                 }
 
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
@@ -122,13 +122,13 @@ Page 51516299 "Cashier Transactions Card"
                         // end;
                     end;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Transacted By';
                     Style = StrongAccent;
                 }
-                field("Payment Voucher No"; "Payment Voucher No")
+                field("Payment Voucher No"; Rec."Payment Voucher No")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
@@ -137,32 +137,32 @@ Page 51516299 "Cashier Transactions Card"
                 {
                     Caption = '.';
                     Visible = BChequeVisible;
-                    field("Bankers Cheque No"; "Bankers Cheque No")
+                    field("Bankers Cheque No"; Rec."Bankers Cheque No")
                     {
                         ApplicationArea = Basic;
                     }
-                    field("Bank Code"; "Bank Code")
+                    field("Bank Code"; Rec."Bank Code")
                     {
                         ApplicationArea = Basic;
                     }
-                    field(Payee; Payee)
+                    field(Payee; Rec.Payee)
                     {
                         ApplicationArea = Basic;
                     }
-                    field("Post Dated"; "Post Dated")
+                    field("Post Dated"; Rec."Post Dated")
                     {
                         ApplicationArea = Basic;
 
                         trigger OnValidate()
                         begin
                             "Transaction DateEditable" := false;
-                            if "Post Dated" = true then
+                            if Rec."Post Dated" = true then
                                 "Transaction DateEditable" := true
                             else
-                                "Transaction Date" := Today;
+                                Rec."Transaction Date" := Today;
                         end;
                     }
-                    field("Account Type"; "Account Type")
+                    field("Account Type"; Rec."Account Type")
                     {
                         ApplicationArea = Basic;
                         Editable = false;
@@ -172,11 +172,11 @@ Page 51516299 "Cashier Transactions Card"
                 {
                     Caption = '.';
                     Visible = BReceiptVisible;
-                    field("BOSA Account No"; "BOSA Account No")
+                    field("BOSA Account No"; Rec."BOSA Account No")
                     {
                         ApplicationArea = Basic;
                     }
-                    field("Allocated Amount"; "Allocated Amount")
+                    field("Allocated Amount"; Rec."Allocated Amount")
                     {
                         ApplicationArea = Basic;
                     }
@@ -185,54 +185,54 @@ Page 51516299 "Cashier Transactions Card"
                 {
                     Caption = '.';
                     Visible = FChequeVisible;
-                    field("Cheque Type"; "Cheque Type")
+                    field("Cheque Type"; Rec."Cheque Type")
                     {
                         ApplicationArea = Basic;
                     }
-                    field("Cheque No"; "Cheque No")
+                    field("Cheque No"; Rec."Cheque No")
                     {
                         ApplicationArea = Basic;
 
                         trigger OnValidate()
                         begin
-                            if StrLen("Cheque No") <> 6 then
+                            if StrLen(Rec."Cheque No") <> 6 then
                                 Error('Cheque No. cannot contain More or less than 6 Characters.');
                         end;
                     }
-                    field(bank; "Bank Code")
+                    field(bank; Rec."Bank Code")
                     {
                         ApplicationArea = Basic;
                         Caption = 'Bank';
                     }
-                    field("Bank Name"; "Bank Name")
+                    field("Bank Name"; Rec."Bank Name")
                     {
                         ApplicationArea = Basic;
                     }
-                    field("Expected Maturity Date"; "Expected Maturity Date")
+                    field("Expected Maturity Date"; Rec."Expected Maturity Date")
                     {
                         ApplicationArea = Basic;
                     }
-                    field(Status; Status)
+                    field(Status; Rec.Status)
                     {
                         ApplicationArea = Basic;
                         Editable = false;
                     }
-                    field("50048"; "Banking Posted")
+                    field("50048"; Rec."Banking Posted")
                     {
                         ApplicationArea = Basic;
                         Caption = 'Banked';
                         Editable = false;
                     }
-                    field("Bank Account"; "Bank Account")
+                    field("Bank Account"; Rec."Bank Account")
                     {
                         ApplicationArea = Basic;
                         Visible = false;
                     }
-                    field("Cheque Date"; "Cheque Date")
+                    field("Cheque Date"; Rec."Cheque Date")
                     {
                         ApplicationArea = Basic;
                     }
-                    field("Cheque Deposit Remarks"; "Cheque Deposit Remarks")
+                    field("Cheque Deposit Remarks"; Rec."Cheque Deposit Remarks")
                     {
                         ApplicationArea = Basic;
                     }
@@ -243,25 +243,25 @@ Page 51516299 "Cashier Transactions Card"
                     }
                 }
 
-                field("Branch Refference"; "Branch Refference")
+                field("Branch Refference"; Rec."Branch Refference")
                 {
                     ApplicationArea = Basic;
                     Caption = 'REF';
                     Visible = "Branch RefferenceVisible";
                 }
-                field("Book Balance"; "Book Balance")
+                field("Book Balance"; Rec."Book Balance")
                 {
                     ApplicationArea = Basic;
                 }
 
 
 
-                field("Uncleared Cheques"; "Uncleared Cheques")
+                field("Uncleared Cheques"; Rec."Uncleared Cheques")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Withdrawable Balance"; "Book Balance" - ("Uncleared Cheques" + 1100))
+                field("Withdrawable Balance"; Rec."Book Balance" - (Rec."Uncleared Cheques" + 1100))
                 {
 
                 }
@@ -272,53 +272,53 @@ Page 51516299 "Cashier Transactions Card"
                     Editable = false;
                 }
 
-                field("N.A.H Balance"; "N.A.H Balance")
+                field("N.A.H Balance"; Rec."N.A.H Balance")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     visible = false;
                 }
-                field("ID No"; "ID No")
+                field("ID No"; Rec."ID No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
 
-                field("Transaction Date"; "Transaction Date")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
                     Editable = "Transaction DateEditable";
                 }
-                field("Transaction Time"; "Transaction Time")
+                field("Transaction Time"; Rec."Transaction Time")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Authorised; Authorised)
+                field(Authorised; Rec.Authorised)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field(Posted; Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     visible = false;
                 }
-                field("Member No."; "Member No.")
+                field("Member No."; Rec."Member No.")
                 {
                     Editable = false;
                 }
-                field(Picture; Picture)
+                field(Picture; Rec.Picture)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Signature; Signature)
+                field(Signature; Rec.Signature)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Cashier; Cashier)
+                field(Cashier; Rec.Cashier)
                 {
                     ApplicationArea = Basic;
                 }
@@ -380,17 +380,17 @@ Page 51516299 "Cashier Transactions Card"
 
                     trigger OnAction()
                     begin
-                        TestField(Posted, false);
-                        TestField("BOSA Account No");
+                        Rec.TestField(Posted, false);
+                        Rec.TestField("BOSA Account No");
 
                         ReceiptAllocations.Reset;
-                        ReceiptAllocations.SetRange(ReceiptAllocations."Document No", No);
+                        ReceiptAllocations.SetRange(ReceiptAllocations."Document No", Rec.No);
                         ReceiptAllocations.DeleteAll;
 
-                        if Cust.Get("BOSA Account No") then begin
+                        if Cust.Get(Rec."BOSA Account No") then begin
                             ReceiptAllocations.Init;
-                            ReceiptAllocations."Document No" := No;
-                            ReceiptAllocations."Member No" := "BOSA Account No";
+                            ReceiptAllocations."Document No" := Rec.No;
+                            ReceiptAllocations."Member No" := Rec."BOSA Account No";
                             ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::"Interest Due";
                             ReceiptAllocations."Loan No." := Loans."Loan  No.";
                             ReceiptAllocations.Amount := ROUND(Cust."Insurance Contribution", 0.01);
@@ -399,8 +399,8 @@ Page 51516299 "Cashier Transactions Card"
                             ReceiptAllocations.Insert;
 
                             ReceiptAllocations.Init;
-                            ReceiptAllocations."Document No" := No;
-                            ReceiptAllocations."Member No" := "BOSA Account No";
+                            ReceiptAllocations."Document No" := Rec.No;
+                            ReceiptAllocations."Member No" := Rec."BOSA Account No";
                             ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::Loan;
                             ReceiptAllocations."Loan No." := Loans."Loan  No.";
                             ReceiptAllocations.Amount := ROUND(Cust."Monthly Contribution", 0.01);
@@ -410,8 +410,8 @@ Page 51516299 "Cashier Transactions Card"
 
                             if Cust."Investment Monthly Cont" > 0 then begin
                                 ReceiptAllocations.Init;
-                                ReceiptAllocations."Document No" := No;
-                                ReceiptAllocations."Member No" := "BOSA Account No";
+                                ReceiptAllocations."Document No" := Rec.No;
+                                ReceiptAllocations."Member No" := Rec."BOSA Account No";
                                 ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::"Interest Paid";
                                 ReceiptAllocations."Loan No." := Loans."Loan  No.";
                                 ReceiptAllocations.Amount := ROUND(Cust."Investment Monthly Cont", 0.01);
@@ -424,7 +424,7 @@ Page 51516299 "Cashier Transactions Card"
 
                             Loans.Reset;
                             Loans.SetCurrentkey(Loans.Source, Loans."Client Code");
-                            Loans.SetRange(Loans."Client Code", "BOSA Account No");
+                            Loans.SetRange(Loans."Client Code", Rec."BOSA Account No");
                             Loans.SetRange(Loans.Source, Loans.Source::BOSA);
                             if Loans.Find('-') then begin
                                 repeat
@@ -435,8 +435,8 @@ Page 51516299 "Cashier Transactions Card"
 
 
                                         ReceiptAllocations.Init;
-                                        ReceiptAllocations."Document No" := No;
-                                        ReceiptAllocations."Member No" := "BOSA Account No";
+                                        ReceiptAllocations."Document No" := Rec.No;
+                                        ReceiptAllocations."Member No" := Rec."BOSA Account No";
                                         ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::"Registration Fee";
                                         ReceiptAllocations."Loan No." := Loans."Loan  No.";
                                         ReceiptAllocations.Amount := ROUND(Loans."Loan Principle Repayment", 0.01);
@@ -493,17 +493,17 @@ Page 51516299 "Cashier Transactions Card"
 
                     trigger OnAction()
                     begin
-                        TestField(Posted, false);
-                        TestField("BOSA Account No");
+                        Rec.TestField(Posted, false);
+                        Rec.TestField("BOSA Account No");
 
                         ReceiptAllocations.Reset;
-                        ReceiptAllocations.SetRange(ReceiptAllocations."Document No", No);
+                        ReceiptAllocations.SetRange(ReceiptAllocations."Document No", Rec.No);
                         ReceiptAllocations.DeleteAll;
 
-                        if Cust.Get("BOSA Account No") then begin
+                        if Cust.Get(Rec."BOSA Account No") then begin
                             ReceiptAllocations.Init;
-                            ReceiptAllocations."Document No" := No;
-                            ReceiptAllocations."Member No" := "BOSA Account No";
+                            ReceiptAllocations."Document No" := Rec.No;
+                            ReceiptAllocations."Member No" := Rec."BOSA Account No";
                             ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::"Interest Due";
                             ReceiptAllocations."Loan No." := Loans."Loan  No.";
                             ReceiptAllocations.Amount := ROUND(Cust."Insurance Contribution", 0.01);
@@ -512,8 +512,8 @@ Page 51516299 "Cashier Transactions Card"
                             ReceiptAllocations.Insert;
 
                             ReceiptAllocations.Init;
-                            ReceiptAllocations."Document No" := No;
-                            ReceiptAllocations."Member No" := "BOSA Account No";
+                            ReceiptAllocations."Document No" := Rec.No;
+                            ReceiptAllocations."Member No" := Rec."BOSA Account No";
                             ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::Loan;
                             ReceiptAllocations."Loan No." := Loans."Loan  No.";
                             ReceiptAllocations.Amount := ROUND(Cust."Monthly Contribution", 0.01);
@@ -523,8 +523,8 @@ Page 51516299 "Cashier Transactions Card"
 
                             if Cust."Investment Monthly Cont" > 0 then begin
                                 ReceiptAllocations.Init;
-                                ReceiptAllocations."Document No" := No;
-                                ReceiptAllocations."Member No" := "BOSA Account No";
+                                ReceiptAllocations."Document No" := Rec.No;
+                                ReceiptAllocations."Member No" := Rec."BOSA Account No";
                                 ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::"Interest Paid";
                                 ReceiptAllocations."Loan No." := Loans."Loan  No.";
                                 ReceiptAllocations.Amount := ROUND(Cust."Investment Monthly Cont", 0.01);
@@ -537,7 +537,7 @@ Page 51516299 "Cashier Transactions Card"
 
                             Loans.Reset;
                             Loans.SetCurrentkey(Loans.Source, Loans."Client Code");
-                            Loans.SetRange(Loans."Client Code", "BOSA Account No");
+                            Loans.SetRange(Loans."Client Code", Rec."BOSA Account No");
                             Loans.SetRange(Loans.Source, Loans.Source::BOSA);
                             if Loans.Find('-') then begin
                                 repeat
@@ -548,8 +548,8 @@ Page 51516299 "Cashier Transactions Card"
 
 
                                         ReceiptAllocations.Init;
-                                        ReceiptAllocations."Document No" := No;
-                                        ReceiptAllocations."Member No" := "BOSA Account No";
+                                        ReceiptAllocations."Document No" := Rec.No;
+                                        ReceiptAllocations."Member No" := Rec."BOSA Account No";
                                         ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::"Registration Fee";
                                         ReceiptAllocations."Loan No." := Loans."Loan  No.";
                                         ReceiptAllocations.Amount := ROUND(Loans."Loan Principle Repayment", 0.01);
@@ -596,70 +596,70 @@ Page 51516299 "Cashier Transactions Card"
                         DBranch:=UsersID.Branch;
                         END;*/
 
-                        if "Transaction Date" <> Today then begin
-                            "Transaction Date" := Today;
-                            Modify;
+                        if Rec."Transaction Date" <> Today then begin
+                            Rec."Transaction Date" := Today;
+                            Rec.Modify;
                         end;
 
 
 
 
-                        if Posted = true then
+                        if Rec.Posted = true then
                             Error('The transaction has already been posted.');
 
                         VarAmtHolder := 0;
 
-                        if Amount <= 0 then
+                        if Rec.Amount <= 0 then
                             Error('Please specify an amount greater than zero.');
 
-                        if "Transaction Type" = '' then
+                        if Rec."Transaction Type" = '' then
                             Error('Please select the transaction type.');
 
                         //BOSA Entries
-                        if ("Account No" = '502-00-000300-00') or ("Account No" = '502-00-000303-00') then begin
-                            TestField("BOSA Account No");
-                            if Amount <> "Allocated Amount" then
+                        if (Rec."Account No" = '502-00-000300-00') or (Rec."Account No" = '502-00-000303-00') then begin
+                            Rec.TestField("BOSA Account No");
+                            if Rec.Amount <> Rec."Allocated Amount" then
                                 Error('Allocated amount must be equall to the transaction amount.');
 
                         end;
 
 
-                        if "Branch Transaction" = true then begin
-                            if "Branch Refference" = '' then
+                        if Rec."Branch Transaction" = true then begin
+                            if Rec."Branch Refference" = '' then
                                 Error('You must specify the refference details for branch transactions.');
                         end;
 
                         //Project Accounts
-                        if Acc.Get("Account No") then begin
+                        if Acc.Get(Rec."Account No") then begin
                             if Acc."Account Category" = Acc."account category"::Project then begin
-                                if "Branch Refference" = '' then
+                                if Rec."Branch Refference" = '' then
                                     Error('You must specify the refference details for Project transactions.');
                             end;
                         end;
                         //Project Accounts
 
 
-                        "Post Attempted" := true;
-                        Modify;
+                        Rec."Post Attempted" := true;
+                        Rec.Modify;
 
-                        if Type = 'Cheque Deposit' then begin
-                            TestField("Cheque Type");
-                            TestField("Cheque No");
-                            TestField("Cheque Date");
+                        if Rec.Type = 'Cheque Deposit' then begin
+                            Rec.TestField("Cheque Type");
+                            Rec.TestField("Cheque No");
+                            Rec.TestField("Cheque Date");
 
                             PostChequeDep;
 
                             exit;
                         end;
 
-                        if Type = 'Bankers Cheque' then begin
+                        if Rec.Type = 'Bankers Cheque' then begin
 
                             PostBankersCheq;
 
                             exit;
                         end;
 
-                        if Type = 'Encashment' then begin
+                        if Rec.Type = 'Encashment' then begin
                             PostEncashment;
 
                             exit;
@@ -700,9 +700,9 @@ Page 51516299 "Cashier Transactions Card"
                     trigger OnAction()
                     begin
                         if Confirm('Are you sure you want to stop the cheque?', false) = true then begin
-                            Status := Status::Stopped;
-                            "Cheque Processed" := true;
-                            Modify;
+                            Rec.Status := Rec.Status::Stopped;
+                            Rec."Cheque Processed" := true;
+                            Rec.Modify;
                         end;
                     end;
                 }
@@ -768,24 +768,24 @@ Page 51516299 "Cashier Transactions Card"
                 begin
                     BATCH_TEMPLATE := 'GENERAL';
                     BATCH_NAME := 'FTRANS';
-                    DOCUMENT_NO := No;
+                    DOCUMENT_NO := Rec.No;
 
                     BankLedger.Reset;
-                    BankLedger.SetRange(BankLedger."Document No.", No);
+                    BankLedger.SetRange(BankLedger."Document No.", Rec.No);
                     if BankLedger.Find('-') then begin
-                        Posted := true;
-                        Modify;
+                        Rec.Posted := true;
+                        Rec.Modify;
                         Message('Transaction is aready posted');
                         exit;
                     end;
-                    TestField(Description);
-                    if Cashier <> UpperCase(UserId) then
-                        Error('Cannot post a Transaction being processed by %1', Cashier);
-                    if Description = '' then
+                    Rec.TestField(Description);
+                    if Rec.Cashier <> UpperCase(UserId) then
+                        Error('Cannot post a Transaction being processed by %1', Rec.Cashier);
+                    if Rec.Description = '' then
                         Error('Please specify transacted by');
                     BankLedger.Reset;
                     BankLedger.SetRange(BankLedger."Posting Date", Today);
-                    BankLedger.SetRange(BankLedger."User ID", "Posted By");
+                    BankLedger.SetRange(BankLedger."User ID", Rec."Posted By");
                     BankLedger.SetRange(BankLedger.Description, 'END OF DAY RETURN TO TREASURY');
                     if BankLedger.Find('-') = true then begin
                         Error('You cannot post any transactions after perfoming end of day');
@@ -799,74 +799,74 @@ Page 51516299 "Cashier Transactions Card"
                     end;
 
 
-                    if "Transaction Date" <> Today then begin
-                        "Transaction Date" := Today;
-                        Modify;
+                    if Rec."Transaction Date" <> Today then begin
+                        Rec."Transaction Date" := Today;
+                        Rec.Modify;
                     end;
 
 
 
-                    if Posted = true then
+                    if Rec.Posted = true then
                         Error('The transaction has already been posted.');
 
                     VarAmtHolder := 0;
 
-                    if Amount <= 0 then
+                    if Rec.Amount <= 0 then
                         Error('Please specify an amount greater than zero.');
 
-                    if "Transaction Type" = '' then
+                    if Rec."Transaction Type" = '' then
                         Error('Please select the transaction type.');
 
                     //BOSA Entries
-                    if ("Account No" = '502-00-000300-00') or ("Account No" = '502-00-000303-00') then begin
-                        TestField("BOSA Account No");
-                        if Amount <> "Allocated Amount" then
+                    if (Rec."Account No" = '502-00-000300-00') or (Rec."Account No" = '502-00-000303-00') then begin
+                        Rec.TestField("BOSA Account No");
+                        if Rec.Amount <> Rec."Allocated Amount" then
                             Error('Allocated amount must be equall to the transaction amount.');
 
                     end;
 
 
-                    if "Branch Transaction" = true then begin
-                        if "Branch Refference" = '' then
+                    if Rec."Branch Transaction" = true then begin
+                        if Rec."Branch Refference" = '' then
                             Error('You must specify the refference details for branch transactions.');
                     end;
 
                     //Project Accounts
-                    if Acc.Get("Account No") then begin
+                    if Acc.Get(Rec."Account No") then begin
                         if Acc."Account Category" = Acc."account category"::Project then begin
-                            if "Branch Refference" = '' then
+                            if Rec."Branch Refference" = '' then
                                 Error('You must specify the refference details for Project transactions.');
                         end;
                     end;
                     //Project Accounts
 
 
-                    "Post Attempted" := true;
-                    Modify;
+                    Rec."Post Attempted" := true;
+                    Rec.Modify;
 
-                    if Type = 'Cheque Deposit' then begin
-                        TestField("Cheque Type");
-                        TestField("Cheque No");
-                        TestField("Cheque Date");
-                        TestField("Bank Code");
+                    if Rec.Type = 'Cheque Deposit' then begin
+                        Rec.TestField("Cheque Type");
+                        Rec.TestField("Cheque No");
+                        Rec.TestField("Cheque Date");
+                        Rec.TestField("Bank Code");
 
                         PostChequeDep;
 
                         exit;
                     end;
 
-                    if Type = 'Bankers Cheque' then begin
+                    if Rec.Type = 'Bankers Cheque' then begin
 
                         PostBankersCheq;
 
                         exit;
                     end;
-                    if Type = 'BOSA Receipt' then begin
+                    if Rec.Type = 'BOSA Receipt' then begin
                         PostBOSAEntries;
                         exit;
                     end;
 
-                    if Type = 'Encashment' then begin
+                    if Rec.Type = 'Encashment' then begin
                         PostEncashment;
 
                         exit;
@@ -903,24 +903,24 @@ Page 51516299 "Cashier Transactions Card"
 
                 trigger OnAction()
                 begin
-                    TestField(Posted);
+                    Rec.TestField(Posted);
 
                     Trans.Reset;
-                    Trans.SetRange(Trans.No, No);
+                    Trans.SetRange(Trans.No, Rec.No);
                     if Trans.Find('-') then begin
-                        if Type = 'Cash Deposit' then
+                        if Rec.Type = 'Cash Deposit' then
                             Report.Run(51516281, true, true, Trans)
                         else
-                            if "Account No" = 'L01001011993' then
+                            if Rec."Account No" = 'L01001011993' then
                                 Report.Run(51516857, true, true, Trans)
                             else
-                                if Type = 'Withdrawal' then
+                                if Rec.Type = 'Withdrawal' then
                                     Report.Run(51516282, true, true, Trans)
                                 else
-                                    if Type = 'encashment' then
+                                    if Rec.Type = 'encashment' then
                                         Report.Run(51516281, true, true, Trans)
                                     else
-                                        if Type = 'Cheque Deposit' then
+                                        if Rec.Type = 'Cheque Deposit' then
                                             Report.Run(51516433, true, true, Trans)
                     end;
                 end;
@@ -947,47 +947,47 @@ Page 51516299 "Cashier Transactions Card"
 
                     VarAmtHolder := 0;
 
-                    if Amount <= 0 then
+                    if Rec.Amount <= 0 then
                         Error('Please specify an amount greater than zero.');
 
-                    if "Transaction Type" = '' then
+                    if Rec."Transaction Type" = '' then
                         Error('Please select the transaction type.');
 
                     //BOSA Entries
-                    if ("Account No" = '502-00-000300-00') or ("Account No" = '502-00-000303-00') then begin
-                        TestField("BOSA Account No");
-                        if Amount <> "Allocated Amount" then
+                    if (Rec."Account No" = '502-00-000300-00') or (Rec."Account No" = '502-00-000303-00') then begin
+                        Rec.TestField("BOSA Account No");
+                        if Rec.Amount <> Rec."Allocated Amount" then
                             Error('Allocated amount must be equall to the transaction amount.');
 
                     end;
 
 
-                    if "Branch Transaction" = true then begin
-                        if "Branch Refference" = '' then
+                    if Rec."Branch Transaction" = true then begin
+                        if Rec."Branch Refference" = '' then
                             Error('You must specify the refference detailes for branch transactions.');
                     end;
 
-                    "Post Attempted" := true;
-                    Modify;
+                    Rec."Post Attempted" := true;
+                    Rec.Modify;
 
-                    if Type = 'Cheque Deposit' then begin
-                        TestField("Cheque Type");
-                        TestField("Cheque No");
-                        TestField("Cheque Date");
+                    if Rec.Type = 'Cheque Deposit' then begin
+                        Rec.TestField("Cheque Type");
+                        Rec.TestField("Cheque No");
+                        Rec.TestField("Cheque Date");
 
                         PostChequeDep;
 
                         exit;
                     end;
 
-                    if Type = 'Bankers Cheque' then begin
+                    if Rec.Type = 'Bankers Cheque' then begin
 
                         PostBankersCheq;
 
                         exit;
                     end;
 
-                    if Type = 'Encashment' then begin
+                    if Rec.Type = 'Encashment' then begin
                         PostEncashment;
 
                         exit;
@@ -1012,8 +1012,8 @@ Page 51516299 "Cashier Transactions Card"
 
                 trigger OnAction()
                 begin
-                    MailContent := 'Bankers cheque transaction' + ' ' + 'of Kshs' + ' ' + Format(Amount) + ' ' + 'for'
-                    + ' ' + "Account Name" + ' ' + 'needs your approval';
+                    MailContent := 'Bankers cheque transaction' + ' ' + 'of Kshs' + ' ' + Format(Rec.Amount) + ' ' + 'for'
+                    + ' ' + Rec."Account Name" + ' ' + 'needs your approval';
 
 
                     SendEmail;
@@ -1037,9 +1037,9 @@ Page 51516299 "Cashier Transactions Card"
         BReceiptVisible := false;
         BOSAReceiptChequeVisible := false;
 
-        if Type = 'Cheque Deposit' then begin
+        if Rec.Type = 'Cheque Deposit' then begin
             FChequeVisible := true;
-            if ("Account No" = '502-00-000300-00') or ("Account No" = '502-00-000303-00') then
+            if (Rec."Account No" = '502-00-000300-00') or (Rec."Account No" = '502-00-000303-00') then
                 BOSAReceiptChequeVisible := true;
 
         end;
@@ -1048,22 +1048,22 @@ Page 51516299 "Cashier Transactions Card"
         LRefVisible := false;
 
 
-        if Type = 'Bankers Cheque' then
+        if Rec.Type = 'Bankers Cheque' then
             BChequeVisible := true;
 
-        if Type = 'Encashment' then
+        if Rec.Type = 'Encashment' then
             BReceiptVisible := true;
 
 
-        if "Transaction Type" = 'BOSA' then
+        if Rec."Transaction Type" = 'BOSA' then
             BReceiptVisible := true;
 
-        if "Branch Transaction" = true then begin
+        if Rec."Branch Transaction" = true then begin
             "Branch RefferenceVisible" := true;
             LRefVisible := true;
         end;
 
-        if Acc.Get("Account No") then begin
+        if Acc.Get(Rec."Account No") then begin
             if Acc."Account Category" = Acc."account category"::Project then begin
                 "Branch RefferenceVisible" := true;
                 LRefVisible := true;
@@ -1072,14 +1072,14 @@ Page 51516299 "Cashier Transactions Card"
 
 
         "Transaction DateEditable" := false;
-        if "Post Dated" = true then
+        if Rec."Post Dated" = true then
             "Transaction DateEditable" := true;
 
     end;
 
     trigger OnDeleteRecord(): Boolean
     begin
-        if Posted = true then
+        if Rec.Posted = true then
             Error('You cannot delete an already posted record.');
     end;
 
@@ -1094,7 +1094,7 @@ Page 51516299 "Cashier Transactions Card"
         Clear(Acc.Image);
         Clear(Acc.Signature);
 
-        "Needs Approval" := "needs approval"::No;
+        Rec."Needs Approval" := Rec."needs approval"::No;
         FChequeVisible := false;
 
         CashierTrans.Reset;
@@ -1111,7 +1111,7 @@ Page 51516299 "Cashier Transactions Card"
     trigger OnModifyRecord(): Boolean
     begin
         if xRec.Posted = true then begin
-            if Posted = true then
+            if Rec.Posted = true then
                 Error('You cannot modify an already posted record.');
         end;
     end;
@@ -1124,7 +1124,7 @@ Page 51516299 "Cashier Transactions Card"
         END;*/
         //SETRANGE(Cashier,USERID);
 
-        if Posted = true then
+        if Rec.Posted = true then
             CurrPage.Editable := false
 
     end;
@@ -1284,12 +1284,12 @@ Page 51516299 "Cashier Transactions Card"
         IntervalPenalty := 0;
 
 
-        if Account.Get("Account No") then begin
+        if Account.Get(Rec."Account No") then begin
             Account.CalcFields(Account.Balance, Account."Uncleared Cheques", Account."ATM Transactions");
 
             //balanceov:=Account."Overdraft amount";
             AccountTypes.Reset;
-            AccountTypes.SetRange(AccountTypes.Code, "Account Type");
+            AccountTypes.SetRange(AccountTypes.Code, Rec."Account Type");
             if AccountTypes.Find('-') then begin
                 MinAccBal := AccountTypes."Minimum Balance";
                 FeeBelowMinBal := AccountTypes."Fee Below Minimum Balance";
@@ -1297,9 +1297,9 @@ Page 51516299 "Cashier Transactions Card"
 
                 //Check Withdrawal Interval
                 if Account.Status <> Account.Status::New then begin
-                    if Type = 'Withdrawal' then begin
+                    if Rec.Type = 'Withdrawal' then begin
                         AccountTypes.Reset;
-                        AccountTypes.SetRange(AccountTypes.Code, "Account Type");
+                        AccountTypes.SetRange(AccountTypes.Code, Rec."Account Type");
                         if Account."Last Withdrawal Date" <> 0D then begin
                             if CalcDate(AccountTypes."Withdrawal Interval", Account."Last Withdrawal Date") > Today then
                                 IntervalPenalty := AccountTypes."Withdrawal Penalty";
@@ -1318,12 +1318,12 @@ Page 51516299 "Cashier Transactions Card"
 
                     //Current Charges
                     TransactionCharges.Reset;
-                    TransactionCharges.SetRange(TransactionCharges."Transaction Type", "Transaction Type");
+                    TransactionCharges.SetRange(TransactionCharges."Transaction Type", Rec."Transaction Type");
                     if TransactionCharges.Find('-') then begin
                         repeat
                             if TransactionCharges."Use Percentage" = true then begin
                                 TransactionCharges.TestField("Percentage of Amount");
-                                TCharges := TCharges + (TransactionCharges."Percentage of Amount" / 100) * "Book Balance";
+                                TCharges := TCharges + (TransactionCharges."Percentage of Amount" / 100) * Rec."Book Balance";
                             end else begin
                                 TCharges := TCharges + TransactionCharges."Charge Amount";
                             end;
@@ -1347,7 +1347,7 @@ Page 51516299 "Cashier Transactions Card"
                     end;
                 end;
                 //FD
-                if Withdarawal = true then begin
+                if Rec.Withdarawal = true then begin
                     AvailableBalance := Account.Balance - FeeBelowMinBal - TCharges - IntervalPenalty - TotalUnprocessed - ATMBalance -
                                       Account."EFT Transactions" - Account."Piggy Amount" - Account."Junior Trip";
                     //Abel
@@ -1361,8 +1361,8 @@ Page 51516299 "Cashier Transactions Card"
             end;
         end;
 
-        if "N.A.H Balance" <> 0 then
-            AvailableBalance := "N.A.H Balance";
+        if Rec."N.A.H Balance" <> 0 then
+            AvailableBalance := Rec."N.A.H Balance";
     end;
 
 
@@ -1375,9 +1375,9 @@ Page 51516299 "Cashier Transactions Card"
             DValue.SetRange(DValue.Code, DBranch);
 
 
-            ChBank := "Bank Code";
+            ChBank := Rec."Bank Code";
 
-            if ChequeTypes.Get("Cheque Type") then begin
+            if ChequeTypes.Get(Rec."Cheque Type") then begin
                 GenJournalLine.Reset;
                 GenJournalLine.SetRange("Journal Template Name", 'PURCHASES');
                 GenJournalLine.SetRange("Journal Batch Name", 'FTRANS');
@@ -1388,26 +1388,26 @@ Page 51516299 "Cashier Transactions Card"
                 GenJournalLine.Init;
                 GenJournalLine."Journal Template Name" := 'PURCHASES';
                 GenJournalLine."Journal Batch Name" := 'FTRANS';
-                GenJournalLine."Document No." := No;
-                GenJournalLine."External Document No." := "Cheque No";
+                GenJournalLine."Document No." := Rec.No;
+                GenJournalLine."External Document No." := Rec."Cheque No";
                 GenJournalLine."Line No." := LineNo;
                 GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-                GenJournalLine."Account No." := "Account No";
+                GenJournalLine."Account No." := Rec."Account No";
 
                 GenJournalLine.Validate(GenJournalLine."Account No.");
-                GenJournalLine."Posting Date" := "Transaction Date";
-                if "Branch Transaction" = true then
-                    GenJournalLine.Description := "Transaction Type" + '-' + "Branch Refference"
+                GenJournalLine."Posting Date" := Rec."Transaction Date";
+                if Rec."Branch Transaction" = true then
+                    GenJournalLine.Description := Rec."Transaction Type" + '-' + Rec."Branch Refference"
                 else
-                    GenJournalLine.Description := "Transaction Description" + '-' + Description;
+                    GenJournalLine.Description := Rec."Transaction Description" + '-' + Rec.Description;
                 //Project Accounts
-                if Acc.Get("Account No") then begin
+                if Acc.Get(Rec."Account No") then begin
                     if Acc."Account Category" = Acc."account category"::Project then
-                        GenJournalLine.Description := "Transaction Type" + '-' + "Branch Refference"
+                        GenJournalLine.Description := Rec."Transaction Type" + '-' + Rec."Branch Refference"
                 end;
                 //Project Accounts
                 GenJournalLine.Validate(GenJournalLine."Currency Code");
-                GenJournalLine.Amount := -Amount;
+                GenJournalLine.Amount := -Rec.Amount;
                 GenJournalLine.Validate(GenJournalLine.Amount);
                 GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
                 GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
@@ -1421,16 +1421,16 @@ Page 51516299 "Cashier Transactions Card"
                 GenJournalLine.Init;
                 GenJournalLine."Journal Template Name" := 'PURCHASES';
                 GenJournalLine."Journal Batch Name" := 'FTRANS';
-                GenJournalLine."Document No." := No;
-                GenJournalLine."External Document No." := "Cheque No";
+                GenJournalLine."Document No." := Rec.No;
+                GenJournalLine."External Document No." := Rec."Cheque No";
                 GenJournalLine."Line No." := LineNo;
                 GenJournalLine."Account Type" := GenJournalLine."account type"::"Bank Account";
                 GenJournalLine."Account No." := ChBank;
                 GenJournalLine.Validate(GenJournalLine."Account No.");
-                GenJournalLine."Posting Date" := "Transaction Date";
-                GenJournalLine.Description := "Account Name";
+                GenJournalLine."Posting Date" := Rec."Transaction Date";
+                GenJournalLine.Description := Rec."Account Name";
                 GenJournalLine.Validate(GenJournalLine."Currency Code");
-                GenJournalLine.Amount := Amount;
+                GenJournalLine.Amount := Rec.Amount;
                 GenJournalLine.Validate(GenJournalLine.Amount);
                 GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
                 GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
@@ -1445,21 +1445,21 @@ Page 51516299 "Cashier Transactions Card"
 
 
                 //*********************Local cheque charges************************
-                if "Cheque Type" = 'LOCAL' then begin
+                if Rec."Cheque Type" = 'LOCAL' then begin
 
                     ChargeAmount := 0;
 
                     ChqCharges.Reset;
                     if ChqCharges.Find('-') then
-                        if ("Account No" <> 'SALARIES') and ("Account No" <> 'ENCASHMENT') and ("Account No" <> 'TEA') and ("Account No" <> 'MILK') then
+                        if (Rec."Account No" <> 'SALARIES') and (Rec."Account No" <> 'ENCASHMENT') and (Rec."Account No" <> 'TEA') and (Rec."Account No" <> 'MILK') then
                             repeat
                                 if ChqCharges."Use Percentage(Local)" = false then begin
-                                    if (Amount >= ChqCharges."Minimum Amount(Local)") and (Amount <= ChqCharges."Maximum Amount(Local)") then begin
+                                    if (Rec.Amount >= ChqCharges."Minimum Amount(Local)") and (Rec.Amount <= ChqCharges."Maximum Amount(Local)") then begin
                                         ChargeAmount := ChqCharges."Charge(Local)";
                                     end
                                 end else begin
-                                    if (Amount >= ChqCharges."Minimum Amount(Local)") and (Amount <= ChqCharges."Maximum Amount(Local)") then begin
-                                        ChargeAmount := (Amount * ChqCharges."% Amount(Local)") / 100;
+                                    if (Rec.Amount >= ChqCharges."Minimum Amount(Local)") and (Rec.Amount <= ChqCharges."Maximum Amount(Local)") then begin
+                                        ChargeAmount := (Rec.Amount * ChqCharges."% Amount(Local)") / 100;
                                     end
                                 end
 
@@ -1470,13 +1470,13 @@ Page 51516299 "Cashier Transactions Card"
                     GenJournalLine.Init;
                     GenJournalLine."Journal Template Name" := 'PURCHASES';
                     GenJournalLine."Journal Batch Name" := 'FTRANS';
-                    GenJournalLine."Document No." := No;
-                    GenJournalLine."External Document No." := "Cheque No";
+                    GenJournalLine."Document No." := Rec.No;
+                    GenJournalLine."External Document No." := Rec."Cheque No";
                     GenJournalLine."Line No." := LineNo;
                     GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-                    GenJournalLine."Account No." := "Account No";
+                    GenJournalLine."Account No." := Rec."Account No";
                     GenJournalLine.Validate(GenJournalLine."Account No.");
-                    GenJournalLine."Posting Date" := "Transaction Date";
+                    GenJournalLine."Posting Date" := Rec."Transaction Date";
                     GenJournalLine.Description := 'Local Cheque Deposit Commission';
                     GenJournalLine.Validate(GenJournalLine."Currency Code");
                     GenJournalLine.Amount := ChargeAmount;
@@ -1500,16 +1500,16 @@ Page 51516299 "Cashier Transactions Card"
         GenJournalLine.Init;
         GenJournalLine."Journal Template Name" := 'PURCHASES';
         GenJournalLine."Journal Batch Name" := 'FTRANS';
-        GenJournalLine."Document No." := No;
+        GenJournalLine."Document No." := Rec.No;
         GenJournalLine."Line No." := LineNo;
         GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-        GenJournalLine."Account No." := "Account No";
-        GenJournalLine."External Document No." := "ID No";
+        GenJournalLine."Account No." := Rec."Account No";
+        GenJournalLine."External Document No." := Rec."ID No";
         GenJournalLine.Validate(GenJournalLine."Account No.");
-        GenJournalLine."Posting Date" := "Transaction Date";
+        GenJournalLine."Posting Date" := Rec."Transaction Date";
         GenJournalLine.Description := 'Excise Duty on Cheque Commission';
         GenJournalLine.Validate(GenJournalLine."Currency Code");
-        if "Cheque Type" = 'LOCAL' then
+        if Rec."Cheque Type" = 'LOCAL' then
             GenJournalLine.Amount := (ChargeAmount * genSetup."Excise Duty(%)") / 100;
         GenJournalLine.Validate(GenJournalLine.Amount);
         GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"G/L Account";
@@ -1524,23 +1524,23 @@ Page 51516299 "Cashier Transactions Card"
 
         //*********************Upcountry cheque charges************************
 
-        if "Cheque Type" = 'UPCOUNTRY' then begin
+        if Rec."Cheque Type" = 'UPCOUNTRY' then begin
             //LineNo:=LineNo+10000;
             ChargeAmount := 0;
 
             ChqCharges.Reset;
             if ChqCharges.Find('-') then
-                if ("Account No" <> 'SALARIES') and ("Account No" <> 'ENCASHMENT') and ("Account No" <> 'TEA') and ("Account No" <> 'MILK')
+                if (Rec."Account No" <> 'SALARIES') and (Rec."Account No" <> 'ENCASHMENT') and (Rec."Account No" <> 'TEA') and (Rec."Account No" <> 'MILK')
 
                 then
                     repeat
                         if ChqCharges."Use Percentage(Upcountry)" = false then begin
-                            if (Amount >= ChqCharges."Minimum Amount(Upcountry)") and (Amount <= ChqCharges."Maximum Amount(Upcountry)") then begin
+                            if (Rec.Amount >= ChqCharges."Minimum Amount(Upcountry)") and (Rec.Amount <= ChqCharges."Maximum Amount(Upcountry)") then begin
                                 ChargeAmount := ChqCharges."Charge(Upcountry)";
                             end
                         end else begin
-                            if (Amount >= ChqCharges."Minimum Amount(Upcountry)") and (Amount <= ChqCharges."Maximum Amount(Upcountry)") then begin
-                                ChargeAmount := (Amount * ChqCharges."% Amount(Upcountry)") / 100;
+                            if (Rec.Amount >= ChqCharges."Minimum Amount(Upcountry)") and (Rec.Amount <= ChqCharges."Maximum Amount(Upcountry)") then begin
+                                ChargeAmount := (Rec.Amount * ChqCharges."% Amount(Upcountry)") / 100;
                             end
                         end
 
@@ -1551,13 +1551,13 @@ Page 51516299 "Cashier Transactions Card"
             GenJournalLine.Init;
             GenJournalLine."Journal Template Name" := 'PURCHASES';
             GenJournalLine."Journal Batch Name" := 'FTRANS';
-            GenJournalLine."Document No." := No;
-            GenJournalLine."External Document No." := "Cheque No";
+            GenJournalLine."Document No." := Rec.No;
+            GenJournalLine."External Document No." := Rec."Cheque No";
             GenJournalLine."Line No." := LineNo;
             GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-            GenJournalLine."Account No." := "Account No";
+            GenJournalLine."Account No." := Rec."Account No";
             GenJournalLine.Validate(GenJournalLine."Account No.");
-            GenJournalLine."Posting Date" := "Transaction Date";
+            GenJournalLine."Posting Date" := Rec."Transaction Date";
             GenJournalLine.Description := 'Upcountry Cheque Deposit Commission';
             GenJournalLine.Validate(GenJournalLine."Currency Code");
             GenJournalLine.Amount := ChargeAmount;
@@ -1578,16 +1578,16 @@ Page 51516299 "Cashier Transactions Card"
         GenJournalLine.Init;
         GenJournalLine."Journal Template Name" := 'PURCHASES';
         GenJournalLine."Journal Batch Name" := 'FTRANS';
-        GenJournalLine."Document No." := No;
+        GenJournalLine."Document No." := Rec.No;
         GenJournalLine."Line No." := LineNo;
         GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-        GenJournalLine."Account No." := "Account No";
-        GenJournalLine."External Document No." := "ID No";
+        GenJournalLine."Account No." := Rec."Account No";
+        GenJournalLine."External Document No." := Rec."ID No";
         GenJournalLine.Validate(GenJournalLine."Account No.");
-        GenJournalLine."Posting Date" := "Transaction Date";
+        GenJournalLine."Posting Date" := Rec."Transaction Date";
         GenJournalLine.Description := 'Excise Duty on Cheque Commission';
         GenJournalLine.Validate(GenJournalLine."Currency Code");
-        if "Cheque Type" = 'UPCOUNTRY' then
+        if Rec."Cheque Type" = 'UPCOUNTRY' then
             GenJournalLine.Amount := (ChargeAmount * genSetup."Excise Duty(%)") / 100;
         GenJournalLine.Validate(GenJournalLine.Amount);
         GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"G/L Account";
@@ -1603,23 +1603,23 @@ Page 51516299 "Cashier Transactions Card"
 
         //*********************Inhouse cheque charges************************
 
-        if "Cheque Type" = 'INHOUSE' then begin
+        if Rec."Cheque Type" = 'INHOUSE' then begin
             //LineNo:=LineNo+10000;
             ChargeAmount := 0;
 
             ChqCharges.Reset;
             if ChqCharges.Find('-') then
-                if ("Account No" <> 'SALARIES') and ("Account No" <> 'ENCASHMENT') and ("Account No" <> 'TEA') and ("Account No" <> 'MILK')
+                if (Rec."Account No" <> 'SALARIES') and (Rec."Account No" <> 'ENCASHMENT') and (Rec."Account No" <> 'TEA') and (Rec."Account No" <> 'MILK')
 
                 then
                     repeat
                         if ChqCharges."Use Percentage(Inhouse)" = false then begin
-                            if (Amount >= ChqCharges."Minimum Amount(Inhouse)") and (Amount <= ChqCharges."Maximum Amount(Inhouse)") then begin
+                            if (Rec.Amount >= ChqCharges."Minimum Amount(Inhouse)") and (Rec.Amount <= ChqCharges."Maximum Amount(Inhouse)") then begin
                                 ChargeAmount := ChqCharges."Charge(Inhousel)";
                             end
                         end else begin
-                            if (Amount >= ChqCharges."Minimum Amount(Inhouse)") and (Amount <= ChqCharges."Maximum Amount(Inhouse)") then begin
-                                ChargeAmount := (Amount * ChqCharges."% Amount (Inhouse)") / 100;
+                            if (Rec.Amount >= ChqCharges."Minimum Amount(Inhouse)") and (Rec.Amount <= ChqCharges."Maximum Amount(Inhouse)") then begin
+                                ChargeAmount := (Rec.Amount * ChqCharges."% Amount (Inhouse)") / 100;
                             end
                         end
 
@@ -1630,13 +1630,13 @@ Page 51516299 "Cashier Transactions Card"
             GenJournalLine.Init;
             GenJournalLine."Journal Template Name" := 'PURCHASES';
             GenJournalLine."Journal Batch Name" := 'FTRANS';
-            GenJournalLine."Document No." := No;
-            GenJournalLine."External Document No." := "Cheque No";
+            GenJournalLine."Document No." := Rec.No;
+            GenJournalLine."External Document No." := Rec."Cheque No";
             GenJournalLine."Line No." := LineNo;
             GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-            GenJournalLine."Account No." := "Account No";
+            GenJournalLine."Account No." := Rec."Account No";
             GenJournalLine.Validate(GenJournalLine."Account No.");
-            GenJournalLine."Posting Date" := "Transaction Date";
+            GenJournalLine."Posting Date" := Rec."Transaction Date";
             GenJournalLine.Description := 'Inhouse Cheque Deposit Commission';
             GenJournalLine.Validate(GenJournalLine."Currency Code");
             GenJournalLine.Amount := ChargeAmount;
@@ -1660,16 +1660,16 @@ Page 51516299 "Cashier Transactions Card"
         GenJournalLine.Init;
         GenJournalLine."Journal Template Name" := 'PURCHASES';
         GenJournalLine."Journal Batch Name" := 'FTRANS';
-        GenJournalLine."Document No." := No;
+        GenJournalLine."Document No." := Rec.No;
         GenJournalLine."Line No." := LineNo;
         GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-        GenJournalLine."Account No." := "Account No";
-        GenJournalLine."External Document No." := "ID No";
+        GenJournalLine."Account No." := Rec."Account No";
+        GenJournalLine."External Document No." := Rec."ID No";
         GenJournalLine.Validate(GenJournalLine."Account No.");
-        GenJournalLine."Posting Date" := "Transaction Date";
+        GenJournalLine."Posting Date" := Rec."Transaction Date";
         GenJournalLine.Description := 'Excise Duty on Cheque Commission';
         GenJournalLine.Validate(GenJournalLine."Currency Code");
-        if "Cheque Type" = 'INHOUSE' then
+        if Rec."Cheque Type" = 'INHOUSE' then
             GenJournalLine.Amount := (ChargeAmount * genSetup."Excise Duty(%)") / 100;
         GenJournalLine.Validate(GenJournalLine.Amount);
         GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"G/L Account";
@@ -1694,29 +1694,29 @@ Page 51516299 "Cashier Transactions Card"
         //Post New
 
 
-        Posted := true;
-        Authorised := Authorised::Yes;
-        "Supervisor Checked" := true;
-        "Needs Approval" := "needs approval"::No;
-        "Frequency Needs Approval" := "frequency needs approval"::No;
-        "Date Posted" := Today;
-        "Time Posted" := Time;
-        "Posted By" := UserId;
+        Rec.Posted := true;
+        Rec.Authorised := Rec.Authorised::Yes;
+        Rec."Supervisor Checked" := true;
+        Rec."Needs Approval" := Rec."needs approval"::No;
+        Rec."Frequency Needs Approval" := Rec."frequency needs approval"::No;
+        Rec."Date Posted" := Today;
+        Rec."Time Posted" := Time;
+        Rec."Posted By" := UserId;
         if ChequeTypes."Clearing  Days" = 0 then begin
-            Status := Status::Honoured;
-            "Cheque Processed" := true;
-            "Date Cleared" := Today;
+            Rec.Status := Rec.Status::Honoured;
+            Rec."Cheque Processed" := true;
+            Rec."Date Cleared" := Today;
         end;
 
-        Modify;
+        Rec.Modify;
 
         //SMS
         Vend1.Reset;
-        Vend1.SetRange(Vend1."No.", "Account No");
+        Vend1.SetRange(Vend1."No.", Rec."Account No");
         if Vend1.Find('-') then begin
             TransDesc := '';
             TransTypes.Reset;
-            TransTypes.SetRange(TransTypes.Code, "Transaction Type");
+            TransTypes.SetRange(TransTypes.Code, Rec."Transaction Type");
             if TransTypes.Find('-') then begin
                 TransDesc := TransTypes.Description;
             end;
@@ -1737,9 +1737,9 @@ Page 51516299 "Cashier Transactions Card"
             SMSMessage.Source := 'OTC SMS';
             SMSMessage."Entered By" := UserId;
             SMSMessage."Sent To Server" := SMSMessage."sent to server"::No;
-            if Amount <> 0 then begin
+            if Rec.Amount <> 0 then begin
                 SMSMessage."SMS Message" := 'You have done a Transaction of KSHS. ' +
-                Format(Amount) + ' of type ' + TransDesc + ' on ' + Format(Today) + ' ' + Format(Time) + ' to your Account at JAMII YETU SACCO'; //'CompanyInfo.Name ' .';
+                Format(Rec.Amount) + ' of type ' + TransDesc + ' on ' + Format(Today) + ' ' + Format(Time) + ' to your Account at JAMII YETU SACCO'; //'CompanyInfo.Name ' .';
             end;
             if Vend1."MPESA Mobile No" <> '' then begin
                 //SMSMessage."Telephone No":=Vend1."MPESA Mobile No";
@@ -1755,7 +1755,7 @@ Page 51516299 "Cashier Transactions Card"
         Message('Cheque deposited successfully.');
         //***********be printing after posting,users requested
         Trans.Reset;
-        Trans.SetRange(Trans.No, No);
+        Trans.SetRange(Trans.No, Rec.No);
         if Trans.Find('-') then begin
             if Confirm('Print Cheque Deposit Slip?', false) = true then
                 //Report.Run(51516433, false, true, Trans);
@@ -1770,35 +1770,35 @@ Page 51516299 "Cashier Transactions Card"
     procedure PostBankersCheq()
     begin
         //Block Payments
-        if Acc.Get("Account No") then begin
+        if Acc.Get(Rec."Account No") then begin
             if Acc.Blocked = Acc.Blocked::Payment then
                 Error('This account has been blocked from receiving payments.');
         end;
 
-        TestField("Bank Code");
+        Rec.TestField("Bank Code");
 
-        ChBank := "Bank Code";
+        ChBank := Rec."Bank Code";
 
         CalcAvailableBal;
 
         //Check withdrawal limits
-        if Type = 'Bankers Cheque' then begin
-            if AvailableBalance < Amount then begin
-                if Authorised = Authorised::Yes then begin
-                    Overdraft := true;
-                    Modify;
+        if Rec.Type = 'Bankers Cheque' then begin
+            if AvailableBalance < Rec.Amount then begin
+                if Rec.Authorised = Rec.Authorised::Yes then begin
+                    Rec.Overdraft := true;
+                    Rec.Modify;
                 end;
 
-                if Authorised = Authorised::No then begin
-                    if "Branch Transaction" = false then begin
-                        "Authorisation Requirement" := 'Bankers Cheque - Over draft';
-                        Modify;
+                if Rec.Authorised = Rec.Authorised::No then begin
+                    if Rec."Branch Transaction" = false then begin
+                        Rec."Authorisation Requirement" := 'Bankers Cheque - Over draft';
+                        Rec.Modify;
                         Message('You cannot issue a Bankers cheque more than the available balance unless authorised.');
                         SendEmail;
                         exit;
                     end;
                 end;
-                if Authorised = Authorised::Rejected then
+                if Rec.Authorised = Rec.Authorised::Rejected then
                     Error('Bankers cheque transaction has been rejected and therefore cannot proceed.');
                 //SendEmail;
             end;
@@ -1816,20 +1816,20 @@ Page 51516299 "Cashier Transactions Card"
         GenJournalLine.Init;
         GenJournalLine."Journal Template Name" := 'PURCHASES';
         GenJournalLine."Journal Batch Name" := 'FTRANS';
-        GenJournalLine."Document No." := No;
-        GenJournalLine."External Document No." := "Bankers Cheque No";
+        GenJournalLine."Document No." := Rec.No;
+        GenJournalLine."External Document No." := Rec."Bankers Cheque No";
         GenJournalLine."Line No." := LineNo;
         GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-        GenJournalLine."Account No." := "Account No";
+        GenJournalLine."Account No." := Rec."Account No";
         GenJournalLine.Validate(GenJournalLine."Account No.");
 
-        GenJournalLine."Posting Date" := "Transaction Date";
-        if "Branch Transaction" = true then
-            GenJournalLine.Description := "Transaction Type" + '-' + "Branch Refference"
+        GenJournalLine."Posting Date" := Rec."Transaction Date";
+        if Rec."Branch Transaction" = true then
+            GenJournalLine.Description := Rec."Transaction Type" + '-' + Rec."Branch Refference"
         else
-            GenJournalLine.Description := "Transaction Description" + '-' + Description;
+            GenJournalLine.Description := Rec."Transaction Description" + '-' + Rec.Description;
         GenJournalLine.Validate(GenJournalLine."Currency Code");
-        GenJournalLine.Amount := Amount;
+        GenJournalLine.Amount := Rec.Amount;
         GenJournalLine.Validate(GenJournalLine.Amount);
         GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
         GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
@@ -1843,16 +1843,16 @@ Page 51516299 "Cashier Transactions Card"
         GenJournalLine.Init;
         GenJournalLine."Journal Template Name" := 'PURCHASES';
         GenJournalLine."Journal Batch Name" := 'FTRANS';
-        GenJournalLine."Document No." := No;
-        GenJournalLine."External Document No." := "Bankers Cheque No";
+        GenJournalLine."Document No." := Rec.No;
+        GenJournalLine."External Document No." := Rec."Bankers Cheque No";
         GenJournalLine."Line No." := LineNo;
         GenJournalLine."Account Type" := GenJournalLine."account type"::"Bank Account";
         GenJournalLine."Account No." := ChBank;
         GenJournalLine.Validate(GenJournalLine."Account No.");
-        GenJournalLine."Posting Date" := "Transaction Date";
-        GenJournalLine.Description := Payee;//"Account Name";
+        GenJournalLine."Posting Date" := Rec."Transaction Date";
+        GenJournalLine.Description := Rec.Payee;//"Account Name";
         GenJournalLine.Validate(GenJournalLine."Currency Code");
-        GenJournalLine.Amount := -Amount;
+        GenJournalLine.Amount := -Rec.Amount;
         GenJournalLine.Validate(GenJournalLine.Amount);
         GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
         GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
@@ -1864,7 +1864,7 @@ Page 51516299 "Cashier Transactions Card"
 
         //Charges
         TransactionCharges.Reset;
-        TransactionCharges.SetRange(TransactionCharges."Transaction Type", "Transaction Type");
+        TransactionCharges.SetRange(TransactionCharges."Transaction Type", Rec."Transaction Type");
         if TransactionCharges.Find('-') then begin
             repeat
                 LineNo := LineNo + 10000;
@@ -1872,13 +1872,13 @@ Page 51516299 "Cashier Transactions Card"
                 GenJournalLine.Init;
                 GenJournalLine."Journal Template Name" := 'PURCHASES';
                 GenJournalLine."Journal Batch Name" := 'FTRANS';
-                GenJournalLine."Document No." := No;
-                GenJournalLine."External Document No." := "Bankers Cheque No";
+                GenJournalLine."Document No." := Rec.No;
+                GenJournalLine."External Document No." := Rec."Bankers Cheque No";
                 GenJournalLine."Line No." := LineNo;
                 GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-                GenJournalLine."Account No." := "Account No";
+                GenJournalLine."Account No." := Rec."Account No";
                 GenJournalLine.Validate(GenJournalLine."Account No.");
-                GenJournalLine."Posting Date" := "Transaction Date";
+                GenJournalLine."Posting Date" := Rec."Transaction Date";
                 GenJournalLine.Description := TransactionCharges.Description;
                 GenJournalLine.Validate(GenJournalLine."Currency Code");
                 GenJournalLine.Amount := TransactionCharges."Charge Amount";
@@ -1899,13 +1899,13 @@ Page 51516299 "Cashier Transactions Card"
                     GenJournalLine.Init;
                     GenJournalLine."Journal Template Name" := 'PURCHASES';
                     GenJournalLine."Journal Batch Name" := 'FTRANS';
-                    GenJournalLine."Document No." := No;
-                    GenJournalLine."External Document No." := "Bankers Cheque No";
+                    GenJournalLine."Document No." := Rec.No;
+                    GenJournalLine."External Document No." := Rec."Bankers Cheque No";
                     GenJournalLine."Line No." := LineNo;
                     GenJournalLine."Account Type" := GenJournalLine."account type"::"G/L Account";
                     GenJournalLine."Account No." := TransactionCharges."G/L Account";
                     GenJournalLine.Validate(GenJournalLine."Account No.");
-                    GenJournalLine."Posting Date" := "Transaction Date";
+                    GenJournalLine."Posting Date" := Rec."Transaction Date";
                     GenJournalLine.Description := TransactionCharges.Description;
                     GenJournalLine.Validate(GenJournalLine."Currency Code");
                     GenJournalLine.Amount := TransactionCharges."Due Amount";
@@ -1935,13 +1935,13 @@ Page 51516299 "Cashier Transactions Card"
         GenJournalLine.Init;
         GenJournalLine."Journal Template Name" := 'PURCHASES';
         GenJournalLine."Journal Batch Name" := 'FTRANS';
-        GenJournalLine."Document No." := No;
+        GenJournalLine."Document No." := Rec.No;
         GenJournalLine."Line No." := LineNo;
         GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-        GenJournalLine."Account No." := "Account No";
-        GenJournalLine."External Document No." := "ID No";
+        GenJournalLine."Account No." := Rec."Account No";
+        GenJournalLine."External Document No." := Rec."ID No";
         GenJournalLine.Validate(GenJournalLine."Account No.");
-        GenJournalLine."Posting Date" := "Transaction Date";
+        GenJournalLine."Posting Date" := Rec."Transaction Date";
         GenJournalLine.Description := 'Excise Duty';
         GenJournalLine.Validate(GenJournalLine."Currency Code");
         TransactionCharges.Reset;
@@ -1971,16 +1971,16 @@ Page 51516299 "Cashier Transactions Card"
         //Post New
 
 
-        "Transaction Available Balance" := AvailableBalance;
-        Posted := true;
-        Authorised := Authorised::Yes;
-        "Supervisor Checked" := true;
-        "Needs Approval" := "needs approval"::No;
-        "Frequency Needs Approval" := "frequency needs approval"::No;
-        "Date Posted" := Today;
-        "Time Posted" := Time;
-        "Posted By" := UserId;
-        Modify;
+        Rec."Transaction Available Balance" := AvailableBalance;
+        Rec.Posted := true;
+        Rec.Authorised := Rec.Authorised::Yes;
+        Rec."Supervisor Checked" := true;
+        Rec."Needs Approval" := Rec."needs approval"::No;
+        Rec."Frequency Needs Approval" := Rec."frequency needs approval"::No;
+        Rec."Date Posted" := Today;
+        Rec."Time Posted" := Time;
+        Rec."Posted By" := UserId;
+        Rec.Modify;
         /*IF CONFIRM('Are you sure you want to print this bankers cheque?',TRUE)=TRUE THEN BEGIN
         REPORT.RUN(,TRUE,TRUE,Trans)
         END;*/
@@ -1990,11 +1990,11 @@ Page 51516299 "Cashier Transactions Card"
 
         //SMS
         Vend1.Reset;
-        Vend1.SetRange(Vend1."No.", "Account No");
+        Vend1.SetRange(Vend1."No.", Rec."Account No");
         if Vend1.Find('-') then begin
             TransDesc := '';
             TransTypes.Reset;
-            TransTypes.SetRange(TransTypes.Code, "Transaction Type");
+            TransTypes.SetRange(TransTypes.Code, Rec."Transaction Type");
             if TransTypes.Find('-') then begin
                 TransDesc := TransTypes.Description;
             end;
@@ -2015,9 +2015,9 @@ Page 51516299 "Cashier Transactions Card"
             SMSMessage.Source := 'OTC SMS';
             SMSMessage."Entered By" := UserId;
             SMSMessage."Sent To Server" := SMSMessage."sent to server"::No;
-            if Amount <> 0 then begin
+            if Rec.Amount <> 0 then begin
                 SMSMessage."SMS Message" := 'You have done a Bankers Cheque Transaction of KSHS. ' +
-                Format(Amount) + ' of type ' + TransDesc + ' on ' + Format(Today) + ' ' + Format(Time) + ' from your Account at JAMII YETU SACCO';
+                Format(Rec.Amount) + ' of type ' + TransDesc + ' on ' + Format(Today) + ' ' + Format(Time) + ' from your Account at JAMII YETU SACCO';
             end;
             if Vend1."MPESA Mobile No" <> '' then begin
                 // SMSMessage."Telephone No":=Vend1."MPESA Mobile No";
@@ -2037,7 +2037,7 @@ Page 51516299 "Cashier Transactions Card"
     procedure PostEncashment()
     begin
         //Block Payments
-        if Acc.Get("Account No") then begin
+        if Acc.Get(Rec."Account No") then begin
             if Acc.Blocked = Acc.Blocked::Payment then
                 Error('This account has been blocked from receiving payments.');
         end;
@@ -2046,27 +2046,27 @@ Page 51516299 "Cashier Transactions Card"
         CalcAvailableBal;
 
         //Check withdrawal limits
-        if Type = 'Encashment' then begin
-            if AvailableBalance < Amount then begin
-                if Authorised = Authorised::Yes then begin
-                    Overdraft := true;
-                    Modify;
+        if Rec.Type = 'Encashment' then begin
+            if AvailableBalance < Rec.Amount then begin
+                if Rec.Authorised = Rec.Authorised::Yes then begin
+                    Rec.Overdraft := true;
+                    Rec.Modify;
                 end;
 
-                if Authorised = Authorised::No then begin
-                    "Authorisation Requirement" := 'Encashment - Over draft';
-                    Modify;
+                if Rec.Authorised = Rec.Authorised::No then begin
+                    Rec."Authorisation Requirement" := 'Encashment - Over draft';
+                    Rec.Modify;
                     Message('You cannot issue an encashment more than the available balance unless authorised.');
-                    MailContent := 'Withdrawal transaction' + 'TR. No.' + ' ' + No + ' ' + 'of Kshs' + ' ' + Format(Amount) + ' ' + 'for'
-                    + ' ' + "Account Name" + ' ' + 'needs your authorization';
+                    MailContent := 'Withdrawal transaction' + 'TR. No.' + ' ' + Rec.No + ' ' + 'of Kshs' + ' ' + Format(Rec.Amount) + ' ' + 'for'
+                    + ' ' + Rec."Account Name" + ' ' + 'needs your authorization';
                     SendEmail;
 
                     //SendEmail;
                     exit;
                 end;
-                if Authorised = Authorised::Rejected then begin
-                    MailContent := 'Bankers cheque transaction' + ' ' + 'of Kshs' + ' ' + Format(Amount) + ' ' + 'for'
-                    + ' ' + "Account Name" + ' ' + 'needs your approval';
+                if Rec.Authorised = Rec.Authorised::Rejected then begin
+                    MailContent := 'Bankers cheque transaction' + ' ' + 'of Kshs' + ' ' + Format(Rec.Amount) + ' ' + 'for'
+                    + ' ' + Rec."Account Name" + ' ' + 'needs your approval';
                     SendEmail;
                     Error('Transaction has been rejected and therefore cannot proceed.');
 
@@ -2084,21 +2084,21 @@ Page 51516299 "Cashier Transactions Card"
 
             CurrentTellerAmount := TellerTill.Balance;
 
-            if CurrentTellerAmount - Amount <= TellerTill."Min. Balance" then
+            if CurrentTellerAmount - Rec.Amount <= TellerTill."Min. Balance" then
                 Message('You need to add more money from the treasury since your balance has gone below the teller replenishing level.');
 
-            if ("Transaction Type" = 'Withdrawal') or ("Transaction Type" = 'Encashment') then begin
-                if (CurrentTellerAmount - Amount) < 0 then
+            if (Rec."Transaction Type" = 'Withdrawal') or (Rec."Transaction Type" = 'Encashment') then begin
+                if (CurrentTellerAmount - Rec.Amount) < 0 then
                     Error('You do not have enough money to carry out this transaction.');
 
             end;
 
-            if ("Transaction Type" = 'Withdrawal') or ("Transaction Type" = 'Encashment') then begin
-                if CurrentTellerAmount - Amount >= TellerTill."Maximum Teller Withholding" then
+            if (Rec."Transaction Type" = 'Withdrawal') or (Rec."Transaction Type" = 'Encashment') then begin
+                if CurrentTellerAmount - Rec.Amount >= TellerTill."Maximum Teller Withholding" then
                     Message('You need to transfer money back to the treasury since your balance has gone above the teller maximum withholding.');
 
             end else begin
-                if CurrentTellerAmount + Amount >= TellerTill."Maximum Teller Withholding" then
+                if CurrentTellerAmount + Rec.Amount >= TellerTill."Maximum Teller Withholding" then
                     Message('You need to transfer money back to the treasury since your balance has gone above the teller maximum withholding.');
             end;
 
@@ -2123,19 +2123,19 @@ Page 51516299 "Cashier Transactions Card"
         GenJournalLine.Init;
         GenJournalLine."Journal Template Name" := 'PURCHASES';
         GenJournalLine."Journal Batch Name" := 'FTRANS';
-        GenJournalLine."Document No." := No;
-        GenJournalLine."External Document No." := "ID No";
+        GenJournalLine."Document No." := Rec.No;
+        GenJournalLine."External Document No." := Rec."ID No";
         GenJournalLine."Line No." := LineNo;
         GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-        GenJournalLine."Account No." := "Account No";
-        if ("Account No" = '00-0000003000') or ("Account No" = '00-0200003000') then
-            GenJournalLine."External Document No." := "ID No";
+        GenJournalLine."Account No." := Rec."Account No";
+        if (Rec."Account No" = '00-0000003000') or (Rec."Account No" = '00-0200003000') then
+            GenJournalLine."External Document No." := Rec."ID No";
 
         GenJournalLine.Validate(GenJournalLine."Account No.");
-        GenJournalLine."Posting Date" := "Transaction Date";
-        GenJournalLine.Description := Payee;
+        GenJournalLine."Posting Date" := Rec."Transaction Date";
+        GenJournalLine.Description := Rec.Payee;
         GenJournalLine.Validate(GenJournalLine."Currency Code");
-        GenJournalLine.Amount := Amount;
+        GenJournalLine.Amount := Rec.Amount;
         GenJournalLine.Validate(GenJournalLine.Amount);
         GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
         GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
@@ -2152,7 +2152,7 @@ Page 51516299 "Cashier Transactions Card"
 
 
         TransactionCharges.Reset;
-        TransactionCharges.SetRange(TransactionCharges."Transaction Type", "Transaction Type");
+        TransactionCharges.SetRange(TransactionCharges."Transaction Type", Rec."Transaction Type");
         if TransactionCharges.Find('-') then begin
             repeat
                 LineNo := LineNo + 10000;
@@ -2160,7 +2160,7 @@ Page 51516299 "Cashier Transactions Card"
                 ChargeAmount := 0;
 
                 if TransactionCharges."Use Percentage" = true then
-                    ChargeAmount := (Amount * TransactionCharges."Percentage of Amount") * 0.01
+                    ChargeAmount := (Rec.Amount * TransactionCharges."Percentage of Amount") * 0.01
                 else
                     ChargeAmount := TransactionCharges."Charge Amount";
 
@@ -2175,14 +2175,14 @@ Page 51516299 "Cashier Transactions Card"
                 GenJournalLine.Init;
                 GenJournalLine."Journal Template Name" := 'PURCHASES';
                 GenJournalLine."Journal Batch Name" := 'FTRANS';
-                GenJournalLine."Document No." := No;
-                GenJournalLine."External Document No." := "ID No";
+                GenJournalLine."Document No." := Rec.No;
+                GenJournalLine."External Document No." := Rec."ID No";
                 GenJournalLine."Line No." := LineNo;
                 GenJournalLine."Account Type" := GenJournalLine."account type"::"G/L Account";
                 GenJournalLine."Account No." := TransactionCharges."G/L Account";
                 GenJournalLine.Validate(GenJournalLine."Account No.");
-                GenJournalLine."Posting Date" := "Transaction Date";
-                GenJournalLine.Description := Payee;
+                GenJournalLine."Posting Date" := Rec."Transaction Date";
+                GenJournalLine.Description := Rec.Payee;
                 GenJournalLine.Validate(GenJournalLine."Currency Code");
                 GenJournalLine.Amount := -ChargeAmount;
                 GenJournalLine.Validate(GenJournalLine.Amount);
@@ -2207,16 +2207,16 @@ Page 51516299 "Cashier Transactions Card"
         GenJournalLine.Init;
         GenJournalLine."Journal Template Name" := 'PURCHASES';
         GenJournalLine."Journal Batch Name" := 'FTRANS';
-        GenJournalLine."Document No." := No;
-        GenJournalLine."External Document No." := "ID No";
+        GenJournalLine."Document No." := Rec.No;
+        GenJournalLine."External Document No." := Rec."ID No";
         GenJournalLine."Line No." := LineNo;
         GenJournalLine."Account Type" := GenJournalLine."account type"::"Bank Account";
         GenJournalLine."Account No." := TillNo;
         GenJournalLine.Validate(GenJournalLine."Account No.");
-        GenJournalLine."Posting Date" := "Transaction Date";
-        GenJournalLine.Description := Payee;
+        GenJournalLine."Posting Date" := Rec."Transaction Date";
+        GenJournalLine.Description := Rec.Payee;
         GenJournalLine.Validate(GenJournalLine."Currency Code");
-        GenJournalLine.Amount := -(Amount - TChargeAmount);
+        GenJournalLine.Amount := -(Rec.Amount - TChargeAmount);
         GenJournalLine.Validate(GenJournalLine.Amount);
         GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
         GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
@@ -2237,16 +2237,16 @@ Page 51516299 "Cashier Transactions Card"
         //Post New
 
 
-        "Transaction Available Balance" := AvailableBalance;
-        Posted := true;
-        Authorised := Authorised::Yes;
-        "Supervisor Checked" := true;
-        "Needs Approval" := "needs approval"::No;
-        "Frequency Needs Approval" := "frequency needs approval"::No;
-        "Date Posted" := Today;
-        "Time Posted" := Time;
-        "Posted By" := UserId;
-        Modify;
+        Rec."Transaction Available Balance" := AvailableBalance;
+        Rec.Posted := true;
+        Rec.Authorised := Rec.Authorised::Yes;
+        Rec."Supervisor Checked" := true;
+        Rec."Needs Approval" := Rec."needs approval"::No;
+        Rec."Frequency Needs Approval" := Rec."frequency needs approval"::No;
+        Rec."Date Posted" := Today;
+        Rec."Time Posted" := Time;
+        Rec."Posted By" := UserId;
+        Rec.Modify;
         Commit;
     end;
 
@@ -2267,22 +2267,22 @@ Page 51516299 "Cashier Transactions Card"
         GenJournalLine.Init;
         GenJournalLine."Journal Template Name" := 'PURCHASES';
         GenJournalLine."Journal Batch Name" := 'FTRANS';
-        GenJournalLine."Document No." := No;
-        GenJournalLine."External Document No." := "Cheque No";
+        GenJournalLine."Document No." := Rec.No;
+        GenJournalLine."External Document No." := Rec."Cheque No";
         GenJournalLine."Line No." := LineNo;
         GenJournalLine."Account Type" := GenJournalLine."account type"::"Bank Account";
         GenJournalLine."Account No." := BOSABank;
         GenJournalLine.Validate(GenJournalLine."Account No.");
-        GenJournalLine."Posting Date" := "Transaction Date";
-        GenJournalLine.Description := Payee;
+        GenJournalLine."Posting Date" := Rec."Transaction Date";
+        GenJournalLine.Description := Rec.Payee;
         GenJournalLine.Validate(GenJournalLine."Currency Code");
-        GenJournalLine.Amount := Amount;
+        GenJournalLine.Amount := Rec.Amount;
         GenJournalLine.Validate(GenJournalLine.Amount);
         if GenJournalLine.Amount <> 0 then
             GenJournalLine.Insert;
 
         ReceiptAllocations.Reset;
-        ReceiptAllocations.SetRange(ReceiptAllocations."Document No", No);
+        ReceiptAllocations.SetRange(ReceiptAllocations."Document No", Rec.No);
         if ReceiptAllocations.Find('-') then begin
             repeat
 
@@ -2292,9 +2292,9 @@ Page 51516299 "Cashier Transactions Card"
                 GenJournalLine."Journal Template Name" := 'PURCHASES';
                 GenJournalLine."Journal Batch Name" := 'FTRANS';
                 GenJournalLine."Line No." := LineNo;
-                GenJournalLine."Document No." := No;
-                GenJournalLine."External Document No." := "Cheque No";
-                GenJournalLine."Posting Date" := "Transaction Date";
+                GenJournalLine."Document No." := Rec.No;
+                GenJournalLine."External Document No." := Rec."Cheque No";
+                GenJournalLine."Posting Date" := Rec."Transaction Date";
                 GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
                 GenJournalLine."Account No." := ReceiptAllocations."Member No";
                 GenJournalLine.Validate(GenJournalLine."Account No.");
@@ -2350,16 +2350,16 @@ Page 51516299 "Cashier Transactions Card"
             //Post New
 
 
-            "Transaction Available Balance" := AvailableBalance;
-            Posted := true;
-            Authorised := Authorised::Yes;
-            "Supervisor Checked" := true;
-            "Needs Approval" := "needs approval"::No;
-            "Frequency Needs Approval" := "frequency needs approval"::No;
-            "Date Posted" := Today;
-            "Time Posted" := Time;
-            "Posted By" := UserId;
-            Modify;
+            Rec."Transaction Available Balance" := AvailableBalance;
+            Rec.Posted := true;
+            Rec.Authorised := Rec.Authorised::Yes;
+            Rec."Supervisor Checked" := true;
+            Rec."Needs Approval" := Rec."needs approval"::No;
+            Rec."Frequency Needs Approval" := Rec."frequency needs approval"::No;
+            Rec."Date Posted" := Today;
+            Rec."Time Posted" := Time;
+            Rec."Posted By" := UserId;
+            Rec.Modify;
             Commit;
         end;
     end;
@@ -2367,19 +2367,19 @@ Page 51516299 "Cashier Transactions Card"
 
     procedure SuggestBOSAEntries()
     begin
-        TestField(Posted, false);
-        TestField("BOSA Account No");
+        Rec.TestField(Posted, false);
+        Rec.TestField("BOSA Account No");
 
         ReceiptAllocations.Reset;
-        ReceiptAllocations.SetRange(ReceiptAllocations."Document No", No);
+        ReceiptAllocations.SetRange(ReceiptAllocations."Document No", Rec.No);
         ReceiptAllocations.DeleteAll;
 
-        PaymentAmount := Amount;
+        PaymentAmount := Rec.Amount;
         RunBal := PaymentAmount;
 
         Loans.Reset;
         Loans.SetCurrentkey(Loans.Source, Loans."Client Code");
-        Loans.SetRange(Loans."Client Code", "BOSA Account No");
+        Loans.SetRange(Loans."Client Code", Rec."BOSA Account No");
         Loans.SetRange(Loans.Source, Loans.Source::BOSA);
         if Loans.Find('-') then begin
             repeat
@@ -2429,8 +2429,8 @@ Page 51516299 "Cashier Transactions Card"
 
                         if (LOustanding + InterestPaid) > 0 then begin
                             ReceiptAllocations.Init;
-                            ReceiptAllocations."Document No" := No;
-                            ReceiptAllocations."Member No" := "BOSA Account No";
+                            ReceiptAllocations."Document No" := Rec.No;
+                            ReceiptAllocations."Member No" := Rec."BOSA Account No";
                             ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::"Registration Fee";
                             ReceiptAllocations."Loan No." := Loans."Loan  No.";
                             ReceiptAllocations.Amount := ROUND(LOustanding, 0.01);
@@ -2441,8 +2441,8 @@ Page 51516299 "Cashier Transactions Card"
 
                         if Commision > 0 then begin
                             ReceiptAllocations.Init;
-                            ReceiptAllocations."Document No" := No;
-                            ReceiptAllocations."Member No" := "BOSA Account No";
+                            ReceiptAllocations."Document No" := Rec.No;
+                            ReceiptAllocations."Member No" := Rec."BOSA Account No";
                             ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::Repayment;
                             ReceiptAllocations."Loan No." := Loans."Loan  No.";
                             ReceiptAllocations.Amount := ROUND(Commision, 0.01);
@@ -2459,8 +2459,8 @@ Page 51516299 "Cashier Transactions Card"
 
         if RunBal > 0 then begin
             ReceiptAllocations.Init;
-            ReceiptAllocations."Document No" := No;
-            ReceiptAllocations."Member No" := "BOSA Account No";
+            ReceiptAllocations."Document No" := Rec.No;
+            ReceiptAllocations."Member No" := Rec."BOSA Account No";
             ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::"Benevolent Fund";
             ReceiptAllocations."Loan No." := '';
             ReceiptAllocations.Amount := RunBal;
@@ -2510,29 +2510,29 @@ Page 51516299 "Cashier Transactions Card"
 
         genSetup.Get();
 
-        if Type = 'Withdrawal' then begin
+        if Rec.Type = 'Withdrawal' then begin
 
-            if Acc.Get("Account No") then begin
+            if Acc.Get(Rec."Account No") then begin
                 if Acc.Blocked = Acc.Blocked::Payment then
                     Error('This account has been blocked from receiving payments.');
             end;
-            if AvailableBalance < Amount then begin
+            if AvailableBalance < Rec.Amount then begin
                 /*
                 PostOverdraft();
                 Authorised:=Authorised::Yes;
                 */
-                if Authorised = Authorised::No then begin
-                    if "Branch Transaction" = false then begin
-                        "Authorisation Requirement" := 'Over draft';
+                if Rec.Authorised = Rec.Authorised::No then begin
+                    if Rec."Branch Transaction" = false then begin
+                        Rec."Authorisation Requirement" := 'Over draft';
 
-                        MailContent := 'Withdrawal transaction' + 'TR. No.' + ' ' + No + ' ' + 'of Kshs' + ' ' + Format(Amount) + ' ' + 'for'
-                        + ' ' + "Account Name" + ' ' + 'needs your approval';
+                        MailContent := 'Withdrawal transaction' + 'TR. No.' + ' ' + Rec.No + ' ' + 'of Kshs' + ' ' + Format(Rec.Amount) + ' ' + 'for'
+                        + ' ' + Rec."Account Name" + ' ' + 'needs your approval';
 
                         Message('You cannot withdraw more than the available balance unless authorised.');
 
                         exit;
                     end;
-                    if Authorised = Authorised::Rejected then
+                    if Rec.Authorised = Rec.Authorised::Rejected then
                         Error('Transaction has been rejected and therefore cannot proceed.');
 
                 end;
@@ -2550,31 +2550,31 @@ Page 51516299 "Cashier Transactions Card"
 
             CurrentTellerAmount := TellerTill.Balance;
 
-            if CurrentTellerAmount - Amount <= TellerTill."Min. Balance" then
+            if CurrentTellerAmount - Rec.Amount <= TellerTill."Min. Balance" then
                 Message('You need to add more money from the treasury since your balance has gone below the teller replenishing level.');
 
-            if (Type = 'Withdrawal') or (Type = 'Encashment') then begin
-                if (CurrentTellerAmount - Amount) < TellerTill."Min. Balance" then
+            if (Rec.Type = 'Withdrawal') or (Rec.Type = 'Encashment') then begin
+                if (CurrentTellerAmount - Rec.Amount) < TellerTill."Min. Balance" then
                     Error('You do not have enough money to carry out this transaction.');
             end;
 
-            if (Type = 'Withdrawal') or (Type = 'Encashment') then begin
-                if CurrentTellerAmount - Amount >= TellerTill."Maximum Teller Withholding" then
+            if (Rec.Type = 'Withdrawal') or (Rec.Type = 'Encashment') then begin
+                if CurrentTellerAmount - Rec.Amount >= TellerTill."Maximum Teller Withholding" then
                     Message('You need to transfer money back to the treasury since your balance has gone above the teller maximum withholding.');
 
             end else begin
-                if CurrentTellerAmount + Amount >= TellerTill."Maximum Teller Withholding" then
+                if CurrentTellerAmount + Rec.Amount >= TellerTill."Maximum Teller Withholding" then
                     Message('You need to transfer money back to the treasury since your balance has gone above the teller maximum withholding.');
             end;
 
 
-            if Type = 'Withdrawal' then begin
-                if Amount > TellerTill."Max Withdrawal Limit" then begin
-                    if Authorised = Authorised::No then begin
-                        "Authorisation Requirement" := 'Withdrawal Above teller Limit';
+            if Rec.Type = 'Withdrawal' then begin
+                if Rec.Amount > TellerTill."Max Withdrawal Limit" then begin
+                    if Rec.Authorised = Rec.Authorised::No then begin
+                        Rec."Authorisation Requirement" := 'Withdrawal Above teller Limit';
 
 
-                        MailContent := 'The' + ' ' + 'Cashier' + ' ' + Cashier + ' ' +
+                        MailContent := 'The' + ' ' + 'Cashier' + ' ' + Rec.Cashier + ' ' +
                         'cannot withdraw more than allowed ,limit, Maximum limit is' + '' + Format(TellerTill."Max Withdrawal Limit") +
                         'you need to authorise';
 
@@ -2582,24 +2582,24 @@ Page 51516299 "Cashier Transactions Card"
 
                         exit;
                     end;
-                    if Authorised = Authorised::Rejected then
+                    if Rec.Authorised = Rec.Authorised::Rejected then
                         Error('Transaction has been rejected and therefore cannot proceed.');
 
                 end;
             end;
 
-            if Type = 'Cash Deposit' then begin
-                if Amount > TellerTill."Max Deposit Limit" then begin
-                    if Authorised = Authorised::No then begin
-                        "Authorisation Requirement" := 'Deposit above teller Limit';
+            if Rec.Type = 'Cash Deposit' then begin
+                if Rec.Amount > TellerTill."Max Deposit Limit" then begin
+                    if Rec.Authorised = Rec.Authorised::No then begin
+                        Rec."Authorisation Requirement" := 'Deposit above teller Limit';
 
-                        MailContent := 'The' + ' ' + 'Cashier' + ' ' + Cashier + ' ' +
+                        MailContent := 'The' + ' ' + 'Cashier' + ' ' + Rec.Cashier + ' ' +
                         'cannot deposit more than allowed limit, Maximum limit is' + '' + Format(TellerTill."Max Deposit Limit") + 'you need to authorise';
 
                         Message('You cannot deposit more than your allowed limit of %1 unless authorised.', TellerTill."Max Deposit Limit");
                         exit;
                     end;
-                    if Authorised = Authorised::Rejected then
+                    if Rec.Authorised = Rec.Authorised::Rejected then
                         Error('Transaction has been rejected therefore you cannot proceed.');
                 end;
             end;
@@ -2608,13 +2608,13 @@ Page 51516299 "Cashier Transactions Card"
         if TillNo = '' then
             Error('Teller account not set-up.');
 
-        if Type = 'Cash Deposit' then begin
-            if Amount > TellerTill."Max Deposit Limit" then begin
-                if Authorised = Authorised::No then begin
-                    "Authorisation Requirement" := 'Deposit Above teller Limit';
+        if Rec.Type = 'Cash Deposit' then begin
+            if Rec.Amount > TellerTill."Max Deposit Limit" then begin
+                if Rec.Authorised = Rec.Authorised::No then begin
+                    Rec."Authorisation Requirement" := 'Deposit Above teller Limit';
 
 
-                    MailContent := 'The' + ' ' + 'Cashier' + ' ' + Cashier + ' ' +
+                    MailContent := 'The' + ' ' + 'Cashier' + ' ' + Rec.Cashier + ' ' +
                     'cannot Deposit more than allowed ,limit, Maximum limit is' + '' + Format(TellerTill."Max Withdrawal Limit") +
                     'you need to authorise';
 
@@ -2622,7 +2622,7 @@ Page 51516299 "Cashier Transactions Card"
 
                     exit;
                 end;
-                if Authorised = Authorised::Rejected then
+                if Rec.Authorised = Rec.Authorised::Rejected then
                     Error('Transaction has been rejected and therefore cannot proceed.');
             end;
         end;
@@ -2640,36 +2640,36 @@ Page 51516299 "Cashier Transactions Card"
         GenJournalLine."Journal Template Name" := Jtemplate;
         GenJournalLine."Journal Batch Name" := JBatch;
         GenJournalLine."Line No." := LineNo;
-        GenJournalLine."Document No." := No;
-        if ("Transaction Type" = 'BOSA') or ("Transaction Type" = 'Encashment') then
-            GenJournalLine."External Document No." := "BOSA Account No";
+        GenJournalLine."Document No." := Rec.No;
+        if (Rec."Transaction Type" = 'BOSA') or (Rec."Transaction Type" = 'Encashment') then
+            GenJournalLine."External Document No." := Rec."BOSA Account No";
         GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-        GenJournalLine."Account No." := "Account No";
-        if "Account No" = '00-0000000000' then
-            GenJournalLine."External Document No." := "ID No";
+        GenJournalLine."Account No." := Rec."Account No";
+        if Rec."Account No" = '00-0000000000' then
+            GenJournalLine."External Document No." := Rec."ID No";
         GenJournalLine.Validate(GenJournalLine."Account No.");
-        GenJournalLine."Posting Date" := "Transaction Date";
-        if ("Transaction Type" = 'BOSA') or ("Transaction Type" = 'Encashment') then
-            GenJournalLine.Description := Payee
+        GenJournalLine."Posting Date" := Rec."Transaction Date";
+        if (Rec."Transaction Type" = 'BOSA') or (Rec."Transaction Type" = 'Encashment') then
+            GenJournalLine.Description := Rec.Payee
         else begin
-            if "Branch Transaction" = true then
-                GenJournalLine.Description := "Transaction Type" + '-' + "Branch Refference"
+            if Rec."Branch Transaction" = true then
+                GenJournalLine.Description := Rec."Transaction Type" + '-' + Rec."Branch Refference"
             else
-                GenJournalLine.Description := Type + '-' + Description;
+                GenJournalLine.Description := Rec.Type + '-' + Rec.Description;
         end;
         //Project Accounts
-        if Acc.Get("Account No") then begin
+        if Acc.Get(Rec."Account No") then begin
             if Acc."Account Category" = Acc."account category"::Project then
-                GenJournalLine.Description := "Transaction Type" + '-' + "Branch Refference"
+                GenJournalLine.Description := Rec."Transaction Type" + '-' + Rec."Branch Refference"
         end;
         //Project Accounts
 
         GenJournalLine.Validate(GenJournalLine."Currency Code");
-        if (Type = 'Cash Deposit') then
-            GenJournalLine.Amount := -Amount
+        if (Rec.Type = 'Cash Deposit') then
+            GenJournalLine.Amount := -Rec.Amount
         else
-            GenJournalLine.Amount := Amount;
-        if (Type = 'BOSA Receipt') then
+            GenJournalLine.Amount := Rec.Amount;
+        if (Rec.Type = 'BOSA Receipt') then
             GenJournalLine.Amount := 0;
         GenJournalLine.Validate(GenJournalLine.Amount);
         GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"Bank Account";
@@ -2685,7 +2685,7 @@ Page 51516299 "Cashier Transactions Card"
         TCharges := 0;
 
         TransactionCharges.Reset;
-        TransactionCharges.SetRange(TransactionCharges."Transaction Type", "Transaction Type");
+        TransactionCharges.SetRange(TransactionCharges."Transaction Type", Rec."Transaction Type");
         if TransactionCharges.Find('-') then begin
             repeat
                 LineNo := LineNo + 10000;
@@ -2693,7 +2693,7 @@ Page 51516299 "Cashier Transactions Card"
                 ChargeAmount := 0;
                 ChargeAmountTax := 0;
                 if TransactionCharges."Use Percentage" = true then
-                    ChargeAmount := (Amount * TransactionCharges."Percentage of Amount") * 0.01
+                    ChargeAmount := (Rec.Amount * TransactionCharges."Percentage of Amount") * 0.01
                 else
                     ChargeAmount := TransactionCharges."Charge Amount";
                 if TransactionCharges."Charge Type" = TransactionCharges."charge type"::Staggered then begin
@@ -2701,18 +2701,18 @@ Page 51516299 "Cashier Transactions Card"
                     if TransactionCharges."Charge Excise Duty" = true then begin
                         TransactionCharges.TestField(TransactionCharges."Staggered Charge Code");
                         TariffDetails.Reset;
-                        TariffDetails.SetRange(TariffDetails."Transaction Type", "Transaction Type");
+                        TariffDetails.SetRange(TariffDetails."Transaction Type", Rec."Transaction Type");
                         if TariffDetails.Find('-') then begin
                             repeat
                                 if TariffDetails."Use Percentage" = false then begin
-                                    if (Amount >= TariffDetails."Lower Limit") and (Amount <= TariffDetails."Upper Limit") then begin
+                                    if (Rec.Amount >= TariffDetails."Lower Limit") and (Rec.Amount <= TariffDetails."Upper Limit") then begin
                                         ChargeAmount := TariffDetails."Charge Amount";
                                         ChargeAmountTax := (ChargeAmount * genSetup."Excise Duty(%)") * 0.01;
 
                                     end;
                                 end else begin
-                                    if (Amount >= TariffDetails."Lower Limit") and (Amount <= TariffDetails."Upper Limit") then begin
-                                        ChargeAmount := (Amount * TariffDetails.Percentage) / 100;
+                                    if (Rec.Amount >= TariffDetails."Lower Limit") and (Rec.Amount <= TariffDetails."Upper Limit") then begin
+                                        ChargeAmount := (Rec.Amount * TariffDetails.Percentage) / 100;
                                         ChargeAmountTax := (ChargeAmount * genSetup."Excise Duty(%)") * 0.01;
 
                                     end;
@@ -2727,18 +2727,18 @@ Page 51516299 "Cashier Transactions Card"
                     if TransactionCharges."Charge Excise Duty" = false then begin
                         TransactionCharges.TestField(TransactionCharges."Staggered Charge Code");
                         TariffDetails.Reset;
-                        TariffDetails.SetRange(TariffDetails."Transaction Type", "Transaction Type");
+                        TariffDetails.SetRange(TariffDetails."Transaction Type", Rec."Transaction Type");
 
                         if TariffDetails.Find('-') then begin
                             repeat
                                 if TariffDetails."Use Percentage" = false then begin
-                                    if (Amount >= TariffDetails."Lower Limit") and (Amount <= TariffDetails."Upper Limit") then begin
+                                    if (Rec.Amount >= TariffDetails."Lower Limit") and (Rec.Amount <= TariffDetails."Upper Limit") then begin
                                         ChargeAmount := TariffDetails."Charge Amount";
 
                                     end;
                                 end else begin
-                                    if (Amount >= TariffDetails."Lower Limit") and (Amount <= TariffDetails."Upper Limit") then begin
-                                        ChargeAmount := (Amount * (TariffDetails.Percentage / 100));
+                                    if (Rec.Amount >= TariffDetails."Lower Limit") and (Rec.Amount <= TariffDetails."Upper Limit") then begin
+                                        ChargeAmount := (Rec.Amount * (TariffDetails.Percentage / 100));
                                     end;
                                 end;
 
@@ -2751,17 +2751,17 @@ Page 51516299 "Cashier Transactions Card"
                 GenJournalLine.Init;
                 GenJournalLine."Journal Template Name" := Jtemplate;
                 GenJournalLine."Journal Batch Name" := JBatch;
-                GenJournalLine."Document No." := No;
+                GenJournalLine."Document No." := Rec.No;
                 GenJournalLine."Line No." := LineNo;
                 GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-                GenJournalLine."Account No." := "Account No";
-                if "Account No" = '00-0000000000' then
-                    GenJournalLine."External Document No." := "ID No";
+                GenJournalLine."Account No." := Rec."Account No";
+                if Rec."Account No" = '00-0000000000' then
+                    GenJournalLine."External Document No." := Rec."ID No";
                 GenJournalLine.Validate(GenJournalLine."Account No.");
-                GenJournalLine."Posting Date" := "Transaction Date";
+                GenJournalLine."Posting Date" := Rec."Transaction Date";
                 GenJournalLine.Description := TransactionCharges.Description;
                 GenJournalLine.Validate(GenJournalLine."Currency Code");
-                if "Account No" = 'ENCASHMENT' THEN
+                if Rec."Account No" = 'ENCASHMENT' THEN
                     GenJournalLine.Amount := 0
                 ELSE
                     GenJournalLine.Amount := ChargeAmount;
@@ -2785,20 +2785,20 @@ Page 51516299 "Cashier Transactions Card"
                 GenJournalLine.Init;
                 GenJournalLine."Journal Template Name" := Jtemplate;
                 GenJournalLine."Journal Batch Name" := JBatch;
-                GenJournalLine."Document No." := No;
+                GenJournalLine."Document No." := Rec.No;
                 GenJournalLine."Line No." := LineNo;
                 GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-                GenJournalLine."Account No." := "Account No";
+                GenJournalLine."Account No." := Rec."Account No";
                 GenJournalLine.Validate(GenJournalLine."Account No.");
-                GenJournalLine."Posting Date" := "Transaction Date";
-                if ("Transaction Type" = 'ASSETD') then begin
-                    TestField(Payee);
-                    TestField(Remarks);
-                    GenJournalLine.Description := Payee + ' ' + Remarks;
+                GenJournalLine."Posting Date" := Rec."Transaction Date";
+                if (Rec."Transaction Type" = 'ASSETD') then begin
+                    Rec.TestField(Payee);
+                    Rec.TestField(Remarks);
+                    GenJournalLine.Description := Rec.Payee + ' ' + Rec.Remarks;
                 end else
                     GenJournalLine.Description := 'Excise duty';
                 GenJournalLine.Validate(GenJournalLine."Currency Code");
-                if "Account No" = 'ENCASHMENT' THEN
+                if Rec."Account No" = 'ENCASHMENT' THEN
                     GenJournalLine.Amount := 0
                 ELSE
                     GenJournalLine.Amount := ChargeAmountTax;
@@ -2819,8 +2819,8 @@ Page 51516299 "Cashier Transactions Card"
         end;
 
         //Charge withdrawal Freq
-        if Type = 'Withdrawal' then begin
-            if Account.Get("Account No") then begin
+        if Rec.Type = 'Withdrawal' then begin
+            if Account.Get(Rec."Account No") then begin
                 if AccountTypes.Get(Account."Account Type") then begin
                     if Account."Last Withdrawal Date" = 0D then begin
                         Account."Last Withdrawal Date" := Today;
@@ -2833,15 +2833,15 @@ Page 51516299 "Cashier Transactions Card"
                             GenJournalLine.Init;
                             GenJournalLine."Journal Template Name" := Jtemplate;
                             GenJournalLine."Journal Batch Name" := JBatch;
-                            GenJournalLine."Document No." := No;
+                            GenJournalLine."Document No." := Rec.No;
                             GenJournalLine."Line No." := LineNo;
                             GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-                            GenJournalLine."Account No." := "Account No";
-                            if "Account No" = '00-0000000000' then
-                                GenJournalLine."External Document No." := "ID No";
+                            GenJournalLine."Account No." := Rec."Account No";
+                            if Rec."Account No" = '00-0000000000' then
+                                GenJournalLine."External Document No." := Rec."ID No";
 
                             GenJournalLine.Validate(GenJournalLine."Account No.");
-                            GenJournalLine."Posting Date" := "Transaction Date";
+                            GenJournalLine."Posting Date" := Rec."Transaction Date";
                             GenJournalLine.Description := 'Commision on Withdrawal Freq.';
                             GenJournalLine.Validate(GenJournalLine."Currency Code");
                             GenJournalLine.Amount := AccountTypes."Withdrawal Penalty";
@@ -2861,28 +2861,28 @@ Page 51516299 "Cashier Transactions Card"
                 end;
             end;
 
-            if "Account No" = '507-10000-00' then;
+            if Rec."Account No" = '507-10000-00' then;
         end;
         //Charge 2% commision for MBSA
-        if Overdraft = true then begin
-            if "Transacting Branch" = 'MBSA' then begin
+        if Rec.Overdraft = true then begin
+            if Rec."Transacting Branch" = 'MBSA' then begin
                 LineNo := LineNo + 10000;
 
                 GenJournalLine.Init;
                 GenJournalLine."Journal Template Name" := Jtemplate;
                 GenJournalLine."Journal Batch Name" := JBatch;
-                GenJournalLine."Document No." := No;
+                GenJournalLine."Document No." := Rec.No;
                 GenJournalLine."Line No." := LineNo;
                 GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-                GenJournalLine."Account No." := "Account No";
-                if "Account No" = '00-0000000000' then
-                    GenJournalLine."External Document No." := "ID No";
+                GenJournalLine."Account No." := Rec."Account No";
+                if Rec."Account No" = '00-0000000000' then
+                    GenJournalLine."External Document No." := Rec."ID No";
 
                 GenJournalLine.Validate(GenJournalLine."Account No.");
-                GenJournalLine."Posting Date" := "Transaction Date";
+                GenJournalLine."Posting Date" := Rec."Transaction Date";
                 GenJournalLine.Description := 'Commision on Overdraft';
                 GenJournalLine.Validate(GenJournalLine."Currency Code");
-                GenJournalLine.Amount := Amount * 0.02;
+                GenJournalLine.Amount := Rec.Amount * 0.02;
                 GenJournalLine.Validate(GenJournalLine.Amount);
                 GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"G/L Account";
                 GenJournalLine."Bal. Account No." := '100005';
@@ -2900,7 +2900,7 @@ Page 51516299 "Cashier Transactions Card"
 
 
 
-        if Type = 'BOSA Receipt' then begin
+        if Rec.Type = 'BOSA Receipt' then begin
             PostBOSAEntries;
         end;
 
@@ -2915,40 +2915,40 @@ Page 51516299 "Cashier Transactions Card"
         //..........................................Get FOSA Account Balance
         //............Check If Reg Fee Is Paid. If != then recover registration fee
         //........................................Abel
-        if SurestepFactory.FnGetFosaAccountBalance("Account No") > 0 then begin
-            if not (("Account Type" = 'HOLIDAY') or ("Account Type" = 'JUNIOR') or ("Account Type" = 'AGENTFL')) then
-                if (AccountOpening.FnCheckIfPaid("Account No") = false) then begin
-                    AccountOpening.FnAccountOpen(Jtemplate, JBatch, 1000, "Account No", SurestepFactory.FnGetFosaAccountBalance("Account No"), DActivity, DBranch, No);
+        if SurestepFactory.FnGetFosaAccountBalance(Rec."Account No") > 0 then begin
+            if not ((Rec."Account Type" = 'HOLIDAY') or (Rec."Account Type" = 'JUNIOR') or (Rec."Account Type" = 'AGENTFL')) then
+                if (AccountOpening.FnCheckIfPaid(Rec."Account No") = false) then begin
+                    AccountOpening.FnAccountOpen(Jtemplate, JBatch, 1000, Rec."Account No", SurestepFactory.FnGetFosaAccountBalance(Rec."Account No"), DActivity, DBranch, Rec.No);
                     GenJournalLine.Reset;
                     GenJournalLine.SetRange("Journal Template Name", Jtemplate);
                     GenJournalLine.SetRange("Journal Batch Name", JBatch);
-                    GenJournalLine.SetRange(GenJournalLine."Document No.", No);
+                    GenJournalLine.SetRange(GenJournalLine."Document No.", Rec.No);
                     if GenJournalLine.Find('-') then begin
                         Codeunit.Run(Codeunit::"Gen. Jnl.-Post Batch", GenJournalLine);
                     end;
                 end;
         end;
         //..................................................................
-        "Transaction Available Balance" := AvailableBalance;
-        Posted := true;
-        Authorised := Authorised::Yes;
-        "Supervisor Checked" := true;
-        "Needs Approval" := "needs approval"::No;
-        "Frequency Needs Approval" := "frequency needs approval"::No;
-        "Date Posted" := Today;
-        "Time Posted" := Time;
-        "Posted By" := UserId;
-        Modify;
+        Rec."Transaction Available Balance" := AvailableBalance;
+        Rec.Posted := true;
+        Rec.Authorised := Rec.Authorised::Yes;
+        Rec."Supervisor Checked" := true;
+        Rec."Needs Approval" := Rec."needs approval"::No;
+        Rec."Frequency Needs Approval" := Rec."frequency needs approval"::No;
+        Rec."Date Posted" := Today;
+        Rec."Time Posted" := Time;
+        Rec."Posted By" := UserId;
+        Rec.Modify;
         Commit;
 
 
         Vend1.Reset;
-        Vend1.SetRange(Vend1."No.", "Account No");
+        Vend1.SetRange(Vend1."No.", Rec."Account No");
         if Vend1.Find('-') then begin
             if Vend."Sms Notification" = true then begin
                 TransDesc := '';
                 TransTypes.Reset;
-                TransTypes.SetRange(TransTypes.Code, "Transaction Type");
+                TransTypes.SetRange(TransTypes.Code, Rec."Transaction Type");
                 if TransTypes.Find('-') then begin
                     TransDesc := TransTypes.Description;
                 end;
@@ -2973,9 +2973,9 @@ Page 51516299 "Cashier Transactions Card"
                 SMSMessage.Source := 'OTC SMS';
                 SMSMessage."Entered By" := UserId;
                 SMSMessage."Sent To Server" := SMSMessage."sent to server"::No;
-                if Amount <> 0 then begin
+                if Rec.Amount <> 0 then begin
                     SMSMessage."SMS Message" := 'You have done a Transaction of KSHS. ' +
-                    Format(Amount) + ' of type ' + TransDesc + ' on ' + Format(Today) + ' ' + Format(Time) + ' to your Account at JAMII YETU SACCO'; //'CompanyInfo.Name ' .';
+                    Format(Rec.Amount) + ' of type ' + TransDesc + ' on ' + Format(Today) + ' ' + Format(Time) + ' to your Account at JAMII YETU SACCO'; //'CompanyInfo.Name ' .';
                 end;
                 if Vend1."MPESA Mobile No" <> '' then begin
                     //SMSMessage."Telephone No":=Vend1."MPESA Mobile No";
@@ -3034,17 +3034,17 @@ Page 51516299 "Cashier Transactions Card"
         end;
 
         Trans.Reset;
-        Trans.SetRange(Trans.No, No);
+        Trans.SetRange(Trans.No, Rec.No);
         if Trans.Find('-') then
             Trans.Reset;
-        Trans.SetRange(Trans.No, No);
+        Trans.SetRange(Trans.No, Rec.No);
         if Trans.Find('-') then
-            if Type = 'Cash Deposit' then begin
+            if Rec.Type = 'Cash Deposit' then begin
                 postOverdraftRecover();
                 if Confirm('Do you want to print this receipt') = true then  //Added to allow confirmation before printing.
                     Report.Run(51516281, true, true, Trans)
             end else
-                if Type = 'Withdrawal' then
+                if Rec.Type = 'Withdrawal' then
                     //Report.Run(51516282, false, true, Trans);
                     Report.Run(51516282, true, true, Trans);
 
@@ -3205,7 +3205,7 @@ Page 51516299 "Cashier Transactions Card"
     local procedure ModifyOverdraftDate()
     begin
         Vend.Reset;
-        Vend.SetRange(Vend."No.", "Account No");
+        Vend.SetRange(Vend."No.", Rec."Account No");
         if Vend.Find('-') then begin
             Vend.CalcFields(Vend."Outstanding Overdraft");
             if Vend."Outstanding Overdraft" <= 0 then begin
@@ -3218,18 +3218,18 @@ Page 51516299 "Cashier Transactions Card"
     local procedure ModifyInterestBuffer() Interest: Decimal
     begin
         IntBuffer.Reset;
-        IntBuffer.SetRange(IntBuffer."Account No", "Account No");
+        IntBuffer.SetRange(IntBuffer."Account No", Rec."Account No");
         IntBuffer.SetRange(IntBuffer.Transferred, false);
         if IntBuffer.Find('-') then begin
             repeat
                 Interest := Interest + IntBuffer."Interest Amount";
-                if Interest <= Amount then begin
+                if Interest <= Rec.Amount then begin
                     IntBuffer.Transferred := true;
                     IntBuffer.Modify;
                 end else begin
-                    IntBuffer."Interest Amount" := Interest - Amount;
+                    IntBuffer."Interest Amount" := Interest - Rec.Amount;
                     IntBuffer.Modify;
-                    Interest := Amount;
+                    Interest := Rec.Amount;
                 end;
 
             until IntBuffer.Next = 0;
@@ -3242,7 +3242,7 @@ Page 51516299 "Cashier Transactions Card"
         ObjOverdraftRegister: Record "Over Draft Register";
     begin
         ObjOverdraftRegister.Reset;
-        ObjOverdraftRegister.SetRange(ObjOverdraftRegister."Account No", "Account No");
+        ObjOverdraftRegister.SetRange(ObjOverdraftRegister."Account No", Rec."Account No");
         ObjOverdraftRegister.SetRange(ObjOverdraftRegister.Status, ObjOverdraftRegister.Status::Approved);
         ObjOverdraftRegister.SetRange(ObjOverdraftRegister."Overdraft Status", ObjOverdraftRegister."overdraft status"::Active);
         if ObjOverdraftRegister.FindLast then
@@ -3254,7 +3254,7 @@ Page 51516299 "Cashier Transactions Card"
         ObjOverdraftRegister: Record "Over Draft Register";
     begin
         ObjOverdraftRegister.Reset;
-        ObjOverdraftRegister.SetRange(ObjOverdraftRegister."Account No", "Account No");
+        ObjOverdraftRegister.SetRange(ObjOverdraftRegister."Account No", Rec."Account No");
         ObjOverdraftRegister.SetRange(ObjOverdraftRegister.Status, ObjOverdraftRegister.Status::Approved);
         ObjOverdraftRegister.SetRange(ObjOverdraftRegister."Overdraft Status", ObjOverdraftRegister."overdraft status"::Active);
         if ObjOverdraftRegister.Find('-') then
@@ -3266,7 +3266,7 @@ Page 51516299 "Cashier Transactions Card"
         ObjOverdraftRegister: Record "Over Draft Register";
     begin
         ObjOverdraftRegister.Reset;
-        ObjOverdraftRegister.SetRange(ObjOverdraftRegister."Account No", "Account No");
+        ObjOverdraftRegister.SetRange(ObjOverdraftRegister."Account No", Rec."Account No");
         ObjOverdraftRegister.SetRange(ObjOverdraftRegister.Status, ObjOverdraftRegister.Status::Approved);
         ObjOverdraftRegister.SetRange(ObjOverdraftRegister."Overdraft Status", ObjOverdraftRegister."overdraft status"::Active);
         if ObjOverdraftRegister.FindFirst then
@@ -3280,7 +3280,7 @@ Page 51516299 "Cashier Transactions Card"
     begin
         OverdraftSetup.Get();
         ObjOverdraftRegister.Reset;
-        ObjOverdraftRegister.SetRange(ObjOverdraftRegister."Account No", "Account No");
+        ObjOverdraftRegister.SetRange(ObjOverdraftRegister."Account No", Rec."Account No");
         ObjOverdraftRegister.SetRange(ObjOverdraftRegister.Status, ObjOverdraftRegister.Status::Approved);
         ObjOverdraftRegister.SetRange(ObjOverdraftRegister."Overdraft Status", ObjOverdraftRegister."overdraft status"::Active);
         if ObjOverdraftRegister.Find('-') then begin
@@ -3295,7 +3295,7 @@ Page 51516299 "Cashier Transactions Card"
         ObjOverdraftRegister: Record "Over Draft Register";
     begin
         ObjOverdraftRegister.Reset;
-        ObjOverdraftRegister.SetRange(ObjOverdraftRegister."Account No", "Account No");
+        ObjOverdraftRegister.SetRange(ObjOverdraftRegister."Account No", Rec."Account No");
         ObjOverdraftRegister.SetRange(ObjOverdraftRegister.Status, ObjOverdraftRegister.Status::Approved);
         ObjOverdraftRegister.SetRange(ObjOverdraftRegister."Overdraft Status", ObjOverdraftRegister."overdraft status"::Active);
         if ObjOverdraftRegister.Find('-') then begin
@@ -3310,7 +3310,7 @@ Page 51516299 "Cashier Transactions Card"
         ObjOverdraftRegister: Record "Over Draft Register";
     begin
         ObjOverdraftRegister.Reset;
-        ObjOverdraftRegister.SetRange(ObjOverdraftRegister."Account No", "Account No");
+        ObjOverdraftRegister.SetRange(ObjOverdraftRegister."Account No", Rec."Account No");
         ObjOverdraftRegister.SetRange(ObjOverdraftRegister.Status, ObjOverdraftRegister.Status::Approved);
         ObjOverdraftRegister.SetRange(ObjOverdraftRegister."Overdraft Status", ObjOverdraftRegister."overdraft status"::Active);
         if ObjOverdraftRegister.Find('-') then
@@ -3322,7 +3322,7 @@ Page 51516299 "Cashier Transactions Card"
         ObjOverdraftRegister: Record "Over Draft Register";
     begin
         ObjOverdraftRegister.Reset;
-        ObjOverdraftRegister.SetRange(ObjOverdraftRegister."Account No", "Account No");
+        ObjOverdraftRegister.SetRange(ObjOverdraftRegister."Account No", Rec."Account No");
         ObjOverdraftRegister.SetRange(ObjOverdraftRegister.Status, ObjOverdraftRegister.Status::Approved);
         if ObjOverdraftRegister.FindSet then begin
             ObjOverdraftRegister.CalcSums(ObjOverdraftRegister."Approved Amount");

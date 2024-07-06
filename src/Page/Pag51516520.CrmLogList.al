@@ -6,7 +6,7 @@ Page 51516520 "Crm Log List"
     Editable = false;
     PageType = List;
     SourceTable = "General Equiries";
-    SourceTableView = where(Send=const(false));
+    SourceTableView = where(Send = const(false));
     UsageCategory = Tasks;
 
     layout
@@ -15,43 +15,43 @@ Page 51516520 "Crm Log List"
         {
             repeater(Group)
             {
-                field(No;No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member No";"Member No")
+                field("Member No"; Rec."Member No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member Name";"Member Name")
+                field("Member Name"; Rec."Member Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payroll No";"Payroll No")
+                field("Payroll No"; Rec."Payroll No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Balance";"Loan Balance")
+                field("Loan Balance"; Rec."Loan Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Current Deposits";"Current Deposits")
+                field("Current Deposits"; Rec."Current Deposits")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Holiday Savings";"Holiday Savings")
+                field("Holiday Savings"; Rec."Holiday Savings")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No";"ID No")
+                field("ID No"; Rec."ID No")
                 {
                     ApplicationArea = Basic;
                 }

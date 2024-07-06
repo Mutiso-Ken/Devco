@@ -4,12 +4,12 @@ Table 51516229 "Members-Group"
 
     fields
     {
-        field(1;"Account No.";Code[20])
+        field(1; "Account No."; Code[20])
         {
             NotBlank = true;
             TableRelation = Customer;
         }
-        field(2;"Member No.";Code[20])
+        field(2; "Member No."; Code[20])
         {
             NotBlank = true;
             // TableRelation = Customer."No." where ("document present"=const(1),
@@ -26,7 +26,7 @@ Table 51516229 "Members-Group"
 
             end;
         }
-        field(3;"Staff No.";Code[20])
+        field(3; "Staff No."; Code[20])
         {
 
             trigger OnValidate()
@@ -42,14 +42,14 @@ Table 51516229 "Members-Group"
 
             end;
         }
-        field(4;Names;Text[150])
+        field(4; Names; Text[150])
         {
         }
     }
 
     keys
     {
-        key(Key1;"Account No.","Staff No.","Member No.")
+        key(Key1; "Account No.", "Staff No.", "Member No.")
         {
             Clustered = true;
         }

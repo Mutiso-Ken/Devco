@@ -1,5 +1,5 @@
 
- table 51516117 "Vendor Cue"
+table 51516117 "Vendor Cue"
 {
 
     fields
@@ -19,7 +19,7 @@
         {
             CalcFormula = count(Vendor where(Status = const(Active)));
             FieldClass = FlowField;
-            
+
 
         }
         // field(3; "Non-Active Members"; Integer)

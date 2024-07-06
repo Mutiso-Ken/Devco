@@ -13,15 +13,15 @@ Page 51516289 "Appraisal Salary Set-up"
         {
             repeater(Control1102760000)
             {
-                field("Code";Code)
+                field("Code"; Rec.Code)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Type;Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = Basic;
                     OptionCaption = ' ,Earnings,Deductions,Basic,Asset,Liability,Rental,Farming';

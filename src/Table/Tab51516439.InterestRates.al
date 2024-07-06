@@ -4,27 +4,27 @@ Table 51516439 "Interest Rates"
 
     fields
     {
-        field(10;"Code";Code[20])
+        field(10; "Code"; Code[20])
         {
         }
-        field(11;Description;Text[50])
+        field(11; Description; Text[50])
         {
         }
-        field(12;Percentage;Decimal)
+        field(12; Percentage; Decimal)
         {
         }
-        field(13;"GL Account";Code[20])
+        field(13; "GL Account"; Code[20])
         {
             TableRelation = "G/L Account";
         }
-        field(14;"Charge Amount";Decimal)
+        field(14; "Charge Amount"; Decimal)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Code")
+        key(Key1; "Code")
         {
             Clustered = true;
         }

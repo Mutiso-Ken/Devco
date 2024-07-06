@@ -6,76 +6,76 @@ Report 51516235 "Loan Defaulter 1st Notice"
 
     dataset
     {
-        dataitem("Loans Register";"Loans Register")
+        dataitem("Loans Register"; "Loans Register")
         {
-            RequestFilterFields = "Client Code","Loan  No.","Loans Category-SASRA";
+            RequestFilterFields = "Client Code", "Loan  No.", "Loans Category-SASRA";
             column(ReportForNavId_1102755000; 1102755000)
             {
             }
-            column(OutstandingBalance_Loans;"Loans Register"."Outstanding Balance")
+            column(OutstandingBalance_Loans; "Loans Register"."Outstanding Balance")
             {
             }
-            column(LoanNo_Loans;"Loans Register"."Loan  No.")
+            column(LoanNo_Loans; "Loans Register"."Loan  No.")
             {
             }
-            column(ClientName_Loans;"Loans Register"."Client Name")
+            column(ClientName_Loans; "Loans Register"."Client Name")
             {
             }
-            column(LoanProductType_LoansRegister;"Loans Register"."Loan Product Type")
+            column(LoanProductType_LoansRegister; "Loans Register"."Loan Product Type")
             {
             }
-            column(ClientCode_Loans;"Loans Register"."Client Code")
+            column(ClientCode_Loans; "Loans Register"."Client Code")
             {
             }
-            dataitem("Members Register";Customer)
+            dataitem("Members Register"; Customer)
             {
-                DataItemLink = "No."=field("Client Code");
-                RequestFilterFields="No.";
+                DataItemLink = "No." = field("Client Code");
+                RequestFilterFields = "No.";
                 column(ReportForNavId_1102755005; 1102755005)
                 {
                 }
-                column(City_Members;"Members Register".City)
+                column(City_Members; "Members Register".City)
                 {
                 }
-                column(Address2_Members;"Members Register"."Address 2")
+                column(Address2_Members; "Members Register"."Address 2")
                 {
                 }
-                column(Address_Members;"Members Register".Address)
+                column(Address_Members; "Members Register".Address)
                 {
                 }
-                column(DOCNAME;DOCNAME)
+                column(DOCNAME; DOCNAME)
                 {
                 }
-                column(CName;CompanyInfo.Name)
+                column(CName; CompanyInfo.Name)
                 {
                 }
-                column(Caddress;CompanyInfo.Address)
+                column(Caddress; CompanyInfo.Address)
                 {
                 }
-                column(CmobileNo;CompanyInfo."Phone No.")
+                column(CmobileNo; CompanyInfo."Phone No.")
                 {
                 }
-                column(clogo;CompanyInfo.Picture)
+                column(clogo; CompanyInfo.Picture)
                 {
                 }
-                column(Cwebsite;CompanyInfo."Home Page")
+                column(Cwebsite; CompanyInfo."Home Page")
                 {
                 }
-                column(Email;CompanyInfo."E-Mail")
+                column(Email; CompanyInfo."E-Mail")
                 {
                 }
-                column(loansOFFICER;Lofficer)
+                column(loansOFFICER; Lofficer)
                 {
                 }
-                dataitem("Default Notices Register";"Default Notices Register")
+                dataitem("Default Notices Register"; "Default Notices Register")
                 {
                     column(ReportForNavId_1120054001; 1120054001)
                     {
                     }
-                    column(AmountInArrears_DefaultNoticesRegister;"Default Notices Register"."Amount In Arrears")
+                    column(AmountInArrears_DefaultNoticesRegister; "Default Notices Register"."Amount In Arrears")
                     {
                     }
-                    column(DaysInArrears_DefaultNoticesRegister;"Default Notices Register"."Days In Arrears")
+                    column(DaysInArrears_DefaultNoticesRegister; "Default Notices Register"."Days In Arrears")
                     {
                     }
                 }
@@ -104,8 +104,8 @@ Report 51516235 "Loan Defaulter 1st Notice"
         CompanyInfo.Get;
         CompanyInfo.CalcFields(Picture);
 
-        DOCNAME:='FIRST DEMAND NOTICE';
-        Lofficer:=UserId;
+        DOCNAME := 'FIRST DEMAND NOTICE';
+        Lofficer := UserId;
     end;
 
     var

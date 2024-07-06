@@ -57,9 +57,9 @@ Table 51516231 "Loans Guarantee Details"
                 // LoanApp.SetRange(LoanApp."Loan  No.", "Loan No");
                 // if LoanApp.Find('-') then begin
                 //     "Amount Committed" := "Amont Guaranteed";
-                     if Loans.Get("Loan No") then
-                        "% Proportion" := ("Amont Guaranteed" / Loans."Requested Amount") * 100;
-                end;
+                if Loans.Get("Loan No") then
+                    "% Proportion" := ("Amont Guaranteed" / Loans."Requested Amount") * 100;
+            end;
 
             // end;
         }

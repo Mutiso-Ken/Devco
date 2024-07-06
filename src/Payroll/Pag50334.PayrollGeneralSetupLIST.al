@@ -13,43 +13,43 @@ Page 50334 "Payroll General Setup LIST."
         {
             repeater(Group)
             {
-                field("Tax Relief"; "Tax Relief")
+                field("Tax Relief"; Rec."Tax Relief")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Insurance Relief"; "Insurance Relief")
+                field("Insurance Relief"; Rec."Insurance Relief")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Max Relief"; "Max Relief")
+                field("Max Relief"; Rec."Max Relief")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mortgage Relief"; "Mortgage Relief")
+                field("Mortgage Relief"; Rec."Mortgage Relief")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Max Pension Contribution"; "Max Pension Contribution")
+                field("Max Pension Contribution"; Rec."Max Pension Contribution")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Tax On Excess Pension"; "Tax On Excess Pension")
+                field("Tax On Excess Pension"; Rec."Tax On Excess Pension")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Market Rate"; "Loan Market Rate")
+                field("Loan Market Rate"; Rec."Loan Market Rate")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Corporate Rate"; "Loan Corporate Rate")
+                field("Loan Corporate Rate"; Rec."Loan Corporate Rate")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Taxable Pay (Normal)"; "Taxable Pay (Normal)")
+                field("Taxable Pay (Normal)"; Rec."Taxable Pay (Normal)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Staff Net Pay G/L Account"; "Staff Net Pay G/L Account")
+                field("Staff Net Pay G/L Account"; Rec."Staff Net Pay G/L Account")
                 {
                     ApplicationArea = Basic;
                 }

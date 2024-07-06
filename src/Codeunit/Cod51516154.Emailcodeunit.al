@@ -35,8 +35,8 @@ codeunit 51516154 Emailcodeunit
 
     procedure SendMail(EmailAddress: Text[60]; EmailSubject: text[100]; EmailBody: Text[200])
     var
-    EmailMessage: Codeunit "Email Message";
-    Email: Codeunit Email;
+        EmailMessage: Codeunit "Email Message";
+        Email: Codeunit Email;
 
     begin
         EmailMessage.Create(EmailAddress, EmailSubject, EmailBody, true);

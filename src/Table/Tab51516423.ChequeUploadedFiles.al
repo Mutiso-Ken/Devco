@@ -4,33 +4,33 @@ Table 51516423 "Cheque Uploaded Files"
 
     fields
     {
-        field(1;UploadedFileId;Integer)
+        field(1; UploadedFileId; Integer)
         {
             AutoIncrement = true;
         }
-        field(2;UploadedFileName;Text[200])
+        field(2; UploadedFileName; Text[200])
         {
         }
-        field(3;FileStatus;Text[200])
+        field(3; FileStatus; Text[200])
         {
         }
-        field(4;CreatedBy;Text[200])
+        field(4; CreatedBy; Text[200])
         {
         }
-        field(5;CreatedOn;DateTime)
+        field(5; CreatedOn; DateTime)
         {
         }
-        field(6;ModifiedBy;Text[200])
+        field(6; ModifiedBy; Text[200])
         {
         }
-        field(7;ModifiedOn;DateTime)
+        field(7; ModifiedOn; DateTime)
         {
         }
     }
 
     keys
     {
-        key(Key1;UploadedFileId,UploadedFileName,FileStatus)
+        key(Key1; UploadedFileId, UploadedFileName, FileStatus)
         {
             Clustered = true;
         }

@@ -4,26 +4,26 @@ Table 51516549 "BOSA Transaction Fees"
 
     fields
     {
-        field(1;"Code";Code[100])
+        field(1; "Code"; Code[100])
         {
         }
-        field(2;Description;Code[100])
+        field(2; Description; Code[100])
         {
         }
-        field(3;"Lower Limit";Decimal)
+        field(3; "Lower Limit"; Decimal)
         {
         }
-        field(4;"Upper Limit";Decimal)
+        field(4; "Upper Limit"; Decimal)
         {
         }
-        field(5;"Charge Amount";Decimal)
+        field(5; "Charge Amount"; Decimal)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Code")
+        key(Key1; "Code")
         {
             Clustered = true;
         }

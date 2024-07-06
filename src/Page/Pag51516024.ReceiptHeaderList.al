@@ -6,7 +6,7 @@ Page 51516024 "Receipt Header List"
     DeleteAllowed = false;
     PageType = List;
     SourceTable = "Receipt Header";
-    SourceTableView = where(Status=filter(New));
+    SourceTableView = where(Status = filter(New));
     UsageCategory = Lists;
 
     layout
@@ -15,31 +15,31 @@ Page 51516024 "Receipt Header List"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Received From";"Received From")
+                field("Received From"; Rec."Received From")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount Received(LCY)";"Amount Received(LCY)")
+                field("Amount Received(LCY)"; Rec."Amount Received(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Amount";"Total Amount")
+                field("Total Amount"; Rec."Total Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("User ID";"User ID")
+                field("User ID"; Rec."User ID")
                 {
                     ApplicationArea = Basic;
                 }
@@ -53,8 +53,8 @@ Page 51516024 "Receipt Header List"
 
     trigger OnOpenPage()
     begin
-         SetRange("User ID",UserId);
-         SetRange("Receipt Category","receipt category"::Normal);
+        Rec.SetRange("User ID", UserId);
+        Rec.SetRange("Receipt Category", Rec."receipt category"::Normal);
     end;
 }
 

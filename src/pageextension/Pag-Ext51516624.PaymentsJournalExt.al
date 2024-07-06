@@ -4,7 +4,7 @@ pageextension 51516624 "PaymentsJournalExt" extends "Payment Journal"
     {
         addafter("Recipient Bank Account")
         {
-            field("Check Is Printed"; "Check Printed")
+            field("Check Is Printed"; Rec."Check Printed")
             {
                 ApplicationArea = Basic;
             }

@@ -12,16 +12,16 @@ Page 51516329 "Supervisor Approvals Levels"
         {
             repeater(Control4)
             {
-                field(SupervisorID;SupervisorID)
+                field(SupervisorID; Rec.SupervisorID)
                 {
                     ApplicationArea = Basic;
                     Caption = 'User ID';
                 }
-                field("Transaction Type";"Transaction Type")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Maximum Approval Amount";"Maximum Approval Amount")
+                field("Maximum Approval Amount"; Rec."Maximum Approval Amount")
                 {
                     ApplicationArea = Basic;
                 }

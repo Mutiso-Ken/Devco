@@ -21,7 +21,7 @@ page 51516078 "Periodics Processing List"
                 field("Processing Type"; Rec."Processing Type")
                 {
                 }
-                field("Posting Document No"; "Posting Document No")
+                field("Posting Document No"; Rec."Posting Document No")
                 {
                 }
                 field("Date Entered"; Rec."Date Entered")
@@ -39,8 +39,8 @@ page 51516078 "Periodics Processing List"
     trigger OnOpenPage()
     var
     begin
-        SetRange("Entered By", UserId);
-        SetRange("Processing Type", "Processing Type"::Salary);
+        Rec.SetRange("Entered By", UserId);
+        Rec.SetRange("Processing Type", Rec."Processing Type"::Salary);
 
     end;
 }

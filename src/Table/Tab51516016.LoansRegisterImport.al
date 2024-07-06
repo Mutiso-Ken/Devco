@@ -17,11 +17,11 @@ table 51516016 "Loans Register Import"
         }
         field(3; "Loan Product Type"; Code[20])
         {
-     
+
         }
         field(4; "Client Code"; Code[50])
         {
-     
+
         }
         field(5; "Group Code"; Code[20])
         {
@@ -40,7 +40,7 @@ table 51516016 "Loans Register Import"
         }
         field(9; "Approved Amount"; Decimal)
         {
-        
+
         }
         field(16; Interest; Decimal)
         {
@@ -48,15 +48,15 @@ table 51516016 "Loans Register Import"
         }
         field(17; Insurance; Decimal)
         {
-          
+
         }
         field(21; "Source of Funds"; Code[20])
         {
-         
+
         }
         field(22; "Client Cycle"; Integer)
         {
-          
+
         }
         field(26; "Client Name"; Text[80])
         {
@@ -74,7 +74,7 @@ table 51516016 "Loans Register Import"
         field(29; "Issued Date"; Date)
         {
 
-           
+
         }
         field(30; Installments; Integer)
         {
@@ -144,7 +144,7 @@ table 51516016 "Loans Register Import"
         field(53050; Repayment; Decimal)
         {
 
-            
+
         }
         field(53051; "Pays Interest During GP"; Boolean)
         {
@@ -185,7 +185,7 @@ table 51516016 "Loans Register Import"
         }
         field(53061; "Schedule Repayments"; Decimal)
         {
-           
+
         }
         field(53062; "Doc No Used"; Code[20])
         {
@@ -196,7 +196,7 @@ table 51516016 "Loans Register Import"
         }
         field(53065; "Batch No."; Code[20])
         {
-       
+
         }
         field(53066; "Edit Interest Rate"; Boolean)
         {
@@ -207,7 +207,7 @@ table 51516016 "Loans Register Import"
         }
         field(53068; "Product Code"; Code[20])
         {
-            
+
         }
         field(53077; "Document No 2 Filter"; Code[20])
         {
@@ -262,7 +262,7 @@ table 51516016 "Loans Register Import"
         }
         field(53092; "Total Repayment"; Decimal)
         {
-         
+
         }
         field(53093; "Interest Calculation Method"; Option)
         {
@@ -276,7 +276,7 @@ table 51516016 "Loans Register Import"
         }
         field(53098; "Interest to be paid"; Decimal)
         {
-            
+
         }
         field(53099; "Date filter"; Date)
         {
@@ -287,7 +287,7 @@ table 51516016 "Loans Register Import"
         }
         field(53102; "Outstanding Balance"; Decimal)
         {
-           
+
         }
         field(53103; "Loan to Share Ratio"; Decimal)
         {
@@ -310,30 +310,30 @@ table 51516016 "Loans Register Import"
         }
         field(53108; "Penalty Charged"; Decimal)
         {
-           
+
         }
         field(53109; "Loan Amount"; Decimal)
         {
-         
+
         }
         field(53110; "Current Shares"; Decimal)
         {
-           
+
         }
         field(53111; "Loan Repayment"; Decimal)
         {
-          
+
         }
         field(53112; "Repayment Method"; Option)
         {
             OptionMembers = Amortised,"Reducing Balance","Straight Line",Constants;
 
-            
+
         }
         field(53113; "Grace Period - Principle (M)"; Integer)
         {
 
-           
+
         }
         field(53114; "Grace Period - Interest (M)"; Integer)
         {
@@ -367,11 +367,11 @@ table 51516016 "Loans Register Import"
         }
         field(53182; "Last Pay Date"; Date)
         {
-            
+
         }
         field(53183; "Interest Due"; Decimal)
         {
-           
+
         }
         field(53184; "Appraisal Status"; Option)
         {
@@ -381,23 +381,23 @@ table 51516016 "Loans Register Import"
         }
         field(53185; "Interest Paid"; Decimal)
         {
-            
+
         }
         field(53186; "Penalty Paid"; Decimal)
         {
-           
+
         }
         field(53187; "Application Fee Paid"; Decimal)
         {
-          
+
         }
         field(53188; "Appraisal Fee Paid"; Decimal)
         {
-        
+
         }
         field(53189; "Global Dimension 1 Code"; Code[20])
         {
-           
+
         }
         field(53190; "Repayment Start Date"; Date)
         {
@@ -407,32 +407,32 @@ table 51516016 "Loans Register Import"
 
             trigger OnValidate()
             begin
-              
+
             end;
         }
         field(53192; "Schedule Repayment"; Decimal)
         {
-           
+
         }
         field(53193; "Schedule Interest"; Decimal)
         {
-          
+
         }
         field(53194; "Interest Debit"; Decimal)
         {
-           
+
         }
         field(53195; "Schedule Interest to Date"; Decimal)
         {
-           
+
         }
         field(53196; "Repayments BF"; Decimal)
         {
         }
         field(68000; "Account No"; Code[20])
         {
-            
-         
+
+
         }
         field(68001; "BOSA No"; Code[20])
         {
@@ -446,7 +446,7 @@ table 51516016 "Loans Register Import"
         }
         field(68004; "Top Up Amount"; Decimal)
         {
-          
+
         }
         field(68005; "Loan Received"; Boolean)
         {
@@ -457,19 +457,19 @@ table 51516016 "Loans Register Import"
         }
         field(68007; "Current Repayment"; Decimal)
         {
-           
+
         }
         field(68008; "Oustanding Interest"; Decimal)
         {
-          
+
         }
         field(68009; "Oustanding Interest to Date"; Decimal)
         {
-          
+
         }
         field(68010; "Current Interest Paid"; Decimal)
         {
-           
+
         }
         field(68011; "Document No. Filter"; Code[100])
         {
@@ -490,7 +490,7 @@ table 51516016 "Loans Register Import"
 
             trigger OnValidate()
             begin
-              
+
             end;
         }
         field(68016; "Loan Interest Repayment"; Decimal)
@@ -511,11 +511,11 @@ table 51516016 "Loans Register Import"
         }
         field(68021; "No. Of Guarantors"; Integer)
         {
-          
+
         }
         field(68022; "Total Loan Guaranted"; Decimal)
         {
-          
+
         }
         field(68023; "Shares Boosted"; Boolean)
         {
@@ -523,22 +523,22 @@ table 51516016 "Loans Register Import"
         field(68024; "Basic Pay"; Decimal)
         {
 
-            
+
         }
         field(68025; "House Allowance"; Decimal)
         {
 
-           
+
         }
         field(68026; "Other Allowance"; Decimal)
         {
 
-           
+
         }
         field(68027; "Total Deductions"; Decimal)
         {
 
-            
+
         }
         field(68028; "Cleared Effects"; Decimal)
         {
@@ -552,7 +552,7 @@ table 51516016 "Loans Register Import"
         }
         field(68031; "Special Loan Amount"; Decimal)
         {
-            
+
         }
         field(68032; "Bridging Loan Posted"; Boolean)
         {
@@ -582,7 +582,7 @@ table 51516016 "Loans Register Import"
         field(68040; "Appeal Amount"; Decimal)
         {
 
-          
+
         }
         field(68041; "Appeal Posted"; Boolean)
         {
@@ -593,15 +593,15 @@ table 51516016 "Loans Register Import"
         }
         field(68043; "Project Account No"; Code[20])
         {
-        
+
         }
         field(68044; "Location Filter"; Integer)
         {
-           
+
         }
         field(68045; "Other Commitments Clearance"; Decimal)
         {
-          
+
         }
         field(68046; "Discounted Amount"; Decimal)
         {
@@ -610,7 +610,7 @@ table 51516016 "Loans Register Import"
         field(68047; "Transport Allowance"; Decimal)
         {
 
-          
+
         }
         field(68048; "Mileage Allowance"; Decimal)
         {
@@ -651,7 +651,7 @@ table 51516016 "Loans Register Import"
         }
         field(68059; "Branch Code"; Code[20])
         {
-           
+
         }
         field(68060; "Recovered From Guarantor"; Boolean)
         {
@@ -682,7 +682,7 @@ table 51516016 "Loans Register Import"
         }
         field(68065; "Last Interest Pay Date"; Date)
         {
-        
+
         }
         field(68066; "Other Benefits"; Decimal)
         {
@@ -702,7 +702,7 @@ table 51516016 "Loans Register Import"
         }
         field(68071; "Outstanding Balance to Date"; Decimal)
         {
-          
+
         }
         field(68072; "Last Advice Date"; Date)
         {
@@ -713,7 +713,7 @@ table 51516016 "Loans Register Import"
         }
         field(68074; "Current Location"; Code[50])
         {
-         
+
         }
         field(68090; "Compound Balance"; Decimal)
         {
@@ -742,7 +742,7 @@ table 51516016 "Loans Register Import"
         }
         field(68096; "Last Loan Issue Date"; Date)
         {
-          
+
         }
         field(68097; "Lst LN1"; Boolean)
         {
@@ -781,15 +781,15 @@ table 51516016 "Loans Register Import"
         }
         field(69007; "Outstanding Loan"; Decimal)
         {
-        
+
         }
         field(69008; "Loan Count"; Integer)
         {
-        
+
         }
         field(69009; "Repay Count"; Integer)
         {
-         
+
         }
         field(69010; "Outstanding Loan2"; Decimal)
         {

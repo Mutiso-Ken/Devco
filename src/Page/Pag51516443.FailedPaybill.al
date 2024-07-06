@@ -19,72 +19,72 @@ page 51516443 "FailedPaybill"
         {
             repeater(Group)
             {
-                field("Document No"; "Document No")
+                field("Document No"; Rec."Document No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Date"; "Transaction Date")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
 
 
                 }
-                field("Account Name"; "Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     Caption = 'Sender Name';
 
                     ApplicationArea = Basic;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
                 }
-                field("Transaction Type"; "Transaction Type")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Posted; Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                 }
 
-                field(Telephone; Telephone)
+                field(Telephone; Rec.Telephone)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Posted"; "Date Posted")
+                field("Date Posted"; Rec."Date Posted")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Paybill Acc Balance"; "Paybill Acc Balance")
+                field("Paybill Acc Balance"; Rec."Paybill Acc Balance")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Key Word"; "Key Word")
+                field("Key Word"; Rec."Key Word")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Time"; "Transaction Time")
+                field("Transaction Time"; Rec."Transaction Time")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Needs Manual Posting"; "Needs Manual Posting")
+                field("Needs Manual Posting"; Rec."Needs Manual Posting")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Date"; "Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic;
                 }
@@ -118,8 +118,8 @@ page 51516443 "FailedPaybill"
     }
     trigger OnOpenPage()
     begin
-        SetCurrentKey("Transaction Date");
-        Ascending(false);
+        Rec.SetCurrentKey("Transaction Date");
+        Rec.Ascending(false);
 
     end;
 

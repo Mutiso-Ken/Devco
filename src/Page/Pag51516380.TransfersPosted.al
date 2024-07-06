@@ -15,52 +15,52 @@ Page 51516380 "Transfers-Posted"
             {
                 Caption = 'General';
                 Editable = false;
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Transaction Date"; "Transaction Date")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Approved By"; "Approved By")
+                field("Approved By"; Rec."Approved By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Schedule Total"; "Schedule Total")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field(Posted; Posted)
+                field("Schedule Total"; Rec."Schedule Total")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Approved; Approved)
+                field(Posted; Rec.Posted)
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field(Approved; Rec.Approved)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
 
                     trigger OnValidate()
                     begin
-                        if Status = Status::Approved then
-                            Approved := true;
-                        Modify;
+                        if Rec.Status = Rec.Status::Approved then
+                            Rec.Approved := true;
+                        Rec.Modify;
 
-                        if Status <> Status::Open then
+                        if Rec.Status <> Rec.Status::Open then
                             TransfersEditable := false
                         else
                             TransfersEditable := true;
@@ -92,7 +92,7 @@ Page 51516380 "Transfers-Posted"
                     trigger OnAction()
                     begin
                         BTRANS.Reset;
-                        BTRANS.SetRange(BTRANS.No, No);
+                        BTRANS.SetRange(BTRANS.No, Rec.No);
                         if BTRANS.Find('-') then begin
                             Report.Run(51516293, true, true, BTRANS);
                         end;
@@ -113,7 +113,7 @@ Page 51516380 "Transfers-Posted"
                         ApprovalEntries: Page "Approval Entries";
                     begin
                         Doc_Type := Doc_type::"BOSA Transfer";
-                        ApprovalEntries.SetRecordFilters(Database::"BOSA Transfers", Doc_Type, No);
+                        ApprovalEntries.SetRecordFilters(Database::"BOSA Transfers", Doc_Type, Rec.No);
                         ApprovalEntries.Run;
                     end;
                 }
@@ -131,7 +131,7 @@ Page 51516380 "Transfers-Posted"
                         Text001: label 'This batch is already pending approval';
                         NoSeriesMgt: Codeunit NoSeriesManagement;
                     begin
-                        if Status <> Status::Open then
+                        if Rec.Status <> Rec.Status::Open then
                             Error(Text001);
 
 
@@ -165,7 +165,7 @@ Page 51516380 "Transfers-Posted"
 
     trigger OnAfterGetRecord()
     begin
-        if Status <> Status::Open then
+        if Rec.Status <> Rec.Status::Open then
             TransfersEditable := false
         else
             TransfersEditable := true;
@@ -178,7 +178,7 @@ Page 51516380 "Transfers-Posted"
 
     trigger OnOpenPage()
     begin
-        if Status <> Status::Open then
+        if Rec.Status <> Rec.Status::Open then
             TransfersEditable := false
         else
             TransfersEditable := true;

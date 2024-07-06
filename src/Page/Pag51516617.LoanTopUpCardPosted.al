@@ -16,126 +16,126 @@ Page 51516617 "Loan Top-Up Card-Posted"
             group(General)
             {
                 Editable = ApprovedEditable;
-                field("Document No"; "Document No")
+                field("Document No"; Rec."Document No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Member No"; "Member No")
+                field("Member No"; Rec."Member No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member Name"; "Member Name")
+                field("Member Name"; Rec."Member Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan No"; "Loan No")
+                field("Loan No"; Rec."Loan No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Loan To Top Up';
                 }
-                field("Issue Date"; "Issue Date")
+                field("Issue Date"; Rec."Issue Date")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Original Issue Date';
                     Editable = false;
                 }
-                field("Requested Amount"; "Requested Amount")
+                field("Requested Amount"; Rec."Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Original Requested Amount';
                     Editable = false;
                 }
-                field("Approved Amount"; "Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Original Approved Amount';
                     Editable = false;
                 }
-                field("Outstanding Loan Amount"; "Outstanding Loan Amount")
+                field("Outstanding Loan Amount"; Rec."Outstanding Loan Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Outstanding Balance';
                     Editable = false;
                 }
-                field("Top Up Amount"; "Top Up Amount")
+                field("Top Up Amount"; Rec."Top Up Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Top Up Amount';
 
                     trigger OnValidate()
                     begin
-                        Modify;
+                        Rec.Modify;
                     end;
                 }
-                field("Original Installments"; "Original Installments")
+                field("Original Installments"; Rec."Original Installments")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("New Installments"; "New Installments")
+                field("New Installments"; Rec."New Installments")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Remaining Installments"; "Remaining Installments")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("Repayment Start Date"; "Repayment Start Date")
+                field("Remaining Installments"; Rec."Remaining Installments")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Loan Insurance"; "Loan Insurance")
+                field("Repayment Start Date"; Rec."Repayment Start Date")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Commision; Commision)
+                field("Loan Insurance"; Rec."Loan Insurance")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field(Commision; Rec.Commision)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Refinance Commission';
                     Editable = false;
                     Visible = false;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
 
                     trigger OnValidate()
                     begin
-                        if Status <> Status::Open then
+                        if Rec.Status <> Rec.Status::Open then
                             ApprovedEditable := false
                         else
                             ApprovedEditable := true;
                     end;
                 }
-                field("Topped-Up"; "Topped-Up")
+                field("Topped-Up"; Rec."Topped-Up")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Topped-Up';
                     Editable = false;
                 }
-                field("Topped-Up By"; "Topped-Up By")
+                field("Topped-Up By"; Rec."Topped-Up By")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Topped-Up By';
                     Editable = false;
                 }
-                field("Refinance Application Date"; "Top Up Date")
+                field("Refinance Application Date"; Rec."Top Up Date")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Top Up Application Date';
                 }
-                field("Posting Date"; "Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Partial Top-Up"; "Partial Top-Up")
+                field("Partial Top-Up"; Rec."Partial Top-Up")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
@@ -143,23 +143,23 @@ Page 51516617 "Loan Top-Up Card-Posted"
                 group(Control1000000025)
                 {
                     Editable = ApprovedEditable;
-                    Visible = "Partial Top-Up" = true;
-                    field("Original Top-Up"; "Original Top-Up")
+                    Visible = Rec."Partial Top-Up" = true;
+                    field("Original Top-Up"; Rec."Original Top-Up")
                     {
                         ApplicationArea = Basic;
                         Caption = 'Original Refinance';
                         Editable = false;
                     }
-                    field("Amount To Disburse"; "Amount To Disburse")
+                    field("Amount To Disburse"; Rec."Amount To Disburse")
                     {
                         ApplicationArea = Basic;
                     }
-                    field("Disbursed Amount"; "Disbursed Amount")
+                    field("Disbursed Amount"; Rec."Disbursed Amount")
                     {
                         ApplicationArea = Basic;
                         Editable = false;
                     }
-                    field("Balance After"; "Balance After")
+                    field("Balance After"; Rec."Balance After")
                     {
                         ApplicationArea = Basic;
                         Editable = false;
@@ -169,7 +169,7 @@ Page 51516617 "Loan Top-Up Card-Posted"
             group("Active Schedule")
             {
                 Editable = ApprovedEditable;
-                field("Is Active"; "Is Active")
+                field("Is Active"; Rec."Is Active")
                 {
                     ApplicationArea = Basic;
                 }
@@ -230,11 +230,11 @@ Page 51516617 "Loan Top-Up Card-Posted"
                         Cust: Record Customer;
                         InstalNo: Integer;
                     begin
-                        TestField("Top Up Amount");
-                        TestField("New Installments");
+                        Rec.TestField("Top Up Amount");
+                        Rec.TestField("New Installments");
 
                         LoanRegister.Reset;
-                        LoanRegister.SetRange(LoanRegister."Loan  No.", "Loan No");
+                        LoanRegister.SetRange(LoanRegister."Loan  No.", Rec."Loan No");
                         if LoanRegister.FindFirst then begin
                             LoanRegister.TestField(LoanRegister.Installments);
                             LoanRegister.TestField(LoanRegister.Interest);
@@ -243,15 +243,15 @@ Page 51516617 "Loan Top-Up Card-Posted"
                             //Delete Schedule:
                             LoanSchedule.Reset;
                             LoanSchedule.SetRange(LoanSchedule."Loan No.", LoanRegister."Loan  No.");
-                            LoanSchedule.SetRange(LoanSchedule."Top Up Code", "Document No");
+                            LoanSchedule.SetRange(LoanSchedule."Top Up Code", Rec."Document No");
                             LoanSchedule.DeleteAll;
                             //End of Delete Schedule
 
-                            LoanAmount := "Top Up Amount" + "Outstanding Loan Amount";
+                            LoanAmount := Rec."Top Up Amount" + Rec."Outstanding Loan Amount";
                             LoanBal := LoanAmount;
                             InterestRate := LoanRegister.Interest;
-                            Installments := "New Installments";
-                            RepayDate := "Top Up Date";
+                            Installments := Rec."New Installments";
+                            RepayDate := Rec."Top Up Date";
                             InstalNo := 0;
 
                             repeat
@@ -284,7 +284,7 @@ Page 51516617 "Loan Top-Up Card-Posted"
                                 LoanBal := LoanBal - LoanPrinciple;
                                 LoanSchedule.Init;
                                 LoanSchedule."Repayment Code" := RepayCode;
-                                LoanSchedule."Top Up Code" := "Document No";
+                                LoanSchedule."Top Up Code" := Rec."Document No";
                                 LoanSchedule."Loan No." := LoanRegister."Loan  No.";
                                 LoanSchedule."Loan Amount" := LoanAmount;
                                 LoanSchedule."Instalment No" := InstalNo;
@@ -299,18 +299,18 @@ Page 51516617 "Loan Top-Up Card-Posted"
                                 LoanSchedule."Repayment Year":=DATE2DMY(RepayDate,3);
                                 LoanSchedule."Loan Balance":=LoanBal;*/
 
-                                if "Is Active" = true then begin
+                                if Rec."Is Active" = true then begin
                                     LoanSchedule."Active Schedule" := true;
                                 end;
                                 LoanSchedule.Insert;
                             until LoanBal < 1;
 
                             LoanSchedule.Reset;
-                            LoanSchedule.SetRange(LoanSchedule."Loan No.", "Loan No");
-                            LoanSchedule.SetFilter(LoanSchedule."Top Up Code", '<>%1', "Document No");
+                            LoanSchedule.SetRange(LoanSchedule."Loan No.", Rec."Loan No");
+                            LoanSchedule.SetFilter(LoanSchedule."Top Up Code", '<>%1', Rec."Document No");
                             if LoanSchedule.Find('-') then begin
                                 repeat
-                                    if "Is Active" = true then begin
+                                    if Rec."Is Active" = true then begin
                                         LoanSchedule."Active Schedule" := false;
                                         LoanSchedule.Modify;
                                     end;
@@ -319,11 +319,11 @@ Page 51516617 "Loan Top-Up Card-Posted"
                         end;
 
                         LoanApps.Reset;
-                        LoanApps.SetRange(LoanApps."Loan  No.", "Loan No");
+                        LoanApps.SetRange(LoanApps."Loan  No.", Rec."Loan No");
                         if LoanApps.FindFirst then begin
-                            LoanApps."Approved Amount" := "Outstanding Loan Amount" + "Top Up Amount";
-                            LoanApps."Requested Amount" := "Outstanding Loan Amount" + "Top Up Amount";
-                            LoanApps.Installments := "New Installments";
+                            LoanApps."Approved Amount" := Rec."Outstanding Loan Amount" + Rec."Top Up Amount";
+                            LoanApps."Requested Amount" := Rec."Outstanding Loan Amount" + Rec."Top Up Amount";
+                            LoanApps.Installments := Rec."New Installments";
                             LoanApps."Loan Principle Repayment" := LoanPrinciple;
                             //LoanApps.Repayment:=LoanInterest+LoanPrinciple;
                             //LoanApps."Loan Interest Repayment":=LoanInterest;
@@ -333,7 +333,7 @@ Page 51516617 "Loan Top-Up Card-Posted"
                         Commit;
 
                         LoanRegister.Reset;
-                        LoanRegister.SetRange(LoanRegister."Loan  No.", "Loan No");
+                        LoanRegister.SetRange(LoanRegister."Loan  No.", Rec."Loan No");
                         if LoanRegister.Find('-') then begin
                             Report.Run(51516477, true, false, LoanRegister);
                         end;
@@ -352,7 +352,7 @@ Page 51516617 "Loan Top-Up Card-Posted"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "Member No");
+                        Cust.SetRange(Cust."No.", Rec."Member No");
                         if Cust.FindFirst then begin
                             DBranch := Cust."Global Dimension 2 Code";
                         end;
@@ -360,9 +360,9 @@ Page 51516617 "Loan Top-Up Card-Posted"
                         if Confirm('Are you sure you want to post this Loan Top Up ?', true) = false then
                             exit;
 
-                        "Approved Amount" := ("Top Up Amount" + "Outstanding Loan Amount");
-                        Validate("Approved Amount");
-                        Modify;
+                        Rec."Approved Amount" := (Rec."Top Up Amount" + Rec."Outstanding Loan Amount");
+                        Rec.Validate("Approved Amount");
+                        Rec.Modify;
 
                         Temp.Get(UserId);
                         Jtemplate := 'PAYMENTS';//Temp."Receipt Journal Template";
@@ -376,7 +376,7 @@ Page 51516617 "Loan Top-Up Card-Posted"
                         GenSetUp.Get();
 
                         LoanApps.Reset;
-                        LoanApps.SetRange(LoanApps."Loan  No.", "Loan No");
+                        LoanApps.SetRange(LoanApps."Loan  No.", Rec."Loan No");
                         LoanApps.SetRange(LoanApps."System Created", false);
                         LoanApps.SetFilter(LoanApps."Approval Status", '<>Rejected');
                         if LoanApps.Find('-') then begin
@@ -402,15 +402,15 @@ Page 51516617 "Loan Top-Up Card-Posted"
                             GenJournalLine."Journal Batch Name" := JBatch;
                             GenJournalLine."Line No." := LineNo;
                             GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
-                            GenJournalLine."Account No." := "Member No";
+                            GenJournalLine."Account No." := Rec."Member No";
                             GenJournalLine.Validate(GenJournalLine."Account No.");
-                            GenJournalLine."Document No." := "Document No";
+                            GenJournalLine."Document No." := Rec."Document No";
                             GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::Loan;
-                            GenJournalLine."Posting Date" := "Posting Date";
+                            GenJournalLine."Posting Date" := Rec."Posting Date";
                             GenJournalLine.Description := 'Top Up Amount';
-                            GenJournalLine.Amount := "Top Up Amount";
+                            GenJournalLine.Amount := Rec."Top Up Amount";
                             GenJournalLine.Validate(GenJournalLine.Amount);
-                            GenJournalLine."Loan No" := "Loan No";
+                            GenJournalLine."Loan No" := Rec."Loan No";
                             GenJournalLine.Validate(GenJournalLine.Amount);
                             GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
                             GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
@@ -421,7 +421,7 @@ Page 51516617 "Loan Top-Up Card-Posted"
 
 
                             LoanApps.Reset;
-                            LoanApps.SetRange(LoanApps."Loan  No.", "Loan No");
+                            LoanApps.SetRange(LoanApps."Loan  No.", Rec."Loan No");
                             LoanApps.SetRange(LoanApps."System Created", false);
                             LoanApps.SetFilter(LoanApps."Approval Status", '<>Rejected');
                             if LoanApps.Find('-') then begin
@@ -435,12 +435,12 @@ Page 51516617 "Loan Top-Up Card-Posted"
                                     GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
                                     GenJournalLine."Account No." := LoanApps."Account No";
                                     GenJournalLine.Validate(GenJournalLine."Account No.");
-                                    GenJournalLine."Document No." := "Document No";
-                                    GenJournalLine."Posting Date" := "Posting Date";
-                                    GenJournalLine.Description := 'Top up Amount for Loan-' + "Loan No";
-                                    GenJournalLine.Amount := "Top Up Amount" * -1;
+                                    GenJournalLine."Document No." := Rec."Document No";
+                                    GenJournalLine."Posting Date" := Rec."Posting Date";
+                                    GenJournalLine.Description := 'Top up Amount for Loan-' + Rec."Loan No";
+                                    GenJournalLine.Amount := Rec."Top Up Amount" * -1;
                                     GenJournalLine.Validate(GenJournalLine.Amount);
-                                    GenJournalLine."Loan No" := "Loan No";
+                                    GenJournalLine."Loan No" := Rec."Loan No";
                                     GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
                                     GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
                                     GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
@@ -457,12 +457,12 @@ Page 51516617 "Loan Top-Up Card-Posted"
                                         GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
                                         GenJournalLine."Account No." := LoanApps."Account No";
                                         GenJournalLine.Validate(GenJournalLine."Account No.");
-                                        GenJournalLine."Document No." := "Document No";
-                                        GenJournalLine."Posting Date" := "Posting Date";
+                                        GenJournalLine."Document No." := Rec."Document No";
+                                        GenJournalLine."Posting Date" := Rec."Posting Date";
                                         GenJournalLine.Description := 'Top Up for ' + LoanApps."Loan Product Type" + ' Loan.';
-                                        GenJournalLine.Amount := "Top Up Amount" * -1;
+                                        GenJournalLine.Amount := Rec."Top Up Amount" * -1;
                                         GenJournalLine.Validate(GenJournalLine.Amount);
-                                        GenJournalLine."Loan No" := "Loan No";
+                                        GenJournalLine."Loan No" := Rec."Loan No";
                                         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
                                         GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
                                         GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
@@ -480,12 +480,12 @@ Page 51516617 "Loan Top-Up Card-Posted"
                             GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
                             GenJournalLine."Account No." := LoanApps."Account No";
                             GenJournalLine.Validate(GenJournalLine."Account No.");
-                            GenJournalLine."Document No." := "Document No";
+                            GenJournalLine."Document No." := Rec."Document No";
                             //GenJournalLine."External Document No.":=LoanApps."Loan Appealed Cheque Number";
-                            GenJournalLine."Posting Date" := "Posting Date";
+                            GenJournalLine."Posting Date" := Rec."Posting Date";
                             GenJournalLine.Description := 'Top Up Fee';
                             //LoanApps.CALCFIELDS(LoanApps."Outstanding Balance");
-                            GenJournalLine.Amount := ("Top Up Amount" * 0.01);
+                            GenJournalLine.Amount := (Rec."Top Up Amount" * 0.01);
                             GenJournalLine.Validate(GenJournalLine.Amount);
                             GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"G/L Account";
                             GenJournalLine."Bal. Account No." := '5411';
@@ -507,9 +507,9 @@ Page 51516617 "Loan Top-Up Card-Posted"
                         GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
                         GenJournalLine."Account No." := LoanApps."Account No";
                         GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Document No." := "Document No";
+                        GenJournalLine."Document No." := Rec."Document No";
                         //GenJournalLine."External Document No.":=LoanApps."Loan Appealed Cheque Number";
-                        GenJournalLine."Posting Date" := "Posting Date";
+                        GenJournalLine."Posting Date" := Rec."Posting Date";
                         GenJournalLine.Description := 'Loan Crediting Fee';
                         GenJournalLine.Amount := 500;
                         GenJournalLine.Validate(GenJournalLine.Amount);
@@ -531,9 +531,9 @@ Page 51516617 "Loan Top-Up Card-Posted"
                         GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
                         GenJournalLine."Account No." := LoanApps."Account No";
                         GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Document No." := "Document No";
+                        GenJournalLine."Document No." := Rec."Document No";
                         //GenJournalLine."External Document No.":=LoanApps."Loan Appealed Cheque Number";
-                        GenJournalLine."Posting Date" := "Posting Date";
+                        GenJournalLine."Posting Date" := Rec."Posting Date";
                         GenJournalLine.Description := 'Excise Duty on Crediting Fee';
                         GenJournalLine.Amount := 50;
                         GenJournalLine.Validate(GenJournalLine.Amount);
@@ -555,11 +555,11 @@ Page 51516617 "Loan Top-Up Card-Posted"
                         GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
                         GenJournalLine."Account No." := LoanApps."Account No";
                         GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Document No." := "Document No";
+                        GenJournalLine."Document No." := Rec."Document No";
                         //GenJournalLine."External Document No.":=LoanApps."Loan Appealed Cheque Number";
-                        GenJournalLine."Posting Date" := "Posting Date";
+                        GenJournalLine."Posting Date" := Rec."Posting Date";
                         GenJournalLine.Description := 'FOSA Shares Recovery';
-                        GenJournalLine.Amount := (("Top Up Amount" * 0.5) / 100);
+                        GenJournalLine.Amount := ((Rec."Top Up Amount" * 0.5) / 100);
                         GenJournalLine.Validate(GenJournalLine.Amount);
                         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
                         GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
@@ -574,15 +574,15 @@ Page 51516617 "Loan Top-Up Card-Posted"
                         GenJournalLine."Journal Batch Name" := JBatch;
                         GenJournalLine."Line No." := LineNo;
                         GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
-                        GenJournalLine."Account No." := "Member No";
+                        GenJournalLine."Account No." := Rec."Member No";
                         GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Document No." := "Document No";
+                        GenJournalLine."Document No." := Rec."Document No";
                         //GenJournalLine."External Document No.":=LoanApps."Loan Appealed Cheque Number";
-                        GenJournalLine."Posting Date" := "Posting Date";
+                        GenJournalLine."Posting Date" := Rec."Posting Date";
                         GenJournalLine.Description := 'FOSA Shares';
-                        GenJournalLine.Amount := (("Top Up Amount" * 0.5) / 100) * -1;
+                        GenJournalLine.Amount := ((Rec."Top Up Amount" * 0.5) / 100) * -1;
                         GenJournalLine.Validate(GenJournalLine.Amount);
-                       // GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"FOSA Shares";
+                        // GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"FOSA Shares";
                         GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
                         GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
                         GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
@@ -598,11 +598,11 @@ Page 51516617 "Loan Top-Up Card-Posted"
                         GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
                         GenJournalLine."Account No." := LoanApps."Account No";
                         GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Document No." := "Document No";
+                        GenJournalLine."Document No." := Rec."Document No";
                         //GenJournalLine."External Document No.":=LoanApps."Loan Appealed Cheque Number";
-                        GenJournalLine."Posting Date" := "Posting Date";
+                        GenJournalLine."Posting Date" := Rec."Posting Date";
                         GenJournalLine.Description := 'UnWithdrawable Deposits Recovery';
-                        GenJournalLine.Amount := (("Top Up Amount" * 0.5) / 100);
+                        GenJournalLine.Amount := ((Rec."Top Up Amount" * 0.5) / 100);
                         GenJournalLine.Validate(GenJournalLine.Amount);
                         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
                         GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
@@ -617,13 +617,13 @@ Page 51516617 "Loan Top-Up Card-Posted"
                         GenJournalLine."Journal Batch Name" := JBatch;
                         GenJournalLine."Line No." := LineNo;
                         GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
-                        GenJournalLine."Account No." := "Member No";
+                        GenJournalLine."Account No." := Rec."Member No";
                         GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Document No." := "Document No";
+                        GenJournalLine."Document No." := Rec."Document No";
                         //GenJournalLine."External Document No.":=LoanApps."Loan Appealed Cheque Number";
-                        GenJournalLine."Posting Date" := "Posting Date";
+                        GenJournalLine."Posting Date" := Rec."Posting Date";
                         GenJournalLine.Description := 'UnWithdrawable Deposits';
-                        GenJournalLine.Amount := (("Top Up Amount" * 0.5) / 100) * -1;
+                        GenJournalLine.Amount := ((Rec."Top Up Amount" * 0.5) / 100) * -1;
                         GenJournalLine.Validate(GenJournalLine.Amount);
                         GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Deposit Contribution";
                         GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
@@ -641,11 +641,11 @@ Page 51516617 "Loan Top-Up Card-Posted"
                         GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
                         GenJournalLine."Account No." := LoanApps."Account No";
                         GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Document No." := "Document No";
+                        GenJournalLine."Document No." := Rec."Document No";
                         //GenJournalLine."External Document No.":=LoanApps."Loan Appealed Cheque Number";
-                        GenJournalLine."Posting Date" := "Posting Date";
+                        GenJournalLine."Posting Date" := Rec."Posting Date";
                         GenJournalLine.Description := 'Loan Insuarance';
-                        GenJournalLine.Amount := ("Top Up Amount" * 1.75) / 100;
+                        GenJournalLine.Amount := (Rec."Top Up Amount" * 1.75) / 100;
                         GenJournalLine.Validate(GenJournalLine.Amount);
                         GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"G/L Account";
                         GenJournalLine."Bal. Account No." := '5406';
@@ -665,11 +665,11 @@ Page 51516617 "Loan Top-Up Card-Posted"
                         GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
                         GenJournalLine."Account No." := LoanApps."Account No";
                         GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Document No." := "Document No";
+                        GenJournalLine."Document No." := Rec."Document No";
                         //GenJournalLine."External Document No.":=LoanApps."Loan Appealed Cheque Number";
-                        GenJournalLine."Posting Date" := "Posting Date";
+                        GenJournalLine."Posting Date" := Rec."Posting Date";
                         GenJournalLine.Description := 'Loan Form Fee';
-                        GenJournalLine.Amount := ("Top Up Amount" * 0.75) / 100;
+                        GenJournalLine.Amount := (Rec."Top Up Amount" * 0.75) / 100;
                         GenJournalLine.Validate(GenJournalLine.Amount);
                         GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"G/L Account";
                         GenJournalLine."Bal. Account No." := '5408';
@@ -712,7 +712,7 @@ Page 51516617 "Loan Top-Up Card-Posted"
                         DocumentType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","None",JV,"Member Closure","Account Opening",Batches,"Payment Voucher","Petty Cash",Requisition,Loan,Interbank,Imprest,Checkoff,"FOSA Account Opening",StandingOrder,HRJob,HRLeave,"HRTransport Request",HRTraining,"HREmp Requsition",MicroTrans,"Account Reactivation","Overdraft ",BLA,"Member Editable","FOSA Opening","Loan Batching",Leave,"Imprest Requisition","Imprest Surrender","Stores Requisition","Funds Transfer","Change Request","Staff Claims","BOSA Transfer","Loan Tranche","Loan TopUp","Memb Opening","Member Withdrawal";
                     begin
                         DocumentType := Documenttype::"Loan TopUp";
-                        ApprovalEntries.SetRecordFilters(Database::"Loan Top Up.", DocumentType, "Document No");
+                        ApprovalEntries.SetRecordFilters(Database::"Loan Top Up.", DocumentType, Rec."Document No");
                         ApprovalEntries.Run;
                     end;
                 }
@@ -731,8 +731,8 @@ Page 51516617 "Loan Top-Up Card-Posted"
                         ScheduleError: label 'Please View the Loan Schedule First';
                     begin
                         LoanSchedule.Reset;
-                        LoanSchedule.SetRange(LoanSchedule."Loan No.", "Loan No");
-                        LoanSchedule.SetRange(LoanSchedule."Top Up Code", "Document No");
+                        LoanSchedule.SetRange(LoanSchedule."Loan No.", Rec."Loan No");
+                        LoanSchedule.SetRange(LoanSchedule."Top Up Code", Rec."Document No");
                         if not LoanSchedule.FindFirst then begin
                             Error(ScheduleError);
                         end;
@@ -762,8 +762,8 @@ Page 51516617 "Loan Top-Up Card-Posted"
 
                     trigger OnAction()
                     begin
-                        Status := Status::Open;
-                        Modify;
+                        Rec.Status := Rec.Status::Open;
+                        Rec.Modify;
                     end;
                 }
             }
@@ -772,7 +772,7 @@ Page 51516617 "Loan Top-Up Card-Posted"
 
     trigger OnAfterGetRecord()
     begin
-        if Status <> Status::Open then
+        if Rec.Status <> Rec.Status::Open then
             ApprovedEditable := false
         else
             ApprovedEditable := true;
@@ -780,7 +780,7 @@ Page 51516617 "Loan Top-Up Card-Posted"
 
     trigger OnOpenPage()
     begin
-        if Status <> Status::Open then
+        if Rec.Status <> Rec.Status::Open then
             ApprovedEditable := false
         else
             ApprovedEditable := true;

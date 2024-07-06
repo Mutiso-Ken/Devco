@@ -17,36 +17,36 @@ Page 51516286 "Posted Member Withdrawal List"
         {
             repeater(Control1102755000)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member No."; "Member No.")
+                field("Member No."; Rec."Member No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Member Name"; "Member Name")
+                field("Member Name"; Rec."Member Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Closing Date"; "Closing Date")
+                field("Closing Date"; Rec."Closing Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Loan"; "Total Loan")
+                field("Total Loan"; Rec."Total Loan")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Interest"; "Total Interest")
+                field("Total Interest"; Rec."Total Interest")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member Deposits"; "Member Deposits")
+                field("Member Deposits"; Rec."Member Deposits")
                 {
                     ApplicationArea = Basic;
                 }
@@ -91,7 +91,7 @@ Page 51516286 "Posted Member Withdrawal List"
                         text001: label 'This batch is already pending approval';
                     //ApprovalMgt: Codeunit "Export F/O Consolidation";
                     begin
-                        if Status <> Status::Open then
+                        if Rec.Status <> Rec.Status::Open then
                             Error(text001);
 
                         //End allocate batch number
@@ -125,7 +125,7 @@ Page 51516286 "Posted Member Withdrawal List"
 
                     trigger OnAction()
                     begin
-                        if Cust.Get("Member No.") then begin
+                        if Cust.Get(Rec."Member No.") then begin
                             /*
                             IF Cust."Status - Withdrawal App." <> Cust."Status - Withdrawal App."::Approved THEN
                             ERROR('Withdrawal application must be approved before posting.');
@@ -162,12 +162,12 @@ Page 51516286 "Posted Member Withdrawal List"
                             Cust."Withdrawal Posted" := true;
                             Advice := true;
                             Cust."Last Advice Date" := Today;
-                            Modify;
+                            Rec.Modify;
 
                             TotalOustanding := (Cust."Outstanding Balance" + Cust."Accrued Interest");
 
                             Loans.Reset;
-                            Loans.SetRange(Loans."Client Code", "Member No.");
+                            Loans.SetRange(Loans."Client Code", Rec."Member No.");
                             Loans.SetRange(Loans.Source, Loans.Source::BOSA);
                             if Loans.Find('-') then begin
                                 repeat
@@ -186,7 +186,7 @@ Page 51516286 "Posted Member Withdrawal List"
                                             Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
                                             Gnljnline."Account No." := Cust."No.";
                                             Gnljnline.Validate(Gnljnline."Account No.");
-                                            Gnljnline."Document No." := 'LR-' + "No.";
+                                            Gnljnline."Document No." := 'LR-' + Rec."No.";
                                             Gnljnline."Posting Date" := Today;
                                             Gnljnline.Description := 'Interest Recovery from deposits';
                                             if AvailableShares < Interest then
@@ -214,7 +214,7 @@ Page 51516286 "Posted Member Withdrawal List"
                                                 Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
                                                 Gnljnline."Account No." := Cust."No.";
                                                 Gnljnline.Validate(Gnljnline."Account No.");
-                                                Gnljnline."Document No." := 'LR-' + "No.";
+                                                Gnljnline."Document No." := 'LR-' + Rec."No.";
                                                 Gnljnline."Posting Date" := Today;
                                                 Gnljnline.Description := 'Interest Recovery from deposits';
                                                 if AvailableShares < LRepayment then
@@ -248,7 +248,7 @@ Page 51516286 "Posted Member Withdrawal List"
                                 Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
                                 Gnljnline."Account No." := Cust."No.";
                                 Gnljnline.Validate(Gnljnline."Account No.");
-                                Gnljnline."Document No." := 'LR-' + "No.";
+                                Gnljnline."Document No." := 'LR-' + Rec."No.";
                                 Gnljnline."Posting Date" := Today;
                                 Gnljnline.Description := 'Withdrawal Fee';
                                 Gnljnline.Amount := -Generalsetup."Withdrawal Fee";
@@ -268,7 +268,7 @@ Page 51516286 "Posted Member Withdrawal List"
                             Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
                             Gnljnline."Account No." := Cust."No.";
                             Gnljnline.Validate(Gnljnline."Account No.");
-                            Gnljnline."Document No." := 'LR-' + "No.";
+                            Gnljnline."Document No." := 'LR-' + Rec."No.";
                             Gnljnline."Posting Date" := Today;
                             Gnljnline.Description := 'Deposit Refundable';
                             if Cust.Status = Cust.Status::Deceased then

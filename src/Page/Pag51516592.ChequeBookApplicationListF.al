@@ -18,52 +18,52 @@ Page 51516592 "Cheque Book Application List F"
         {
             repeater(Group)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No."; "Account No.")
+                field("Account No."; Rec."Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                     style = StrongAccent;
                 }
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field("Cheque Account No."; "Cheque Account No.")
+                field("Cheque Account No."; Rec."Cheque Account No.")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Staff No."; "Staff No.")
+                field("Staff No."; Rec."Staff No.")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Cheque Register Generated"; "Cheque Register Generated")
+                field("Cheque Register Generated"; Rec."Cheque Register Generated")
                 {
 
                 }
-                field("Cheque Book charges Posted"; "Cheque Book charges Posted")
+                field("Cheque Book charges Posted"; Rec."Cheque Book charges Posted")
                 {
 
                 }
-                field("Requested By"; "Requested By")
+                field("Requested By"; Rec."Requested By")
                 {
                     ApplicationArea = Basic;
                 }

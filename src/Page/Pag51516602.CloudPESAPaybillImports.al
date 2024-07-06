@@ -13,55 +13,55 @@ Page 51516602 "CloudPESA Paybill Imports"
         {
             repeater(Group)
             {
-                field("Receipt No.";"Receipt No.")
+                field("Receipt No."; Rec."Receipt No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Completion Time";"Completion Time")
+                field("Completion Time"; Rec."Completion Time")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Initiation Time";"Initiation Time")
+                field("Initiation Time"; Rec."Initiation Time")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Details;Details)
+                field(Details; Rec.Details)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Status";"Transaction Status")
+                field("Transaction Status"; Rec."Transaction Status")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Paid In";"Paid In")
+                field("Paid In"; Rec."Paid In")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Withdrawn;Withdrawn)
+                field(Withdrawn; Rec.Withdrawn)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Balance;Balance)
+                field(Balance; Rec.Balance)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Balance Confirmed";"Balance Confirmed")
+                field("Balance Confirmed"; Rec."Balance Confirmed")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Reason Type";"Reason Type")
+                field("Reason Type"; Rec."Reason Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Other Party Info";"Other Party Info")
+                field("Other Party Info"; Rec."Other Party Info")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Linked Transaction ID";"Linked Transaction ID")
+                field("Linked Transaction ID"; Rec."Linked Transaction ID")
                 {
                     ApplicationArea = Basic;
                 }
-                field("A/C No.";"A/C No.")
+                field("A/C No."; Rec."A/C No.")
                 {
                     ApplicationArea = Basic;
                 }
@@ -130,54 +130,54 @@ Page 51516602 "CloudPESA Paybill Imports"
                     LastDate: Date;
                 begin
                     PaybillBuffer.Reset;
-                    PaybillBuffer.SetRange(PaybillBuffer."Linked Transaction ID",'');
-                    if PaybillBuffer.Find('-')then begin
-                      repeat
-                        MPESAPAYBILL.Reset;
-                        MPESAPAYBILL.SetRange(MPESAPAYBILL."Document No", PaybillBuffer."Receipt No.");
-                        if MPESAPAYBILL.Find('-')=false then begin
+                    PaybillBuffer.SetRange(PaybillBuffer."Linked Transaction ID", '');
+                    if PaybillBuffer.Find('-') then begin
+                        repeat
+                            MPESAPAYBILL.Reset;
+                            MPESAPAYBILL.SetRange(MPESAPAYBILL."Document No", PaybillBuffer."Receipt No.");
+                            if MPESAPAYBILL.Find('-') = false then begin
 
-                       TextTosplit:=PaybillBuffer.Details;
-                        Part1 := SplitString(TextTosplit,'Acc.');
-                        stringAcc:=StrLen(Part1+'Acc.  ');
-                        Part2:=CopyStr(TextTosplit,stringAcc,100);
+                                TextTosplit := PaybillBuffer.Details;
+                                Part1 := SplitString(TextTosplit, 'Acc.');
+                                stringAcc := StrLen(Part1 + 'Acc.  ');
+                                Part2 := CopyStr(TextTosplit, stringAcc, 100);
 
-                        newString:=PaybillBuffer."Completion Time";
-                        newDate:=SplitString(newString,' ');
+                                newString := PaybillBuffer."Completion Time";
+                                newDate := SplitString(newString, ' ');
 
-                         finalDate:= DelChr(newDate,'=',DelChr(newDate,'=','1234567890'));
+                                finalDate := DelChr(newDate, '=', DelChr(newDate, '=', '1234567890'));
 
-                    //31082018
-                    //MESSAGE(finalDate);
-                         Evaluate(myDate,CopyStr(finalDate,1,2));
-                         Evaluate(myMonth,CopyStr(finalDate,3,2));
-                         Evaluate(myYear,CopyStr(finalDate,5,8));
+                                //31082018
+                                //MESSAGE(finalDate);
+                                Evaluate(myDate, CopyStr(finalDate, 1, 2));
+                                Evaluate(myMonth, CopyStr(finalDate, 3, 2));
+                                Evaluate(myYear, CopyStr(finalDate, 5, 8));
 
 
-                       LastDate:=Dmy2date(myDate,myMonth,myYear);
+                                LastDate := Dmy2date(myDate, myMonth, myYear);
 
-                    //ERROR('%1',LastDate);
+                                //ERROR('%1',LastDate);
 
-                        MPESAPAYBILL.Init;
-                        MPESAPAYBILL."Document No":=PaybillBuffer."Receipt No.";
-                        MPESAPAYBILL."Transaction Date":=LastDate;
-                        MPESAPAYBILL."Transaction Time":=Time;
-                        MPESAPAYBILL.Amount:=PaybillBuffer."Paid In";
-                        MPESAPAYBILL."Paybill Acc Balance":=PaybillBuffer.Balance;
-                        MPESAPAYBILL."Document Date":=Today;
-                        MPESAPAYBILL."Key Word":='C';
-                        MPESAPAYBILL."Account No":=Part2;
-                        MPESAPAYBILL."Account Name":=CopyStr(PaybillBuffer."Other Party Info",16,250);
-                        MPESAPAYBILL.Telephone:=CopyStr(PaybillBuffer."Other Party Info",1,12);
-                        MPESAPAYBILL.Description:='Paybill Deposit';
-                        MPESAPAYBILL.Insert;
+                                MPESAPAYBILL.Init;
+                                MPESAPAYBILL."Document No" := PaybillBuffer."Receipt No.";
+                                MPESAPAYBILL."Transaction Date" := LastDate;
+                                MPESAPAYBILL."Transaction Time" := Time;
+                                MPESAPAYBILL.Amount := PaybillBuffer."Paid In";
+                                MPESAPAYBILL."Paybill Acc Balance" := PaybillBuffer.Balance;
+                                MPESAPAYBILL."Document Date" := Today;
+                                MPESAPAYBILL."Key Word" := 'C';
+                                MPESAPAYBILL."Account No" := Part2;
+                                MPESAPAYBILL."Account Name" := CopyStr(PaybillBuffer."Other Party Info", 16, 250);
+                                MPESAPAYBILL.Telephone := CopyStr(PaybillBuffer."Other Party Info", 1, 12);
+                                MPESAPAYBILL.Description := 'Paybill Deposit';
+                                MPESAPAYBILL.Insert;
 
-                        end;
-                        until PaybillBuffer.Next=0;
+                            end;
+                        until PaybillBuffer.Next = 0;
 
-                    Message('Posted successfully');
-                    fnClearTble(PaybillBuffer);
-                      end;
+                        Message('Posted successfully');
+                        fnClearTble(PaybillBuffer);
+                    end;
                 end;
             }
         }
@@ -191,30 +191,30 @@ Page 51516602 "CloudPESA Paybill Imports"
     local procedure fnClearTble(Paybill: Record "CloudPESA Paybill Buffer")
     begin
         Paybill.Reset;
-        Paybill.SetRange(Paybill."Linked Transaction ID",'');
-        if Paybill.Find('-')then begin
-          repeat
-          Paybill.Delete;
+        Paybill.SetRange(Paybill."Linked Transaction ID", '');
+        if Paybill.Find('-') then begin
+            repeat
+                Paybill.Delete;
 
-          until Paybill.Next=0;
-          end;
+            until Paybill.Next = 0;
+        end;
     end;
 
-    local procedure SplitString(sText: Text;separator: Text) Token: Text
+    local procedure SplitString(sText: Text; separator: Text) Token: Text
     var
         Pos: Integer;
         Tokenq: Text;
     begin
-        Pos := StrPos(sText,separator);
+        Pos := StrPos(sText, separator);
         if Pos > 0 then begin
-          Token := CopyStr(sText,1,Pos-1);
-          if Pos+1 <= StrLen(sText) then
-            sText := CopyStr(sText,Pos+1)
-          else
-            sText := '';
+            Token := CopyStr(sText, 1, Pos - 1);
+            if Pos + 1 <= StrLen(sText) then
+                sText := CopyStr(sText, Pos + 1)
+            else
+                sText := '';
         end else begin
-          Token := sText;
-          sText := '';
+            Token := sText;
+            sText := '';
         end;
     end;
 }

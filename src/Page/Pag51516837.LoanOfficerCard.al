@@ -154,7 +154,7 @@
 //              DocumentNoEditable:=FALSE;
 //              FTransferLineEditable:=FALSE;
 //              END;
-        
+
 //              IF Status=Status::Pending THEN BEGIN
 //               ReasonEditable :=TRUE;
 //              "Transfer TypeEditable":=TRUE;
@@ -162,7 +162,7 @@
 //              DocumentNoEditable:=TRUE;
 //              FTransferLineEditable:=TRUE;
 //              END;
-        
+
 //              IF Status=Status::Cancelled THEN BEGIN
 //              ReasonEditable:=FALSE;
 //              "Transfer TypeEditable":=FALSE;

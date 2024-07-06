@@ -92,11 +92,11 @@ report 51516238 "Staff Salaries Report"
                 begin
 
 
-                      LoansTable.SetAutoCalcFields(LoansTable."Outstanding Balance", LoansTable."Oustanding Interest");
+                    LoansTable.SetAutoCalcFields(LoansTable."Outstanding Balance", LoansTable."Oustanding Interest");
                     //........................Setrange for date filter used
                     LoansTable.SetFilter(LoansTable."Date filter", DateFilterUsed);
                     if LoansTable.get(LoansRegister."Loan  No.") then begin
-                      
+
                         MemberNo := LoansTable."Client Code";
                         MemberName := LoansTable."Client Name";
                         LoanProductType := LoansTable."Loan Product Type";

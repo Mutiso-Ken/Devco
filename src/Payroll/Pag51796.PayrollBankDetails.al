@@ -11,35 +11,35 @@ page 51796 "Payroll Bank Details"
         {
             repeater(Group)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Bank Code"; "Bank Code")
+                field("Bank Code"; Rec."Bank Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Bank Name"; "Bank Name")
+                field("Bank Name"; Rec."Bank Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Branch Code"; "Branch Code")
+                field("Branch Code"; Rec."Branch Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Branch Name"; "Branch Name")
+                field("Branch Name"; Rec."Branch Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Bank Account No"; "Bank Account No")
+                field("Bank Account No"; Rec."Bank Account No")
                 {
                     ApplicationArea = All;
                 }
-                field("Bank Location"; "Bank Location")
+                field("Bank Location"; Rec."Bank Location")
                 {
                     ApplicationArea = All;
                 }
-                field("Payroll Period"; "Payroll Period")
+                field("Payroll Period"; Rec."Payroll Period")
                 {
                     ApplicationArea = All;
                 }

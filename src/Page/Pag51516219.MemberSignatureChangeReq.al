@@ -8,7 +8,7 @@ Page 51516219 "Member Signature-Change Req"
     {
         area(content)
         {
-            field("signinature(New Value)"; "signinature(New Value)")
+            field("signinature(New Value)"; Rec."signinature(New Value)")
             {
                 ApplicationArea = Basic, Suite;
                 Caption = 'New Signature';
@@ -52,7 +52,7 @@ Page 51516219 "Member Signature-Change Req"
                     ExportPath: Text;
                 //................................................................
                 begin
-                    TestField(rec.No);
+                    Rec.TestField(rec.No);
                     if Rec."signinature(New Value)".HasValue() then
                         if not Confirm(OverrideImageQst) then
                             exit;

@@ -10,13 +10,13 @@ pageextension 51516029 "Bank Acc. Reconciliation" extends "Bank Acc. Reconciliat
         addfirst(processing)
 
         {
-            
+
             action("Bank Acc. Recon. - Test")
             {
-                Caption='Bank Reconciliation Test Report';
+                Caption = 'Bank Reconciliation Test Report';
                 Promoted = true;
-                PromotedCategory=Process;
-                ApplicationArea=all;
+                PromotedCategory = Process;
+                ApplicationArea = all;
                 RunObject = report "Bank Acc. Recon. - Test";
             }
         }

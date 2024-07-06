@@ -20,52 +20,52 @@ Page 51516253 "Loans Posted List"
         {
             repeater(Control1000000000)
             {
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Product Type"; "Loan Product Type")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                    Style = StrongAccent;
-                }
-   field("Application Date"; "Application Date")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Expected Date of Completion"; "Expected Date of Completion")
-                {
-                    ApplicationArea = Basic;
-                }
-             
-                field("Client Name"; "Client Name")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Client Code"; "Client Code")
+                field("Application Date"; Rec."Application Date")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Expected Date of Completion"; Rec."Expected Date of Completion")
+                {
+                    ApplicationArea = Basic;
+                }
+
+                field("Client Name"; Rec."Client Name")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                    Style = StrongAccent;
+                }
+                field("Client Code"; Rec."Client Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
 
                 }
-                field("BOSA No"; "BOSA No")
+                field("BOSA No"; Rec."BOSA No")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Approved Amount"; "Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = Unfavorable;
                 }
 
-                field("Issued Date"; "Issued Date")
+                field("Issued Date"; Rec."Issued Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -73,124 +73,124 @@ Page 51516253 "Loans Posted List"
                 }
 
 
-                field(Repayment; Repayment)
+                field(Repayment; Rec.Repayment)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Principle Repayment"; "Loan Principle Repayment")
+                field("Loan Principle Repayment"; Rec."Loan Principle Repayment")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Interest Repayment"; "Loan Interest Repayment")
+                field("Loan Interest Repayment"; Rec."Loan Interest Repayment")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Requested Amount"; "Requested Amount")
+                field("Requested Amount"; Rec."Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     visible = false;
                 }
 
-                field("Outstanding Balance"; "Outstanding Balance")
+                field("Outstanding Balance"; Rec."Outstanding Balance")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = true;
                     Style = Ambiguous;
                 }
-                field("Loan Payments"; "Loan Payments")
+                field("Loan Payments"; Rec."Loan Payments")
                 {
                     ApplicationArea = all;
                     Editable = false;
                 }
-                field("Oustanding Interest"; "Oustanding Interest")
+                field("Oustanding Interest"; Rec."Oustanding Interest")
                 {
                     ApplicationArea = Basic;
                     Visible = true;
                     Style = Ambiguous;
                 }
 
-                field("Special Loan Amount"; "Special Loan Amount")
+                field("Special Loan Amount"; Rec."Special Loan Amount")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Other Commitments Clearance"; "Other Commitments Clearance")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                    Visible = false;
-                }
-                field("Commitements Offset"; "Commitements Offset")
+                field("Other Commitments Clearance"; Rec."Other Commitments Clearance")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field(Installments; Installments)
+                field("Commitements Offset"; Rec."Commitements Offset")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                    Visible = false;
+                }
+                field(Installments; Rec.Installments)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Installments';
                     Editable = false;
                 }
-                field(Interest; Interest)
+                field(Interest; Rec.Interest)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Status"; "Loan Status")
+                field("Loan Status"; Rec."Loan Status")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Last Pay Date"; "Last Pay Date")
+                field("Last Pay Date"; Rec."Last Pay Date")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Source; Source)
+                field(Source; Rec.Source)
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Recovery Mode"; "Recovery Mode")
+                field("Recovery Mode"; Rec."Recovery Mode")
                 {
                     ApplicationArea = Basic;
                     Style = StandardAccent;
                     Visible = false;
                 }
-                field("Loan Disbursement Date"; "Loan Disbursement Date")
+                field("Loan Disbursement Date"; Rec."Loan Disbursement Date")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Repayment Start Date"; "Repayment Start Date")
+                field("Repayment Start Date"; Rec."Repayment Start Date")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
 
-                field("Months in Arrears"; "No of Months in Arrears")
+                field("Months in Arrears"; Rec."No of Months in Arrears")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Principal In Arrears"; "Principal In Arrears")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("Interest In Arrears"; "Interest In Arrears")
+                field("Principal In Arrears"; Rec."Principal In Arrears")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Total Amount In Arrears"; "Amount in Arrears")
+                field("Interest In Arrears"; Rec."Interest In Arrears")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Total Amount In Arrears"; Rec."Amount in Arrears")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loans Status"; "Loans Category-SASRA")
+                field("Loans Status"; Rec."Loans Category-SASRA")
                 {
                     ApplicationArea = Basic;
                     Style = Attention;
@@ -222,7 +222,7 @@ Page 51516253 "Loans Posted List"
                     trigger OnAction()
                     begin
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", Rec."Loan  No.");
                         if LoanApp.Find('-') then begin
                             Report.Run(50039, true, false, LoanApp);
                         end;
@@ -238,7 +238,7 @@ Page 51516253 "Loans Posted List"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "Client Code");
+                        Cust.SetRange(Cust."No.", Rec."Client Code");
                         Report.Run(51516223, true, false, Cust);
                     end;
                 }
@@ -253,9 +253,9 @@ Page 51516253 "Loans Posted List"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "Client Code");
-                        Cust.SetFilter(Cust."Loan Product Filter", "Loan Product Type");
-                        Cust.SetFilter(Cust."Loan No. Filter", "Loan  No.");
+                        Cust.SetRange(Cust."No.", Rec."Client Code");
+                        Cust.SetFilter(Cust."Loan Product Filter", Rec."Loan Product Type");
+                        Cust.SetFilter(Cust."Loan No. Filter", Rec."Loan  No.");
                         Report.Run(51516227, true, false, Cust);
                     end;
                 }
@@ -271,7 +271,7 @@ Page 51516253 "Loans Posted List"
                     trigger OnAction()
                     begin
                         LoanApp.Reset();
-                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", Rec."Loan  No.");
                         if LoanApp.Find('-') then
                             repeat
                                 SFactory.FnGenerateRepaymentSchedule(LoanApp."Loan  No.");
@@ -298,7 +298,7 @@ Page 51516253 "Loans Posted List"
                     trigger OnAction()
                     begin
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", Rec."Loan  No.");
                         if LoanApp.Find('-') then begin
                             Report.Run(51516205, true, false, LoanApp);
                         end;
@@ -450,14 +450,14 @@ Page 51516253 "Loans Posted List"
 
     procedure GetVariables(var LoanNo: Code[20]; var LoanProductType: Code[20])
     begin
-        LoanNo := "Loan  No.";
-        LoanProductType := "Loan Product Type";
+        LoanNo := Rec."Loan  No.";
+        LoanProductType := Rec."Loan Product Type";
     end;
 
 
     procedure FormatField(Rec: Record "Loans Register") OK: Boolean
     begin
-        if "Outstanding Balance" > 0 then begin
+        if Rec."Outstanding Balance" > 0 then begin
             if (Rec."Expected Date of Completion" < Today) then
                 exit(true)
             else

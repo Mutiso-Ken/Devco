@@ -4,53 +4,53 @@ Table 51516440 "Investor Amounts"
 
     fields
     {
-        field(10;"Investor No";Code[20])
+        field(10; "Investor No"; Code[20])
         {
             Editable = false;
         }
-        field(11;"Interest Code";Code[20])
+        field(11; "Interest Code"; Code[20])
         {
             TableRelation = "Interest Rates".Code;
         }
-        field(12;"Investment Date";Date)
+        field(12; "Investment Date"; Date)
         {
         }
-        field(13;Amount;Decimal)
+        field(13; Amount; Decimal)
         {
 
             trigger OnValidate()
             begin
-                 "Amount(LCY)":=Amount;
+                "Amount(LCY)" := Amount;
             end;
         }
-        field(14;"Amount(LCY)";Decimal)
+        field(14; "Amount(LCY)"; Decimal)
         {
             Editable = false;
         }
-        field(15;"Closure Date";Date)
+        field(15; "Closure Date"; Date)
         {
             Editable = false;
         }
-        field(16;Description;Text[100])
+        field(16; Description; Text[100])
         {
             Editable = false;
         }
-        field(17;"Interest Due";Decimal)
+        field(17; "Interest Due"; Decimal)
         {
         }
-        field(18;"Interest Paid";Decimal)
-        {
-            Editable = false;
-        }
-        field(19;"Last Update Date";Date)
+        field(18; "Interest Paid"; Decimal)
         {
             Editable = false;
         }
-        field(20;"Last Update Time";Time)
+        field(19; "Last Update Date"; Date)
         {
             Editable = false;
         }
-        field(21;"Last Update User";Code[50])
+        field(20; "Last Update Time"; Time)
+        {
+            Editable = false;
+        }
+        field(21; "Last Update User"; Code[50])
         {
             Editable = false;
         }
@@ -58,7 +58,7 @@ Table 51516440 "Investor Amounts"
 
     keys
     {
-        key(Key1;"Investor No","Interest Code","Investment Date")
+        key(Key1; "Investor No", "Interest Code", "Investment Date")
         {
             Clustered = true;
         }

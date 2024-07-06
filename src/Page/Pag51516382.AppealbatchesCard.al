@@ -9,36 +9,36 @@ Page 51516382 "Appeal batches Card"
         {
             group(Control1000000015)
             {
-                field("Batch No."; "Batch No.")
+                field("Batch No."; Rec."Batch No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Source; Source)
+                field(Source; Rec.Source)
                 {
                     ApplicationArea = Basic;
                     Editable = SourceEditable;
                 }
-                field("Batch Type"; "Batch Type")
+                field("Batch Type"; Rec."Batch Type")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Description/Remarks"; "Description/Remarks")
+                field("Description/Remarks"; Rec."Description/Remarks")
                 {
                     ApplicationArea = Basic;
                     Editable = DescriptionEditable;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Mode Of Disbursement"; "Mode Of Disbursement")
+                field("Mode Of Disbursement"; Rec."Mode Of Disbursement")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document No."; "Document No.")
+                field("Document No."; Rec."Document No.")
                 {
                     ApplicationArea = Basic;
 
@@ -50,27 +50,27 @@ Page 51516382 "Appeal batches Card"
 
                     end;
                 }
-                field("Total Appeal Amount"; "Total Appeal Amount")
+                field("Total Appeal Amount"; Rec."Total Appeal Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Date"; "Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Posting Date';
                 }
-                field("Cheque No."; "Cheque No.")
+                field("Cheque No."; Rec."Cheque No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("BOSA Bank Account"; "BOSA Bank Account")
+                field("BOSA Bank Account"; Rec."BOSA Bank Account")
                 {
                     ApplicationArea = Basic;
                     Editable = PayingAccountEditable;
                     Enabled = false;
                 }
-                field(Location; Location)
+                field(Location; Rec.Location)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Current Location';
@@ -96,7 +96,7 @@ Page 51516382 "Appeal batches Card"
                     trigger OnAction()
                     begin
                         LoansBatch.Reset;
-                        LoansBatch.SetRange(LoansBatch."Batch No.", "Batch No.");
+                        LoansBatch.SetRange(LoansBatch."Batch No.", Rec."Batch No.");
                         if LoansBatch.Find('-') then begin
                             //IF LoansBatch."Mode Of Disbursement"=LoansBatch."Mode Of Disbursement"::"M-Pesa" THEN
                             //REPORT.RUN(39004266,TRUE,FALSE,LoansBatch)
@@ -117,7 +117,7 @@ Page 51516382 "Appeal batches Card"
                     begin
 
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Batch No.", "Batch No.");
+                        LoanApp.SetRange(LoanApp."Batch No.", Rec."Batch No.");
                         if LoanApp.Find('-') then begin
 
                             Xmlport.Run(39004244, true, false, LoanApp);
@@ -204,7 +204,7 @@ Page 51516382 "Appeal batches Card"
                         ApprovalEntries: Page "Approval Entries";
                     begin
                         DocumentType := Documenttype::Batches;
-                        ApprovalEntries.SetRecordFilters(Database::"Loan Disburesment-Batching", DocumentType, "Batch No.");
+                        ApprovalEntries.SetRecordFilters(Database::"Loan Disburesment-Batching", DocumentType, Rec."Batch No.");
                         ApprovalEntries.Run;
                     end;
                 }
@@ -394,7 +394,7 @@ Page 51516382 "Appeal batches Card"
 
     procedure UpdateControl()
     begin
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             DescriptionEditable := true;
             ModeofDisburementEditable := true;
             DocumentNoEditable := false;
@@ -405,7 +405,7 @@ Page 51516382 "Appeal batches Card"
 
         end;
 
-        if Status = Status::"Pending Approval" then begin
+        if Rec.Status = Rec.Status::"Pending Approval" then begin
             DescriptionEditable := false;
             ModeofDisburementEditable := false;
             DocumentNoEditable := false;
@@ -415,7 +415,7 @@ Page 51516382 "Appeal batches Card"
             ResponsibilityCenter := false;
         end;
 
-        if Status = Status::Rejected then begin
+        if Rec.Status = Rec.Status::Rejected then begin
             DescriptionEditable := false;
             ModeofDisburementEditable := false;
             DocumentNoEditable := false;
@@ -425,7 +425,7 @@ Page 51516382 "Appeal batches Card"
             ResponsibilityCenter := false;
         end;
 
-        if Status = Status::Approved then begin
+        if Rec.Status = Rec.Status::Approved then begin
             DescriptionEditable := false;
             ModeofDisburementEditable := false;
             DocumentNoEditable := true;

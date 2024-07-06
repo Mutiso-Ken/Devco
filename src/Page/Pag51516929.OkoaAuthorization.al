@@ -10,123 +10,123 @@ Page 51516929 "Okoa Authorization"
         {
             group(General)
             {
-                field("Over Draft No";"Over Draft No")
+                field("Over Draft No"; Rec."Over Draft No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Okoa No.';
                 }
-                field("Over Draft Payoff";"Over Draft Payoff")
+                field("Over Draft Payoff"; Rec."Over Draft Payoff")
                 {
                     ApplicationArea = Basic;
                     Caption = ' OKoa Payoff';
                 }
-                field("Account No";"Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Application date";"Application date")
+                field("Application date"; Rec."Application date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approved Date";"Approved Date")
+                field("Approved Date"; Rec."Approved Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Captured by";"Captured by")
+                field("Captured by"; Rec."Captured by")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Current Account No";"Current Account No")
+                field("Current Account No"; Rec."Current Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Outstanding Overdraft";"Outstanding Overdraft")
+                field("Outstanding Overdraft"; Rec."Outstanding Overdraft")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Outstanding Okoa';
                 }
-                field("Amount applied";"Amount applied")
+                field("Amount applied"; Rec."Amount applied")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Filter";"Date Filter")
+                field("Date Filter"; Rec."Date Filter")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID Number";"ID Number")
+                field("ID Number"; Rec."ID Number")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No";"Phone No")
+                field("Phone No"; Rec."Phone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Email Address";"Email Address")
+                field("Email Address"; Rec."Email Address")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted;Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("No. Series";"No. Series")
+                field("No. Series"; Rec."No. Series")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Overdraft Status";"Overdraft Status")
+                field("Overdraft Status"; Rec."Overdraft Status")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Okoa Status';
                 }
-                field("Approved Amount";"Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Authorisation Requirement";"Authorisation Requirement")
+                field("Authorisation Requirement"; Rec."Authorisation Requirement")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Supervisor Checked";"Supervisor Checked")
+                field("Supervisor Checked"; Rec."Supervisor Checked")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Posted";"Date Posted")
+                field("Date Posted"; Rec."Date Posted")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Time Posted";"Time Posted")
+                field("Time Posted"; Rec."Time Posted")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posted By";"Posted By")
+                field("Posted By"; Rec."Posted By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Entry NO";"Entry NO")
+                field("Entry NO"; Rec."Entry NO")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Authoriser Id";"Authoriser Id")
+                field("Authoriser Id"; Rec."Authoriser Id")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Recovered;Recovered)
+                field(Recovered; Rec.Recovered)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Recovered Amount";"Recovered Amount")
+                field("Recovered Amount"; Rec."Recovered Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Type";"Document Type")
+                field("Document Type"; Rec."Document Type")
                 {
                     ApplicationArea = Basic;
                 }

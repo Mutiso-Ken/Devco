@@ -13,7 +13,7 @@ Page 51516449 "FOSA Statistics"
         {
             group(General)
             {
-                field("Account Balance"; "Account Balance")
+                field("Account Balance"; Rec."Account Balance")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Book Balance';
@@ -22,28 +22,28 @@ Page 51516449 "FOSA Statistics"
                     StyleExpr = true;
                 }
 
-                field("Uncleared Cheques"; "Uncleared Cheques")
+                field("Uncleared Cheques"; Rec."Uncleared Cheques")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                     StyleExpr = true;
                 }
-                field("Outstanding Overdraft"; "Outstanding Overdraft")
+                field("Outstanding Overdraft"; Rec."Outstanding Overdraft")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                     StyleExpr = true;
                 }
-                field("Outstanding Okoa Biz"; "Outstanding okoa biashara")
+                field("Outstanding Okoa Biz"; Rec."Outstanding okoa biashara")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                     StyleExpr = true;
                 }
-                field("Outstanding FOSA Loan"; "Outstanding FOSA Loan")
+                field("Outstanding FOSA Loan"; Rec."Outstanding FOSA Loan")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -51,14 +51,14 @@ Page 51516449 "FOSA Statistics"
                     StyleExpr = true;
                     Caption = 'Outstanding FOSA Loans';
                 }
-                field("Outstanding FOSA Interest"; "Outstanding FOSA Interest")
+                field("Outstanding FOSA Interest"; Rec."Outstanding FOSA Interest")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                     StyleExpr = true;
                 }
-                field("Balance (LCY)"; "Balance (LCY)")
+                field("Balance (LCY)"; Rec."Balance (LCY)")
                 {
                     Caption = 'Book Balance';
                     ApplicationArea = Basic;
@@ -69,10 +69,10 @@ Page 51516449 "FOSA Statistics"
                         VendLedgEntry: Record "Vendor Ledger Entry";
                         DtldVendLedgEntry: Record "Detailed Vendor Ledg. Entry";
                     begin
-                        DtldVendLedgEntry.SetRange("Vendor No.", "No.");
-                        Copyfilter("Global Dimension 1 Filter", DtldVendLedgEntry."Initial Entry Global Dim. 1");
-                        Copyfilter("Global Dimension 2 Filter", DtldVendLedgEntry."Initial Entry Global Dim. 2");
-                        Copyfilter("Currency Filter", DtldVendLedgEntry."Currency Code");
+                        DtldVendLedgEntry.SetRange("Vendor No.", Rec."No.");
+                        Rec.Copyfilter("Global Dimension 1 Filter", DtldVendLedgEntry."Initial Entry Global Dim. 1");
+                        Rec.Copyfilter("Global Dimension 2 Filter", DtldVendLedgEntry."Initial Entry Global Dim. 2");
+                        Rec.Copyfilter("Currency Filter", DtldVendLedgEntry."Currency Code");
                         VendLedgEntry.DrillDownOnEntries(DtldVendLedgEntry);
                     end;
                 }
@@ -99,29 +99,29 @@ Page 51516449 "FOSA Statistics"
             DateFilterCalc.CreateFiscalYearFilter(VendDateFilter[3], VendDateName[3], CurrentDate, -1);
         end;
 
-        SetRange("Date Filter", 0D, CurrentDate);
+        Rec.SetRange("Date Filter", 0D, CurrentDate);
 
         for i := 1 to 4 do begin
-            SetFilter("Date Filter", VendDateFilter[i]);
-            CalcFields(
+            Rec.SetFilter("Date Filter", VendDateFilter[i]);
+            Rec.CalcFields(
               "Purchases (LCY)", "Inv. Discounts (LCY)", "Inv. Amounts (LCY)", "Pmt. Discounts (LCY)",
               "Pmt. Disc. Tolerance (LCY)", "Pmt. Tolerance (LCY)",
               "Fin. Charge Memo Amounts (LCY)", "Cr. Memo Amounts (LCY)", "Payments (LCY)",
               "Reminder Amounts (LCY)", "Refunds (LCY)", "Other Amounts (LCY)");
-            VendPurchLCY[i] := "Purchases (LCY)";
-            VendInvDiscAmountLCY[i] := "Inv. Discounts (LCY)";
-            InvAmountsLCY[i] := "Inv. Amounts (LCY)";
-            VendPaymentDiscLCY[i] := "Pmt. Discounts (LCY)";
-            VendPaymentDiscTolLCY[i] := "Pmt. Disc. Tolerance (LCY)";
-            VendPaymentTolLCY[i] := "Pmt. Tolerance (LCY)";
-            VendReminderChargeAmtLCY[i] := "Reminder Amounts (LCY)";
-            VendFinChargeAmtLCY[i] := "Fin. Charge Memo Amounts (LCY)";
-            VendCrMemoAmountsLCY[i] := "Cr. Memo Amounts (LCY)";
-            VendPaymentsLCY[i] := "Payments (LCY)";
-            VendRefundsLCY[i] := "Refunds (LCY)";
-            VendOtherAmountsLCY[i] := "Other Amounts (LCY)";
+            VendPurchLCY[i] := Rec."Purchases (LCY)";
+            VendInvDiscAmountLCY[i] := Rec."Inv. Discounts (LCY)";
+            InvAmountsLCY[i] := Rec."Inv. Amounts (LCY)";
+            VendPaymentDiscLCY[i] := Rec."Pmt. Discounts (LCY)";
+            VendPaymentDiscTolLCY[i] := Rec."Pmt. Disc. Tolerance (LCY)";
+            VendPaymentTolLCY[i] := Rec."Pmt. Tolerance (LCY)";
+            VendReminderChargeAmtLCY[i] := Rec."Reminder Amounts (LCY)";
+            VendFinChargeAmtLCY[i] := Rec."Fin. Charge Memo Amounts (LCY)";
+            VendCrMemoAmountsLCY[i] := Rec."Cr. Memo Amounts (LCY)";
+            VendPaymentsLCY[i] := Rec."Payments (LCY)";
+            VendRefundsLCY[i] := Rec."Refunds (LCY)";
+            VendOtherAmountsLCY[i] := Rec."Other Amounts (LCY)";
         end;
-        SetRange("Date Filter", 0D, CurrentDate);
+        Rec.SetRange("Date Filter", 0D, CurrentDate);
     end;
 
     var

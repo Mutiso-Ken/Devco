@@ -4,26 +4,26 @@ Table 51516261 "Deposit Tier Setup"
 
     fields
     {
-        field(1;"Code";Code[20])
+        field(1; "Code"; Code[20])
         {
         }
-        field(2;Description;Text[50])
+        field(2; Description; Text[50])
         {
         }
-        field(3;"Minimum Amount";Decimal)
+        field(3; "Minimum Amount"; Decimal)
         {
         }
-        field(4;"Maximum Amount";Decimal)
+        field(4; "Maximum Amount"; Decimal)
         {
         }
-        field(5;"Minimum Dep Contributions";Decimal)
+        field(5; "Minimum Dep Contributions"; Decimal)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Code")
+        key(Key1; "Code")
         {
             Clustered = true;
         }

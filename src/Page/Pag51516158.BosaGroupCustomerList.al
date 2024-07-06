@@ -3,13 +3,13 @@ page 51516158 "Bosa Group Customer List"
     ApplicationArea = All;
     Caption = 'Bosa Group Members List';
     PageType = List;
-    Editable=false; 
-    InsertAllowed=false;
-    CardPageId="Bosa Group Members";
+    Editable = false;
+    InsertAllowed = false;
+    CardPageId = "Bosa Group Members";
     SourceTable = "Bosa Customer Group Members";
     UsageCategory = Lists;
-    
-    
+
+
     layout
     {
         area(content)

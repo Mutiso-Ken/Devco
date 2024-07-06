@@ -5,37 +5,37 @@ pageextension 51516878 "CustomerLedgerEntriesPageExt" extends "Customer Ledger E
 
         addafter(Amount)
         {
-            field("DebitAmount"; "Debit Amount")
+            field("DebitAmount"; Rec."Debit Amount")
             {
                 ApplicationArea = Basic;
                 Caption = 'Debit Amount';
             }
-            field("CreditAmount"; "Credit Amount")
+            field("CreditAmount"; Rec."Credit Amount")
             {
                 ApplicationArea = Basic;
                 Caption = 'Credit Amount';
             }
-            field("Amount Posted"; "Amount Posted")
+            field("Amount Posted"; Rec."Amount Posted")
             {
                 ApplicationArea = Basic;
             }
-            field("Transaction Type"; "Transaction Type")
+            field("Transaction Type"; Rec."Transaction Type")
             {
                 ApplicationArea = Basic;
             }
-            field("Loan No"; "Loan No")
+            field("Loan No"; Rec."Loan No")
             {
                 ApplicationArea = Basic;
             }
-            field("Loan product Type"; "Loan product Type")
+            field("Loan product Type"; Rec."Loan product Type")
             {
                 ApplicationArea = Basic;
             }
-            field("Time Created"; "Time Created")
+            field("Time Created"; Rec."Time Created")
             {
                 ApplicationArea = Basic;
             }
-            field("UserID"; "User ID")
+            field("UserID"; Rec."User ID")
             {
                 ApplicationArea = Basic;
                 Caption = 'Posted By';

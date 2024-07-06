@@ -613,29 +613,27 @@ tableextension 51516050 "GenJournalLineExt" extends "Gen. Journal Line"
         First: Boolean;
     begin
         FirstDocNo := DocNo;
-        with GenJnlLine2 do begin
-            SetCurrentkey("Journal Template Name", "Journal Batch Name", "Document No.");
-            SetRange("Journal Template Name", "Journal Template Name");
-            SetRange("Journal Batch Name", "Journal Batch Name");
-            LastGenJnlLine.Init;
-            First := true;
-            if FindSet then begin
-                repeat
-                    if "Document No." = FirstDocNo then
-                        exit;
-                    if not First and ("Document No." <> PrevDocNo) and not LastGenJnlLine.EmptyLine then
-                        DocNo := IncStr(DocNo);
-                    PrevDocNo := "Document No.";
-                    if ("Applies-to ID" <> '') and ("Applies-to ID" = "Document No.") then
-                        RenumberAppliesToID(GenJnlLine2, "Document No.", DocNo);
-                    RenumberAppliesToDocNo(GenJnlLine2, "Document No.", DocNo);
-                    GenJnlLine3.Get("Journal Template Name", "Journal Batch Name", "Line No.");
-                    GenJnlLine3."Document No." := DocNo;
-                    GenJnlLine3.Modify;
-                    First := false;
-                    LastGenJnlLine := GenJnlLine2
-                until Next = 0
-            end
+        GenJnlLine2.SetCurrentkey("Journal Template Name", "Journal Batch Name", "Document No.");
+        GenJnlLine2.SetRange("Journal Template Name", GenJnlLine2."Journal Template Name");
+        GenJnlLine2.SetRange("Journal Batch Name", GenJnlLine2."Journal Batch Name");
+        LastGenJnlLine.Init;
+        First := true;
+        if GenJnlLine2.FindSet then begin
+            repeat
+                if GenJnlLine2."Document No." = FirstDocNo then
+                    exit;
+                if not First and (GenJnlLine2."Document No." <> PrevDocNo) and not LastGenJnlLine.EmptyLine then
+                    DocNo := IncStr(DocNo);
+                PrevDocNo := GenJnlLine2."Document No.";
+                if (GenJnlLine2."Applies-to ID" <> '') and (GenJnlLine2."Applies-to ID" = GenJnlLine2."Document No.") then
+                    GenJnlLine2.RenumberAppliesToID(GenJnlLine2, GenJnlLine2."Document No.", DocNo);
+                GenJnlLine2.RenumberAppliesToDocNo(GenJnlLine2, GenJnlLine2."Document No.", DocNo);
+                GenJnlLine3.Get(GenJnlLine2."Journal Template Name", GenJnlLine2."Journal Batch Name", GenJnlLine2."Line No.");
+                GenJnlLine3."Document No." := DocNo;
+                GenJnlLine3.Modify;
+                First := false;
+                LastGenJnlLine := GenJnlLine2
+            until GenJnlLine2.Next = 0
         end
     end;
 
@@ -925,7 +923,7 @@ tableextension 51516050 "GenJournalLineExt" extends "Gen. Journal Line"
         No[5] := No5;
         "Shortcut Dimension 1 Code" := '';
         "Shortcut Dimension 2 Code" := '';
-       // "Dimension Set ID" :=
+        // "Dimension Set ID" :=
         //   DimMgt.GetDefaultDimID(
         //     TableID, No, "Source Code", "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code", 0, 0);
     end;
@@ -1986,15 +1984,13 @@ tableextension 51516050 "GenJournalLineExt" extends "Gen. Journal Line"
         OldFilterGroup: Integer;
         HasExportedLines: Boolean;
     begin
-        with GenJnlLine do begin
-            CopyFilters(Rec);
-            OldFilterGroup := FilterGroup;
-            FilterGroup := 10;
-            SetRange("Exported to Payment File", true);
-            HasExportedLines := not IsEmpty;
-            SetRange("Exported to Payment File");
-            FilterGroup := OldFilterGroup;
-        end;
+        GenJnlLine.CopyFilters(Rec);
+        OldFilterGroup := GenJnlLine.FilterGroup;
+        GenJnlLine.FilterGroup := 10;
+        GenJnlLine.SetRange("Exported to Payment File", true);
+        HasExportedLines := not GenJnlLine.IsEmpty;
+        GenJnlLine.SetRange("Exported to Payment File");
+        GenJnlLine.FilterGroup := OldFilterGroup;
         exit(HasExportedLines);
     end;
 

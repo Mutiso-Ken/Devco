@@ -6,20 +6,20 @@ Table 51516504 "Cheque Set Up"
 
     fields
     {
-        field(1;"Cheque Code";Code[30])
+        field(1; "Cheque Code"; Code[30])
         {
         }
-        field(2;"Number Of Leaf";Code[20])
+        field(2; "Number Of Leaf"; Code[20])
         {
         }
-        field(3;Amount;Decimal)
+        field(3; Amount; Decimal)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Cheque Code")
+        key(Key1; "Cheque Code")
         {
             Clustered = true;
         }
@@ -27,7 +27,7 @@ Table 51516504 "Cheque Set Up"
 
     fieldgroups
     {
-        fieldgroup(DropDown;"Cheque Code","Number Of Leaf",Amount)
+        fieldgroup(DropDown; "Cheque Code", "Number Of Leaf", Amount)
         {
         }
     }

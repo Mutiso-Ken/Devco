@@ -4,7 +4,7 @@ Page 51516317 "Banks"
     // Editable = false;
     PageType = Card;
     SourceTable = Banks;
-    
+
 
     layout
     {
@@ -16,11 +16,11 @@ Page 51516317 "Banks"
                 // {
                 //     ApplicationArea = Basic;
                 // }
-                     field("Bank Code";"Bank Code")
+                field("Bank Code"; Rec."Bank Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Name";"Bank Name")
+                field("Bank Name"; Rec."Bank Name")
                 {
                     ApplicationArea = Basic;
                 }
@@ -28,7 +28,7 @@ Page 51516317 "Banks"
                 // {
                 //     ApplicationArea = Basic;
                 // }
-           
+
             }
         }
     }

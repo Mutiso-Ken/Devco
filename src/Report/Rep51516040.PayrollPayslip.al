@@ -663,7 +663,7 @@
 //                     Trans[ColumnNo, Index] := 'N.H.I.F No:';
 //                     Evaluate(TransAmt[ColumnNo, Index], Format(strNhifNo));
 
-                    
+
 //                     Index += 1;
 //                     Trans[ColumnNo, Index] := 'PIN No';
 //                     Evaluate(TransAmt[ColumnNo, Index], Format(strPin));
@@ -671,7 +671,7 @@
 //                     Trans[ColumnNo, Index] := '......................................';
 //                     Evaluate(TransAmt[ColumnNo, Index], '......................................');
 
-                    
+
 
 //                     if (RecordNo = NoOfRecords) and (ColumnNo < 3) then begin
 //                         for i := ColumnNo + 1 to NoOfColumns do begin
@@ -693,7 +693,7 @@
 //                 begin
 //                     NoOfRecords := Count;
 //                     NoOfColumns := 1;
-                   
+
 
 //                     strNssfNo := '.';
 //                     strNhifNo := '.';

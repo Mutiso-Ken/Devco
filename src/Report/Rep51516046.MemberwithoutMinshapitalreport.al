@@ -52,7 +52,7 @@ report 51516046 "MemberwithoutMinshapitalreport"
                 // Sharecapital := "Current Shares";
                 If Sharecapital > Gensetup."Retained Shares" then
                     CurrReport.Skip();
-                
+
             end;
 
         }

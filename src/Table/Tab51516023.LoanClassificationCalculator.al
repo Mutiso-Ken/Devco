@@ -24,7 +24,7 @@ Table 51516023 "Loan Classification Calculator"
         field(7; "SASRA Loan Category"; ENUM LoansCategorySASRA)
         {
         }
-        field(8; "Client Code";Code[50])
+        field(8; "Client Code"; Code[50])
         {
         }
     }

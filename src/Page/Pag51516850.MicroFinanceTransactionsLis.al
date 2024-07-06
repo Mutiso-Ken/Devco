@@ -17,51 +17,51 @@ Page 51516850 "Micro_Finance_Transactions Lis"
         {
             repeater(Group)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Date"; "Transaction Date")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Group Name"; "Group Name")
+                field("Group Name"; Rec."Group Name")
                 {
                     Style = StrongAccent;
                 }
-                field("Group Code"; "Group Code")
+                field("Group Code"; Rec."Group Code")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
                 }
-                field(Posted; Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Total Amount"; "Total Amount")
+                field("Total Amount"; Rec."Total Amount")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Transaction Time"; "Transaction Time")
+                field("Transaction Time"; Rec."Transaction Time")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posted By"; "Posted By")
+                field("Posted By"; Rec."Posted By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Activity Code"; "Activity Code")
+                field("Activity Code"; Rec."Activity Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
@@ -75,8 +75,8 @@ Page 51516850 "Micro_Finance_Transactions Lis"
     }
     trigger OnOpenPage()
     begin
-        SetRange("Posted By", UserId);
-        Ascending(false)
+        Rec.SetRange("Posted By", UserId);
+        Rec.Ascending(false)
     end;
 }
 

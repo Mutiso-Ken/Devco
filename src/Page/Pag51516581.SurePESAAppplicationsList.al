@@ -6,7 +6,7 @@ Page 51516581 "SurePESA Appplications List"
     Editable = false;
     PageType = List;
     SourceTable = "SurePESA Applications";
-    SourceTableView= sorting("No.")order(descending);
+    SourceTableView = sorting("No.") order(descending);
     UsageCategory = Lists;
 
     layout
@@ -15,54 +15,54 @@ Page 51516581 "SurePESA Appplications List"
         {
             repeater(Group)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Applied"; "Date Applied")
+                field("Date Applied"; Rec."Date Applied")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Account Name"; "Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Telephone; Telephone)
-                {
-                    ApplicationArea = Basic;
-
-                }
-                field("ID No"; "ID No")
+                field(Telephone; Rec.Telephone)
                 {
                     ApplicationArea = Basic;
 
                 }
-                field(Status; Status)
-                {
-                    ApplicationArea = Basic;
-                }
-
-                field("Created By"; "Created By")
+                field("ID No"; Rec."ID No")
                 {
                     ApplicationArea = Basic;
 
                 }
-                field(Sent; Sent)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Time Applied"; "Time Applied")
+                field("Created By"; Rec."Created By")
+                {
+                    ApplicationArea = Basic;
+
+                }
+                field(Sent; Rec.Sent)
                 {
                     ApplicationArea = Basic;
                 }
-                field("No. Series"; "No. Series")
+
+                field("Time Applied"; Rec."Time Applied")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("No. Series"; Rec."No. Series")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
@@ -91,6 +91,6 @@ Page 51516581 "SurePESA Appplications List"
         }
     }
 
- 
+
 }
 

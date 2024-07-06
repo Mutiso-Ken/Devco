@@ -12,22 +12,22 @@ Page 51516570 "Cheque Receipt Line-Family"
         {
             repeater(Group)
             {
-                field("Header No"; "Header No")
+                field("Header No"; Rec."Header No")
                 {
                     ApplicationArea = Basic;
                     editable = false;
                 }
-                field("Cheque Serial No"; "Cheque Serial No")
+                field("Cheque Serial No"; Rec."Cheque Serial No")
                 {
                     ApplicationArea = Basic;
                     editable = false;
                 }
-                field("Cheque No"; "Cheque No")
+                field("Cheque No"; Rec."Cheque No")
                 {
                     ApplicationArea = Basic;
                     editable = false;
                 }
-                field("Account No."; "Account No.")
+                field("Account No."; Rec."Account No.")
                 {
                     ApplicationArea = Basic;
                     //editable = false;
@@ -35,126 +35,126 @@ Page 51516570 "Cheque Receipt Line-Family"
                     var
                         cust: record Vendor;
                     begin
-                        if cust.get("Account No.") then begin
+                        if cust.get(Rec."Account No.") then begin
                             cust.CalcFields(cust."FOSA Balance");
-                            "Account Name" := cust.Name;
-                            "Account Balance" := cust."FOSA Balance";
+                            Rec."Account Name" := cust.Name;
+                            Rec."Account Balance" := cust."FOSA Balance";
                         end;
                     end;
                 }
-                field("Account Name"; "Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                     editable = false;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                     editable = false;
                 }
-                field("Account Balance"; "Account Balance")
+                field("Account Balance"; Rec."Account Balance")
                 {
                     ApplicationArea = Basic;
                     style = Unfavorable;
                     editable = false;
                 }
-                field("Un pay Code"; "Un pay Code")
+                field("Un pay Code"; Rec."Un pay Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Interpretation; Interpretation)
+                field(Interpretation; Rec.Interpretation)
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Verification Status"; "Verification Status")
+                field("Verification Status"; Rec."Verification Status")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field(FrontImage; FrontImage)
+                field(FrontImage; Rec.FrontImage)
                 {
                     ApplicationArea = Basic;
                     editable = false;
                 }
-                field(FrontGrayImage; FrontGrayImage)
+                field(FrontGrayImage; Rec.FrontGrayImage)
                 {
                     ApplicationArea = Basic;
                     editable = false;
                 }
-                field(BackImages; BackImages)
+                field(BackImages; Rec.BackImages)
                 {
                     ApplicationArea = Basic;
                     editable = false;
                 }
-                field("Family Account No."; "Family Account No.")
+                field("Family Account No."; Rec."Family Account No.")
                 {
                     ApplicationArea = Basic;
                     editable = false;
                 }
-                field("Un Pay Charge Amount"; "Un Pay Charge Amount")
+                field("Un Pay Charge Amount"; Rec."Un Pay Charge Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date _Refference No."; "Date _Refference No.")
+                field("Date _Refference No."; Rec."Date _Refference No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Transaction Code"; "Transaction Code")
+                field("Transaction Code"; Rec."Transaction Code")
                 {
                     ApplicationArea = Basic;
                     editable = false;
                 }
-                field("Branch Code"; "Branch Code")
+                field("Branch Code"; Rec."Branch Code")
                 {
                     ApplicationArea = Basic;
                     editable = false;
                 }
-                field("Date-1"; "Date-1")
+                field("Date-1"; Rec."Date-1")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Date-2"; "Date-2")
+                field("Date-2"; Rec."Date-2")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Family Routing No."; "Family Routing No.")
+                field("Family Routing No."; Rec."Family Routing No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Fillers; Fillers)
+                field(Fillers; Rec.Fillers)
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Transaction Refference"; "Transaction Refference")
+                field("Transaction Refference"; Rec."Transaction Refference")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Unpay Date"; "Unpay Date")
+                field("Unpay Date"; Rec."Unpay Date")
                 {
                     ApplicationArea = Basic;
                     editable = false;
                 }
 
-                field("Transaction Date"; "Transaction Date")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
                     editable = false;
                 }
-                field("Member Branch"; "Member Branch")
+                field("Member Branch"; Rec."Member Branch")
                 {
                     ApplicationArea = Basic;
                     editable = false;

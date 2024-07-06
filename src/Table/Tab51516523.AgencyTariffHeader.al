@@ -4,17 +4,17 @@ Table 51516523 "Agency Tariff Header"
 
     fields
     {
-        field(1;"Code";Code[20])
+        field(1; "Code"; Code[20])
         {
             Description = 'Agent Tariff Code';
         }
-        field(2;"Trans Type";Option)
+        field(2; "Trans Type"; Option)
         {
             Description = 'Transaction Type';
             OptionCaption = ',Registration,Withdrawal,Deposit,LoanRepayment,Transfer,Sharedeposit,Schoolfeespayment,Balance,Ministatment,Paybill,Memberactivation,MemberRegistration';
             OptionMembers = ,Registration,Withdrawal,Deposit,LoanRepayment,Transfer,Sharedeposit,Schoolfeespayment,Balance,Ministatment,Paybill,Memberactivation,MemberRegistration;
         }
-        field(3;Description;Text[200])
+        field(3; Description; Text[200])
         {
             Description = 'Description';
         }
@@ -22,7 +22,7 @@ Table 51516523 "Agency Tariff Header"
 
     keys
     {
-        key(Key1;"Code")
+        key(Key1; "Code")
         {
             Clustered = true;
         }

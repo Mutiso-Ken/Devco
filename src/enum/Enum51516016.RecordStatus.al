@@ -1,7 +1,7 @@
 enum 51516016 "Record Status"
 {
     Extensible = true;
-    
+
     value(0; Open)
     {
         Caption = 'Open';

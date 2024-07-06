@@ -5,7 +5,7 @@ page 51516143 "Share Capital Trading Posted"
     Caption = 'Share Capital Trading List Posted';
     PageType = List;
     SourceTable = SharecapitalTrading;
-    CardPageId="share Capital Card";
+    CardPageId = "share Capital Card";
     UsageCategory = Administration;
     SourceTableView = where(Posted = const(true));
 
@@ -23,7 +23,7 @@ page 51516143 "Share Capital Trading Posted"
                 {
                     ToolTip = 'Specifies the value of the Name of Seller field.';
                 }
-                field("Seller Share Balance";"Seller Share Balance")
+                field("Seller Share Balance"; Rec."Seller Share Balance")
                 {
                     ToolTip = 'Specifies the value of the Share Balance field.';
                 }
@@ -47,7 +47,7 @@ page 51516143 "Share Capital Trading Posted"
                 {
                     ToolTip = 'Specifies the value of the Buyer Name field.';
                 }
-                field("Buyer Shares Balance";"Buyer Shares Balance")
+                field("Buyer Shares Balance"; Rec."Buyer Shares Balance")
                 {
                     ToolTip = 'Specifies the value of the Buyer Shares Amount field.';
                 }

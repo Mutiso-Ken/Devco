@@ -5,7 +5,7 @@ page 51516441 "Funds Transaction Types"
     PageType = List;
     SourceTable = "Funds Transaction Types";
     UsageCategory = Administration;
-    
+
     layout
     {
         area(content)

@@ -4,49 +4,49 @@ Table 51516296 "Account Notices"
 
     fields
     {
-        field(1;"Account Type";Code[20])
+        field(1; "Account Type"; Code[20])
         {
             NotBlank = true;
-           // TableRelation = Table51516206.Field1;
+            // TableRelation = Table51516206.Field1;
         }
-        field(2;"Code";Code[20])
+        field(2; "Code"; Code[20])
         {
             NotBlank = false;
         }
-        field(3;Description;Text[100])
+        field(3; Description; Text[100])
         {
         }
-        field(4;Duration;DateFormula)
+        field(4; Duration; DateFormula)
         {
         }
-        field(5;Penalty;Decimal)
+        field(5; Penalty; Decimal)
         {
         }
-        field(6;Type;Option)
+        field(6; Type; Option)
         {
             OptionMembers = Other,"Limit Withdrawal","Account Closure";
         }
-        field(7;"GL Account";Code[20])
+        field(7; "GL Account"; Code[20])
         {
             TableRelation = "G/L Account";
         }
-        field(8;"Percentage Of Amount";Decimal)
+        field(8; "Percentage Of Amount"; Decimal)
         {
         }
-        field(9;"Use Percentage";Boolean)
+        field(9; "Use Percentage"; Boolean)
         {
         }
-        field(10;Minimum;Decimal)
+        field(10; Minimum; Decimal)
         {
         }
-        field(11;Maximum;Decimal)
+        field(11; Maximum; Decimal)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Account Type","Code")
+        key(Key1; "Account Type", "Code")
         {
             Clustered = true;
         }

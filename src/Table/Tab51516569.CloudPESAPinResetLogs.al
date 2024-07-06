@@ -5,7 +5,7 @@ Table 51516569 "CloudPESA Pin Reset Logs"
 
     fields
     {
-        field(1;"Entry No";Integer)
+        field(1; "Entry No"; Integer)
         {
             AutoIncrement = true;
 
@@ -18,50 +18,50 @@ Table 51516569 "CloudPESA Pin Reset Logs"
                 // END;
             end;
         }
-        field(2;No;Code[20])
+        field(2; No; Code[20])
         {
         }
-        field(3;"Account No";Code[30])
+        field(3; "Account No"; Code[30])
         {
             TableRelation = Vendor."No.";
         }
-        field(4;"Account Name";Text[50])
+        field(4; "Account Name"; Text[50])
         {
         }
-        field(5;Telephone;Code[20])
+        field(5; Telephone; Code[20])
         {
         }
-        field(6;"ID No";Code[20])
+        field(6; "ID No"; Code[20])
         {
         }
-        field(8;Date;DateTime)
+        field(8; Date; DateTime)
         {
         }
-        field(9;Sent;Boolean)
+        field(9; Sent; Boolean)
         {
         }
-        field(10;"No. Series";Code[20])
+        field(10; "No. Series"; Code[20])
         {
         }
-        field(12;Branch;Code[20])
+        field(12; Branch; Code[20])
         {
-            TableRelation = "Dimension Value".Code where ("Global Dimension No."=const(2));
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(2));
         }
-        field(13;"Last PIN Reset";DateTime)
+        field(13; "Last PIN Reset"; DateTime)
         {
         }
-        field(14;"Reset By";Text[50])
+        field(14; "Reset By"; Text[50])
         {
         }
     }
 
     keys
     {
-        key(Key1;"Entry No")
+        key(Key1; "Entry No")
         {
             Clustered = true;
         }
-        key(Key2;"Last PIN Reset")
+        key(Key2; "Last PIN Reset")
         {
         }
     }

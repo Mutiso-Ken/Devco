@@ -11,86 +11,86 @@ Page 50313 "Over Draft Authorisation"
         {
             group(General)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account No."; "Account No.")
+                field("Account No."; Rec."Account No.")
                 {
                     ApplicationArea = Basic;
                     Editable = AccNo;
                 }
-                field("Account Name"; "Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Requested Amount"; "Requested Amount")
+                field("Requested Amount"; Rec."Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = ReqAmount;
                 }
-                field("Approved Amount"; "Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = AppAmount;
                 }
-                field("Overdraft Interest %"; "Overdraft Interest %")
+                field("Overdraft Interest %"; Rec."Overdraft Interest %")
                 {
                     ApplicationArea = Basic;
                     Editable = ODInt;
                 }
-                field("Effective/Start Date"; "Effective/Start Date")
+                field("Effective/Start Date"; Rec."Effective/Start Date")
                 {
                     ApplicationArea = Basic;
                     Editable = EstartDate;
                 }
-                field(Duration; Duration)
+                field(Duration; Rec.Duration)
                 {
                     ApplicationArea = Basic;
                     Editable = Durationn;
                 }
-                field("Expiry Date"; "Expiry Date")
+                field("Expiry Date"; Rec."Expiry Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Remarks; Remarks)
+                field(Remarks; Rec.Remarks)
                 {
                     ApplicationArea = Basic;
                     Editable = Remmarks;
                 }
-                field("Overdraft Fee"; "Overdraft Fee")
+                field("Overdraft Fee"; Rec."Overdraft Fee")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Transacting Branch"; "Transacting Branch")
+                field("Transacting Branch"; Rec."Transacting Branch")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Created By"; "Created By")
+                field("Created By"; Rec."Created By")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Expired; Expired)
+                field(Expired; Rec.Expired)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Liquidated; Liquidated)
+                field(Liquidated; Rec.Liquidated)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Liquidated"; "Date Liquidated")
+                field("Date Liquidated"; Rec."Date Liquidated")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Liquidated By"; "Liquidated By")
+                field("Liquidated By"; Rec."Liquidated By")
                 {
                     ApplicationArea = Basic;
                 }
@@ -133,7 +133,7 @@ Page 50313 "Over Draft Authorisation"
                         ApprovalEntries: Page "Approval Entries";
                     begin
                         DocumentType := Documenttype::Overdraft;
-                        ApprovalEntries.SetRecordFilters(Database::"Over Draft Authorisation", DocumentType, "No.");
+                        ApprovalEntries.SetRecordFilters(Database::"Over Draft Authorisation", DocumentType, Rec."No.");
                         ApprovalEntries.Run;
                     end;
                 }
@@ -150,19 +150,19 @@ Page 50313 "Over Draft Authorisation"
                         text001: label 'This batch is already pending approval';
                     // ApprovalMgt: Codeunit "Export F/O Consolidation";
                     begin
-                        if Status <> Status::Open then
+                        if Rec.Status <> Rec.Status::Open then
                             Error(text001);
 
-                        TestField("Account No.");
-                        TestField("Effective/Start Date");
-                        TestField(Duration);
-                        TestField("Expiry Date");
-                        TestField("Requested Amount");
-                        TestField("Approved Amount");
-                        TestField("Overdraft Interest %");
+                        Rec.TestField("Account No.");
+                        Rec.TestField("Effective/Start Date");
+                        Rec.TestField(Duration);
+                        Rec.TestField("Expiry Date");
+                        Rec.TestField("Requested Amount");
+                        Rec.TestField("Approved Amount");
+                        Rec.TestField("Overdraft Interest %");
 
-                        Status := Status::Approved;
-                        Modify;
+                        Rec.Status := Rec.Status::Approved;
+                        Rec.Modify;
                         Message('Application Approved Sucessfuly');
                         //End allocate batch number
                         // IF ApprovalMgt.SendOverdraftApprovalRequest(Rec) THEN;
@@ -181,7 +181,7 @@ Page 50313 "Over Draft Authorisation"
                         text001: label 'This batch is already pending approval';
                     //  ApprovalMgt: Codeunit "Export F/O Consolidation";
                     begin
-                        if Status <> Status::Open then
+                        if Rec.Status <> Rec.Status::Open then
                             Error(text001);
 
 
@@ -197,19 +197,19 @@ Page 50313 "Over Draft Authorisation"
                     trigger OnAction()
                     begin
 
-                        if Posted = true then
+                        if Rec.Posted = true then
                             Error('This Overdraft has already been issued');
 
-                        if Status <> Status::Approved then
+                        if Rec.Status <> Rec.Status::Approved then
                             Error('You cannot post an application being processed.');
 
-                        TestField("Account No.");
-                        TestField("Effective/Start Date");
-                        TestField(Duration);
-                        TestField("Expiry Date");
-                        TestField("Requested Amount");
-                        TestField("Approved Amount");
-                        TestField("Overdraft Interest %");
+                        Rec.TestField("Account No.");
+                        Rec.TestField("Effective/Start Date");
+                        Rec.TestField(Duration);
+                        Rec.TestField("Expiry Date");
+                        Rec.TestField("Requested Amount");
+                        Rec.TestField("Approved Amount");
+                        Rec.TestField("Overdraft Interest %");
 
 
                         if Confirm('Are you sure you want to authorise this overdraft? This will charge overdraft issue fee.', false) = false then
@@ -217,7 +217,7 @@ Page 50313 "Over Draft Authorisation"
 
                         //Overdraft Issue Fee
                         AccountTypes.Reset;
-                        AccountTypes.SetRange(AccountTypes.Code, "Account Type");
+                        AccountTypes.SetRange(AccountTypes.Code, Rec."Account Type");
                         if AccountTypes.Find('-') then begin
 
                             /*
@@ -236,7 +236,7 @@ Page 50313 "Over Draft Authorisation"
                             end;
 
 
-                            if "Overdraft Fee" > 0 then begin
+                            if Rec."Overdraft Fee" > 0 then begin
                                 AccountTypes.TestField("Over Draft Issue Charge %");
 
                                 GenJournalLine.Reset;
@@ -251,15 +251,15 @@ Page 50313 "Over Draft Authorisation"
                                 GenJournalLine."Journal Template Name" := 'PURCHASES';
                                 GenJournalLine."Journal Batch Name" := 'FTRANS';
                                 GenJournalLine."Line No." := LineNo;
-                                GenJournalLine."Document No." := "No.";
+                                GenJournalLine."Document No." := Rec."No.";
                                 GenJournalLine."Posting Date" := Today;
-                                GenJournalLine."External Document No." := "No.";
+                                GenJournalLine."External Document No." := Rec."No.";
                                 GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-                                GenJournalLine."Account No." := "Account No.";
+                                GenJournalLine."Account No." := Rec."Account No.";
                                 GenJournalLine.Validate(GenJournalLine."Account No.");
                                 GenJournalLine.Description := 'Overdraft Issue Charges';
                                 GenJournalLine.Validate(GenJournalLine."Currency Code");
-                                GenJournalLine.Amount := "Overdraft Fee";
+                                GenJournalLine.Amount := Rec."Overdraft Fee";
                                 GenJournalLine.Validate(GenJournalLine.Amount);
                                 if GenJournalLine.Amount <> 0 then
                                     GenJournalLine.Insert;
@@ -271,15 +271,15 @@ Page 50313 "Over Draft Authorisation"
                                 GenJournalLine."Journal Template Name" := 'PURCHASES';
                                 GenJournalLine."Journal Batch Name" := 'FTRANS';
                                 GenJournalLine."Line No." := LineNo;
-                                GenJournalLine."Document No." := "No.";
+                                GenJournalLine."Document No." := Rec."No.";
                                 GenJournalLine."Posting Date" := Today;
-                                GenJournalLine."External Document No." := "No.";
+                                GenJournalLine."External Document No." := Rec."No.";
                                 GenJournalLine."Account Type" := GenJournalLine."bal. account type"::"G/L Account";
                                 GenJournalLine."Account No." := AccountTypes."Over Draft Issue Charge A/C";
                                 GenJournalLine.Validate(GenJournalLine."Account No.");
-                                GenJournalLine.Description := "Account Name";
+                                GenJournalLine.Description := Rec."Account Name";
                                 GenJournalLine.Validate(GenJournalLine."Currency Code");
-                                GenJournalLine.Amount := -"Overdraft Fee";
+                                GenJournalLine.Amount := -Rec."Overdraft Fee";
                                 GenJournalLine.Validate(GenJournalLine.Amount);
                                 GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
                                 GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
@@ -303,8 +303,8 @@ Page 50313 "Over Draft Authorisation"
                         end;
                         //Overdraft Fee
 
-                        Posted := true;
-                        Modify;
+                        Rec.Posted := true;
+                        Rec.Modify;
 
                         Message('Overdraft authorised and charges posted successfully.');
 
@@ -362,12 +362,12 @@ Page 50313 "Over Draft Authorisation"
         AvailableBalance := 0;
         MinAccBal := 0;
 
-        if Account.Get("Account No.") then begin
+        if Account.Get(Rec."Account No.") then begin
             Account.CalcFields(Account.Balance, Account."Uncleared Cheques", Account."ATM Transactions",
                                Account."Authorised Over Draft");
 
             AccountTypes.Reset;
-            AccountTypes.SetRange(AccountTypes.Code, "Account Type");
+            AccountTypes.SetRange(AccountTypes.Code, Rec."Account Type");
             if AccountTypes.Find('-') then begin
                 MinAccBal := AccountTypes."Minimum Balance";
 
@@ -384,7 +384,7 @@ Page 50313 "Over Draft Authorisation"
     begin
 
 
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             AccNo := true;
             ReqAmount := true;
             AppAmount := true;
@@ -396,7 +396,7 @@ Page 50313 "Over Draft Authorisation"
         end;
 
 
-        if Status = Status::Pending then begin
+        if Rec.Status = Rec.Status::Pending then begin
             AccNo := false;
             ReqAmount := false;
             AppAmount := true;
@@ -408,7 +408,7 @@ Page 50313 "Over Draft Authorisation"
         end;
 
 
-        if Status = Status::Rejected then begin
+        if Rec.Status = Rec.Status::Rejected then begin
             AccNo := false;
             ReqAmount := false;
             AppAmount := false;
@@ -420,7 +420,7 @@ Page 50313 "Over Draft Authorisation"
 
         end;
 
-        if Status = Status::Approved then begin
+        if Rec.Status = Rec.Status::Approved then begin
             AccNo := false;
             ReqAmount := false;
             AppAmount := false;

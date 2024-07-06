@@ -486,7 +486,7 @@ Report 51516043 "Generate Member Tea Batch"
         MemberBalanceAfterPrinciplePay := BalanceAfterPrincipleRecovery;
         LoansRegister.Reset();
         LoansRegister.SetRange(LoansRegister."Client Code", BOSAAccountNo);
-       // LoansRegister.SetRange(LoansRegister."Recovery Mode", LoansRegister."Recovery Mode"::Tea);
+        // LoansRegister.SetRange(LoansRegister."Recovery Mode", LoansRegister."Recovery Mode"::Tea);
         LoansRegister.SetFilter(LoansRegister."Loan Product Type", '<>%1', 'OVERDRAFT');
         LoansRegister.SetFilter(LoansRegister."Loan Disbursement Date", '..' + Format(IssueDate));
         LoansRegister.SetAutoCalcFields(LoansRegister."Outstanding Balance", LoansRegister."Oustanding Interest", LoansRegister."Principal Paid");
@@ -921,14 +921,14 @@ Report 51516043 "Generate Member Tea Batch"
                                     //     IF ReceiptAllocations."Transaction Type" = ReceiptAllocations."Transaction Type"::"FOSA Shares" THEN
                                     //         GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"FOSA Shares"
                                     //     ELSE
-                                            // IF ReceiptAllocations."Transaction Type" = ReceiptAllocations."Transaction Type"::"Tambaa Shares" THEN
-                                            //     GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Tamba Shares"
-                                            // ELSE
-                                                // IF ReceiptAllocations."Transaction Type" = ReceiptAllocations."Transaction Type"::"Changamka Shares" THEN
-                                                //     GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Changamka Shares"
-                                                // ELSE
-                                                    IF ReceiptAllocations."Transaction Type" = ReceiptAllocations."Transaction Type"::"Shares Capital" THEN
-                                                        GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Shares Capital";
+                                    // IF ReceiptAllocations."Transaction Type" = ReceiptAllocations."Transaction Type"::"Tambaa Shares" THEN
+                                    //     GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Tamba Shares"
+                                    // ELSE
+                                    // IF ReceiptAllocations."Transaction Type" = ReceiptAllocations."Transaction Type"::"Changamka Shares" THEN
+                                    //     GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Changamka Shares"
+                                    // ELSE
+                                    IF ReceiptAllocations."Transaction Type" = ReceiptAllocations."Transaction Type"::"Shares Capital" THEN
+                                        GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Shares Capital";
                     GenJournalLine."Loan No" := ReceiptAllocations."Loan No.";
                     GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
                     GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
@@ -1009,7 +1009,7 @@ Report 51516043 "Generate Member Tea Batch"
         LoansRegister.SetRange(LoansRegister."Client Code", BOSAAccountNo);
         LoansRegister.SetFilter(LoansRegister."Loan Disbursement Date", '..' + Format(IssueDate));
         LoansRegister.SetFilter(LoansRegister."Loan Product Type", '%1', 'OVERDRAFT');
-       // LoansRegister.SetRange(LoansRegister."Recovery Mode", LoansRegister."Recovery Mode"::Tea);
+        // LoansRegister.SetRange(LoansRegister."Recovery Mode", LoansRegister."Recovery Mode"::Tea);
         LoansRegister.SetAutoCalcFields(LoansRegister."Outstanding Balance", LoansRegister."Oustanding Interest", LoansRegister."Interest Paid", LoansRegister."Principal Paid");
         if LoansRegister.Find('-') then begin
             repeat
@@ -1119,7 +1119,7 @@ Report 51516043 "Generate Member Tea Batch"
         LoansRegister.SetRange(LoansRegister."Client Code", BOSAAccountNo);
         LoansRegister.SetFilter(LoansRegister."Loan Disbursement Date", '..' + Format(IssueDate));
         LoansRegister.SetFilter(LoansRegister."Loan Product Type", '%1', 'OVERDRAFT');
-    // LoansRegister.SetRange(LoansRegister."Recovery Mode", LoansRegister."Recovery Mode"::Tea);
+        // LoansRegister.SetRange(LoansRegister."Recovery Mode", LoansRegister."Recovery Mode"::Tea);
         LoansRegister.SetAutoCalcFields(LoansRegister."Outstanding Balance", LoansRegister."Oustanding Interest", LoansRegister."Principal Paid");
         if LoansRegister.Find('-') then begin
             repeat

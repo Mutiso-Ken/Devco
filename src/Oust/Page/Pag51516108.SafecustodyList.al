@@ -6,7 +6,7 @@
 //     CardPageId=safecustodyCardRegister;
 //     SourceTable = "Safe Custody Package Register";
 //     UsageCategory = Administration;
-    
+
 //     layout
 //     {
 //         area(content)

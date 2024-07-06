@@ -12,45 +12,45 @@ Page 51516360 "SMS Messages"
         {
             repeater(Group)
             {
-                field("Entry No"; "Entry No")
+                field("Entry No"; Rec."Entry No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Source; Source)
+                field(Source; Rec.Source)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Telephone No"; "Telephone No")
+                field("Telephone No"; Rec."Telephone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("SMS Message"; "SMS Message")
+                field("SMS Message"; Rec."SMS Message")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Entered"; "Date Entered")
+                field("Date Entered"; Rec."Date Entered")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Time Entered"; "Time Entered")
+                field("Time Entered"; Rec."Time Entered")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Entered By"; "Entered By")
+                field("Entered By"; Rec."Entered By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Sent To Server"; "Sent To Server")
-                {
-                    ApplicationArea = Basic;
-
-                }
-                field("System Date"; "System Date")
+                field("Sent To Server"; Rec."Sent To Server")
                 {
                     ApplicationArea = Basic;
 
                 }
-                field("System Time"; "System Time")
+                field("System Date"; Rec."System Date")
+                {
+                    ApplicationArea = Basic;
+
+                }
+                field("System Time"; Rec."System Time")
                 {
                     ApplicationArea = Basic;
 

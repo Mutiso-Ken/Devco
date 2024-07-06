@@ -10,11 +10,11 @@ Page 51516238 "Member Departments List"
         {
             repeater(Control1102760000)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Department;Department)
+                field(Department; Rec.Department)
                 {
                     ApplicationArea = Basic;
                 }

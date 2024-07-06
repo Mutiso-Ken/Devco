@@ -8,7 +8,7 @@ Page 51516852 "Property Sales Line"
     MultipleNewLines = true;
     PageType = ListPart;
     SourceTable = "Sales Line";
-    SourceTableView = where("Document Type"=filter(Invoice));
+    SourceTableView = where("Document Type" = filter(Invoice));
 
     layout
     {
@@ -16,7 +16,7 @@ Page 51516852 "Property Sales Line"
         {
             repeater(Control1)
             {
-                field(Type;Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = Basic;
 
@@ -24,36 +24,36 @@ Page 51516852 "Property Sales Line"
                     begin
                         TypeOnAfterValidate;
                         NoOnAfterValidate;
-                        TypeChosen := Type <> Type::" ";
+                        TypeChosen := Rec.Type <> Rec.Type::" ";
 
                         if xRec."No." <> '' then
-                          RedistributeTotalsOnAfterValidate;
+                            RedistributeTotalsOnAfterValidate;
                     end;
-                // }
-                // field("Project No";"Project No")
-                // {
-                //     ApplicationArea = Basic;
-                // }
-                // field("Project Name";"Project Name")
-                // {
-                //     ApplicationArea = Basic;
-                // 
+                    // }
+                    // field("Project No";"Project No")
+                    // {
+                    //     ApplicationArea = Basic;
+                    // }
+                    // field("Project Name";"Project Name")
+                    // {
+                    //     ApplicationArea = Basic;
+                    // 
                 }
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = TypeChosen;
 
                     trigger OnValidate()
                     begin
-                        ShowShortcutDimCode(ShortcutDimCode);
+                        Rec.ShowShortcutDimCode(ShortcutDimCode);
                         NoOnAfterValidate;
 
                         if xRec."No." <> '' then
-                          RedistributeTotalsOnAfterValidate;
+                            RedistributeTotalsOnAfterValidate;
                     end;
                 }
-                field("Cross-Reference No.";"Item Reference No.")
+                field("Cross-Reference No."; Rec."Item Reference No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
@@ -71,32 +71,32 @@ Page 51516852 "Property Sales Line"
                         NoOnAfterValidate;
                     end;
                 }
-                field("IC Partner Code";"IC Partner Code")
+                field("IC Partner Code"; Rec."IC Partner Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("IC Partner Ref. Type";"IC Partner Ref. Type")
+                field("IC Partner Ref. Type"; Rec."IC Partner Ref. Type")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("IC Partner Reference";"IC Partner Reference")
+                field("IC Partner Reference"; Rec."IC Partner Reference")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Variant Code";"Variant Code")
+                field("Variant Code"; Rec."Variant Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Nonstock;Nonstock)
+                field(Nonstock; Rec.Nonstock)
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("VAT Prod. Posting Group";"VAT Prod. Posting Group")
+                field("VAT Prod. Posting Group"; Rec."VAT Prod. Posting Group")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
@@ -106,25 +106,25 @@ Page 51516852 "Property Sales Line"
                         RedistributeTotalsOnAfterValidate;
                     end;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Return Reason Code";"Return Reason Code")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("Location Code";"Location Code")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Bin Code";"Bin Code")
+                field("Return Reason Code"; Rec."Return Reason Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Quantity;Quantity)
+                field("Location Code"; Rec."Location Code")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Bin Code"; Rec."Bin Code")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field(Quantity; Rec.Quantity)
                 {
                     ApplicationArea = Basic;
                     BlankZero = true;
@@ -136,7 +136,7 @@ Page 51516852 "Property Sales Line"
                         RedistributeTotalsOnAfterValidate;
                     end;
                 }
-                field("Unit of Measure Code";"Unit of Measure Code")
+                field("Unit of Measure Code"; Rec."Unit of Measure Code")
                 {
                     ApplicationArea = Basic;
 
@@ -146,24 +146,24 @@ Page 51516852 "Property Sales Line"
                         RedistributeTotalsOnAfterValidate;
                     end;
                 }
-                field("Unit of Measure";"Unit of Measure")
+                field("Unit of Measure"; Rec."Unit of Measure")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Unit Cost (LCY)";"Unit Cost (LCY)")
+                field("Unit Cost (LCY)"; Rec."Unit Cost (LCY)")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(PriceExists;PriceExists)
+                field(PriceExists; Rec.PriceExists)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Sales Price Exists';
                     Editable = false;
                     Visible = false;
                 }
-                field("Unit Price";"Unit Price")
+                field("Unit Price"; Rec."Unit Price")
                 {
                     ApplicationArea = Basic;
                     BlankZero = true;
@@ -174,7 +174,7 @@ Page 51516852 "Property Sales Line"
                         RedistributeTotalsOnAfterValidate;
                     end;
                 }
-                field("Line Amount";"Line Amount")
+                field("Line Amount"; Rec."Line Amount")
                 {
                     ApplicationArea = Basic;
                     BlankZero = true;
@@ -184,14 +184,14 @@ Page 51516852 "Property Sales Line"
                         RedistributeTotalsOnAfterValidate;
                     end;
                 }
-                field(LineDiscExists;LineDiscExists)
+                field(LineDiscExists; Rec.LineDiscExists)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Sales Line Disc. Exists';
                     Editable = false;
                     Visible = false;
                 }
-                field("Line Discount %";"Line Discount %")
+                field("Line Discount %"; Rec."Line Discount %")
                 {
                     ApplicationArea = Basic;
                     BlankZero = true;
@@ -201,7 +201,7 @@ Page 51516852 "Property Sales Line"
                         RedistributeTotalsOnAfterValidate;
                     end;
                 }
-                field("Line Discount Amount";"Line Discount Amount")
+                field("Line Discount Amount"; Rec."Line Discount Amount")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
@@ -211,22 +211,22 @@ Page 51516852 "Property Sales Line"
                         RedistributeTotalsOnAfterValidate;
                     end;
                 }
-                field("Allow Invoice Disc.";"Allow Invoice Disc.")
+                field("Allow Invoice Disc."; Rec."Allow Invoice Disc.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Inv. Discount Amount";"Inv. Discount Amount")
+                field("Inv. Discount Amount"; Rec."Inv. Discount Amount")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Allow Item Charge Assignment";"Allow Item Charge Assignment")
+                field("Allow Item Charge Assignment"; Rec."Allow Item Charge Assignment")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Qty. to Assign";"Qty. to Assign")
+                field("Qty. to Assign"; Rec."Qty. to Assign")
                 {
                     ApplicationArea = Basic;
                     BlankZero = true;
@@ -234,11 +234,11 @@ Page 51516852 "Property Sales Line"
                     trigger OnDrillDown()
                     begin
                         CurrPage.SaveRecord;
-                        ShowItemChargeAssgnt;
+                        Rec.ShowItemChargeAssgnt;
                         UpdateForm(false);
                     end;
                 }
-                field("Qty. Assigned";"Qty. Assigned")
+                field("Qty. Assigned"; Rec."Qty. Assigned")
                 {
                     ApplicationArea = Basic;
                     BlankZero = true;
@@ -246,91 +246,91 @@ Page 51516852 "Property Sales Line"
                     trigger OnDrillDown()
                     begin
                         CurrPage.SaveRecord;
-                        ShowItemChargeAssgnt;
+                        Rec.ShowItemChargeAssgnt;
                         UpdateForm(false);
                     end;
                 }
-                field("Job No.";"Job No.")
+                field("Job No."; Rec."Job No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
 
                     trigger OnValidate()
                     begin
-                        ShowShortcutDimCode(ShortcutDimCode);
+                        Rec.ShowShortcutDimCode(ShortcutDimCode);
                     end;
                 }
-                field("Job Task No.";"Job Task No.")
+                field("Job Task No."; Rec."Job Task No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Job Contract Entry No.";"Job Contract Entry No.")
+                field("Job Contract Entry No."; Rec."Job Contract Entry No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Work Type Code";"Work Type Code")
+                field("Work Type Code"; Rec."Work Type Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Blanket Order No.";"Blanket Order No.")
+                field("Blanket Order No."; Rec."Blanket Order No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Blanket Order Line No.";"Blanket Order Line No.")
+                field("Blanket Order Line No."; Rec."Blanket Order Line No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("FA Posting Date";"FA Posting Date")
+                field("FA Posting Date"; Rec."FA Posting Date")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Depr. until FA Posting Date";"Depr. until FA Posting Date")
+                field("Depr. until FA Posting Date"; Rec."Depr. until FA Posting Date")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Depreciation Book Code";"Depreciation Book Code")
+                field("Depreciation Book Code"; Rec."Depreciation Book Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Use Duplication List";"Use Duplication List")
+                field("Use Duplication List"; Rec."Use Duplication List")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Duplicate in Depreciation Book";"Duplicate in Depreciation Book")
+                field("Duplicate in Depreciation Book"; Rec."Duplicate in Depreciation Book")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Appl.-from Item Entry";"Appl.-from Item Entry")
+                field("Appl.-from Item Entry"; Rec."Appl.-from Item Entry")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Appl.-to Item Entry";"Appl.-to Item Entry")
+                field("Appl.-to Item Entry"; Rec."Appl.-to Item Entry")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Shortcut Dimension 1 Code";"Shortcut Dimension 1 Code")
+                field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Shortcut Dimension 2 Code";"Shortcut Dimension 2 Code")
+                field("Shortcut Dimension 2 Code"; Rec."Shortcut Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("ShortcutDimCode[3]";ShortcutDimCode[3])
+                field("ShortcutDimCode[3]"; ShortcutDimCode[3])
                 {
                     ApplicationArea = Basic;
                     CaptionClass = '1,2,3';
@@ -338,15 +338,15 @@ Page 51516852 "Property Sales Line"
 
                     trigger OnLookup(var Text: Text): Boolean
                     begin
-                        LookupShortcutDimCode(3,ShortcutDimCode[3]);
+                        Rec.LookupShortcutDimCode(3, ShortcutDimCode[3]);
                     end;
 
                     trigger OnValidate()
                     begin
-                        ValidateShortcutDimCode(3,ShortcutDimCode[3]);
+                        Rec.ValidateShortcutDimCode(3, ShortcutDimCode[3]);
                     end;
                 }
-                field("ShortcutDimCode[4]";ShortcutDimCode[4])
+                field("ShortcutDimCode[4]"; ShortcutDimCode[4])
                 {
                     ApplicationArea = Basic;
                     CaptionClass = '1,2,4';
@@ -354,15 +354,15 @@ Page 51516852 "Property Sales Line"
 
                     trigger OnLookup(var Text: Text): Boolean
                     begin
-                        LookupShortcutDimCode(4,ShortcutDimCode[4]);
+                        Rec.LookupShortcutDimCode(4, ShortcutDimCode[4]);
                     end;
 
                     trigger OnValidate()
                     begin
-                        ValidateShortcutDimCode(4,ShortcutDimCode[4]);
+                        Rec.ValidateShortcutDimCode(4, ShortcutDimCode[4]);
                     end;
                 }
-                field("ShortcutDimCode[5]";ShortcutDimCode[5])
+                field("ShortcutDimCode[5]"; ShortcutDimCode[5])
                 {
                     ApplicationArea = Basic;
                     CaptionClass = '1,2,5';
@@ -370,15 +370,15 @@ Page 51516852 "Property Sales Line"
 
                     trigger OnLookup(var Text: Text): Boolean
                     begin
-                        LookupShortcutDimCode(5,ShortcutDimCode[5]);
+                        Rec.LookupShortcutDimCode(5, ShortcutDimCode[5]);
                     end;
 
                     trigger OnValidate()
                     begin
-                        ValidateShortcutDimCode(5,ShortcutDimCode[5]);
+                        Rec.ValidateShortcutDimCode(5, ShortcutDimCode[5]);
                     end;
                 }
-                field("ShortcutDimCode[6]";ShortcutDimCode[6])
+                field("ShortcutDimCode[6]"; ShortcutDimCode[6])
                 {
                     ApplicationArea = Basic;
                     CaptionClass = '1,2,6';
@@ -386,15 +386,15 @@ Page 51516852 "Property Sales Line"
 
                     trigger OnLookup(var Text: Text): Boolean
                     begin
-                        LookupShortcutDimCode(6,ShortcutDimCode[6]);
+                        Rec.LookupShortcutDimCode(6, ShortcutDimCode[6]);
                     end;
 
                     trigger OnValidate()
                     begin
-                        ValidateShortcutDimCode(6,ShortcutDimCode[6]);
+                        Rec.ValidateShortcutDimCode(6, ShortcutDimCode[6]);
                     end;
                 }
-                field("ShortcutDimCode[7]";ShortcutDimCode[7])
+                field("ShortcutDimCode[7]"; ShortcutDimCode[7])
                 {
                     ApplicationArea = Basic;
                     CaptionClass = '1,2,7';
@@ -402,15 +402,15 @@ Page 51516852 "Property Sales Line"
 
                     trigger OnLookup(var Text: Text): Boolean
                     begin
-                        LookupShortcutDimCode(7,ShortcutDimCode[7]);
+                        Rec.LookupShortcutDimCode(7, ShortcutDimCode[7]);
                     end;
 
                     trigger OnValidate()
                     begin
-                        ValidateShortcutDimCode(7,ShortcutDimCode[7]);
+                        Rec.ValidateShortcutDimCode(7, ShortcutDimCode[7]);
                     end;
                 }
-                field("ShortcutDimCode[8]";ShortcutDimCode[8])
+                field("ShortcutDimCode[8]"; ShortcutDimCode[8])
                 {
                     ApplicationArea = Basic;
                     CaptionClass = '1,2,8';
@@ -418,27 +418,27 @@ Page 51516852 "Property Sales Line"
 
                     trigger OnLookup(var Text: Text): Boolean
                     begin
-                        LookupShortcutDimCode(8,ShortcutDimCode[8]);
+                        Rec.LookupShortcutDimCode(8, ShortcutDimCode[8]);
                     end;
 
                     trigger OnValidate()
                     begin
-                        ValidateShortcutDimCode(8,ShortcutDimCode[8]);
+                        Rec.ValidateShortcutDimCode(8, ShortcutDimCode[8]);
                     end;
                 }
-                field("Document No.";"Document No.")
+                field("Document No."; Rec."Document No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Line No.";"Line No.")
+                field("Line No."; Rec."Line No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Gen. Prod. Posting Group";"Gen. Prod. Posting Group")
+                field("Gen. Prod. Posting Group"; Rec."Gen. Prod. Posting Group")
                 {
                     ApplicationArea = Basic;
                 }
@@ -447,7 +447,7 @@ Page 51516852 "Property Sales Line"
             {
                 group(Control33)
                 {
-                    field("Invoice Discount Amount";TotalSalesLine."Inv. Discount Amount")
+                    field("Invoice Discount Amount"; TotalSalesLine."Inv. Discount Amount")
                     {
                         ApplicationArea = Basic;
                         AutoFormatType = 1;
@@ -460,16 +460,16 @@ Page 51516852 "Property Sales Line"
                         var
                             SalesHeader: Record "Sales Header";
                         begin
-                            SalesHeader.Get("Document Type","Document No.");
-                            SalesCalcDiscByType.ApplyInvDiscBasedOnAmt(TotalSalesLine."Inv. Discount Amount",SalesHeader);
+                            SalesHeader.Get(Rec."Document Type", Rec."Document No.");
+                            SalesCalcDiscByType.ApplyInvDiscBasedOnAmt(TotalSalesLine."Inv. Discount Amount", SalesHeader);
                             CurrPage.Update(false);
                         end;
                     }
-                    field("Invoice Disc. Pct.";SalesCalcDiscByType.GetCustInvoiceDiscountPct(Rec))
+                    field("Invoice Disc. Pct."; SalesCalcDiscByType.GetCustInvoiceDiscountPct(Rec))
                     {
                         ApplicationArea = Basic;
                         Caption = 'Invoice Discount %';
-                        DecimalPlaces = 0:2;
+                        DecimalPlaces = 0 : 2;
                         Editable = false;
                         Style = Subordinate;
                         StyleExpr = RefreshMessageEnabled;
@@ -478,7 +478,7 @@ Page 51516852 "Property Sales Line"
                 }
                 group(Control15)
                 {
-                    field("Total Amount Excl. VAT";TotalSalesLine.Amount)
+                    field("Total Amount Excl. VAT"; TotalSalesLine.Amount)
                     {
                         ApplicationArea = Basic;
                         AutoFormatType = 1;
@@ -489,7 +489,7 @@ Page 51516852 "Property Sales Line"
                         Style = Subordinate;
                         StyleExpr = RefreshMessageEnabled;
                     }
-                    field("Total VAT Amount";VATAmount)
+                    field("Total VAT Amount"; VATAmount)
                     {
                         ApplicationArea = Basic;
                         AutoFormatType = 1;
@@ -499,7 +499,7 @@ Page 51516852 "Property Sales Line"
                         Style = Subordinate;
                         StyleExpr = RefreshMessageEnabled;
                     }
-                    field("Total Amount Incl. VAT";TotalSalesLine."Amount Including VAT")
+                    field("Total Amount Incl. VAT"; TotalSalesLine."Amount Including VAT")
                     {
                         ApplicationArea = Basic;
                         AutoFormatType = 1;
@@ -508,7 +508,7 @@ Page 51516852 "Property Sales Line"
                         Editable = false;
                         StyleExpr = TotalAmountStyle;
                     }
-                    field(RefreshTotals;RefreshMessageText)
+                    field(RefreshTotals; RefreshMessageText)
                     {
                         ApplicationArea = Basic;
                         DrillDown = true;
@@ -518,7 +518,7 @@ Page 51516852 "Property Sales Line"
 
                         trigger OnDrillDown()
                         begin
-                            DocumentTotals.SalesRedistributeInvoiceDiscountAmounts(Rec,VATAmount,TotalSalesLine);
+                            DocumentTotals.SalesRedistributeInvoiceDiscountAmounts(Rec, VATAmount, TotalSalesLine);
                             CurrPage.Update(false);
                         end;
                     }
@@ -537,7 +537,7 @@ Page 51516852 "Property Sales Line"
                 Image = "Action";
                 action("Get &Price")
                 {
-                    AccessByPermission = TableData "Sales Price"=R;
+                    AccessByPermission = TableData "Sales Price" = R;
                     ApplicationArea = Basic;
                     Caption = 'Get &Price';
                     Ellipsis = true;
@@ -550,7 +550,7 @@ Page 51516852 "Property Sales Line"
                 }
                 action("Get Li&ne Discount")
                 {
-                    AccessByPermission = TableData "Sales Line Discount"=R;
+                    AccessByPermission = TableData "Sales Line Discount" = R;
                     ApplicationArea = Basic;
                     Caption = 'Get Li&ne Discount';
                     Ellipsis = true;
@@ -563,7 +563,7 @@ Page 51516852 "Property Sales Line"
                 }
                 action("E&xplode BOM")
                 {
-                    AccessByPermission = TableData "BOM Component"=R;
+                    AccessByPermission = TableData "BOM Component" = R;
                     ApplicationArea = Basic;
                     Caption = 'E&xplode BOM';
                     Image = ExplodeBOM;
@@ -575,7 +575,7 @@ Page 51516852 "Property Sales Line"
                 }
                 action("Insert &Ext. Texts")
                 {
-                    AccessByPermission = TableData "Extended Text Header"=R;
+                    AccessByPermission = TableData "Extended Text Header" = R;
                     ApplicationArea = Basic;
                     Caption = 'Insert &Ext. Texts';
                     Image = Text;
@@ -587,7 +587,7 @@ Page 51516852 "Property Sales Line"
                 }
                 action(GetShipmentLines)
                 {
-                    AccessByPermission = TableData "Sales Shipment Header"=R;
+                    AccessByPermission = TableData "Sales Shipment Header" = R;
                     ApplicationArea = Basic;
                     Caption = 'Get &Shipment Lines';
                     Ellipsis = true;
@@ -615,7 +615,7 @@ Page 51516852 "Property Sales Line"
 
                         trigger OnAction()
                         begin
-                            ItemAvailFormsMgt.ShowItemAvailFromSalesLine(Rec,ItemAvailFormsMgt.ByEvent)
+                            ItemAvailFormsMgt.ShowItemAvailFromSalesLine(Rec, ItemAvailFormsMgt.ByEvent)
                         end;
                     }
                     action(Period)
@@ -626,7 +626,7 @@ Page 51516852 "Property Sales Line"
 
                         trigger OnAction()
                         begin
-                            ItemAvailFormsMgt.ShowItemAvailFromSalesLine(Rec,ItemAvailFormsMgt.ByPeriod)
+                            ItemAvailFormsMgt.ShowItemAvailFromSalesLine(Rec, ItemAvailFormsMgt.ByPeriod)
                         end;
                     }
                     action(Variant)
@@ -637,19 +637,19 @@ Page 51516852 "Property Sales Line"
 
                         trigger OnAction()
                         begin
-                            ItemAvailFormsMgt.ShowItemAvailFromSalesLine(Rec,ItemAvailFormsMgt.ByVariant)
+                            ItemAvailFormsMgt.ShowItemAvailFromSalesLine(Rec, ItemAvailFormsMgt.ByVariant)
                         end;
                     }
                     action(Location)
                     {
-                        AccessByPermission = TableData Location=R;
+                        AccessByPermission = TableData Location = R;
                         ApplicationArea = Basic;
                         Caption = 'Location';
                         Image = Warehouse;
 
                         trigger OnAction()
                         begin
-                            ItemAvailFormsMgt.ShowItemAvailFromSalesLine(Rec,ItemAvailFormsMgt.ByLocation)
+                            ItemAvailFormsMgt.ShowItemAvailFromSalesLine(Rec, ItemAvailFormsMgt.ByLocation)
                         end;
                     }
                     action("BOM Level")
@@ -660,13 +660,13 @@ Page 51516852 "Property Sales Line"
 
                         trigger OnAction()
                         begin
-                            ItemAvailFormsMgt.ShowItemAvailFromSalesLine(Rec,ItemAvailFormsMgt.ByBOM)
+                            ItemAvailFormsMgt.ShowItemAvailFromSalesLine(Rec, ItemAvailFormsMgt.ByBOM)
                         end;
                     }
                 }
                 action(Dimensions)
                 {
-                    AccessByPermission = TableData Dimension=R;
+                    AccessByPermission = TableData Dimension = R;
                     ApplicationArea = Basic;
                     Caption = 'Dimensions';
                     Image = Dimensions;
@@ -674,7 +674,7 @@ Page 51516852 "Property Sales Line"
 
                     trigger OnAction()
                     begin
-                        ShowDimensions;
+                        Rec.ShowDimensions;
                     end;
                 }
                 action("Co&mments")
@@ -685,18 +685,18 @@ Page 51516852 "Property Sales Line"
 
                     trigger OnAction()
                     begin
-                        ShowLineComments;
+                        Rec.ShowLineComments;
                     end;
                 }
                 action("Item Charge &Assignment")
                 {
-                    AccessByPermission = TableData "Item Charge"=R;
+                    AccessByPermission = TableData "Item Charge" = R;
                     ApplicationArea = Basic;
                     Caption = 'Item Charge &Assignment';
 
                     trigger OnAction()
                     begin
-                        ShowItemChargeAssgnt;
+                        Rec.ShowItemChargeAssgnt;
                     end;
                 }
                 action("Item &Tracking Lines")
@@ -708,7 +708,7 @@ Page 51516852 "Property Sales Line"
 
                     trigger OnAction()
                     begin
-                        OpenItemTrackingLines;
+                        Rec.OpenItemTrackingLines;
                     end;
                 }
             }
@@ -717,7 +717,7 @@ Page 51516852 "Property Sales Line"
 
     trigger OnAfterGetCurrRecord()
     begin
-        if SalesHeader.Get("Document Type","Document No.") then;
+        if SalesHeader.Get(Rec."Document Type", Rec."Document No.") then;
 
         // DocumentTotals.SalesUpdateTotalsControls(Rec,TotalSalesHeader,TotalSalesLine,RefreshMessageEnabled,
         //   TotalAmountStyle,RefreshMessageText,InvDiscAmountEditable,VATAmount);
@@ -727,24 +727,24 @@ Page 51516852 "Property Sales Line"
 
     trigger OnAfterGetRecord()
     begin
-        ShowShortcutDimCode(ShortcutDimCode);
+        Rec.ShowShortcutDimCode(ShortcutDimCode);
     end;
 
     trigger OnDeleteRecord(): Boolean
     var
         ReserveSalesLine: Codeunit "Sales Line-Reserve";
     begin
-        if (Quantity <> 0) and ItemExists("No.") then begin
-          Commit;
-          if not ReserveSalesLine.DeleteLineConfirm(Rec) then
-            exit(false);
-          ReserveSalesLine.DeleteLine(Rec);
+        if (Rec.Quantity <> 0) and Rec.ItemExists(Rec."No.") then begin
+            Commit;
+            if not ReserveSalesLine.DeleteLineConfirm(Rec) then
+                exit(false);
+            ReserveSalesLine.DeleteLine(Rec);
         end;
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        InitType;
+        Rec.InitType;
         Clear(ShortcutDimCode);
     end;
 
@@ -758,7 +758,7 @@ Page 51516852 "Property Sales Line"
         SalesCalcDiscByType: Codeunit "Sales - Calc Discount By Type";
         DocumentTotals: Codeunit "Document Totals";
         VATAmount: Decimal;
-        ShortcutDimCode: array [8] of Code[20];
+        ShortcutDimCode: array[8] of Code[20];
         UpdateAllowedVar: Boolean;
         Text000: label 'Unable to run this function while in View mode.';
         [InDataSet]
@@ -772,37 +772,37 @@ Page 51516852 "Property Sales Line"
 
     procedure ApproveCalcInvDisc()
     begin
-        Codeunit.Run(Codeunit::"Sales-Disc. (Yes/No)",Rec);
+        Codeunit.Run(Codeunit::"Sales-Disc. (Yes/No)", Rec);
     end;
 
 
     procedure CalcInvDisc()
     begin
-        Codeunit.Run(Codeunit::"Sales-Calc. Discount",Rec);
+        Codeunit.Run(Codeunit::"Sales-Calc. Discount", Rec);
     end;
 
 
     procedure ExplodeBOM()
     begin
-        Codeunit.Run(Codeunit::"Sales-Explode BOM",Rec);
+        Codeunit.Run(Codeunit::"Sales-Explode BOM", Rec);
     end;
 
 
     procedure GetShipment()
     begin
-        Codeunit.Run(Codeunit::"Sales-Get Shipment",Rec);
+        Codeunit.Run(Codeunit::"Sales-Get Shipment", Rec);
     end;
 
 
     procedure InsertExtendedText(Unconditionally: Boolean)
     begin
-        if TransferExtendedText.SalesCheckIfAnyExtText(Rec,Unconditionally) then begin
-          CurrPage.SaveRecord;
-          Commit;
-          TransferExtendedText.InsertSalesExtText(Rec);
+        if TransferExtendedText.SalesCheckIfAnyExtText(Rec, Unconditionally) then begin
+            CurrPage.SaveRecord;
+            Commit;
+            TransferExtendedText.InsertSalesExtText(Rec);
         end;
         if TransferExtendedText.MakeUpdate then
-          UpdateForm(true);
+            UpdateForm(true);
     end;
 
 
@@ -814,17 +814,17 @@ Page 51516852 "Property Sales Line"
 
     procedure ShowPrices()
     begin
-        SalesHeader.Get("Document Type","Document No.");
+        SalesHeader.Get(Rec."Document Type", Rec."Document No.");
         Clear(SalesPriceCalcMgt);
-        SalesPriceCalcMgt.GetSalesLinePrice(SalesHeader,Rec);
+        SalesPriceCalcMgt.GetSalesLinePrice(SalesHeader, Rec);
     end;
 
 
     procedure ShowLineDisc()
     begin
-        SalesHeader.Get("Document Type","Document No.");
+        SalesHeader.Get(Rec."Document Type", Rec."Document No.");
         Clear(SalesPriceCalcMgt);
-        SalesPriceCalcMgt.GetSalesLineLineDisc(SalesHeader,Rec);
+        SalesPriceCalcMgt.GetSalesLineLineDisc(SalesHeader, Rec);
     end;
 
 
@@ -837,24 +837,24 @@ Page 51516852 "Property Sales Line"
     procedure UpdateAllowed(): Boolean
     begin
         if UpdateAllowedVar = false then begin
-          Message(Text000);
-          exit(false);
+            Message(Text000);
+            exit(false);
         end;
         exit(true);
     end;
 
     local procedure TypeOnAfterValidate()
     begin
-        ItemPanelVisible := Type = Type::Item;
+        ItemPanelVisible := Rec.Type = Rec.Type::Item;
     end;
 
     local procedure NoOnAfterValidate()
     begin
         InsertExtendedText(false);
-        if (Type = Type::"Charge (Item)") and ("No." <> xRec."No.") and
+        if (Rec.Type = Rec.Type::"Charge (Item)") and (Rec."No." <> xRec."No.") and
            (xRec."No." <> '')
         then
-          CurrPage.SaveRecord;
+            CurrPage.SaveRecord;
     end;
 
     local procedure CrossReferenceNoOnAfterValidat()
@@ -864,17 +864,17 @@ Page 51516852 "Property Sales Line"
 
     local procedure QuantityOnAfterValidate()
     begin
-        if Reserve = Reserve::Always then begin
-          CurrPage.SaveRecord;
-          AutoReserve;
+        if Rec.Reserve = Rec.Reserve::Always then begin
+            CurrPage.SaveRecord;
+            Rec.AutoReserve;
         end;
     end;
 
     local procedure UnitofMeasureCodeOnAfterValida()
     begin
-        if Reserve = Reserve::Always then begin
-          CurrPage.SaveRecord;
-          AutoReserve;
+        if Rec.Reserve = Rec.Reserve::Always then begin
+            CurrPage.SaveRecord;
+            Rec.AutoReserve;
         end;
     end;
 
@@ -882,9 +882,9 @@ Page 51516852 "Property Sales Line"
     begin
         CurrPage.SaveRecord;
 
-        SalesHeader.Get("Document Type","Document No.");
+        SalesHeader.Get(Rec."Document Type", Rec."Document No.");
         if DocumentTotals.SalesCheckNumberOfLinesLimit(SalesHeader) then
-          DocumentTotals.SalesRedistributeInvoiceDiscountAmounts(Rec,VATAmount,TotalSalesLine);
+            DocumentTotals.SalesRedistributeInvoiceDiscountAmounts(Rec, VATAmount, TotalSalesLine);
         CurrPage.Update;
     end;
 }

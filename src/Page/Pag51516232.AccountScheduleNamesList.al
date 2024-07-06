@@ -12,19 +12,19 @@ Page 51516232 "Account Schedule Names List"
         {
             repeater(Control1)
             {
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Default Column Layout"; "Default Column Layout")
+                field("Default Column Layout"; Rec."Default Column Layout")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Analysis View Name"; "Analysis View Name")
+                field("Analysis View Name"; Rec."Analysis View Name")
                 {
                     ApplicationArea = Basic;
                 }
@@ -60,7 +60,7 @@ Page 51516232 "Account Schedule Names List"
                 var
                     AccSchedule: Page "Account Schedule";
                 begin
-                    AccSchedule.SetAccSchedName(Name);
+                    AccSchedule.SetAccSchedName(Rec.Name);
                     AccSchedule.Run;
                 end;
             }
@@ -77,7 +77,7 @@ Page 51516232 "Account Schedule Names List"
                 var
                     ColumnLayout: Page "Column Layout";
                 begin
-                    ColumnLayout.SetColumnLayoutName("Default Column Layout");
+                    ColumnLayout.SetColumnLayoutName(Rec."Default Column Layout");
                     ColumnLayout.Run;
                 end;
             }
@@ -98,7 +98,7 @@ Page 51516232 "Account Schedule Names List"
                 var
                     AccSchedOverview: Page "Acc. Schedule Overview List";
                 begin
-                    AccSchedOverview.SetAccSchedName(Name);
+                    AccSchedOverview.SetAccSchedName(Rec.Name);
                     AccSchedOverview.Run;
                 end;
             }

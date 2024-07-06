@@ -2,7 +2,7 @@
 Page 51516159 "Members Benev Benefi Details"
 {
     PageType = List;
-    Caption='Members Benevolent Beneficiary Details';
+    Caption = 'Members Benevolent Beneficiary Details';
     Editable = false;
     SourceTable = "Members Next Kin Details";
     SourceTableView = where(Type = const("Benevolent Beneficiary"));
@@ -13,51 +13,51 @@ Page 51516159 "Members Benev Benefi Details"
         {
             repeater(Control1102760000)
             {
-                field(Type; Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Address; Address)
+                field(Address; Rec.Address)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Relationship; Relationship)
+                field(Relationship; Rec.Relationship)
                 {
                     ApplicationArea = Basic;
                 }
-                field("%Allocation"; "%Allocation")
+                field("%Allocation"; Rec."%Allocation")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Beneficiary; Beneficiary)
+                field(Beneficiary; Rec.Beneficiary)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date of Birth"; "Date of Birth")
+                field("Date of Birth"; Rec."Date of Birth")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Telephone; Telephone)
+                field(Telephone; Rec.Telephone)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Email; Email)
+                field(Email; Rec.Email)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-             
+
             }
         }
     }

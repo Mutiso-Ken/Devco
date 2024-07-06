@@ -4,18 +4,18 @@ Table 51516228 "Member Section"
 
     fields
     {
-        field(1;"No.";Code[20])
+        field(1; "No."; Code[20])
         {
             NotBlank = true;
         }
-        field(2;Section;Text[70])
+        field(2; Section; Text[70])
         {
         }
     }
 
     keys
     {
-        key(Key1;"No.")
+        key(Key1; "No.")
         {
             Clustered = true;
         }

@@ -10,123 +10,123 @@ Page 51516023 "Posted Mobile Payment Line"
         {
             repeater(Group)
             {
-                field("Payment Type";"Payment Type")
+                field("Payment Type"; Rec."Payment Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Type Description";"Transaction Type Description")
+                field("Transaction Type Description"; Rec."Transaction Type Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type";"Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No.";"Account No.")
+                field("Account No."; Rec."Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payment Description";"Payment Description")
+                field("Payment Description"; Rec."Payment Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Currency Code";"Currency Code")
+                field("Currency Code"; Rec."Currency Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Currency Factor";"Currency Factor")
+                field("Currency Factor"; Rec."Currency Factor")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount(LCY)";"Amount(LCY)")
+                field("Amount(LCY)"; Rec."Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("VAT Code";"VAT Code")
+                field("VAT Code"; Rec."VAT Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("VAT Amount";"VAT Amount")
+                field("VAT Amount"; Rec."VAT Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("VAT Amount(LCY)";"VAT Amount(LCY)")
+                field("VAT Amount(LCY)"; Rec."VAT Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("W/TAX Code";"W/TAX Code")
+                field("W/TAX Code"; Rec."W/TAX Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("W/TAX Amount";"W/TAX Amount")
+                field("W/TAX Amount"; Rec."W/TAX Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("W/TAX Amount(LCY)";"W/TAX Amount(LCY)")
+                field("W/TAX Amount(LCY)"; Rec."W/TAX Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Retention Code";"Retention Code")
+                field("Retention Code"; Rec."Retention Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Retention Amount";"Retention Amount")
+                field("Retention Amount"; Rec."Retention Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Retention Amount(LCY)";"Retention Amount(LCY)")
+                field("Retention Amount(LCY)"; Rec."Retention Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Net Amount";"Net Amount")
+                field("Net Amount"; Rec."Net Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Net Amount(LCY)";"Net Amount(LCY)")
+                field("Net Amount(LCY)"; Rec."Net Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Gen. Bus. Posting Group";"Gen. Bus. Posting Group")
+                field("Gen. Bus. Posting Group"; Rec."Gen. Bus. Posting Group")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Gen. Prod. Posting Group";"Gen. Prod. Posting Group")
+                field("Gen. Prod. Posting Group"; Rec."Gen. Prod. Posting Group")
                 {
                     ApplicationArea = Basic;
                 }
-                field("VAT Bus. Posting Group";"VAT Bus. Posting Group")
+                field("VAT Bus. Posting Group"; Rec."VAT Bus. Posting Group")
                 {
                     ApplicationArea = Basic;
                 }
-                field("VAT Prod. Posting Group";"VAT Prod. Posting Group")
+                field("VAT Prod. Posting Group"; Rec."VAT Prod. Posting Group")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Applies-to Doc. Type";"Applies-to Doc. Type")
+                field("Applies-to Doc. Type"; Rec."Applies-to Doc. Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Applies-to Doc. No.";"Applies-to Doc. No.")
+                field("Applies-to Doc. No."; Rec."Applies-to Doc. No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Applies-to ID";"Applies-to ID")
+                field("Applies-to ID"; Rec."Applies-to ID")
                 {
                     ApplicationArea = Basic;
                 }

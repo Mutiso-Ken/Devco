@@ -8,11 +8,11 @@ Page 51516222 "Membership Application Image"
     {
         area(content)
         {
-            field(Picture;Picture)
+            field(Picture; Rec.Picture)
             {
                 ApplicationArea = Basic;
             }
-            field(Signature;Signature)
+            field(Signature; Rec.Signature)
             {
                 ApplicationArea = Basic;
             }

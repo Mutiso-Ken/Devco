@@ -6,43 +6,43 @@ pageextension 51516880 "GeneralLedgerSetUpExt" extends "General Ledger Setup"
         {
             group(MOBILESETUPS)
             {
-                field("Mobile Transfer Charge"; "Mobile Transfer Charge")
+                field("Mobile Transfer Charge"; Rec."Mobile Transfer Charge")
                 {
                     ApplicationArea = Basic;
                 }
-                field("CloudPESA Comm Acc"; "CloudPESA Comm Acc")
+                field("CloudPESA Comm Acc"; Rec."CloudPESA Comm Acc")
                 {
                     ApplicationArea = Basic;
                 }
-                field("CloudPESA Charge"; "CloudPESA Charge")
+                field("CloudPESA Charge"; Rec."CloudPESA Charge")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Agency Application Nos"; "Agency Application Nos")
+                field("Agency Application Nos"; Rec."Agency Application Nos")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Agency Charges Acc"; "Agency Charges Acc")
+                field("Agency Charges Acc"; Rec."Agency Charges Acc")
                 {
                     ApplicationArea = Basic;
                 }
-                field("MPESA Recon Acc"; "MPESA Recon Acc")
+                field("MPESA Recon Acc"; Rec."MPESA Recon Acc")
                 {
                     ApplicationArea = Basic;
                 }
-                field("M-banking Charges Acc"; "M-banking Charges Acc")
+                field("M-banking Charges Acc"; Rec."M-banking Charges Acc")
                 {
                     ApplicationArea = Basic;
                 }
-                field(PaybillAcc; PaybillAcc)
+                field(PaybillAcc; Rec.PaybillAcc)
                 {
                     ApplicationArea = Basic;
                 }
-                field(AirTimeSettlAcc; AirTimeSettlAcc)
+                field(AirTimeSettlAcc; Rec.AirTimeSettlAcc)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mobile Charge"; "Mobile Charge")
+                field("Mobile Charge"; Rec."Mobile Charge")
                 {
                     ApplicationArea = Basic;
                 }

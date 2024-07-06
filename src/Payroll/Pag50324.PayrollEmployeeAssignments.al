@@ -13,70 +13,70 @@ page 50324 "Payroll Employee Assignments."
         {
             group(General)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Full Name"; "Full Name")
+                field("Full Name"; Rec."Full Name")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
 
-                field("Pays PAYE"; "Pays PAYE")
+                field("Pays PAYE"; Rec."Pays PAYE")
                 {
                     ApplicationArea = All;
                 }
-                field("Pays NSSF"; "Pays NSSF")
+                field("Pays NSSF"; Rec."Pays NSSF")
                 {
                     ApplicationArea = All;
                 }
-                field("Pays NHIF"; "Pays NHIF")
+                field("Pays NHIF"; Rec."Pays NHIF")
                 {
                     ApplicationArea = All;
                 }
-                field(Secondary; Secondary)
+                field(Secondary; Rec.Secondary)
                 {
                     ApplicationArea = All;
                 }
             }
             group(Numbers)
             {
-                field("National ID No"; "National ID No")
+                field("National ID No"; Rec."National ID No")
                 {
                     ApplicationArea = All;
                 }
-                field("PIN No"; "PIN No")
+                field("PIN No"; Rec."PIN No")
                 {
                     ApplicationArea = All;
                 }
-                field("NHIF No"; "NHIF No")
+                field("NHIF No"; Rec."NHIF No")
                 {
                     ApplicationArea = All;
                 }
-                field("NSSF No"; "NSSF No")
+                field("NSSF No"; Rec."NSSF No")
                 {
                     ApplicationArea = All;
                 }
             }
             group("PAYE Relief and Benefit")
             {
-                field(GetsPayeRelief; GetsPayeRelief)
+                field(GetsPayeRelief; Rec.GetsPayeRelief)
                 {
                     ApplicationArea = All;
                 }
-                field(GetsPayeBenefit; GetsPayeBenefit)
+                field(GetsPayeBenefit; Rec.GetsPayeBenefit)
                 {
                     ApplicationArea = All;
                 }
-                field(PayeBenefitPercent; PayeBenefitPercent)
+                field(PayeBenefitPercent; Rec.PayeBenefitPercent)
                 {
                     ApplicationArea = All;
                 }
             }
             group("Employee Company")
             {
-                field(Company; Company)
+                field(Company; Rec.Company)
                 {
                     ApplicationArea = All;
                     OptionCaption = '';

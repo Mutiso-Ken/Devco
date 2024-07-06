@@ -70,7 +70,7 @@ report 51516347 "REPORT OF THE DIRECTORS"
             column(IncomeTaxExpense; IncomeTaxExpense) { }
             column(LIncomeTaxExpense; LIncomeTaxExpense) { }
             column(LRetainedEarnings; LRetainedEarnings) { }
-            
+
             trigger OnAfterGetRecord()
             var
                 myInt: Integer;

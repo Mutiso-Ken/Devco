@@ -174,15 +174,13 @@ Table 51516113 "DO Payment Credit Card"
     var
         DOPaymentCreditCard: Record "DO Payment Credit Card";
     begin
-        with DOPaymentCreditCard do begin
-            DOPaymentCreditCard := Rec;
-            DOPaymentSetup.Get;
-            DOPaymentSetup.TestField("Credit Card Nos.");
-            if NoSeriesMgt.SelectSeries(DOPaymentSetup."Credit Card Nos.", OldDOPaymentCreditCard."No. Series", "No. Series") then begin
-                NoSeriesMgt.SetSeries("No.");
-                Rec := DOPaymentCreditCard;
-                exit(true);
-            end;
+        DOPaymentCreditCard := Rec;
+        DOPaymentSetup.Get;
+        DOPaymentSetup.TestField("Credit Card Nos.");
+        if NoSeriesMgt.SelectSeries(DOPaymentSetup."Credit Card Nos.", OldDOPaymentCreditCard."No. Series", DOPaymentCreditCard."No. Series") then begin
+            NoSeriesMgt.SetSeries(DOPaymentCreditCard."No.");
+            Rec := DOPaymentCreditCard;
+            exit(true);
         end;
     end;
 

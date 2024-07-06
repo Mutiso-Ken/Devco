@@ -16,29 +16,29 @@ Page 50311 "Payroll Employee List."
         {
             repeater(Group)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Staff  No.';
                 }
-                field("Payroll No"; "Payroll No")
+                field("Payroll No"; Rec."Payroll No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Sacco Membership No.';
                 }
-                field("Full Name"; "Full Name")
+                field("Full Name"; Rec."Full Name")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Exit Staff"; "Exit Staff")
+                field("Exit Staff"; Rec."Exit Staff")
                 {
                     ApplicationArea = Basic;
 
                     trigger OnValidate()
                     begin
                         ExitReasonVisible := false;
-                        if "Exit Staff" = true then begin
+                        if Rec."Exit Staff" = true then begin
                             ExitReasonVisible := true;
                         end;
                     end;
@@ -46,73 +46,73 @@ Page 50311 "Payroll Employee List."
 
 
 
-                field("Basic Pay"; "Basic Pay")
+                field("Basic Pay"; Rec."Basic Pay")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Pays PAYE"; "Pays PAYE")
+                field("Pays PAYE"; Rec."Pays PAYE")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Pays NSSF"; "Pays NSSF")
+                field("Pays NSSF"; Rec."Pays NSSF")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Pays NHIF"; "Pays NHIF")
-                {
-                    ApplicationArea = Basic;
-                }
-
-
-                field("Voluntary Deposit Contribution"; "Voluntary Deposit Contribution")
+                field("Pays NHIF"; Rec."Pays NHIF")
                 {
                     ApplicationArea = Basic;
                 }
 
 
+                field("Voluntary Deposit Contribution"; Rec."Voluntary Deposit Contribution")
+                {
+                    ApplicationArea = Basic;
+                }
 
-                field("Pay Bonus"; "Pay Bonus")
+
+
+                field("Pay Bonus"; Rec."Pay Bonus")
                 {
                     ApplicationArea = Basic;
 
                     trigger OnValidate()
                     begin
                         BonusAmountVisible := false;
-                        if "Pay Bonus" = true then
+                        if Rec."Pay Bonus" = true then
                             BonusAmountVisible := true;
                     end;
                 }
-                field("Bonus Amount"; "Bonus Amount")
+                field("Bonus Amount"; Rec."Bonus Amount")
                 {
                     ApplicationArea = Basic;
                     Enabled = BonusAmountVisible;
                 }
-                field("Joining Date"; "Joining Date")
+                field("Joining Date"; Rec."Joining Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Job Group"; "Job Group")
+                field("Job Group"; Rec."Job Group")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Category; Category)
+                field(Category; Rec.Category)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Group"; "Posting Group")
+                field("Posting Group"; Rec."Posting Group")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Account No"; "Bank Account No")
+                field("Bank Account No"; Rec."Bank Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employee Email"; "Employee Email")
+                field("Employee Email"; Rec."Employee Email")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Managerial Position"; "Is Management")
+                field("Managerial Position"; Rec."Is Management")
                 {
                     ApplicationArea = Basic;
                 }
@@ -295,18 +295,18 @@ Page 50311 "Payroll Employee List."
                             ObjTransactionCodes.SetRange(ObjTransactionCodes."Co-Op Parameters", ObjTransactionCodes."co-op parameters"::Loan);
                             if ObjTransactionCodes.FindSet then begin
                                 ObjLoans.Reset();
-                                ObjLoans.SetRange(ObjLoans."Client Code",  ObjPayrollEmployees."Payroll No");
+                                ObjLoans.SetRange(ObjLoans."Client Code", ObjPayrollEmployees."Payroll No");
                                 if ObjLoans.Find('-') then begin
                                     repeat
                                         ObjLoans.CalcFields(ObjLoans."Outstanding Balance", ObjLoans."Oustanding Interest");
                                         //============================================Delete Entries For the Same Period
 
                                         //============================================Delete Entries For the Same Period
-                                        ObjLoans.CalcFields(ObjLoans."Outstanding Balance",ObjLoans."Oustanding Interest");
+                                        ObjLoans.CalcFields(ObjLoans."Outstanding Balance", ObjLoans."Oustanding Interest");
                                         If ObjLoans."Outstanding Balance" > 0 then begin
-                                            if ObjLoans."Outstanding Balance" < (ObjLoans.repayment-ObjLoans."Oustanding Interest") then
+                                            if ObjLoans."Outstanding Balance" < (ObjLoans.repayment - ObjLoans."Oustanding Interest") then
                                                 VarMonthlyInstalments := ObjLoans."Outstanding Balance" else
-                                                VarMonthlyInstalments := (ObjLoans.Repayment-ObjLoans."Oustanding Interest");
+                                                VarMonthlyInstalments := (ObjLoans.Repayment - ObjLoans."Oustanding Interest");
 
                                             ObjPayrollEmployeeTrans.Init;
                                             ObjPayrollEmployeeTrans."Sacco Membership No." := ObjPayrollEmployees."Payroll No";
@@ -342,7 +342,7 @@ Page 50311 "Payroll Employee List."
                             ObjTransactionCodes.SetRange(ObjTransactionCodes."Co-Op Parameters", ObjTransactionCodes."co-op parameters"::"Loan Interest");
                             if ObjTransactionCodes.FindSet then begin
                                 ObjLoans.Reset();
-                                ObjLoans.SetRange(ObjLoans."Client Code",  ObjPayrollEmployees."Payroll No");
+                                ObjLoans.SetRange(ObjLoans."Client Code", ObjPayrollEmployees."Payroll No");
                                 if ObjLoans.Find('-') then begin
                                     repeat
                                         ObjLoans.CalcFields(ObjLoans."Outstanding Balance", ObjLoans."Oustanding Interest");
@@ -391,7 +391,7 @@ Page 50311 "Payroll Employee List."
                 trigger OnAction()
                 begin
                     PayrollEmp.Reset;
-                    PayrollEmp.SetRange(PayrollEmp."No.", "No.");
+                    PayrollEmp.SetRange(PayrollEmp."No.", Rec."No.");
                     if PayrollEmp.FindFirst then begin
                         Report.Run(50010, true, false, PayrollEmp);
                     end;
@@ -405,11 +405,11 @@ Page 50311 "Payroll Employee List."
     begin
         ExitReasonVisible := false;
         BonusAmountVisible := false;
-        if "Exit Staff" = true then begin
+        if Rec."Exit Staff" = true then begin
             ExitReasonVisible := true;
         end;
 
-        if "Pay Bonus" = true then
+        if Rec."Pay Bonus" = true then
             BonusAmountVisible := true;
     end;
 
@@ -417,20 +417,19 @@ Page 50311 "Payroll Employee List."
     begin
         ExitReasonVisible := false;
         BonusAmountVisible := false;
-        if "Exit Staff" = true then begin
+        if Rec."Exit Staff" = true then begin
             ExitReasonVisible := true;
         end;
 
-        if "Pay Bonus" = true then
+        if Rec."Pay Bonus" = true then
             BonusAmountVisible := true;
     end;
 
     trigger OnInit()
     begin
         //TODO
-        IF Usersetup.GET(USERID) THEN
-        BEGIN
-        IF Usersetup."Payroll User"=FALSE THEN ERROR ('You dont have permissions for payroll, Contact your system administrator! ')
+        IF Usersetup.GET(USERID) THEN BEGIN
+            IF Usersetup."Payroll User" = FALSE THEN ERROR('You dont have permissions for payroll, Contact your system administrator! ')
         END;
 
 
@@ -440,11 +439,11 @@ Page 50311 "Payroll Employee List."
     begin
         ExitReasonVisible := false;
         BonusAmountVisible := false;
-        if "Exit Staff" = true then begin
+        if Rec."Exit Staff" = true then begin
             ExitReasonVisible := true;
         end;
 
-        if "Pay Bonus" = true then
+        if Rec."Pay Bonus" = true then
             BonusAmountVisible := true;
     end;
 

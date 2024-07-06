@@ -2,10 +2,10 @@
 Page 51516062 "RFQ List"
 {
     ApplicationArea = Basic;
-   // CardPageID = "RFQ Header";
+    // CardPageID = "RFQ Header";
     PageType = List;
     SourceTable = "Purchase Quote Header";
-    SourceTableView = where(Status=filter(Open|Released));
+    SourceTableView = where(Status = filter(Open | Released));
     UsageCategory = Lists;
 
     layout
@@ -18,23 +18,23 @@ Page 51516062 "RFQ List"
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Description";"Posting Description")
+                field("Posting Description"; Rec."Posting Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Expected Closing Date";"Expected Closing Date")
+                field("Expected Closing Date"; Rec."Expected Closing Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Location Code";"Location Code")
+                field("Location Code"; Rec."Location Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Shortcut Dimension 1 Code";"Shortcut Dimension 1 Code")
+                field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Shortcut Dimension 2 Code";"Shortcut Dimension 2 Code")
+                field("Shortcut Dimension 2 Code"; Rec."Shortcut Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }

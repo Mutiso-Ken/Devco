@@ -4,118 +4,118 @@ Table 51516274 "Bosa Loan Clearances"
 
     fields
     {
-        field(1;"BLA Number";Code[10])
+        field(1; "BLA Number"; Code[10])
         {
         }
-        field(2;"Client Code";Code[10])
+        field(2; "Client Code"; Code[10])
         {
             TableRelation = Customer."No.";
 
             trigger OnValidate()
             begin
                 if "Client Code" = '' then
-                "Client Name":='';
+                    "Client Name" := '';
 
                 if CustomerRecord.Get("Client Code") then begin
-                if CustomerRecord.Blocked=CustomerRecord.Blocked::All then
-                Error('Member is blocked from transacting ' + "Client Code");
+                    if CustomerRecord.Blocked = CustomerRecord.Blocked::All then
+                        Error('Member is blocked from transacting ' + "Client Code");
 
 
 
-                CustomerRecord.TestField(CustomerRecord."ID No.");
-                if CustomerRecord."Registration Date" <> 0D then begin
-                if CalcDate(GenSetUp."Min. Loan Application Period",CustomerRecord."Registration Date") > Today then
-                Error('Member is less than six months old therefor not eligible for loan application.');
+                    CustomerRecord.TestField(CustomerRecord."ID No.");
+                    if CustomerRecord."Registration Date" <> 0D then begin
+                        if CalcDate(GenSetUp."Min. Loan Application Period", CustomerRecord."Registration Date") > Today then
+                            Error('Member is less than six months old therefor not eligible for loan application.');
+                    end;
                 end;
-                end;
 
-                "Client Name":=CustomerRecord.Name;
-                "Account No":=CustomerRecord."FOSA Account";
-                "Staff No":=CustomerRecord."Payroll/Staff No";
-                "ID No":=CustomerRecord."ID No.";
+                "Client Name" := CustomerRecord.Name;
+                "Account No" := CustomerRecord."FOSA Account";
+                "Staff No" := CustomerRecord."Payroll/Staff No";
+                "ID No" := CustomerRecord."ID No.";
             end;
         }
-        field(3;"Client Name";Code[60])
+        field(3; "Client Name"; Code[60])
         {
         }
-        field(4;"Loan Product Type";Code[60])
+        field(4; "Loan Product Type"; Code[60])
         {
             TableRelation = "Loan Products Setup".Code;
 
             trigger OnValidate()
             begin
                 if LoanType.Get("Loan Product Type") then begin
-                "Loan Product Type Name":=LoanType."Product Description";
+                    "Loan Product Type Name" := LoanType."Product Description";
                 end;
             end;
         }
-        field(5;"Loan Product Type Name";Code[60])
+        field(5; "Loan Product Type Name"; Code[60])
         {
         }
-        field(6;Interest;Decimal)
+        field(6; Interest; Decimal)
         {
         }
-        field(7;"Request Amount";Decimal)
+        field(7; "Request Amount"; Decimal)
         {
         }
-        field(8;"Approved Amount";Decimal)
+        field(8; "Approved Amount"; Decimal)
         {
 
             trigger OnValidate()
             begin
-                if "Approved Amount"> "Request Amount" then begin
-                Error('APPROVED AMOUNT CANT BE GREATER THAN REQUESTED AMOUNT');
+                if "Approved Amount" > "Request Amount" then begin
+                    Error('APPROVED AMOUNT CANT BE GREATER THAN REQUESTED AMOUNT');
                 end;
             end;
         }
-        field(9;"Main Loan Number";Code[60])
+        field(9; "Main Loan Number"; Code[60])
         {
-            TableRelation = "Loans Register"."Loan  No." where ("Client Code"=field("Client Code"),
-                                                                Posted=const(false));
+            TableRelation = "Loans Register"."Loan  No." where("Client Code" = field("Client Code"),
+                                                                Posted = const(false));
 
             trigger OnValidate()
             begin
-                
+
             end;
         }
-        field(10;"Approval Status";Option)
+        field(10; "Approval Status"; Option)
         {
             OptionCaption = 'Open,Pending,Approved,Rejected';
             OptionMembers = Open,Pending,Approved,Rejected;
         }
-        field(11;"No. Series";Code[10])
+        field(11; "No. Series"; Code[10])
         {
         }
-        field(12;"Staff No";Code[60])
+        field(12; "Staff No"; Code[60])
         {
         }
-        field(13;"Account No";Code[60])
+        field(13; "Account No"; Code[60])
         {
         }
-        field(14;"ID No";Code[60])
+        field(14; "ID No"; Code[60])
         {
         }
-        field(15;"Responsibility Center";Code[60])
+        field(15; "Responsibility Center"; Code[60])
         {
             TableRelation = "Responsibility Center";
         }
-        field(16;Posted;Boolean)
+        field(16; Posted; Boolean)
         {
         }
-        field(17;Balances;Decimal)
+        field(17; Balances; Decimal)
         {
-            CalcFormula = sum("Cust. Ledger Entry"."Amount (LCY)" where ("Loan No"=field("BLA Number")));
+            CalcFormula = sum("Cust. Ledger Entry"."Amount (LCY)" where("Loan No" = field("BLA Number")));
             FieldClass = FlowField;
         }
     }
 
     keys
     {
-        key(Key1;"BLA Number")
+        key(Key1; "BLA Number")
         {
             Clustered = true;
         }
-        key(Key2;"Client Code","Main Loan Number",Posted)
+        key(Key2; "Client Code", "Main Loan Number", Posted)
         {
             SumIndexFields = "Approved Amount";
         }
@@ -129,7 +129,7 @@ Table 51516274 "Bosa Loan Clearances"
     begin
         SalesSetup.Get;
         SalesSetup.TestField(SalesSetup."BOSA Loans Nos");
-        NoSeriesMgt.InitSeries(SalesSetup."BOSA Loans Nos",xRec."No. Series",0D,"BLA Number","No. Series");
+        NoSeriesMgt.InitSeries(SalesSetup."BOSA Loans Nos", xRec."No. Series", 0D, "BLA Number", "No. Series");
     end;
 
     var
@@ -140,7 +140,7 @@ Table 51516274 "Bosa Loan Clearances"
         i: Integer;
         PeriodDueDate: Date;
         Gnljnline: Record "Gen. Journal Line";
-       // Jnlinepost: Codeunit "Gen. Jnl.-Post Line";
+        // Jnlinepost: Codeunit "Gen. Jnl.-Post Line";
         CumInterest: Decimal;
         NewPrincipal: Decimal;
         PeriodPrRepayment: Decimal;

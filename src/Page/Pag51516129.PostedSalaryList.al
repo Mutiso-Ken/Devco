@@ -22,7 +22,7 @@ page 51516129 "Posted Salary List"
                 field("Processing Type"; Rec."Processing Type")
                 {
                 }
-                field("Posting Document No"; "Posting Document No")
+                field("Posting Document No"; Rec."Posting Document No")
                 {
                 }
                 field("Date Entered"; Rec."Date Entered")
@@ -39,6 +39,6 @@ page 51516129 "Posted Salary List"
     }
     trigger OnOpenPage()
     begin
-        SetRange("Entered By", UserId);
+        Rec.SetRange("Entered By", UserId);
     end;
 }

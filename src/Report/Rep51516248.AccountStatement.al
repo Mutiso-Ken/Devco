@@ -368,14 +368,13 @@ Report 51516248 "Account Statement"
         VendFilter := Vendor.GetFilters;
         VendDateFilter := Vendor.GetFilter("Date Filter");
 
-        with "Vendor Ledger Entry" do
-            if PrintAmountsInLCY then begin
-                AmountCaption := FieldCaption("Amount (LCY)");
-                RemainingAmtCaption := FieldCaption("Remaining Amt. (LCY)");
-            end else begin
-                AmountCaption := FieldCaption(Amount);
-                RemainingAmtCaption := FieldCaption("Remaining Amount");
-            end;
+        if PrintAmountsInLCY then begin
+            AmountCaption := "Vendor Ledger Entry".FieldCaption("Amount (LCY)");
+            RemainingAmtCaption := "Vendor Ledger Entry".FieldCaption("Remaining Amt. (LCY)");
+        end else begin
+            AmountCaption := "Vendor Ledger Entry".FieldCaption(Amount);
+            RemainingAmtCaption := "Vendor Ledger Entry".FieldCaption("Remaining Amount");
+        end;
     end;
 
     var

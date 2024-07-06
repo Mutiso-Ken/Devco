@@ -15,18 +15,18 @@ Page 51516374 "BOSA Transfer List"
         {
             repeater(Group)
             {
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Transaction Date"; "Transaction Date")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
 
-                field("Schedule Total"; "Schedule Total")
+                field("Schedule Total"; Rec."Schedule Total")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
@@ -34,29 +34,29 @@ Page 51516374 "BOSA Transfer List"
                 }
 
 
-                field("No. Series"; "No. Series")
+                field("No. Series"; Rec."No. Series")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Responsibility Center"; "Responsibility Center")
+                field("Responsibility Center"; Rec."Responsibility Center")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field(Remarks; Remarks)
+                field(Remarks; Rec.Remarks)
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Posted; Posted)
+                field(Posted; Rec.Posted)
                 {
 
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
                     Style = StrongAccent;
                 }
-                field("Approved By"; "Approved By")
+                field("Approved By"; Rec."Approved By")
                 {
                     ApplicationArea = Basic;
                 }
@@ -71,7 +71,7 @@ Page 51516374 "BOSA Transfer List"
 
     trigger OnOpenPage()
     begin
-        SetRange("Captured By", UserId);
+        Rec.SetRange("Captured By", UserId);
 
     end;
 }

@@ -4,8 +4,8 @@ Page 51516861 "Property Receipt Card"
     DeleteAllowed = false;
     PageType = Card;
     SourceTable = "Receipt Header";
-    SourceTableView = where("Receipt Category"=const(Property),
-                            Posted=const(false));
+    SourceTableView = where("Receipt Category" = const(Property),
+                            Posted = const(false));
 
     layout
     {
@@ -13,102 +13,102 @@ Page 51516861 "Property Receipt Card"
         {
             group(General)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Type";"Document Type")
+                field("Document Type"; Rec."Document Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Date;Date)
+                field(Date; Rec.Date)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Date";"Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Code";"Bank Code")
+                field("Bank Code"; Rec."Bank Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Name";"Bank Name")
+                field("Bank Name"; Rec."Bank Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Balance";"Bank Balance")
+                field("Bank Balance"; Rec."Bank Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Currency Code";"Currency Code")
+                field("Currency Code"; Rec."Currency Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Project Code";"Project Code")
+                field("Project Code"; Rec."Project Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Project Name";"Project Name")
+                field("Project Name"; Rec."Project Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Property Code";"Property Code")
+                field("Property Code"; Rec."Property Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Property Name";"Property Name")
+                field("Property Name"; Rec."Property Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Responsibility Center";"Responsibility Center")
+                field("Responsibility Center"; Rec."Responsibility Center")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount Received";"Amount Received")
+                field("Amount Received"; Rec."Amount Received")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount Received(LCY)";"Amount Received(LCY)")
+                field("Amount Received(LCY)"; Rec."Amount Received(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Amount";"Total Amount")
+                field("Total Amount"; Rec."Total Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Amount(LCY)";"Total Amount(LCY)")
+                field("Total Amount(LCY)"; Rec."Total Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Received From";"Received From")
+                field("Received From"; Rec."Received From")
                 {
                     ApplicationArea = Basic;
                 }
-                field("User ID";"User ID")
+                field("User ID"; Rec."User ID")
                 {
                     ApplicationArea = Basic;
                 }
             }
-            part(Control23;"Property Receipt Line")
+            part(Control23; "Property Receipt Line")
             {
-                SubPageLink = "Document No"=field("No.");
+                SubPageLink = "Document No" = field("No.");
             }
         }
     }
@@ -127,28 +127,29 @@ Page 51516861 "Property Receipt Card"
 
                 trigger OnAction()
                 begin
-                    TestField(Status,Status::Approved);
-                    CalcFields("Total Amount","Total Amount(LCY)");
+                    Rec.TestField(Status, Rec.Status::Approved);
+                    Rec.CalcFields("Total Amount", "Total Amount(LCY)");
 
-                    ok:=Confirm('Post Receipt No:'+Format("No.")+'. The Customer account will be credited with KES:'+Format("Total Amount(LCY)")+' Continue?');
+                    ok := Confirm('Post Receipt No:' + Format(Rec."No.") + '. The Customer account will be credited with KES:' + Format(Rec."Total Amount(LCY)") + ' Continue?');
                     if ok then begin
-                      DocNo:="No.";
-                      if FundsUser.Get(UserId) then begin
-                        FundsUser.TestField(FundsUser."Receipt Journal Template");
-                        FundsUser.TestField(FundsUser."Receipt Journal Batch");
-                        JTemplate:=FundsUser."Receipt Journal Template";JBatch:=FundsUser."Receipt Journal Batch";
-                        PostedEntry:=FundsManager.PostPropertyReceipt(Rec,JTemplate,JBatch,"Property Code","No.",'',"Received From","Total Amount(LCY)");
-                        if PostedEntry then begin
-                          ReceiptHeader.Reset;
-                          ReceiptHeader.SetRange(ReceiptHeader."No.",DocNo);
-                          if ReceiptHeader.FindFirst then begin
-                            Error('DEV');
-                            //Report.RunModal(Report::"Investor Receipt",true,false,ReceiptHeader);
-                          end;
+                        DocNo := Rec."No.";
+                        if FundsUser.Get(UserId) then begin
+                            FundsUser.TestField(FundsUser."Receipt Journal Template");
+                            FundsUser.TestField(FundsUser."Receipt Journal Batch");
+                            JTemplate := FundsUser."Receipt Journal Template";
+                            JBatch := FundsUser."Receipt Journal Batch";
+                            PostedEntry := FundsManager.PostPropertyReceipt(Rec, JTemplate, JBatch, Rec."Property Code", Rec."No.", '', Rec."Received From", Rec."Total Amount(LCY)");
+                            if PostedEntry then begin
+                                ReceiptHeader.Reset;
+                                ReceiptHeader.SetRange(ReceiptHeader."No.", DocNo);
+                                if ReceiptHeader.FindFirst then begin
+                                    Error('DEV');
+                                    //Report.RunModal(Report::"Investor Receipt",true,false,ReceiptHeader);
+                                end;
+                            end;
+                        end else begin
+                            Error('User Account Not Setup');
                         end;
-                      end else begin
-                        Error('User Account Not Setup');
-                      end;
                     end;
                 end;
             }
@@ -162,9 +163,9 @@ Page 51516861 "Property Receipt Card"
 
                 trigger OnAction()
                 begin
-                      Status:=Status::Approved;
-                      Modify;
-                      Message('Receipt No:'+Format("No.")+' Was Automatically Approved');
+                    Rec.Status := Rec.Status::Approved;
+                    Rec.Modify;
+                    Message('Receipt No:' + Format(Rec."No.") + ' Was Automatically Approved');
                 end;
             }
             action("Cancel Approval Request")
@@ -185,12 +186,12 @@ Page 51516861 "Property Receipt Card"
 
                 trigger OnAction()
                 begin
-                      ReceiptHeader.Reset;
-                      ReceiptHeader.SetRange(ReceiptHeader."No.","No.");
-                      if ReceiptHeader.FindFirst then begin
+                    ReceiptHeader.Reset;
+                    ReceiptHeader.SetRange(ReceiptHeader."No.", Rec."No.");
+                    if ReceiptHeader.FindFirst then begin
                         Error('DEV');
-                           // Report.RunModal(Report::"Property Receipt",true,false,ReceiptHeader);
-                      end;
+                        // Report.RunModal(Report::"Property Receipt",true,false,ReceiptHeader);
+                    end;
                 end;
             }
         }
@@ -198,7 +199,7 @@ Page 51516861 "Property Receipt Card"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-           "Receipt Category":="receipt category"::Property;
+        Rec."Receipt Category" := Rec."receipt category"::Property;
     end;
 
     var

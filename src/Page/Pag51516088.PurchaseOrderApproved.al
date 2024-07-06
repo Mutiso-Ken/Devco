@@ -17,98 +17,98 @@ Page 51516088 "Purchase Order (Approved)"
         {
             repeater(Control1)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Buy-from Vendor No."; "Buy-from Vendor No.")
+                field("Buy-from Vendor No."; Rec."Buy-from Vendor No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Order Address Code"; "Order Address Code")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("Buy-from Vendor Name"; "Buy-from Vendor Name")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Vendor Authorization No."; "Vendor Authorization No.")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Buy-from Post Code"; "Buy-from Post Code")
+                field("Order Address Code"; Rec."Order Address Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Buy-from Country/Region Code"; "Buy-from Country/Region Code")
+                field("Buy-from Vendor Name"; Rec."Buy-from Vendor Name")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Vendor Authorization No."; Rec."Vendor Authorization No.")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Buy-from Post Code"; Rec."Buy-from Post Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Buy-from Contact"; "Buy-from Contact")
+                field("Buy-from Country/Region Code"; Rec."Buy-from Country/Region Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Pay-to Vendor No."; "Pay-to Vendor No.")
+                field("Buy-from Contact"; Rec."Buy-from Contact")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Pay-to Name"; "Pay-to Name")
+                field("Pay-to Vendor No."; Rec."Pay-to Vendor No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Pay-to Post Code"; "Pay-to Post Code")
+                field("Pay-to Name"; Rec."Pay-to Name")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Pay-to Country/Region Code"; "Pay-to Country/Region Code")
+                field("Pay-to Post Code"; Rec."Pay-to Post Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Pay-to Contact"; "Pay-to Contact")
+                field("Pay-to Country/Region Code"; Rec."Pay-to Country/Region Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Ship-to Code"; "Ship-to Code")
+                field("Pay-to Contact"; Rec."Pay-to Contact")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Ship-to Name"; "Ship-to Name")
+                field("Ship-to Code"; Rec."Ship-to Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Ship-to Post Code"; "Ship-to Post Code")
+                field("Ship-to Name"; Rec."Ship-to Name")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Ship-to Country/Region Code"; "Ship-to Country/Region Code")
+                field("Ship-to Post Code"; Rec."Ship-to Post Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Ship-to Contact"; "Ship-to Contact")
+                field("Ship-to Country/Region Code"; Rec."Ship-to Country/Region Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Posting Date"; "Posting Date")
+                field("Ship-to Contact"; Rec."Ship-to Contact")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Shortcut Dimension 1 Code"; "Shortcut Dimension 1 Code")
+                field("Posting Date"; Rec."Posting Date")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
@@ -118,7 +118,7 @@ Page 51516088 "Purchase Order (Approved)"
                         DimMgt.LookupDimValueCodeNoUpdate(1);
                     end;
                 }
-                field("Shortcut Dimension 2 Code"; "Shortcut Dimension 2 Code")
+                field("Shortcut Dimension 2 Code"; Rec."Shortcut Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
@@ -128,66 +128,66 @@ Page 51516088 "Purchase Order (Approved)"
                         DimMgt.LookupDimValueCodeNoUpdate(2);
                     end;
                 }
-                field("Location Code"; "Location Code")
+                field("Location Code"; Rec."Location Code")
                 {
                     ApplicationArea = Basic;
                     Visible = true;
                 }
-                field("Purchaser Code"; "Purchaser Code")
+                field("Purchaser Code"; Rec."Purchaser Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Assigned User ID"; "Assigned User ID")
+                field("Assigned User ID"; Rec."Assigned User ID")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Currency Code"; "Currency Code")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("Document Date"; "Document Date")
+                field("Currency Code"; Rec."Currency Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Status; Status)
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Payment Terms Code"; "Payment Terms Code")
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Due Date"; "Due Date")
+                field("Payment Terms Code"; Rec."Payment Terms Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Payment Discount %"; "Payment Discount %")
+                field("Due Date"; Rec."Due Date")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Payment Method Code"; "Payment Method Code")
+                field("Payment Discount %"; Rec."Payment Discount %")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Shipment Method Code"; "Shipment Method Code")
+                field("Payment Method Code"; Rec."Payment Method Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Requested Receipt Date"; "Requested Receipt Date")
+                field("Shipment Method Code"; Rec."Shipment Method Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Job Queue Status"; "Job Queue Status")
+                field("Requested Receipt Date"; Rec."Requested Receipt Date")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Job Queue Status"; Rec."Job Queue Status")
                 {
                     ApplicationArea = Basic;
                     Visible = JobQueueActive;
@@ -238,7 +238,7 @@ Page 51516088 "Purchase Order (Approved)"
 
                     trigger OnAction()
                     begin
-                        ShowDocDim;
+                        Rec.ShowDocDim;
                     end;
                 }
                 action(Statistics)
@@ -253,7 +253,7 @@ Page 51516088 "Purchase Order (Approved)"
 
                     trigger OnAction()
                     begin
-                        OpenPurchaseOrderStatistics;
+                        Rec.OpenPurchaseOrderStatistics;
                     end;
                 }
                 action(Approvals)
@@ -269,7 +269,7 @@ Page 51516088 "Purchase Order (Approved)"
                     var
                         ApprovalEntries: Page "Approval Entries";
                     begin
-                        ApprovalEntries.SetRecordFilters(Database::"Purchase Header", "Document Type", "No.");
+                        ApprovalEntries.SetRecordFilters(Database::"Purchase Header", Rec."Document Type", Rec."No.");
                         ApprovalEntries.Run;
                     end;
                 }
@@ -493,8 +493,8 @@ Page 51516088 "Purchase Order (Approved)"
                     begin
                         GetSourceDocInbound.CreateFromPurchOrder(Rec);
 
-                        if not Find('=><') then
-                            Init;
+                        if not Rec.Find('=><') then
+                            Rec.Init;
                     end;
                 }
                 action("Create Inventor&y Put-away/Pick")
@@ -507,10 +507,10 @@ Page 51516088 "Purchase Order (Approved)"
 
                     trigger OnAction()
                     begin
-                        CreateInvtPutAwayPick;
+                        Rec.CreateInvtPutAwayPick;
 
-                        if not Find('=><') then
-                            Init;
+                        if not Rec.Find('=><') then
+                            Rec.Init;
                     end;
                 }
                 separator(Action1102601017)
@@ -546,7 +546,7 @@ Page 51516088 "Purchase Order (Approved)"
 
                     trigger OnAction()
                     begin
-                        SendToPosting(Codeunit::"Purch.-Post (Yes/No)");
+                        Rec.SendToPosting(Codeunit::"Purch.-Post (Yes/No)");
                     end;
                 }
                 action(Preview)
@@ -575,7 +575,7 @@ Page 51516088 "Purchase Order (Approved)"
 
                     trigger OnAction()
                     begin
-                        SendToPosting(Codeunit::"Purch.-Post + Print");
+                        Rec.SendToPosting(Codeunit::"Purch.-Post + Print");
                     end;
                 }
                 action(PostBatch)
@@ -602,7 +602,7 @@ Page 51516088 "Purchase Order (Approved)"
 
                     trigger OnAction()
                     begin
-                        CancelBackgroundPosting;
+                        Rec.CancelBackgroundPosting;
                     end;
                 }
             }
@@ -619,7 +619,7 @@ Page 51516088 "Purchase Order (Approved)"
     var
         PurchasesPayablesSetup: Record "Purchases & Payables Setup";
     begin
-        SetSecurityFilterOnRespCenter;
+        Rec.SetSecurityFilterOnRespCenter;
 
         JobQueueActive := PurchasesPayablesSetup.JobQueueActive;
     end;
@@ -636,7 +636,7 @@ Page 51516088 "Purchase Order (Approved)"
     var
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
     begin
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
+        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(Rec.RecordId);
     end;
 }
 

@@ -12,34 +12,34 @@ Page 51516898 "Micro_Fin_Schedule"
         {
             repeater(Group)
             {
-                field("Account Number"; "Account Number")
+                field("Account Number"; Rec."Account Number")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name"; "Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Loans No."; "Loans No.")
+                field("Loans No."; Rec."Loans No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Loan No.';
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Total Received From Member';
                     Style = Strong;
                 }
-                field(Savings; Savings)
+                field(Savings; Rec.Savings)
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
                     Caption = 'Savings Amount';
                 }
-                field("Principle Amount"; "Principle Amount")
+                field("Principle Amount"; Rec."Principle Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
@@ -47,24 +47,24 @@ Page 51516898 "Micro_Fin_Schedule"
                     Style = Unfavorable;
                 }
 
-                field("Interest Amount"; "Interest Amount")
+                field("Interest Amount"; Rec."Interest Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                     Caption = 'Interest Amount';
                     Style = Unfavorable;
                 }
-                field("Expected Principle Amount"; "Expected Principle Amount")
+                field("Expected Principle Amount"; Rec."Expected Principle Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Outstanding Principle';
                 }
-                field("Expected Interest"; "Expected Interest")
+                field("Expected Interest"; Rec."Expected Interest")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Outstanding Interest';
                 }
-                field("Excess Amount"; "Excess Amount")
+                field("Excess Amount"; Rec."Excess Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = true;

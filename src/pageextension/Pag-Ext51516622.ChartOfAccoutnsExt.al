@@ -6,7 +6,7 @@ pageextension 51516622 "ChartOfAccoutnsExt" extends "Chart of Accounts"
         addafter(Balance)
         {
 
-            field("Budgeted Amount"; "Budgeted Amount")
+            field("Budgeted Amount"; Rec."Budgeted Amount")
             {
                 ApplicationArea = Basic;
                 Editable = false;
@@ -55,7 +55,7 @@ pageextension 51516622 "ChartOfAccoutnsExt" extends "Chart of Accounts"
             var
                 myInt: Integer;
             begin
-                GLEntry.SetRange("G/L Account No.", "No.");
+                GLEntry.SetRange("G/L Account No.", Rec."No.");
                 if GLEntry.FindSet() then begin
                     Enable := false;
                 end;
@@ -141,7 +141,7 @@ pageextension 51516622 "ChartOfAccoutnsExt" extends "Chart of Accounts"
             Rec."Budgeted Debit Amount" := 0;
             Rec."Budgeted Credit Amount" := -Rec."Budgeted Amount";
         end;
-        if rec."Account Type" = "Account Type"::"Begin-Total"
+        if rec."Account Type" = Rec."Account Type"::"Begin-Total"
         then
             Favour := Favour::" " else
             if Rec."Budgeted Amount" = 0 then begin

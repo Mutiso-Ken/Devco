@@ -6,81 +6,81 @@ Report 51516044 "Funds Transfer Voucher"
 
     dataset
     {
-        dataitem("Funds Transfer Header";"Funds Transfer Header")
+        dataitem("Funds Transfer Header"; "Funds Transfer Header")
         {
             column(ReportForNavId_1; 1)
             {
             }
-            column(No;"Funds Transfer Header"."No.")
+            column(No; "Funds Transfer Header"."No.")
             {
             }
-            column(Dated;"Funds Transfer Header"."Paying Bank Account")
+            column(Dated; "Funds Transfer Header"."Paying Bank Account")
             {
             }
-            column(ChequeNo;"Funds Transfer Header"."Cheque/Doc. No")
+            column(ChequeNo; "Funds Transfer Header"."Cheque/Doc. No")
             {
             }
-            column(PayingAcc;"Funds Transfer Header"."Paying Bank Account")
+            column(PayingAcc; "Funds Transfer Header"."Paying Bank Account")
             {
             }
-            column(AccName;"Funds Transfer Header"."Paying Bank Name")
+            column(AccName; "Funds Transfer Header"."Paying Bank Name")
             {
             }
-            column(PostingDate_FundsTransferHeader;"Funds Transfer Header"."Posting Date")
+            column(PostingDate_FundsTransferHeader; "Funds Transfer Header"."Posting Date")
             {
             }
-            column(PostedBy_FundsTransferHeader;"Funds Transfer Header"."Posted By")
+            column(PostedBy_FundsTransferHeader; "Funds Transfer Header"."Posted By")
             {
             }
-            column(CName;CompanyInfo.Name)
+            column(CName; CompanyInfo.Name)
             {
             }
-            column(CAddress;CompanyInfo.Address)
+            column(CAddress; CompanyInfo.Address)
             {
             }
-            column(CPic;CompanyInfo.Picture)
+            column(CPic; CompanyInfo.Picture)
             {
             }
-            column(CI_Name;CI.Name)
+            column(CI_Name; CI.Name)
             {
                 IncludeCaption = true;
             }
-            column(CI_Address;CI.Address)
+            column(CI_Address; CI.Address)
             {
                 IncludeCaption = true;
             }
-            column(CI_Address2;CI."Address 2" )
+            column(CI_Address2; CI."Address 2")
             {
                 IncludeCaption = true;
             }
-            column(CI_PhoneNo;CI."Phone No.")
+            column(CI_PhoneNo; CI."Phone No.")
             {
                 IncludeCaption = true;
             }
-            column(CI_Picture;CI.Picture)
+            column(CI_Picture; CI.Picture)
             {
                 IncludeCaption = true;
             }
-            column(CI_City;CI.City)
+            column(CI_City; CI.City)
             {
                 IncludeCaption = true;
             }
-            dataitem("Funds Transfer Line";"Funds Transfer Line")
+            dataitem("Funds Transfer Line"; "Funds Transfer Line")
             {
-                DataItemLink = "Document No"=field("No.");
+                DataItemLink = "Document No" = field("No.");
                 column(ReportForNavId_6; 6)
                 {
                 }
-                column(RecAcc;"Funds Transfer Line"."Receiving Bank Account")
+                column(RecAcc; "Funds Transfer Line"."Receiving Bank Account")
                 {
                 }
-                column(RecAccName;"Funds Transfer Line"."Bank Name")
+                column(RecAccName; "Funds Transfer Line"."Bank Name")
                 {
                 }
-                column(AmountReceived;"Funds Transfer Line"."Amount to Receive")
+                column(AmountReceived; "Funds Transfer Line"."Amount to Receive")
                 {
                 }
-                column(ext;"Funds Transfer Line"."External Doc No.")
+                column(ext; "Funds Transfer Line"."External Doc No.")
                 {
                 }
             }

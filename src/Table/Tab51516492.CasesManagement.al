@@ -114,7 +114,7 @@ Table 51516492 "Cases Management"
             var
                 UserMgt: Codeunit "User Management";
             begin
-               // UserMgt.LookupUserID("Caller Reffered To");
+                // UserMgt.LookupUserID("Caller Reffered To");
             end;
 
             trigger OnValidate()

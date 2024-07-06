@@ -12,39 +12,39 @@ Page 51516485 "Treasury Denominations"
         {
             repeater(Control1000000000)
             {
-                field(No;No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Enabled = false;
                 }
-                field("Code";Code)
+                field("Code"; Rec.Code)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                     Enabled = true;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Enabled = true;
                 }
-                field(Type;Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = Basic;
                     Enabled = true;
                 }
-                field(Value;Value)
+                field(Value; Rec.Value)
                 {
                     ApplicationArea = Basic;
                     Enabled = true;
                 }
-                field(Quantity;Quantity)
+                field(Quantity; Rec.Quantity)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Amount";"Total Amount")
+                field("Total Amount"; Rec."Total Amount")
                 {
                     ApplicationArea = Basic;
                     Enabled = false;
@@ -66,7 +66,7 @@ Page 51516485 "Treasury Denominations"
     end;
 
 
-    procedure GetVariables(var LoanNo: Code[20];var LoanProductType: Code[20])
+    procedure GetVariables(var LoanNo: Code[20]; var LoanProductType: Code[20])
     begin
         /*LoanNo:="Loan  No.";
         LoanProductType:="Loan Product Type"; */

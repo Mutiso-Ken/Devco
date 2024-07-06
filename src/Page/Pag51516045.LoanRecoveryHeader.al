@@ -80,14 +80,14 @@ page 51516045 "Loan Recovery Header"
                 var
                     RecoveryLines: Record "Loan Recovery List";
                 begin
-                    TestField(Posted, false);
-                    TestField("Posted By", '');
-                    TestField("Posting Date", 0D);
-                    if Status <> Status::Open then begin
+                    Rec.TestField(Posted, false);
+                    Rec.TestField("Posted By", '');
+                    Rec.TestField("Posting Date", 0D);
+                    if Rec.Status <> Rec.Status::Open then begin
                         Error('The card MUST be Open');
                     end;
                     RecoveryLines.Reset();
-                    RecoveryLines.SetRange(RecoveryLines."Document No", "Document No");
+                    RecoveryLines.SetRange(RecoveryLines."Document No", Rec."Document No");
                     if RecoveryLines.Find('-') then begin
                         repeat
                             if (RecoveryLines."Member No" = '') or (RecoveryLines."Loan No." = '') or (RecoveryLines."Total Amount To Recover" = 0) then begin
@@ -128,17 +128,17 @@ page 51516045 "Loan Recovery Header"
                 Caption = 'Post';
                 Image = PostedReceipt;
                 Promoted = true;
-                Visible=false;
+                Visible = false;
                 Enabled = PostEnabled;
                 PromotedIsBig = true;
                 PromotedCategory = Process;
 
                 trigger OnAction()
                 begin
-                    TestField(Posted, false);
-                    TestField("Posted By", '');
-                    TestField("Posting Date", 0D);
-                    if Status <> Status::Approved then begin
+                    Rec.TestField(Posted, false);
+                    Rec.TestField("Posted By", '');
+                    Rec.TestField("Posting Date", 0D);
+                    if Rec.Status <> Rec.Status::Approved then begin
                         Error('The card MUST be Approved');
                     end;
                 end;
@@ -170,34 +170,34 @@ page 51516045 "Loan Recovery Header"
 
     local procedure FnUpdateControls()
     begin
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             SendApprovalEnabled := true;
             CancelApprovalEnabled := false;
             PostEnabled := false;
             FieldEditable := true;
         end else
-            if Status = Status::Pending then begin
+            if Rec.Status = Rec.Status::Pending then begin
                 SendApprovalEnabled := false;
                 CancelApprovalEnabled := true;
                 PostEnabled := false;
                 FieldEditable := false;
             end
             else
-                if Status = Status::Approved then begin
+                if Rec.Status = Rec.Status::Approved then begin
                     SendApprovalEnabled := false;
                     CancelApprovalEnabled := false;
                     PostEnabled := true;
                     FieldEditable := false;
                 end
                 else
-                    if Status = Status::Closed then begin
+                    if Rec.Status = Rec.Status::Closed then begin
                         SendApprovalEnabled := false;
                         CancelApprovalEnabled := false;
                         PostEnabled := false;
                         FieldEditable := false;
                     end
                     else
-                        if Status = Status::Rejected then begin
+                        if Rec.Status = Rec.Status::Rejected then begin
                             SendApprovalEnabled := true;
                             CancelApprovalEnabled := false;
                             PostEnabled := true;

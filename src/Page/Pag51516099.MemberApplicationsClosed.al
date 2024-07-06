@@ -17,43 +17,43 @@ page 51516099 "Member Applications -Closed"
         {
             repeater(Control1102755000)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Search Name"; "Search Name")
+                field("Search Name"; Rec."Search Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Responsibility Centre"; "Responsibility Centre")
+                field("Responsibility Centre"; Rec."Responsibility Centre")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payroll/Staff No"; "Payroll/Staff No")
+                field("Payroll/Staff No"; Rec."Payroll/Staff No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mobile Phone No"; "Mobile Phone No")
+                field("Mobile Phone No"; Rec."Mobile Phone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type"; "Account Category")
+                field("Account Type"; Rec."Account Category")
                 {
                     ApplicationArea = Basic;
                 }
-                field("User ID"; "User ID")
+                field("User ID"; Rec."User ID")
                 {
                     ApplicationArea = Basic;
                 }
@@ -72,7 +72,7 @@ page 51516099 "Member Applications -Closed"
     trigger OnOpenPage()
     begin
         if UserId <> 'MMHSACCO\ADMINISTRATOR' then
-            SetRange("User ID", UserId);
+            Rec.SetRange("User ID", UserId);
     end;
 
     var

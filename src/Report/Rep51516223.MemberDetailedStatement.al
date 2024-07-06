@@ -67,7 +67,7 @@ Report 51516223 "Member Detailed Statement"
             {
             }
             column(Outstanding_Balance; "Outstanding Balance") { }
-            column(Outstanding_Interest;"Outstanding Interest"){}
+            column(Outstanding_Interest; "Outstanding Interest") { }
             column(Current_Shares; "Current Shares") { }
             dataitem(Loans; "Loans Register")
             {

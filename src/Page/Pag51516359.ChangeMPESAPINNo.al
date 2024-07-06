@@ -5,7 +5,7 @@ Page 51516359 "Change MPESA PIN No"
     PageType = Card;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
     SourceTable = "Change MPESA PIN No";
-    SourceTableView = where(Status=const(Open));
+    SourceTableView = where(Status = const(Open));
 
     layout
     {
@@ -13,78 +13,78 @@ Page 51516359 "Change MPESA PIN No"
         {
             group(General)
             {
-                field(No;No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Entered";"Date Entered")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Time Entered";"Time Entered")
+                field("Date Entered"; Rec."Date Entered")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Entered By";"Entered By")
+                field("Time Entered"; Rec."Time Entered")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("MPESA Application No";"MPESA Application No")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Document Date";"Document Date")
+                field("Entered By"; Rec."Entered By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Customer ID No";"Customer ID No")
+                field("MPESA Application No"; Rec."MPESA Application No")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Customer Name";"Customer Name")
+                field("Customer ID No"; Rec."Customer ID No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("MPESA Mobile No";"MPESA Mobile No")
+                field("Customer Name"; Rec."Customer Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("MPESA Corporate No";"MPESA Corporate No")
+                field("MPESA Mobile No"; Rec."MPESA Mobile No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Comments;Comments)
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Rejection Reason";"Rejection Reason")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Date Sent";"Date Sent")
+                field("MPESA Corporate No"; Rec."MPESA Corporate No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Time Sent";"Time Sent")
+                field(Comments; Rec.Comments)
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Rejection Reason"; Rec."Rejection Reason")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Date Sent"; Rec."Date Sent")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Sent By";"Sent By")
+                field("Time Sent"; Rec."Time Sent")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Status;Status)
+                field("Sent By"; Rec."Sent By")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -112,30 +112,29 @@ Page 51516359 "Change MPESA PIN No"
 
 
                         if Confirm('Are you sure you would like to send a New PIN No to the customer?') = true then begin
-                        TestField("MPESA Application No");
-                        TestField(Comments);
+                            Rec.TestField("MPESA Application No");
+                            Rec.TestField(Comments);
 
-                        MPESAApp.Reset;
-                        MPESAApp.SetRange(MPESAApp.No,"MPESA Application No");
-                        if MPESAApp.Find('-') then begin
+                            MPESAApp.Reset;
+                            MPESAApp.SetRange(MPESAApp.No, Rec."MPESA Application No");
+                            if MPESAApp.Find('-') then begin
 
-                          MPESAApp."Sent To Server":=MPESAApp."sent to server"::No;
-                          MPESAApp.Modify;
+                                MPESAApp."Sent To Server" := MPESAApp."sent to server"::No;
+                                MPESAApp.Modify;
 
-                        end
-                        else
-                        begin
-                          Error('MPESA Application No not found');
-                          exit;
-                        end;
+                            end
+                            else begin
+                                Error('MPESA Application No not found');
+                                exit;
+                            end;
 
-                        Status:=Status::Pending;
-                        "Date Sent":=Today;
-                        "Time Sent":=Time;
-                        "Sent By":=UserId;
-                        Modify;
+                            Rec.Status := Rec.Status::Pending;
+                            Rec."Date Sent" := Today;
+                            Rec."Time Sent" := Time;
+                            Rec."Sent By" := UserId;
+                            Rec.Modify;
 
-                        Message('New PIN No sent to Customer ' + "Customer Name" + '. The Customer will receive a confirmation SMS shortly.');
+                            Message('New PIN No sent to Customer ' + Rec."Customer Name" + '. The Customer will receive a confirmation SMS shortly.');
 
                         end;
                     end;
@@ -151,16 +150,16 @@ Page 51516359 "Change MPESA PIN No"
                     begin
 
                         if Confirm('Are you sure you would like to reject the PIN change request?') = true then begin
-                        TestField("MPESA Application No");
-                        TestField("Rejection Reason");
+                            Rec.TestField("MPESA Application No");
+                            Rec.TestField("Rejection Reason");
 
-                        Status:=Status::Approved;
-                        "Date Rejected":=Today;
-                        "Time Rejected":=Time;
-                        "Rejected By":=UserId;
-                        Modify;
+                            Rec.Status := Rec.Status::Approved;
+                            Rec."Date Rejected" := Today;
+                            Rec."Time Rejected" := Time;
+                            Rec."Rejected By" := UserId;
+                            Rec.Modify;
 
-                        Message('PIN change request has been rejected.');
+                            Message('PIN change request has been rejected.');
 
                         end;
                     end;

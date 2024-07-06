@@ -6,7 +6,7 @@ Page 51516338 "Teller Till List"
     Editable = false;
     PageType = List;
     SourceTable = "Bank Account";
-    SourceTableView = where("Account Type"=filter(Cashier));
+    SourceTableView = where("Account Type" = filter(Cashier));
     UsageCategory = Tasks;
 
     layout
@@ -15,31 +15,31 @@ Page 51516338 "Teller Till List"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Contact;Contact)
+                field(Contact; Rec.Contact)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No.";"Phone No.")
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Account No.";"Bank Account No.")
+                field("Bank Account No."; Rec."Bank Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Acc. Posting Group";"Bank Acc. Posting Group")
+                field("Bank Acc. Posting Group"; Rec."Bank Acc. Posting Group")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }

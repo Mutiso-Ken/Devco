@@ -4,8 +4,8 @@ Page 51516007 "Cash Payment Card"
     DeleteAllowed = false;
     PageType = Card;
     SourceTable = "Payment Header";
-    SourceTableView = where("Payment Type"=const("Cash Purchase"),
-                            Posted=const(false));
+    SourceTableView = where("Payment Type" = const("Cash Purchase"),
+                            Posted = const(false));
 
     layout
     {
@@ -13,118 +13,118 @@ Page 51516007 "Cash Payment Card"
         {
             group(General)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Date";"Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Date";"Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payment Mode";"Payment Mode")
+                field("Payment Mode"; Rec."Payment Mode")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Account";"Bank Account")
+                field("Bank Account"; Rec."Bank Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Account Name";"Bank Account Name")
+                field("Bank Account Name"; Rec."Bank Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Account Balance";"Bank Account Balance")
+                field("Bank Account Balance"; Rec."Bank Account Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Payee;Payee)
+                field(Payee; Rec.Payee)
                 {
                     ApplicationArea = Basic;
                 }
-                field("On Behalf Of";"On Behalf Of")
+                field("On Behalf Of"; Rec."On Behalf Of")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payment Description";"Payment Description")
+                field("Payment Description"; Rec."Payment Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount(LCY)";"Amount(LCY)")
+                field("Amount(LCY)"; Rec."Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("VAT Amount";"VAT Amount")
+                field("VAT Amount"; Rec."VAT Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("VAT Amount(LCY)";"VAT Amount(LCY)")
+                field("VAT Amount(LCY)"; Rec."VAT Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("WithHolding Tax Amount";"WithHolding Tax Amount")
+                field("WithHolding Tax Amount"; Rec."WithHolding Tax Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("WithHolding Tax Amount(LCY)";"WithHolding Tax Amount(LCY)")
+                field("WithHolding Tax Amount(LCY)"; Rec."WithHolding Tax Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Net Amount";"Net Amount")
+                field("Net Amount"; Rec."Net Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Net Amount(LCY)";"Net Amount(LCY)")
+                field("Net Amount(LCY)"; Rec."Net Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Responsibility Center";"Responsibility Center")
+                field("Responsibility Center"; Rec."Responsibility Center")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted;Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posted By";"Posted By")
+                field("Posted By"; Rec."Posted By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Posted";"Date Posted")
+                field("Date Posted"; Rec."Date Posted")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Time Posted";"Time Posted")
+                field("Time Posted"; Rec."Time Posted")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Cashier;Cashier)
+                field(Cashier; Rec.Cashier)
                 {
                     ApplicationArea = Basic;
                 }
             }
-            part(Control35;"Cash Payment Line")
+            part(Control35; "Cash Payment Line")
             {
-                SubPageLink = "Document No"=field("No.");
+                SubPageLink = "Document No" = field("No.");
             }
         }
     }
@@ -143,15 +143,16 @@ Page 51516007 "Cash Payment Card"
 
                 trigger OnAction()
                 begin
-                      CheckRequiredItems;
-                      if FundsUser.Get(UserId) then begin
+                    CheckRequiredItems;
+                    if FundsUser.Get(UserId) then begin
                         FundsUser.TestField(FundsUser."Payment Journal Template");
                         FundsUser.TestField(FundsUser."Payment Journal Batch");
-                        JTemplate:=FundsUser."Payment Journal Template";JBatch:=FundsUser."Payment Journal Batch";
-                        FundsManager.PostPayment(Rec,JTemplate,JBatch);
-                      end else begin
+                        JTemplate := FundsUser."Payment Journal Template";
+                        JBatch := FundsUser."Payment Journal Batch";
+                        FundsManager.PostPayment(Rec, JTemplate, JBatch);
+                    end else begin
                         Error('User Account Not Setup, Contact the System Administrator');
-                      end
+                    end
                 end;
             }
             action("Post and Print")
@@ -164,38 +165,39 @@ Page 51516007 "Cash Payment Card"
 
                 trigger OnAction()
                 begin
-                      CheckRequiredItems;
-                      if FundsUser.Get(UserId) then begin
+                    CheckRequiredItems;
+                    if FundsUser.Get(UserId) then begin
                         FundsUser.TestField(FundsUser."Payment Journal Template");
                         FundsUser.TestField(FundsUser."Payment Journal Batch");
-                        JTemplate:=FundsUser."Payment Journal Template";JBatch:=FundsUser."Payment Journal Batch";
-                        FundsManager.PostPayment(Rec,JTemplate,JBatch);
+                        JTemplate := FundsUser."Payment Journal Template";
+                        JBatch := FundsUser."Payment Journal Batch";
+                        FundsManager.PostPayment(Rec, JTemplate, JBatch);
                         Commit;
                         PHeader.Reset;
-                        PHeader.SetRange(PHeader."No.","No.");
+                        PHeader.SetRange(PHeader."No.", Rec."No.");
                         if PHeader.FindFirst then begin
-                         Report.RunModal(Report::"Cash Voucher",true,false,PHeader);
+                            Report.RunModal(Report::"Cash Voucher", true, false, PHeader);
                         end;
-                      end else begin
+                    end else begin
                         Error('User Account Not Setup, Contact the System Administrator');
-                      end
+                    end
                 end;
             }
             action("Send Approval Request")
             {
                 ApplicationArea = Basic;
                 Image = SendApprovalRequest;
-                  Promoted = true;
+                Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
 
                 trigger OnAction()
                 begin
-                     TestField(Status,Status::New);
+                    Rec.TestField(Status, Rec.Status::New);
 
-                     DocType:=Doctype::"Payment Voucher";
-                     Clear(TableID);
-                     TableID:=Database::"Payment Header";
+                    DocType := Doctype::"Payment Voucher";
+                    Clear(TableID);
+                    TableID := Database::"Payment Header";
                     // if ApprovalMgt.SendApproval(TableID,Rec."No.",DocType,Status) then;
                 end;
             }
@@ -212,17 +214,17 @@ Page 51516007 "Cash Payment Card"
                 ApplicationArea = Basic;
                 Image = Print;
                 Promoted = true;
-               
+
                 PromotedCategory = Process;
                 PromotedIsBig = true;
 
                 trigger OnAction()
                 begin
-                      PHeader.Reset;
-                      PHeader.SetRange(PHeader."No.","No.");
-                      if PHeader.FindFirst then begin
-                        Report.RunModal(Report::"Cash Voucher",true,false,PHeader);
-                      end;
+                    PHeader.Reset;
+                    PHeader.SetRange(PHeader."No.", Rec."No.");
+                    if PHeader.FindFirst then begin
+                        Report.RunModal(Report::"Cash Voucher", true, false, PHeader);
+                    end;
                 end;
             }
         }
@@ -230,8 +232,8 @@ Page 51516007 "Cash Payment Card"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-          "Payment Mode":="payment mode"::Cash;
-          "Payment Type":="payment type"::"Cash Purchase";
+        Rec."Payment Mode" := Rec."payment mode"::Cash;
+        Rec."Payment Type" := Rec."payment type"::"Cash Purchase";
     end;
 
     var
@@ -241,18 +243,18 @@ Page 51516007 "Cash Payment Card"
         JBatch: Code[20];
         DocType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","None","Payment Voucher","Petty Cash",Imprest,Requisition,ImprestSurrender,Interbank,TransportRequest,Maintenance,Fuel,ImporterExporter,"Import Permit","Export Permit",TR,"Safari Notice","Student Applications","Water Research","Consultancy Requests","Consultancy Proposals","Meals Bookings","General Journal","Student Admissions","Staff Claim",KitchenStoreRequisition,"Leave Application","Staff Advance","Staff Advance Accounting";
         TableID: Integer;
-       // ApprovalMgt: Codeunit "Export F/O Consolidation";
+        // ApprovalMgt: Codeunit "Export F/O Consolidation";
         PHeader: Record "Payment Header";
 
     local procedure CheckRequiredItems()
     begin
-         TestField(Status,Status::Approved);
-         TestField("Posting Date");
-         TestField(Payee);
-         TestField("Bank Account");
-         TestField("Payment Description");
-         TestField("Global Dimension 1 Code");
-         TestField("Global Dimension 2 Code");
+        Rec.TestField(Status, Rec.Status::Approved);
+        Rec.TestField("Posting Date");
+        Rec.TestField(Payee);
+        Rec.TestField("Bank Account");
+        Rec.TestField("Payment Description");
+        Rec.TestField("Global Dimension 1 Code");
+        Rec.TestField("Global Dimension 2 Code");
     end;
 }
 

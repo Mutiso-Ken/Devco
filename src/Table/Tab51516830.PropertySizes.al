@@ -4,21 +4,21 @@ Table 51516830 "Property Sizes"
 
     fields
     {
-        field(10;"Code";Code[20])
+        field(10; "Code"; Code[20])
         {
         }
-        field(11;Description;Code[10])
+        field(11; Description; Code[10])
         {
         }
-        field(12;Acreage;Decimal)
+        field(12; Acreage; Decimal)
         {
-            DecimalPlaces = 3:3;
+            DecimalPlaces = 3 : 3;
         }
     }
 
     keys
     {
-        key(Key1;"Code")
+        key(Key1; "Code")
         {
             Clustered = true;
         }

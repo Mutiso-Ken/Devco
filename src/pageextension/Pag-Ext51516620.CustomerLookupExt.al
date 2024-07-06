@@ -5,28 +5,28 @@ pageextension 51516620 "CustomerLookupExt" extends "Customer Lookup"
         addafter(Name)
         {
 
-            field("ID No."; "ID No.")
+            field("ID No."; Rec."ID No.")
             {
 
             }
-            field("FOSA Account"; "FOSA Account")
+            field("FOSA Account"; Rec."FOSA Account")
             {
 
             }
-            field("Mobile Phone No"; "Mobile Phone No")
+            field("Mobile Phone No"; Rec."Mobile Phone No")
             {
 
             }
-            field("Account Category"; "Account Category")
+            field("Account Category"; Rec."Account Category")
             {
 
             }
 
-            field("Posting Group"; "Customer Posting Group")
+            field("Posting Group"; Rec."Customer Posting Group")
             {
 
             }
-            field("Group Account"; "Group Account")
+            field("Group Account"; Rec."Group Account")
             {
 
             }

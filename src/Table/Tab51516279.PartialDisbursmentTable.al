@@ -4,65 +4,65 @@ Table 51516279 "Partial Disbursment Table"
 
     fields
     {
-        field(1;"Loan No.";Code[20])
+        field(1; "Loan No."; Code[20])
         {
         }
-        field(2;"Application Date";Date)
+        field(2; "Application Date"; Date)
         {
         }
-        field(3;"Loan Product Type";Code[20])
-        {
-            Editable = true;
-        }
-        field(4;"Client Code";Code[20])
-        {
-        }
-        field(5;"Group Code";Code[20])
-        {
-        }
-        field(8;"Requested Amount";Decimal)
-        {
-        }
-        field(9;"Approved Amount";Decimal)
+        field(3; "Loan Product Type"; Code[20])
         {
             Editable = true;
         }
-        field(26;"Client Name";Text[50])
+        field(4; "Client Code"; Code[20])
+        {
+        }
+        field(5; "Group Code"; Code[20])
+        {
+        }
+        field(8; "Requested Amount"; Decimal)
+        {
+        }
+        field(9; "Approved Amount"; Decimal)
+        {
+            Editable = true;
+        }
+        field(26; "Client Name"; Text[50])
         {
             Editable = false;
         }
-        field(29;"Issued Date";Date)
+        field(29; "Issued Date"; Date)
         {
         }
-        field(30;Installments;Integer)
+        field(30; Installments; Integer)
         {
         }
-        field(34;"Loan Disbursement Date";Date)
+        field(34; "Loan Disbursement Date"; Date)
         {
         }
-        field(35;"Mode of Disbursement";Option)
+        field(35; "Mode of Disbursement"; Option)
         {
             OptionMembers = " ",Cheque,"Bank Transfer","FOSA Loans";
         }
-        field(67;"Date Approved";Date)
+        field(67; "Date Approved"; Date)
         {
         }
-        field(53050;Repayment;Decimal)
+        field(53050; Repayment; Decimal)
         {
         }
-        field(53055;"Disbursment Balance";Decimal)
+        field(53055; "Disbursment Balance"; Decimal)
         {
             Caption = 'Disbursment Balance';
             Editable = false;
         }
-        field(53056;"Partial Amount Disbursed";Decimal)
+        field(53056; "Partial Amount Disbursed"; Decimal)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Loan No.")
+        key(Key1; "Loan No.")
         {
             Clustered = true;
         }

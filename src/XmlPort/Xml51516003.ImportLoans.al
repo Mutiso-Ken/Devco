@@ -48,10 +48,10 @@ xmlport 51516003 "Import Loans"
                 fieldelement(ExpectedDate; "Loan Imported"."Expected Date of Completion")
                 {
                 }
-                   fieldelement(ApprovedStatus; "Loan Imported"."Approval Status")
+                fieldelement(ApprovedStatus; "Loan Imported"."Approval Status")
                 {
                 }
-              
+
 
 
             }

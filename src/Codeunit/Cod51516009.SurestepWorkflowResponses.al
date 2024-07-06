@@ -433,7 +433,7 @@ Codeunit 51516009 "Surestep Workflow Responses"
 
     procedure ReopenMeberReapplication(var Reapplication: Record "Member Reapplication")
     var
-       MembReaplication: Record "Member Reapplication";
+        MembReaplication: Record "Member Reapplication";
     begin
         MembReaplication.Reset;
         MembReaplication.SetRange(MembReaplication."No.", Reapplication."No.");

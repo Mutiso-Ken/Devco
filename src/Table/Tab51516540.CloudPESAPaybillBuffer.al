@@ -4,50 +4,50 @@ Table 51516540 "CloudPESA Paybill Buffer"
 
     fields
     {
-        field(1;"Receipt No.";Code[20])
+        field(1; "Receipt No."; Code[20])
         {
         }
-        field(2;"Completion Time";Text[30])
+        field(2; "Completion Time"; Text[30])
         {
         }
-        field(3;"Initiation Time";Text[50])
+        field(3; "Initiation Time"; Text[50])
         {
         }
-        field(4;Details;Text[250])
+        field(4; Details; Text[250])
         {
         }
-        field(5;"Transaction Status";Text[250])
+        field(5; "Transaction Status"; Text[250])
         {
         }
-        field(6;"Paid In";Decimal)
+        field(6; "Paid In"; Decimal)
         {
         }
-        field(7;Withdrawn;Text[250])
+        field(7; Withdrawn; Text[250])
         {
         }
-        field(8;Balance;Decimal)
+        field(8; Balance; Decimal)
         {
         }
-        field(9;"Balance Confirmed";Text[30])
+        field(9; "Balance Confirmed"; Text[30])
         {
         }
-        field(10;"Reason Type";Text[250])
+        field(10; "Reason Type"; Text[250])
         {
         }
-        field(11;"Other Party Info";Text[250])
+        field(11; "Other Party Info"; Text[250])
         {
         }
-        field(12;"Linked Transaction ID";Text[250])
+        field(12; "Linked Transaction ID"; Text[250])
         {
         }
-        field(13;"A/C No.";Text[250])
+        field(13; "A/C No."; Text[250])
         {
         }
     }
 
     keys
     {
-        key(Key1;"Receipt No.")
+        key(Key1; "Receipt No.")
         {
             Clustered = true;
         }

@@ -20,16 +20,16 @@ Page 51516494 "CRM Member List"
         {
             repeater(General)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                 }
@@ -37,11 +37,11 @@ Page 51516494 "CRM Member List"
                 // {
                 //     ApplicationArea = Basic;
                 // }
-                field("Phone No."; "Phone No.")
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("<Mobile Phone>"; "Mobile Phone No")
+                field("<Mobile Phone>"; Rec."Mobile Phone No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Mobile Phone';
@@ -54,25 +54,25 @@ Page 51516494 "CRM Member List"
                 // {
                 //     ApplicationArea = Basic;
                 // }
-                field("FOSA Account"; "FOSA Account")
+                field("FOSA Account"; Rec."FOSA Account")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Payroll/Staff No"; "Payroll/Staff No")
+                field("Payroll/Staff No"; Rec."Payroll/Staff No")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Employer Code"; "Employer Code")
+                field("Employer Code"; Rec."Employer Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Category"; "Account Category")
+                field("Account Category"; Rec."Account Category")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }

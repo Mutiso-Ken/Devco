@@ -16,43 +16,43 @@ Page 51516306 "Teller & Treasury Trans List"
         {
             repeater(Group)
             {
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Date"; "Transaction Date")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
-                    Style=StrongAccent;
+                    Style = StrongAccent;
                 }
-                field("Transaction Type"; "Transaction Type")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("From Account"; "From Account")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("To Account"; "To Account")
-                {
-                    ApplicationArea = Basic;
-                      Style=StrongAccent;
-                }
-                field(Amount; Amount)
-                {
-                    ApplicationArea = Basic;
-                      Style=Unfavorable;
-                    
-                }
-                field(Posted; Posted)
+                field("From Account"; Rec."From Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description; Description)
+                field("To Account"; Rec."To Account")
+                {
+                    ApplicationArea = Basic;
+                    Style = StrongAccent;
+                }
+                field(Amount; Rec.Amount)
+                {
+                    ApplicationArea = Basic;
+                    Style = Unfavorable;
+
+                }
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Received By";"Received By")
+                field(Description; Rec.Description)
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Received By"; Rec."Received By")
                 {
 
 
@@ -66,7 +66,7 @@ Page 51516306 "Teller & Treasury Trans List"
     }
     trigger OnOpenPage()
     begin
-        Ascending(false);
+        Rec.Ascending(false);
     end;
 }
 

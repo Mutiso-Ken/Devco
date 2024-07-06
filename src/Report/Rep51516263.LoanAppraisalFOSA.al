@@ -841,7 +841,7 @@ Report 51516263 "Loan Appraisal- FOSA"
                         //QUALIFICATION AS PER DEPOSITS
 
                         if "Loan Product Type" = 'J/L' then begin
-                            DEpMultiplier := LoanType."Shares Multiplier" * (Cshares  + "Deposit Reinstatement")
+                            DEpMultiplier := LoanType."Shares Multiplier" * (Cshares + "Deposit Reinstatement")
 
                         end else begin
                             DEpMultiplier := LoanType."Shares Multiplier" * (Cshares + "Deposit Reinstatement");
@@ -1197,7 +1197,7 @@ Report 51516263 "Loan Appraisal- FOSA"
                         end;
 
 
-                        JazaLevy := ROUND(0* 0.15, 1, '>');
+                        JazaLevy := ROUND(0 * 0.15, 1, '>');
                         BridgeLevy := LoanApp."Topup Commission";
 
                         if LoanApp."Top Up Amount" > 0 then begin
@@ -1207,30 +1207,30 @@ Report 51516263 "Loan Appraisal- FOSA"
                                 BridgeLevy := LoanApp."Topup Commission";
                             end;
                         end;
-                        Upfronts := BRIGEDAMOUNT  + "Deposit Reinstatement" + JazaLevy + GenSetUp."Loan Trasfer Fee-Cheque" + SHARES + Charge + Lamount + BridgeLevy + BInt + Deeboster + TOpDeb + UpfrontInt;
+                        Upfronts := BRIGEDAMOUNT + "Deposit Reinstatement" + JazaLevy + GenSetUp."Loan Trasfer Fee-Cheque" + SHARES + Charge + Lamount + BridgeLevy + BInt + Deeboster + TOpDeb + UpfrontInt;
                         // if "Mode of Disbursement" = "mode of disbursement"::Cheque then
                         //     Upfronts := BRIGEDAMOUNT + "Deposit Reinstatement" + JazaLevy + GenSetUp."Loan Trasfer Fee-Cheque" + SHARES + Charge + Lamount + BridgeLevy + BInt + Deeboster + TOpDeb + UpfrontInt
                         // else
-                            // if "Mode of Disbursement" = "mode of disbursement"::EFT then
-                            //     Upfronts := BRIGEDAMOUNT+ "Deposit Reinstatement" + JazaLevy + GenSetUp."Loan Trasfer Fee-EFT" + SHARES + Charge + Lamount + BridgeLevy + BInt + Deeboster + TOpDeb + UpfrontInt
-                            // else
-                                // if "Mode of Disbursement" = "mode of disbursement"::"Bank Transfer" then
-                                //     Upfronts := BRIGEDAMOUNT + "Deposit Reinstatement" + JazaLevy + GenSetUp."Loan Trasfer Fee-FOSA" + SHARES + Charge + Lamount + BridgeLevy + BInt + Deeboster + TOpDeb + UpfrontInt
-                                // else
-                                    //mutinda
-                                    // if "Mode of Disbursement" = "mode of disbursement"::"Cheque NonMember" then
-                                    //     Upfronts := BRIGEDAMOUNT + "Deposit Reinstatement" + JazaLevy + SHARES + Charge + Lamount + BridgeLevy + BInt + Deeboster + TOpDeb + UpfrontInt
-                                    // else
+                        // if "Mode of Disbursement" = "mode of disbursement"::EFT then
+                        //     Upfronts := BRIGEDAMOUNT+ "Deposit Reinstatement" + JazaLevy + GenSetUp."Loan Trasfer Fee-EFT" + SHARES + Charge + Lamount + BridgeLevy + BInt + Deeboster + TOpDeb + UpfrontInt
+                        // else
+                        // if "Mode of Disbursement" = "mode of disbursement"::"Bank Transfer" then
+                        //     Upfronts := BRIGEDAMOUNT + "Deposit Reinstatement" + JazaLevy + GenSetUp."Loan Trasfer Fee-FOSA" + SHARES + Charge + Lamount + BridgeLevy + BInt + Deeboster + TOpDeb + UpfrontInt
+                        // else
+                        //mutinda
+                        // if "Mode of Disbursement" = "mode of disbursement"::"Cheque NonMember" then
+                        //     Upfronts := BRIGEDAMOUNT + "Deposit Reinstatement" + JazaLevy + SHARES + Charge + Lamount + BridgeLevy + BInt + Deeboster + TOpDeb + UpfrontInt
+                        // else
 
-                                        //mutinda
-                                        // if "Mode of Disbursement" = "mode of disbursement"::RTGS then
-                                        //     Upfronts := BRIGEDAMOUNT + "Deposit Reinstatement" + JazaLevy + GenSetUp."Loan Trasfer Fee-RTGS" + SHARES + Charge + Lamount + BInt + Deeboster + TOpDeb + UpfrontInt;
+                        //mutinda
+                        // if "Mode of Disbursement" = "mode of disbursement"::RTGS then
+                        //     Upfronts := BRIGEDAMOUNT + "Deposit Reinstatement" + JazaLevy + GenSetUp."Loan Trasfer Fee-RTGS" + SHARES + Charge + Lamount + BInt + Deeboster + TOpDeb + UpfrontInt;
 
                         Netdisbursed := "Loans Register"."Recommended Amount" - Upfronts;
                     end;
                     "Loan Processing Fee" := Charge;
                     "Checked By" := UserId;
-                   // "Loan Appraisal Fee" := SHARES;
+                    // "Loan Appraisal Fee" := SHARES;
                     "Loan Disbursed Amount" := Netdisbursed;
                     Modify;
 

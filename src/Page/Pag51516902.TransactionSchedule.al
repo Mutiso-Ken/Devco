@@ -10,35 +10,35 @@ Page 51516902 "Transaction Schedule"
         {
             repeater(Group)
             {
-                field("Account No";"Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bosa Account No";"Bosa Account No")
+                field("Bosa Account No"; Rec."Bosa Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type";"Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("EFT Amount";"EFT Amount")
+                field("EFT Amount"; Rec."EFT Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Deductions";"Loan Deductions")
+                field("Loan Deductions"; Rec."Loan Deductions")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount-""EFT Amount""";Amount-"EFT Amount")
+                field("Amount-""EFT Amount"""; Rec.Amount - Rec."EFT Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Service Fee';

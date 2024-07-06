@@ -6,136 +6,136 @@ Table 51516546 "Over Draft Recovery"
 
     fields
     {
-        field(1;"Document no";Code[20])
+        field(1; "Document no"; Code[20])
         {
 
             trigger OnValidate()
             begin
                 if "Document no" <> xRec."Document no" then begin
-                SaccoSetup.Get;
-                  NoSeriesMgt.TestManual(SaccoSetup."OVerdraft Nos");
-                  "No. Series" := '';
+                    SaccoSetup.Get;
+                    NoSeriesMgt.TestManual(SaccoSetup."OVerdraft Nos");
+                    "No. Series" := '';
                 end;
             end;
         }
-        field(2;"Over Draft Payoff";Code[20])
+        field(2; "Over Draft Payoff"; Code[20])
         {
-            TableRelation = "Over Draft Register"."Over Draft No" where (Posted=const(true));
+            TableRelation = "Over Draft Register"."Over Draft No" where(Posted = const(true));
 
             trigger OnValidate()
             begin
 
-                if Confirm('Are you Sure you Want to apply for overdraft?',true)=true then begin
+                if Confirm('Are you Sure you Want to apply for overdraft?', true) = true then begin
 
                 end;
             end;
         }
-        field(3;"Account No";Code[20])
+        field(3; "Account No"; Code[20])
         {
 
             trigger OnValidate()
             begin
-                if Cust.Get("Account No")then begin
-                  "Account Name":=Cust.Name;
-                  "Application date":=Today;
-                  "Captured by":=UserId;
-                  //"Current Account No":=Cust."BOSA Account No";
-                  "Email Address":=Cust."E-Mail (Personal)";
-                  "Phone No":=Cust."Mobile Phone No";
-                  "ID Number":=Cust."ID No.";
-                  end;
+                if Cust.Get("Account No") then begin
+                    "Account Name" := Cust.Name;
+                    "Application date" := Today;
+                    "Captured by" := UserId;
+                    //"Current Account No":=Cust."BOSA Account No";
+                    "Email Address" := Cust."E-Mail (Personal)";
+                    "Phone No" := Cust."Mobile Phone No";
+                    "ID Number" := Cust."ID No.";
+                end;
             end;
         }
-        field(4;"Application date";Date)
+        field(4; "Application date"; Date)
         {
         }
-        field(5;"Approved Date";Date)
+        field(5; "Approved Date"; Date)
         {
         }
-        field(6;"Captured by";Code[100])
+        field(6; "Captured by"; Code[100])
         {
         }
-        field(7;"Account Name";Code[100])
+        field(7; "Account Name"; Code[100])
         {
         }
-        field(9;"Outstanding Overdraft";Decimal)
+        field(9; "Outstanding Overdraft"; Decimal)
         {
-          
+
         }
-        field(10;"Payoff Amount";Decimal)
+        field(10; "Payoff Amount"; Decimal)
         {
 
             trigger OnValidate()
             begin
                 GenSetUp.Get;
-                if "Payoff Amount">GenSetUp."Overdraft Limit"then begin
-                //  excees:=GenSetUp."Overdraft Limit"-"Amount applied";
-                  Error('Amount applied exceed limit ');
-                  end else
-                  Message('proceed ');
+                if "Payoff Amount" > GenSetUp."Overdraft Limit" then begin
+                    //  excees:=GenSetUp."Overdraft Limit"-"Amount applied";
+                    Error('Amount applied exceed limit ');
+                end else
+                    Message('proceed ');
             end;
         }
-        field(11;"Date Filter";Date)
+        field(11; "Date Filter"; Date)
         {
             FieldClass = FlowFilter;
         }
-        field(12;"ID Number";Code[10])
+        field(12; "ID Number"; Code[10])
         {
         }
-        field(13;"Phone No";Code[10])
+        field(13; "Phone No"; Code[10])
         {
         }
-        field(14;"Email Address";Text[30])
+        field(14; "Email Address"; Text[30])
         {
         }
-        field(15;Posted;Boolean)
+        field(15; Posted; Boolean)
         {
         }
-        field(16;Status;Option)
+        field(16; Status; Option)
         {
             OptionCaption = 'Open,Pending,Approved';
             OptionMembers = Open,Pending,Approved;
         }
-        field(17;"No. Series";Code[10])
+        field(17; "No. Series"; Code[10])
         {
         }
-        field(18;"Overdraft Status";Option)
+        field(18; "Overdraft Status"; Option)
         {
             OptionCaption = ',Active,Inactive';
             OptionMembers = ,Active,Inactive;
         }
-        field(20;"Authorisation Requirement";Text[100])
+        field(20; "Authorisation Requirement"; Text[100])
         {
         }
-        field(21;"Supervisor Checked";Boolean)
+        field(21; "Supervisor Checked"; Boolean)
         {
         }
-        field(22;"Date Posted";Date)
+        field(22; "Date Posted"; Date)
         {
         }
-        field(23;"Time Posted";Time)
+        field(23; "Time Posted"; Time)
         {
         }
-        field(24;"Posted By";Code[50])
+        field(24; "Posted By"; Code[50])
         {
         }
-        field(25;"Entry NO";Integer)
+        field(25; "Entry NO"; Integer)
         {
         }
-        field(26;"Authoriser Id";Code[100])
+        field(26; "Authoriser Id"; Code[100])
         {
         }
-        field(27;Recovered;Boolean)
+        field(27; Recovered; Boolean)
         {
         }
-        field(28;"Overdraft balance";Decimal)
+        field(28; "Overdraft balance"; Decimal)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Account No","Entry NO")
+        key(Key1; "Account No", "Entry NO")
         {
             Clustered = true;
         }
@@ -143,15 +143,15 @@ Table 51516546 "Over Draft Recovery"
 
     fieldgroups
     {
-        
+
     }
 
     trigger OnInsert()
     begin
         if "Document no" = '' then begin
-          SaccoSetup.Get;
-          SaccoSetup.TestField(SaccoSetup."OVerdraft Nos");
-          NoSeriesMgt.InitSeries(SaccoSetup."OVerdraft Nos",xRec."No. Series",0D,"Document no" ,"No. Series");
+            SaccoSetup.Get;
+            SaccoSetup.TestField(SaccoSetup."OVerdraft Nos");
+            NoSeriesMgt.InitSeries(SaccoSetup."OVerdraft Nos", xRec."No. Series", 0D, "Document no", "No. Series");
         end;
     end;
 

@@ -15,20 +15,20 @@ Page 51516204 "CEEP Change Request List"
         {
             repeater(Group)
             {
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Type; Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Micro Finance Change Type"; "Micro Finance Change Type")
+                field("Micro Finance Change Type"; Rec."Micro Finance Change Type")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Change Type';
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
@@ -46,7 +46,7 @@ Page 51516204 "CEEP Change Request List"
     trigger OnOpenPage()
     begin
         IF UserId <> 'SURESTEPDEVELOPER@JAMII.CO.KE' THEN begin
-        SetRange("Captured by", UserId);
+            Rec.SetRange("Captured by", UserId);
         end;
 
     end;

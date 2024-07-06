@@ -4,7 +4,7 @@ Table 51516309 "Supervisors Approval Levels"
 
     fields
     {
-        field(1;SupervisorID;Code[50])
+        field(1; SupervisorID; Code[50])
         {
             Caption = 'User ID';
             NotBlank = true;
@@ -17,31 +17,31 @@ Table 51516309 "Supervisors Approval Levels"
             var
                 UserMgt: Codeunit "User Management";
             begin
-               // UserMgt.LookupUserID(SupervisorID);
+                // UserMgt.LookupUserID(SupervisorID);
             end;
 
             trigger OnValidate()
             var
                 UserMgt: Codeunit "User Management";
             begin
-               //  UserMgt.ValidateUserID(SupervisorID);
+                //  UserMgt.ValidateUserID(SupervisorID);
             end;
         }
-        field(2;"Maximum Approval Amount";Decimal)
+        field(2; "Maximum Approval Amount"; Decimal)
         {
         }
-        field(3;"Transaction Type";Option)
+        field(3; "Transaction Type"; Option)
         {
             OptionMembers = "Cash Deposits","Cheque Deposits",Withdrawals;
         }
-        field(4;"E-mail Address";Text[30])
+        field(4; "E-mail Address"; Text[30])
         {
         }
     }
 
     keys
     {
-        key(Key1;SupervisorID,"Transaction Type")
+        key(Key1; SupervisorID, "Transaction Type")
         {
             Clustered = true;
         }

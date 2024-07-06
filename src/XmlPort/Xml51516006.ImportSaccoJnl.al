@@ -2,7 +2,7 @@
 XmlPort 51516006 "Import Sacco Jnl"
 {
     Format = VariableText;
-    
+
 
     schema
     {

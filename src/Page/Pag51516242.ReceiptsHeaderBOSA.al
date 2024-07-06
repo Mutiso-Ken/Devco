@@ -13,83 +13,83 @@ Page 51516242 "Receipts Header-BOSA"
             group(Transaction)
             {
                 Caption = 'Transaction';
-                field("Transaction No."; "Transaction No.")
+                field("Transaction No."; Rec."Transaction No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account Type"; "Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Source; Source)
+                field(Source; Rec.Source)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No."; "Account No.")
+                field("Account No."; Rec."Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Receipt Mode"; "Receipt Mode")
+                field("Receipt Mode"; Rec."Receipt Mode")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Remarks; Remarks)
+                field(Remarks; Rec.Remarks)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Allocated Amount"; "Allocated Amount")
+                field("Allocated Amount"; Rec."Allocated Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Un allocated Amount"; "Un allocated Amount")
+                field("Un allocated Amount"; Rec."Un allocated Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employer No."; "Employer No.")
+                field("Employer No."; Rec."Employer No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Teller Till / Bank  No.';
                 }
-                field("Cheque No."; "Cheque No.")
+                field("Cheque No."; Rec."Cheque No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Cheque / Slip  No.';
                 }
-                field("Cheque Date"; "Cheque Date")
+                field("Cheque Date"; Rec."Cheque Date")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Cheque / Slip  Date';
                 }
-                field(Posted; Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("User ID"; "User ID")
+                field("User ID"; Rec."User ID")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Date"; "Transaction Date")
-                {
-                    ApplicationArea = Basic;
-                    Editable = true;
-                }
-                field("Transaction Time"; "Transaction Time")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field(Insurance; Insuarance)
+                field("Transaction Time"; Rec."Transaction Time")
+                {
+                    ApplicationArea = Basic;
+                    Editable = true;
+                }
+                field(Insurance; Rec.Insuarance)
                 {
                     ApplicationArea = Basic;
                 }
@@ -126,30 +126,30 @@ Page 51516242 "Receipts Header-BOSA"
                     trigger OnAction()
                     begin
 
-                        TestField(Posted, false);
-                        TestField("Account No.");
-                        TestField(Amount);
+                        Rec.TestField(Posted, false);
+                        Rec.TestField("Account No.");
+                        Rec.TestField(Amount);
                         //Cust.CALCFIELDS(Cust."Registration Fee Paid");
 
                         ReceiptAllocations.Reset;
-                        ReceiptAllocations.SetRange(ReceiptAllocations."Document No", "Transaction No.");
+                        ReceiptAllocations.SetRange(ReceiptAllocations."Document No", Rec."Transaction No.");
                         ReceiptAllocations.DeleteAll;
 
 
-                        if "Account Type" = "account type"::Customer then begin
+                        if Rec."Account Type" = Rec."account type"::Customer then begin
 
                             BosaSetUp.Get();
-                            RunBal := Amount;
+                            RunBal := Rec.Amount;
 
                             if RunBal > 0 then begin
 
-                                if Cust.Get("Account No.") then begin
+                                if Cust.Get(Rec."Account No.") then begin
                                     Cust.CalcFields(Cust."Registration Fee Paid");
                                     if Cust."Registration Fee Paid" = 0 then begin
                                         if Cust."Registration Date" > 20140103D then begin
                                             ReceiptAllocations.Init;
-                                            ReceiptAllocations."Document No" := "Transaction No.";
-                                            ReceiptAllocations."Member No" := "Account No.";
+                                            ReceiptAllocations."Document No" := Rec."Transaction No.";
+                                            ReceiptAllocations."Member No" := Rec."Account No.";
                                             ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::"Registration Fee";
                                             ReceiptAllocations."Loan No." := '';
                                             ReceiptAllocations.Amount := BosaSetUp."Registration Fee";
@@ -163,37 +163,37 @@ Page 51516242 "Receipts Header-BOSA"
                                     end;
                                 end;
                                 //********** Mpesa Charges
-                                if "Receipt Mode" = "receipt mode"::Mpesa then begin
+                                if Rec."Receipt Mode" = Rec."receipt mode"::Mpesa then begin
                                     ReceiptAllocations.Init;
-                                    ReceiptAllocations."Document No" := "Transaction No.";
-                                    ReceiptAllocations."Member No" := "Account No.";
+                                    ReceiptAllocations."Document No" := Rec."Transaction No.";
+                                    ReceiptAllocations."Member No" := Rec."Account No.";
                                     ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::" ";
                                     ReceiptAllocations."Loan No." := '';
 
                                     // M Pesa Tarriff
 
-                                    if Amount <= 2499 then
+                                    if Rec.Amount <= 2499 then
                                         ReceiptAllocations."Total Amount" := 55
                                     else
-                                        if Amount <= 4999 then
+                                        if Rec.Amount <= 4999 then
                                             ReceiptAllocations."Total Amount" := 75
                                         else
-                                            if Amount <= 9999 then
+                                            if Rec.Amount <= 9999 then
                                                 ReceiptAllocations."Total Amount" := 105
                                             else
-                                                if Amount <= 19999 then
+                                                if Rec.Amount <= 19999 then
                                                     ReceiptAllocations."Total Amount" := 130
                                                 else
-                                                    if Amount <= 34999 then
+                                                    if Rec.Amount <= 34999 then
                                                         ReceiptAllocations."Total Amount" := 185
                                                     else
-                                                        if Amount <= 49999 then
+                                                        if Rec.Amount <= 49999 then
                                                             ReceiptAllocations."Total Amount" := 220
                                                         else
-                                                            if Amount <= 70000 then
+                                                            if Rec.Amount <= 70000 then
                                                                 ReceiptAllocations."Total Amount" := 240
                                                             else
-                                                                if Amount > 70000 then
+                                                                if Rec.Amount > 70000 then
                                                                     Error('Sorry the Maximum M - Pesa transaction Amount is Ksha. 70,000');
 
 
@@ -208,7 +208,7 @@ Page 51516242 "Receipts Header-BOSA"
                                     //Loan Repayments
                                     Loans.Reset;
                                     Loans.SetCurrentkey(Loans.Source, Loans."Client Code");
-                                    Loans.SetRange(Loans."Client Code", "Account No.");
+                                    Loans.SetRange(Loans."Client Code", Rec."Account No.");
                                     Loans.SetRange(Loans.Source, Loans.Source::BOSA);
                                     if Loans.Find('-') then begin
                                         repeat
@@ -239,8 +239,8 @@ Page 51516242 "Receipts Header-BOSA"
                                             if (Loans."Outstanding Balance") > 0 then begin
                                                 LOustanding := 0;
                                                 ReceiptAllocations.Init;
-                                                ReceiptAllocations."Document No" := "Transaction No.";
-                                                ReceiptAllocations."Member No" := "Account No.";
+                                                ReceiptAllocations."Document No" := Rec."Transaction No.";
+                                                ReceiptAllocations."Member No" := Rec."Account No.";
                                                 ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::"Interest Paid";
                                                 ReceiptAllocations."Loan No." := Loans."Loan  No.";
                                                 ReceiptAllocations."Loan ID" := Loans."Loan Product Type";
@@ -277,8 +277,8 @@ Page 51516242 "Receipts Header-BOSA"
                             end;
                             BosaSetUp.Get();
                             ReceiptAllocations.Init;
-                            ReceiptAllocations."Document No" := "Transaction No.";
-                            ReceiptAllocations."Member No" := "Account No.";
+                            ReceiptAllocations."Document No" := Rec."Transaction No.";
+                            ReceiptAllocations."Member No" := Rec."Account No.";
                             ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::"Benevolent Fund";
                             ReceiptAllocations."Loan No." := ' ';
                             ReceiptAllocations.Amount := BosaSetUp."Welfare Contribution";
@@ -288,11 +288,11 @@ Page 51516242 "Receipts Header-BOSA"
                             ReceiptAllocations.Insert;
 
                             //Deposits Contribution
-                            if Cust.Get("Account No.") then begin
+                            if Cust.Get(Rec."Account No.") then begin
                                 if Cust."Monthly Contribution" > 0 then begin
                                     ReceiptAllocations.Init;
-                                    ReceiptAllocations."Document No" := "Transaction No.";
-                                    ReceiptAllocations."Member No" := "Account No.";
+                                    ReceiptAllocations."Document No" := Rec."Transaction No.";
+                                    ReceiptAllocations."Member No" := Rec."Account No.";
                                     ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::Loan;
                                     ReceiptAllocations."Loan No." := '';
                                     ReceiptAllocations.Amount := ROUND(Cust."Monthly Contribution", 0.01);
@@ -328,41 +328,41 @@ Page 51516242 "Receipts Header-BOSA"
                             // end;
                         end;
 
-                        if "Account Type" = "account type"::Vendor then begin
-                            if "Receipt Mode" = "receipt mode"::Mpesa then begin
+                        if Rec."Account Type" = Rec."account type"::Vendor then begin
+                            if Rec."Receipt Mode" = Rec."receipt mode"::Mpesa then begin
                                 ReceiptAllocations.Init;
-                                ReceiptAllocations."Document No" := "Transaction No.";
-                                ReceiptAllocations."Member No" := "Account No.";
+                                ReceiptAllocations."Document No" := Rec."Transaction No.";
+                                ReceiptAllocations."Member No" := Rec."Account No.";
 
                                 ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::" ";
-                                ReceiptAllocations."Total Amount" := Amount;
+                                ReceiptAllocations."Total Amount" := Rec.Amount;
                                 ReceiptAllocations."Loan No." := '';
 
 
                                 // M Pesa Tarriff
                                 MpesaCharge := 0;
-                                if Amount <= 2499 then
+                                if Rec.Amount <= 2499 then
                                     ReceiptAllocations."Total Amount" := 55
                                 else
-                                    if Amount <= 4999 then
+                                    if Rec.Amount <= 4999 then
                                         ReceiptAllocations."Total Amount" := 75
                                     else
-                                        if Amount <= 9999 then
+                                        if Rec.Amount <= 9999 then
                                             ReceiptAllocations."Total Amount" := 105
                                         else
-                                            if Amount <= 19999 then
+                                            if Rec.Amount <= 19999 then
                                                 ReceiptAllocations."Total Amount" := 130
                                             else
-                                                if Amount <= 34999 then
+                                                if Rec.Amount <= 34999 then
                                                     ReceiptAllocations."Total Amount" := 185
                                                 else
-                                                    if Amount <= 49999 then
+                                                    if Rec.Amount <= 49999 then
                                                         ReceiptAllocations."Total Amount" := 220
                                                     else
-                                                        if Amount <= 70000 then
+                                                        if Rec.Amount <= 70000 then
                                                             ReceiptAllocations."Total Amount" := 240
                                                         else
-                                                            if Amount > 70000 then
+                                                            if Rec.Amount > 70000 then
                                                                 Error('Sorry the Maximum M - Pesa transaction Amount is Ksha. 70,000');
                                 MpesaCharge := ReceiptAllocations."Total Amount";
                                 ReceiptAllocations.Amount := ReceiptAllocations."Total Amount";
@@ -377,12 +377,12 @@ Page 51516242 "Receipts Header-BOSA"
 
 
                             ReceiptAllocations.Init;
-                            ReceiptAllocations."Document No" := "Transaction No.";
-                            ReceiptAllocations."Member No" := "Account No.";
+                            ReceiptAllocations."Document No" := Rec."Transaction No.";
+                            ReceiptAllocations."Member No" := Rec."Account No.";
                             ReceiptAllocations."Transaction Type" := ReceiptAllocations."transaction type"::" ";
                             //GenJournalLine.Description:= 'BT'+'-'+Remarks+'-'+FORMAT("Mode of Payment")+'-'+"Cheque No.";
                             ReceiptAllocations."Loan No." := ' ';
-                            ReceiptAllocations."Total Amount" := Amount;
+                            ReceiptAllocations."Total Amount" := Rec.Amount;
                             ReceiptAllocations."Global Dimension 1 Code" := 'FOSA';
                             ReceiptAllocations."Global Dimension 2 Code" := '01';
                             ReceiptAllocations.Amount := ReceiptAllocations."Total Amount";
@@ -392,9 +392,9 @@ Page 51516242 "Receipts Header-BOSA"
 
                         end;
                         //VALIDATE("Allocated Amount");
-                        CalcFields("Allocated Amount");
-                        "Un allocated Amount" := (Amount - "Allocated Amount");
-                        Modify;
+                        Rec.CalcFields("Allocated Amount");
+                        Rec."Un allocated Amount" := (Rec.Amount - Rec."Allocated Amount");
+                        Rec.Modify;
                     end;
                 }
             }
@@ -418,27 +418,27 @@ Page 51516242 "Receipts Header-BOSA"
                     end else begin
                         Error('User Account Not Setup for Posting');
                     end;
-                    if ("Receipt Mode" = "receipt mode"::Cash) and ("Transaction Date" <> Today) then
+                    if (Rec."Receipt Mode" = Rec."receipt mode"::Cash) and (Rec."Transaction Date" <> Today) then
                         Error('You cannot post cash transactions with a date not today');
 
-                    if Posted then
+                    if Rec.Posted then
                         Error('This receipt is already posted');
 
-                    TestField("Account No.");
-                    TestField(Amount);
-                    TestField("Employer No.");
+                    Rec.TestField("Account No.");
+                    Rec.TestField(Amount);
+                    Rec.TestField("Employer No.");
                     //TESTFIELD("Cheque No.");
                     //TESTFIELD("Cheque Date");
 
-                    if ("Account Type" = "account type"::"G/L Account")then
+                    if (Rec."Account Type" = Rec."account type"::"G/L Account") then
                         TransType := 'Withdrawal'
                     else
                         TransType := 'Deposit';
 
-                    BOSABank := "Employer No.";
-                    if ("Account Type" = "account type"::Customer)  then begin
+                    BOSABank := Rec."Employer No.";
+                    if (Rec."Account Type" = Rec."account type"::Customer) then begin
 
-                        if Amount <> "Allocated Amount" then
+                        if Rec.Amount <> Rec."Allocated Amount" then
                             Error('Receipt amount must be equal to the allocated amount.');
                     end;
 
@@ -453,56 +453,56 @@ Page 51516242 "Receipts Header-BOSA"
                     GenJournalLine.Init;
                     GenJournalLine."Journal Template Name" := JournalTemplate;
                     GenJournalLine."Journal Batch Name" := JournalBatch;
-                    GenJournalLine."Document No." := "Transaction No.";
-                    GenJournalLine."External Document No." := "Cheque No.";
+                    GenJournalLine."Document No." := Rec."Transaction No.";
+                    GenJournalLine."External Document No." := Rec."Cheque No.";
                     GenJournalLine."Line No." := LineNo;
                     GenJournalLine."Account Type" := GenJournalLine."account type"::"Bank Account";
-                    GenJournalLine."Account No." := "Employer No.";
+                    GenJournalLine."Account No." := Rec."Employer No.";
                     GenJournalLine.Validate(GenJournalLine."Account No.");
                     //GenJournalLine."Posting Date":="Cheque Date";
-                    GenJournalLine."Posting Date" := "Transaction Date";
-                    GenJournalLine.Description := 'BT-' + "Account No." + '-' + Remarks;
+                    GenJournalLine."Posting Date" := Rec."Transaction Date";
+                    GenJournalLine.Description := 'BT-' + Rec."Account No." + '-' + Rec.Remarks;
                     GenJournalLine.Validate(GenJournalLine."Currency Code");
                     GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
                     GenJournalLine."Shortcut Dimension 2 Code" := '01';
                     if TransType = 'Withdrawal' then
-                        GenJournalLine.Amount := -Amount
+                        GenJournalLine.Amount := -Rec.Amount
                     else
-                        GenJournalLine.Amount := Amount;
+                        GenJournalLine.Amount := Rec.Amount;
                     GenJournalLine.Validate(GenJournalLine.Amount);
                     if GenJournalLine.Amount <> 0 then
                         GenJournalLine.Insert;
 
-                    if ("Account Type" <> "account type"::Customer)  then begin
+                    if (Rec."Account Type" <> Rec."account type"::Customer) then begin
                         LineNo := LineNo + 10000;
 
                         GenJournalLine.Init;
                         GenJournalLine."Journal Template Name" := JournalTemplate;
                         GenJournalLine."Journal Batch Name" := JournalBatch;
-                        GenJournalLine."Document No." := "Transaction No.";
-                        GenJournalLine."External Document No." := "Cheque No.";
+                        GenJournalLine."Document No." := Rec."Transaction No.";
+                        GenJournalLine."External Document No." := Rec."Cheque No.";
                         GenJournalLine."Line No." := LineNo;
-                        if "Account Type" = "account type"::"G/L Account" then
-                            GenJournalLine."Account Type" := "Account Type"
+                        if Rec."Account Type" = Rec."account type"::"G/L Account" then
+                            GenJournalLine."Account Type" := Rec."Account Type"
                         else
                             // if "Account Type" = "account type"::Debtor then
                             //     GenJournalLine."Account Type" := "Account Type"
                             // else
-                                if "Account Type" = "account type"::Vendor then
-                                    GenJournalLine."Account Type" := "Account Type"
-                                else
-                                    if "Account Type" = "account type"::Customer then
-                                        GenJournalLine."Account Type" := "Account Type";
-                        GenJournalLine."Account No." := "Account No.";
+                            if Rec."Account Type" = Rec."account type"::Vendor then
+                                GenJournalLine."Account Type" := Rec."Account Type"
+                            else
+                                if Rec."Account Type" = Rec."account type"::Customer then
+                                    GenJournalLine."Account Type" := Rec."Account Type";
+                        GenJournalLine."Account No." := Rec."Account No.";
                         GenJournalLine.Validate(GenJournalLine."Account No.");
                         //GenJournalLine."Posting Date":="Cheque Date";
-                        GenJournalLine."Posting Date" := "Transaction Date";
-                        GenJournalLine.Description := 'BT-' + Name + '-' + "Account No." + '-' + Remarks;
+                        GenJournalLine."Posting Date" := Rec."Transaction Date";
+                        GenJournalLine.Description := 'BT-' + Rec.Name + '-' + Rec."Account No." + '-' + Rec.Remarks;
                         GenJournalLine.Validate(GenJournalLine."Currency Code");
                         if TransType = 'Withdrawal' then
-                            GenJournalLine.Amount := Amount
+                            GenJournalLine.Amount := Rec.Amount
                         else
-                            GenJournalLine.Amount := -Amount;
+                            GenJournalLine.Amount := -Rec.Amount;
                         GenJournalLine.Validate(GenJournalLine.Amount);
                         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
                         GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
@@ -513,10 +513,10 @@ Page 51516242 "Receipts Header-BOSA"
 
                     GenSetup.Get();
 
-                    if ("Account Type" = "account type"::Customer)  then begin
+                    if (Rec."Account Type" = Rec."account type"::Customer) then begin
 
                         ReceiptAllocations.Reset;
-                        ReceiptAllocations.SetRange(ReceiptAllocations."Document No", "Transaction No.");
+                        ReceiptAllocations.SetRange(ReceiptAllocations."Document No", Rec."Transaction No.");
                         if ReceiptAllocations.Find('-') then begin
                             repeat
 
@@ -525,23 +525,23 @@ Page 51516242 "Receipts Header-BOSA"
                                 GenJournalLine."Journal Template Name" := JournalTemplate;
                                 GenJournalLine."Journal Batch Name" := JournalBatch;
                                 GenJournalLine."Line No." := LineNo;
-                                GenJournalLine."Document No." := "Transaction No.";
-                                GenJournalLine."External Document No." := "Cheque No.";
+                                GenJournalLine."Document No." := Rec."Transaction No.";
+                                GenJournalLine."External Document No." := Rec."Cheque No.";
                                 //GenJournalLine."Posting Date":="Cheque Date";
-                                GenJournalLine."Posting Date" := "Transaction Date";
+                                GenJournalLine."Posting Date" := Rec."Transaction Date";
                                 if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::Repayment then begin
                                     GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-                                    GenJournalLine."Account No." := "Account No.";
+                                    GenJournalLine."Account No." := Rec."Account No.";
                                     GenJournalLine.Validate(GenJournalLine."Account No.");
-                                    GenJournalLine.Description := 'BT-' + Name + '-' + "Account No." + '-' + Remarks;
+                                    GenJournalLine.Description := 'BT-' + Rec.Name + '-' + Rec."Account No." + '-' + Rec.Remarks;
                                     GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
                                     GenJournalLine."Shortcut Dimension 2 Code" := '01';
                                     GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
                                     GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
 
                                 end else begin
-                                    if "Account Type" = "account type"::Vendor then begin
-                                        GenJournalLine."Posting Date" := "Transaction Date";
+                                    if Rec."Account Type" = Rec."account type"::Vendor then begin
+                                        GenJournalLine."Posting Date" := Rec."Transaction Date";
                                         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
                                         GenJournalLine."Shortcut Dimension 2 Code" := '01';
                                         GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
@@ -555,19 +555,19 @@ Page 51516242 "Receipts Header-BOSA"
                                         GenJournalLine."Account No." := ReceiptAllocations."Member No";
                                         GenJournalLine.Validate(GenJournalLine."Account No.");
 
-                                        if ("Receipt Mode" = "receipt mode"::Mpesa) then begin
-                                            GenJournalLine.Amount := -Amount;
+                                        if (Rec."Receipt Mode" = Rec."receipt mode"::Mpesa) then begin
+                                            GenJournalLine.Amount := -Rec.Amount;
                                             GenJournalLine."Account Type" := GenJournalLine."account type"::"G/L Account";
                                             GenJournalLine."Account No." := GenSetup."FOSA MPESA COmm A/C";
-                                            GenJournalLine.Description := Format(ReceiptAllocations."Transaction Type") + '-' + Remarks;
+                                            GenJournalLine.Description := Format(ReceiptAllocations."Transaction Type") + '-' + Rec.Remarks;
                                             GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::Vendor;
-                                            GenJournalLine."Bal. Account No." := "Account No.";
+                                            GenJournalLine."Bal. Account No." := Rec."Account No.";
 
                                         end;
                                     end;
 
-                                    if "Account Type" = "account type"::Customer then begin
-                                        GenJournalLine."Posting Date" := "Transaction Date";
+                                    if Rec."Account Type" = Rec."account type"::Customer then begin
+                                        GenJournalLine."Posting Date" := Rec."Transaction Date";
                                         GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
                                         GenJournalLine."Shortcut Dimension 2 Code" := '01';
                                         GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
@@ -600,43 +600,43 @@ Page 51516242 "Receipts Header-BOSA"
                                 //     if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Loan Insurance Paid" then
                                 //         GenJournalLine.Description := 'L-Insurance' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
                                 //     else
-                                        if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Benevolent Fund" then
-                                            GenJournalLine.Description := 'Insurance' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
+                                if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Benevolent Fund" then
+                                    GenJournalLine.Description := 'Insurance' + '-' + Rec.Remarks + '-' + Format(Rec."Receipt Mode") + '-' + Rec."Cheque No."
+                                else
+                                    if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Registration Fee" then
+                                        GenJournalLine.Description := 'Registration' + '-' + Rec.Remarks + '-' + Format(Rec."Receipt Mode") + '-' + Rec."Cheque No."
+                                    else
+                                        if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Interest Paid" then
+                                            GenJournalLine.Description := 'Repayment' + '-' + Rec.Remarks + '-' + Format(Rec."Receipt Mode") + '-' + Rec."Cheque No."
                                         else
-                                            if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Registration Fee" then
-                                                GenJournalLine.Description := 'Registration' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
+                                            // if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Loan Insurance Paid" then
+                                            //     GenJournalLine.Description := 'Unallocated' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
+                                            // else
+                                            // if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"29" then
+                                            //     GenJournalLine.Description := 'Lukenya' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
+                                            //else
+                                            // if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"31" then
+                                            //     GenJournalLine.Description := 'juja' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
+                                            // else
+                                            //     if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"30" then
+                                            //         GenJournalLine.Description := 'Konza' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
+                                            //     else
+                                            //         if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"33" then
+                                            //             GenJournalLine.Description := 'Title' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
+                                            //         else
+                                            //             if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"32" then
+                                            //                 GenJournalLine.Description := 'Water' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
+                                            //             else
+                                            if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Deposit Contribution" then
+                                                GenJournalLine.Description := 'Deposit' + '-' + Rec.Remarks + '-' + Format(Rec."Receipt Mode") + '-' + Rec."Cheque No."
                                             else
-                                                if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Interest Paid" then
-                                                    GenJournalLine.Description := 'Repayment' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
+                                                // if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Recovery Account" then
+                                                //     GenJournalLine.Description := 'Share' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
+                                                // else
+                                                if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Benevolent Fund" then
+                                                    GenJournalLine.Description := 'Benevolent' + '-' + Rec.Remarks + '-' + Format(Rec."Receipt Mode") + '-' + Rec."Cheque No."
                                                 else
-                                                    // if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Loan Insurance Paid" then
-                                                    //     GenJournalLine.Description := 'Unallocated' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
-                                                    // else
-                                                        // if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"29" then
-                                                        //     GenJournalLine.Description := 'Lukenya' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
-                                                        //else
-                                                        // if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"31" then
-                                                        //     GenJournalLine.Description := 'juja' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
-                                                        // else
-                                                        //     if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"30" then
-                                                        //         GenJournalLine.Description := 'Konza' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
-                                                        //     else
-                                                        //         if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"33" then
-                                                        //             GenJournalLine.Description := 'Title' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
-                                                        //         else
-                                                        //             if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"32" then
-                                                        //                 GenJournalLine.Description := 'Water' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
-                                                        //             else
-                                                        if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Deposit Contribution" then
-                                                            GenJournalLine.Description := 'Deposit' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
-                                                        else
-                                                            // if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Recovery Account" then
-                                                            //     GenJournalLine.Description := 'Share' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
-                                                            // else
-                                                                if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Benevolent Fund" then
-                                                                    GenJournalLine.Description := 'Benevolent' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No."
-                                                                else
-                                                                    GenJournalLine.Description := 'BT' + '-' + Remarks + '-' + Format("Receipt Mode") + '-' + "Cheque No.";
+                                                    GenJournalLine.Description := 'BT' + '-' + Rec.Remarks + '-' + Format(Rec."Receipt Mode") + '-' + Rec."Cheque No.";
 
                                 //description
                                 GenJournalLine."Transaction Type" := ReceiptAllocations."Transaction Type";
@@ -685,17 +685,17 @@ Page 51516242 "Receipts Header-BOSA"
                     end;
                     //Post New
 
-                    Posted := true;
-                    Modify;
+                    Rec.Posted := true;
+                    Rec.Modify;
                     BOSARcpt.Reset;
-                    BOSARcpt.SetRange(BOSARcpt."Transaction No.", "Transaction No.");
+                    BOSARcpt.SetRange(BOSARcpt."Transaction No.", Rec."Transaction No.");
                     if BOSARcpt.Find('-') then
                         if/* ("Mode of Payment"<>"Mode of Payment"::"Standing order") AND */
                           //("Mode of Payment"<>"Mode of Payment"::"Direct Debit") AND
-                           ("Receipt Mode" <> "receipt mode"::Mpesa) then begin
+                           (Rec."Receipt Mode" <> Rec."receipt mode"::Mpesa) then begin
 
                             BOSARcpt.Reset;
-                            BOSARcpt.SetRange(BOSARcpt."Transaction No.", "Transaction No.");
+                            BOSARcpt.SetRange(BOSARcpt."Transaction No.", Rec."Transaction No.");
                             if BOSARcpt.Find('-') then
                                 Report.run(50387, false, true, BOSARcpt);
 
@@ -712,10 +712,10 @@ Page 51516242 "Receipts Header-BOSA"
 
                 trigger OnAction()
                 begin
-                    TestField(Posted);
+                    Rec.TestField(Posted);
 
                     BOSARcpt.Reset;
-                    BOSARcpt.SetRange(BOSARcpt."Transaction No.", "Transaction No.");
+                    BOSARcpt.SetRange(BOSARcpt."Transaction No.", Rec."Transaction No.");
                     if BOSARcpt.Find('-') then
                         Report.run(50387, true, true, BOSARcpt)
                 end;

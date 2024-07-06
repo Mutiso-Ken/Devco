@@ -7,7 +7,7 @@ Page 51516859 "Over draft"
     Editable = false;
     PageType = List;
     SourceTable = "Over Draft Register";
-    SourceTableView = where(Posted=const(true));
+    SourceTableView = where(Posted = const(true));
     UsageCategory = Lists;
 
     layout
@@ -16,55 +16,55 @@ Page 51516859 "Over draft"
         {
             repeater(Group)
             {
-                field("Over Draft No";"Over Draft No")
+                field("Over Draft No"; Rec."Over Draft No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No";"Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Application date";"Application date")
+                field("Application date"; Rec."Application date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approved Date";"Approved Date")
+                field("Approved Date"; Rec."Approved Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Captured by";"Captured by")
+                field("Captured by"; Rec."Captured by")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Current Account No";"Current Account No")
+                field("Current Account No"; Rec."Current Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Outstanding Overdraft";"Outstanding Overdraft")
+                field("Outstanding Overdraft"; Rec."Outstanding Overdraft")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount applied";"Amount applied")
+                field("Amount applied"; Rec."Amount applied")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("commission charged";"commission charged")
+                field("commission charged"; Rec."commission charged")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest Charged";"Interest Charged")
+                field("Interest Charged"; Rec."Interest Charged")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Overdraft Status";"Overdraft Status")
+                field("Overdraft Status"; Rec."Overdraft Status")
                 {
                     ApplicationArea = Basic;
                 }

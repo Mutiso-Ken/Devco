@@ -4,7 +4,7 @@ page 51516152 "Bosa Group Members"
     Caption = 'Bosa Group Members';
     PageType = Card;
     SourceTable = "Bosa Member App Group Members";
-    DataCaptionFields=Name;
+    DataCaptionFields = Name;
 
     layout
     {

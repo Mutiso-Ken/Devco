@@ -19,49 +19,49 @@ Page 51516512 "Membership Exit List-Posted"
         {
             repeater(Control1102755000)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member No."; "Member No.")
+                field("Member No."; Rec."Member No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Member Name"; "Member Name")
+                field("Member Name"; Rec."Member Name")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field("Closing Date"; "Closing Date")
+                field("Closing Date"; Rec."Closing Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Loan"; "Total Loan")
+                field("Total Loan"; Rec."Total Loan")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member Deposits"; "Member Deposits")
+                field("Member Deposits"; Rec."Member Deposits")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Closure Type"; "Closure Type")
+                field("Closure Type"; Rec."Closure Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Reason For Withdrawal"; "Reason For Withdrawal")
+                field("Reason For Withdrawal"; Rec."Reason For Withdrawal")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Sell Share Capital"; "Sell Share Capital")
+                field("Sell Share Capital"; Rec."Sell Share Capital")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Exit Type"; "Exit Type")
+                field("Exit Type"; Rec."Exit Type")
                 {
                     ApplicationArea = Basic;
                 }
@@ -159,8 +159,8 @@ Page 51516512 "Membership Exit List-Posted"
     trigger OnAfterGetRecord()
     begin
 
-        "Closing Date" := "Posting Date";
-        Modify()
+        Rec."Closing Date" := Rec."Posting Date";
+        Rec.Modify()
     end;
 
 }

@@ -4,17 +4,17 @@ Table 51516011 "Funds Claims Line"
 
     fields
     {
-        field(10;"Line No";Integer)
+        field(10; "Line No"; Integer)
         {
         }
-        field(11;"Document No";Code[10])
+        field(11; "Document No"; Code[10])
         {
         }
     }
 
     keys
     {
-        key(Key1;"Line No")
+        key(Key1; "Line No")
         {
             Clustered = true;
         }

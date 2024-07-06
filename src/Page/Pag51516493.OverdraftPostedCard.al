@@ -17,50 +17,50 @@ page 51516493 "Overdraft Posted Card"
             group(General)
             {
                 Caption = 'General';
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
 
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'FOSA Account No';
                     Editable = MNoEditable;
                 }
-                field("Client Name"; "Client Name")
+                field("Client Name"; Rec."Client Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("ID NO"; "ID NO")
+                field("ID NO"; Rec."ID NO")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Staff No"; "Staff No")
+                field("Staff No"; Rec."Staff No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Staff No';
                     Editable = false;
                 }
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                     Editable = ApplcDateEditable;
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Loan Product Type"; "Loan Product Type")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Editable = LProdTypeEditable;
                 }
-                field(Installments; Installments)
+                field(Installments; Rec.Installments)
                 {
                     ApplicationArea = Basic;
                     Editable = InstallmentEditable;
@@ -71,7 +71,7 @@ page 51516493 "Overdraft Posted Card"
 
                     end;
                 }
-                field(Interest; Interest)
+                field(Interest; Rec.Interest)
                 {
                     ApplicationArea = Basic;
                     Editable = Interrest;
@@ -80,7 +80,7 @@ page 51516493 "Overdraft Posted Card"
 
                     end;
                 }
-                field("Requested Amount"; "Requested Amount")
+                field("Requested Amount"; Rec."Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Amount Applied';
@@ -88,23 +88,23 @@ page 51516493 "Overdraft Posted Card"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                         //...................
-                        "Recommended Amount" := "Requested Amount";
-                        if "Repayment Method" = "repayment method"::"Reducing Balance" then begin
-                            TestField(Interest);
-                            TestField(Installments);
+                        Rec."Recommended Amount" := Rec."Requested Amount";
+                        if Rec."Repayment Method" = Rec."repayment method"::"Reducing Balance" then begin
+                            Rec.TestField(Interest);
+                            Rec.TestField(Installments);
 
-                            LPrincipal := ROUND("Requested Amount" / Installments, 0.05, '>');
-                            LInterest := ROUND((Interest / 12 / 100) * "Requested Amount", 0.05, '>');
-                            Repayment := LPrincipal + LInterest;
-                            "Loan Principle Repayment" := LPrincipal;
-                            "Loan Interest Repayment" := LInterest;
+                            LPrincipal := ROUND(Rec."Requested Amount" / Rec.Installments, 0.05, '>');
+                            LInterest := ROUND((Rec.Interest / 12 / 100) * Rec."Requested Amount", 0.05, '>');
+                            Rec.Repayment := LPrincipal + LInterest;
+                            Rec."Loan Principle Repayment" := LPrincipal;
+                            Rec."Loan Interest Repayment" := LInterest;
                         end;
                         //.............................................................
                     end;
                 }
-                field("Approved Amount"; "Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Approved Amount';
@@ -112,21 +112,21 @@ page 51516493 "Overdraft Posted Card"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                         //...................
-                        if "Repayment Method" = "repayment method"::"Reducing Balance" then begin
+                        if Rec."Repayment Method" = Rec."repayment method"::"Reducing Balance" then begin
 
 
-                            LPrincipal := ROUND("Requested Amount" / Installments, 0.05, '>');
-                            LInterest := ROUND((Interest / 12 / 100) * "Requested Amount", 0.05, '>');
-                            Repayment := LPrincipal + LInterest;
-                            "Loan Principle Repayment" := LPrincipal;
-                            "Loan Interest Repayment" := LInterest;
+                            LPrincipal := ROUND(Rec."Requested Amount" / Rec.Installments, 0.05, '>');
+                            LInterest := ROUND((Rec.Interest / 12 / 100) * Rec."Requested Amount", 0.05, '>');
+                            Rec.Repayment := LPrincipal + LInterest;
+                            Rec."Loan Principle Repayment" := LPrincipal;
+                            Rec."Loan Interest Repayment" := LInterest;
                         end;
                         //.............................................................
                     end;
                 }
-                field("Main Sector"; "Main Sector")
+                field("Main Sector"; Rec."Main Sector")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -134,10 +134,10 @@ page 51516493 "Overdraft Posted Card"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Sub-Sector"; "Sub-Sector")
+                field("Sub-Sector"; Rec."Sub-Sector")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -146,10 +146,10 @@ page 51516493 "Overdraft Posted Card"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Specific Sector"; "Specific Sector")
+                field("Specific Sector"; Rec."Specific Sector")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -158,26 +158,26 @@ page 51516493 "Overdraft Posted Card"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Repayment Method"; "Repayment Method")
+                field("Repayment Method"; Rec."Repayment Method")
                 {
                     ApplicationArea = Basic;
                     Editable = RepayMethodEditable;
                 }
-                field("Loan Interest Repayment"; "Loan Interest Repayment")
+                field("Loan Interest Repayment"; Rec."Loan Interest Repayment")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Repayment; Repayment)
+                field(Repayment; Rec.Repayment)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Total Repayment';
                     Editable = false;
                 }
-                field("Loan Status"; "Loan Status")
+                field("Loan Status"; Rec."Loan Status")
                 {
                     ApplicationArea = Basic;
                     Editable = LoanStatusEditable;
@@ -189,42 +189,42 @@ page 51516493 "Overdraft Posted Card"
 
                     end;
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Repayment Frequency"; "Repayment Frequency")
+                field("Repayment Frequency"; Rec."Repayment Frequency")
                 {
                     ApplicationArea = Basic;
                     Editable = RepayFrequencyEditable;
                 }
-                field("Recovery Mode"; "Recovery Mode")
+                field("Recovery Mode"; Rec."Recovery Mode")
                 {
                     ApplicationArea = Basic;
                     Editable = LProdTypeEditable;
                 }
-                field("Loan Disbursement Date"; "Loan Disbursement Date")
+                field("Loan Disbursement Date"; Rec."Loan Disbursement Date")
                 {
                     ApplicationArea = Basic;
                     Editable = LProdTypeEditable;
                 }
-                field("Repayment Start Date"; "Repayment Start Date")
+                field("Repayment Start Date"; Rec."Repayment Start Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Expected Date of Completion"; "Expected Date of Completion")
+                field("Expected Date of Completion"; Rec."Expected Date of Completion")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Approval Status"; "Approval Status")
+                field("Approval Status"; Rec."Approval Status")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Recommended Amount"; "Recommended Amount")
+                field("Recommended Amount"; Rec."Recommended Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -256,12 +256,12 @@ page 51516493 "Overdraft Posted Card"
 
                     trigger OnAction()
                     begin
-                        if ("Repayment Start Date" = 0D) then
+                        if (Rec."Repayment Start Date" = 0D) then
                             Error('Please enter Disbursement Date to continue');
-                        SFactory.FnGenerateRepaymentSchedule("Loan  No.");
+                        SFactory.FnGenerateRepaymentSchedule(Rec."Loan  No.");
 
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", Rec."Loan  No.");
                         if LoanApp.Find('-') then begin
                             Report.Run(51516477, true, false, LoanApp);
                         end;
@@ -285,7 +285,7 @@ page 51516493 "Overdraft Posted Card"
                         //...........Post Loan Function
                         BATCH_TEMPLATE := 'PAYMENTS';
                         BATCH_NAME := 'LOANS';
-                        DOCUMENT_NO := "Loan  No.";
+                        DOCUMENT_NO := Rec."Loan  No.";
 
                         GenJournalLine.Reset;
                         GenJournalLine.SetRange("Journal Template Name", BATCH_TEMPLATE);
@@ -294,7 +294,7 @@ page 51516493 "Overdraft Posted Card"
 
                         FnCreateOverdraftGLEntries();
                         //Generate Loan Schedule In System
-                        SFactory.FnGenerateRepaymentSchedule("Loan  No.");
+                        SFactory.FnGenerateRepaymentSchedule(Rec."Loan  No.");
                         //......................Post Entries
                         GenJournalLine.Reset;
                         GenJournalLine.SetRange("Journal Template Name", BATCH_TEMPLATE);
@@ -303,18 +303,18 @@ page 51516493 "Overdraft Posted Card"
                             if Codeunit.Run(Codeunit::"Gen. Jnl.-Post Sacco", GenJournalLine) = true then begin
                                 //...........Send Notifications of disbursments
                                 msg := '';
-                                msg := 'Dear Member, Your ' + Format(LoansR."Loan Product Type") + ' loan application of KSHs.' + Format("Requested Amount") + ' has been processed and disbursed to your FOSA Account.Jamii Yetu Sacco.';
-                                PhoneNo := FnGetPhoneNo("Client Code");
-                                SendSMSMessage("Client Code", msg, PhoneNo);
+                                msg := 'Dear Member, Your ' + Format(LoansR."Loan Product Type") + ' loan application of KSHs.' + Format(Rec."Requested Amount") + ' has been processed and disbursed to your FOSA Account.Jamii Yetu Sacco.';
+                                PhoneNo := FnGetPhoneNo(Rec."Client Code");
+                                SendSMSMessage(Rec."Client Code", msg, PhoneNo);
                                 //................................................
                                 //SendEmail Of Repayment Schedule
                                 //................................................
-                                Posted := true;
-                                "Posted By" := UserId;
-                                "Loan Status" := "Loan Status"::Issued;
-                                "disbursement time" := Time;
-                                "Loans Category-SASRA" := "Loans Category-SASRA"::Perfoming;
-                                Modify(true);
+                                Rec.Posted := true;
+                                Rec."Posted By" := UserId;
+                                Rec."Loan Status" := Rec."Loan Status"::Issued;
+                                Rec."disbursement time" := Time;
+                                Rec."Loans Category-SASRA" := Rec."Loans Category-SASRA"::Perfoming;
+                                Rec.Modify(true);
                                 Message('The Loan Has Successfully Posted to member FOSA account(Ordinary) and Member Notified');
                                 CurrPage.Close();
                             end;
@@ -342,28 +342,28 @@ page 51516493 "Overdraft Posted Card"
                         GuaranteedAmountsTotal: Decimal;
                         SrestepApprovalsCodeUnit: Codeunit SurestepApprovalsCodeUnit;
                     begin
-                        TestField("Approved Amount");
-                        TestField("Loan Product Type");
-                        TestField("Loan Disbursement Date");
-                        TestField("Main Sector");
-                        TestField("Sub-Sector");
-                        TestField("Specific Sector");
-                        TestField("Requested Amount");
+                        Rec.TestField("Approved Amount");
+                        Rec.TestField("Loan Product Type");
+                        Rec.TestField("Loan Disbursement Date");
+                        Rec.TestField("Main Sector");
+                        Rec.TestField("Sub-Sector");
+                        Rec.TestField("Specific Sector");
+                        Rec.TestField("Requested Amount");
                         LGuarantors.Reset;
-                        LGuarantors.SetRange(LGuarantors."Loan No", "Loan  No.");
+                        LGuarantors.SetRange(LGuarantors."Loan No", Rec."Loan  No.");
                         if LGuarantors.Find('-') = false then begin
                             Error('Please Insert Loan Applicant Guarantor Information');
                         end;
                         //.............................Check If Approved Amount Is Equal to the Guarantor Amount
                         GuaranteedAmountsTotal := 0;
                         LGuarantors.Reset;
-                        LGuarantors.SetRange(LGuarantors."Loan No", "Loan  No.");
+                        LGuarantors.SetRange(LGuarantors."Loan No", Rec."Loan  No.");
                         if LGuarantors.Find('-') = true then begin
                             repeat
                                 GuaranteedAmountsTotal += LGuarantors."Amont Guaranteed";
                             until LGuarantors.Next = 0;
                         end;
-                        if "Approved Amount" <> GuaranteedAmountsTotal then begin
+                        if Rec."Approved Amount" <> GuaranteedAmountsTotal then begin
                             error('The Overdraft Amount requested MUST Equally tally the Total Guaranteed Amount')
                         end;
                         //--------------------------------------------------------------------------------------
@@ -571,7 +571,7 @@ page 51516493 "Overdraft Posted Card"
 
     procedure UpdateControl()
     begin
-        if "Loan Status" = "loan status"::Application then begin
+        if Rec."Loan Status" = Rec."loan status"::Application then begin
             PostLoan := false;
             CancelApproval := false;
             SendApprovalEnabled := true;
@@ -592,7 +592,7 @@ page 51516493 "Overdraft Posted Card"
             DisbursementDateEditable := true;
         end;
 
-        if "Loan Status" = "loan status"::Appraisal then begin
+        if Rec."Loan Status" = Rec."loan status"::Appraisal then begin
             PostLoan := false;
             CancelApproval := true;
             SendApprovalEnabled := false;
@@ -613,7 +613,7 @@ page 51516493 "Overdraft Posted Card"
             DisbursementDateEditable := false;
         end;
 
-        if "Loan Status" = "loan status"::Rejected then begin
+        if Rec."Loan Status" = Rec."loan status"::Rejected then begin
             PostLoan := false;
             CancelApproval := false;
             SendApprovalEnabled := true;
@@ -634,7 +634,7 @@ page 51516493 "Overdraft Posted Card"
             DisbursementDateEditable := false;
         end;
 
-        if "Loan Status" = "loan status"::Approved then begin
+        if Rec."Loan Status" = Rec."loan status"::Approved then begin
             PostLoan := true;
             CancelApproval := false;
             SendApprovalEnabled := false;
@@ -668,20 +668,20 @@ page 51516493 "Overdraft Posted Card"
         PhoneNo: Text[250];
     begin
         LoansR.Reset();
-        LoansR.SetRange(LoansR."Loan  No.", "Loan  No.");
+        LoansR.SetRange(LoansR."Loan  No.", Rec."Loan  No.");
         if LoansR.Find('-') then begin
             msg := '';
-            msg := 'Dear Member, Your ' + Format(LoansR."Loan Product Type") + ' loan application of KSHs.' + Format("Requested Amount") + ' has been received and is being processed.Jamii Yetu Sacco.';
+            msg := 'Dear Member, Your ' + Format(LoansR."Loan Product Type") + ' loan application of KSHs.' + Format(Rec."Requested Amount") + ' has been received and is being processed.Jamii Yetu Sacco.';
             PhoneNo := FnGetPhoneNo(LoansR."Client Code");
             SendSMSMessage(LoansR."BOSA No", msg, PhoneNo);
             LGuarantors.Reset;
-            LGuarantors.SetRange(LGuarantors."Loan No", "Loan  No.");
+            LGuarantors.SetRange(LGuarantors."Loan No", Rec."Loan  No.");
             if LGuarantors.Find('-') = false then begin
                 repeat
                     if LGuarantors."Self Guarantee" = true then begin
                         msg := '';
-                        msg := 'Dear Member,you have self guaranteed on ' + Format(LoansR."Loan Product Type") + ' loan application of KSHs.' + Format("Requested Amount") + ' with ' + Format(LGuarantors."Amont Guaranteed") + ' of you current deposits.Jamii Yetu Sacco.';
-                        PhoneNo := FnGetPhoneNo("Client Code");
+                        msg := 'Dear Member,you have self guaranteed on ' + Format(LoansR."Loan Product Type") + ' loan application of KSHs.' + Format(Rec."Requested Amount") + ' with ' + Format(LGuarantors."Amont Guaranteed") + ' of you current deposits.Jamii Yetu Sacco.';
+                        PhoneNo := FnGetPhoneNo(Rec."Client Code");
                         SendSMSMessage(LGuarantors."Member No", msg, PhoneNo);
                     end else
                         if LGuarantors."Self Guarantee" = false then begin
@@ -777,16 +777,16 @@ page 51516493 "Overdraft Posted Card"
         GenJournalLine."Journal Batch Name" := BATCH_NAME;
         GenJournalLine."Line No." := LineNo;
         GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-        GenJournalLine."Account No." := "Account No";
+        GenJournalLine."Account No." := Rec."Account No";
         GenJournalLine.Validate(GenJournalLine."Account No.");
         GenJournalLine."Document No." := DOCUMENT_NO;
         GenJournalLine."External Document No." := DOCUMENT_NO;
         GenJournalLine."Posting Date" := Today;
         GenJournalLine.Description := 'Overdraft Principal Amount-disbursed';
-        GenJournalLine.Amount := ("Approved Amount") * -1;
+        GenJournalLine.Amount := (Rec."Approved Amount") * -1;
         GenJournalLine.Validate(GenJournalLine.Amount);
         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-        GenJournalLine."Shortcut Dimension 2 Code" := SFactory.FnGetMemberBranch("Client Code");
+        GenJournalLine."Shortcut Dimension 2 Code" := SFactory.FnGetMemberBranch(Rec."Client Code");
         if GenJournalLine.Amount <> 0 then
             GenJournalLine.Insert;
 
@@ -797,7 +797,7 @@ page 51516493 "Overdraft Posted Card"
         GenJournalLine."Journal Batch Name" := BATCH_NAME;
         GenJournalLine."Line No." := LineNo;
         GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-        GenJournalLine."Account No." := "Account No";
+        GenJournalLine."Account No." := Rec."Account No";
         GenJournalLine.Validate(GenJournalLine."Account No.");
         GenJournalLine."Document No." := DOCUMENT_NO;
         GenJournalLine."External Document No." := DOCUMENT_NO;
@@ -806,7 +806,7 @@ page 51516493 "Overdraft Posted Card"
         GenJournalLine.Amount := 100;
         GenJournalLine.Validate(GenJournalLine.Amount);
         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-        GenJournalLine."Shortcut Dimension 2 Code" := SFactory.FnGetMemberBranch("Client Code");
+        GenJournalLine."Shortcut Dimension 2 Code" := SFactory.FnGetMemberBranch(Rec."Client Code");
         if GenJournalLine.Amount <> 0 then
             GenJournalLine.Insert;
         //3.----------------------Balance with Form Fees Account
@@ -821,11 +821,11 @@ page 51516493 "Overdraft Posted Card"
         GenJournalLine."Document No." := DOCUMENT_NO;
         GenJournalLine."External Document No." := DOCUMENT_NO;
         GenJournalLine."Posting Date" := Today;
-        GenJournalLine.Description := "Loan Product Type" + ' -Overdraft Form Fee Charge- ' + "Loan  No.";
+        GenJournalLine.Description := Rec."Loan Product Type" + ' -Overdraft Form Fee Charge- ' + Rec."Loan  No.";
         GenJournalLine.Amount := -(100);
         GenJournalLine.Validate(GenJournalLine.Amount);
         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-        GenJournalLine."Shortcut Dimension 2 Code" := SFactory.FnGetMemberBranch("Client Code");
+        GenJournalLine."Shortcut Dimension 2 Code" := SFactory.FnGetMemberBranch(Rec."Client Code");
         if GenJournalLine.Amount <> 0 then
             GenJournalLine.Insert;
 
@@ -836,18 +836,18 @@ page 51516493 "Overdraft Posted Card"
         GenJournalLine."Journal Batch Name" := BATCH_NAME;
         GenJournalLine."Line No." := LineNo;
         GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
-        GenJournalLine."Account No." := "Client Code";
+        GenJournalLine."Account No." := Rec."Client Code";
         GenJournalLine.Validate(GenJournalLine."Account No.");
         GenJournalLine."Document No." := DOCUMENT_NO;
         GenJournalLine."External Document No." := DOCUMENT_NO;
         GenJournalLine."Posting Date" := Today;
-        GenJournalLine."Loan No" := "Loan  No.";
+        GenJournalLine."Loan No" := Rec."Loan  No.";
         GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::Loan;
-        GenJournalLine.Description := 'Overdraft Loan Issued-' + Format("Loan  No.");
-        GenJournalLine.Amount := "Approved Amount";
+        GenJournalLine.Description := 'Overdraft Loan Issued-' + Format(Rec."Loan  No.");
+        GenJournalLine.Amount := Rec."Approved Amount";
         GenJournalLine.Validate(GenJournalLine.Amount);
         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-        GenJournalLine."Shortcut Dimension 2 Code" := SFactory.FnGetMemberBranch("Client Code");
+        GenJournalLine."Shortcut Dimension 2 Code" := SFactory.FnGetMemberBranch(Rec."Client Code");
         if GenJournalLine.Amount <> 0 then
             GenJournalLine.Insert;
         //........................................................................................

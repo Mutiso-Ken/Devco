@@ -13,41 +13,41 @@ Page 51516228 "Members Statistics"
             group(General)
             {
                 Caption = 'General';
-                field("Shares Retained"; "Shares Retained")
+                field("Shares Retained"; Rec."Shares Retained")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Share Capital';
                 }
-                field("Current Shares"; "Current Shares")
+                field("Current Shares"; Rec."Current Shares")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Non-withdrawable Deposits';
                 }
-                field("Accrued Interest"; "Accrued Interest")
+                field("Accrued Interest"; Rec."Accrued Interest")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Outstanding Interest';
                 }
-                field("Outstanding Balance"; "Outstanding Balance")
+                field("Outstanding Balance"; Rec."Outstanding Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Un-allocated Funds"; "Un-allocated Funds")
+                field("Un-allocated Funds"; Rec."Un-allocated Funds")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Registration Fee Paid"; "Registration Fee Paid")
+                field("Registration Fee Paid"; Rec."Registration Fee Paid")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Alpha Savings"; "Alpha Savings")
+                field("Alpha Savings"; Rec."Alpha Savings")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
 
                 }
-                field("Likizo Contribution"; "Likizo Contribution")
+                field("Likizo Contribution"; Rec."Likizo Contribution")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -55,53 +55,53 @@ Page 51516228 "Members Statistics"
 
                 }
 
-                field("Junior Savings One"; "Junior Savings One")
+                field("Junior Savings One"; Rec."Junior Savings One")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
 
 
                 }
-                field("Junior Savings Two"; "Junior Savings Two")
+                field("Junior Savings Two"; Rec."Junior Savings Two")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
 
                 }
-                field("Junior Savings Three"; "Junior Savings Three")
+                field("Junior Savings Three"; Rec."Junior Savings Three")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
 
                 }
-                field("Monthly ShareCap Cont."; "Monthly ShareCap Cont.")
+                field("Monthly ShareCap Cont."; Rec."Monthly ShareCap Cont.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Monthly Share Capital';
                 }
-                field("Monthly Contribution"; "Monthly Contribution")
+                field("Monthly Contribution"; Rec."Monthly Contribution")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Monthly Deposit Contribution';
                 }
-                field("Holiday Monthly Contribution"; "Holiday Monthly Contribution")
+                field("Holiday Monthly Contribution"; Rec."Holiday Monthly Contribution")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
 
 
                 }
-                field("Housing Contribution"; "Investment Monthly Cont")
+                field("Housing Contribution"; Rec."Investment Monthly Cont")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Housing contribution';
                     Editable = true;
                 }
-                field("Junior Monthly Contribution"; "Junior Monthly Contribution")
+                field("Junior Monthly Contribution"; Rec."Junior Monthly Contribution")
                 {
                     ApplicationArea = basic;
                 }
-                field("Alpha Monthly Contribution"; "Alpha Monthly Contribution")
+                field("Alpha Monthly Contribution"; Rec."Alpha Monthly Contribution")
                 {
                     ApplicationArea = all;
                 }

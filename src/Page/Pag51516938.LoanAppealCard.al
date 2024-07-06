@@ -14,7 +14,7 @@ page 51516938 "Loan Appeal Card"
             group(General)
             {
                 Caption = 'General';
-                Field("Document No."; "Document No.")
+                Field("Document No."; Rec."Document No.")
                 {
                     ApplicationArea = all;
                     Editable = false;
@@ -25,7 +25,7 @@ page 51516938 "Loan Appeal Card"
                     ApplicationArea = all;
 
                 }
-                field("Member No."; "Member No.")
+                field("Member No."; Rec."Member No.")
                 {
                     ApplicationArea = all;
                     Editable = false;
@@ -61,27 +61,27 @@ page 51516938 "Loan Appeal Card"
                     ApplicationArea = all;
                     Editable = false;
                 }
-                field("New Principle Amount"; "New Principle Amount")
+                field("New Principle Amount"; Rec."New Principle Amount")
                 {
                     ApplicationArea = all;
                 }
-                field("New Loan Product Type"; "New Loan Product Type")
+                field("New Loan Product Type"; Rec."New Loan Product Type")
                 {
                     ApplicationArea = all;
                 }
-                field(NewInterest; NewInterest)
+                field(NewInterest; Rec.NewInterest)
                 {
 
                     ApplicationArea = all;
                     Editable = false;
                     Caption = 'New Interest';
                 }
-                field(NewInstalmentPeriod; NewInstalmentPeriod)
+                field(NewInstalmentPeriod; Rec.NewInstalmentPeriod)
                 {
                     ApplicationArea = all;
                     Caption = 'New Installment Period';
                 }
-                field(NewInstallment; NewInstallment)
+                field(NewInstallment; Rec.NewInstallment)
                 {
                     ApplicationArea = all;
                     Caption = 'New Installment';
@@ -96,17 +96,17 @@ page 51516938 "Loan Appeal Card"
                 }
 
 
-                field(Type; Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = all;
                     Editable = false;
                 }
-                field("Reason For change?"; "Reason For change?")
+                field("Reason For change?"; Rec."Reason For change?")
                 {
                     ApplicationArea = all;
                     ShowMandatory = true;
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
                     ApplicationArea = all;
                     Editable = FALSE;
@@ -149,7 +149,7 @@ page 51516938 "Loan Appeal Card"
                 Image = AdjustEntries;
                 trigger OnAction()
                 begin
-                    if "Reason For change?" = '' then
+                    if Rec."Reason For change?" = '' then
                         Error('Please type the reason for change') else
                         StatusPermissions.Reset;
                     StatusPermissions.SetRange(StatusPermissions."User Id", UserId);
@@ -157,7 +157,7 @@ page 51516938 "Loan Appeal Card"
                     if StatusPermissions.Find('-') = false then
                         Error('You do not have permissions to Appeal this Loan.')
                     else begin
-                        if LoanType.Get("Loan Product Type") then
+                        if LoanType.Get(Rec."Loan Product Type") then
                             BankNo := LoanType."Loan Bank Account";
                         BATCH_TEMPLATE := 'GENERAL';
                         BATCH_NAME := 'APPEAL';
@@ -172,24 +172,24 @@ page 51516938 "Loan Appeal Card"
 
                         rec.CalcFields(ClientCode);
 
-                        if Type = type::Increase then begin
+                        if Rec.Type = Rec.type::Increase then begin
                             LineNo := LineNo + 10000;
                             SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::Loan,
-                            GenJournalLine."account type"::Customer, ClientCode, Today, "New Amount", 'BOSA', "Loan Number", "Loan Number" + ' Loan Appeal', "Loan Number");
+                            GenJournalLine."account type"::Customer, Rec.ClientCode, Today, Rec."New Amount", 'BOSA', Rec."Loan Number", Rec."Loan Number" + ' Loan Appeal', Rec."Loan Number");
 
                             LineNo := LineNo + 10000;
                             SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::" ",
-                            GenJournalLine."account type"::"Bank Account", BankNo, Today, "New Amount" * -1, 'BOSA', "Loan Number", "Loan Number" + ' Loan Appeal', ' ');
+                            GenJournalLine."account type"::"Bank Account", BankNo, Today, Rec."New Amount" * -1, 'BOSA', Rec."Loan Number", Rec."Loan Number" + ' Loan Appeal', ' ');
 
                         end else
-                            if Type = type::Decrease then begin
+                            if Rec.Type = Rec.type::Decrease then begin
                                 LineNo := LineNo + 10000;
                                 SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::Loan,
-                                GenJournalLine."account type"::Customer, ClientCode, Today, "New Amount", 'BOSA', "Loan Number", "Loan Number" + ' Loan Appeal', "Loan Number");
+                                GenJournalLine."account type"::Customer, Rec.ClientCode, Today, Rec."New Amount", 'BOSA', Rec."Loan Number", Rec."Loan Number" + ' Loan Appeal', Rec."Loan Number");
 
                                 LineNo := LineNo + 10000;
                                 SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::" ",
-                                GenJournalLine."account type"::"Bank Account", BankNo, Today, "New Amount" * -1, 'BOSA', "Loan Number", "Loan Number" + ' Loan Appeal', ' ');
+                                GenJournalLine."account type"::"Bank Account", BankNo, Today, Rec."New Amount" * -1, 'BOSA', Rec."Loan Number", Rec."Loan Number" + ' Loan Appeal', ' ');
 
                             end;
                         GenJournalLine.Reset;
@@ -198,19 +198,19 @@ page 51516938 "Loan Appeal Card"
                         if GenJournalLine.Find('-') then begin
                             Codeunit.Run(Codeunit::"Gen. Jnl.-Post Batch", GenJournalLine);
                         end;
-                        Message('%1 Loan for %2 has Succesfully been Appealed', "Loan Number", ClientCode);
+                        Message('%1 Loan for %2 has Succesfully been Appealed', Rec."Loan Number", Rec.ClientCode);
                         LoanReg.Reset();
-                        LoanReg.SetRange(LoanReg."Loan  No.", "Loan Number");
+                        LoanReg.SetRange(LoanReg."Loan  No.", Rec."Loan Number");
                         if LoanReg.Find('-') then begin
-                            LoanReg."Approved Amount" := "New Principle Amount";
-                            LoanReg."Requested Amount" := "New Principle Amount";
-                            LoanReg."Loan Disbursed Amount" := "New Principle Amount";
-                            LoanReg.Installments := NewInstallment;
-                            LoanReg."Instalment Period" := NewInstalmentPeriod;
-                            LoanReg."Loan Product Type" := "New Loan Product Type";
+                            LoanReg."Approved Amount" := Rec."New Principle Amount";
+                            LoanReg."Requested Amount" := Rec."New Principle Amount";
+                            LoanReg."Loan Disbursed Amount" := Rec."New Principle Amount";
+                            LoanReg.Installments := Rec.NewInstallment;
+                            LoanReg."Instalment Period" := Rec.NewInstalmentPeriod;
+                            LoanReg."Loan Product Type" := Rec."New Loan Product Type";
                             LoanReg.Modify();
-                            SFactory.FnGenerateRepaymentSchedule("Loan Number");
-                            Appealed := true;
+                            SFactory.FnGenerateRepaymentSchedule(Rec."Loan Number");
+                            Rec.Appealed := true;
                             Rec.Modify();
                         end;
 
@@ -230,7 +230,7 @@ page 51516938 "Loan Appeal Card"
                 trigger OnAction()
                 begin
                     LoanApp.Reset;
-                    LoanApp.SetRange(LoanApp."Loan  No.", "Loan Number");
+                    LoanApp.SetRange(LoanApp."Loan  No.", Rec."Loan Number");
                     if LoanApp.Find('-') then begin
                         Report.Run(51516477, true, false, LoanApp);
                     end;

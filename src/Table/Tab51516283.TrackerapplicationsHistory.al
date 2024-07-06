@@ -238,11 +238,11 @@ Table 51516283 "Tracker applications History"
     var
         NoSetup: Record "General Ledger Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
-//         WithdrawLimit: Record UnknownRecord39004042;
-//         StatusPermissions: Record UnknownRecord39004288;
-//         MPESAApp: Record UnknownRecord39004045;
-//         MPESAAppDetails: Record UnknownRecord39004044;
-//         MPESAAppDet2: Record UnknownRecord39004044;
-//
- }
+    //         WithdrawLimit: Record UnknownRecord39004042;
+    //         StatusPermissions: Record UnknownRecord39004288;
+    //         MPESAApp: Record UnknownRecord39004045;
+    //         MPESAAppDetails: Record UnknownRecord39004044;
+    //         MPESAAppDet2: Record UnknownRecord39004044;
+    //
+}
 

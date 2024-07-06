@@ -16,7 +16,7 @@ Page 51516480 "BOSA Cue"
             {
                 Caption = 'BOSA Member Accounts ';
                 // CuegroupLayout = Wide;
-                field("All Members"; "All Members")
+                field("All Members"; Rec."All Members")
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -26,7 +26,7 @@ Page 51516480 "BOSA Cue"
                     //AutoFormatExpression = '#,##0;(#,##0);#';
                 }
 
-                field("Active Members"; "Active Members")
+                field("Active Members"; Rec."Active Members")
                 {
 
                     ApplicationArea = Basic;
@@ -36,7 +36,7 @@ Page 51516480 "BOSA Cue"
                     DrillDownPageId = "Member List";
                 }
 
-                field("NonActive Mbrs"; "NonActive Mbrs")
+                field("NonActive Mbrs"; Rec."NonActive Mbrs")
                 {
 
                     ApplicationArea = Basic;
@@ -46,7 +46,7 @@ Page 51516480 "BOSA Cue"
                     StyleExpr = true;
                     DrillDownPageId = "Member List";
                 }
-                field(Deceased; Deceased)
+                field(Deceased; Rec.Deceased)
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -54,7 +54,7 @@ Page 51516480 "BOSA Cue"
                     StyleExpr = true;
                     DrillDownPageId = "Member List";
                 }
-                field("Awaiting Exit"; "Awaiting Exit")
+                field("Awaiting Exit"; Rec."Awaiting Exit")
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -63,7 +63,7 @@ Page 51516480 "BOSA Cue"
                     DrillDownPageId = "Member List";
                 }
 
-                field(Exited; Exited)
+                field(Exited; Rec.Exited)
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -74,8 +74,8 @@ Page 51516480 "BOSA Cue"
             }
             cuegroup(Gender)
             {
-              
-                field(Female; Female)
+
+                field(Female; Rec.Female)
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -83,7 +83,7 @@ Page 51516480 "BOSA Cue"
                     StyleExpr = true;
                     DrillDownPageId = "Member List";
                 }
-                field(Male; Male)
+                field(Male; Rec.Male)
                 {
                     ApplicationArea = Basic;
                     Image = none;

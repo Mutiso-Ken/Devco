@@ -51,7 +51,7 @@ Table 51516240 "Loan Products Setup"
         }
         field(30; "No of Installment"; Integer)
         {
-            
+
         }
         field(31; "Loan No Series"; Code[10])
         {
@@ -370,7 +370,7 @@ Table 51516240 "Loan Products Setup"
         field(116; "Load All Loan Interest"; Boolean)
         {
         }
-          field(117; "Max No. Of Guarantors"; Integer)
+        field(117; "Max No. Of Guarantors"; Integer)
         {
         }
 

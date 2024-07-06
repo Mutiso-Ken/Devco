@@ -6,65 +6,65 @@ Report 50073 "Next of Kin Details Report"
 
     dataset
     {
-        dataitem("Members Register";Customer)
+        dataitem("Members Register"; Customer)
         {
-            RequestFilterFields = "No.","Employer Code",Gender,"Registration Date",Status,"Current Shares","Shares Retained","Account Category";
+            RequestFilterFields = "No.", "Employer Code", Gender, "Registration Date", Status, "Current Shares", "Shares Retained", "Account Category";
             column(ReportForNavId_1000000000; 1000000000)
             {
             }
-            column(FORMAT_TODAY_0_4_;Format(Today,0,4))
+            column(FORMAT_TODAY_0_4_; Format(Today, 0, 4))
             {
             }
-            column(COMPANYNAME;COMPANYNAME)
+            column(COMPANYNAME; COMPANYNAME)
             {
             }
-            column(Company_Address;Company.Address)
+            column(Company_Address; Company.Address)
             {
             }
-            column(Company_Address2;Company."Address 2")
+            column(Company_Address2; Company."Address 2")
             {
             }
-            column(Company_PhoneNo;Company."Phone No.")
+            column(Company_PhoneNo; Company."Phone No.")
             {
             }
-            column(Company_Email;Company."E-Mail")
+            column(Company_Email; Company."E-Mail")
             {
             }
-            column(Company_Picture;Company.Picture)
+            column(Company_Picture; Company.Picture)
             {
             }
-            column(CurrReport_PAGENO;CurrReport.PageNo)
+            column(CurrReport_PAGENO; CurrReport.PageNo)
             {
             }
-            column(USERID;UserId)
+            column(USERID; UserId)
             {
             }
-            column(Personal_No;"Members Register"."Payroll/Staff No")
+            column(Personal_No; "Members Register"."Payroll/Staff No")
             {
             }
-            column(Registration_Date;Format("Members Register"."Registration Date"))
+            column(Registration_Date; Format("Members Register"."Registration Date"))
             {
             }
-            column(Share_Capital;"Members Register"."Shares Retained")
+            column(Share_Capital; "Members Register"."Shares Retained")
             {
             }
-            column(Deposits;"Members Register"."Monthly Contribution")
+            column(Deposits; "Members Register"."Monthly Contribution")
             {
                 AutoCalcField = true;
             }
-            column(EMail_MembersRegister;"Members Register"."E-Mail")
+            column(EMail_MembersRegister; "Members Register"."E-Mail")
             {
             }
-            column(No_MembersRegister;"Members Register"."No.")
+            column(No_MembersRegister; "Members Register"."No.")
             {
             }
-            column(Name_MembersRegister;"Members Register".Name)
+            column(Name_MembersRegister; "Members Register".Name)
             {
             }
-            column(Address_MembersRegister;"Members Register".Address)
+            column(Address_MembersRegister; "Members Register".Address)
             {
             }
-            column(PhoneNo_MembersRegister;"Members Register"."Phone No.")
+            column(PhoneNo_MembersRegister; "Members Register"."Phone No.")
             {
             }
             // column(RiskFund_MembersRegister;"Members Register"."Risk Fund")
@@ -73,34 +73,34 @@ Report 50073 "Next of Kin Details Report"
             // column(FOSAAccountNo_MembersRegister;"Members Register"."FOSA Account No.")
             // {
             // }
-            column(SharesRetained_MembersRegister;"Members Register"."Shares Retained")
+            column(SharesRetained_MembersRegister; "Members Register"."Shares Retained")
             {
             }
-            column(CurrentShares_MembersRegister;"Members Register"."Current Shares")
+            column(CurrentShares_MembersRegister; "Members Register"."Current Shares")
             {
             }
-            column(Status_MembersRegister;"Members Register".Status)
+            column(Status_MembersRegister; "Members Register".Status)
             {
             }
-            column(DividendAmount_MembersRegister;"Members Register"."Dividend Amount")
+            column(DividendAmount_MembersRegister; "Members Register"."Dividend Amount")
             {
             }
-            column(FOSAShares_MembersRegister;"Members Register"."FOSA Shares")
+            column(FOSAShares_MembersRegister; "Members Register"."FOSA Shares")
             {
             }
-            column(mobile_number;"Members Register"."Mobile Phone No")
+            column(mobile_number; "Members Register"."Mobile Phone No")
             {
             }
-            column(id;"Members Register"."ID No.")
+            column(id; "Members Register"."ID No.")
             {
             }
-            column(branch;"Members Register"."Global Dimension 2 Code")
+            column(branch; "Members Register"."Global Dimension 2 Code")
             {
             }
-            column(category;"Members Register"."Account Category")
+            column(category; "Members Register"."Account Category")
             {
             }
-            column(SN;SN)
+            column(SN; SN)
             {
             }
             // column(JuniorSavings_MembersRegister;"Members Register"."Junior Savings")
@@ -112,19 +112,19 @@ Report 50073 "Next of Kin Details Report"
             // column(SilverSavings_MembersRegister;"Members Register"."Silver Savings")
             // {
             // }
-            column(EmployerName_MembersRegister;"Members Register"."Employer Name")
+            column(EmployerName_MembersRegister; "Members Register"."Employer Name")
             {
             }
-            column(OutstandingInterest_MembersRegister;"Members Register"."Outstanding Interest")
+            column(OutstandingInterest_MembersRegister; "Members Register"."Outstanding Interest")
             {
             }
-            column(OutstandingBalance_MembersRegister;"Members Register"."Outstanding Balance")
+            column(OutstandingBalance_MembersRegister; "Members Register"."Outstanding Balance")
             {
             }
-            column(DateofBirth_MembersRegister;"Members Register"."Date of Birth")
+            column(DateofBirth_MembersRegister; "Members Register"."Date of Birth")
             {
             }
-            column(EMailPersonal_MembersRegister;"Members Register"."E-Mail")
+            column(EMailPersonal_MembersRegister; "Members Register"."E-Mail")
             {
             }
             // column(RefereeMemberNo_MembersRegister;"Members Register"."Referee Member No")
@@ -133,52 +133,52 @@ Report 50073 "Next of Kin Details Report"
             // column(RefereeName_MembersRegister;"Members Register"."Referee Name")
             // {
             // }
-            column(RegistrationDate_MembersRegister;"Members Register"."Registration Date")
+            column(RegistrationDate_MembersRegister; "Members Register"."Registration Date")
             {
             }
-            dataitem(NextofKin;"Members Next Kin Details")
+            dataitem(NextofKin; "Members Next Kin Details")
             {
-                DataItemLink = "Account No"=field("No.");
+                DataItemLink = "Account No" = field("No.");
                 column(ReportForNavId_12; 12)
                 {
                 }
-                column(Name_NextofKin;NextofKin.Name)
+                column(Name_NextofKin; NextofKin.Name)
                 {
                 }
-                column(Relationship_NextofKin;NextofKin.Relationship)
+                column(Relationship_NextofKin; NextofKin.Relationship)
                 {
                 }
-                column(Beneficiary_NextofKin;NextofKin.Beneficiary)
+                column(Beneficiary_NextofKin; NextofKin.Beneficiary)
                 {
                 }
-                column(DateofBirth_NextofKin;NextofKin."Date of Birth")
+                column(DateofBirth_NextofKin; NextofKin."Date of Birth")
                 {
                 }
-                column(Address_NextofKin;NextofKin.Address)
+                column(Address_NextofKin; NextofKin.Address)
                 {
                 }
-                column(Telephone_NextofKin;NextofKin.Telephone)
+                column(Telephone_NextofKin; NextofKin.Telephone)
                 {
                 }
-                column(Email_NextofKin;NextofKin.Email)
+                column(Email_NextofKin; NextofKin.Email)
                 {
                 }
-                column(AccountNo_NextofKin;NextofKin."Account No")
+                column(AccountNo_NextofKin; NextofKin."Account No")
                 {
                 }
-                column(IDNo_NextofKin;NextofKin."ID No.")
+                column(IDNo_NextofKin; NextofKin."ID No.")
                 {
                 }
-                column(Allocation_NextofKin;NextofKin."%Allocation")
+                column(Allocation_NextofKin; NextofKin."%Allocation")
                 {
                 }
-                column(NewUpload_NextofKin;NextofKin."New Upload")
+                column(NewUpload_NextofKin; NextofKin."New Upload")
                 {
                 }
                 // column(TotalAllocation_NextofKin;NextofKin."Total Allocation")
                 // {
                 // }
-                column(MaximunAllocation_NextofKin;NextofKin."Maximun Allocation %")
+                column(MaximunAllocation_NextofKin; NextofKin."Maximun Allocation %")
                 {
                 }
                 // column(NOKResidence_NextofKin;NextofKin."NOK Residence")
@@ -205,7 +205,7 @@ Report 50073 "Next of Kin Details Report"
                 // column(DateCreated_NextofKin;NextofKin."Date Created")
                 // {
                 // }
-                column(NextOfKinType_NextofKin;NextofKin.Type)
+                column(NextOfKinType_NextofKin; NextofKin.Type)
                 {
                 }
                 // column(MemberNo_NextofKin;NextofKin."Member No")
@@ -227,7 +227,7 @@ Report 50073 "Next of Kin Details Report"
 
             trigger OnAfterGetRecord()
             begin
-                SN:=SN+1;
+                SN := SN + 1;
                 // IF EmployersRec.GET("Members Register"."Employer Code") THEN BEGIN
                 //  "Members Register"."Employer Name":=EmployersRec."Employer Name";
                 //  END;
@@ -259,6 +259,6 @@ Report 50073 "Next of Kin Details Report"
     var
         Company: Record "Company Information";
         SN: Integer;
-        // EmployersRec: Record UnknownRecord51516355;
+    // EmployersRec: Record UnknownRecord51516355;
 }
 

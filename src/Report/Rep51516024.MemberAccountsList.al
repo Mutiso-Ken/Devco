@@ -10,7 +10,7 @@ report 51516024 "Member Accounts List"
         dataitem(Customer; Customer)
         {
             DataItemTableView = sorting("No.");
-            RequestFilterFields =  "No.",Status;
+            RequestFilterFields = "No.", Status;
 
             column(EntryNo; EntryNo)
             {
@@ -69,9 +69,9 @@ report 51516024 "Member Accounts List"
             column(Date_of_Birth; "Date of Birth")
             {
             }
-            column(Age;Age)
+            column(Age; Age)
             {
-                
+
             }
             trigger OnAfterGetRecord();
             var

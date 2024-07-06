@@ -338,7 +338,7 @@ Report 51516232 "Loans Batch Schedule"
                     if LoanProdType.Get("Loan Product Type") then begin
 
 
-                        
+
                         Modify;
 
                     end;

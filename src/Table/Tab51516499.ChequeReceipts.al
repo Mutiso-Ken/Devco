@@ -4,7 +4,7 @@ Table 51516499 "Cheque Receipts"
 
     fields
     {
-        field(1;"No.";Code[20])
+        field(1; "No."; Code[20])
         {
 
             trigger OnValidate()
@@ -16,32 +16,32 @@ Table 51516499 "Cheque Receipts"
                 // end;
             end;
         }
-        field(2;"Transaction Date";Date)
+        field(2; "Transaction Date"; Date)
         {
         }
-        field(3;"Refference Document";Code[20])
+        field(3; "Refference Document"; Code[20])
         {
         }
-        field(4;"Transaction Time";Time)
+        field(4; "Transaction Time"; Time)
         {
         }
-        field(5;"Created By";Code[60])
+        field(5; "Created By"; Code[60])
         {
         }
-        field(6;"Posted By";Code[60])
+        field(6; "Posted By"; Code[60])
         {
         }
-        field(7;Posted;Boolean)
+        field(7; Posted; Boolean)
         {
         }
-        field(8;"No. Series";Code[10])
+        field(8; "No. Series"; Code[10])
         {
         }
-        field(9;"Unpaid By";Code[60])
+        field(9; "Unpaid By"; Code[60])
         {
             Editable = false;
         }
-        field(10;Unpaid;Boolean)
+        field(10; Unpaid; Boolean)
         {
             Editable = false;
         }
@@ -49,7 +49,7 @@ Table 51516499 "Cheque Receipts"
 
     keys
     {
-        key(Key1;"No.")
+        key(Key1; "No.")
         {
             Clustered = true;
         }
@@ -69,12 +69,12 @@ Table 51516499 "Cheque Receipts"
         //   NoSeriesmgt.InitSeries(SalesSetup."Cheque Receipts Nos",xRec."No. Series",0D,"No.","No. Series");
         // end;
 
-        "Transaction Time":=Time;
-        "Transaction Date":=Today;
+        "Transaction Time" := Time;
+        "Transaction Date" := Today;
     end;
 
     var
         NoSeriesmgt: Codeunit NoSeriesManagement;
-       // SalesSetup: Record UnknownRecord51516399;
+    // SalesSetup: Record UnknownRecord51516399;
 }
 

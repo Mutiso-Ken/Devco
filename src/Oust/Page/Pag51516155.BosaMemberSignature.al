@@ -12,7 +12,7 @@ Page 51516155 "Bosa Member Signature"
     {
         area(content)
         {
-            field("Specimen Signature";"Specimen Signature")
+            field("Specimen Signature"; Rec."Specimen Signature")
             {
                 ApplicationArea = All;
                 ShowCaption = false;

@@ -14,7 +14,7 @@ Page 51516060 "Individual Member Risk Rating"
                 // {
                 //     ApplicationArea = all;
                 // }
-                field("Member Name"; "Member Name")
+                field("Member Name"; Rec."Member Name")
                 {
                     ApplicationArea = all;
                 }
@@ -22,7 +22,7 @@ Page 51516060 "Individual Member Risk Rating"
                 // {
                 //     ApplicationArea = all;
                 // }
-                field("What is the Customer Category?"; "What is the Customer Category?")
+                field("What is the Customer Category?"; Rec."What is the Customer Category?")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -33,7 +33,7 @@ Page 51516060 "Individual Member Risk Rating"
                     GridLayout = Rows;
                     group(Control6)
                     {
-                        field("Customer Category Score"; "Customer Category Score")
+                        field("Customer Category Score"; Rec."Customer Category Score")
                         {
                             ApplicationArea = Basic;
                             Importance = Promoted;
@@ -44,7 +44,7 @@ Page 51516060 "Individual Member Risk Rating"
             }
             group(Control7)
             {
-                field("What is the Member residency?"; "What is the Member residency?")
+                field("What is the Member residency?"; Rec."What is the Member residency?")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -54,7 +54,7 @@ Page 51516060 "Individual Member Risk Rating"
                     GridLayout = Rows;
                     group(Control11)
                     {
-                        field("Member Residency Score"; "Member Residency Score")
+                        field("Member Residency Score"; Rec."Member Residency Score")
                         {
                             ApplicationArea = Basic;
                             Importance = Promoted;
@@ -65,7 +65,7 @@ Page 51516060 "Individual Member Risk Rating"
             }
             group(Control16)
             {
-                field("Cust Employment Risk?"; "Cust Employment Risk?")
+                field("Cust Employment Risk?"; Rec."Cust Employment Risk?")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -75,7 +75,7 @@ Page 51516060 "Individual Member Risk Rating"
                     GridLayout = Rows;
                     group(Control13)
                     {
-                        field("Cust Employment Risk Score"; "Cust Employment Risk Score")
+                        field("Cust Employment Risk Score"; Rec."Cust Employment Risk Score")
                         {
                             ApplicationArea = Basic;
                             Importance = Promoted;
@@ -86,7 +86,7 @@ Page 51516060 "Individual Member Risk Rating"
             }
             group(Control21)
             {
-                field("Cust Business Risk Industry?"; "Cust Business Risk Industry?")
+                field("Cust Business Risk Industry?"; Rec."Cust Business Risk Industry?")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -96,7 +96,7 @@ Page 51516060 "Individual Member Risk Rating"
                     GridLayout = Rows;
                     group(Control18)
                     {
-                        field("Cust Bus. Risk Industry Score"; "Cust Bus. Risk Industry Score")
+                        field("Cust Bus. Risk Industry Score"; Rec."Cust Bus. Risk Industry Score")
                         {
                             ApplicationArea = Basic;
                             Importance = Promoted;
@@ -107,7 +107,7 @@ Page 51516060 "Individual Member Risk Rating"
             }
             group(Control26)
             {
-                field("Lenght Of Relationship?"; "Lenght Of Relationship?")
+                field("Lenght Of Relationship?"; Rec."Lenght Of Relationship?")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -117,7 +117,7 @@ Page 51516060 "Individual Member Risk Rating"
                     GridLayout = Rows;
                     group(Control23)
                     {
-                        field("Length Of Relation Score"; "Length Of Relation Score")
+                        field("Length Of Relation Score"; Rec."Length Of Relation Score")
                         {
                             ApplicationArea = Basic;
                             Importance = Promoted;
@@ -128,7 +128,7 @@ Page 51516060 "Individual Member Risk Rating"
             }
             group(Control31)
             {
-                field("Cust Involved in Intern. Trade"; "Cust Involved in Intern. Trade")
+                field("Cust Involved in Intern. Trade"; Rec."Cust Involved in Intern. Trade")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -138,7 +138,7 @@ Page 51516060 "Individual Member Risk Rating"
                     GridLayout = Rows;
                     group(Control28)
                     {
-                        field("Involve in Inter. Trade Score"; "Involve in Inter. Trade Score")
+                        field("Involve in Inter. Trade Score"; Rec."Involve in Inter. Trade Score")
                         {
                             ApplicationArea = Basic;
                             CaptionClass = InternationalTrade;
@@ -150,7 +150,7 @@ Page 51516060 "Individual Member Risk Rating"
             }
             group(Control61)
             {
-                field("Member Referee Rate"; "Member Referee Rate")
+                field("Member Referee Rate"; Rec."Member Referee Rate")
                 {
                     ApplicationArea = Basic;
                 }
@@ -159,7 +159,7 @@ Page 51516060 "Individual Member Risk Rating"
                     GridLayout = Rows;
                     group(Control58)
                     {
-                        field("Referee Score"; "Referee Score")
+                        field("Referee Score"; Rec."Referee Score")
                         {
                             ApplicationArea = Basic;
                             ShowCaption = false;
@@ -169,7 +169,7 @@ Page 51516060 "Individual Member Risk Rating"
             }
             group(Control36)
             {
-                field("Account Type Taken?"; "Account Type Taken?")
+                field("Account Type Taken?"; Rec."Account Type Taken?")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -179,7 +179,7 @@ Page 51516060 "Individual Member Risk Rating"
                     GridLayout = Rows;
                     group(Control33)
                     {
-                        field("Account Type Taken Score"; "Account Type Taken Score")
+                        field("Account Type Taken Score"; Rec."Account Type Taken Score")
                         {
                             ApplicationArea = Basic;
                             Importance = Promoted;
@@ -190,7 +190,7 @@ Page 51516060 "Individual Member Risk Rating"
             }
             group(Control41)
             {
-                field("Card Type Taken"; "Card Type Taken")
+                field("Card Type Taken"; Rec."Card Type Taken")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -200,7 +200,7 @@ Page 51516060 "Individual Member Risk Rating"
                     GridLayout = Rows;
                     group(Control38)
                     {
-                        field("Card Type Taken Score"; "Card Type Taken Score")
+                        field("Card Type Taken Score"; Rec."Card Type Taken Score")
                         {
                             ApplicationArea = Basic;
                             Importance = Promoted;
@@ -211,7 +211,7 @@ Page 51516060 "Individual Member Risk Rating"
             }
             group(Control46)
             {
-                field("Channel Taken?"; "Channel Taken?")
+                field("Channel Taken?"; Rec."Channel Taken?")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -221,7 +221,7 @@ Page 51516060 "Individual Member Risk Rating"
                     GridLayout = Rows;
                     group(Control43)
                     {
-                        field("Channel Taken Score"; "Channel Taken Score")
+                        field("Channel Taken Score"; Rec."Channel Taken Score")
                         {
                             ApplicationArea = Basic;
                             Importance = Promoted;
@@ -232,7 +232,7 @@ Page 51516060 "Individual Member Risk Rating"
             }
             group(Control51)
             {
-                field("Electronic Payments?"; "Electronic Payments?")
+                field("Electronic Payments?"; Rec."Electronic Payments?")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -242,7 +242,7 @@ Page 51516060 "Individual Member Risk Rating"
                     GridLayout = Rows;
                     group(Control48)
                     {
-                        field("Electronic Payments Score"; "Electronic Payments Score")
+                        field("Electronic Payments Score"; Rec."Electronic Payments Score")
                         {
                             ApplicationArea = Basic;
                             Importance = Promoted;
@@ -254,25 +254,25 @@ Page 51516060 "Individual Member Risk Rating"
             group("Member Summary")
             {
                 Caption = 'Member Summary';
-                field("GROSS CUSTOMER AML RISK RATING"; "GROSS CUSTOMER AML RISK RATING")
+                field("GROSS CUSTOMER AML RISK RATING"; Rec."GROSS CUSTOMER AML RISK RATING")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("BANK'S CONTROL RISK RATING"; "BANK'S CONTROL RISK RATING")
+                field("BANK'S CONTROL RISK RATING"; Rec."BANK'S CONTROL RISK RATING")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("CUSTOMER NET RISK RATING"; "CUSTOMER NET RISK RATING")
+                field("CUSTOMER NET RISK RATING"; Rec."CUSTOMER NET RISK RATING")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Risk Rate Scale"; "Risk Rate Scale")
+                field("Risk Rate Scale"; Rec."Risk Rate Scale")
                 {
                     ApplicationArea = Basic;
-                    Visible=false;
+                    Visible = false;
                 }
             }
         }

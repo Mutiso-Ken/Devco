@@ -12,23 +12,23 @@ Page 51516209 "Referee Risk Rating Scale"
         {
             repeater(Group)
             {
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Minimum Risk Rate"; "Minimum Risk Rate")
+                field("Minimum Risk Rate"; Rec."Minimum Risk Rate")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Maximum Risk Rate"; "Maximum Risk Rate")
+                field("Maximum Risk Rate"; Rec."Maximum Risk Rate")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Risk Scale"; "Risk Scale")
+                field("Risk Scale"; Rec."Risk Scale")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Score; Score)
+                field(Score; Rec.Score)
                 {
                     ApplicationArea = Basic;
                 }

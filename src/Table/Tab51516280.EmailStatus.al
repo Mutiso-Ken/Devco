@@ -4,26 +4,26 @@ Table 51516280 "Email Status"
 
     fields
     {
-        field(1;"Member No";Code[20])
+        field(1; "Member No"; Code[20])
         {
         }
-        field(2;Period;Date)
+        field(2; Period; Date)
         {
         }
-        field(3;Date;Date)
+        field(3; Date; Date)
         {
         }
-        field(4;Sent;Boolean)
+        field(4; Sent; Boolean)
         {
         }
-        field(5;"Member Name";Code[50])
+        field(5; "Member Name"; Code[50])
         {
         }
     }
 
     keys
     {
-        key(Key1;"Member No")
+        key(Key1; "Member No")
         {
             Clustered = true;
         }

@@ -11,13 +11,13 @@ page 59021 "BanksCard"
         {
             group(GroupName)
             {
-                field("Bank Code"; "Bank Code")
+                field("Bank Code"; Rec."Bank Code")
                 {
                     ApplicationArea = All;
 
 
                 }
-                field("Bank Name"; "Bank Name")
+                field("Bank Name"; Rec."Bank Name")
                 {
                     ApplicationArea = all;
                 }

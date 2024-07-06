@@ -4,44 +4,44 @@ Table 51516441 "Investor Interest Amounts"
 
     fields
     {
-        field(10;"Investor No";Code[20])
+        field(10; "Investor No"; Code[20])
         {
         }
-        field(11;"Interest Code";Code[20])
+        field(11; "Interest Code"; Code[20])
         {
         }
-        field(12;Month;Integer)
+        field(12; Month; Integer)
         {
         }
-        field(13;Year;Integer)
+        field(13; Year; Integer)
         {
         }
-        field(14;Day;Integer)
+        field(14; Day; Integer)
         {
         }
-        field(15;"Principle Amount";Decimal)
+        field(15; "Principle Amount"; Decimal)
         {
         }
-        field(16;"Interest Amount";Decimal)
+        field(16; "Interest Amount"; Decimal)
         {
         }
-        field(17;Paid;Boolean)
+        field(17; Paid; Boolean)
         {
         }
-        field(18;"Paying Document No";Code[20])
+        field(18; "Paying Document No"; Code[20])
         {
         }
-        field(19;"Paying Date";Date)
+        field(19; "Paying Date"; Date)
         {
         }
-        field(20;"Date Name";Code[20])
+        field(20; "Date Name"; Code[20])
         {
         }
     }
 
     keys
     {
-        key(Key1;"Investor No","Interest Code",Month,Year)
+        key(Key1; "Investor No", "Interest Code", Month, Year)
         {
             Clustered = true;
         }

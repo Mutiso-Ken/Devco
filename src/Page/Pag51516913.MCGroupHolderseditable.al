@@ -16,12 +16,12 @@ Page 51516913 "MC Group Holders-editable"
         {
             group(General)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                 }
@@ -40,57 +40,57 @@ Page 51516913 "MC Group Holders-editable"
                 //         end;
                 //     end;
                 // }
-                field("Group Account"; "Group Account")
+                field("Group Account"; Rec."Group Account")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Micro Group Code"; "Micro Group Code")
+                field("Micro Group Code"; Rec."Micro Group Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Address; Address)
+                field(Address; Rec.Address)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Address 2"; "Address 2")
+                field("Address 2"; Rec."Address 2")
                 {
                     ApplicationArea = Basic;
                 }
-                field(City; City)
+                field(City; Rec.City)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No."; "Phone No.")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Country/Region Code"; "Country/Region Code")
+                field("Country/Region Code"; Rec."Country/Region Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Blocked; Blocked)
+                field(Blocked; Rec.Blocked)
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Certificate No.';
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
 
@@ -103,23 +103,23 @@ Page 51516913 "MC Group Holders-editable"
                             Error('You do not have permissions to change the account status.');
                     end;
                 }
-                field("Customer Type"; "Customer Type")
+                field("Customer Type"; Rec."Customer Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Debtors Type"; "Debtors Type")
+                field("Debtors Type"; Rec."Debtors Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Officer Name"; "Loan Officer Name")
+                field("Loan Officer Name"; Rec."Loan Officer Name")
                 {
                     ApplicationArea = Basic;
                     Style = Attention;
                     StyleExpr = true;
                 }
-                field("Registration Date"; "Registration Date")
+                field("Registration Date"; Rec."Registration Date")
                 {
                     ApplicationArea = Basic;
                 }
@@ -198,8 +198,8 @@ Page 51516913 "MC Group Holders-editable"
 
     trigger OnFindRecord(Which: Text): Boolean
     begin
-        RecordFound := Find(Which);
-        CurrPage.Editable := RecordFound or (GetFilter("No.") = '');
+        RecordFound := Rec.Find(Which);
+        CurrPage.Editable := RecordFound or (Rec.GetFilter("No.") = '');
         exit(RecordFound);
     end;
 

@@ -19,102 +19,102 @@ Page 50314 "Banking Schedule Cheques"
         {
             repeater(Control1102760000)
             {
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account Name"; "Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Account Type"; "Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     visible = false;
 
                 }
-                field("Transaction Description"; "Transaction Description")
+                field("Transaction Description"; Rec."Transaction Description")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Transaction';
                     Editable = false;
                 }
-                field("Cheque No"; "Cheque No")
+                field("Cheque No"; Rec."Cheque No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Bank Code"; "Bank Code")
+                field("Bank Code"; Rec."Bank Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cheque Date"; "Cheque Date")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-
-                field("Transaction Date"; "Transaction Date")
+                field("Cheque Date"; Rec."Cheque Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
 
-                field("BIH No"; "BIH No")
+                field("Transaction Date"; Rec."Transaction Date")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+
+                field("BIH No"; Rec."BIH No")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field(Select; Select)
+                field(Select; Rec.Select)
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Banking Posted"; "Banking Posted")
+                field("Banking Posted"; Rec."Banking Posted")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cheque Processed"; "Cheque Processed")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Dont Clear"; "Dont Clear")
+                field("Cheque Processed"; Rec."Cheque Processed")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Status; Status)
+                field("Dont Clear"; Rec."Dont Clear")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Expected Maturity Date"; "Expected Maturity Date")
+                field(Status; Rec.Status)
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Expected Maturity Date"; Rec."Expected Maturity Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
 
-                field("Bank Account"; "Bank Account")
+                field("Bank Account"; Rec."Bank Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Name"; "Bank Name")
+                field("Bank Name"; Rec."Bank Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;

@@ -10,30 +10,30 @@ Page 51516086 "Item Groups"
         {
             repeater(Control12)
             {
-                field("Code";Code)
+                field("Code"; Rec.Code)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Def. Gen. Prod. Posting Group";"Def. Gen. Prod. Posting Group")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("Def. Inventory Posting Group";"Def. Inventory Posting Group")
+                field("Def. Gen. Prod. Posting Group"; Rec."Def. Gen. Prod. Posting Group")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Def. VAT Prod. Posting Group";"Def. VAT Prod. Posting Group")
+                field("Def. Inventory Posting Group"; Rec."Def. Inventory Posting Group")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Def. Costing Method";"Def. Costing Method")
+                field("Def. VAT Prod. Posting Group"; Rec."Def. VAT Prod. Posting Group")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Def. Costing Method"; Rec."Def. Costing Method")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
@@ -42,11 +42,11 @@ Page 51516086 "Item Groups"
         }
         area(factboxes)
         {
-            systempart(Control2;Links)
+            systempart(Control2; Links)
             {
                 Visible = false;
             }
-            systempart(Control1;Notes)
+            systempart(Control1; Notes)
             {
                 Visible = false;
             }

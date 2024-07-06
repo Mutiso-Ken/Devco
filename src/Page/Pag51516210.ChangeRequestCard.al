@@ -10,11 +10,11 @@ Page 51516210 "Change Request Card"
         {
             group(General)
             {
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Type; Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = Basic;
                     Editable = TypeEditable;
@@ -36,7 +36,7 @@ Page 51516210 "Change Request Card"
                         //     nxkinvisible := true;
                         // end;
 
-                        if Type = Type::"BOSA Change" then begin
+                        if Rec.Type = Rec.Type::"BOSA Change" then begin
                             AccountVisible := true;
                             nxkinvisible := true;
                         end;
@@ -46,37 +46,37 @@ Page 51516210 "Change Request Card"
                         // end;
                     end;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                     Editable = AccountNoEditable;
                     Style = StrongAccent;
 
                 }
-                field("Captured by"; "Captured by")
+                field("Captured by"; Rec."Captured by")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Capture Date"; "Capture Date")
+                field("Capture Date"; Rec."Capture Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approved by"; "Approved by")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("Approval Date"; "Approval Date")
+                field("Approved by"; Rec."Approved by")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Status; Status)
+                field("Approval Date"; Rec."Approval Date")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Reason for change"; "Reason for change")
+                field("Reason for change"; Rec."Reason for change")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -86,188 +86,188 @@ Page 51516210 "Change Request Card"
             {
                 Caption = 'Account Details';
                 Visible = Accountvisible;
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Name(New Value)"; "Name(New Value)")
+                field("Name(New Value)"; Rec."Name(New Value)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Name(New Value)';
                     Editable = NameEditable;
                 }
-                field("Phone No.(New)"; "Phone No.(New)")
+                field("Phone No.(New)"; Rec."Phone No.(New)")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                     Visible = false;
                 }
-                field("E-mail"; "E-mail")
+                field("E-mail"; Rec."E-mail")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
 
-                field("Email(New Value)"; "Email(New Value)")
+                field("Email(New Value)"; Rec."Email(New Value)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Email(New Value)';
                     Editable = true;
                 }
-                field("Personal No"; "Personal No")
+                field("Personal No"; Rec."Personal No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Personal No(New Value)"; "Personal No(New Value)")
+                field("Personal No(New Value)"; Rec."Personal No(New Value)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Personal No(New Value)';
                     Editable = PersonalNoEditable;
                 }
-                field("ID No"; "ID No")
+                field("ID No"; Rec."ID No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("ID No(New Value)"; "ID No(New Value)")
+                field("ID No(New Value)"; Rec."ID No(New Value)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'ID No(New Value)';
                     Editable = IDNoEditable;
                 }
-                field("Position In the Sacco"; "Position In the Sacco")
+                field("Position In the Sacco"; Rec."Position In the Sacco")
                 {
                     ApplicationArea = basic;
                     Editable = false;
 
                 }
-                field("Position In the Sacco(New)"; "Position In the Sacco(New)")
+                field("Position In the Sacco(New)"; Rec."Position In the Sacco(New)")
                 {
                     ApplicationArea = basic;
                 }
-                field("Receive SMS Notification (Old)"; "SMS Notification")
+                field("Receive SMS Notification (Old)"; Rec."SMS Notification")
                 {
 
                 }
-                field("Receive SMS Notification (New)"; "SMS Notification (New)")
+                field("Receive SMS Notification (New)"; Rec."SMS Notification (New)")
                 {
 
                 }
-                field("Marital Status"; "Marital Status")
+                field("Marital Status"; Rec."Marital Status")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Date Of Birth"; "Date Of Birth")
+                field("Date Of Birth"; Rec."Date Of Birth")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Age; Age)
+                field(Age; Rec.Age)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Gender; Gender)
+                field(Gender; Rec.Gender)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Marital Status(New Value)"; "Marital Status(New Value)")
+                field("Marital Status(New Value)"; Rec."Marital Status(New Value)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Marital Status(New Value)';
                     Editable = MaritalStatusEditable;
                     ToolTip = 'Please enter your marital status';
                 }
-                field("Account Category"; "Account Category")
+                field("Account Category"; Rec."Account Category")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account Category(New Value)"; "Account Category(New Value)")
+                field("Account Category(New Value)"; Rec."Account Category(New Value)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Card No"; "Card No")
+                field("Card No"; Rec."Card No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Card No(New Value)"; "Card No(New Value)")
+                field("Card No(New Value)"; Rec."Card No(New Value)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Card No(New Value)';
                     Editable = CardNoEditable;
                 }
-                field("Status."; "Status.")
+                field("Status."; Rec."Status.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Status.(New)"; "Status.(New)")
+                field("Status.(New)"; Rec."Status.(New)")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Occupation; Occupation)
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("KRA Pin(Old)"; "KRA Pin(Old)")
+                field(Occupation; Rec.Occupation)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("KRA Pin(New)"; "KRA Pin(New)")
+                field("KRA Pin(Old)"; Rec."KRA Pin(Old)")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("KRA Pin(New)"; Rec."KRA Pin(New)")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Disabled; Disabled)
+                field(Disabled; Rec.Disabled)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field(Blocked; Blocked)
+                field(Blocked; Rec.Blocked)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Blocked (New)"; "Blocked (New)")
+                field("Blocked (New)"; Rec."Blocked (New)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employer Code"; "Employer Code")
+                field("Employer Code"; Rec."Employer Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Employer Code(New)"; "Employer Code(New)")
+                field("Employer Code(New)"; Rec."Employer Code(New)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Charge Reactivation Fee"; "Charge Reactivation Fee")
+                field("Charge Reactivation Fee"; Rec."Charge Reactivation Fee")
                 {
                     ApplicationArea = Basic;
                     Editable = ReactivationFeeEditable;
                 }
-                field("Monthly Contributions"; "Monthly Contributions")
+                field("Monthly Contributions"; Rec."Monthly Contributions")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Monthly Contributions(NewValu)"; "Monthly Contributions(NewValu)")
+                field("Monthly Contributions(NewValu)"; Rec."Monthly Contributions(NewValu)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Monthly Contributions(New Value)';
                     Editable = MonthlyContributionEditable;
                 }
-                field("Mobile No"; "Mobile No")
+                field("Mobile No"; Rec."Mobile No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Mobile No(New Value)"; "Mobile No(New Value)")
+                field("Mobile No(New Value)"; Rec."Mobile No(New Value)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Mobile No(New Value)';
@@ -280,44 +280,44 @@ Page 51516210 "Change Request Card"
 
             group("Bank Details")
             {
-                field("Bank Code(Old)"; "Bank Code(Old)")
+                field("Bank Code(Old)"; Rec."Bank Code(Old)")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Bank Code(New)"; "Bank Code(New)")
+                field("Bank Code(New)"; Rec."Bank Code(New)")
                 {
 
                 }
 
-                field("Bank Name"; "Bank Name")
+                field("Bank Name"; Rec."Bank Name")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Bank Name (New)"; "Bank Name (New)")
+                field("Bank Name (New)"; Rec."Bank Name (New)")
                 {
                     ApplicationArea = Basic;
 
                 }
-                field("Bank Branch Name"; "Bank Branch Name")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-
-                }
-                field("Branch(New Value)"; "Branch(New Value)")
-                {
-                    ApplicationArea = Basic;
-
-                }
-                field("Bank Account No(Old)"; "Bank Account No(Old)")
+                field("Bank Branch Name"; Rec."Bank Branch Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
 
                 }
-                field("Bank Account No(New)"; "Bank Account No(New)")
+                field("Branch(New Value)"; Rec."Branch(New Value)")
+                {
+                    ApplicationArea = Basic;
+
+                }
+                field("Bank Account No(Old)"; Rec."Bank Account No(Old)")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+
+                }
+                field("Bank Account No(New)"; Rec."Bank Account No(New)")
                 {
                     ApplicationArea = Basic;
 
@@ -330,56 +330,56 @@ Page 51516210 "Change Request Card"
                 Caption = 'Mobile/Agency Change Details';
                 Visible = MobileVisible;
 
-                field("ID No."; "ID No")
+                field("ID No."; Rec."ID No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("ID No.(New Value)"; "ID No(New Value)")
+                field("ID No.(New Value)"; Rec."ID No(New Value)")
                 {
                     ApplicationArea = Basic;
                     Editable = IDNoEditable;
                 }
 
-                field("Phone No."; "Phone No.")
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Phone No..(New)"; "Phone No.(New)")
+                field("Phone No..(New)"; Rec."Phone No.(New)")
                 {
                     ApplicationArea = Basic;
                     Editable = PersonalNoEditable;
                 }
 
-                field("Mpesa mobile No."; "Mpesa mobile No.")
+                field("Mpesa mobile No."; Rec."Mpesa mobile No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Mpesa mobile No.(New)"; "Mpesa mobile No.(New)")
+                field("Mpesa mobile No.(New)"; Rec."Mpesa mobile No.(New)")
                 {
                     ApplicationArea = Basic;
                     Editable = MobileNoEditable;
                 }
-                field("SMS Notification."; "SMS Notification")
+                field("SMS Notification."; Rec."SMS Notification")
                 {
                     Editable = false;
                 }
-                field("SMS Notification (New)."; "SMS Notification (New)")
+                field("SMS Notification (New)."; Rec."SMS Notification (New)")
                 {
 
                 }
-                field("E-mail."; "E-mail")
+                field("E-mail."; Rec."E-mail")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Email.(New Value)"; "Email(New Value)")
+                field("Email.(New Value)"; Rec."Email(New Value)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Email (New)';
@@ -428,7 +428,7 @@ Page 51516210 "Change Request Card"
 
                 trigger OnAction()
                 begin
-                    if (Status <> Status::Approved) then begin
+                    if (Rec.Status <> Rec.Status::Approved) then begin
                         Error('Change Request Must be Approved First');
                     end;
                     // if ((Type = Type::"FOSA Change") or (Type = Type::"M-Banking Change")) then begin
@@ -492,72 +492,72 @@ Page 51516210 "Change Request Card"
                     // end;
 
 
-                    if Type = Type::"BOSA Change" then begin
+                    if Rec.Type = Rec.Type::"BOSA Change" then begin
                         Memb.Reset;
-                        Memb.SetRange(Memb."No.", "Account No");
+                        Memb.SetRange(Memb."No.", Rec."Account No");
                         if Memb.Find('-') then begin
-                            if "Name(New Value)" <> '' then
-                                Memb.Name := "Name(New Value)";
-                            Memb."Global Dimension 2 Code" := Branch;
-                            if "Address(New Value)" <> '' then
-                                Memb.Address := "Address(New Value)";
-                            if "Post Code (New)" <> '' then
-                                Memb."Post Code" := "Post Code (New)";
-                            if "Email(New Value)" <> '' then
-                                Memb."E-Mail" := "Email(New Value)";
-                            if "Mobile No(New Value)" <> '' then begin
-                                Memb."Mobile Phone No" := "Mobile No(New Value)";
-                                Memb."Phone No." := "Mobile No(New Value)";
+                            if Rec."Name(New Value)" <> '' then
+                                Memb.Name := Rec."Name(New Value)";
+                            Memb."Global Dimension 2 Code" := Rec.Branch;
+                            if Rec."Address(New Value)" <> '' then
+                                Memb.Address := Rec."Address(New Value)";
+                            if Rec."Post Code (New)" <> '' then
+                                Memb."Post Code" := Rec."Post Code (New)";
+                            if Rec."Email(New Value)" <> '' then
+                                Memb."E-Mail" := Rec."Email(New Value)";
+                            if Rec."Mobile No(New Value)" <> '' then begin
+                                Memb."Mobile Phone No" := Rec."Mobile No(New Value)";
+                                Memb."Phone No." := Rec."Mobile No(New Value)";
                             end;
 
-                            if "ID No(New Value)" <> '' then
-                                Memb."ID No." := "ID No(New Value)";
-                            if "Personal No(New Value)" <> '' then begin
-                                Memb."Payroll/Staff No" := "Personal No(New Value)";
+                            if Rec."ID No(New Value)" <> '' then
+                                Memb."ID No." := Rec."ID No(New Value)";
+                            if Rec."Personal No(New Value)" <> '' then begin
+                                Memb."Payroll/Staff No" := Rec."Personal No(New Value)";
                                 Memb.Validate("Payroll/Staff No");
                                 loans.Reset;
-                                loans.SetRange(loans."Client Code", "Account No");
+                                loans.SetRange(loans."Client Code", Rec."Account No");
                                 if loans.Find('-') then begin
                                     repeat
-                                        loans."Staff No" := "Personal No(New Value)";
+                                        loans."Staff No" := Rec."Personal No(New Value)";
                                         loans.Modify;
                                     until loans.Next = 0;
                                 end;
                             end;
-                            if "City(New Value)" <> '' then
-                                Memb.City := "City(New Value)";
+                            if Rec."City(New Value)" <> '' then
+                                Memb.City := Rec."City(New Value)";
                             //Memb.Status := "Status(New Value)";
-                            if "Section(New Value)" <> '' then
-                                Memb.Section := "Section(New Value)";
-                            Memb.Blocked := "Blocked (New)";
-                            if "Marital Status(New Value)" <> "marital status(new value)"::" " then
-                                Memb."Marital Status" := "Marital Status(New Value)";
-                            if "Responsibility Centers" <> '' then
-                                Memb."Responsibility Center" := "Responsibility Centers";
-                            if "Occupation(New)" <> '' then
-                                Memb.Occupation := "Occupation(New)";
+                            if Rec."Section(New Value)" <> '' then
+                                Memb.Section := Rec."Section(New Value)";
+                            Memb.Blocked := Rec."Blocked (New)";
+                            if Rec."Marital Status(New Value)" <> Rec."marital status(new value)"::" " then
+                                Memb."Marital Status" := Rec."Marital Status(New Value)";
+                            if Rec."Responsibility Centers" <> '' then
+                                Memb."Responsibility Center" := Rec."Responsibility Centers";
+                            if Rec."Occupation(New)" <> '' then
+                                Memb.Occupation := Rec."Occupation(New)";
 
                             //update position in the sacco
-                            if "Position In the Sacco(New)" <> "Position In the Sacco(New)"::" " then begin
-                                if "Position In the Sacco(New)" = "Position In the Sacco(New)"::Board then begin
+                            if Rec."Position In the Sacco(New)" <> Rec."Position In the Sacco(New)"::" " then begin
+                                if Rec."Position In the Sacco(New)" = Rec."Position In the Sacco(New)"::Board then begin
                                     Memb.Board := true;
                                     Memb.staff := false;
                                     Memb."Sacco Insider" := true;
                                     Memb.Supervisory := false;
                                 end else
-                                    if "Position In the Sacco(New)" = "Position In the Sacco(New)"::Staff then begin
+                                    if Rec."Position In the Sacco(New)" = Rec."Position In the Sacco(New)"::Staff then begin
                                         Memb.Board := false;
                                         Memb.staff := true;
                                         Memb.Supervisory := false;
                                         Memb."Sacco Insider" := true;
                                     end else
-                                        if "Position In the Sacco(New)" = "Position In the Sacco(New)"::Member then begin
+                                        if Rec."Position In the Sacco(New)" = Rec."Position In the Sacco(New)"::Member then begin
                                             Memb.Board := false;
                                             Memb.staff := false;
                                             Memb.Supervisory := false;
                                             Memb."Sacco Insider" := false;
                                         end else
-                                            if "Position In the Sacco(New)" = "Position In the Sacco(New)"::Supervisory then begin
+                                            if Rec."Position In the Sacco(New)" = Rec."Position In the Sacco(New)"::Supervisory then begin
                                                 Memb.Board := false;
                                                 Memb.staff := false;
                                                 Memb."Sacco Insider" := true;
@@ -565,75 +565,75 @@ Page 51516210 "Change Request Card"
                                             end;
                             end;
                             //Update Bank
-                            if "Bank Code(New)" <> '' then
-                                Memb."Bank Code" := "Bank Code(New)";
-                            if "Bank Name (New)" <> '' then
+                            if Rec."Bank Code(New)" <> '' then
+                                Memb."Bank Code" := Rec."Bank Code(New)";
+                            if Rec."Bank Name (New)" <> '' then
                                 // Memb."Benevolent Fund Historical":="Bank Name (New)";
-                                if "Bank Account No(New)" <> '' then
-                                    Memb."Bank Account No." := "Bank Account No(New)";
+                                if Rec."Bank Account No(New)" <> '' then
+                                    Memb."Bank Account No." := Rec."Bank Account No(New)";
                             //Bank Branch
-                            if "Bank Branch Code(New)" <> '' then
-                                Memb."Bank Code" := "Bank Branch Code(New)";
-                            if "Bank Branch Name(New)" <> '' then
-                                Memb."Bank Branch" := "Bank Branch Name(New)";
-                            if "KRA Pin(New)" <> '' then
-                                Memb.Pin := "KRA Pin(New)";
-                            Memb."Last Date Modified" := "Capture Date";
-                            if "Group Account Name" <> '' then
-                                Memb."Group Account Name" := "Group Account Name";
-                            if "Employer Code(New)" <> '' then
-                                Memb."Employer Code" := "Employer Code(New)";
+                            if Rec."Bank Branch Code(New)" <> '' then
+                                Memb."Bank Code" := Rec."Bank Branch Code(New)";
+                            if Rec."Bank Branch Name(New)" <> '' then
+                                Memb."Bank Branch" := Rec."Bank Branch Name(New)";
+                            if Rec."KRA Pin(New)" <> '' then
+                                Memb.Pin := Rec."KRA Pin(New)";
+                            Memb."Last Date Modified" := Rec."Capture Date";
+                            if Rec."Group Account Name" <> '' then
+                                Memb."Group Account Name" := Rec."Group Account Name";
+                            if Rec."Employer Code(New)" <> '' then
+                                Memb."Employer Code" := Rec."Employer Code(New)";
                             IF "Picture(New Value)".HasValue THEN begin
-                                MEMB.Image := "Picture(New Value)";
+                                MEMB.Image := Rec."Picture(New Value)";
                             end;
                             IF "signinature(New Value)".HasValue THEN begin
-                                MEMB.Signature := "signinature(New Value)";
+                                MEMB.Signature := Rec."signinature(New Value)";
                             end;
-                            IF "Date Of Birth" <> 0D THEN
-                                Memb."Date of Birth" := "Date Of Birth";
-                            IF Gender <> Gender::" " then
-                                Memb.Gender := Gender;
-                            if "SMS Notification (New)" = true then begin
+                            IF Rec."Date Of Birth" <> 0D THEN
+                                Memb."Date of Birth" := Rec."Date Of Birth";
+                            IF Rec.Gender <> Rec.Gender::" " then
+                                Memb.Gender := Rec.Gender;
+                            if Rec."SMS Notification (New)" = true then begin
                                 memb."Sms Notification" := true;
                             end;
-                            if "Status.(New)" <> "Status.(New)"::" " then begin
-                                Memb.Status := "Status.(New)";
+                            if Rec."Status.(New)" <> Rec."Status.(New)"::" " then begin
+                                Memb.Status := Rec."Status.(New)";
                             end;
-                            if "Monthly Contributions(NewValu)"<> 0 then
-                                Memb."Monthly Contribution" := "Monthly Contributions(NewValu)";
+                            if Rec."Monthly Contributions(NewValu)" <> 0 then
+                                Memb."Monthly Contribution" := Rec."Monthly Contributions(NewValu)";
                             Memb.Modify;
                             //.....................GENERAL UPDATE VENDOR ALSO
                             VEND.Reset();
-                            VEND.SetRange(vend."BOSA Account No", "Account No");
+                            VEND.SetRange(vend."BOSA Account No", Rec."Account No");
                             IF vend.Find('-') then begin
                                 repeat
                                     IF "Picture(New Value)".HasValue THEN begin
-                                        vend.Image := "Picture(New Value)";
+                                        vend.Image := Rec."Picture(New Value)";
                                     end;
-                                    if "SMS Notification (New)" = true then begin
+                                    if Rec."SMS Notification (New)" = true then begin
                                         vend."Sms Notification" := true;
                                     end;
-                                    IF "Date Of Birth" <> 0D THEN
-                                        vend."Date of Birth" := "Date Of Birth";
-                                    IF Gender <> Gender::" " then
-                                        vend.Gender := Gender;
+                                    IF Rec."Date Of Birth" <> 0D THEN
+                                        vend."Date of Birth" := Rec."Date Of Birth";
+                                    IF Rec.Gender <> Rec.Gender::" " then
+                                        vend.Gender := Rec.Gender;
                                     IF "signinature(New Value)".HasValue THEN begin
-                                        vend.Signature := "signinature(New Value)";
+                                        vend.Signature := Rec."signinature(New Value)";
                                     end;
-                                    if "Mobile No(New Value)" <> '' then begin
-                                        vend."Mobile Phone No" := "Mobile No(New Value)";
-                                        vend."Phone No." := "Mobile No(New Value)";
+                                    if Rec."Mobile No(New Value)" <> '' then begin
+                                        vend."Mobile Phone No" := Rec."Mobile No(New Value)";
+                                        vend."Phone No." := Rec."Mobile No(New Value)";
                                     end;
-                                    if "ID No(New Value)" <> '' then
-                                        vend."ID No." := "ID No(New Value)";
-                                    if ("Status.(New)" <> "Status.(New)"::" ") and ("Status.(New)" = "Status.(New)"::Deceased) then begin
+                                    if Rec."ID No(New Value)" <> '' then
+                                        vend."ID No." := Rec."ID No(New Value)";
+                                    if (Rec."Status.(New)" <> Rec."Status.(New)"::" ") and (Rec."Status.(New)" = Rec."Status.(New)"::Deceased) then begin
                                         vend.Status := vend.Status::Deceased;
                                     end;
                                     vend.Modify();
                                 until vend.Next = 0;
                             end;
 
-                            if "Charge Reactivation Fee" = true then begin
+                            if Rec."Charge Reactivation Fee" = true then begin
                                 if Confirm('The System Is going to Charge Reactivation Fee', false) = true then begin
                                     GenSetUp.Get();
                                     GenJournalLine.Reset;
@@ -645,18 +645,18 @@ Page 51516210 "Change Request Card"
 
                                     BATCH_TEMPLATE := 'GENERAL';
                                     BATCH_NAME := 'ACTIVATE';
-                                    DOCUMENT_NO := "Account No";
+                                    DOCUMENT_NO := Rec."Account No";
                                     GenSetup.Get();
                                     LineNo := 0;
                                     //----------------------------------1.DEBIT TO VENDOR WITH PROCESSING FEE----------------------------------------------
                                     LineNo := LineNo + 10000;
                                     SFactory.FnCreateGnlJournalLineBalanced(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"0", GenJournalLine."account type"::Vendor,
-                                    FnGetFOSA("Account No"), Today, 200, 'FOSA', '', 'Activation fees', '', GenJournalLine."bal. account type"::"G/L Account", '5534');
+                                    FnGetFOSA(Rec."Account No"), Today, 200, 'FOSA', '', 'Activation fees', '', GenJournalLine."bal. account type"::"G/L Account", '5534');
 
                                     //-------------------------------2.CHARGE EXCISE DUTY----------------------------------------------
                                     LineNo := LineNo + 10000;
                                     SFactory.FnCreateGnlJournalLineBalanced(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"0", GenJournalLine."account type"::Vendor,
-                                    FnGetFOSA("Account No"), Today, 20, 'FOSA', '', 'Excise Duty', '', GenJournalLine."bal. account type"::"G/L Account", GenSetup."Excise Duty Account");
+                                    FnGetFOSA(Rec."Account No"), Today, 20, 'FOSA', '', 'Excise Duty', '', GenJournalLine."bal. account type"::"G/L Account", GenSetup."Excise Duty Account");
 
 
                                     //Post New
@@ -680,12 +680,12 @@ Page 51516210 "Change Request Card"
                         //...........................
                     end;
 
-                    Changed := true;
+                    Rec.Changed := true;
                     // IF Picture.HasValue then
                     //     Clear(Picture);
                     // IF signinature.HasValue then
                     //     Clear(signinature);
-                    Modify;
+                    Rec.Modify;
                     Message('Changes have been updated Successfully');
 
                 end;
@@ -705,9 +705,9 @@ Page 51516210 "Change Request Card"
                     ApprovalsMgmt: Codeunit "Approvals Mgmt.";
                 begin
 
-                    if Status <> Status::Open then
+                    if Rec.Status <> Rec.Status::Open then
                         Error(text001);
-                    TestField("Reason for change");
+                    Rec.TestField("Reason for change");
                     if Confirm('Send Approval Request?', false) = true then begin
                         SrestepApprovalsCodeUnit.SendMemberChangeRequestForApproval(rec.No, Rec);
                     end;
@@ -769,7 +769,7 @@ Page 51516210 "Change Request Card"
         //     nxkinvisible := true;
         // end;
 
-        if Type = Type::"BOSA Change" then begin
+        if Rec.Type = Rec.Type::"BOSA Change" then begin
             AccountVisible := true;
             nxkinvisible := true;
         end;
@@ -793,7 +793,7 @@ Page 51516210 "Change Request Card"
         //     nxkinvisible := false;
         // end;
 
-        if Type = Type::"BOSA Change" then begin
+        if Rec.Type = Rec.Type::"BOSA Change" then begin
             AccountVisible := true;
             nxkinvisible := true;
         end;
@@ -869,7 +869,7 @@ Page 51516210 "Change Request Card"
 
     local procedure UpdateControl()
     begin
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             NameEditable := true;
             PictureEditable := true;
             SignatureEditable := true;
@@ -913,7 +913,7 @@ Page 51516210 "Change Request Card"
             TypeEditable := true;
             AccountCategoryEditable := true
         end else
-            if Status = Status::Pending then begin
+            if Rec.Status = Rec.Status::Pending then begin
                 NameEditable := false;
                 PictureEditable := false;
                 SignatureEditable := false;
@@ -957,7 +957,7 @@ Page 51516210 "Change Request Card"
                 ReactivationFeeEditable := false;
                 AccountCategoryEditable := false
             end else
-                if Status = Status::Approved then begin
+                if Rec.Status = Rec.Status::Approved then begin
                     NameEditable := false;
                     PictureEditable := false;
                     SignatureEditable := false;

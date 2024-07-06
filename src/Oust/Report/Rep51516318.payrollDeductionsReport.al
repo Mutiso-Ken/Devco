@@ -104,7 +104,7 @@ Report 51516318 "payroll Deductions Report."
             column(SN; SN)
             {
             }
-            dataitem("Payroll Employee.";"Payroll Employee.")
+            dataitem("Payroll Employee."; "Payroll Employee.")
             {
                 DataItemLink = "No." = field("Employee Code");
                 column(ReportForNavId_2; 2)

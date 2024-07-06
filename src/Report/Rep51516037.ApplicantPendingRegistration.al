@@ -169,7 +169,7 @@ report 51516037 "Applicant Pending Registration"
             column(GlobalDimension2Code; "Global Dimension 2 Code")
             {
             }
-           
+
             column(GroupAccountName; "Group Account Name")
             {
             }

@@ -4,30 +4,30 @@ Table 51516034 "Funds Lookup Values"
 
     fields
     {
-        field(10;"Code";Code[20])
+        field(10; "Code"; Code[20])
         {
         }
-        field(11;Type;Option)
+        field(11; Type; Option)
         {
             OptionCaption = 'Payment,Receipt';
             OptionMembers = Payment,Receipt;
         }
-        field(12;Description;Text[50])
+        field(12; Description; Text[50])
         {
         }
-        field(13;"Account Type";Option)
+        field(13; "Account Type"; Option)
         {
             OptionCaption = 'G/L Account,Customer,Vendor,Bank Account,Fixed Asset,IC Partner,Member,Investor';
             OptionMembers = "G/L Account",Customer,Vendor,"Bank Account","Fixed Asset","IC Partner",Member,Investor;
         }
-        field(14;"Account No";Code[20])
+        field(14; "Account No"; Code[20])
         {
         }
     }
 
     keys
     {
-        key(Key1;"Code")
+        key(Key1; "Code")
         {
             Clustered = true;
         }

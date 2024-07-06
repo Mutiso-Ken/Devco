@@ -10,71 +10,71 @@ Page 51516265 "Bosa Receipt line-Checkoff"
         {
             repeater(Group)
             {
-                field("Receipt Line No";"Receipt Line No")
+                field("Receipt Line No"; Rec."Receipt Line No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Trans Type";"Trans Type")
+                field("Trans Type"; Rec."Trans Type")
                 {
                     ApplicationArea = Basic;
-                    Visible=false;
+                    Visible = false;
                 }
-                field("Member No";"Member No")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Staff/Payroll No";"Staff/Payroll No")
+                field("Member No"; Rec."Member No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field("Staff/Payroll No"; Rec."Staff/Payroll No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employer Code";"Employer Code")
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No.";"ID No.")
+                field("Employer Code"; Rec."Employer Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan No";"Loan No")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field("Loan No"; Rec."Loan No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Staff Not Found";"Staff Not Found")
-                {
-                    ApplicationArea = Basic;
-                    Visible=false;
-                }
-                field("Member Found";"Member Found")
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Search Index";"Search Index")
+                field("Staff Not Found"; Rec."Staff Not Found")
                 {
                     ApplicationArea = Basic;
-                    Visible=false;
+                    Visible = false;
                 }
-                field("FOSA Account";"FOSA Account")
+                field("Member Found"; Rec."Member Found")
                 {
                     ApplicationArea = Basic;
-                    Visible=false;
                 }
-                field("Xmas Account";"Xmas Account")
+                field("Search Index"; Rec."Search Index")
                 {
                     ApplicationArea = Basic;
-                    Visible=false;
+                    Visible = false;
                 }
-                field("Xmas Contribution";"Xmas Contribution")
+                field("FOSA Account"; Rec."FOSA Account")
                 {
                     ApplicationArea = Basic;
-                    Visible=false;
+                    Visible = false;
+                }
+                field("Xmas Account"; Rec."Xmas Account")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Xmas Contribution"; Rec."Xmas Contribution")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
                 }
             }
         }

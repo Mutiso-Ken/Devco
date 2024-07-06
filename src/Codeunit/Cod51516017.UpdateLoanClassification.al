@@ -96,7 +96,7 @@ Codeunit 51516017 "UpdateLoanClassification"
                     LoansReg.Modify;
                 end;
             end;
-        
+
         end;
         //--------------------------------------------------------------------
     end;

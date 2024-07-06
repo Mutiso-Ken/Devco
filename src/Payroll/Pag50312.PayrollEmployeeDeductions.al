@@ -13,93 +13,93 @@ Page 50312 "Payroll Employee Deductions."
         {
             repeater(Group)
             {
-                field("Transaction Code"; "Transaction Code")
+                field("Transaction Code"; Rec."Transaction Code")
                 {
                     ApplicationArea = Basic;
                     TableRelation = "Payroll Transaction Code."."Transaction Code" where("Transaction Type" = const(Deduction));
                 }
-                field("Transaction Name"; "Transaction Name")
+                field("Transaction Name"; Rec."Transaction Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Transaction Type"; "Transaction Type")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Number"; "Loan Number")
+                field("Loan Number"; Rec."Loan Number")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Original Deduction Amount"; "Original Deduction Amount")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                    Visible = false;
-                }
-                field("Interest Charged"; "Interest Charged")
+                field("Original Deduction Amount"; Rec."Original Deduction Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field(Amount; Amount)
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Amount(LCY)"; "Amount(LCY)")
-                {
-                    ApplicationArea = Basic;
-                    Visible=false;
-                }
-                field("Amtzd Loan Repay Amt"; "Amtzd Loan Repay Amt")
+                field("Interest Charged"; Rec."Interest Charged")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field(Balance; Balance)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
-                   
+                    Editable = false;
                 }
-                field("Balance(LCY)"; "Balance(LCY)")
+                field("Amount(LCY)"; Rec."Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Period Month"; "Period Month")
+                field("Amtzd Loan Repay Amt"; Rec."Amtzd Loan Repay Amt")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                    Visible = false;
+                }
+                field(Balance; Rec.Balance)
+                {
+                    ApplicationArea = Basic;
+
+                }
+                field("Balance(LCY)"; Rec."Balance(LCY)")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Period Month"; Rec."Period Month")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
 
                 }
-                field("Period Year"; "Period Year")
+                field("Period Year"; Rec."Period Year")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Payroll Period"; "Payroll Period")
+                field("Payroll Period"; Rec."Payroll Period")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Original Amount"; "Original Amount")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                    Visible = false;
-                }
-                field("Outstanding Interest"; "Outstanding Interest")
+                field("Original Amount"; Rec."Original Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Sacco Membership No."; "Sacco Membership No.")
+                field("Outstanding Interest"; Rec."Outstanding Interest")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                    Visible = false;
+                }
+                field("Sacco Membership No."; Rec."Sacco Membership No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -121,7 +121,7 @@ Page 50312 "Payroll Employee Deductions."
             VarOpenPeriod := ObjPayrollCalender."Date Opened";
         end;
 
-        SetFilter("Payroll Period", '%1', VarOpenPeriod);
+        Rec.SetFilter("Payroll Period", '%1', VarOpenPeriod);
     end;
 
     var

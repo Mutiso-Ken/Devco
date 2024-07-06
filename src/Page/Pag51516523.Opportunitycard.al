@@ -10,110 +10,110 @@ Page 51516523 "Opportunity card."
         {
             group(General)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("First Name";"First Name")
+                field("First Name"; Rec."First Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Surname;Surname)
+                field(Surname; Rec.Surname)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Middle Name";"Middle Name")
+                field("Middle Name"; Rec."Middle Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Address;Address)
+                field(Address; Rec.Address)
                 {
                     ApplicationArea = Basic;
                 }
-                field(City;City)
+                field(City; Rec.City)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No.";"Phone No.")
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
                 }
             }
             group(Dates)
             {
-                field("Date Filter";"Date Filter")
+                field("Date Filter"; Rec."Date Filter")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Next To-do Date";"Next To-do Date")
+                field("Next To-do Date"; Rec."Next To-do Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Last Date Attempted";"Last Date Attempted")
+                field("Last Date Attempted"; Rec."Last Date Attempted")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date of Last Interaction";"Date of Last Interaction")
+                field("Date of Last Interaction"; Rec."Date of Last Interaction")
                 {
                     ApplicationArea = Basic;
                 }
             }
             group("Opportunity details")
             {
-                field(Type;Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Lost Reasons";"Lost Reasons")
+                field("Lost Reasons"; Rec."Lost Reasons")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Company No.";"Company No.")
+                field("Company No."; Rec."Company No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Company Name";"Company Name")
+                field("Company Name"; Rec."Company Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Job Title";"Job Title")
+                field("Job Title"; Rec."Job Title")
                 {
                     ApplicationArea = Basic;
                 }
-                field("External ID";"External ID")
+                field("External ID"; Rec."External ID")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Duration (Min.)";"Duration (Min.)")
+                field("Duration (Min.)"; Rec."Duration (Min.)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("No. of Opportunities";"No. of Opportunities")
+                field("No. of Opportunities"; Rec."No. of Opportunities")
                 {
                     ApplicationArea = Basic;
                 }
-                field(status;status)
+                field(status; Rec.status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Lead Type";"Lead Type")
+                field("Lead Type"; Rec."Lead Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("member no";"member no")
+                field("member no"; Rec."member no")
                 {
                     ApplicationArea = Basic;
                 }
             }
-            part(Control1000000028;"Loans Sub-Page List")
+            part(Control1000000028; "Loans Sub-Page List")
             {
                 Caption = 'Loans Details';
-                SubPageLink = "Client Code"=field("member no");
+                SubPageLink = "Client Code" = field("member no");
             }
         }
     }
@@ -128,7 +128,7 @@ Page 51516523 "Opportunity card."
                 Promoted = true;
                 PromotedCategory = New;
                 RunObject = Page "Checkoff Processing Lines-D";
-                RunPageLink = "Staff/Payroll No"=field("member no");
+                RunPageLink = "Staff/Payroll No" = field("member no");
             }
             action("Send To")
             {
@@ -138,11 +138,11 @@ Page 51516523 "Opportunity card."
 
                 trigger OnAction()
                 begin
-                     TestField("Caller Reffered To");
-                     "Date Sent":=WorkDate;
-                     "Time Sent":=Time;
-                     "Sent By":=UserId;
-                     Modify;
+                    Rec.TestField("Caller Reffered To");
+                    Rec."Date Sent" := WorkDate;
+                    Rec."Time Sent" := Time;
+                    Rec."Sent By" := UserId;
+                    Rec.Modify;
                 end;
             }
             action(Receive)
@@ -153,10 +153,10 @@ Page 51516523 "Opportunity card."
 
                 trigger OnAction()
                 begin
-                     "Receive User":=UserId;
-                     "Receive date":=WorkDate;
-                     "Receive Time":=Time;
-                     Modify;
+                    Rec."Receive User" := UserId;
+                    Rec."Receive date" := WorkDate;
+                    Rec."Receive Time" := Time;
+                    Rec.Modify;
                 end;
             }
             action("Create Opportunity")
@@ -168,34 +168,34 @@ Page 51516523 "Opportunity card."
 
                 trigger OnAction()
                 begin
-                    if "Lead Type"="lead type"::"As Employer" then begin
-                      employer.Init;
-                      employer.Code:="Company No.";
-                      employer.Description:="Company Name";
-                      employer."Join Date":=Today;
-                      employer.Insert(true);
-                      Message('opportunity successfully generated');
-                      end;
-                      if "Lead Type"="lead type"::"As Non Member" then begin
+                    if Rec."Lead Type" = Rec."lead type"::"As Employer" then begin
+                        employer.Init;
+                        employer.Code := Rec."Company No.";
+                        employer.Description := Rec."Company Name";
+                        employer."Join Date" := Today;
+                        employer.Insert(true);
+                        Message('opportunity successfully generated');
+                    end;
+                    if Rec."Lead Type" = Rec."lead type"::"As Non Member" then begin
                         membApp.Init;
-                        membApp."No.":="No.";
+                        membApp."No." := Rec."No.";
                         //membApp."First member name":="First Name";
-                        membApp.Name:=Name;
-                        membApp.Address:=Address;
-                        membApp."ID No.":="ID No";
-                        membApp."Customer Posting Group":='MEMBER';
-                        membApp."Customer Type":=membApp."customer type"::Member;
-                        membApp.City:=City;
-                        membApp."Recruited By":=UserId;
-                        membApp."Registration Date":=Today;
+                        membApp.Name := Rec.Name;
+                        membApp.Address := Rec.Address;
+                        membApp."ID No." := Rec."ID No";
+                        membApp."Customer Posting Group" := 'MEMBER';
+                        membApp."Customer Type" := membApp."customer type"::Member;
+                        membApp.City := Rec.City;
+                        membApp."Recruited By" := UserId;
+                        membApp."Registration Date" := Today;
                         membApp.Insert(true);
                         Message('opportunity successfully generated');
-                    
-                        end;
-                      // LOAN FORM
+
+                    end;
+                    // LOAN FORM
                     /*  IF "Lead Type"="Lead Type"::"As member" THEN BEGIN
                         IF M*/
-                      //get the CASE INFORMATION
+                    //get the CASE INFORMATION
 
                 end;
             }

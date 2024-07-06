@@ -17,147 +17,147 @@ Page 51516270 "Loan Products Setup List"
             repeater(General)
             {
                 Caption = 'General';
-                field("Code"; Code)
+                field("Code"; Rec.Code)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Product Description"; "Product Description")
+                field("Product Description"; Rec."Product Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Source; Source)
+                field(Source; Rec.Source)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest rate"; "Interest rate")
+                field("Interest rate"; Rec."Interest rate")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Repayment Method"; "Repayment Method")
+                field("Repayment Method"; Rec."Repayment Method")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Grace Period - Principle (M)"; "Grace Period - Principle (M)")
+                field("Grace Period - Principle (M)"; Rec."Grace Period - Principle (M)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Grace Period - Interest (M)"; "Grace Period - Interest (M)")
+                field("Grace Period - Interest (M)"; Rec."Grace Period - Interest (M)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Use Cycles"; "Use Cycles")
+                field("Use Cycles"; Rec."Use Cycles")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Instalment Period"; "Instalment Period")
+                field("Instalment Period"; Rec."Instalment Period")
                 {
                     ApplicationArea = Basic;
                 }
-                field("No of Installment"; "No of Installment")
+                field("No of Installment"; Rec."No of Installment")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Maximum Number of Instalment';
                     ShowMandatory = true;
                 }
-                field("Default Installements"; "Default Installements")
+                field("Default Installements"; Rec."Default Installements")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Penalty Calculation Days"; "Penalty Calculation Days")
+                field("Penalty Calculation Days"; Rec."Penalty Calculation Days")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Penalty Percentage"; "Penalty Percentage")
+                field("Penalty Percentage"; Rec."Penalty Percentage")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Recovery Priority"; "Recovery Priority")
+                field("Recovery Priority"; Rec."Recovery Priority")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Min No. Of Guarantors"; "Min No. Of Guarantors")
+                field("Min No. Of Guarantors"; Rec."Min No. Of Guarantors")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Min Re-application Period"; "Min Re-application Period")
+                field("Min Re-application Period"; Rec."Min Re-application Period")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Shares Multiplier"; "Shares Multiplier")
+                field("Shares Multiplier"; Rec."Shares Multiplier")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Penalty Calculation Method"; "Penalty Calculation Method")
+                field("Penalty Calculation Method"; Rec."Penalty Calculation Method")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Penalty Paid Account"; "Penalty Paid Account")
+                field("Penalty Paid Account"; Rec."Penalty Paid Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Min. Loan Amount"; "Min. Loan Amount")
+                field("Min. Loan Amount"; Rec."Min. Loan Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Max. Loan Amount"; "Max. Loan Amount")
+                field("Max. Loan Amount"; Rec."Max. Loan Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Account"; "Loan Account")
+                field("Loan Account"; Rec."Loan Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Interest Account"; "Loan Interest Account")
+                field("Loan Interest Account"; Rec."Loan Interest Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Receivable Interest Account"; "Receivable Interest Account")
+                field("Receivable Interest Account"; Rec."Receivable Interest Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Action"; Action)
+                field("Action"; Rec.Action)
                 {
                     ApplicationArea = Basic;
                 }
-                field("BOSA Account"; "BOSA Account")
+                field("BOSA Account"; Rec."BOSA Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("BOSA Personal Loan Account"; "BOSA Personal Loan Account")
+                field("BOSA Personal Loan Account"; Rec."BOSA Personal Loan Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Top Up Commision Account"; "Top Up Commision Account")
+                field("Top Up Commision Account"; Rec."Top Up Commision Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Top Up Commision"; "Top Up Commision")
+                field("Top Up Commision"; Rec."Top Up Commision")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Check Off Loan No."; "Check Off Loan No.")
+                field("Check Off Loan No."; Rec."Check Off Loan No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Repayment Frequency"; "Repayment Frequency")
+                field("Repayment Frequency"; Rec."Repayment Frequency")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Pepea Deposits"; "Pepea Deposits")
+                field("Pepea Deposits"; Rec."Pepea Deposits")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Sacco Deposits"; "Sacco Deposits")
+                field("Sacco Deposits"; Rec."Sacco Deposits")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Charge Interest Upfront"; "Charge Interest Upfront")
+                field("Charge Interest Upfront"; Rec."Charge Interest Upfront")
                 {
                     ApplicationArea = Basic;
                     trigger OnValidate()
                     begin
-                        if Source <> Source::FOSA then Error('Only FOSA Products Apply');
+                        if Rec.Source <> Rec.Source::FOSA then Error('Only FOSA Products Apply');
                     end;
                 }
             }

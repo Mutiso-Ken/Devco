@@ -20,24 +20,24 @@ Page 51516832 "Loans List-MICRO"
             repeater(Control1000000000)
             {
 
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                     StyleExpr = true;
                 }
-                field("Loan Product Type"; "Loan Product Type")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Approved Amount"; "Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -45,22 +45,22 @@ Page 51516832 "Loans List-MICRO"
                     StyleExpr = true;
                 }
 
-                field("Client Code"; "Client Code")
+                field("Client Code"; Rec."Client Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Client Name"; "Client Name")
+                field("Client Name"; Rec."Client Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Posted; Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Approval Status"; "Approval Status")
+                field("Approval Status"; Rec."Approval Status")
                 {
                     ApplicationArea = Basic;
                     Style = Ambiguous;
@@ -98,18 +98,18 @@ Page 51516832 "Loans List-MICRO"
                         ApprovalMgt: Codeunit "Export F/O Consolidation";
                     begin
 
-                        TestField("Account No");
+                        Rec.TestField("Account No");
 
 
 
                         LGuarantors.Reset;
-                        LGuarantors.SetRange(LGuarantors."Loan No", "Loan  No.");
+                        LGuarantors.SetRange(LGuarantors."Loan No", Rec."Loan  No.");
                         if LGuarantors.Find('-') = false then begin
                             Error('Please Insert Loan Applicant Guarantor Information');
                         end;
 
-                        TestField("Approved Amount");
-                        TestField("Loan Product Type");
+                        Rec.TestField("Approved Amount");
+                        Rec.TestField("Loan Product Type");
 
                         // if "Mode of Disbursement" <> "mode of disbursement"::"Bank Transfer" then
                         //     Error('Mode of disbursement must be Bank Transfer');
@@ -263,14 +263,14 @@ Page 51516832 "Loans List-MICRO"
 
     procedure GetVariables(var LoanNo: Code[20]; var LoanProductType: Code[20])
     begin
-        LoanNo := "Loan  No.";
-        LoanProductType := "Loan Product Type";
+        LoanNo := Rec."Loan  No.";
+        LoanProductType := Rec."Loan Product Type";
     end;
 
 
     procedure FormatField(Rec: Record "Loans Register") OK: Boolean
     begin
-        if "Outstanding Balance" > 0 then begin
+        if Rec."Outstanding Balance" > 0 then begin
             if (Rec."Expected Date of Completion" < Today) then
                 exit(true)
             else

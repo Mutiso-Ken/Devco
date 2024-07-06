@@ -4,35 +4,35 @@ pageextension 51516874 "dimensionvaluesext" extends "Dimension Values"
     {
         addafter(Blocked)
         {
-            field("Account Code"; "Account Code")
+            field("Account Code"; Rec."Account Code")
             {
                 ApplicationArea = Basic;
             }
-            field("Banker Cheque Account"; "Banker Cheque Account")
+            field("Banker Cheque Account"; Rec."Banker Cheque Account")
             {
                 ApplicationArea = Basic;
             }
-            field("Clearing Bank Account"; "Clearing Bank Account")
+            field("Clearing Bank Account"; Rec."Clearing Bank Account")
             {
                 ApplicationArea = Basic;
             }
-            field("No. Series"; "No. Series")
+            field("No. Series"; Rec."No. Series")
             {
                 ApplicationArea = Basic;
             }
-            field("Global Dimension No."; "Global Dimension No.")
+            field("Global Dimension No."; Rec."Global Dimension No.")
             {
                 ApplicationArea = Basic;
             }
-            field("Local Cheque Charges"; "Local Cheque Charges")
+            field("Local Cheque Charges"; Rec."Local Cheque Charges")
             {
                 ApplicationArea = Basic;
             }
-            field("Upcountry Cheque Charges"; "Upcountry Cheque Charges")
+            field("Upcountry Cheque Charges"; Rec."Upcountry Cheque Charges")
             {
                 ApplicationArea = Basic;
             }
-            field("Bounced Cheque Charges"; "Bounced Cheque Charges")
+            field("Bounced Cheque Charges"; Rec."Bounced Cheque Charges")
             {
                 ApplicationArea = Basic;
             }

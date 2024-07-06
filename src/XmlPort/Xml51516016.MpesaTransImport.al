@@ -7,47 +7,47 @@ XmlPort 51516016 MpesaTransImport
     {
         textelement(Root)
         {
-            tableelement("CloudPESA Paybill Buffer";"CloudPESA Paybill Buffer")
+            tableelement("CloudPESA Paybill Buffer"; "CloudPESA Paybill Buffer")
             {
                 AutoUpdate = true;
                 XmlName = 'CloudPEsaTRansactions';
-                fieldelement(A;"CloudPESA Paybill Buffer"."Receipt No.")
+                fieldelement(A; "CloudPESA Paybill Buffer"."Receipt No.")
                 {
                 }
-                fieldelement(B;"CloudPESA Paybill Buffer"."Completion Time")
+                fieldelement(B; "CloudPESA Paybill Buffer"."Completion Time")
                 {
                 }
-                fieldelement(C;"CloudPESA Paybill Buffer"."Initiation Time")
+                fieldelement(C; "CloudPESA Paybill Buffer"."Initiation Time")
                 {
                 }
-                fieldelement(D;"CloudPESA Paybill Buffer".Details)
+                fieldelement(D; "CloudPESA Paybill Buffer".Details)
                 {
                 }
-                fieldelement(E;"CloudPESA Paybill Buffer"."Transaction Status")
+                fieldelement(E; "CloudPESA Paybill Buffer"."Transaction Status")
                 {
                 }
-                fieldelement(F;"CloudPESA Paybill Buffer"."Paid In")
+                fieldelement(F; "CloudPESA Paybill Buffer"."Paid In")
                 {
                 }
-                fieldelement(G;"CloudPESA Paybill Buffer".Withdrawn)
+                fieldelement(G; "CloudPESA Paybill Buffer".Withdrawn)
                 {
                 }
-                fieldelement(H;"CloudPESA Paybill Buffer".Balance)
+                fieldelement(H; "CloudPESA Paybill Buffer".Balance)
                 {
                 }
-                fieldelement(I;"CloudPESA Paybill Buffer"."Balance Confirmed")
+                fieldelement(I; "CloudPESA Paybill Buffer"."Balance Confirmed")
                 {
                 }
-                fieldelement(J;"CloudPESA Paybill Buffer"."Reason Type")
+                fieldelement(J; "CloudPESA Paybill Buffer"."Reason Type")
                 {
                 }
-                fieldelement(K;"CloudPESA Paybill Buffer"."Other Party Info")
+                fieldelement(K; "CloudPESA Paybill Buffer"."Other Party Info")
                 {
                 }
-                fieldelement(L;"CloudPESA Paybill Buffer"."Linked Transaction ID")
+                fieldelement(L; "CloudPESA Paybill Buffer"."Linked Transaction ID")
                 {
                 }
-                fieldelement(M;"CloudPESA Paybill Buffer"."A/C No.")
+                fieldelement(M; "CloudPESA Paybill Buffer"."A/C No.")
                 {
                 }
             }

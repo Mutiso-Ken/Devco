@@ -4,27 +4,27 @@ pageextension 51516626 "purchasejournallinesext" extends "Purchase Journal"
     {
         addafter("Credit Amount")
         {
-            field("Debit Amounts"; "Debit Amount")
+            field("Debit Amounts"; Rec."Debit Amount")
             {
                 ApplicationArea = Basic;
             }
-            field("Credit Amounts"; "Credit Amount")
+            field("Credit Amounts"; Rec."Credit Amount")
             {
                 ApplicationArea = Basic;
             }
-            field("Transaction Type"; "Transaction Type")
+            field("Transaction Type"; Rec."Transaction Type")
             {
                 ApplicationArea = Basic;
             }
-            field("Loan No"; "Loan No")
+            field("Loan No"; Rec."Loan No")
             {
                 ApplicationArea = Basic;
             }
-            field("Loan Product Type"; "Loan Product Type")
+            field("Loan Product Type"; Rec."Loan Product Type")
             {
                 ApplicationArea = Basic;
             }
-            field("Line No."; "Line No.")
+            field("Line No."; Rec."Line No.")
             {
                 ApplicationArea = Basic;
             }

@@ -4,46 +4,46 @@ Table 51516432 "Micro Profitability Analysis"
 
     fields
     {
-        field(1;"Code";Code[20])
+        field(1; "Code"; Code[20])
         {
-            TableRelation = "Profitability Set up-Micro".Code where (Type=const(Profitability));
+            TableRelation = "Profitability Set up-Micro".Code where(Type = const(Profitability));
 
             trigger OnValidate()
             begin
 
                 ProfitSetUp.Reset;
-                ProfitSetUp.SetRange(ProfitSetUp.Code,Code);
+                ProfitSetUp.SetRange(ProfitSetUp.Code, Code);
                 if ProfitSetUp.FindFirst then begin
-                Description:=ProfitSetUp.Description ;
-                //"Code Type":=ProfitSetUp."Code Type";
-                //MODIFY;
+                    Description := ProfitSetUp.Description;
+                    //"Code Type":=ProfitSetUp."Code Type";
+                    //MODIFY;
                 end;
             end;
         }
-        field(2;"Client Code";Code[20])
+        field(2; "Client Code"; Code[20])
         {
         }
-        field(3;"Average Monthly Sales";Decimal)
+        field(3; "Average Monthly Sales"; Decimal)
         {
         }
-        field(4;"Average Monthly Purchase";Decimal)
+        field(4; "Average Monthly Purchase"; Decimal)
         {
         }
-        field(5;"Gross Profit";Decimal)
+        field(5; "Gross Profit"; Decimal)
         {
         }
-        field(6;"Loan No.";Code[10])
+        field(6; "Loan No."; Code[10])
         {
             TableRelation = "Loans Register";
         }
-        field(7;Amount;Decimal)
+        field(7; Amount; Decimal)
         {
         }
-        field(8;Description;Text[80])
+        field(8; Description; Text[80])
         {
             Editable = false;
         }
-        field(9;"Code Type";Option)
+        field(9; "Code Type"; Option)
         {
             Editable = false;
             OptionCaption = ' ,Purchase,Sales';
@@ -53,7 +53,7 @@ Table 51516432 "Micro Profitability Analysis"
 
     keys
     {
-        key(Key1;"Loan No.","Client Code","Code")
+        key(Key1; "Loan No.", "Client Code", "Code")
         {
             Clustered = true;
         }

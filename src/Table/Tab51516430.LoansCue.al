@@ -4,44 +4,44 @@ Table 51516430 "Loans Cue"
 
     fields
     {
-        field(1;"Primary Key";Code[20])
+        field(1; "Primary Key"; Code[20])
         {
         }
-        field(2;"Applied Loans";Integer)
+        field(2; "Applied Loans"; Integer)
         {
-            CalcFormula = count("Loans Register" where ("Approval Status"=const(Open)));
+            CalcFormula = count("Loans Register" where("Approval Status" = const(Open)));
             FieldClass = FlowField;
         }
-        field(3;"Pending Loans";Integer)
+        field(3; "Pending Loans"; Integer)
         {
-            CalcFormula = count("Loans Register" where ("Approval Status"=const(Pending)));
+            CalcFormula = count("Loans Register" where("Approval Status" = const(Pending)));
             FieldClass = FlowField;
         }
-        field(4;"Approved Loans";Integer)
+        field(4; "Approved Loans"; Integer)
         {
-            CalcFormula = count("Loans Register" where ("Approval Status"=const(Approved)));
+            CalcFormula = count("Loans Register" where("Approval Status" = const(Approved)));
             FieldClass = FlowField;
         }
-        field(5;"Rejected Loans";Integer)
+        field(5; "Rejected Loans"; Integer)
         {
-            CalcFormula = count("Loans Register" where ("Approval Status"=const(Rejected)));
+            CalcFormula = count("Loans Register" where("Approval Status" = const(Rejected)));
             FieldClass = FlowField;
         }
-        field(6;"Issued Loans";Integer)
+        field(6; "Issued Loans"; Integer)
         {
             FieldClass = Normal;
         }
-        field(7;allowed;Boolean)
+        field(7; allowed; Boolean)
         {
         }
-        field(24;allowedd;Boolean)
+        field(24; allowedd; Boolean)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Primary Key")
+        key(Key1; "Primary Key")
         {
             Clustered = true;
         }

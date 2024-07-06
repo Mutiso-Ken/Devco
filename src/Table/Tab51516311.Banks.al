@@ -25,7 +25,7 @@ Table 51516311 "Banks"
 
     keys
     {
-        key(Key1; "Bank Code","Bank Name")
+        key(Key1; "Bank Code", "Bank Name")
         {
             Clustered = true;
         }

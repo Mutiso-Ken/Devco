@@ -14,59 +14,59 @@ page 51516484 "Okoa Loans Application Card"
             group(General)
             {
                 Caption = 'General';
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
 
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'FOSA Account No';
                     Editable = MNoEditable;
                     trigger OnValidate()
                     begin
-                        if loanproduct.Get("Loan Product Type") then begin
-                            Interest := loanproduct."Interest rate";
-                            "Repayment Frequency" := loanproduct."Repayment Frequency";
+                        if loanproduct.Get(Rec."Loan Product Type") then begin
+                            Rec.Interest := loanproduct."Interest rate";
+                            Rec."Repayment Frequency" := loanproduct."Repayment Frequency";
                             CurrPage.Update();
                         end;
 
                     end;
                 }
-                field("Client Name"; "Client Name")
+                field("Client Name"; Rec."Client Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("ID NO"; "ID NO")
+                field("ID NO"; Rec."ID NO")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Staff No"; "Staff No")
+                field("Staff No"; Rec."Staff No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Staff No';
                     Editable = false;
                 }
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                     Editable = ApplcDateEditable;
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Loan Product Type"; "Loan Product Type")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Installments; Installments)
+                field(Installments; Rec.Installments)
                 {
                     ApplicationArea = Basic;
                     Editable = ApplcDateEditable;
@@ -75,14 +75,14 @@ page 51516484 "Okoa Loans Application Card"
 
                     trigger OnValidate()
                     begin
-                        if loanproduct.Get("Loan Product Type") then begin
-                            IF Installments > loanproduct."No of Installment" then begin
+                        if loanproduct.Get(Rec."Loan Product Type") then begin
+                            IF Rec.Installments > loanproduct."No of Installment" then begin
                                 ERROR('Installments cannot be greater than the maximum installments.');
                             end;
                         end;
                     end;
                 }
-                field(Interest; Interest)
+                field(Interest; Rec.Interest)
                 {
                     ApplicationArea = Basic;
                     Editable = Interrest;
@@ -91,7 +91,7 @@ page 51516484 "Okoa Loans Application Card"
 
                     end;
                 }
-                field("Requested Amount"; "Requested Amount")
+                field("Requested Amount"; Rec."Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Amount Applied';
@@ -99,28 +99,28 @@ page 51516484 "Okoa Loans Application Card"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
-                        if loanproduct.Get("Loan Product Type") then begin
-                            IF "Requested Amount" > loanproduct."Max. Loan Amount" then begin
+                        Rec.TestField(Posted, false);
+                        if loanproduct.Get(Rec."Loan Product Type") then begin
+                            IF Rec."Requested Amount" > loanproduct."Max. Loan Amount" then begin
                                 ERROR('Applied amount cannot be greater than the maximum allowed amount.');
                             end;
                         end;
                         //...................
-                        "Recommended Amount" := "Requested Amount";
+                        Rec."Recommended Amount" := Rec."Requested Amount";
 
-                        if "Repayment Method" = "repayment method"::Constants then begin
-                            TestField(Installments);
-                            TestField("Approved Amount");
-                            LPrincipal := ROUND("Approved Amount" / Installments, 1, '>');
-                            LInterest := ROUND((rec.Interest / 100) * "Approved Amount", 1, '>');
-                            Repayment := LPrincipal;
-                            "Loan Principle Repayment" := LPrincipal;
-                            "Loan Interest Repayment" := LInterest;
+                        if Rec."Repayment Method" = Rec."repayment method"::Constants then begin
+                            Rec.TestField(Installments);
+                            Rec.TestField("Approved Amount");
+                            LPrincipal := ROUND(Rec."Approved Amount" / Rec.Installments, 1, '>');
+                            LInterest := ROUND((rec.Interest / 100) * Rec."Approved Amount", 1, '>');
+                            Rec.Repayment := LPrincipal;
+                            Rec."Loan Principle Repayment" := LPrincipal;
+                            Rec."Loan Interest Repayment" := LInterest;
                         end;
                         //.............................................................
                     end;
                 }
-                field("Approved Amount"; "Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Approved Amount';
@@ -128,26 +128,26 @@ page 51516484 "Okoa Loans Application Card"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                         //...................
-                        if loanproduct.Get("Loan Product Type") then begin
-                            IF "Requested Amount" > loanproduct."Max. Loan Amount" then begin
+                        if loanproduct.Get(Rec."Loan Product Type") then begin
+                            IF Rec."Requested Amount" > loanproduct."Max. Loan Amount" then begin
                                 ERROR('Approved amount cannot be greater than the maximum allowed amount.');
                             end;
                         end;
-                        if "Repayment Method" = "repayment method"::Constants then begin
-                            TestField(Installments);
-                            TestField("Approved Amount");
-                            LPrincipal := ROUND("Approved Amount" / Installments, 1, '>');
-                            LInterest := ROUND((rec.Interest / 100) * "Approved Amount", 1, '>');
-                            Repayment := LPrincipal;
-                            "Loan Principle Repayment" := LPrincipal;
-                            "Loan Interest Repayment" := LInterest;
+                        if Rec."Repayment Method" = Rec."repayment method"::Constants then begin
+                            Rec.TestField(Installments);
+                            Rec.TestField("Approved Amount");
+                            LPrincipal := ROUND(Rec."Approved Amount" / Rec.Installments, 1, '>');
+                            LInterest := ROUND((rec.Interest / 100) * Rec."Approved Amount", 1, '>');
+                            Rec.Repayment := LPrincipal;
+                            Rec."Loan Principle Repayment" := LPrincipal;
+                            Rec."Loan Interest Repayment" := LInterest;
                         end;
                         //.............................................................
                     end;
                 }
-                field("Main Sector"; "Main Sector")
+                field("Main Sector"; Rec."Main Sector")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -155,10 +155,10 @@ page 51516484 "Okoa Loans Application Card"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Sub-Sector"; "Sub-Sector")
+                field("Sub-Sector"; Rec."Sub-Sector")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -167,10 +167,10 @@ page 51516484 "Okoa Loans Application Card"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Specific Sector"; "Specific Sector")
+                field("Specific Sector"; Rec."Specific Sector")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -179,26 +179,26 @@ page 51516484 "Okoa Loans Application Card"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Repayment Method"; "Repayment Method")
+                field("Repayment Method"; Rec."Repayment Method")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Interest Repayment"; "Loan Interest Repayment")
+                field("Loan Interest Repayment"; Rec."Loan Interest Repayment")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Repayment; Repayment)
+                field(Repayment; Rec.Repayment)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Monthly Repayment';
                     Editable = false;
                 }
-                field("Loan Status"; "Loan Status")
+                field("Loan Status"; Rec."Loan Status")
                 {
                     ApplicationArea = Basic;
                     Editable = LoanStatusEditable;
@@ -211,42 +211,42 @@ page 51516484 "Okoa Loans Application Card"
 
                     end;
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Repayment Frequency"; "Repayment Frequency")
+                field("Repayment Frequency"; Rec."Repayment Frequency")
                 {
                     ApplicationArea = Basic;
                     Editable = RepayFrequencyEditable;
                 }
-                field("Recovery Mode"; "Recovery Mode")
+                field("Recovery Mode"; Rec."Recovery Mode")
                 {
                     ApplicationArea = Basic;
                     Editable = LProdTypeEditable;
                 }
-                field("Loan Disbursement Date"; "Loan Disbursement Date")
+                field("Loan Disbursement Date"; Rec."Loan Disbursement Date")
                 {
                     ApplicationArea = Basic;
                     Editable = LProdTypeEditable;
                 }
-                field("Repayment Start Date"; "Repayment Start Date")
+                field("Repayment Start Date"; Rec."Repayment Start Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Expected Date of Completion"; "Expected Date of Completion")
+                field("Expected Date of Completion"; Rec."Expected Date of Completion")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Approval Status"; "Approval Status")
+                field("Approval Status"; Rec."Approval Status")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Recommended Amount"; "Recommended Amount")
+                field("Recommended Amount"; Rec."Recommended Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -278,12 +278,12 @@ page 51516484 "Okoa Loans Application Card"
 
                     trigger OnAction()
                     begin
-                        if ("Repayment Start Date" = 0D) then
+                        if (Rec."Repayment Start Date" = 0D) then
                             Error('Please enter Disbursement Date to continue');
-                        SFactory.FnGenerateRepaymentSchedule("Loan  No.");
+                        SFactory.FnGenerateRepaymentSchedule(Rec."Loan  No.");
 
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", Rec."Loan  No.");
                         if LoanApp.Find('-') then begin
                             Report.Run(51516477, true, false, LoanApp);
                         end;
@@ -305,13 +305,13 @@ page 51516484 "Okoa Loans Application Card"
                         PhoneNo: text[25];
                     begin
                         //...........Post Loan 
-                        TestField(Posted, false);
-                        if Confirm('Are you sure you want to POST Overdtaft Loan amount Ksh.' + Format("Approved Amount") + ' to Loanee?', false) = false then begin
+                        Rec.TestField(Posted, false);
+                        if Confirm('Are you sure you want to POST Overdtaft Loan amount Ksh.' + Format(Rec."Approved Amount") + ' to Loanee?', false) = false then begin
                             exit;
                         end else begin
                             BATCH_TEMPLATE := 'PAYMENTS';
                             BATCH_NAME := 'LOANS';
-                            DOCUMENT_NO := "Loan  No.";
+                            DOCUMENT_NO := Rec."Loan  No.";
 
                             GenJournalLine.Reset;
                             GenJournalLine.SetRange("Journal Template Name", BATCH_TEMPLATE);
@@ -322,7 +322,7 @@ page 51516484 "Okoa Loans Application Card"
                             //..........................Offset Loans
                             FnCreateLoanOffsetLines();
                             //Generate Loan Schedule In System
-                            SFactory.FnGenerateRepaymentSchedule("Loan  No.");
+                            SFactory.FnGenerateRepaymentSchedule(Rec."Loan  No.");
                             //......................Post Entries
                             GenJournalLine.Reset;
                             GenJournalLine.SetRange("Journal Template Name", BATCH_TEMPLATE);
@@ -331,22 +331,22 @@ page 51516484 "Okoa Loans Application Card"
                                 if Codeunit.Run(Codeunit::"Gen. Jnl.-Post Sacco", GenJournalLine) = true then begin
                                     //...........Send Notifications of disbursments
                                     msg := '';
-                                    msg := 'Dear Member, Your ' + Format(LoansR."Loan Product Type") + ' loan application of KSHs.' + Format("Requested Amount") + ' has been processed and disbursed to your FOSA Account.Jamii Yetu Sacco.';
-                                    PhoneNo := FnGetPhoneNo("Client Code");
-                                    SendSMSMessage("Client Code", msg, PhoneNo);
+                                    msg := 'Dear Member, Your ' + Format(LoansR."Loan Product Type") + ' loan application of KSHs.' + Format(Rec."Requested Amount") + ' has been processed and disbursed to your FOSA Account.Jamii Yetu Sacco.';
+                                    PhoneNo := FnGetPhoneNo(Rec."Client Code");
+                                    SendSMSMessage(Rec."Client Code", msg, PhoneNo);
                                     //................................................
                                     //SendEmail Of Repayment Schedule
                                     //................................................
-                                    Posted := true;
-                                    "Posted By" := UserId;
-                                    "Loan Status" := "Loan Status"::Issued;
-                                    "disbursement time" := Time;
+                                    Rec.Posted := true;
+                                    Rec."Posted By" := UserId;
+                                    Rec."Loan Status" := Rec."Loan Status"::Issued;
+                                    Rec."disbursement time" := Time;
                                     //"Loans Category-SASRA" := "Loans Category-SASRA"::Perfoming;
-                                    "Issued Date" := Today;
-                                    Source := Source::FOSA;
-                                    "disbursement time" := Time;
-                                    "Advice Type" := "Advice Type"::"Fresh Loan";
-                                    Modify(true);
+                                    Rec."Issued Date" := Today;
+                                    Rec.Source := Rec.Source::FOSA;
+                                    Rec."disbursement time" := Time;
+                                    Rec."Advice Type" := Rec."Advice Type"::"Fresh Loan";
+                                    Rec.Modify(true);
                                     Message('The Loan Has Successfully Posted to member FOSA account(Ordinary) and Member Notified');
                                     CurrPage.Close();
                                 end else begin
@@ -377,28 +377,28 @@ page 51516484 "Okoa Loans Application Card"
                         GuaranteedAmountsTotal: Decimal;
                         SrestepApprovalsCodeUnit: Codeunit SurestepApprovalsCodeUnit;
                     begin
-                        TestField("Approved Amount");
-                        TestField("Loan Product Type");
-                        TestField("Loan Disbursement Date");
-                        TestField("Main Sector");
-                        TestField("Sub-Sector");
-                        TestField("Specific Sector");
-                        TestField("Requested Amount");
+                        Rec.TestField("Approved Amount");
+                        Rec.TestField("Loan Product Type");
+                        Rec.TestField("Loan Disbursement Date");
+                        Rec.TestField("Main Sector");
+                        Rec.TestField("Sub-Sector");
+                        Rec.TestField("Specific Sector");
+                        Rec.TestField("Requested Amount");
                         LGuarantors.Reset;
-                        LGuarantors.SetRange(LGuarantors."Loan No", "Loan  No.");
+                        LGuarantors.SetRange(LGuarantors."Loan No", Rec."Loan  No.");
                         if LGuarantors.Find('-') = false then begin
                             Error('Please Insert Loan Applicant Guarantor Information');
                         end;
                         //.............................Check If Approved Amount Is Equal to the Guarantor Amount
                         GuaranteedAmountsTotal := 0;
                         LGuarantors.Reset;
-                        LGuarantors.SetRange(LGuarantors."Loan No", "Loan  No.");
+                        LGuarantors.SetRange(LGuarantors."Loan No", Rec."Loan  No.");
                         if LGuarantors.Find('-') = true then begin
                             repeat
                                 GuaranteedAmountsTotal += LGuarantors."Amont Guaranteed";
                             until LGuarantors.Next = 0;
                         end;
-                        if "Approved Amount" <> GuaranteedAmountsTotal then begin
+                        if Rec."Approved Amount" <> GuaranteedAmountsTotal then begin
                             error('The OKOA Amount requested MUST Equally tally the Total Guaranteed Amount')
                         end;
                         //--------------------------------------------------------------------------------------
@@ -462,10 +462,10 @@ page 51516484 "Okoa Loans Application Card"
 
     trigger OnInit()
     begin
-        Source := Source::FOSA;
-        "Loan Product Type" := 'OKOA';
-        "Repayment Method" := "Repayment Method"::Constants;
-        "Repayment Frequency" := "Repayment Frequency"::Monthly;
+        Rec.Source := Rec.Source::FOSA;
+        Rec."Loan Product Type" := 'OKOA';
+        Rec."Repayment Method" := Rec."Repayment Method"::Constants;
+        Rec."Repayment Frequency" := Rec."Repayment Frequency"::Monthly;
     end;
 
     trigger OnModifyRecord(): Boolean
@@ -475,23 +475,23 @@ page 51516484 "Okoa Loans Application Card"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        Source := Source::FOSA;
-        "Loan Product Type" := 'OKOA';
-        "Mode of Disbursement" := "mode of disbursement"::Cheque;
-        "Repayment Method" := "Repayment Method"::Constants;
-        "Repayment Frequency" := "Repayment Frequency"::Monthly;
+        Rec.Source := Rec.Source::FOSA;
+        Rec."Loan Product Type" := 'OKOA';
+        Rec."Mode of Disbursement" := Rec."mode of disbursement"::Cheque;
+        Rec."Repayment Method" := Rec."Repayment Method"::Constants;
+        Rec."Repayment Frequency" := Rec."Repayment Frequency"::Monthly;
 
     end;
 
     trigger OnNextRecord(Steps: Integer): Integer
     begin
-        if "Loan Status" = "loan status"::Approved then
+        if Rec."Loan Status" = Rec."loan status"::Approved then
             CurrPage.Editable := false;
     end;
 
     trigger OnOpenPage()
     begin
-        SetRange(Posted, false);
+        Rec.SetRange(Posted, false);
     end;
 
     var
@@ -635,7 +635,7 @@ page 51516484 "Okoa Loans Application Card"
 
     procedure UpdateControl()
     begin
-        if "Loan Status" = "loan status"::Application then begin
+        if Rec."Loan Status" = Rec."loan status"::Application then begin
             PostLoan := false;
             CancelApproval := false;
             SendApprovalEnabled := true;
@@ -656,7 +656,7 @@ page 51516484 "Okoa Loans Application Card"
             DisbursementDateEditable := true;
         end;
 
-        if "Loan Status" = "loan status"::Appraisal then begin
+        if Rec."Loan Status" = Rec."loan status"::Appraisal then begin
             PostLoan := false;
             CancelApproval := true;
             SendApprovalEnabled := false;
@@ -677,7 +677,7 @@ page 51516484 "Okoa Loans Application Card"
             DisbursementDateEditable := false;
         end;
 
-        if "Loan Status" = "loan status"::Rejected then begin
+        if Rec."Loan Status" = Rec."loan status"::Rejected then begin
             PostLoan := false;
             CancelApproval := false;
             SendApprovalEnabled := true;
@@ -698,7 +698,7 @@ page 51516484 "Okoa Loans Application Card"
             DisbursementDateEditable := false;
         end;
 
-        if "Loan Status" = "loan status"::Approved then begin
+        if Rec."Loan Status" = Rec."loan status"::Approved then begin
             PostLoan := true;
             CancelApproval := false;
             SendApprovalEnabled := false;
@@ -732,20 +732,20 @@ page 51516484 "Okoa Loans Application Card"
         PhoneNo: Text[250];
     begin
         LoansR.Reset();
-        LoansR.SetRange(LoansR."Loan  No.", "Loan  No.");
+        LoansR.SetRange(LoansR."Loan  No.", Rec."Loan  No.");
         if LoansR.Find('-') then begin
             msg := '';
-            msg := 'Dear Member, Your ' + Format(LoansR."Loan Product Type") + ' loan application of KSHs.' + Format("Requested Amount") + ' has been received and is being processed.Jamii Yetu Sacco.';
+            msg := 'Dear Member, Your ' + Format(LoansR."Loan Product Type") + ' loan application of KSHs.' + Format(Rec."Requested Amount") + ' has been received and is being processed.Jamii Yetu Sacco.';
             PhoneNo := FnGetPhoneNo(LoansR."Client Code");
             SendSMSMessage(LoansR."BOSA No", msg, PhoneNo);
             LGuarantors.Reset;
-            LGuarantors.SetRange(LGuarantors."Loan No", "Loan  No.");
+            LGuarantors.SetRange(LGuarantors."Loan No", Rec."Loan  No.");
             if LGuarantors.Find('-') = false then begin
                 repeat
                     if LGuarantors."Self Guarantee" = true then begin
                         msg := '';
-                        msg := 'Dear Member,you have self guaranteed on ' + Format(LoansR."Loan Product Type") + ' loan application of KSHs.' + Format("Requested Amount") + ' with ' + Format(LGuarantors."Amont Guaranteed") + ' of you current deposits.Jamii Yetu Sacco.';
-                        PhoneNo := FnGetPhoneNo("Client Code");
+                        msg := 'Dear Member,you have self guaranteed on ' + Format(LoansR."Loan Product Type") + ' loan application of KSHs.' + Format(Rec."Requested Amount") + ' with ' + Format(LGuarantors."Amont Guaranteed") + ' of you current deposits.Jamii Yetu Sacco.';
+                        PhoneNo := FnGetPhoneNo(Rec."Client Code");
                         SendSMSMessage(LGuarantors."Member No", msg, PhoneNo);
                     end else
                         if LGuarantors."Self Guarantee" = false then begin
@@ -841,16 +841,16 @@ page 51516484 "Okoa Loans Application Card"
         GenJournalLine."Journal Batch Name" := BATCH_NAME;
         GenJournalLine."Line No." := LineNo;
         GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-        GenJournalLine."Account No." := "Account No";
+        GenJournalLine."Account No." := Rec."Account No";
         GenJournalLine.Validate(GenJournalLine."Account No.");
         GenJournalLine."Document No." := DOCUMENT_NO;
         GenJournalLine."External Document No." := DOCUMENT_NO;
         GenJournalLine."Posting Date" := Today;
         GenJournalLine.Description := 'Okoa Biashara Principal Amount-disbursed';
-        GenJournalLine.Amount := ("Approved Amount") * -1;
+        GenJournalLine.Amount := (Rec."Approved Amount") * -1;
         GenJournalLine.Validate(GenJournalLine.Amount);
         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-        GenJournalLine."Shortcut Dimension 2 Code" := SFactory.FnGetMemberBranch("Client Code");
+        GenJournalLine."Shortcut Dimension 2 Code" := SFactory.FnGetMemberBranch(Rec."Client Code");
         if GenJournalLine.Amount <> 0 then
             GenJournalLine.Insert;
 
@@ -861,7 +861,7 @@ page 51516484 "Okoa Loans Application Card"
         GenJournalLine."Journal Batch Name" := BATCH_NAME;
         GenJournalLine."Line No." := LineNo;
         GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
-        GenJournalLine."Account No." := "Account No";
+        GenJournalLine."Account No." := Rec."Account No";
         GenJournalLine.Validate(GenJournalLine."Account No.");
         GenJournalLine."Document No." := DOCUMENT_NO;
         GenJournalLine."External Document No." := DOCUMENT_NO;
@@ -870,7 +870,7 @@ page 51516484 "Okoa Loans Application Card"
         GenJournalLine.Amount := 100;
         GenJournalLine.Validate(GenJournalLine.Amount);
         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-        GenJournalLine."Shortcut Dimension 2 Code" := SFactory.FnGetMemberBranch("Client Code");
+        GenJournalLine."Shortcut Dimension 2 Code" := SFactory.FnGetMemberBranch(Rec."Client Code");
         if GenJournalLine.Amount <> 0 then
             GenJournalLine.Insert;
         //3.----------------------Balance with Form Fees Account
@@ -885,11 +885,11 @@ page 51516484 "Okoa Loans Application Card"
         GenJournalLine."Document No." := DOCUMENT_NO;
         GenJournalLine."External Document No." := DOCUMENT_NO;
         GenJournalLine."Posting Date" := Today;
-        GenJournalLine.Description := "Loan Product Type" + ' -Okoa Biashara Commission- ' + "Loan  No.";
+        GenJournalLine.Description := Rec."Loan Product Type" + ' -Okoa Biashara Commission- ' + Rec."Loan  No.";
         GenJournalLine.Amount := -(100);
         GenJournalLine.Validate(GenJournalLine.Amount);
         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-        GenJournalLine."Shortcut Dimension 2 Code" := SFactory.FnGetMemberBranch("Client Code");
+        GenJournalLine."Shortcut Dimension 2 Code" := SFactory.FnGetMemberBranch(Rec."Client Code");
         if GenJournalLine.Amount <> 0 then
             GenJournalLine.Insert;
 
@@ -900,18 +900,18 @@ page 51516484 "Okoa Loans Application Card"
         GenJournalLine."Journal Batch Name" := BATCH_NAME;
         GenJournalLine."Line No." := LineNo;
         GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
-        GenJournalLine."Account No." := "Client Code";
+        GenJournalLine."Account No." := Rec."Client Code";
         GenJournalLine.Validate(GenJournalLine."Account No.");
         GenJournalLine."Document No." := DOCUMENT_NO;
         GenJournalLine."External Document No." := DOCUMENT_NO;
         GenJournalLine."Posting Date" := Today;
-        GenJournalLine."Loan No" := "Loan  No.";
+        GenJournalLine."Loan No" := Rec."Loan  No.";
         GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::Loan;
-        GenJournalLine.Description := 'Okoa Biashara Loan Issued-' + Format("Loan  No.");
-        GenJournalLine.Amount := "Approved Amount";
+        GenJournalLine.Description := 'Okoa Biashara Loan Issued-' + Format(Rec."Loan  No.");
+        GenJournalLine.Amount := Rec."Approved Amount";
         GenJournalLine.Validate(GenJournalLine.Amount);
         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-        GenJournalLine."Shortcut Dimension 2 Code" := SFactory.FnGetMemberBranch("Client Code");
+        GenJournalLine."Shortcut Dimension 2 Code" := SFactory.FnGetMemberBranch(Rec."Client Code");
         if GenJournalLine.Amount <> 0 then
             GenJournalLine.Insert;
         //----------------------------------Accrue Interest Due for the Loan
@@ -921,20 +921,20 @@ page 51516484 "Okoa Loans Application Card"
         GenJournalLine."Journal Batch Name" := BATCH_NAME;
         GenJournalLine."Line No." := LineNo;
         GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
-        GenJournalLine."Account No." := "Client Code";
+        GenJournalLine."Account No." := Rec."Client Code";
         GenJournalLine.Validate(GenJournalLine."Account No.");
         GenJournalLine."Document No." := DOCUMENT_NO;
         GenJournalLine."External Document No." := DOCUMENT_NO;
         GenJournalLine."Posting Date" := Today;
-        GenJournalLine."Loan No" := "Loan  No.";
+        GenJournalLine."Loan No" := Rec."Loan  No.";
         GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Interest Due";
-        GenJournalLine.Description := 'Okoa Biashara Loan Interest Due-' + Format("Loan  No.");
-        GenJournalLine.Amount := "Loan Interest Repayment";
+        GenJournalLine.Description := 'Okoa Biashara Loan Interest Due-' + Format(Rec."Loan  No.");
+        GenJournalLine.Amount := Rec."Loan Interest Repayment";
         GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
         GenJournalLine."Bal. Account No." := '5500';
         GenJournalLine.Validate(GenJournalLine.Amount);
         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-        GenJournalLine."Shortcut Dimension 2 Code" := SFactory.FnGetMemberBranch("Client Code");
+        GenJournalLine."Shortcut Dimension 2 Code" := SFactory.FnGetMemberBranch(Rec."Client Code");
         if GenJournalLine.Amount <> 0 then
             GenJournalLine.Insert;
         //........................................................................................
@@ -942,11 +942,11 @@ page 51516484 "Okoa Loans Application Card"
 
     local procedure FnCreateLoanOffsetLines()
     begin
-        DBranch := SFactory.FnGetMemberBranch("Client Code");
-        CalcFields("Top Up Amount");
-        if "Top Up Amount" > 0 then begin
+        DBranch := SFactory.FnGetMemberBranch(Rec."Client Code");
+        Rec.CalcFields("Top Up Amount");
+        if Rec."Top Up Amount" > 0 then begin
             LoanTopUp.RESET;
-            LoanTopUp.SETRANGE(LoanTopUp."Loan No.", "Loan  No.");
+            LoanTopUp.SETRANGE(LoanTopUp."Loan No.", Rec."Loan  No.");
             IF LoanTopUp.FIND('-') THEN BEGIN
                 REPEAT//Maybe there are multiple topup loans
                       //Principle
@@ -960,9 +960,9 @@ page 51516484 "Okoa Loans Application Card"
                     GenJournalLine."Posting Date" := Today;
                     GenJournalLine."External Document No." := DOCUMENT_NO;
                     GenJournalLine."Account Type" := GenJournalLine."Account Type"::Customer;
-                    GenJournalLine."Account No." := "Client Code";
+                    GenJournalLine."Account No." := Rec."Client Code";
                     GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                    GenJournalLine.Description := 'Loan OffSet By - ' + "Loan  No.";
+                    GenJournalLine.Description := 'Loan OffSet By - ' + Rec."Loan  No.";
                     GenJournalLine.Amount := LoanTopUp."Principle Top Up" * -1;
                     GenJournalLine.VALIDATE(GenJournalLine.Amount);
                     GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::Repayment;
@@ -979,9 +979,9 @@ page 51516484 "Okoa Loans Application Card"
                     GenJournalLine."Line No." := LineNo;
                     GenJournalLine."Document No." := DOCUMENT_NO;
                     GenJournalLine."Posting Date" := Today;
-                    GenJournalLine."External Document No." := "Loan  No.";
+                    GenJournalLine."External Document No." := Rec."Loan  No.";
                     GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
-                    GenJournalLine."Account No." := "Account No";
+                    GenJournalLine."Account No." := Rec."Account No";
                     GenJournalLine.VALIDATE(GenJournalLine."Account No.");
                     GenJournalLine.Description := 'Loan offset Principal to loan-' + LoanTopUp."Loan Top Up" + '-' + LoanTopUp."Loan Type";
                     GenJournalLine.Amount := LoanTopUp."Principle Top Up";
@@ -991,7 +991,7 @@ page 51516484 "Okoa Loans Application Card"
                     IF GenJournalLine.Amount <> 0 THEN
                         GenJournalLine.INSERT;
                     //..................Recover Interest On Top Up
-                    IF LoanType.GET("Loan Product Type") THEN BEGIN
+                    IF LoanType.GET(Rec."Loan Product Type") THEN BEGIN
                         LineNo := LineNo + 10000;
                         GenJournalLine.Init;
                         GenJournalLine."Journal Template Name" := BATCH_TEMPLATE;
@@ -999,13 +999,13 @@ page 51516484 "Okoa Loans Application Card"
                         GenJournalLine."Line No." := LineNo;
                         GenJournalLine."Document No." := DOCUMENT_NO;
                         GenJournalLine."Account Type" := GenJournalLine."Bal. Account Type"::Customer;
-                        GenJournalLine."Account No." := "Client Code";
+                        GenJournalLine."Account No." := Rec."Client Code";
                         GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                        GenJournalLine."Document No." := "Loan  No.";
+                        GenJournalLine."Document No." := Rec."Loan  No.";
                         GenJournalLine."Posting Date" := Today;
                         GenJournalLine.Description := 'Interest Due Paid on top up';
                         GenJournalLine.Amount := -LoanTopUp."Interest Top Up";
-                        GenJournalLine."External Document No." := "Loan  No.";
+                        GenJournalLine."External Document No." := Rec."Loan  No.";
                         GenJournalLine.VALIDATE(GenJournalLine.Amount);
                         GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Interest Paid";
                         GenJournalLine."Loan No" := LoanTopUp."Loan Top Up";
@@ -1022,13 +1022,13 @@ page 51516484 "Okoa Loans Application Card"
                     GenJournalLine."Line No." := LineNo;
                     GenJournalLine."Document No." := DOCUMENT_NO;
                     GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
-                    GenJournalLine."Account No." := "Account No";
+                    GenJournalLine."Account No." := Rec."Account No";
                     GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                    GenJournalLine."Document No." := "Loan  No.";
+                    GenJournalLine."Document No." := Rec."Loan  No.";
                     GenJournalLine."Posting Date" := Today;
                     GenJournalLine.Description := 'Loan offset Interest to loan-' + LoanTopUp."Loan Top Up" + '-' + LoanTopUp."Loan Type";
                     GenJournalLine.Amount := LoanTopUp."Interest Top Up";
-                    GenJournalLine."External Document No." := "Loan  No.";
+                    GenJournalLine."External Document No." := Rec."Loan  No.";
                     GenJournalLine.VALIDATE(GenJournalLine.Amount);
                     GenJournalLine."Loan No" := LoanTopUp."Loan Top Up";
                     GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
@@ -1045,11 +1045,11 @@ page 51516484 "Okoa Loans Application Card"
                     GenJournalLine."Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
                     GenJournalLine."Account No." := '5411';
                     GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                    GenJournalLine."Document No." := "Loan  No.";
+                    GenJournalLine."Document No." := Rec."Loan  No.";
                     GenJournalLine."Posting Date" := Today;
                     GenJournalLine.Description := 'Commission on ' + format(LoanTopUp."Loan No.") + ' Loan Offset';
                     GenJournalLine.Amount := -LoanTopUp.Commision;
-                    GenJournalLine."External Document No." := "Loan  No.";
+                    GenJournalLine."External Document No." := Rec."Loan  No.";
                     GenJournalLine.VALIDATE(GenJournalLine.Amount);
                     GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
                     GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
@@ -1063,13 +1063,13 @@ page 51516484 "Okoa Loans Application Card"
                     GenJournalLine."Line No." := LineNo;
                     GenJournalLine."Document No." := DOCUMENT_NO;
                     GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
-                    GenJournalLine."Account No." := "Account No";
+                    GenJournalLine."Account No." := Rec."Account No";
                     GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                    GenJournalLine."Document No." := "Loan  No.";
+                    GenJournalLine."Document No." := Rec."Loan  No.";
                     GenJournalLine."Posting Date" := Today;
                     GenJournalLine.Description := 'Commission Charged on ' + format(LoanTopUp."Loan No.") + ' Loan Offset';
                     GenJournalLine.Amount := LoanTopUp.Commision;
-                    GenJournalLine."External Document No." := "Loan  No.";
+                    GenJournalLine."External Document No." := Rec."Loan  No.";
                     GenJournalLine.VALIDATE(GenJournalLine.Amount);
                     GenJournalLine."Loan No" := LoanTopUp."Loan Top Up";
                     GenJournalLine."Shortcut Dimension 1 Code" := DActivity;

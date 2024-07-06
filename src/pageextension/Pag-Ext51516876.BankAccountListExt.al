@@ -4,7 +4,7 @@ pageextension 51516876 "BankAccountListExt" extends "Bank Account List"
     {
         addafter("Search Name")
         {
-            field("Account Type"; "Account Type")
+            field("Account Type"; Rec."Account Type")
             {
                 ApplicationArea = Basic;
                 Visible = false;
@@ -196,7 +196,7 @@ pageextension 51516876 "BankAccountListExt" extends "Bank Account List"
 
     trigger OnAfterGetRecord()
     begin
-        CalcFields("Check Report Name");
+        Rec.CalcFields("Check Report Name");
     end;
 
     trigger OnOpenPage()

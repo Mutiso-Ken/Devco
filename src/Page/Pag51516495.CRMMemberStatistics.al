@@ -11,7 +11,7 @@ Page 51516495 "CRM Member Statistics"
     {
         area(content)
         {
-            field(Image; Image)
+            field(Image; Rec.Image)
             {
                 ApplicationArea = Basic;
                 Caption = 'Member No.';
@@ -20,27 +20,27 @@ Page 51516495 "CRM Member Statistics"
             {
                 Caption = 'Case Statistics';
                 visible = true;
-                field("Enquiries Made"; "Enquiries Made")
+                field("Enquiries Made"; Rec."Enquiries Made")
                 {
                     Editable = false;
                     Style = Ambiguous;
                 }
-                field("Request Made"; "Request Made")
+                field("Request Made"; Rec."Request Made")
                 {
                     Editable = false;
                     Style = Ambiguous;
                 }
-                field("Appreciations Made"; "Appreciations Made")
+                field("Appreciations Made"; Rec."Appreciations Made")
                 {
                     Editable = false;
                     Style = Ambiguous;
                 }
-                field("Complains Made"; "Complains Made")
+                field("Complains Made"; Rec."Complains Made")
                 {
                     Editable = false;
                     Style = Attention;
                 }
-                field("Criticisms Made"; "Criticisms Made")
+                field("Criticisms Made"; Rec."Criticisms Made")
                 {
                     Editable = false;
                     Style = Attention;
@@ -58,7 +58,7 @@ Page 51516495 "CRM Member Statistics"
     trigger OnAfterGetRecord()
     begin
 
-        "Loan Arrears" := FnGetLoanArrears(Rec."No.");
+        Rec."Loan Arrears" := FnGetLoanArrears(Rec."No.");
     end;
 
     trigger OnOpenPage()

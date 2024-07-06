@@ -8,7 +8,7 @@ Page 51516339 "Treasury List"
     SourceTable = "Bank Account";
     SourceTableView = where("Account Type" = filter(Treasury));
     UsageCategory = Tasks;
-    DeleteAllowed =false;
+    DeleteAllowed = false;
 
     layout
     {
@@ -16,34 +16,34 @@ Page 51516339 "Treasury List"
         {
             repeater(Group)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Contact; Contact)
-                {
-                    ApplicationArea = Basic;
-                    visible =false;
-                }
-                field("Phone No."; "Phone No.")
+                field(Contact; Rec.Contact)
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Bank Account No."; "Bank Account No.")
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Bank Acc. Posting Group"; "Bank Acc. Posting Group")
+                field("Bank Account No."; Rec."Bank Account No.")
+                {
+                    ApplicationArea = Basic;
+                    visible = false;
+                }
+                field("Bank Acc. Posting Group"; Rec."Bank Acc. Posting Group")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }

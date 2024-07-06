@@ -5,7 +5,7 @@ Page 51516858 "Posted Authorisation Card"
     Editable = false;
     PageType = Card;
     SourceTable = "Over Draft Authorisationx";
-    SourceTableView = where(Posted=const(true));
+    SourceTableView = where(Posted = const(true));
 
     layout
     {
@@ -13,78 +13,78 @@ Page 51516858 "Posted Authorisation Card"
         {
             group(General)
             {
-                field("Over Draft No";"Over Draft No")
+                field("Over Draft No"; Rec."Over Draft No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No";"Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Captured by";"Captured by")
+                field("Captured by"; Rec."Captured by")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approved Date";"Approved Date")
+                field("Approved Date"; Rec."Approved Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount applied";"Amount applied")
+                field("Amount applied"; Rec."Amount applied")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID Number";"ID Number")
+                field("ID Number"; Rec."ID Number")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No";"Phone No")
+                field("Phone No"; Rec."Phone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Email Address";"Email Address")
+                field("Email Address"; Rec."Email Address")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Overdraft Status";"Overdraft Status")
+                field("Overdraft Status"; Rec."Overdraft Status")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approved Amount";"Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     ApplicationArea = Basic;
                 }
             }
             group(Athourisation)
             {
-                field("Posted By";"Posted By")
+                field("Posted By"; Rec."Posted By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Time Posted";"Time Posted")
+                field("Time Posted"; Rec."Time Posted")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Posted";"Date Posted")
+                field("Date Posted"; Rec."Date Posted")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Supervisor Checked";"Supervisor Checked")
+                field("Supervisor Checked"; Rec."Supervisor Checked")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Authorisation Requirement";"Authorisation Requirement")
+                field("Authorisation Requirement"; Rec."Authorisation Requirement")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted;Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                 }
@@ -104,82 +104,82 @@ Page 51516858 "Posted Authorisation Card"
 
                 trigger OnAction()
                 begin
-                    if Posted=true then begin
-                    Error("Over Draft No"+'Already posted');
+                    if Rec.Posted = true then begin
+                        Error(Rec."Over Draft No" + 'Already posted');
                     end else
-                    TestField("Account No") ;
-                    TestField("Approved Date") ;
+                        Rec.TestField("Account No");
+                    Rec.TestField("Approved Date");
                     //TESTFIELD("Current Account No") ;
-                    overdraftno:='';
+                    overdraftno := '';
                     //get Current account
-                    if vend."Account Type"='CURRENT'then
-                    vend.Reset;
-                    vend.SetRange(vend."No.","Account No");
-                    if vend.Find('-')then begin
-                      overdraftno:=vend."No.";
-                      end;
-                      DValue.Reset;
-                    DValue.SetRange(DValue."Global Dimension No.",2);
+                    if vend."Account Type" = 'CURRENT' then
+                        vend.Reset;
+                    vend.SetRange(vend."No.", Rec."Account No");
+                    if vend.Find('-') then begin
+                        overdraftno := vend."No.";
+                    end;
+                    DValue.Reset;
+                    DValue.SetRange(DValue."Global Dimension No.", 2);
                     if DValue.Find('-') then begin
-                    DValue.TestField(DValue."Overdraft Account");
-                    Overdraftbank:=DValue."Overdraft Account";
-                    dbanch:=DValue.Code;
-                    Message('Overdraft clearing account is'+  Overdraftbank);
-                      if "Approved Amount">0 then begin
-                    GenJournalLine.Reset;
-                    GenJournalLine.SetRange("Journal Template Name",'GENERAL');
-                    GenJournalLine.SetRange("Journal Batch Name",'OVERDRAFT');
-                    GenJournalLine.DeleteAll;
+                        DValue.TestField(DValue."Overdraft Account");
+                        Overdraftbank := DValue."Overdraft Account";
+                        dbanch := DValue.Code;
+                        Message('Overdraft clearing account is' + Overdraftbank);
+                        if Rec."Approved Amount" > 0 then begin
+                            GenJournalLine.Reset;
+                            GenJournalLine.SetRange("Journal Template Name", 'GENERAL');
+                            GenJournalLine.SetRange("Journal Batch Name", 'OVERDRAFT');
+                            GenJournalLine.DeleteAll;
 
-                    LineNo:=LineNo+10000;
+                            LineNo := LineNo + 10000;
 
-                    GenJournalLine.Init;
-                    GenJournalLine."Journal Template Name":='GENERAL';
-                    GenJournalLine."Journal Batch Name":='OVERDRAFT';
-                    GenJournalLine."Document No.":="Over Draft No";
-                    GenJournalLine."External Document No.":='OV'+"Over Draft No";
-                    GenJournalLine."Line No.":=LineNo;
-                    GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                    GenJournalLine."Account No.":="Account No";
-                    GenJournalLine.Amount:="Approved Amount"*-1;
-                    GenJournalLine.Validate(Amount);
-                    GenJournalLine."Shortcut Dimension 1 Code":='FOSA';
-                    GenJournalLine."Shortcut Dimension 2 Code":=dbanch;
-                    GenJournalLine."Posting Date":="Approved Date";
-                    GenJournalLine."User ID":="Captured by";
-                    GenJournalLine."Bal. Account Type":=GenJournalLine."bal. account type"::"Bank Account";
-                    GenJournalLine."Bal. Account No.":=Overdraftbank;
-                    if GenJournalLine.Amount<>0 then
-                      GenJournalLine.Insert(true);
+                            GenJournalLine.Init;
+                            GenJournalLine."Journal Template Name" := 'GENERAL';
+                            GenJournalLine."Journal Batch Name" := 'OVERDRAFT';
+                            GenJournalLine."Document No." := Rec."Over Draft No";
+                            GenJournalLine."External Document No." := 'OV' + Rec."Over Draft No";
+                            GenJournalLine."Line No." := LineNo;
+                            GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                            GenJournalLine."Account No." := Rec."Account No";
+                            GenJournalLine.Amount := Rec."Approved Amount" * -1;
+                            GenJournalLine.Validate(Amount);
+                            GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
+                            GenJournalLine."Shortcut Dimension 2 Code" := dbanch;
+                            GenJournalLine."Posting Date" := Rec."Approved Date";
+                            GenJournalLine."User ID" := Rec."Captured by";
+                            GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"Bank Account";
+                            GenJournalLine."Bal. Account No." := Overdraftbank;
+                            if GenJournalLine.Amount <> 0 then
+                                GenJournalLine.Insert(true);
 
-                     GenJournalLine.Reset;
-                    GenJournalLine.SetRange("Journal Template Name",'GENERAL');
-                    GenJournalLine.SetRange("Journal Batch Name",'OVERDRAFT');
-                    if GenJournalLine.Find('-') then begin
-                    Codeunit.Run(Codeunit::"Gen. Jnl.-Post Sacco21",GenJournalLine);
-                    end;
-
-
+                            GenJournalLine.Reset;
+                            GenJournalLine.SetRange("Journal Template Name", 'GENERAL');
+                            GenJournalLine.SetRange("Journal Batch Name", 'OVERDRAFT');
+                            if GenJournalLine.Find('-') then begin
+                                Codeunit.Run(Codeunit::"Gen. Jnl.-Post Sacco21", GenJournalLine);
+                            end;
 
 
 
-                    end;
+
+
+                        end;
 
                         //end authorisation
 
-                      Message('Over draft successfully updated');
-                      "Posted By":=UserId;
-                      Posted:=true;
-                      "Time Posted":=Time;
-                      "Overdraft Status":="overdraft status"::Inactive;
-                      "Supervisor Checked":=true;
-                      if "Supervisor Checked"=true
-                        then
-                        "Authoriser Id":=UserId;
+                        Message('Over draft successfully updated');
+                        Rec."Posted By" := UserId;
+                        Rec.Posted := true;
+                        Rec."Time Posted" := Time;
+                        Rec."Overdraft Status" := Rec."overdraft status"::Inactive;
+                        Rec."Supervisor Checked" := true;
+                        if Rec."Supervisor Checked" = true
+                          then
+                            Rec."Authoriser Id" := UserId;
 
-                      vend.Modify;
-                      Modify;
-                       end;
+                        vend.Modify;
+                        Rec.Modify;
+                    end;
 
 
 

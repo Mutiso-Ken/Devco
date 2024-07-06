@@ -1134,7 +1134,7 @@
 //                         RunObject = Page "Periodics Processing-Tea";
 //                     }
 
-                 
+
 
 //                     action("Generate FOSA Savings Interest")
 
@@ -3013,7 +3013,7 @@
 //                     ToolTip = 'Post recurring fixed asset transactions, such as acquisition and depreciation book without integration to the general ledger.';
 //                 }
 //             }
-          
+
 
 //             Group(SaccoPayroll)
 //             {

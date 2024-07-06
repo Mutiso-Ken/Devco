@@ -9,7 +9,7 @@ report 51516049 "Memberswithoutpassportsreport"
         dataitem(Customer; Customer)
         {
             DataItemTableView = sorting("No.") order(descending);
-     
+
             column(CompanyName; CompanyInfo.Name)
             {
             }
@@ -31,13 +31,13 @@ report 51516049 "Memberswithoutpassportsreport"
             column(EntryNo; EntryNo) { }
             column(Phone_No_; "Phone No.") { }
 
-  
-       
+
+
 
             trigger OnAfterGetRecord();
             var
             begin
-             
+
                 If Image.HasValue then
                     CurrReport.Skip();
                 EntryNo := EntryNo + 1;

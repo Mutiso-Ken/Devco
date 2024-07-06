@@ -12,15 +12,15 @@ Page 50318 "Payroll PAYE Setup."
         {
             repeater(Group)
             {
-                field("Tier Code"; "Tier Code")
+                field("Tier Code"; Rec."Tier Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("PAYE Tier"; "PAYE Tier")
+                field("PAYE Tier"; Rec."PAYE Tier")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Rate; Rate)
+                field(Rate; Rec.Rate)
                 {
                     ApplicationArea = Basic;
                 }

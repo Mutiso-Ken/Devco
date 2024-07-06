@@ -4,11 +4,11 @@ pageextension 51516877 "BankAccountCardExt" extends "Bank Account Card"
     {
         addafter("Bank Acc. Posting Group")
         {
-            field("Account Type"; "Account Type")
+            field("Account Type"; Rec."Account Type")
             {
                 ApplicationArea = Basic;
             }
-            field(CashierID; CashierID)
+            field(CashierID; Rec.CashierID)
             {
                 ApplicationArea = Basic;
             }
@@ -20,7 +20,7 @@ pageextension 51516877 "BankAccountCardExt" extends "Bank Account Card"
         BankLedgEntry: record "Bank Account Ledger Entry";
     begin
         bankacount.Reset();
-        bankacount.SetRange(bankacount."No.", "No.");
+        bankacount.SetRange(bankacount."No.", Rec."No.");
         bankacount.SetAutoCalcFields(bankacount.Balance);
         if bankacount.Find('-') then begin
             if bankacount.Balance <> 0 then begin
@@ -38,12 +38,12 @@ pageextension 51516877 "BankAccountCardExt" extends "Bank Account Card"
 
     trigger OnOpenPage()
     begin
-        AuditLog.FnReadingsMadeAudit(UserId, 'Accessed and read the bank accounts page no-' + Format("No.") + ' Name-' + Format(Name));
+        AuditLog.FnReadingsMadeAudit(UserId, 'Accessed and read the bank accounts page no-' + Format(Rec."No.") + ' Name-' + Format(Rec.Name));
     end;
 
     trigger OnClosePage()
     begin
-        AuditLog.FnReadingsMadeAudit(UserId, 'Closed bank accounts page no-' + Format("No.") + ' Name-' + Format(Name));
+        AuditLog.FnReadingsMadeAudit(UserId, 'Closed bank accounts page no-' + Format(Rec."No.") + ' Name-' + Format(Rec.Name));
     end;
 
     var

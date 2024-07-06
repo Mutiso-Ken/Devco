@@ -12,19 +12,19 @@ Page 51516059 "Member Gross Risk Rating Scale"
         {
             repeater(Group)
             {
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Minimum Risk Rate"; "Minimum Risk Rate")
+                field("Minimum Risk Rate"; Rec."Minimum Risk Rate")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Maximum Risk Rate"; "Maximum Risk Rate")
+                field("Maximum Risk Rate"; Rec."Maximum Risk Rate")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Risk Scale"; "Risk Scale")
+                field("Risk Scale"; Rec."Risk Scale")
                 {
                     ApplicationArea = Basic;
                 }

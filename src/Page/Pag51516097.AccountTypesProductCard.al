@@ -42,7 +42,7 @@ page 51516097 "Account Types Product Card"
                     ToolTip = 'Specifies the value of the Time Entered field.';
                     Editable = false;
                 }
-                field("Posting Group"; "Posting Group")
+                field("Posting Group"; Rec."Posting Group")
                 {
                     ToolTip = 'Specifies the value of the Time Entered field.';
                     Editable = false;
@@ -56,19 +56,19 @@ page 51516097 "Account Types Product Card"
             }
             group("Charges")
             {
-                field("Account Openning Fee"; "Account Openning Fee")
+                field("Account Openning Fee"; Rec."Account Openning Fee")
                 {
                     ToolTip = 'Specifies the value of the Time Entered field.';
                 }
-                field("Account Openning Fee Account"; "Account Openning Fee Account")
+                field("Account Openning Fee Account"; Rec."Account Openning Fee Account")
                 {
                     ToolTip = 'Specifies the value of the Time Entered field.';
                 }
-                field("Re-activation Fee"; "Re-activation Fee")
+                field("Re-activation Fee"; Rec."Re-activation Fee")
                 {
                     ToolTip = 'Specifies the value of the Time Entered field.';
                 }
-                field("Re-activation Fee Account"; "Re-activation Fee Account")
+                field("Re-activation Fee Account"; Rec."Re-activation Fee Account")
                 {
                     ToolTip = 'Specifies the value of the Time Entered field.';
                 }

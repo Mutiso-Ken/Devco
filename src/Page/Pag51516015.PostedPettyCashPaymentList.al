@@ -8,8 +8,8 @@ Page 51516015 "Posted PettyCash Payment List"
     ModifyAllowed = false;
     PageType = List;
     SourceTable = "Payment Header";
-    SourceTableView = where("Payment Type"=const("Petty Cash"),
-                            Posted=const(true));
+    SourceTableView = where("Payment Type" = const("Petty Cash"),
+                            Posted = const(true));
     UsageCategory = Lists;
 
     layout
@@ -18,31 +18,31 @@ Page 51516015 "Posted PettyCash Payment List"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Type";"Document Type")
+                field("Document Type"; Rec."Document Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Date";"Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Payee;Payee)
+                field(Payee; Rec.Payee)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount(LCY)";"Amount(LCY)")
+                field("Amount(LCY)"; Rec."Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Cashier;Cashier)
+                field(Cashier; Rec.Cashier)
                 {
                     ApplicationArea = Basic;
                 }

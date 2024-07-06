@@ -8,7 +8,7 @@ page 51516985 AdminLoansList
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
     SourceTable = "Loans Register";
     //SourceTableView = where(Posted = filter(true),
-                         //   Source = filter(FOSA));
+    //   Source = filter(FOSA));
 
     layout
     {
@@ -16,88 +16,88 @@ page 51516985 AdminLoansList
         {
             repeater(Control1000000000)
             {
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Product Type"; "Loan Product Type")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Expected Date of Completion"; "Expected Date of Completion")
+                field("Expected Date of Completion"; Rec."Expected Date of Completion")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Client Name"; "Client Name")
+                field("Client Name"; Rec."Client Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Requested Amount"; "Requested Amount")
+                field("Requested Amount"; Rec."Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
                 }
 
-                field("Approved Amount"; "Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     Visible = false;
                 }
-                field("Outstanding Balance"; "Outstanding Balance")
+                field("Outstanding Balance"; Rec."Outstanding Balance")
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
 
                 }
-                field("Oustanding Interest"; "Oustanding Interest")
+                field("Oustanding Interest"; Rec."Oustanding Interest")
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
                 }
-                field(Interest; Interest)
+                field(Interest; Rec.Interest)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Interest Rate';
                 }
-                field("Recovery Mode"; "Recovery Mode")
+                field("Recovery Mode"; Rec."Recovery Mode")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
 
 
-                field("Client Code"; "Client Code")
+                field("Client Code"; Rec."Client Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member No';
                     Editable = false;
                 }
 
-                field("Issued Date"; "Issued Date")
+                field("Issued Date"; Rec."Issued Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Installments; Installments)
+                field(Installments; Rec.Installments)
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Amount in Arrears"; "Amount in Arrears")
+                field("Amount in Arrears"; Rec."Amount in Arrears")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loans Category-SASRA"; "Loans Category-SASRA")
+                field("Loans Category-SASRA"; Rec."Loans Category-SASRA")
                 {
                     ApplicationArea = Basic;
 
@@ -126,7 +126,7 @@ page 51516985 AdminLoansList
                     trigger OnAction()
                     begin
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", Rec."Loan  No.");
                         if LoanApp.Find('-') then begin
                             Report.Run(51516477, true, false, LoanApp);
                         end;
@@ -143,9 +143,9 @@ page 51516985 AdminLoansList
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "Client Code");
-                        Cust.SetFilter(Cust."Loan Product Filter", "Loan Product Type");
-                        Cust.SetFilter(Cust."Loan No. Filter", "Loan  No.");
+                        Cust.SetRange(Cust."No.", Rec."Client Code");
+                        Cust.SetFilter(Cust."Loan Product Filter", Rec."Loan Product Type");
+                        Cust.SetFilter(Cust."Loan No. Filter", Rec."Loan  No.");
                         Report.Run(51516609, true, false, Cust);
                     end;
                 }
@@ -159,9 +159,9 @@ page 51516985 AdminLoansList
 
     trigger OnAfterGetRecord()
     begin
-        if ("Issued Date" = 0D) And ("Loan Disbursement Date" <> 0D) then begin
-            "Issued Date" := "Loan Disbursement Date";
-            modify;
+        if (Rec."Issued Date" = 0D) And (Rec."Loan Disbursement Date" <> 0D) then begin
+            Rec."Issued Date" := Rec."Loan Disbursement Date";
+            Rec.modify;
         end;
         ;
     end;
@@ -300,8 +300,8 @@ page 51516985 AdminLoansList
 
     procedure GetVariables(var LoanNo: Code[20]; var LoanProductType: Code[20])
     begin
-        LoanNo := "Loan  No.";
-        LoanProductType := "Loan Product Type";
+        LoanNo := Rec."Loan  No.";
+        LoanProductType := Rec."Loan Product Type";
     end;
 
 

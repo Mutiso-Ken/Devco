@@ -4,17 +4,17 @@ Table 51516946 "CRM Case Types"
 
     fields
     {
-        field(1;"Code";Code[30])
+        field(1; "Code"; Code[30])
         {
         }
-        field(2;Description;Code[50])
+        field(2; Description; Code[50])
         {
         }
     }
 
     keys
     {
-        key(Key1;"Code")
+        key(Key1; "Code")
         {
             Clustered = true;
         }
@@ -22,7 +22,7 @@ Table 51516946 "CRM Case Types"
 
     fieldgroups
     {
-        fieldgroup(DropDown;"Code",Description)
+        fieldgroup(DropDown; "Code", Description)
         {
         }
     }

@@ -4,60 +4,60 @@ Table 51516253 "Movement Tracker"
 
     fields
     {
-        field(1;"Document No.";Code[20])
+        field(1; "Document No."; Code[20])
         {
         }
-        field(2;"Approval Type";Option)
+        field(2; "Approval Type"; Option)
         {
             OptionCaption = 'Loans,Special Loans,Personal Loans,Refunds,Funeral Expenses,Withdrawals - Resignation,Withdrawals - Death,Branch Loans';
             OptionMembers = Loans,"Special Loans","Personal Loans",Refunds,"Funeral Expenses","Withdrawals - Resignation","Withdrawals - Death","Branch Loans";
         }
-        field(3;Stage;Integer)
+        field(3; Stage; Integer)
         {
-           // TableRelation = Table51516199.Field2 where (Field1=field("Approval Type"));
+            // TableRelation = Table51516199.Field2 where (Field1=field("Approval Type"));
         }
-        field(4;Remarks;Text[50])
+        field(4; Remarks; Text[50])
         {
         }
-        field(5;Status;Option)
+        field(5; Status; Option)
         {
             OptionCaption = 'Being Processed,Approved,Rejected';
             OptionMembers = "Being Processed",Approved,Rejected;
         }
-        field(6;"Current Location";Boolean)
+        field(6; "Current Location"; Boolean)
         {
         }
-        field(7;"Date/Time In";DateTime)
+        field(7; "Date/Time In"; DateTime)
         {
         }
-        field(8;"Date/Time Out";DateTime)
+        field(8; "Date/Time Out"; DateTime)
         {
         }
-        field(9;"USER ID";Code[20])
+        field(9; "USER ID"; Code[20])
         {
         }
-        field(10;"Entry No.";Integer)
+        field(10; "Entry No."; Integer)
         {
             AutoIncrement = true;
         }
-        field(11;Description;Text[50])
+        field(11; Description; Text[50])
         {
         }
-        field(12;Station;Code[50])
+        field(12; Station; Code[50])
         {
         }
     }
 
     keys
     {
-        key(Key1;"Entry No.")
+        key(Key1; "Entry No.")
         {
         }
-        key(Key2;"Document No.","Approval Type","Entry No.",Stage)
+        key(Key2; "Document No.", "Approval Type", "Entry No.", Stage)
         {
             Clustered = true;
         }
-        key(Key3;"Document No.","Current Location")
+        key(Key3; "Document No.", "Current Location")
         {
         }
     }

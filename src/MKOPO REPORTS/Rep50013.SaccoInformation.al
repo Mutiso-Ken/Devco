@@ -46,7 +46,7 @@ report 50013 "Sacco Information"
             {
 
             }
-            column(Principal_Bank_Branch;"Principal Bank Branch")
+            column(Principal_Bank_Branch; "Principal Bank Branch")
             {
 
             }
@@ -71,7 +71,7 @@ report 50013 "Sacco Information"
             {
 
             }
-            column(auditorcerfication;auditorcerfication)
+            column(auditorcerfication; auditorcerfication)
             {
 
             }

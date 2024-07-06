@@ -3,7 +3,7 @@ Page 51516521 "Crm log card"
 {
     PageType = Card;
     SourceTable = "General Equiries";
-    SourceTableView = where(Send=const(false));
+    SourceTableView = where(Send = const(false));
 
     layout
     {
@@ -11,20 +11,20 @@ Page 51516521 "Crm log card"
         {
             group(General)
             {
-                field(No;No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Calling As";"Calling As")
+                field("Calling As"; Rec."Calling As")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Calling For";"Calling For")
+                field("Calling For"; Rec."Calling For")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Contact Mode";"Contact Mode")
+                field("Contact Mode"; Rec."Contact Mode")
                 {
                     ApplicationArea = Basic;
                 }
@@ -32,32 +32,32 @@ Page 51516521 "Crm log card"
             group("Lead Details")
             {
                 Visible = AsNonmember;
-                field("First Name";"First Name")
+                field("First Name"; Rec."First Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field(SurName;SurName)
+                field(SurName; Rec.SurName)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Last Name";"Last Name")
+                field("Last Name"; Rec."Last Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No";"Phone No")
+                field("Phone No"; Rec."Phone No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Mobile No';
                 }
-                field(Email;Email)
+                field(Email; Rec.Email)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Address;Address)
+                field(Address; Rec.Address)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Id Number";"Passport No")
+                field("Id Number"; Rec."Passport No")
                 {
                     ApplicationArea = Basic;
                 }
@@ -65,43 +65,43 @@ Page 51516521 "Crm log card"
             group("Member Information")
             {
                 Visible = Asmember;
-                field("Member No";"Member No")
+                field("Member No"; Rec."Member No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member Name";"Member Name")
+                field("Member Name"; Rec."Member Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Balance";"Loan Balance")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Share Capital";"Share Capital")
+                field("Loan Balance"; Rec."Loan Balance")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Current Deposits";"Current Deposits")
+                field("Share Capital"; Rec."Share Capital")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Status;Status)
+                field("Current Deposits"; Rec."Current Deposits")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("ID No";"ID No")
+                field(Status; Rec.Status)
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("ID No"; Rec."ID No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Gender;Gender)
+                field(Gender; Rec.Gender)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan No";"Loan No")
+                field("Loan No"; Rec."Loan No")
                 {
                     ApplicationArea = Basic;
                 }
@@ -109,24 +109,24 @@ Page 51516521 "Crm log card"
             group("Case Information")
             {
                 Visible = Ascase;
-                field("Type of cases";"Type of cases")
+                field("Type of cases"; Rec."Type of cases")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Case Description";Description)
+                field("Case Description"; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Query Code";"Query Code")
+                field("Query Code"; Rec."Query Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Source;Source)
+                field(Source; Rec.Source)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Caller Reffered To";"Caller Reffered To")
+                field("Caller Reffered To"; Rec."Caller Reffered To")
                 {
                     ApplicationArea = Basic;
                 }
@@ -134,31 +134,31 @@ Page 51516521 "Crm log card"
             group("Employer Information")
             {
                 Visible = AsEmployer;
-                field("company No";"company No")
+                field("company No"; Rec."company No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Company Name";"Company Name")
+                field("Company Name"; Rec."Company Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Company Address";"Company Address")
+                field("Company Address"; Rec."Company Address")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Company postal code";"Company postal code")
+                field("Company postal code"; Rec."Company postal code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Company Telephone";"Company Telephone")
+                field("Company Telephone"; Rec."Company Telephone")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Company Email";"Company Email")
+                field("Company Email"; Rec."Company Email")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Company website";"Company website")
+                field("Company website"; Rec."Company website")
                 {
                     ApplicationArea = Basic;
                 }
@@ -176,7 +176,7 @@ Page 51516521 "Crm log card"
                 Promoted = true;
                 PromotedCategory = New;
                 RunObject = Page "Checkoff Processing Lines-D";
-                RunPageLink = "Staff/Payroll No"=field("Member No");
+                RunPageLink = "Staff/Payroll No" = field("Member No");
             }
             action(Forward)
             {
@@ -188,110 +188,108 @@ Page 51516521 "Crm log card"
                 trigger OnAction()
                 begin
                     //Get lead
-                    if ("Calling As"="calling as"::"As Non Member")or ("Calling As"="calling as"::"As Others") then begin
-                    LeadM.Init;
-                    LeadM."No.":=No;
-                    LeadM."First Name":="First Name";
-                    LeadM."Middle Name":=SurName;
-                    LeadM.Surname:="Last Name";
-                    LeadM."member no":="Member No";
-                    LeadM.Name:="Member Name";
-                    LeadM.Address:=Address;
-                    LeadM.City:=city;
-                    LeadM."Phone No.":="Phone No";
-                    LeadM."Company No.":="company No";
-                    LeadM."Company Name":="Company Name";
-                    LeadM.Name:="First Name"+ '' +SurName+'' + ''+"Last Name";
-                    LeadM.Type:="Calling As";
-                    LeadM."ID No":="ID No";
-                    LeadM."Receive date":=Today;
-                    LeadM."Receive Time":=Time;
-                    LeadM."Received From":=UserId;
-                    LeadM."Sent By":=UserId;
-                    LeadM."Caller Reffered To":="Caller Reffered To";
-                    LeadM.Description:=Description;
-                    LeadM.Insert(true);
-                    Send:=true;
-                    Message('opportunity successfully generated');
+                    if (Rec."Calling As" = Rec."calling as"::"As Non Member") or (Rec."Calling As" = Rec."calling as"::"As Others") then begin
+                        LeadM.Init;
+                        LeadM."No." := Rec.No;
+                        LeadM."First Name" := Rec."First Name";
+                        LeadM."Middle Name" := Rec.SurName;
+                        LeadM.Surname := Rec."Last Name";
+                        LeadM."member no" := Rec."Member No";
+                        LeadM.Name := Rec."Member Name";
+                        LeadM.Address := Rec.Address;
+                        LeadM.City := Rec.city;
+                        LeadM."Phone No." := Rec."Phone No";
+                        LeadM."Company No." := Rec."company No";
+                        LeadM."Company Name" := Rec."Company Name";
+                        LeadM.Name := Rec."First Name" + '' + Rec.SurName + '' + '' + Rec."Last Name";
+                        LeadM.Type := Rec."Calling As";
+                        LeadM."ID No" := Rec."ID No";
+                        LeadM."Receive date" := Today;
+                        LeadM."Receive Time" := Time;
+                        LeadM."Received From" := UserId;
+                        LeadM."Sent By" := UserId;
+                        LeadM."Caller Reffered To" := Rec."Caller Reffered To";
+                        LeadM.Description := Rec.Description;
+                        LeadM.Insert(true);
+                        Rec.Send := true;
+                        Message('opportunity successfully generated');
 
                     end;
                     //categories lead
 
-                      //get the CASE INFORMATION
-                      if "Calling As"="calling as"::"As Member" then
-                       begin
-                         if ("Calling For"="calling for"::Complaint )or ("Calling For"="calling for"::Payment )or ("Calling For"="calling for"::Receipt )or ("Calling For"="calling for"::"Loan Form" )then
-                           begin
-                             TestField("Type of cases");
-                             if "Type of cases"="type of cases"::Loan then
-                              begin
-                                TestField("Loan No");
-                              end;
-                             CASEM.Init;
-                             CASEM."Case Number":=No;
-                             CASEM."Member No":="Member No";
-                             CASEM."Fosa Account":="Fosa account";
-                             CASEM."Account Name":="Member Name";
-                             CASEM."loan no":="Loan No";
-                             CASEM."Date of Complaint":=Today;
-                             CASEM."Type of cases":="Type of cases";
-                             CASEM."Time Sent":=Time;
-                             CASEM."Date Sent":=Today;
-                             CASEM."Receive date":=Today;
-                             CASEM."Caller Reffered To":="Caller Reffered To";
-                             CASEM."Case Description":=Description;
-                             if CASEM."Case Number"<>'' then
-                               Message('Member Case created ');
-                             Send:=true;
-                             CASEM.Insert(true);
-                         end else
-                             CASEM.Init;
-                             CASEM."Case Number":=No;
-                             CASEM."Member No":="Member No";
-                             CASEM."Fosa Account":="Fosa account";
-                             CASEM."Account Name":="Member Name";
-                             CASEM."loan no":="Loan No";
-                             CASEM."Date of Complaint":=Today;
-                             CASEM."Type of cases":="Type of cases";
-                             CASEM."Time Sent":=Time;
-                             CASEM."Date Sent":=Today;
-                             CASEM."Receive date":=Today;
-                             CASEM."Caller Reffered To":="Caller Reffered To";
-                             CASEM."Case Description":=Description;
-                             if CASEM."Case Number"<>'' then
-                               Message('Member Case created ');
-                             Send:=true;
+                    //get the CASE INFORMATION
+                    if Rec."Calling As" = Rec."calling as"::"As Member" then begin
+                        if (Rec."Calling For" = Rec."calling for"::Complaint) or (Rec."Calling For" = Rec."calling for"::Payment) or (Rec."Calling For" = Rec."calling for"::Receipt) or (Rec."Calling For" = Rec."calling for"::"Loan Form") then begin
+                            Rec.TestField("Type of cases");
+                            if Rec."Type of cases" = Rec."type of cases"::Loan then begin
+                                Rec.TestField("Loan No");
+                            end;
+                            CASEM.Init;
+                            CASEM."Case Number" := Rec.No;
+                            CASEM."Member No" := Rec."Member No";
+                            CASEM."Fosa Account" := Rec."Fosa account";
+                            CASEM."Account Name" := Rec."Member Name";
+                            CASEM."loan no" := Rec."Loan No";
+                            CASEM."Date of Complaint" := Today;
+                            CASEM."Type of cases" := Rec."Type of cases";
+                            CASEM."Time Sent" := Time;
+                            CASEM."Date Sent" := Today;
+                            CASEM."Receive date" := Today;
+                            CASEM."Caller Reffered To" := Rec."Caller Reffered To";
+                            CASEM."Case Description" := Rec.Description;
+                            if CASEM."Case Number" <> '' then
+                                Message('Member Case created ');
+                            Rec.Send := true;
+                            CASEM.Insert(true);
+                        end else
+                            CASEM.Init;
+                        CASEM."Case Number" := Rec.No;
+                        CASEM."Member No" := Rec."Member No";
+                        CASEM."Fosa Account" := Rec."Fosa account";
+                        CASEM."Account Name" := Rec."Member Name";
+                        CASEM."loan no" := Rec."Loan No";
+                        CASEM."Date of Complaint" := Today;
+                        CASEM."Type of cases" := Rec."Type of cases";
+                        CASEM."Time Sent" := Time;
+                        CASEM."Date Sent" := Today;
+                        CASEM."Receive date" := Today;
+                        CASEM."Caller Reffered To" := Rec."Caller Reffered To";
+                        CASEM."Case Description" := Rec.Description;
+                        if CASEM."Case Number" <> '' then
+                            Message('Member Case created ');
+                        Rec.Send := true;
 
-                         CASEM.Insert(true);
-                       end;
+                        CASEM.Insert(true);
+                    end;
 
-                     //company cases
-                     if "Calling As"="calling as"::"As Employer" then begin
-                      if ("Calling For"="calling for"::Complaint )or ("Calling For"="calling for"::Payment )or ("Calling For"="calling for"::Receipt )then begin
-                    TestField("Type of cases");TestField("Query Code");
-                        if "Type of cases"<>"type of cases"::"Payment/Receipt/Advice" then
-                          Error('Case must be Payment/Receipt/Advice');
-                          CASEM.Init;
-                     CASEM."Case Number":=No;
-                     CASEM."company No":="Query Code";
-                     CASEM."Company Name":="Company Name";
-                     CASEM."Company Address":="Company Address";
-                     CASEM."Company Email":="Company Email";
-                     CASEM."Date of Complaint":=Today;
-                     CASEM."Company postal code":="Company postal code";
-                     CASEM."Company Telephone":="Company Telephone";
-                     CASEM."Type of cases":="Type of cases";
-                     CASEM."Time Sent":=Time;
-                     CASEM."Date Sent":=Today;
-                     CASEM."Receive date":=Today;
-                     CASEM."Caller Reffered To":="Caller Reffered To";
-                     CASEM."Case Description":=Description;
-                     if CASEM."Case Number"<>'' then
-                       Send:=true;
-                       Message('Employer Case created ');
-                     end;
-                     CASEM.Insert(true);
+                    //company cases
+                    if Rec."Calling As" = Rec."calling as"::"As Employer" then begin
+                        if (Rec."Calling For" = Rec."calling for"::Complaint) or (Rec."Calling For" = Rec."calling for"::Payment) or (Rec."Calling For" = Rec."calling for"::Receipt) then begin
+                            Rec.TestField("Type of cases");
+                            Rec.TestField("Query Code");
+                            if Rec."Type of cases" <> Rec."type of cases"::"Payment/Receipt/Advice" then
+                                Error('Case must be Payment/Receipt/Advice');
+                            CASEM.Init;
+                            CASEM."Case Number" := Rec.No;
+                            CASEM."company No" := Rec."Query Code";
+                            CASEM."Company Name" := Rec."Company Name";
+                            CASEM."Company Address" := Rec."Company Address";
+                            CASEM."Company Email" := Rec."Company Email";
+                            CASEM."Date of Complaint" := Today;
+                            CASEM."Company postal code" := Rec."Company postal code";
+                            CASEM."Company Telephone" := Rec."Company Telephone";
+                            CASEM."Type of cases" := Rec."Type of cases";
+                            CASEM."Time Sent" := Time;
+                            CASEM."Date Sent" := Today;
+                            CASEM."Receive date" := Today;
+                            CASEM."Caller Reffered To" := Rec."Caller Reffered To";
+                            CASEM."Case Description" := Rec.Description;
+                            if CASEM."Case Number" <> '' then
+                                Rec.Send := true;
+                            Message('Employer Case created ');
                         end;
+                        CASEM.Insert(true);
+                    end;
                 end;
             }
         }
@@ -299,47 +297,47 @@ Page 51516521 "Crm log card"
 
     trigger OnAfterGetRecord()
     begin
-        AsEmployer:=false;
-        Asmember:=false;
-        AsNonmember:=false;
-        Asother:=false;
-        Ascase:=false;
-        if "Calling As"="calling as"::"As Member" then begin
-          Asmember:=true;
-          AsEmployer:=true;
-          Ascase:=true;
-          end;
-          if "Calling As"="calling as"::"As Non Member" then begin
-            AsNonmember:=true;
-             Asother:=true;
-            end;
-            if "Calling As"="calling as"::"As Employer" then begin
-              AsEmployer:=true;
-              Asother:=true;
-              Ascase:=true;
-              end;
+        AsEmployer := false;
+        Asmember := false;
+        AsNonmember := false;
+        Asother := false;
+        Ascase := false;
+        if Rec."Calling As" = Rec."calling as"::"As Member" then begin
+            Asmember := true;
+            AsEmployer := true;
+            Ascase := true;
+        end;
+        if Rec."Calling As" = Rec."calling as"::"As Non Member" then begin
+            AsNonmember := true;
+            Asother := true;
+        end;
+        if Rec."Calling As" = Rec."calling as"::"As Employer" then begin
+            AsEmployer := true;
+            Asother := true;
+            Ascase := true;
+        end;
     end;
 
     trigger OnOpenPage()
     begin
-        AsEmployer:=false;
-        Asmember:=false;
-        AsNonmember:=false;
-        Asother:=false;
-        Ascase:=false;
-        if "Calling As"="calling as"::"As Member" then begin
-          Asmember:=true;
-          AsEmployer:=true;
-          Ascase:=true;
-          end;
-          if "Calling As"="calling as"::"As Non Member" then begin
-            AsNonmember:=true;
-             Asother:=true;
-            end;
-            if "Calling As"="calling as"::"As Employer" then begin
-              AsEmployer:=true;
-              Ascase:=true;
-              end;
+        AsEmployer := false;
+        Asmember := false;
+        AsNonmember := false;
+        Asother := false;
+        Ascase := false;
+        if Rec."Calling As" = Rec."calling as"::"As Member" then begin
+            Asmember := true;
+            AsEmployer := true;
+            Ascase := true;
+        end;
+        if Rec."Calling As" = Rec."calling as"::"As Non Member" then begin
+            AsNonmember := true;
+            Asother := true;
+        end;
+        if Rec."Calling As" = Rec."calling as"::"As Employer" then begin
+            AsEmployer := true;
+            Ascase := true;
+        end;
     end;
 
     var

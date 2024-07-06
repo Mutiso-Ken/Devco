@@ -2,7 +2,7 @@ Page 51516082 "TwoFactorAuth"
 {
     Caption = 'Authentication Page';
     PageType = ListPart;
-    
+
     layout
     {
         area(content)

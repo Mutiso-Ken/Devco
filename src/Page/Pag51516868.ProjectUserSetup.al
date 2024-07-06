@@ -12,23 +12,23 @@ Page 51516868 "Project User Setup"
         {
             repeater(Group)
             {
-                field("User ID";"User ID")
+                field("User ID"; Rec."User ID")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Reclassification Template";"Reclassification Template")
+                field("Reclassification Template"; Rec."Reclassification Template")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Reclassification Batch";"Reclassification Batch")
+                field("Reclassification Batch"; Rec."Reclassification Batch")
                 {
                     ApplicationArea = Basic;
                 }
-                field("General Journal Template";"General Journal Template")
+                field("General Journal Template"; Rec."General Journal Template")
                 {
                     ApplicationArea = Basic;
                 }
-                field("General Journal Batch";"General Journal Batch")
+                field("General Journal Batch"; Rec."General Journal Batch")
                 {
                     ApplicationArea = Basic;
                 }

@@ -10,62 +10,62 @@ Page 51516589 "Cheque Truncation Card"
         {
             group(General)
             {
-                field("Chq Receipt No";"Chq Receipt No")
+                field("Chq Receipt No"; Rec."Chq Receipt No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cheque Serial No";"Cheque Serial No")
+                field("Cheque Serial No"; Rec."Cheque Serial No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No.";"Account No.")
+                field("Account No."; Rec."Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Branch Code";"Branch Code")
+                field("Branch Code"; Rec."Branch Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Refference";"Transaction Refference")
+                field("Transaction Refference"; Rec."Transaction Refference")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cheque No";"Cheque No")
+                field("Cheque No"; Rec."Cheque No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Balance";"Account Balance")
+                field("Account Balance"; Rec."Account Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field(FrontImage;FrontImage)
+                field(FrontImage; Rec.FrontImage)
                 {
                     ApplicationArea = Basic;
                 }
-                field(FrontGrayImage;FrontGrayImage)
+                field(FrontGrayImage; Rec.FrontGrayImage)
                 {
                     ApplicationArea = Basic;
                 }
-                field(BackImages;BackImages)
+                field(BackImages; Rec.BackImages)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Verification Status";"Verification Status")
+                field("Verification Status"; Rec."Verification Status")
                 {
                     ApplicationArea = Basic;
                 }
             }
-            part(Control1000000015;"Cheque Trans Verification")
+            part(Control1000000015; "Cheque Trans Verification")
             {
-                SubPageLink = "Chq Receipt No"=field("Account No.");
+                SubPageLink = "Chq Receipt No" = field("Account No.");
             }
         }
     }

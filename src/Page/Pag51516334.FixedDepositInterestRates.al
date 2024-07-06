@@ -10,15 +10,15 @@ Page 51516334 "Fixed Deposit Interest Rates"
         {
             repeater(Control1102760000)
             {
-                field("Minimum Amount";"Minimum Amount")
+                field("Minimum Amount"; Rec."Minimum Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Maximum Amount";"Maximum Amount")
+                field("Maximum Amount"; Rec."Maximum Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest Rate";"Interest Rate")
+                field("Interest Rate"; Rec."Interest Rate")
                 {
                     ApplicationArea = Basic;
                 }

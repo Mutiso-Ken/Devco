@@ -4,11 +4,11 @@ pageextension 51516621 "General Ledger Entries Ext" extends "General Ledger Entr
     {
         addbefore(Amount)
         {
-            field("Debit Amounts"; "Debit Amount")
+            field("Debit Amounts"; Rec."Debit Amount")
             {
                 ApplicationArea = Basic;
             }
-            field("Credit Amounts"; "Credit Amount")
+            field("Credit Amounts"; Rec."Credit Amount")
             {
                 ApplicationArea = Basic;
             }
@@ -18,17 +18,17 @@ pageextension 51516621 "General Ledger Entries Ext" extends "General Ledger Entr
                 Caption = 'Running Balance';
                 ToolTip = 'Specifies the running balance.';
             }
-            field("Reverse"; Reversed)
+            field("Reverse"; Rec.Reversed)
             {
                 Caption = 'Reversed';
                 ApplicationArea = Basic;
             }
-            field("ExternalDocument No."; "External Document No.")
+            field("ExternalDocument No."; Rec."External Document No.")
             {
                 Caption = 'External Document No:';
                 ApplicationArea = Basic;
             }
-            field("UserID"; "User ID")
+            field("UserID"; Rec."User ID")
             {
                 Caption = 'User ID';
                 ApplicationArea = Basic;

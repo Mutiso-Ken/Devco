@@ -12,147 +12,147 @@ Page 51516051 "Funds User Setup"
         {
             repeater(Group)
             {
-                field(UserID;UserID)
+                field(UserID; Rec.UserID)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Receipt Journal Template";"Receipt Journal Template")
+                field("Receipt Journal Template"; Rec."Receipt Journal Template")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Receipt Journal Batch";"Receipt Journal Batch")
+                field("Receipt Journal Batch"; Rec."Receipt Journal Batch")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payment Journal Template";"Payment Journal Template")
+                field("Payment Journal Template"; Rec."Payment Journal Template")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payment Journal Batch";"Payment Journal Batch")
+                field("Payment Journal Batch"; Rec."Payment Journal Batch")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Petty Cash Template";"Petty Cash Template")
+                field("Petty Cash Template"; Rec."Petty Cash Template")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Petty Cash Batch";"Petty Cash Batch")
+                field("Petty Cash Batch"; Rec."Petty Cash Batch")
                 {
                     ApplicationArea = Basic;
                 }
-                field("FundsTransfer Template Name";"FundsTransfer Template Name")
+                field("FundsTransfer Template Name"; Rec."FundsTransfer Template Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("FundsTransfer Batch Name";"FundsTransfer Batch Name")
+                field("FundsTransfer Batch Name"; Rec."FundsTransfer Batch Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Default Receipts Bank";"Default Receipts Bank")
+                field("Default Receipts Bank"; Rec."Default Receipts Bank")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Default Payment Bank";"Default Payment Bank")
+                field("Default Payment Bank"; Rec."Default Payment Bank")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Default Petty Cash Bank";"Default Petty Cash Bank")
+                field("Default Petty Cash Bank"; Rec."Default Petty Cash Bank")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Max. Cash Collection";"Max. Cash Collection")
+                field("Max. Cash Collection"; Rec."Max. Cash Collection")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Max. Cheque Collection";"Max. Cheque Collection")
+                field("Max. Cheque Collection"; Rec."Max. Cheque Collection")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Max. Deposit Slip Collection";"Max. Deposit Slip Collection")
+                field("Max. Deposit Slip Collection"; Rec."Max. Deposit Slip Collection")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Supervisor ID";"Supervisor ID")
+                field("Supervisor ID"; Rec."Supervisor ID")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Pay In Journal Template";"Bank Pay In Journal Template")
+                field("Bank Pay In Journal Template"; Rec."Bank Pay In Journal Template")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Pay In Journal Batch";"Bank Pay In Journal Batch")
+                field("Bank Pay In Journal Batch"; Rec."Bank Pay In Journal Batch")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Imprest Template";"Imprest Template")
+                field("Imprest Template"; Rec."Imprest Template")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Imprest  Batch";"Imprest  Batch")
+                field("Imprest  Batch"; Rec."Imprest  Batch")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Claim Template";"Claim Template")
+                field("Claim Template"; Rec."Claim Template")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Claim  Batch";"Claim  Batch")
+                field("Claim  Batch"; Rec."Claim  Batch")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Advance Template";"Advance Template")
+                field("Advance Template"; Rec."Advance Template")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Advance  Batch";"Advance  Batch")
+                field("Advance  Batch"; Rec."Advance  Batch")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Advance Surr Template";"Advance Surr Template")
+                field("Advance Surr Template"; Rec."Advance Surr Template")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Advance Surr Batch";"Advance Surr Batch")
+                field("Advance Surr Batch"; Rec."Advance Surr Batch")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Dim Change Journal Template";"Dim Change Journal Template")
+                field("Dim Change Journal Template"; Rec."Dim Change Journal Template")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Dim Change Journal Batch";"Dim Change Journal Batch")
+                field("Dim Change Journal Batch"; Rec."Dim Change Journal Batch")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Journal Voucher Template";"Journal Voucher Template")
+                field("Journal Voucher Template"; Rec."Journal Voucher Template")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Journal Voucher Batch";"Journal Voucher Batch")
+                field("Journal Voucher Batch"; Rec."Journal Voucher Batch")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payroll Template";"Payroll Template")
+                field("Payroll Template"; Rec."Payroll Template")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payroll Batch";"Payroll Batch")
+                field("Payroll Batch"; Rec."Payroll Batch")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Checkoff Template";"Checkoff Template")
+                field("Checkoff Template"; Rec."Checkoff Template")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Checkoff Batch";"Checkoff Batch")
+                field("Checkoff Batch"; Rec."Checkoff Batch")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Salaries Template";"Salaries Template")
+                field("Salaries Template"; Rec."Salaries Template")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Salaries Batch";"Salaries Batch")
+                field("Salaries Batch"; Rec."Salaries Batch")
                 {
                     ApplicationArea = Basic;
                 }

@@ -10,79 +10,79 @@ Page 51516312 "EFT Details"
         {
             repeater(Control17)
             {
-                field("Account No";"Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Staff No";"Staff No")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Phone No.";"Phone No.")
+                field("Staff No"; Rec."Staff No")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Charges;Charges)
+                field(Charges; Rec.Charges)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account Type";"Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Destination Account Type";"Destination Account Type")
+                field("Destination Account Type"; Rec."Destination Account Type")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Type';
                 }
-                field(Amount;Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Not Available";"Not Available")
+                field("Not Available"; Rec."Not Available")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Not Avail.';
                     Editable = false;
                 }
-                field("Destination Account No";"Destination Account No")
+                field("Destination Account No"; Rec."Destination Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(DCHAR;DCHAR)
+                field(DCHAR; DCHAR)
                 {
                     ApplicationArea = Basic;
                     Caption = 'CR';
                     Editable = false;
                 }
-                field("Destination Account Name";"Destination Account Name")
+                field("Destination Account Name"; Rec."Destination Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank No";"Bank No")
+                field("Bank No"; Rec."Bank No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payee Bank Name";"Payee Bank Name")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Standing Order No";"Standing Order No")
+                field("Payee Bank Name"; Rec."Payee Bank Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(No;No)
+                field("Standing Order No"; Rec."Standing Order No")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -97,23 +97,23 @@ Page 51516312 "EFT Details"
 
     trigger OnAfterGetRecord()
     begin
-        DCHAR:=0;
-        DCHAR:=StrLen("Destination Account No");
+        DCHAR := 0;
+        DCHAR := StrLen(Rec."Destination Account No");
 
-        NotAvailable:=true;
-        AvailableBal:=0;
+        NotAvailable := true;
+        AvailableBal := 0;
 
 
         //Available Bal
-        if Accounts.Get("Account No") then begin
-        Accounts.CalcFields(Accounts.Balance,Accounts."Uncleared Cheques",Accounts."ATM Transactions");
-        if AccountTypes.Get(Accounts."Account Type") then begin
-        AvailableBal:=Accounts.Balance-(Accounts."Uncleared Cheques"+Accounts."ATM Transactions"+Charges+AccountTypes."Minimum Balance");
+        if Accounts.Get(Rec."Account No") then begin
+            Accounts.CalcFields(Accounts.Balance, Accounts."Uncleared Cheques", Accounts."ATM Transactions");
+            if AccountTypes.Get(Accounts."Account Type") then begin
+                AvailableBal := Accounts.Balance - (Accounts."Uncleared Cheques" + Accounts."ATM Transactions" + Rec.Charges + AccountTypes."Minimum Balance");
 
-        if Amount <= AvailableBal then
-        NotAvailable:=false;
+                if Rec.Amount <= AvailableBal then
+                    NotAvailable := false;
 
-        end;
+            end;
         end;
     end;
 

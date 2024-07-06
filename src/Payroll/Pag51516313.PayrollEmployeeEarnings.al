@@ -16,53 +16,53 @@ page 51516313 "Payroll Employee Earnings."
         {
             repeater(Group)
             {
-                field("Transaction Code"; "Transaction Code")
+                field("Transaction Code"; Rec."Transaction Code")
                 {
                     ApplicationArea = All;
                     Editable = true;
                     TableRelation = "Payroll Transaction Code."."Transaction Code" where("Transaction Type" = CONST(Income));
                 }
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
-                    Visible=false;
+                    Visible = false;
                 }
-                field("Transaction Name"; "Transaction Name")
+                field("Transaction Name"; Rec."Transaction Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Transaction Type"; "Transaction Type")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = All;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = All;
                 }
-                field("Amount(LCY)"; "Amount(LCY)")
+                field("Amount(LCY)"; Rec."Amount(LCY)")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field(Balance; Balance)
+                field(Balance; Rec.Balance)
                 {
                     ApplicationArea = All;
                 }
-                field("Balance(LCY)"; "Balance(LCY)")
+                field("Balance(LCY)"; Rec."Balance(LCY)")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Period Month"; "Period Month")
+                field("Period Month"; Rec."Period Month")
                 {
                     ApplicationArea = All;
                 }
-                field("Period Year"; "Period Year")
+                field("Period Year"; Rec."Period Year")
                 {
                     ApplicationArea = All;
                 }
-                field("Payroll Period"; "Payroll Period")
+                field("Payroll Period"; Rec."Payroll Period")
                 {
                     ApplicationArea = All;
                 }
@@ -80,7 +80,7 @@ page 51516313 "Payroll Employee Earnings."
         PayrollCalender.Reset;
         PayrollCalender.SetRange(Closed, false);
         if PayrollCalender.FindFirst then
-            SetRange("Payroll Period", PayrollCalender."Date Opened");
+            Rec.SetRange("Payroll Period", PayrollCalender."Date Opened");
     end;
 
     var

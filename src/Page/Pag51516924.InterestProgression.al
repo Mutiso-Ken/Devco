@@ -10,35 +10,35 @@ Page 51516924 "Interest Progression"
         {
             repeater(Group)
             {
-                field("Account No";"Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Date;Date)
+                field(Date; Rec.Date)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Gross Interest";"Gross Interest")
+                field("Gross Interest"; Rec."Gross Interest")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Witholding Tax";"Witholding Tax")
+                field("Witholding Tax"; Rec."Witholding Tax")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Net Interest";"Net Interest")
+                field("Net Interest"; Rec."Net Interest")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Qualifying Savings";"Qualifying Savings")
+                field("Qualifying Savings"; Rec."Qualifying Savings")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Balance";"Account Balance")
+                field("Account Balance"; Rec."Account Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Last Date Modified";"Last Date Modified")
+                field("Last Date Modified"; Rec."Last Date Modified")
                 {
                     ApplicationArea = Basic;
                 }

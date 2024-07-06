@@ -18,107 +18,107 @@ Page 51516464 "Loans DrillDown List"
         {
             repeater(Control1000000000)
             {
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Product Type"; "Loan Product Type")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-
-                field("Expected Date of Completion"; "Expected Date of Completion")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Application Date"; "Application Date")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Client Code"; "Client Code")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("BOSA No"; "BOSA No")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Issued Date"; "Issued Date")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Client Name"; "Client Name")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
 
-                field(Repayment; Repayment)
+                field("Expected Date of Completion"; Rec."Expected Date of Completion")
                 {
                     ApplicationArea = Basic;
                 }
-                   field("Oustanding Interest"; "Oustanding Interest")
+                field("Application Date"; Rec."Application Date")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Client Code"; Rec."Client Code")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("BOSA No"; Rec."BOSA No")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Issued Date"; Rec."Issued Date")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Client Name"; Rec."Client Name")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+
+                field(Repayment; Rec.Repayment)
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Oustanding Interest"; Rec."Oustanding Interest")
                 {
                     ApplicationArea = Basic;
                     Visible = true;
                 }
 
 
-                   field("Loan Monthly Principal"; Repayment)
+                field("Loan Monthly Principal"; Rec.Repayment)
                 {
                     ApplicationArea = all;
                 }
-                field("Loan Principle Repayment"; "Loan Principle Repayment")
+                field("Loan Principle Repayment"; Rec."Loan Principle Repayment")
                 {
                     ApplicationArea = Basic;
-                    Visible=false;
+                    Visible = false;
 
                 }
-                field("Loan Interest Repayment"; "Loan Interest Repayment")
+                field("Loan Interest Repayment"; Rec."Loan Interest Repayment")
                 {
                     ApplicationArea = Basic;
-                            Visible=false;
+                    Visible = false;
                 }
-             
-                field("Requested Amount"; "Requested Amount")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                            Visible=false;
-                }
-                field("Approved Amount"; "Approved Amount")
+
+                field("Requested Amount"; Rec."Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
+                    Visible = false;
                 }
-                field("Outstanding Balance"; "Outstanding Balance")
+                field("Approved Amount"; Rec."Approved Amount")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Outstanding Balance"; Rec."Outstanding Balance")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = true;
                 }
-             
-                field(Installments; Installments)
+
+                field(Installments; Rec.Installments)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Installments';
                     Editable = false;
                 }
-                field(Interest; Interest)
+                field(Interest; Rec.Interest)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Status"; "Loan Status")
+                field("Loan Status"; Rec."Loan Status")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
-                    Visible=false;
+                    Visible = false;
                 }
                 // field("Last Pay Date"; "Last Pay Date")
                 // {

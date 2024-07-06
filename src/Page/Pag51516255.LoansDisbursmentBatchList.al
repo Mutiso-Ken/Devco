@@ -19,29 +19,29 @@ Page 51516255 "Loans Disbursment Batch List"
         {
             repeater(Control1102760000)
             {
-                field("Batch No."; "Batch No.")
+                field("Batch No."; Rec."Batch No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Source; Source)
+                field(Source; Rec.Source)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Description/Remarks"; "Description/Remarks")
+                field("Description/Remarks"; Rec."Description/Remarks")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Date"; "Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("No of Loans"; "No of Loans")
+                field("No of Loans"; Rec."No of Loans")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Mode Of Disbursement"; "Mode Of Disbursement")
+                field("Mode Of Disbursement"; Rec."Mode Of Disbursement")
                 {
                     ApplicationArea = Basic;
                     Editable = true;

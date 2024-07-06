@@ -10,18 +10,18 @@ pageextension 51516628 "ChartOfAccountsCardExt" extends "G/L Account Card"
             {
                 Visible = false;
 
-                field("Budgeted Amount"; "Budgeted Amount")
+                field("Budgeted Amount"; Rec."Budgeted Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
 
-                field("Budgeted Credit Amount"; "Budgeted Credit Amount")
+                field("Budgeted Credit Amount"; Rec."Budgeted Credit Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Budgeted Debit Amount"; "Budgeted Debit Amount")
+                field("Budgeted Debit Amount"; Rec."Budgeted Debit Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -31,47 +31,47 @@ pageextension 51516628 "ChartOfAccountsCardExt" extends "G/L Account Card"
             group("SASRA REPORTS SETUP")
             {
                 Caption = 'SASRA REPORTS SETUP';
-                field(StatementOfFP; StatementOfFP)
+                field(StatementOfFP; Rec.StatementOfFP)
                 {
                     ApplicationArea = Basic;
                 }
-                field(StatementOfFP2; StatementOfFP2)
+                field(StatementOfFP2; Rec.StatementOfFP2)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Form2F(Statement of C Income)"; "Form2F(Statement of C Income)")
+                field("Form2F(Statement of C Income)"; Rec."Form2F(Statement of C Income)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Form2F1(Statement of C Income)"; "Form2F1(Statement of C Income)")
+                field("Form2F1(Statement of C Income)"; Rec."Form2F1(Statement of C Income)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Capital adequecy"; "Capital adequecy")
+                field("Capital adequecy"; Rec."Capital adequecy")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Liquidity; Liquidity)
+                field(Liquidity; Rec.Liquidity)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Form2E(investment)"; "Form2E(investment)")
+                field("Form2E(investment)"; Rec."Form2E(investment)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Form 2H other disc"; "Form 2H other disc")
+                field("Form 2H other disc"; Rec."Form 2H other disc")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Form2E(investment)New"; "Form2E(investment)New")
+                field("Form2E(investment)New"; Rec."Form2E(investment)New")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Form2E(investment)Land"; "Form2E(investment)Land")
+                field("Form2E(investment)Land"; Rec."Form2E(investment)Land")
                 {
                     ApplicationArea = Basic;
                 }
-                field(ChangesInEquity; ChangesInEquity)
+                field(ChangesInEquity; Rec.ChangesInEquity)
                 {
                     ApplicationArea = Basic;
                 }
@@ -80,30 +80,30 @@ pageextension 51516628 "ChartOfAccountsCardExt" extends "G/L Account Card"
             }
             group("Mkopo Setup")
             {
-                field(Assets; Assets)
+                field(Assets; Rec.Assets)
                 {
                     ApplicationArea = all;
                 }
-                field(MkopoLiabilities; MkopoLiabilities)
+                field(MkopoLiabilities; Rec.MkopoLiabilities)
                 {
                     ApplicationArea = all;
                     Caption = 'Liabilities';
                 }
-                field(FinancedBy; FinancedBy)
+                field(FinancedBy; Rec.FinancedBy)
                 {
                     ApplicationArea = all;
                     Caption = 'Financed By';
                 }
-                field(Financials; Financials)
+                field(Financials; Rec.Financials)
                 {
                     ApplicationArea = all;
                 }
-                field(Incomes; Incomes)
+                field(Incomes; Rec.Incomes)
                 {
                     Caption = 'Incomes and Expenses';
                     ApplicationArea = all;
                 }
-                field(Others; Others)
+                field(Others; Rec.Others)
                 {
                     Caption = 'Other Mkopo Paramters';
                     ApplicationArea = all;
@@ -114,12 +114,12 @@ pageextension 51516628 "ChartOfAccountsCardExt" extends "G/L Account Card"
     }
     trigger OnOpenPage()
     begin
-        AuditLog.FnReadingsMadeAudit(UserId, 'Accessed and read the G/L account page no-' + Format("No.") + ' Name-' + Format(Name));
+        AuditLog.FnReadingsMadeAudit(UserId, 'Accessed and read the G/L account page no-' + Format(Rec."No.") + ' Name-' + Format(Rec.Name));
     end;
 
     trigger OnClosePage()
     begin
-        AuditLog.FnReadingsMadeAudit(UserId, 'Closed G/L account page no-' + Format("No.") + ' Name-' + Format(Name));
+        AuditLog.FnReadingsMadeAudit(UserId, 'Closed G/L account page no-' + Format(Rec."No.") + ' Name-' + Format(Rec.Name));
     end;
 
     var

@@ -1,9 +1,9 @@
 pageextension 51516111 VendorListExt extends "Vendor List"
 {
-    
+
     layout
     {
-       
+
         modify("Responsibility Center")
         {
             Visible = false;

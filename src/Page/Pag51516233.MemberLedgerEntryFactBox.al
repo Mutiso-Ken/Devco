@@ -9,7 +9,7 @@ Page 51516233 "Member Ledger Entry FactBox"
     {
         area(content)
         {
-            field(DocumentHeading;DocumentHeading)
+            field(DocumentHeading; DocumentHeading)
             {
                 ApplicationArea = Basic;
                 Caption = 'Document';
@@ -27,42 +27,42 @@ Page 51516233 "Member Ledger Entry FactBox"
                 begin
                     CheckGLEntry := true;
 
-                    if "Document Type" = "document type"::Invoice then begin
-                      SalesInvoiceHdr.SetRange("No.","Document No.");
-                      if SalesInvoiceHdr.FindFirst then begin
-                        PostedSalesInvoiceCard.SetTableview(SalesInvoiceHdr);
-                        PostedSalesInvoiceCard.Run;
-                        CheckGLEntry := false;
-                      end
+                    if Rec."Document Type" = Rec."document type"::Invoice then begin
+                        SalesInvoiceHdr.SetRange("No.", Rec."Document No.");
+                        if SalesInvoiceHdr.FindFirst then begin
+                            PostedSalesInvoiceCard.SetTableview(SalesInvoiceHdr);
+                            PostedSalesInvoiceCard.Run;
+                            CheckGLEntry := false;
+                        end
                     end;
 
-                    if "Document Type" = "document type"::"Credit Memo" then begin
-                      SalesCrMemoHdr.SetRange("No.","Document No.");
-                      if SalesCrMemoHdr.FindFirst then begin
-                        PostedSalesCrMemoCard.SetTableview(SalesCrMemoHdr);
-                        PostedSalesCrMemoCard.Run;
-                        CheckGLEntry := false;
-                      end
+                    if Rec."Document Type" = Rec."document type"::"Credit Memo" then begin
+                        SalesCrMemoHdr.SetRange("No.", Rec."Document No.");
+                        if SalesCrMemoHdr.FindFirst then begin
+                            PostedSalesCrMemoCard.SetTableview(SalesCrMemoHdr);
+                            PostedSalesCrMemoCard.Run;
+                            CheckGLEntry := false;
+                        end
                     end;
 
                     if CheckGLEntry then begin
-                      GLEntry.SetCurrentkey("Document No.","Posting Date");
-                      GLEntry.SetRange("Document No.","Document No.");
-                      GLEntry.SetRange("Posting Date","Posting Date");
-                      GeneralLedgEntriesList.SetTableview(GLEntry);
-                      GeneralLedgEntriesList.Run
+                        GLEntry.SetCurrentkey("Document No.", "Posting Date");
+                        GLEntry.SetRange("Document No.", Rec."Document No.");
+                        GLEntry.SetRange("Posting Date", Rec."Posting Date");
+                        GeneralLedgEntriesList.SetTableview(GLEntry);
+                        GeneralLedgEntriesList.Run
                     end;
                 end;
             }
-            field("Due Date";"Due Date")
+            field("Due Date"; Rec."Due Date")
             {
                 ApplicationArea = Basic;
             }
-            field("Pmt. Discount Date";"Pmt. Discount Date")
+            field("Pmt. Discount Date"; Rec."Pmt. Discount Date")
             {
                 ApplicationArea = Basic;
             }
-            field(NoOfReminderFinEntries;NoOfReminderFinEntries)
+            field(NoOfReminderFinEntries; NoOfReminderFinEntries)
             {
                 ApplicationArea = Basic;
                 Caption = 'Reminder/Fin. Charge Entries';
@@ -73,12 +73,12 @@ Page 51516233 "Member Ledger Entry FactBox"
                     ReminderFinEntry: Record "Reminder/Fin. Charge Entry";
                     ReminderFinEntriesList: Page "Reminder/Fin. Charge Entries";
                 begin
-                    ReminderFinEntry.SetRange("Customer Entry No.","Entry No.");
+                    ReminderFinEntry.SetRange("Customer Entry No.", Rec."Entry No.");
                     ReminderFinEntriesList.SetTableview(ReminderFinEntry);
                     ReminderFinEntriesList.Run;
                 end;
             }
-            field(NoOfAppliedEntries;NoOfAppliedEntries)
+            field(NoOfAppliedEntries; NoOfAppliedEntries)
             {
                 ApplicationArea = Basic;
                 Caption = 'Applied Entries';
@@ -88,11 +88,11 @@ Page 51516233 "Member Ledger Entry FactBox"
                 var
                     AppliedCustomerEntriesList: Page "Applied Customer Entries";
                 begin
-                    AppliedCustomerEntriesList.SetTempCustLedgEntry("Entry No.");
+                    AppliedCustomerEntriesList.SetTempCustLedgEntry(Rec."Entry No.");
                     AppliedCustomerEntriesList.Run;
                 end;
             }
-            field(NoOfDetailedCustomerEntries;NoOfDetailedCustomerEntries)
+            field(NoOfDetailedCustomerEntries; NoOfDetailedCustomerEntries)
             {
                 ApplicationArea = Basic;
                 Caption = 'Detailed Ledger Entries';
@@ -102,9 +102,9 @@ Page 51516233 "Member Ledger Entry FactBox"
                 var
                     DetailedCustLedgEntry: Record "Detailed Cust. Ledg. Entry";
                 begin
-                    DetailedCustLedgEntry.SetRange("Cust. Ledger Entry No.","Entry No.");
-                    DetailedCustLedgEntry.SetRange("Customer No.","Customer No.");
-                    Page.Run(Page::"Detailed Cust. Ledg. Entries",DetailedCustLedgEntry);
+                    DetailedCustLedgEntry.SetRange("Cust. Ledger Entry No.", Rec."Entry No.");
+                    DetailedCustLedgEntry.SetRange("Customer No.", Rec."Customer No.");
+                    Page.Run(Page::"Detailed Cust. Ledg. Entries", DetailedCustLedgEntry);
                 end;
             }
         }
@@ -126,7 +126,7 @@ Page 51516233 "Member Ledger Entry FactBox"
         NoOfAppliedEntries := 0;
         DocumentHeading := '';
 
-        exit(Find(Which));
+        exit(Rec.Find(Which));
     end;
 
     trigger OnOpenPage()
@@ -149,16 +149,16 @@ Page 51516233 "Member Ledger Entry FactBox"
         DetailedCustLedgEntry: Record "Detailed Cust. Ledg. Entry";
     begin
         ReminderFinChargeEntry.Reset;
-        ReminderFinChargeEntry.SetRange("Customer Entry No.","Entry No.");
+        ReminderFinChargeEntry.SetRange("Customer Entry No.", Rec."Entry No.");
         NoOfReminderFinEntries := ReminderFinChargeEntry.Count;
 
         NoOfAppliedEntries := 0;
-        if "Entry No." <> 0 then
-          NoOfAppliedEntries := GetNoOfAppliedEntries(Rec);
+        if Rec."Entry No." <> 0 then
+            NoOfAppliedEntries := GetNoOfAppliedEntries(Rec);
 
         DetailedCustLedgEntry.Reset;
-        DetailedCustLedgEntry.SetRange("Cust. Ledger Entry No.","Entry No.");
-        DetailedCustLedgEntry.SetRange("Customer No.","Customer No.");
+        DetailedCustLedgEntry.SetRange("Cust. Ledger Entry No.", Rec."Entry No.");
+        DetailedCustLedgEntry.SetRange("Customer No.", Rec."Customer No.");
         NoOfDetailedCustomerEntries := DetailedCustLedgEntry.Count;
     end;
 
@@ -179,52 +179,52 @@ Page 51516233 "Member Ledger Entry FactBox"
         CreateCustLedgEntry := CustLedgerEntry;
 
         DtldCustLedgEntry1.SetCurrentkey("Cust. Ledger Entry No.");
-        DtldCustLedgEntry1.SetRange("Cust. Ledger Entry No.",CreateCustLedgEntry."Entry No.");
-        DtldCustLedgEntry1.SetRange(Unapplied,false);
+        DtldCustLedgEntry1.SetRange("Cust. Ledger Entry No.", CreateCustLedgEntry."Entry No.");
+        DtldCustLedgEntry1.SetRange(Unapplied, false);
         if DtldCustLedgEntry1.FindSet then
-          repeat
-            if DtldCustLedgEntry1."Cust. Ledger Entry No." =
-               DtldCustLedgEntry1."Applied Cust. Ledger Entry No."
-            then begin
-              DtldCustLedgEntry2.Init;
-              DtldCustLedgEntry2.SetCurrentkey("Applied Cust. Ledger Entry No.","Entry Type");
-              DtldCustLedgEntry2.SetRange(
-                "Applied Cust. Ledger Entry No.",DtldCustLedgEntry1."Applied Cust. Ledger Entry No.");
-              DtldCustLedgEntry2.SetRange("Entry Type",DtldCustLedgEntry2."entry type"::Application);
-              DtldCustLedgEntry2.SetRange(Unapplied,false);
-              if DtldCustLedgEntry2.Find('-') then
-                repeat
-                  if DtldCustLedgEntry2."Cust. Ledger Entry No." <>
-                     DtldCustLedgEntry2."Applied Cust. Ledger Entry No."
-                  then begin
+            repeat
+                if DtldCustLedgEntry1."Cust. Ledger Entry No." =
+                   DtldCustLedgEntry1."Applied Cust. Ledger Entry No."
+                then begin
+                    DtldCustLedgEntry2.Init;
+                    DtldCustLedgEntry2.SetCurrentkey("Applied Cust. Ledger Entry No.", "Entry Type");
+                    DtldCustLedgEntry2.SetRange(
+                      "Applied Cust. Ledger Entry No.", DtldCustLedgEntry1."Applied Cust. Ledger Entry No.");
+                    DtldCustLedgEntry2.SetRange("Entry Type", DtldCustLedgEntry2."entry type"::Application);
+                    DtldCustLedgEntry2.SetRange(Unapplied, false);
+                    if DtldCustLedgEntry2.Find('-') then
+                        repeat
+                            if DtldCustLedgEntry2."Cust. Ledger Entry No." <>
+                               DtldCustLedgEntry2."Applied Cust. Ledger Entry No."
+                            then begin
+                                CustLedgerEntry.SetCurrentkey("Entry No.");
+                                CustLedgerEntry.SetRange("Entry No.", DtldCustLedgEntry2."Cust. Ledger Entry No.");
+                                if CustLedgerEntry.FindFirst then
+                                    CustLedgerEntry.Mark(true);
+                            end;
+                        until DtldCustLedgEntry2.Next = 0;
+                end else begin
                     CustLedgerEntry.SetCurrentkey("Entry No.");
-                    CustLedgerEntry.SetRange("Entry No.",DtldCustLedgEntry2."Cust. Ledger Entry No.");
+                    CustLedgerEntry.SetRange("Entry No.", DtldCustLedgEntry1."Applied Cust. Ledger Entry No.");
                     if CustLedgerEntry.FindFirst then
-                      CustLedgerEntry.Mark(true);
-                  end;
-                until DtldCustLedgEntry2.Next = 0;
-            end else begin
-              CustLedgerEntry.SetCurrentkey("Entry No.");
-              CustLedgerEntry.SetRange("Entry No.",DtldCustLedgEntry1."Applied Cust. Ledger Entry No.");
-              if CustLedgerEntry.FindFirst then
-                CustLedgerEntry.Mark(true);
-            end;
-          until DtldCustLedgEntry1.Next = 0;
+                        CustLedgerEntry.Mark(true);
+                end;
+            until DtldCustLedgEntry1.Next = 0;
 
         CustLedgerEntry.SetCurrentkey("Entry No.");
         CustLedgerEntry.SetRange("Entry No.");
 
         if CreateCustLedgEntry."Closed by Entry No." <> 0 then begin
-          CustLedgerEntry."Entry No." := CreateCustLedgEntry."Closed by Entry No.";
-          CustLedgerEntry.Mark(true);
+            CustLedgerEntry."Entry No." := CreateCustLedgEntry."Closed by Entry No.";
+            CustLedgerEntry.Mark(true);
         end;
 
         CustLedgerEntry.SetCurrentkey("Closed by Entry No.");
-        CustLedgerEntry.SetRange("Closed by Entry No.",CreateCustLedgEntry."Entry No.");
+        CustLedgerEntry.SetRange("Closed by Entry No.", CreateCustLedgEntry."Entry No.");
         if CustLedgerEntry.FindSet then
-          repeat
-            CustLedgerEntry.Mark(true);
-          until CustLedgerEntry.Next = 0;
+            repeat
+                CustLedgerEntry.Mark(true);
+            until CustLedgerEntry.Next = 0;
 
         CustLedgerEntry.SetCurrentkey("Entry No.");
         CustLedgerEntry.SetRange("Closed by Entry No.");
@@ -238,9 +238,9 @@ Page 51516233 "Member Ledger Entry FactBox"
         Heading: Text[50];
     begin
         if CustLedgerEntry."Document Type" = 0 then
-          Heading := Text000
+            Heading := Text000
         else
-          Heading := Format(CustLedgerEntry."Document Type");
+            Heading := Format(CustLedgerEntry."Document Type");
         Heading := Heading + ' ' + CustLedgerEntry."Document No.";
         exit(Heading);
     end;

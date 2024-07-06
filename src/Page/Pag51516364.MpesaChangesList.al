@@ -13,31 +13,31 @@ Page 51516364 "Mpesa Changes List"
         {
             repeater(Group)
             {
-                field(No;No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Date";"Transaction Date")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("MPESA Receipt No";"MPESA Receipt No")
+                field("MPESA Receipt No"; Rec."MPESA Receipt No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No";"Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("New Account No";"New Account No")
+                field("New Account No"; Rec."New Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approved By";"Approved By")
+                field("Approved By"; Rec."Approved By")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }

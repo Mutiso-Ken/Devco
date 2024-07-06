@@ -247,17 +247,17 @@
 //                     trigger OnValidate()
 //                     begin
 //                         TestField("Resons for Status Change");
-                        
+
 //                         StatusPermissions.Reset;
 //                         StatusPermissions.SetRange(StatusPermissions."User Id",UserId);
 //                         StatusPermissions.SetRange(StatusPermissions."Function",StatusPermissions."function"::"Account Status");
 //                         if StatusPermissions.Find('-') = false then
 //                         Error('You do not have permissions to change the account status.');
-                        
+
 //                         if "Account Type" = 'FIXED' then begin
 //                         if "Balance (LCY)" > 0 then begin
 //                         CalcFields("Last Interest Date");
-                        
+
 //                         if "Call Deposit" = true then begin
 //                         if Status = Status::Closed then begin
 //                         if "Last Interest Date" < Today then
@@ -269,22 +269,22 @@
 //                         end;
 //                         end;
 //                         end;
-                        
+
 //                         if Status = Status::Active then begin
 //                         if Confirm('Are you sure you want to re-activate this account? This will recover re-activation fee.',false) = false then begin
 //                         Error('Re-activation terminated.');
 //                         end;
-                        
+
 //                         Blocked:=Blocked::" ";
 //                         Modify;
-                        
-                        
-                        
-                        
-                        
+
+
+
+
+
 //                         end;
-                        
-                        
+
+
 //                         //Account Closure
 //                         if Status = Status::Closed then begin
 //                         TestField("Closure Notice Date");
@@ -292,35 +292,35 @@
 //                         + 'interest earned before maturity will be forfeited.',false) = false then begin
 //                         Error('Closure terminated.');
 //                         end;
-                        
-                        
+
+
 //                         GenJournalLine.Reset;
 //                         GenJournalLine.SetRange(GenJournalLine."Journal Template Name",'PURCHASES');
 //                         GenJournalLine.SetRange(GenJournalLine."Journal Batch Name",'FTRANS');
 //                         if GenJournalLine.Find('-') then
 //                         GenJournalLine.DeleteAll;
-                        
-                        
-                        
+
+
+
 //                         AccountTypes.Reset;
 //                         AccountTypes.SetRange(AccountTypes.Code,"Account Type");
 //                         if AccountTypes.Find('-') then  begin
 //                         "Date Closed":=Today;
-                        
+
 //                         //Closure charges
 //                         /*Charges.RESET;
 //                         IF CALCDATE(AccountTypes."Closure Notice Period","Closure Notice Date") > TODAY THEN
 //                         Charges.SETRANGE(Charges.Code,AccountTypes."Closing Prior Notice Charge") */
-                        
+
 //                         Charges.Reset;
 //                         if CalcDate(AccountTypes."Closure Notice Period","Closure Notice Date") > Today then
 //                         Charges.SetRange(Charges.Code,AccountType."Closing Charge")
-                        
+
 //                         else
 //                         Charges.SetRange(Charges.Code,AccountTypes."Closing Charge");
 //                         if Charges.Find('-') then begin
 //                         LineNo:=LineNo+10000;
-                        
+
 //                         GenJournalLine.Init;
 //                         GenJournalLine."Journal Template Name":='PURCHASES';
 //                         GenJournalLine."Journal Batch Name":='FTRANS';
@@ -339,11 +339,11 @@
 //                         GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
 //                         if GenJournalLine.Amount<>0 then
 //                         GenJournalLine.Insert;
-                        
+
 //                         end;
 //                         //Closure charges
-                        
-                        
+
+
 //                         //Interest forfeited/Earned on maturity
 //                         CalcFields("Untranfered Interest");
 //                         if "Untranfered Interest" > 0 then begin
@@ -354,16 +354,16 @@
 //                         ForfeitInterest:=false;
 //                         if "Call Deposit" = true then
 //                         ForfeitInterest:=false;
-                        
+
 //                         end;
-                        
+
 //                         //PKK INGORE MATURITY
 //                         ForfeitInterest:=false;
 //                         //If FD - Check if matured
-                        
+
 //                         if ForfeitInterest = true then begin
 //                         LineNo:=LineNo+10000;
-                        
+
 //                         GenJournalLine.Init;
 //                         GenJournalLine."Journal Template Name":='PURCHASES';
 //                         GenJournalLine."Line No.":=LineNo;
@@ -387,15 +387,15 @@
 //                         GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
 //                         if GenJournalLine.Amount<>0 then
 //                         GenJournalLine.Insert;
-                        
+
 //                         InterestBuffer.Reset;
 //                         InterestBuffer.SetRange(InterestBuffer."Account No","No.");
 //                         if InterestBuffer.Find('-') then
 //                         InterestBuffer.ModifyAll(InterestBuffer.Transferred,true);
-                        
+
 //                         end else begin
 //                         LineNo:=LineNo+10000;
-                        
+
 //                         GenJournalLine.Init;
 //                         GenJournalLine."Journal Template Name":='PURCHASES';
 //                         GenJournalLine."Line No.":=LineNo;
@@ -418,24 +418,24 @@
 //                         GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
 //                         if GenJournalLine.Amount<>0 then
 //                         GenJournalLine.Insert;
-                        
+
 //                         InterestBuffer.Reset;
 //                         InterestBuffer.SetRange(InterestBuffer."Account No","No.");
 //                         if InterestBuffer.Find('-') then
 //                         InterestBuffer.ModifyAll(InterestBuffer.Transferred,true);
-                        
-                        
+
+
 //                         end;
-                        
-                        
+
+
 //                         //Transfer Balance if Fixed Deposit
 //                         if AccountTypes."Fixed Deposit" = true then begin
 //                         CalcFields("Balance (LCY)");
-                        
+
 //                         TestField("Savings Account No.");
-                        
+
 //                         LineNo:=LineNo+10000;
-                        
+
 //                         GenJournalLine.Init;
 //                         GenJournalLine."Journal Template Name":='PURCHASES';
 //                         GenJournalLine."Line No.":=LineNo;
@@ -455,9 +455,9 @@
 //                         GenJournalLine.Validate(GenJournalLine.Amount);
 //                         if GenJournalLine.Amount<>0 then
 //                         GenJournalLine.Insert;
-                        
+
 //                         LineNo:=LineNo+10000;
-                        
+
 //                         GenJournalLine.Init;
 //                         GenJournalLine."Journal Template Name":='PURCHASES';
 //                         GenJournalLine."Line No.":=LineNo;
@@ -477,17 +477,17 @@
 //                         GenJournalLine.Validate(GenJournalLine.Amount);
 //                         if GenJournalLine.Amount<>0 then
 //                         GenJournalLine.Insert;
-                        
-                        
+
+
 //                         end;
-                        
+
 //                         //Transfer Balance if Fixed Deposit
-                        
-                        
+
+
 //                         end;
-                        
+
 //                         //Interest forfeited/Earned on maturity
-                        
+
 //                         //Post New
 //                         GenJournalLine.Reset;
 //                         GenJournalLine.SetRange("Journal Template Name",'PURCHASES');
@@ -496,17 +496,17 @@
 //                         Codeunit.Run(Codeunit::"Gen. Jnl.-Post",GenJournalLine);
 //                         end;
 //                         //Post New
-                        
-                        
+
+
 //                         Message('Funds transfered successfully to main account and account closed.');
-                        
-                        
-                        
-                        
+
+
+
+
 //                         end;
 //                         end;
-                        
-                        
+
+
 //                         //Account Closure
 
 //                     end;
@@ -966,9 +966,9 @@
 
 //                     trigger OnAction()
 //                     begin
-                        
+
 //                         //Transfer Balance if Fixed Deposit
-                        
+
 //                         AccountTypes.Reset;
 //                         AccountTypes.SetRange(AccountTypes.Code,"Account Type");
 //                         if AccountTypes.Find('-') then  begin
@@ -976,13 +976,13 @@
 //                         if Vend.Get("Savings Account No.") then begin
 //                         if Confirm('Are you sure you want to effect the transfer from the savings account',false) = false then
 //                         exit else
-                        
+
 //                         GenJournalLine.Reset;
 //                         GenJournalLine.SetRange(GenJournalLine."Journal Template Name",'PURCHASES');
 //                         GenJournalLine.SetRange(GenJournalLine."Journal Batch Name",'FTRANS');
 //                         if GenJournalLine.Find('-') then
 //                         GenJournalLine.DeleteAll;
-                        
+
 //                         Vend.Reset;
 //                         if Vend.Find('-') then
 //                         Vend.CalcFields(Vend."Balance (LCY)");
@@ -990,7 +990,7 @@
 //                         //ERROR('Savings account does not have enough money to facilate the requested trasfer.');
 //                         //MESSAGE('Katabaka ene!');
 //                         LineNo:=LineNo+10000;
-                        
+
 //                         GenJournalLine.Init;
 //                         GenJournalLine."Journal Template Name":='PURCHASES';
 //                         GenJournalLine."Line No.":=LineNo;
@@ -1010,7 +1010,7 @@
 //                         GenJournalLine.Insert;
 //                          //MESSAGE('The FDR amount is %1 ',"Fixed Deposit Amount");
 //                         LineNo:=LineNo+10000;
-                        
+
 //                         GenJournalLine.Init;
 //                         GenJournalLine."Journal Template Name":='PURCHASES';
 //                         GenJournalLine."Line No.":=LineNo;
@@ -1028,7 +1028,7 @@
 //                         GenJournalLine.Validate(GenJournalLine.Amount);
 //                         if GenJournalLine.Amount<>0 then
 //                         GenJournalLine.Insert;
-                        
+
 //                         //END;
 //                         end;
 //                         end;
@@ -1042,26 +1042,26 @@
 //                         UNTIL GenJournalLine.NEXT = 0;
 //                         END;
 //                         */
-                        
-                        
+
+
 //                         /*//Post New
-                        
+
 //                         GenJournalLine.RESET;
 //                         GenJournalLine.SETRANGE("Journal Template Name",'PURCHASES');
 //                         GenJournalLine.SETRANGE("Journal Batch Name",'FTRANS');
 //                         IF GenJournalLine.FIND('-') THEN BEGIN
 //                         CODEUNIT.RUN(CODEUNIT::Codeunit,GenJournalLine);
 //                         END;
-                        
+
 //                         //Post New
 //                         */
-                        
+
 //                         /*
 //                         GenJournalLine.RESET;
 //                         GenJournalLine.SETRANGE("Journal Template Name",'PURCHASES');
 //                         GenJournalLine.SETRANGE("Journal Batch Name",'FTRANS');
 //                         GenJournalLine.DELETEALL;
-                        
+
 //                            */
 //                         //Transfer Balance if Fixed Deposit
 
@@ -1185,9 +1185,9 @@
 
 //                     trigger OnAction()
 //                     begin
-                        
+
 //                         //Transfer Balance if Fixed Deposit
-                        
+
 //                         AccountTypes.Reset;
 //                         AccountTypes.SetRange(AccountTypes.Code,"Account Type");
 //                         if AccountTypes.Find('-') then  begin
@@ -1195,19 +1195,19 @@
 //                         if Vend.Get("No.") then begin
 //                         if Confirm('Are you sure you want to Terminate this Fixed Deposit Contract?',false) = false then
 //                         exit;
-                        
+
 //                         GenJournalLine.Reset;
 //                         GenJournalLine.SetRange(GenJournalLine."Journal Template Name",'PURCHASES');
 //                         GenJournalLine.SetRange(GenJournalLine."Journal Batch Name",'FTRANS');
 //                         if GenJournalLine.Find('-') then
 //                         GenJournalLine.DeleteAll;
-                        
+
 //                         Vend.CalcFields(Vend."Balance (LCY)");
 //                         if (Vend."Balance (LCY)") < "Transfer Amount to Savings" then
 //                         Error('Fixed Deposit account does not have enough money to facilate the requested trasfer.');
-                        
+
 //                         LineNo:=LineNo+10000;
-                        
+
 //                         GenJournalLine.Init;
 //                         GenJournalLine."Journal Template Name":='PURCHASES';
 //                         GenJournalLine."Line No.":=LineNo;
@@ -1224,9 +1224,9 @@
 //                         GenJournalLine.Validate(GenJournalLine.Amount);
 //                         if GenJournalLine.Amount<>0 then
 //                         GenJournalLine.Insert;
-                        
+
 //                         LineNo:=LineNo+10000;
-                        
+
 //                         GenJournalLine.Init;
 //                         GenJournalLine."Journal Template Name":='PURCHASES';
 //                         GenJournalLine."Line No.":=LineNo;
@@ -1243,11 +1243,11 @@
 //                         GenJournalLine.Validate(GenJournalLine.Amount);
 //                         if GenJournalLine.Amount<>0 then
 //                         GenJournalLine.Insert;
-                        
+
 //                         end;
 //                         end;
 //                         end;
-                        
+
 //                         GenJournalLine.Reset;
 //                         GenJournalLine.SetRange("Journal Template Name",'PURCHASES');
 //                         GenJournalLine.SetRange("Journal Batch Name",'FTRANS');
@@ -1256,31 +1256,31 @@
 //                         Codeunit.Run(Codeunit::"Gen. Jnl.-Post",GenJournalLine);
 //                         until GenJournalLine.Next = 0;
 //                         end;
-                        
-                        
+
+
 //                         GenJournalLine.Reset;
 //                         GenJournalLine.SetRange("Journal Template Name",'PURCHASES');
 //                         GenJournalLine.SetRange("Journal Batch Name",'FTRANS');
 //                         GenJournalLine.DeleteAll;
-                        
+
 //                         Message('Amount transfered successfully back to the savings Account.');
 //                         "FDR Deposit Status Type":="fdr deposit status type"::Terminated;
-                        
+
 //                          /*
 //                         //Renew Fixed deposit - OnAction()
-                        
+
 //                         IF AccountTypes.GET("Account Type") THEN BEGIN
 //                         IF AccountTypes."Fixed Deposit" = TRUE THEN BEGIN
 //                         IF CONFIRM('Are you sure you want to renew the fixed deposit.',FALSE) = FALSE THEN
 //                         EXIT;
-                        
+
 //                         TESTFIELD("FD Maturity Date");
 //                         IF FDType.GET("Fixed Deposit Type") THEN BEGIN
 //                         "FD Maturity Date":=CALCDATE(FDType.Duration,"FD Maturity Date");
 //                         "Date Renewed":=TODAY;
 //                         "FDR Deposit Status Type":="FDR Deposit Status Type"::Renewed;
 //                         MODIFY;
-                        
+
 //                         MESSAGE('Fixed deposit renewed successfully');
 //                         END;
 //                         END;
@@ -1724,7 +1724,7 @@
 
 //     trigger OnAfterGetRecord()
 //     begin
-        
+
 //         //Hide balances for hidden accounts
 //         /*IF CurrForm.UnclearedCh.VISIBLE=FALSE THEN BEGIN
 //         CurrForm.BookBal.VISIBLE:=TRUE;
@@ -1733,8 +1733,8 @@
 //         CurrForm.Statement.VISIBLE:=TRUE;
 //         CurrForm.Account.VISIBLE:=TRUE;
 //         END;
-        
-        
+
+
 //         IF Hide = TRUE THEN BEGIN
 //         IF UsersID.GET(USERID) THEN BEGIN
 //         IF UsersID."Show Hiden" = FALSE THEN BEGIN
@@ -1751,7 +1751,7 @@
 //         MinBalance:=0;
 //         if AccountType.Get("Account Type") then
 //         MinBalance:=AccountType."Minimum Balance";
-        
+
 //         /*CurrForm.lblID.VISIBLE := TRUE;
 //         CurrForm.lblDOB.VISIBLE := TRUE;
 //         CurrForm.lblRegNo.VISIBLE := FALSE;
@@ -1810,15 +1810,15 @@
 //         IF NOT MapMgt.TestSetup THEN
 //           CurrForm.MapPoint.VISIBLE(FALSE);
 //         */
-        
-        
+
+
 //         //Filter based on branch
 //         /*IF UsersID.GET(USERID) THEN BEGIN
 //         IF UsersID.Branch <> '' THEN
 //         SETRANGE("Global Dimension 2 Code",UsersID.Branch);
 //         END;*/
 //         //Filter based on branch
-        
+
 //         StatusPermissions.Reset;
 //         StatusPermissions.SetRange(StatusPermissions."User Id",UserId);
 //         StatusPermissions.SetRange(StatusPermissions."Function",StatusPermissions."function"::Edit);

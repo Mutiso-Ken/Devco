@@ -1,7 +1,7 @@
 enum 51516019 "CreditorTypeExt"
 {
     Extensible = true;
-    
+
     value(0; "")
     {
         Caption = '';

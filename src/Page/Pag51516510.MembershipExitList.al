@@ -19,53 +19,53 @@ Page 51516510 "Membership Exit List"
         {
             repeater(Control1102755000)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member No."; "Member No.")
+                field("Member No."; Rec."Member No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Member Name"; "Member Name")
+                field("Member Name"; Rec."Member Name")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field("Closing Date"; "Closing Date")
+                field("Closing Date"; Rec."Closing Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Loan"; "Total Loan")
+                field("Total Loan"; Rec."Total Loan")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member Deposits"; "Member Deposits")
+                field("Member Deposits"; Rec."Member Deposits")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Closure Type"; "Closure Type")
+                field("Closure Type"; Rec."Closure Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Reason For Withdrawal"; "Reason For Withdrawal")
+                field("Reason For Withdrawal"; Rec."Reason For Withdrawal")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Sell Share Capital"; "Sell Share Capital")
+                field("Sell Share Capital"; Rec."Sell Share Capital")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Exit Type"; "Exit Type")
+                field("Exit Type"; Rec."Exit Type")
                 {
                     ApplicationArea = Basic;
                 }
-               
+
             }
         }
         area(factboxes)
@@ -94,13 +94,13 @@ Page 51516510 "Membership Exit List"
                     PromotedCategory = "Report";
                     PromotedIsBig = true;
                     PromotedOnly = true;
-                    visible =false;
+                    visible = false;
 
                     trigger OnAction()
                     begin
 
                         cust.Reset;
-                        cust.SetRange(cust."No.", "Member No.");
+                        cust.SetRange(cust."No.", Rec."Member No.");
                         if cust.Find('-') then
                             Report.run(50503, true, false, cust);
                     end;
@@ -119,11 +119,11 @@ Page 51516510 "Membership Exit List"
                         text001: label 'This batch is already pending approval';
                         ApprovalMgt: Codeunit "Approvals Mgmt.";
                     begin
-                        if ("Closure Type" = "closure type"::"Member Exit - Normal") and ("Member Liability" > 0) then
-                            Error('Member has Liability of Ksh. %1 for Loans Guaranteed. Member Exit cannot be processed at the moment.', "Member Liability");
+                        if (Rec."Closure Type" = Rec."closure type"::"Member Exit - Normal") and (Rec."Member Liability" > 0) then
+                            Error('Member has Liability of Ksh. %1 for Loans Guaranteed. Member Exit cannot be processed at the moment.', Rec."Member Liability");
 
 
-                        if Status <> Status::Open then
+                        if Rec.Status <> Rec.Status::Open then
                             Error(text001);
 
 
@@ -149,7 +149,7 @@ Page 51516510 "Membership Exit List"
                         text001: label 'This batch is already pending approval';
                         ApprovalMgt: Codeunit "Approvals Mgmt.";
                     begin
-               
+
                     end;
                 }
                 action("Post Membership Exit")
@@ -166,9 +166,9 @@ Page 51516510 "Membership Exit List"
                     begin
                         case VarExitType of
                             Varexittype::"Member Exit - Normal":
-                                FnRunPostNormalExitApplication("Member No.");
+                                FnRunPostNormalExitApplication(Rec."Member No.");
                             Varexittype::"Member Exit - Deceased":
-                                FnRunPostExitDeceasedApplication("Member No.");
+                                FnRunPostExitDeceasedApplication(Rec."Member No.");
                         end;
                     end;
                 }
@@ -255,28 +255,28 @@ Page 51516510 "Membership Exit List"
 
     procedure UpdateControl()
     begin
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             MNoEditable := true;
             ClosingDateEditable := false;
             ClosureTypeEditable := true;
             PostingDateEditable := false;
         end;
 
-        if Status = Status::Pending then begin
+        if Rec.Status = Rec.Status::Pending then begin
             MNoEditable := false;
             ClosingDateEditable := false;
             ClosureTypeEditable := false;
             PostingDateEditable := false;
         end;
 
-        if Status = Status::Rejected then begin
+        if Rec.Status = Rec.Status::Rejected then begin
             MNoEditable := false;
             ClosingDateEditable := false;
             ClosureTypeEditable := false;
             PostingDateEditable := false;
         end;
 
-        if Status = Status::Approved then begin
+        if Rec.Status = Rec.Status::Approved then begin
             MNoEditable := false;
             ClosingDateEditable := true;
             ClosureTypeEditable := false;
@@ -306,9 +306,9 @@ Page 51516510 "Membership Exit List"
 
         SMSMessage.Init;
         SMSMessage."Entry No" := iEntryNo;
-        SMSMessage."Batch No" := "No.";
-        SMSMessage."Document No" := "No.";
-        SMSMessage."Account No" := "Member No.";
+        SMSMessage."Batch No" := Rec."No.";
+        SMSMessage."Document No" := Rec."No.";
+        SMSMessage."Account No" := Rec."Member No.";
         SMSMessage."Date Entered" := Today;
         SMSMessage."Time Entered" := Time;
         SMSMessage.Source := 'MEMBERSHIPWITH';
@@ -317,7 +317,7 @@ Page 51516510 "Membership Exit List"
         SMSMessage."SMS Message" := 'Dear Member,Your Membership Withdrawal Application has been received and is being Processed '
         + compinfo.Name + ' ' + GenSetUp."Customer Care No";
         cust.Reset;
-        cust.SetRange(cust."No.", "Member No.");
+        cust.SetRange(cust."No.", Rec."Member No.");
         if cust.Find('-') then begin
             SMSMessage."Telephone No" := cust."Mobile Phone No";
         end;
@@ -489,7 +489,7 @@ Page 51516510 "Membership Exit List"
             VarMembershipExitFee := VarMembershipExit + VarTaxOnExitFee;
             VarAmounttoTransfertoFOSA := VarMemberAvailableBal - VarMembershipExitFee;
 
-            if "Sell Share Capital" = true then begin
+            if Rec."Sell Share Capital" = true then begin
                 VarShareCapitalFee := ObjGensetup."Share Capital Transfer Fee";
                 VarShareCapitalFee := VarShareCapitalFee + (VarShareCapitalFee * (ObjGensetup."Excise Duty(%)" / 100));
             end;
@@ -507,9 +507,9 @@ Page 51516510 "Membership Exit List"
             end;
             VarMemberTotalLiability := VarMemberTotalLoanLiability + VarMembershipExitFee;
 
-            CalcFields("Share Capital to Sell");
-            if "Sell Share Capital" = true then
-                VarMemberAvailableBal := VarMemberAvailableBal + "Share Capital to Sell";
+            Rec.CalcFields("Share Capital to Sell");
+            if Rec."Sell Share Capital" = true then
+                VarMemberAvailableBal := VarMemberAvailableBal + Rec."Share Capital to Sell";
 
             if (VarMemberTotalLiability > VarMemberAvailableBal) then
                 Error('Members Deposits is not enough to Clear Liability. Member Deposits # %1 Member Liability # %2', VarMemberAvailableBal, VarMemberTotalLiability);
@@ -517,7 +517,7 @@ Page 51516510 "Membership Exit List"
 
             BATCH_TEMPLATE := 'PURCHASES';
             BATCH_NAME := 'FTRANS';
-            DOCUMENT_NO := "No.";
+            DOCUMENT_NO := Rec."No.";
 
             GenJournalLine.Reset;
             GenJournalLine.SetRange("Journal Template Name", BATCH_TEMPLATE);
@@ -661,7 +661,7 @@ Page 51516510 "Membership Exit List"
 
             BATCH_TEMPLATE := 'PURCHASES';
             BATCH_NAME := 'FTRANS';
-            DOCUMENT_NO := "No.";
+            DOCUMENT_NO := Rec."No.";
 
             GenJournalLine.Reset;
             GenJournalLine.SetRange("Journal Template Name", BATCH_TEMPLATE);

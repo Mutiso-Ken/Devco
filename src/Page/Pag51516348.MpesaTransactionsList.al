@@ -14,107 +14,107 @@ Page 51516348 "Mpesa Transactions List"
         {
             repeater(Group)
             {
-                field("Document No.";"Document No.")
+                field("Document No."; Rec."Document No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(TelephoneNo;TelephoneNo)
+                field(TelephoneNo; Rec.TelephoneNo)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Date";"Transaction Date")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No.";"Account No.")
+                field("Account No."; Rec."Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Key Word";"Key Word")
+                field("Key Word"; Rec."Key Word")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted;Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Type";"Transaction Type")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Time";"Transaction Time")
+                field("Transaction Time"; Rec."Transaction Time")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bal. Account No.";"Bal. Account No.")
+                field("Bal. Account No."; Rec."Bal. Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Date";"Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Posted";"Date Posted")
+                field("Date Posted"; Rec."Date Posted")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Time Posted";"Time Posted")
+                field("Time Posted"; Rec."Time Posted")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Status";"Account Status")
+                field("Account Status"; Rec."Account Status")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Messages;Messages)
+                field(Messages; Rec.Messages)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Needs Change";"Needs Change")
+                field("Needs Change"; Rec."Needs Change")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Change Transaction No";"Change Transaction No")
+                field("Change Transaction No"; Rec."Change Transaction No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Old Account No";"Old Account No")
+                field("Old Account No"; Rec."Old Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Changed;Changed)
+                field(Changed; Rec.Changed)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Changed";"Date Changed")
+                field("Date Changed"; Rec."Date Changed")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Time Changed";"Time Changed")
+                field("Time Changed"; Rec."Time Changed")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Changed By";"Changed By")
+                field("Changed By"; Rec."Changed By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approved By";"Approved By")
+                field("Approved By"; Rec."Approved By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Original Account No";"Original Account No")
+                field("Original Account No"; Rec."Original Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Balance";"Account Balance")
+                field("Account Balance"; Rec."Account Balance")
                 {
                     ApplicationArea = Basic;
                 }

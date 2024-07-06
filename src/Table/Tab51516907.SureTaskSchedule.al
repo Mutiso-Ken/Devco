@@ -4,22 +4,22 @@ Table 51516907 "Sure Task Schedule"
 
     fields
     {
-        field(1;Task;Option)
+        field(1; Task; Option)
         {
             OptionCaption = ',StatementCharge';
             OptionMembers = ,StatementCharge;
         }
-        field(2;"Next Task Date";Date)
+        field(2; "Next Task Date"; Date)
         {
         }
-        field(3;frequency;DateFormula)
+        field(3; frequency; DateFormula)
         {
         }
     }
 
     keys
     {
-        key(Key1;Task)
+        key(Key1; Task)
         {
             Clustered = true;
         }

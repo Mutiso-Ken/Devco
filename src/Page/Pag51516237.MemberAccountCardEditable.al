@@ -20,22 +20,22 @@ Page 51516237 "Member Account Card - Editable"
             {
                 Caption = 'General';
                 Editable = true;
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Payroll/Staff No"; "Payroll/Staff No")
+                field("Payroll/Staff No"; Rec."Payroll/Staff No")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("FOSA Account"; "FOSA Account")
+                field("FOSA Account"; Rec."FOSA Account")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
@@ -44,8 +44,8 @@ Page 51516237 "Member Account Card - Editable"
                     begin
                         FosaName := '';
 
-                        if "FOSA Account" <> '' then begin
-                            if Vend.Get("FOSA Account") then begin
+                        if Rec."FOSA Account" <> '' then begin
+                            if Vend.Get(Rec."FOSA Account") then begin
                                 FosaName := Vend.Name;
                             end;
                         end;
@@ -57,7 +57,7 @@ Page 51516237 "Member Account Card - Editable"
                     Caption = 'FOSA Account Name';
                     Editable = true;
                 }
-                field("Account Category"; "Account Category")
+                field("Account Category"; Rec."Account Category")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
@@ -85,37 +85,37 @@ Page 51516237 "Member Account Card - Editable"
                     //     end;
                     // end;
                 }
-                field("Old Account No."; "Old Account No.")
+                field("Old Account No."; Rec."Old Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'ID Number';
                     Editable = true;
                 }
-                field("Passport No."; "Passport No.")
+                field("Passport No."; Rec."Passport No.")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field(Address; Address)
+                field(Address; Rec.Address)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Post Code"; "Post Code")
+                field("Post Code"; Rec."Post Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Post Code/City';
                     Editable = true;
                 }
-                field(Gender; Gender)
+                field(Gender; Rec.Gender)
                 {
                     ApplicationArea = Basic;
                 }
-                field(City; City)
+                field(City; Rec.City)
                 {
                     ApplicationArea = Basic;
                 }
@@ -125,71 +125,71 @@ Page 51516237 "Member Account Card - Editable"
                     Caption = 'User ID';
                     Editable = true;
                 }
-                field("Phone No."; "Phone No.")
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Mobile No.';
                     Editable = true;
                 }
-                field("Employer Code"; "Employer Code")
+                field("Employer Code"; Rec."Employer Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Employer';
                     Editable = true;
                 }
-                field("Job Title"; "Job title")
+                field("Job Title"; Rec."Job title")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Job Title';
                     Editable = true;
                 }
-                field(PIN; Pin)
+                field(PIN; Rec.Pin)
                 {
                     ApplicationArea = Basic;
                     Caption = 'PIN';
                     Editable = true;
                 }
-                field("Registration Date"; "Registration Date")
+                field("Registration Date"; Rec."Registration Date")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field(txtMarital; "Marital Status")
+                field(txtMarital; Rec."Marital Status")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Marital Status';
                     Visible = txtMaritalVisible;
                 }
-                field("Date of Birth"; "Date of Birth")
+                field("Date of Birth"; Rec."Date of Birth")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Company Registration Date';
                     Editable = true;
                 }
-                field(Image; Image)
+                field(Image; Rec.Image)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Signature; Signature)
+                field(Signature; Rec.Signature)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Customer Posting Group"; "Customer Posting Group")
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Status; Status)
+                field("Customer Posting Group"; Rec."Customer Posting Group")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
@@ -203,11 +203,11 @@ Page 51516237 "Member Account Card - Editable"
                             Error('You do not have permissions to change the account status.');
                     end;
                 }
-                field(Blocked; Blocked)
+                field(Blocked; Rec.Blocked)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Last Date Modified"; "Last Date Modified")
+                field("Last Date Modified"; Rec."Last Date Modified")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -217,56 +217,56 @@ Page 51516237 "Member Account Card - Editable"
             {
                 Caption = 'Other Details';
                 Editable = true;
-                field("Contact Person"; "Contact Person")
+                field("Contact Person"; Rec."Contact Person")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Contact Person Phone"; "Contact Person Phone")
+                field("Contact Person Phone"; Rec."Contact Person Phone")
                 {
                     ApplicationArea = Basic;
                 }
-                field("E-Mail"; "E-Mail")
+                field("E-Mail"; Rec."E-Mail")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Village/Residence"; "Village/Residence")
+                field("Village/Residence"; Rec."Village/Residence")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Home Page"; "Home Page")
+                field("Home Page"; Rec."Home Page")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Address 2"; "Address 2")
+                field("Address 2"; Rec."Address 2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Physical Address';
                 }
-                field("Withdrawal Application Date"; "Withdrawal Application Date")
+                field("Withdrawal Application Date"; Rec."Withdrawal Application Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Withdrawal Date"; "Withdrawal Date")
+                field("Withdrawal Date"; Rec."Withdrawal Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Withdrawal Fee"; "Withdrawal Fee")
+                field("Withdrawal Fee"; Rec."Withdrawal Fee")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Status - Withdrawal App."; "Status - Withdrawal App.")
+                field("Status - Withdrawal App."; Rec."Status - Withdrawal App.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mode of Dividend Payment"; "Mode of Dividend Payment")
+                field("Mode of Dividend Payment"; Rec."Mode of Dividend Payment")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Recruited By"; "Recruited By")
+                field("Recruited By"; Rec."Recruited By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Sms Notification"; "Sms Notification")
+                field("Sms Notification"; Rec."Sms Notification")
                 {
                     ApplicationArea = Basic;
                 }
@@ -304,7 +304,7 @@ Page 51516237 "Member Account Card - Editable"
 
                     trigger OnAction()
                     begin
-                        ShowContact;
+                        Rec.ShowContact;
                     end;
                 }
             }
@@ -356,7 +356,7 @@ Page 51516237 "Member Account Card - Editable"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51516151, true, false, Cust);
                     end;
@@ -370,7 +370,7 @@ Page 51516237 "Member Account Card - Editable"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51516151, true, false, Cust);
                     end;
@@ -386,7 +386,7 @@ Page 51516237 "Member Account Card - Editable"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(50033, true, false, Cust);
                     end;
@@ -868,7 +868,7 @@ Page 51516237 "Member Account Card - Editable"
                     begin
 
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(50032, true, false, Cust);
                     end;
@@ -882,7 +882,7 @@ Page 51516237 "Member Account Card - Editable"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(50035, true, false, Cust);
                     end;
@@ -1226,8 +1226,8 @@ Page 51516237 "Member Account Card - Editable"
     var
         RecordFound: Boolean;
     begin
-        RecordFound := Find(Which);
-        CurrPage.Editable := RecordFound or (GetFilter("No.") = '');
+        RecordFound := Rec.Find(Which);
+        CurrPage.Editable := RecordFound or (Rec.GetFilter("No.") = '');
         exit(RecordFound);
     end;
 
@@ -1245,15 +1245,15 @@ Page 51516237 "Member Account Card - Editable"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        "Customer Type" := "customer type"::Member;
-        Status := Status::Active;
-        "Customer Posting Group" := 'BOSA';
-        "Registration Date" := Today;
-        Advice := true;
-        "Advice Type" := "advice type"::"New Member";
+        Rec."Customer Type" := Rec."customer type"::Member;
+        Rec.Status := Rec.Status::Active;
+        Rec."Customer Posting Group" := 'BOSA';
+        Rec."Registration Date" := Today;
+        Rec.Advice := true;
+        Rec."Advice Type" := Rec."advice type"::"New Member";
         if GeneralSetup.Get(0) then begin
-            "Insurance Contribution" := GeneralSetup."Welfare Contribution";
-            "Registration Fee" := GeneralSetup."Registration Fee";
+            Rec."Insurance Contribution" := GeneralSetup."Welfare Contribution";
+            Rec."Registration Fee" := GeneralSetup."Registration Fee";
 
         end;
         OnAfterGetCurrRec;

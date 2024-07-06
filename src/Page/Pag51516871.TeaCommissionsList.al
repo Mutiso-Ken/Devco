@@ -12,19 +12,19 @@ Page 51516871 "Tea Commissions List"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Lower Bound";"Lower Bound")
+                field("Lower Bound"; Rec."Lower Bound")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Upper Bound";"Upper Bound")
+                field("Upper Bound"; Rec."Upper Bound")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Charge;Charge)
+                field(Charge; Rec.Charge)
                 {
                     ApplicationArea = Basic;
                 }

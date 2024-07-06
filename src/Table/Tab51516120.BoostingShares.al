@@ -6,22 +6,22 @@ Table 51516120 "Boosting Shares"
 
     fields
     {
-        field(1;"Loan No.";Code[20])
+        field(1; "Loan No."; Code[20])
         {
             TableRelation = "Loans Register"."Loan  No.";
         }
-        field(2;"Client Code";Code[20])
+        field(2; "Client Code"; Code[20])
         {
         }
-        field(3;"Boosting Amount";Decimal)
+        field(3; "Boosting Amount"; Decimal)
         {
 
             trigger OnValidate()
             begin
-                Commision:=("Boosting Amount"*0.1);
+                Commision := ("Boosting Amount" * 0.1);
             end;
         }
-        field(4;Commision;Decimal)
+        field(4; Commision; Decimal)
         {
             Editable = false;
         }
@@ -29,7 +29,7 @@ Table 51516120 "Boosting Shares"
 
     keys
     {
-        key(Key1;"Loan No.","Client Code")
+        key(Key1; "Loan No.", "Client Code")
         {
             Clustered = true;
             SumIndexFields = "Boosting Amount";
@@ -38,7 +38,7 @@ Table 51516120 "Boosting Shares"
 
     fieldgroups
     {
-        
+
     }
 
     var

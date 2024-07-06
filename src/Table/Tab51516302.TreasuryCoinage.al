@@ -4,11 +4,11 @@ Table 51516302 "Treasury Coinage"
 
     fields
     {
-        field(1;No;Code[20])
+        field(1; No; Code[20])
         {
-            TableRelation = "Treasury Transactions" where (No=field(No));
+            TableRelation = "Treasury Transactions" where(No = field(No));
         }
-        field(2;"Code";Code[20])
+        field(2; "Code"; Code[20])
         {
             NotBlank = true;
             TableRelation = Denominations;
@@ -16,72 +16,73 @@ Table 51516302 "Treasury Coinage"
             trigger OnValidate()
             begin
                 if Coinage.Get(Code) then begin
-                Description:=Coinage.Description;
-                Type:=Coinage.Type;
-                Value:=Coinage.Value;
+                    Description := Coinage.Description;
+                    Type := Coinage.Type;
+                    Value := Coinage.Value;
                 end;
             end;
         }
-        field(3;Description;Text[50])
+        field(3; Description; Text[50])
         {
         }
-        field(4;Type;Option)
+        field(4; Type; Option)
         {
             OptionMembers = Note,Coin;
         }
-        field(5;Value;Decimal)
+        field(5; Value; Decimal)
         {
         }
-        field(6;Quantity;Integer)
+        field(6; Quantity; Integer)
         {
 
             trigger OnValidate()
             begin
-                TotalDN:=0;
-                AddVarDN:=0;
-                "Excess/Shortage":=0;
+                TotalDN := 0;
+                AddVarDN := 0;
+                "Excess/Shortage" := 0;
 
                 //
 
                 TransactionDetails.Reset;
 
-                TransactionDetails.SetRange(TransactionDetails.No,No);
+                TransactionDetails.SetRange(TransactionDetails.No, No);
 
                 if TransactionDetails.Find('-') then begin
-                repeat
+                    repeat
 
-                AddVarDN:=0;
+                        AddVarDN := 0;
 
-                AddVarDN:=TransactionDetails.Value*TransactionDetails.Quantity;
-                TotalDN:=TotalDN+AddVarDN;
+                        AddVarDN := TransactionDetails.Value * TransactionDetails.Quantity;
+                        TotalDN := TotalDN + AddVarDN;
 
 
-                until TransactionDetails.Next=0;
+                    until TransactionDetails.Next = 0;
                 end;
 
 
                 Transactions.Reset;
-                if Transactions.Get(No) then begin;
-                Transactions."Coinage Amount":=TotalDN;
-                Transactions."Excess/Shortage Amount":=Transactions."Excess/Shortage Amount"-TotalDN;
-                Transactions.Modify;
+                if Transactions.Get(No) then begin
+                    ;
+                    Transactions."Coinage Amount" := TotalDN;
+                    Transactions."Excess/Shortage Amount" := Transactions."Excess/Shortage Amount" - TotalDN;
+                    Transactions.Modify;
                 end;
 
 
 
-                if Quantity<>0 then
-                "Total Amount":=Quantity*Value;
+                if Quantity <> 0 then
+                    "Total Amount" := Quantity * Value;
                 Modify;
             end;
         }
-        field(7;"Total Amount";Decimal)
+        field(7; "Total Amount"; Decimal)
         {
         }
     }
 
     keys
     {
-        key(Key1;No,"Code")
+        key(Key1; No, "Code")
         {
             Clustered = true;
             SumIndexFields = "Total Amount";

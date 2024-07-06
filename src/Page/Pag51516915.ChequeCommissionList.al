@@ -12,27 +12,27 @@ Page 51516915 "Cheque Commission List"
         {
             repeater(Group)
             {
-                field("Minimum Amount(Local)";"Minimum Amount(Local)")
+                field("Minimum Amount(Local)"; Rec."Minimum Amount(Local)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Min Amount(Local)';
                 }
-                field("Maximum Amount(Local)";"Maximum Amount(Local)")
+                field("Maximum Amount(Local)"; Rec."Maximum Amount(Local)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Max Amount(Local)';
                 }
-                field("Charge(Local)";"Charge(Local)")
+                field("Charge(Local)"; Rec."Charge(Local)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Charge(Local)';
                 }
-                field("Use Percentage(Local)";"Use Percentage(Local)")
+                field("Use Percentage(Local)"; Rec."Use Percentage(Local)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Use Percentage(Local)';
                 }
-                field("% Amount(Local)";"% Amount(Local)")
+                field("% Amount(Local)"; Rec."% Amount(Local)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Percentage Amount';
@@ -42,29 +42,29 @@ Page 51516915 "Cheque Commission List"
                 {
                     ApplicationArea = Basic;
                     Caption = '|';
-                  //  NotBlank = false;
+                    //  NotBlank = false;
                 }
-                field("Minimum Amount(Upcountry)";"Minimum Amount(Upcountry)")
+                field("Minimum Amount(Upcountry)"; Rec."Minimum Amount(Upcountry)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Min Amount(Upcountry)';
                 }
-                field("Maximum Amount(Upcountry)";"Maximum Amount(Upcountry)")
+                field("Maximum Amount(Upcountry)"; Rec."Maximum Amount(Upcountry)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Max Amount(Upcountry)';
                 }
-                field("Charge(Upcountry)";"Charge(Upcountry)")
+                field("Charge(Upcountry)"; Rec."Charge(Upcountry)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Charge(Upcountry)';
                 }
-                field("Use Percentage(Upcountry)";"Use Percentage(Upcountry)")
+                field("Use Percentage(Upcountry)"; Rec."Use Percentage(Upcountry)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Use Percentage(Upcountry)';
                 }
-                field("% Amount(Upcountry)";"% Amount(Upcountry)")
+                field("% Amount(Upcountry)"; Rec."% Amount(Upcountry)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Percentage Amount';
@@ -73,25 +73,25 @@ Page 51516915 "Cheque Commission List"
                 {
                     ApplicationArea = Basic;
                     Caption = '||';
-                   // NotBlank = false;
+                    // NotBlank = false;
                 }
-                field("Minimum Amount(Inhouse)";"Minimum Amount(Inhouse)")
+                field("Minimum Amount(Inhouse)"; Rec."Minimum Amount(Inhouse)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Maximum Amount(Inhouse)";"Maximum Amount(Inhouse)")
+                field("Maximum Amount(Inhouse)"; Rec."Maximum Amount(Inhouse)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Charge(Inhousel)";"Charge(Inhousel)")
+                field("Charge(Inhousel)"; Rec."Charge(Inhousel)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Use Percentage(Inhouse)";"Use Percentage(Inhouse)")
+                field("Use Percentage(Inhouse)"; Rec."Use Percentage(Inhouse)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("% Amount (Inhouse)";"% Amount (Inhouse)")
+                field("% Amount (Inhouse)"; Rec."% Amount (Inhouse)")
                 {
                     ApplicationArea = Basic;
                 }

@@ -6,7 +6,7 @@ Page 51516356 "MPESA Applications Approved"
     Editable = false;
     PageType = Card;
     SourceTable = "MPESA Applications";
-    SourceTableView = where(Status=const(Approved));
+    SourceTableView = where(Status = const(Approved));
     UsageCategory = Tasks;
 
     layout
@@ -15,83 +15,83 @@ Page 51516356 "MPESA Applications Approved"
         {
             group(General)
             {
-                field(No;No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Serial No";"Document Serial No")
+                field("Document Serial No"; Rec."Document Serial No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Date";"Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Customer ID No";"Customer ID No")
+                field("Customer ID No"; Rec."Customer ID No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Customer Name";"Customer Name")
+                field("Customer Name"; Rec."Customer Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("MPESA Mobile No";"MPESA Mobile No")
+                field("MPESA Mobile No"; Rec."MPESA Mobile No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Comments;Comments)
+                field(Comments; Rec.Comments)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Rejection Reason";"Rejection Reason")
+                field("Rejection Reason"; Rec."Rejection Reason")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Entered";"Date Entered")
+                field("Date Entered"; Rec."Date Entered")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Time Entered";"Time Entered")
+                field("Time Entered"; Rec."Time Entered")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Entered By";"Entered By")
+                field("Entered By"; Rec."Entered By")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Sent To Server";"Sent To Server")
+                field("Sent To Server"; Rec."Sent To Server")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Approved";"Date Approved")
+                field("Date Approved"; Rec."Date Approved")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Time Approved";"Time Approved")
+                field("Time Approved"; Rec."Time Approved")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approved By";"Approved By")
+                field("Approved By"; Rec."Approved By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Rejected";"Date Rejected")
+                field("Date Rejected"; Rec."Date Rejected")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Time Rejected";"Time Rejected")
+                field("Time Rejected"; Rec."Time Rejected")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Rejected By";"Rejected By")
+                field("Rejected By"; Rec."Rejected By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Withdrawal Limit Amount";"Withdrawal Limit Amount")
+                field("Withdrawal Limit Amount"; Rec."Withdrawal Limit Amount")
                 {
                     ApplicationArea = Basic;
                 }

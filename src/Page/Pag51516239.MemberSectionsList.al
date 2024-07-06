@@ -10,11 +10,11 @@ Page 51516239 "Member Sections List"
         {
             repeater(Control1102760000)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Section;Section)
+                field(Section; Rec.Section)
                 {
                     ApplicationArea = Basic;
                 }

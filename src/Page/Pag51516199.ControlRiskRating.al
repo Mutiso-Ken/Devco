@@ -12,31 +12,31 @@ Page 51516199 "Control Risk Rating"
         {
             repeater(Group)
             {
-                field("Control Factor"; "Control Factor")
+                field("Control Factor"; Rec."Control Factor")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Control Weighting(%)"; "Control Weighting(%)")
+                field("Control Weighting(%)"; Rec."Control Weighting(%)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Control Weighting:[To be Based on the SACCO''s Annual Complience Report]';
                 }
-                field("Does  Control Cure Risk(1-3)"; "Does  Control Cure Risk(1-3)")
+                field("Does  Control Cure Risk(1-3)"; Rec."Does  Control Cure Risk(1-3)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Does  Control Cure the Risk Effectively?[Scale 1-3]';
                 }
-                field("Control Been Documented(1-3)"; "Control Been Documented(1-3)")
+                field("Control Been Documented(1-3)"; Rec."Control Been Documented(1-3)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Has the Control Been Documented & Approved?[Scale 1-3]';
                 }
-                field("Control Been Communicated(1-3)"; "Control Been Communicated(1-3)")
+                field("Control Been Communicated(1-3)"; Rec."Control Been Communicated(1-3)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Has the Control Been Officially Communicated?[Scale 1-3]';
                 }
-                field("Control Weight Aggregate"; "Control Weight Aggregate")
+                field("Control Weight Aggregate"; Rec."Control Weight Aggregate")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Wighted Control Risk Score:[Control Weighting*Agg. Score]';

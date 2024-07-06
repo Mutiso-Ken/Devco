@@ -20,8 +20,8 @@ page 55001 "Custom Headline"
                     Caption = 'Greeting headline';
                     Editable = false;
                 }
-                
-              
+
+
             }
             // group(Control2)
             // {

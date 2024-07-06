@@ -199,10 +199,10 @@ Report 50003 Liquidity
                 end;//20199
 
 
-                NETLIQUIDASSETS :=LocalNotes + ForeignNotes + BalancesduetoFinanciaInstitutions + BalancesDuetootherSaccosocieties + BalanceswithCommercialBanks + BalanceswithotherFinancialInstitutions + BalanceswithotherSaccoSocieties + TreasuryBills + TreasuryBonds + TimeDeposits
+                NETLIQUIDASSETS := LocalNotes + ForeignNotes + BalancesduetoFinanciaInstitutions + BalancesDuetootherSaccosocieties + BalanceswithCommercialBanks + BalanceswithotherFinancialInstitutions + BalanceswithotherSaccoSocieties + TreasuryBills + TreasuryBonds + TimeDeposits
                 + OverdraftsandMatured;
                 TotalOtherliabilities := MaturedLiabilities + LiabilitiesMaturingwithin91Days;
-               // Ratio := (NETLIQUIDASSETS / TotalOtherliabilitiesNew);
+                // Ratio := (NETLIQUIDASSETS / TotalOtherliabilitiesNew);
                 Minumholding := 0.1;
                 Excess := Ratio - Minumholding;
             end;

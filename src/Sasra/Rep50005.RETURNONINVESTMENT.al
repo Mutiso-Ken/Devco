@@ -304,16 +304,16 @@ Report 50005 "RETURN ON INVESTMENT"
                     FinancialinvestmentstoCorecapital := FinancialAssets / CoreCapital;
                 MaximumfinancialinvestmentstoCorecapital := 0.4;
                 ExcessCoreCapital := FinancialinvestmentstoCorecapital - MaximumfinancialinvestmentstoCorecapital;
-                   if (Equityinvestment > 0) and (CoreCapital > 0) then
-                EquityinvestmentstoCoreCapitalRatio := Equityinvestment / CoreCapital;
+                if (Equityinvestment > 0) and (CoreCapital > 0) then
+                    EquityinvestmentstoCoreCapitalRatio := Equityinvestment / CoreCapital;
                 MaxfinancialinvestmentstoTotalDepositsliablitiesRatio := 0.2;
                 ExcessEquity := EquityinvestmentstoCoreCapitalRatio - MaxfinancialinvestmentstoTotalDepositsliablitiesRatio;
-                    if (SubsidiaryandRelated > 0) and (CoreCapital > 0) then
-                SubsidiaryrelatedentityinvestmenttoCoreCapitalRatio := SubsidiaryandRelated / CoreCapital;
+                if (SubsidiaryandRelated > 0) and (CoreCapital > 0) then
+                    SubsidiaryrelatedentityinvestmenttoCoreCapitalRatio := SubsidiaryandRelated / CoreCapital;
                 MaximumSubsidiaryinvestmenttoTotalassetsRatio := 0.5;
                 ExcessSubsidiary := SubsidiaryrelatedentityinvestmenttoCoreCapitalRatio - MaximumSubsidiaryinvestmenttoTotalassetsRatio;
-                 if (SubsidiaryandRelated > 0) and (CoreCapital > 0) then
-                 OtherinvestmentstoCoreCapitalRatio := Otherinvestments / CoreCapital;
+                if (SubsidiaryandRelated > 0) and (CoreCapital > 0) then
+                    OtherinvestmentstoCoreCapitalRatio := Otherinvestments / CoreCapital;
                 MaximumOtherinvestmentstoCoreCapital := 0.3;
                 ExcessOtherInvestment := OtherinvestmentstoCoreCapitalRatio - MaximumOtherinvestmentstoCoreCapital;
                 //MESSAGE('%1|%2|%3',Equityinvestment,CoreCapital,EquityinvestmentstoCoreCapitalRatio);

@@ -16,34 +16,34 @@ Page 51516497 "Lead list Closed"
         {
             repeater(Group)
             {
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Full Name"; "Member Name")
+                field("Full Name"; Rec."Member Name")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("ID No"; "ID No")
+                field("ID No"; Rec."ID No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No"; "Phone No")
+                field("Phone No"; Rec."Phone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Calling For"; "Calling For")
+                field("Calling For"; Rec."Calling For")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Lead Status"; "Lead Status")
+                field("Lead Status"; Rec."Lead Status")
                 {
                     ApplicationArea = Basic;
                     Editable = false;

@@ -7,7 +7,7 @@ Page 51516578 "SurePESA Applications"
     InsertAllowed = false;
     PageType = List;
     SourceTable = "SurePESA Applications";
-       SourceTableView= sorting("No.")order(descending);
+    SourceTableView = sorting("No.") order(descending);
     UsageCategory = Lists;
 
     layout
@@ -16,68 +16,68 @@ Page 51516578 "SurePESA Applications"
         {
             repeater(Group)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
 
                 }
-                field("Date Applied"; "Date Applied")
+                field("Date Applied"; Rec."Date Applied")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name"; "Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field(Telephone; Telephone)
+                field(Telephone; Rec.Telephone)
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No"; "ID No")
+                field("ID No"; Rec."ID No")
                 {
                     ApplicationArea = Basic;
                 }
 
 
-                field(SentToServer; SentToServer)
+                field(SentToServer; Rec.SentToServer)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status; Status)
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("Pin Reset"; "Pin Reset")
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Reset By"; "Reset By")
+                field("Pin Reset"; Rec."Pin Reset")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Last PIN Reset"; "Last PIN Reset")
+                field("Reset By"; Rec."Reset By")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Sent; Sent)
+                field("Last PIN Reset"; Rec."Last PIN Reset")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field(Sent; Rec.Sent)
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Created By"; "Created By")
+                field("Created By"; Rec."Created By")
                 {
 
                 }
-                field("Time Applied"; "Time Applied")
+                field("Time Applied"; Rec."Time Applied")
                 {
                     ApplicationArea = Basic;
                 }

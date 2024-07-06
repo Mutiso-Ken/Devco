@@ -20,29 +20,29 @@ Page 51516257 "Posted Loan Batch - List"
         {
             repeater(Control1102760000)
             {
-                field("Batch No."; "Batch No.")
+                field("Batch No."; Rec."Batch No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Source; Source)
+                field(Source; Rec.Source)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Description/Remarks"; "Description/Remarks")
+                field("Description/Remarks"; Rec."Description/Remarks")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Date"; "Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("No of Loans"; "No of Loans")
+                field("No of Loans"; Rec."No of Loans")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Mode Of Disbursement"; "Mode Of Disbursement")
+                field("Mode Of Disbursement"; Rec."Mode Of Disbursement")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
@@ -69,7 +69,7 @@ Page 51516257 "Posted Loan Batch - List"
                     trigger OnAction()
                     begin
                         LoansBatch.Reset;
-                        LoansBatch.SetRange(LoansBatch."Batch No.", "Batch No.");
+                        LoansBatch.SetRange(LoansBatch."Batch No.", Rec."Batch No.");
                         if LoansBatch.Find('-') then begin
                             Report.Run(51516231, true, false, LoansBatch);
                         end;
@@ -178,7 +178,7 @@ Page 51516257 "Posted Loan Batch - List"
                         Text001: label 'This Batch is already pending approval';
                     begin
                         LBatches.Reset;
-                        LBatches.SetRange(LBatches."Batch No.", "Batch No.");
+                        LBatches.SetRange(LBatches."Batch No.", Rec."Batch No.");
                         if LBatches.Find('-') then begin
                             if LBatches.Status <> LBatches.Status::Open then
                                 Error(Text001);

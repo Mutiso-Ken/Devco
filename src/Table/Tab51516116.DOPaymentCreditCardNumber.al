@@ -5,12 +5,12 @@ Table 51516116 "DO Payment Credit Card Number"
 
     fields
     {
-        field(1;"No.";Code[20])
+        field(1; "No."; Code[20])
         {
             Caption = 'No.';
             TableRelation = "DO Payment Credit Card"."No.";
         }
-        field(2;Data;Blob)
+        field(2; Data; Blob)
         {
             Caption = 'Data';
         }
@@ -18,7 +18,7 @@ Table 51516116 "DO Payment Credit Card Number"
 
     keys
     {
-        key(Key1;"No.")
+        key(Key1; "No.")
         {
             Clustered = true;
         }
@@ -29,7 +29,7 @@ Table 51516116 "DO Payment Credit Card Number"
     }
 
     var
-       // DOEncryptionMgt: Codeunit "DO Encryption Mgt.";
+    // DOEncryptionMgt: Codeunit "DO Encryption Mgt.";
 
 
     procedure SetData(Value: Text[1024])

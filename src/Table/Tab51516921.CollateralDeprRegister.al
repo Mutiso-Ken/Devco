@@ -6,29 +6,29 @@ Table 51516921 "Collateral Depr Register"
 
     fields
     {
-        field(1;"Document No";Code[20])
+        field(1; "Document No"; Code[20])
         {
         }
-        field(2;"Transaction Date";Date)
+        field(2; "Transaction Date"; Date)
         {
         }
-        field(3;"Transaction Description";Text[50])
+        field(3; "Transaction Description"; Text[50])
         {
         }
-        field(4;"Collateral Value";Decimal)
+        field(4; "Collateral Value"; Decimal)
         {
         }
-        field(5;"Depreciation Amount";Decimal)
+        field(5; "Depreciation Amount"; Decimal)
         {
         }
-        field(6;"Collateral NBV";Decimal)
+        field(6; "Collateral NBV"; Decimal)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Document No","Transaction Date","Transaction Description")
+        key(Key1; "Document No", "Transaction Date", "Transaction Description")
         {
             Clustered = true;
         }

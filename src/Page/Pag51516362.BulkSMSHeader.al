@@ -7,60 +7,60 @@ Page 51516362 "Bulk SMS Header"
     {
         area(content)
         {
-            field(No;No)
+            field(No; Rec.No)
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("Date Entered";"Date Entered")
+            field("Date Entered"; Rec."Date Entered")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("Time Entered";"Time Entered")
+            field("Time Entered"; Rec."Time Entered")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("Entered By";"Entered By")
+            field("Entered By"; Rec."Entered By")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("SMS Type";"SMS Type")
+            field("SMS Type"; Rec."SMS Type")
             {
                 ApplicationArea = Basic;
             }
-            field("SMS Status";"SMS Status")
-            {
-                ApplicationArea = Basic;
-                Editable = false;
-            }
-            field("Status Date";"Status Date")
+            field("SMS Status"; Rec."SMS Status")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("Status Time";"Status Time")
+            field("Status Date"; Rec."Status Date")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("Status By";"Status By")
+            field("Status Time"; Rec."Status Time")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field(Message;Message)
+            field("Status By"; Rec."Status By")
+            {
+                ApplicationArea = Basic;
+                Editable = false;
+            }
+            field(Message; Rec.Message)
             {
                 ApplicationArea = Basic;
                 Editable = Mssage;
             }
-            part(Control1000000012;"Bulk SMS Lines Part")
+            part(Control1000000012; "Bulk SMS Lines Part")
             {
                 Caption = '<Bulk SMS Lines>';
                 Editable = BulkSMSLines;
-                SubPageLink = No=field(No);
+                SubPageLink = No = field(No);
             }
         }
     }
@@ -78,175 +78,175 @@ Page 51516362 "Bulk SMS Header"
 
                 trigger OnAction()
                 begin
-                    if "SMS Status"<>"sms status"::Pending then
-                    Error('This sms has already been sent');
-                    if Confirm('Are you sure you would like to send the SMS(ES)?',false)=true then begin
-                    if "SMS Type" <> "sms type"::Telephone then begin
-                    TestField(Message);
-                    end;
-                    
-                    if "SMS Type" = "sms type"::Telephone then begin
-                    if "Use Line Message"   = true then begin
-                    TestField(Message);
-                    end;
-                    end;
-                    
-                    
-                    BulkHeader.Reset;
-                    BulkHeader.SetRange(BulkHeader.No,No);
-                    if BulkHeader.Find('-') then begin
-                    
-                    //ALL
-                    if BulkHeader."SMS Type"=BulkHeader."sms type"::Everyone then begin
-                    Vend.Reset;
-                    Vend.SetRange(Vend."Creditor Type",Vend."creditor type"::Account);
-                    Vend.SetRange(Vend."Vendor Posting Group",'ORDINARY');
-                    if Vend.Find('-') then begin
-                    repeat
-                    //SMS MESSAGE
-                    SMSMessage.Reset;
-                    if SMSMessage.Find('+') then begin
-                    iEntryNo:=SMSMessage."Entry No";
-                    iEntryNo:=iEntryNo+1;
-                    end
-                    else begin
-                    iEntryNo:=1;
-                    end;
-                    
-                    SMSMessage.Init;
-                    SMSMessage."Entry No":=iEntryNo;
-                    SMSMessage."Batch No":=No;
-                    SMSMessage."Document No":='';
-                    SMSMessage."Account No":=Vend."No.";
-                    SMSMessage."Date Entered":=Today;
-                    SMSMessage."Time Entered":=Time;
-                    SMSMessage.Source:='BULK';
-                    SMSMessage."Entered By":=UserId;
-                    SMSMessage."Sent To Server":=SMSMessage."sent to server"::No;
-                    SMSMessage."SMS Message":=Message;
-                    
-                          if  Vend."Phone No."<>'' then begin
-                            SMSMessage."Telephone No":= Vend."Phone No.";
-                          end else if Vend."Mobile Phone No"<>'' then begin
-                            SMSMessage."Telephone No":=Vend."Mobile Phone No";
-                          end else begin
+                    if Rec."SMS Status" <> Rec."sms status"::Pending then
+                        Error('This sms has already been sent');
+                    if Confirm('Are you sure you would like to send the SMS(ES)?', false) = true then begin
+                        if Rec."SMS Type" <> Rec."sms type"::Telephone then begin
+                            Rec.TestField(Message);
+                        end;
+
+                        if Rec."SMS Type" = Rec."sms type"::Telephone then begin
+                            if Rec."Use Line Message" = true then begin
+                                Rec.TestField(Message);
+                            end;
+                        end;
+
+
+                        BulkHeader.Reset;
+                        BulkHeader.SetRange(BulkHeader.No, Rec.No);
+                        if BulkHeader.Find('-') then begin
+
+                            //ALL
+                            if BulkHeader."SMS Type" = BulkHeader."sms type"::Everyone then begin
+                                Vend.Reset;
+                                Vend.SetRange(Vend."Creditor Type", Vend."creditor type"::Account);
+                                Vend.SetRange(Vend."Vendor Posting Group", 'ORDINARY');
+                                if Vend.Find('-') then begin
+                                    repeat
+                                        //SMS MESSAGE
+                                        SMSMessage.Reset;
+                                        if SMSMessage.Find('+') then begin
+                                            iEntryNo := SMSMessage."Entry No";
+                                            iEntryNo := iEntryNo + 1;
+                                        end
+                                        else begin
+                                            iEntryNo := 1;
+                                        end;
+
+                                        SMSMessage.Init;
+                                        SMSMessage."Entry No" := iEntryNo;
+                                        SMSMessage."Batch No" := Rec.No;
+                                        SMSMessage."Document No" := '';
+                                        SMSMessage."Account No" := Vend."No.";
+                                        SMSMessage."Date Entered" := Today;
+                                        SMSMessage."Time Entered" := Time;
+                                        SMSMessage.Source := 'BULK';
+                                        SMSMessage."Entered By" := UserId;
+                                        SMSMessage."Sent To Server" := SMSMessage."sent to server"::No;
+                                        SMSMessage."SMS Message" := Rec.Message;
+
+                                        if Vend."Phone No." <> '' then begin
+                                            SMSMessage."Telephone No" := Vend."Phone No.";
+                                        end else if Vend."Mobile Phone No" <> '' then begin
+                                            SMSMessage."Telephone No" := Vend."Mobile Phone No";
+                                        end else begin
+                                            SMSMessage."Telephone No" := Vend."MPESA Mobile No";
+                                        end;
+
+                                        if SMSMessage."Telephone No" <> '' then
+                                            SMSMessage.Insert;
+
+                                    //IF Vend."MPESA Mobile No"<>'' THEN
+                                    //SMSMessage.INSERT;
+
+                                    until Vend.Next = 0
+                                end;
+                            end;
+
+                            /*
+                            //DIMENSION
+                            IF BulkHeader."SMS Type"=BulkHeader."SMS Type"::Dimension THEN BEGIN
+                            BulkLines.RESET;
+                            BulkLines.SETRANGE(BulkLines.No,No);
+                            IF BulkLines.FIND('-') THEN BEGIN
+                            REPEAT
+
+                            Vend.RESET;
+                            Vend.SETRANGE(Vend."Creditor Type",Vend."Creditor Type"::Account);
+                            Vend.SETRANGE(Vend."Vendor Posting Group",'SAVINGS');
+                            Vend.SETRANGE(Vend."Global Dimension 1 Code",BulkLines.Code);
+                            IF Vend.FIND('-') THEN BEGIN
+                            REPEAT
+                            //SMS MESSAGE
+                            SMSMessage.RESET;
+                            IF SMSMessage.FIND('+') THEN BEGIN
+                            iEntryNo:=SMSMessage."Entry No";
+                            iEntryNo:=iEntryNo+1;
+                            END
+                            ELSE BEGIN
+                            iEntryNo:=1;
+                            END;
+
+                            SMSMessage.INIT;
+                            SMSMessage."Entry No":=iEntryNo;
+                            SMSMessage."Batch No":=No;
+                            SMSMessage."Document No":='';
+                            SMSMessage."Account No":=Vend."No.";
+                            SMSMessage."Date Entered":=TODAY;
+                            SMSMessage."Time Entered":=TIME;
+                            SMSMessage.Source:='BULK';
+                            SMSMessage."Entered By":=USERID;
+                            SMSMessage."Sent To Server":=SMSMessage."Sent To Server"::No;
+                            SMSMessage."SMS Message":=Message;
                             SMSMessage."Telephone No":=Vend."MPESA Mobile No";
-                          end;
-                    
-                    if SMSMessage."Telephone No"<>'' then
-                      SMSMessage.Insert;
-                    
-                    //IF Vend."MPESA Mobile No"<>'' THEN
-                    //SMSMessage.INSERT;
-                    
-                    until Vend.Next=0
-                    end;
-                    end;
-                    
-                    /*
-                    //DIMENSION
-                    IF BulkHeader."SMS Type"=BulkHeader."SMS Type"::Dimension THEN BEGIN
-                    BulkLines.RESET;
-                    BulkLines.SETRANGE(BulkLines.No,No);
-                    IF BulkLines.FIND('-') THEN BEGIN
-                    REPEAT
-                    
-                    Vend.RESET;
-                    Vend.SETRANGE(Vend."Creditor Type",Vend."Creditor Type"::Account);
-                    Vend.SETRANGE(Vend."Vendor Posting Group",'SAVINGS');
-                    Vend.SETRANGE(Vend."Global Dimension 1 Code",BulkLines.Code);
-                    IF Vend.FIND('-') THEN BEGIN
-                    REPEAT
-                    //SMS MESSAGE
-                    SMSMessage.RESET;
-                    IF SMSMessage.FIND('+') THEN BEGIN
-                    iEntryNo:=SMSMessage."Entry No";
-                    iEntryNo:=iEntryNo+1;
-                    END
-                    ELSE BEGIN
-                    iEntryNo:=1;
-                    END;
-                    
-                    SMSMessage.INIT;
-                    SMSMessage."Entry No":=iEntryNo;
-                    SMSMessage."Batch No":=No;
-                    SMSMessage."Document No":='';
-                    SMSMessage."Account No":=Vend."No.";
-                    SMSMessage."Date Entered":=TODAY;
-                    SMSMessage."Time Entered":=TIME;
-                    SMSMessage.Source:='BULK';
-                    SMSMessage."Entered By":=USERID;
-                    SMSMessage."Sent To Server":=SMSMessage."Sent To Server"::No;
-                    SMSMessage."SMS Message":=Message;
-                    SMSMessage."Telephone No":=Vend."MPESA Mobile No";
-                    IF Vend."MPESA Mobile No"<>'' THEN
-                    SMSMessage.INSERT;
-                    
-                    UNTIL Vend.NEXT=0
-                    END;
-                    
-                    UNTIL BulkLines.NEXT=0
-                    END;
-                    END;
-                    */
-                    
-                    //Telephone
-                    if BulkHeader."SMS Type"=BulkHeader."sms type"::Telephone then begin
-                    BulkLines.Reset;
-                    BulkLines.SetRange(BulkLines.No,No);
-                    if BulkLines.Find('-') then begin
-                    repeat
-                    
-                    //SMS MESSAGE
-                    SMSMessage.Reset;
-                    if SMSMessage.Find('+') then begin
-                    iEntryNo:=SMSMessage."Entry No";
-                    iEntryNo:=iEntryNo+1;
-                    end
-                    else begin
-                    iEntryNo:=1;
-                    end;
-                    
-                    
-                    
-                    SMSMessage.Init;
-                    SMSMessage."Entry No":=iEntryNo;
-                    SMSMessage."Batch No":=No;
-                    SMSMessage."Document No":='';
-                    SMSMessage."Account No":=BulkLines."Phone No";
-                    SMSMessage."Date Entered":=Today;
-                    SMSMessage."Time Entered":=Time;
-                    SMSMessage.Source:='BULK';
-                    SMSMessage."Entered By":=UserId;
-                    SMSMessage."Sent To Server":=SMSMessage."sent to server"::No;
-                    if "Use Line Message" = true then begin
-                    SMSMessage."SMS Message":=Message;
-                    end
-                    else begin
-                    //SMSMessage."SMS Message":=BulkLines.Description;
-                    
-                    SMSMessage."SMS Message":=Message;
-                    end;
-                    
-                    SMSMessage."Telephone No":=BulkLines."Phone No";
-                    if BulkLines."Phone No"<>'' then
-                    SMSMessage.Insert;
-                    
-                    
-                    
-                    until BulkLines.Next=0
-                    end;
-                    end;
-                    
-                    
-                    end;
-                    
-                    "SMS Status" := "sms status"::Sent;
-                    "Status Date" := Today;
-                    "Status Time" := Time;
-                    "Status By" := UserId;
-                    Modify;
-                    
+                            IF Vend."MPESA Mobile No"<>'' THEN
+                            SMSMessage.INSERT;
+
+                            UNTIL Vend.NEXT=0
+                            END;
+
+                            UNTIL BulkLines.NEXT=0
+                            END;
+                            END;
+                            */
+
+                            //Telephone
+                            if BulkHeader."SMS Type" = BulkHeader."sms type"::Telephone then begin
+                                BulkLines.Reset;
+                                BulkLines.SetRange(BulkLines.No, Rec.No);
+                                if BulkLines.Find('-') then begin
+                                    repeat
+
+                                        //SMS MESSAGE
+                                        SMSMessage.Reset;
+                                        if SMSMessage.Find('+') then begin
+                                            iEntryNo := SMSMessage."Entry No";
+                                            iEntryNo := iEntryNo + 1;
+                                        end
+                                        else begin
+                                            iEntryNo := 1;
+                                        end;
+
+
+
+                                        SMSMessage.Init;
+                                        SMSMessage."Entry No" := iEntryNo;
+                                        SMSMessage."Batch No" := Rec.No;
+                                        SMSMessage."Document No" := '';
+                                        SMSMessage."Account No" := BulkLines."Phone No";
+                                        SMSMessage."Date Entered" := Today;
+                                        SMSMessage."Time Entered" := Time;
+                                        SMSMessage.Source := 'BULK';
+                                        SMSMessage."Entered By" := UserId;
+                                        SMSMessage."Sent To Server" := SMSMessage."sent to server"::No;
+                                        if Rec."Use Line Message" = true then begin
+                                            SMSMessage."SMS Message" := Rec.Message;
+                                        end
+                                        else begin
+                                            //SMSMessage."SMS Message":=BulkLines.Description;
+
+                                            SMSMessage."SMS Message" := Rec.Message;
+                                        end;
+
+                                        SMSMessage."Telephone No" := BulkLines."Phone No";
+                                        if BulkLines."Phone No" <> '' then
+                                            SMSMessage.Insert;
+
+
+
+                                    until BulkLines.Next = 0
+                                end;
+                            end;
+
+
+                        end;
+
+                        Rec."SMS Status" := Rec."sms status"::Sent;
+                        Rec."Status Date" := Today;
+                        Rec."Status Time" := Time;
+                        Rec."Status By" := UserId;
+                        Rec.Modify;
+
                     end;
 
                 end;
@@ -261,16 +261,16 @@ Page 51516362 "Bulk SMS Header"
                 trigger OnAction()
                 begin
 
-                    if "SMS Type"<>"sms type"::Telephone then begin
-                    Error('SMS Type must be Telephone.');
+                    if Rec."SMS Type" <> Rec."sms type"::Telephone then begin
+                        Error('SMS Type must be Telephone.');
                     end;
 
                     BulkHeader.Reset;
-                    BulkHeader.SetRange(BulkHeader.No,No);
+                    BulkHeader.SetRange(BulkHeader.No, Rec.No);
                     if BulkHeader.Find('-') then begin
-                    BulkLines.Reset;
-                    BulkLines.SetRange(BulkLines.No,BulkHeader.No);
-                    Xmlport.Run(51516015);
+                        BulkLines.Reset;
+                        BulkLines.SetRange(BulkLines.No, BulkHeader.No);
+                        Xmlport.Run(51516015);
                     end;
                 end;
             }
@@ -300,29 +300,29 @@ Page 51516362 "Bulk SMS Header"
 
     procedure UpdateControl()
     begin
-        if Status=Status::Open then begin
-        Mssage:=true;
-        UseHeader:=true;
-        BulkSMSLines:=true;
+        if Rec.Status = Rec.Status::Open then begin
+            Mssage := true;
+            UseHeader := true;
+            BulkSMSLines := true;
         end;
 
-        if Status=Status::Pending then begin
-        Mssage:=false;
-        UseHeader:=false;
-        BulkSMSLines:=false;
+        if Rec.Status = Rec.Status::Pending then begin
+            Mssage := false;
+            UseHeader := false;
+            BulkSMSLines := false;
         end;
 
-        if Status=Status::Rejected then begin
-        Mssage:=false;
-        UseHeader:=false;
-        BulkSMSLines:=false;
+        if Rec.Status = Rec.Status::Rejected then begin
+            Mssage := false;
+            UseHeader := false;
+            BulkSMSLines := false;
         end;
 
 
-        if Status=Status::Approved then begin
-        Mssage:=false;
-        UseHeader:=false;
-        BulkSMSLines:=false;
+        if Rec.Status = Rec.Status::Approved then begin
+            Mssage := false;
+            UseHeader := false;
+            BulkSMSLines := false;
         end;
     end;
 }

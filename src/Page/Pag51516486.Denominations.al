@@ -10,23 +10,23 @@ Page 51516486 "Denominations"
         {
             repeater(Group)
             {
-                field("Code";Code)
+                field("Code"; Rec.Code)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Value;Value)
+                field(Value; Rec.Value)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Type;Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Priority;Priority)
+                field(Priority; Rec.Priority)
                 {
                     ApplicationArea = Basic;
                 }

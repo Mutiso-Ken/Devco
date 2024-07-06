@@ -6,40 +6,40 @@ Table 51516298 "Transaction Types"
 
     fields
     {
-        field(1;"Code";Code[20])
+        field(1; "Code"; Code[20])
         {
             NotBlank = true;
         }
-        field(2;Description;Text[50])
+        field(2; Description; Text[50])
         {
         }
-        field(3;Type;Option)
+        field(3; Type; Option)
         {
             OptionCaption = 'Cash Deposit,Withdrawal,Cheque Deposit,ATM Cash Deposit,ATM Cheque Deposit,ATM Withdrawal,BOSA Receipt,BOSA Withdrawal,Bankers Cheque,Encashment';
             OptionMembers = "Cash Deposit",Withdrawal,"Cheque Deposit","ATM Cash Deposit","ATM Cheque Deposit","ATM Withdrawal","BOSA Receipt","BOSA Withdrawal","Bankers Cheque",Encashment;
         }
-        field(5;"Account Type";Code[20])
+        field(5; "Account Type"; Code[20])
         {
             TableRelation = "Account Types-Saving Products";
         }
-        field(6;"Has Schedule";Boolean)
+        field(6; "Has Schedule"; Boolean)
         {
         }
-        field(7;"Transaction Category";Option)
+        field(7; "Transaction Category"; Option)
         {
             OptionMembers = General,"Account Opening","Normal Cheques","Bankers Cheque";
         }
-        field(8;"Transaction Span";Option)
+        field(8; "Transaction Span"; Option)
         {
             OptionMembers = FOSA,BOSA;
         }
-        field(9;"Lower Limit";Decimal)
+        field(9; "Lower Limit"; Decimal)
         {
         }
-        field(10;"Upper Limit";Decimal)
+        field(10; "Upper Limit"; Decimal)
         {
         }
-        field(11;"Default Mode";Option)
+        field(11; "Default Mode"; Option)
         {
             OptionCaption = 'Cash,Cheque';
             OptionMembers = Cash,Cheque;
@@ -48,7 +48,7 @@ Table 51516298 "Transaction Types"
 
     keys
     {
-        key(Key1;"Code")
+        key(Key1; "Code")
         {
             Clustered = true;
         }

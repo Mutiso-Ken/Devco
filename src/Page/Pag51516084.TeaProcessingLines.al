@@ -16,7 +16,7 @@ page 51516084 "Tea Processing Lines"
                 field("Document No"; Rec."Document No")
                 {
                 }
-                field("Grower No"; "Grower No")
+                field("Grower No"; Rec."Grower No")
                 {
                 }
                 field("Account No"; Rec."Account No")
@@ -31,13 +31,13 @@ page 51516084 "Tea Processing Lines"
                 field(Amount; Rec.Amount)
                 {
                 }
-                field("No. Of Counts";"No. Of Counts")
+                field("No. Of Counts"; Rec."No. Of Counts")
                 {
-                    Editable=false;
+                    Editable = false;
                 }
-                field("Total Amount";"Total Amount")
+                field("Total Amount"; Rec."Total Amount")
                 {
-                    Editable=false;
+                    Editable = false;
                 }
             }
         }

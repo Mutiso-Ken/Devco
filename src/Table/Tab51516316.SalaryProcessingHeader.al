@@ -6,57 +6,57 @@ Table 51516316 "Salary Processing Header"
 
     fields
     {
-        field(1;No;Code[20])
+        field(1; No; Code[20])
         {
 
             trigger OnValidate()
             begin
-               
+
 
             end;
         }
-        field(2;"No. Series";Code[20])
+        field(2; "No. Series"; Code[20])
         {
         }
-        field(3;Posted;Boolean)
-        {
-            Editable = false;
-        }
-        field(6;"Posted By";Code[20])
+        field(3; Posted; Boolean)
         {
             Editable = false;
         }
-        field(7;"Date Entered";Date)
+        field(6; "Posted By"; Code[20])
+        {
+            Editable = false;
+        }
+        field(7; "Date Entered"; Date)
         {
         }
-        field(9;"Entered By";Text[20])
+        field(9; "Entered By"; Text[20])
         {
         }
-        field(10;Remarks;Text[150])
+        field(10; Remarks; Text[150])
         {
         }
-        field(19;"Date Filter";Date)
+        field(19; "Date Filter"; Date)
         {
             FieldClass = FlowFilter;
         }
-        field(20;"Time Entered";Time)
+        field(20; "Time Entered"; Time)
         {
         }
-        field(21;"Posting date";Date)
+        field(21; "Posting date"; Date)
         {
         }
-        field(22;"Account Type";Option)
+        field(22; "Account Type"; Option)
         {
             OptionCaption = 'G/L Account,Customer/Employer,Vendor,Bank Account,Fixed Asset';
             OptionMembers = "G/L Account",Customer,Vendor,"Bank Account","Fixed Asset";
         }
-        field(23;"Account No";Code[30])
+        field(23; "Account No"; Code[30])
         {
-            TableRelation = if ("Account Type"=const("G/L Account")) "G/L Account"
-                            else if ("Account Type"=const(Customer)) Customer
-                            else if ("Account Type"=const(Vendor)) Vendor
-                            else if ("Account Type"=const("Bank Account")) "Bank Account"
-                            else if ("Account Type"=const("Fixed Asset")) "Fixed Asset";
+            TableRelation = if ("Account Type" = const("G/L Account")) "G/L Account"
+            else if ("Account Type" = const(Customer)) Customer
+            else if ("Account Type" = const(Vendor)) Vendor
+            else if ("Account Type" = const("Bank Account")) "Bank Account"
+            else if ("Account Type" = const("Fixed Asset")) "Fixed Asset";
 
             trigger OnValidate()
             begin
@@ -87,36 +87,36 @@ Table 51516316 "Salary Processing Header"
                 // end;
             end;
         }
-        field(24;"Document No";Code[20])
+        field(24; "Document No"; Code[20])
         {
         }
-        field(25;Amount;Decimal)
+        field(25; Amount; Decimal)
         {
 
             trigger OnValidate()
             begin
-                  /*
-                IF Amount<>"Scheduled Amount" THEN
-                ERROR('The Amount must be equal to the Scheduled Amount');
-                    */
+                /*
+              IF Amount<>"Scheduled Amount" THEN
+              ERROR('The Amount must be equal to the Scheduled Amount');
+                  */
 
             end;
         }
-        field(26;"Scheduled Amount";Decimal)
+        field(26; "Scheduled Amount"; Decimal)
         {
             // CalcFormula = sum("Member Section".Field5 where (Field62003=field(No)));
             // Editable = false;
             // FieldClass = FlowField;
         }
-        field(27;"Total Count";Integer)
+        field(27; "Total Count"; Integer)
         {
             // CalcFormula = count("Member Section" where (Field62003=field(No)));
             // FieldClass = FlowField;
         }
-        field(28;"Account Name";Code[50])
+        field(28; "Account Name"; Code[50])
         {
         }
-        field(29;"Employer Code";Code[30])
+        field(29; "Employer Code"; Code[30])
         {
             //TableRelation = Table51516191.Field1;
         }
@@ -124,7 +124,7 @@ Table 51516316 "Salary Processing Header"
 
     keys
     {
-        key(Key1;No)
+        key(Key1; No)
         {
             Clustered = true;
         }
@@ -137,7 +137,7 @@ Table 51516316 "Salary Processing Header"
     trigger OnDelete()
     begin
         if Posted = true then
-        Error('You cannot delete a Posted Check Off');
+            Error('You cannot delete a Posted Check Off');
     end;
 
     trigger OnInsert()
@@ -159,19 +159,19 @@ Table 51516316 "Salary Processing Header"
     trigger OnModify()
     begin
         if Posted = true then
-        Error('You cannot modify a Posted Check Off');
+            Error('You cannot modify a Posted Check Off');
     end;
 
     trigger OnRename()
     begin
         if Posted = true then
-        Error('You cannot rename a Posted Check Off');
+            Error('You cannot rename a Posted Check Off');
     end;
 
     var
         NoSetup: Record "Purchases & Payables Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
-       // cust: Record UnknownRecord51516154;
+        // cust: Record UnknownRecord51516154;
         "GL Account": Record "G/L Account";
         BANKACC: Record "Bank Account";
 }

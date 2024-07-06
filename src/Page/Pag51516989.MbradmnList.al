@@ -21,32 +21,32 @@ page 51516989 MbradmnList
         {
             repeater(General)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
 
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Phone No."; "Phone No.")
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("<Mobile Phone>"; "Mobile Phone No")
+                field("<Mobile Phone>"; Rec."Mobile Phone No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Mobile Phone';
                 }
-                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                 {
                     Caption = 'Branch Code';
                     ApplicationArea = Basic;
@@ -54,30 +54,30 @@ page 51516989 MbradmnList
                 }
 
 
-                field("FOSA Account"; "FOSA Account")
+                field("FOSA Account"; Rec."FOSA Account")
                 {
                     ApplicationArea = Basic;
                 }
 
 
-                field("Account Category"; "Account Category")
+                field("Account Category"; Rec."Account Category")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                 }
-               
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
-                    
+
                 }
-                field("Payroll/Staff No"; "Payroll/Staff No")
+                field("Payroll/Staff No"; Rec."Payroll/Staff No")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Employer Code"; "Employer Code")
+                field("Employer Code"; Rec."Employer Code")
                 {
                     ApplicationArea = Basic;
                 }
@@ -124,7 +124,7 @@ page 51516989 MbradmnList
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51516223, true, false, Cust);
                     end;
@@ -140,7 +140,7 @@ page 51516989 MbradmnList
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51516226, true, false, Cust);
                     end;
@@ -156,7 +156,7 @@ page 51516989 MbradmnList
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51516302, true, false, Cust);
                     end;
@@ -172,7 +172,7 @@ page 51516989 MbradmnList
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51516608, true, false, Cust);
                     end;
@@ -187,7 +187,7 @@ page 51516989 MbradmnList
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51516303, true, false, Cust);
                     end;

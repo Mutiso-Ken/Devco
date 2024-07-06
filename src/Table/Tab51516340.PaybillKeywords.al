@@ -4,15 +4,15 @@ Table 51516340 "Paybill Keywords"
 
     fields
     {
-        field(1;Keyword;Text[50])
+        field(1; Keyword; Text[50])
         {
             NotBlank = true;
         }
-        field(2;"Loan Code";Code[20])
+        field(2; "Loan Code"; Code[20])
         {
-           // TableRelation = "Loan Product Types".Code;
+            // TableRelation = "Loan Product Types".Code;
         }
-        field(3;"Destination Type";Option)
+        field(3; "Destination Type"; Option)
         {
             OptionMembers = "None","Loan Repayment","Shares Capital","Deposit Contribution","Benevolent Funds";
         }
@@ -20,7 +20,7 @@ Table 51516340 "Paybill Keywords"
 
     keys
     {
-        key(Key1;Keyword)
+        key(Key1; Keyword)
         {
             Clustered = true;
         }

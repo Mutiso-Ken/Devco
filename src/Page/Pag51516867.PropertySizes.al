@@ -12,15 +12,15 @@ Page 51516867 "Property Sizes"
         {
             repeater(Group)
             {
-                field("Code";Code)
+                field("Code"; Rec.Code)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Acreage;Acreage)
+                field(Acreage; Rec.Acreage)
                 {
                     ApplicationArea = Basic;
                 }

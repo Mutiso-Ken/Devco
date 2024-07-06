@@ -4,11 +4,11 @@ pageextension 51516618 "detailedvendorledgerentry" extends "Detailed Vendor Ledg
     {
         addafter(Amount)
         {
-            field("Amount Posted"; "Amount Posted")
+            field("Amount Posted"; Rec."Amount Posted")
             {
                 ApplicationArea = Basic;
             }
-            field("Transaction Type"; "Transaction Type")
+            field("Transaction Type"; Rec."Transaction Type")
             {
                 ApplicationArea = Basic;
             }

@@ -12,29 +12,29 @@ Page 51516284 "Customer Risk Rating"
         {
             repeater(Group)
             {
-                field(Category; Category)
+                field(Category; Rec.Category)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Sub Category"; "Sub Category")
+                field("Sub Category"; Rec."Sub Category")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Inherent Risk Rating"; "Inherent Risk Rating")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("Risk Score"; "Risk Score")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Min Relationship Length(Years)"; "Min Relationship Length(Years)")
+                field("Inherent Risk Rating"; Rec."Inherent Risk Rating")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Max Relationship Length(Years)"; "Max Relationship Length(Years)")
+                field("Risk Score"; Rec."Risk Score")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Min Relationship Length(Years)"; Rec."Min Relationship Length(Years)")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Max Relationship Length(Years)"; Rec."Max Relationship Length(Years)")
                 {
                     ApplicationArea = Basic;
                     Visible = false;

@@ -17,19 +17,19 @@ Page 51516891 "MC Group List"
         {
             repeater(Control1)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("E-Mail"; "E-Mail")
+                field("E-Mail"; Rec."E-Mail")
                 {
                     ApplicationArea = Basic;
                     visible = false;
@@ -39,7 +39,7 @@ Page 51516891 "MC Group List"
                 //     ApplicationArea = Basic;
                 //     visible = false;
                 // }
-                field("Loan Officer Name"; "Loan Officer Name")
+                field("Loan Officer Name"; Rec."Loan Officer Name")
                 {
                     ApplicationArea = Basic;
                 }
@@ -50,12 +50,12 @@ Page 51516891 "MC Group List"
                     visible = false;
                 }
 
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
 
                 }
-                field("Phone No."; "Phone No.")
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
                 }
@@ -81,7 +81,7 @@ Page 51516891 "MC Group List"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51516223, true, false, Cust);
                     end;

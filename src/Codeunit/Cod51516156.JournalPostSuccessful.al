@@ -9,12 +9,12 @@ Codeunit 51516156 "Journal Post Successful"
 
     procedure PostedSuccessfully() Posted: Boolean
     begin
-        
-          Posted:=false;
-         /*ValPost.SETRANGE(ValPost.UserID,USERID);
-         ValPost.SETRANGE(ValPost."Value Posting",1);
-         IF ValPost.FIND('-') THEN
-            Posted:=TRUE;*/
+
+        Posted := false;
+        /*ValPost.SETRANGE(ValPost.UserID,USERID);
+        ValPost.SETRANGE(ValPost."Value Posting",1);
+        IF ValPost.FIND('-') THEN
+           Posted:=TRUE;*/
 
     end;
 }

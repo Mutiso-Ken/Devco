@@ -4,84 +4,84 @@ Table 51516251 "Check-Off Advice Buffer"
 
     fields
     {
-        field(1;"Entry No";Integer)
+        field(1; "Entry No"; Integer)
         {
         }
-        field(2;"Member No.";Code[20])
+        field(2; "Member No."; Code[20])
         {
         }
-        field(3;"Personal No.";Code[20])
+        field(3; "Personal No."; Code[20])
         {
         }
-        field(4;Names;Text[250])
+        field(4; Names; Text[250])
         {
         }
-        field(5;"New Amount";Decimal)
+        field(5; "New Amount"; Decimal)
         {
         }
-        field(6;"Non Rec";Decimal)
+        field(6; "Non Rec"; Decimal)
         {
         }
-        field(7;"Current Amount";Decimal)
+        field(7; "Current Amount"; Decimal)
         {
         }
-        field(8;"New Balance";Decimal)
+        field(8; "New Balance"; Decimal)
         {
         }
-        field(9;EDCode;Code[20])
+        field(9; EDCode; Code[20])
         {
         }
-        field(10;Employer;Code[20])
+        field(10; Employer; Code[20])
         {
             //TableRelation = Table51516191.Field1;
         }
-        field(11;Refference;Code[20])
+        field(11; Refference; Code[20])
         {
         }
-        field(12;Month;Integer)
+        field(12; Month; Integer)
         {
         }
-        field(13;Remarks;Text[30])
+        field(13; Remarks; Text[30])
         {
         }
-        field(14;Station;Code[20])
+        field(14; Station; Code[20])
         {
         }
-        field(15;"NR Code";Code[20])
+        field(15; "NR Code"; Code[20])
         {
         }
-        field(16;"Sacco Code";Code[20])
+        field(16; "Sacco Code"; Code[20])
         {
         }
-        field(17;"Vote Code";Code[20])
+        field(17; "Vote Code"; Code[20])
         {
         }
-        field(18;"Account No.";Code[20])
+        field(18; "Account No."; Code[20])
         {
         }
-        field(19;"Current Balance";Decimal)
+        field(19; "Current Balance"; Decimal)
         {
         }
-        field(20;"Transaction Type";Code[10])
+        field(20; "Transaction Type"; Code[10])
         {
         }
-        field(21;"Transaction Name";Text[30])
+        field(21; "Transaction Name"; Text[30])
         {
         }
-        field(22;Interest;Integer)
+        field(22; Interest; Integer)
         {
         }
-        field(23;"Action";Integer)
+        field(23; "Action"; Integer)
         {
         }
-        field(24;"Old Account No";Text[30])
+        field(24; "Old Account No"; Text[30])
         {
         }
     }
 
     keys
     {
-        key(Key1;"Entry No")
+        key(Key1; "Entry No")
         {
             Clustered = true;
         }

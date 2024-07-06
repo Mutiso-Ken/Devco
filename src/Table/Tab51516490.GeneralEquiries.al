@@ -321,7 +321,7 @@ Table 51516490 "General Equiries"
         field(68053; "Captured On"; Date)
         {
         }
-      
+
 
     }
 

@@ -10,12 +10,12 @@ Page 51516198 "Member Due Diligence Measure"
         {
             repeater(Group)
             {
-                field("Due Diligence Measure"; "Due Diligence Measure")
+                field("Due Diligence Measure"; Rec."Due Diligence Measure")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Due Diligence Done"; "Due Diligence Done")
+                field("Due Diligence Done"; Rec."Due Diligence Done")
                 {
                     ApplicationArea = Basic;
                 }
@@ -29,7 +29,7 @@ Page 51516198 "Member Due Diligence Measure"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Risk Rating Scale field.';
                 }
-                field("Due Diligence Done By"; "Due Diligence Done By")
+                field("Due Diligence Done By"; Rec."Due Diligence Done By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;

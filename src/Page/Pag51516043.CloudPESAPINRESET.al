@@ -4,7 +4,7 @@ Page 51516043 "CloudPESA PIN RESET"
     ApplicationArea = Basic;
     CardPageID = "CloudPESA PIN Reset Card";
     Editable = false;
-    DeleteAllowed=false;
+    DeleteAllowed = false;
     InsertAllowed = false;
     PageType = List;
     SourceTable = "SurePESA Applications";
@@ -16,46 +16,46 @@ Page 51516043 "CloudPESA PIN RESET"
         {
             repeater(Group)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name"; "Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field(Telephone; Telephone)
+                field(Telephone; Rec.Telephone)
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No"; "ID No")
+                field("ID No"; Rec."ID No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(SentToServer; SentToServer)
+                field(SentToServer; Rec.SentToServer)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Created By"; "Created By")
+                field("Created By"; Rec."Created By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Reset By"; "Reset By")
+                field("Reset By"; Rec."Reset By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Last PIN Reset"; "Last PIN Reset")
+                field("Last PIN Reset"; Rec."Last PIN Reset")
                 {
                     ApplicationArea = Basic;
                 }

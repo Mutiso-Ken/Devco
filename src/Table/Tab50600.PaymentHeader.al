@@ -3,7 +3,7 @@ Table 50600 "Payment Header"
 {
     DrillDownPageId = PaymentList;
     LookupPageId = PaymentList;
-    
+
     fields
     {
         field(10; "No."; Code[20])

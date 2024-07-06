@@ -18,64 +18,64 @@ Page 51516870 "Posted Advances Card"
             group(General)
             {
                 Caption = 'General';
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Staff No"; "Staff No")
+                field("Staff No"; Rec."Staff No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Staff No';
                     Editable = false;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'FOSA Account No';
                     Editable = MNoEditable;
                 }
-                field("Client Name"; "Client Name")
+                field("Client Name"; Rec."Client Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("ID NO"; "ID NO")
+                field("ID NO"; Rec."ID NO")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                     Editable = ApplcDateEditable;
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Loan Product Type"; "Loan Product Type")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Editable = LProdTypeEditable;
                 }
-                field(Installments; Installments)
+                field(Installments; Rec.Installments)
                 {
                     ApplicationArea = Basic;
                     Editable = InstallmentEditable;
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field(Interest; Interest)
+                field(Interest; Rec.Interest)
                 {
                     ApplicationArea = Basic;
                     Editable = Interrest;
                 }
-                field("Requested Amount"; "Requested Amount")
+                field("Requested Amount"; Rec."Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Amount Applied';
@@ -83,10 +83,10 @@ Page 51516870 "Posted Advances Card"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Approved Amount"; "Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Approved Amount';
@@ -94,35 +94,35 @@ Page 51516870 "Posted Advances Card"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Main Sector"; "Main Sector")
+                field("Main Sector"; Rec."Main Sector")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Sub-Sector"; "Sub-Sector")
+                field("Sub-Sector"; Rec."Sub-Sector")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Specific Sector"; "Specific Sector")
+                field("Specific Sector"; Rec."Specific Sector")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Repayment Method"; "Repayment Method")
+                field("Repayment Method"; Rec."Repayment Method")
                 {
                     ApplicationArea = Basic;
                     Editable = RepayMethodEditable;
                 }
-                field(Repayment; Repayment)
+                field(Repayment; Rec.Repayment)
                 {
                     ApplicationArea = Basic;
                     Editable = RepaymentEditable;
                 }
-                field("Loan Status"; "Loan Status")
+                field("Loan Status"; Rec."Loan Status")
                 {
                     ApplicationArea = Basic;
                     Editable = LoanStatusEditable;
@@ -132,56 +132,56 @@ Page 51516870 "Posted Advances Card"
 
                     end;
                 }
-                field("Loans Category-SASRA"; "Loans Category-SASRA")
+                field("Loans Category-SASRA"; Rec."Loans Category-SASRA")
                 {
                     ApplicationArea = Basic;
                     Editable = BatchNoEditable;
                     Style = Ambiguous;
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Posted By"; "Posted By")
+                field("Posted By"; Rec."Posted By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Total TopUp Commission"; "Total TopUp Commission")
+                field("Total TopUp Commission"; Rec."Total TopUp Commission")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Repayment Frequency"; "Repayment Frequency")
+                field("Repayment Frequency"; Rec."Repayment Frequency")
                 {
                     ApplicationArea = Basic;
                     Editable = RepayFrequencyEditable;
                 }
-                field("Recovery Mode"; "Recovery Mode")
+                field("Recovery Mode"; Rec."Recovery Mode")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mode of Disbursement"; "Mode of Disbursement")
+                field("Mode of Disbursement"; Rec."Mode of Disbursement")
                 {
                     ApplicationArea = Basic;
                     Editable = ModeofDisburesmentEdit;
                 }
-                field("Loan Disbursement Date"; "Loan Disbursement Date")
+                field("Loan Disbursement Date"; Rec."Loan Disbursement Date")
                 {
                     ApplicationArea = Basic;
                     Editable = DisbursementDateEditable;
                 }
-                field("Repayment Start Date"; "Repayment Start Date")
+                field("Repayment Start Date"; Rec."Repayment Start Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Expected Date of Completion"; "Expected Date of Completion")
+                field("Expected Date of Completion"; Rec."Expected Date of Completion")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Transacting Branch"; "Transacting Branch")
+                field("Transacting Branch"; Rec."Transacting Branch")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -213,7 +213,7 @@ Page 51516870 "Posted Advances Card"
 
 
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", Rec."Loan  No.");
                         if LoanApp.Find('-') then begin
                             Report.Run(51516477, true, false, LoanApp);
                         end;
@@ -388,7 +388,7 @@ Page 51516870 "Posted Advances Card"
 
     procedure UpdateControl()
     begin
-        if "Loan Status" = "loan status"::Application then begin
+        if Rec."Loan Status" = Rec."loan status"::Application then begin
             MNoEditable := true;
             ApplcDateEditable := true;
             LoanStatusEditable := false;
@@ -406,7 +406,7 @@ Page 51516870 "Posted Advances Card"
             DisbursementDateEditable := false;
         end;
 
-        if "Loan Status" = "loan status"::Appraisal then begin
+        if Rec."Loan Status" = Rec."loan status"::Appraisal then begin
             MNoEditable := false;
             ApplcDateEditable := true;
             LoanStatusEditable := false;
@@ -424,7 +424,7 @@ Page 51516870 "Posted Advances Card"
             DisbursementDateEditable := false;
         end;
 
-        if "Loan Status" = "loan status"::Rejected then begin
+        if Rec."Loan Status" = Rec."loan status"::Rejected then begin
             MNoEditable := false;
             ApplcDateEditable := false;
             LoanStatusEditable := false;
@@ -442,7 +442,7 @@ Page 51516870 "Posted Advances Card"
             DisbursementDateEditable := false;
         end;
 
-        if "Loan Status" = "loan status"::Approved then begin
+        if Rec."Loan Status" = Rec."loan status"::Approved then begin
             MNoEditable := false;
             LoanStatusEditable := false;
             ApplcDateEditable := false;

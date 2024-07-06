@@ -7,7 +7,7 @@ Page 51516857 "Posted Authorisation List"
     InsertAllowed = false;
     PageType = List;
     SourceTable = "Over Draft Authorisationx";
-    SourceTableView = where(Posted=const(true));
+    SourceTableView = where(Posted = const(true));
 
     layout
     {
@@ -15,75 +15,75 @@ Page 51516857 "Posted Authorisation List"
         {
             repeater(Group)
             {
-                field("Over Draft No";"Over Draft No")
+                field("Over Draft No"; Rec."Over Draft No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Over Draft Payoff";"Over Draft Payoff")
+                field("Over Draft Payoff"; Rec."Over Draft Payoff")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No";"Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Application date";"Application date")
+                field("Application date"; Rec."Application date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approved Date";"Approved Date")
+                field("Approved Date"; Rec."Approved Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Captured by";"Captured by")
+                field("Captured by"; Rec."Captured by")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Current Account No";"Current Account No")
+                field("Current Account No"; Rec."Current Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Outstanding Overdraft";"Outstanding Overdraft")
+                field("Outstanding Overdraft"; Rec."Outstanding Overdraft")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount applied";"Amount applied")
+                field("Amount applied"; Rec."Amount applied")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Filter";"Date Filter")
+                field("Date Filter"; Rec."Date Filter")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID Number";"ID Number")
+                field("ID Number"; Rec."ID Number")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No";"Phone No")
+                field("Phone No"; Rec."Phone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Email Address";"Email Address")
+                field("Email Address"; Rec."Email Address")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted;Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Overdraft Status";"Overdraft Status")
+                field("Overdraft Status"; Rec."Overdraft Status")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approved Amount";"Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     ApplicationArea = Basic;
                 }

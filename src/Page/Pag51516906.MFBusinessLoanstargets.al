@@ -14,103 +14,103 @@ Page 51516906 "MF Business Loans targets"
         {
             repeater(Group)
             {
-                field("Account No.";"Account No.")
+                field("Account No."; Rec."Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Target Type";"Target Type")
+                field("Target Type"; Rec."Target Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Year;Year)
+                field(Year; Rec.Year)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Previous Year actual";"Previous Year actual")
+                field("Previous Year actual"; Rec."Previous Year actual")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(January;January)
+                field(January; Rec.January)
                 {
                     ApplicationArea = Basic;
                 }
-                field(February;February)
+                field(February; Rec.February)
                 {
                     ApplicationArea = Basic;
                 }
-                field(March;March)
+                field(March; Rec.March)
                 {
                     ApplicationArea = Basic;
                 }
-                field(April;April)
+                field(April; Rec.April)
                 {
                     ApplicationArea = Basic;
                 }
-                field(May;May)
+                field(May; Rec.May)
                 {
                     ApplicationArea = Basic;
                 }
-                field(June;June)
+                field(June; Rec.June)
                 {
                     ApplicationArea = Basic;
                 }
-                field(July;July)
+                field(July; Rec.July)
                 {
                     ApplicationArea = Basic;
                 }
-                field(August;August)
+                field(August; Rec.August)
                 {
                     ApplicationArea = Basic;
                 }
-                field(September;September)
+                field(September; Rec.September)
                 {
                     ApplicationArea = Basic;
                 }
-                field(October;October)
+                field(October; Rec.October)
                 {
                     ApplicationArea = Basic;
                 }
-                field(November;November)
+                field(November; Rec.November)
                 {
                     ApplicationArea = Basic;
                 }
-                field(December;December)
+                field(December; Rec.December)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Totals;Totals)
+                field(Totals; Rec.Totals)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Targets No. of Loans";"Targets No. of Loans")
+                field("Targets No. of Loans"; Rec."Targets No. of Loans")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Actuals No. of Loans";"Actuals No. of Loans")
+                field("Actuals No. of Loans"; Rec."Actuals No. of Loans")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Date;Date)
+                field(Date; Rec.Date)
                 {
                     ApplicationArea = Basic;
                 }
-                field(UserID;UserID)
+                field(UserID; Rec.UserID)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Modified";"Date Modified")
+                field("Date Modified"; Rec."Date Modified")
                 {
                     ApplicationArea = Basic;
                 }

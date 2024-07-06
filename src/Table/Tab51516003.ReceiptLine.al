@@ -64,7 +64,7 @@ Table 51516003 "Receipt Line"
         field(15; "Account Type"; Option)
         {
             Editable = true;
-          
+
             OptionMembers = "G/L Account",Customer,Vendor,"Bank Account","Fixed Asset","IC Partner",Staff,Investor,Member;
 
             trigger OnValidate()
@@ -83,7 +83,7 @@ Table 51516003 "Receipt Line"
         field(16; "Account Code"; Code[20])
         {
             TableRelation = if ("Account Type" = const("G/L Account")) "G/L Account"
-            else if ("Account Type" = const(Customer)) Customer where ("Customer Type"=const(Checkoff))
+            else if ("Account Type" = const(Customer)) Customer where("Customer Type" = const(Checkoff))
             else if ("Account Type" = const(Vendor)) Vendor
             else if ("Account Type" = const(Investor)) "Profitability Set up-Micro";
 

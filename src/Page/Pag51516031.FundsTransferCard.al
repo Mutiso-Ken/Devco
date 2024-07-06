@@ -11,66 +11,66 @@ Page 51516031 "Funds Transfer Card"
         {
             group(General)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Date; Date)
+                field(Date; Rec.Date)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Date"; "Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Paying Bank Account"; "Paying Bank Account")
+                field("Paying Bank Account"; Rec."Paying Bank Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Paying Bank Name"; "Paying Bank Name")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Bank Balance"; "Bank Balance")
+                field("Paying Bank Name"; Rec."Paying Bank Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Amount to Transfer"; "Amount to Transfer")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Total Line Amount"; "Total Line Amount")
+                field("Bank Balance"; Rec."Bank Balance")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Cheque/Doc. No"; "Cheque/Doc. No")
+                field("Amount to Transfer"; Rec."Amount to Transfer")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description; Description)
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Created By"; "Created By")
+                field("Total Line Amount"; Rec."Total Line Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Date Created"; "Date Created")
+                field("Cheque/Doc. No"; Rec."Cheque/Doc. No")
+                {
+                    ApplicationArea = Basic;
+                }
+                field(Description; Rec.Description)
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Created By"; Rec."Created By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Time Created"; "Time Created")
+                field("Date Created"; Rec."Date Created")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Status; Status)
+                field("Time Created"; Rec."Time Created")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -111,10 +111,10 @@ Page 51516031 "Funds Transfer Card"
                             "Inter Bank Journal Batch" := TempBatch."FundsTransfer Template Name";
                         end;
 
-                        TestField(Status, Status::Approved);
-                        TestField("Posting Date");
+                        Rec.TestField(Status, Rec.Status::Approved);
+                        Rec.TestField("Posting Date");
                         //TESTFIELD("Sending Responsibility Center");
-                        TestField("Paying Bank Account");
+                        Rec.TestField("Paying Bank Account");
 
                         //Check whether the two LCY amounts are same
                         //IF "Request Amt LCY" <>"Pay Amt LCY" THEN
@@ -122,22 +122,22 @@ Page 51516031 "Funds Transfer Card"
 
                         //get the source account balance from the database table
                         BankAcc.Reset;
-                        BankAcc.SetRange(BankAcc."No.", "Paying Bank Account");
+                        BankAcc.SetRange(BankAcc."No.", Rec."Paying Bank Account");
                         BankAcc.SetRange(BankAcc."Bank Type", BankAcc."bank type"::Cash);
                         if BankAcc.FindFirst then begin
                             BankAcc.CalcFields(BankAcc.Balance);
-                            "Bank Balance" := BankAcc.Balance;
-                            if ("Bank Balance" - "Amount to Transfer") < 0 then begin
+                            Rec."Bank Balance" := BankAcc.Balance;
+                            if (Rec."Bank Balance" - Rec."Amount to Transfer") < 0 then begin
                                 Error('The transaction will result in a negative balance in a CASH ACCOUNT.');
                             end;
                         end;
-                        if "Amount to Transfer" = 0 then begin
+                        if Rec."Amount to Transfer" = 0 then begin
                             Error('Please ensure Amount to Transfer is entered');
                         end;
                         /*Check if the user's batch has any records within it*/
 
                         FundsLine.Reset;
-                        FundsLine.SetRange(FundsLine."Document No", "No.");
+                        FundsLine.SetRange(FundsLine."Document No", Rec."No.");
                         if FundsLine.Find('-') then begin
                             repeat
                                 GenJnlLine.Reset;
@@ -153,8 +153,8 @@ Page 51516031 "Funds Transfer Card"
                                 GenJnlLine."Source Code" := 'PAYMENTJNL';
                                 GenJnlLine."Journal Template Name" := "Inter Bank Template Name";
                                 GenJnlLine."Journal Batch Name" := "Inter Bank Journal Batch";
-                                GenJnlLine."Posting Date" := "Posting Date";
-                                GenJnlLine."Document No." := "No.";
+                                GenJnlLine."Posting Date" := Rec."Posting Date";
+                                GenJnlLine."Document No." := Rec."No.";
                                 /* IF "Receiving Transfer Type"="Receiving Transfer Type"::"Intra-Company" THEN
                                    BEGIN
                                      GenJnlLine."Account Type":=GenJnlLine."Account Type"::"Bank Account";
@@ -166,7 +166,7 @@ Page 51516031 "Funds Transfer Card"
                                 GenJnlLine."Account Type" := GenJnlLine."account type"::"Bank Account";
                                 GenJnlLine."Account No." := FundsLine."Receiving Bank Account";
                                 GenJnlLine.Validate(GenJnlLine."Account No.");
-                                GenJnlLine.Description := 'Inter-Bank Transfer Ref No:' + Format("No.");
+                                GenJnlLine.Description := 'Inter-Bank Transfer Ref No:' + Format(Rec."No.");
                                 //GenJnlLine."Shortcut Dimension 1 Code":="Receiving Depot Code";
                                 //GenJnlLine."Shortcut Dimension 2 Code":="Receiving Department Code";
                                 GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 1 Code");
@@ -174,8 +174,8 @@ Page 51516031 "Funds Transfer Card"
                                 //GenJnlLine.ValidateShortcutDimCode(3,"Shortcut Dimension 3 Code1");
                                 //GenJnlLine.ValidateShortcutDimCode(4,"Shortcut Dimension 4 Code1");
                                 //GenJnlLine."External Document No.":=fundline.e;
-                                GenJnlLine.Description := Description;
-                                if Description = '' then begin GenJnlLine.Description := 'Inter-Bank Transfer Ref No:' + Format("No."); end;
+                                GenJnlLine.Description := Rec.Description;
+                                if Rec.Description = '' then begin GenJnlLine.Description := 'Inter-Bank Transfer Ref No:' + Format(Rec."No."); end;
                                 //GenJnlLine."Currency Code":="Currency Code Destination";
                                 GenJnlLine.Validate(GenJnlLine."Currency Code");
                                 /*IF "Currency Code Destination"<>'' THEN
@@ -183,7 +183,7 @@ Page 51516031 "Funds Transfer Card"
                                     GenJnlLine."Currency Factor":="Exch. Rate Destination";//"Reciprical 2";
                                     GenJnlLine.VALIDATE(GenJnlLine."Currency Factor");
                                   END*/
-                                GenJnlLine.Amount := "Amount to Transfer";
+                                GenJnlLine.Amount := Rec."Amount to Transfer";
                                 GenJnlLine.Validate(GenJnlLine.Amount);
                                 GenJnlLine.Insert;
 
@@ -194,8 +194,8 @@ Page 51516031 "Funds Transfer Card"
                                 GenJnlLine."Source Code" := 'PAYMENTJNL';
                                 GenJnlLine."Journal Template Name" := "Inter Bank Template Name";
                                 GenJnlLine."Journal Batch Name" := "Inter Bank Journal Batch";
-                                GenJnlLine."Posting Date" := "Posting Date";
-                                GenJnlLine."Document No." := "No.";
+                                GenJnlLine."Posting Date" := Rec."Posting Date";
+                                GenJnlLine."Document No." := Rec."No.";
                                 /*IF "Source Transfer Type"="Source Transfer Type"::"Intra-Company" THEN
                                   BEGIN
                                     GenJnlLine."Account Type":=GenJnlLine."Account Type"::"Bank Account";
@@ -206,7 +206,7 @@ Page 51516031 "Funds Transfer Card"
                                   END;
                                   */
                                 GenJnlLine."Account Type" := GenJnlLine."account type"::"Bank Account";
-                                GenJnlLine."Account No." := "Paying Bank Account";
+                                GenJnlLine."Account No." := Rec."Paying Bank Account";
                                 GenJnlLine.Validate(GenJnlLine."Account No.");
                                 //GenJnlLine."Shortcut Dimension 1 Code":="Source Depot Code";
                                 //GenJnlLine."Shortcut Dimension 2 Code":="Source Department Code";
@@ -215,8 +215,8 @@ Page 51516031 "Funds Transfer Card"
                                 // GenJnlLine.ValidateShortcutDimCode(3,"Shortcut Dimension 3 Code");
                                 //GenJnlLine.ValidateShortcutDimCode(4,"Shortcut Dimension 4 Code");
                                 GenJnlLine."External Document No." := FundsLine."External Doc No.";
-                                GenJnlLine.Description := Description;
-                                if Description = '' then begin GenJnlLine.Description := 'Inter-Bank Transfer Ref No:' + Format("No."); end;
+                                GenJnlLine.Description := Rec.Description;
+                                if Rec.Description = '' then begin GenJnlLine.Description := 'Inter-Bank Transfer Ref No:' + Format(Rec."No."); end;
                                 //GenJnlLine."Currency Code":="Currency Code Source";
                                 //GenJnlLine.VALIDATE(GenJnlLine."Currency Code");
                                 /* IF "Currency Code Source"<>'' THEN
@@ -224,7 +224,7 @@ Page 51516031 "Funds Transfer Card"
                                      GenJnlLine."Currency Factor":="Exch. Rate Source";//"Reciprical 1";
                                      GenJnlLine.VALIDATE(GenJnlLine."Currency Factor");
                                    END;*/
-                                GenJnlLine.Amount := -"Amount to Transfer";
+                                GenJnlLine.Amount := -Rec."Amount to Transfer";
                                 GenJnlLine.Validate(GenJnlLine.Amount);
                                 GenJnlLine.Insert;
 
@@ -245,11 +245,11 @@ Page 51516031 "Funds Transfer Card"
                         END;
                         */
 
-                        Posted := true;
-                        "Date Posted" := Today;
-                        "Time Posted" := Time;
-                        "Posted By" := UserId;
-                        Modify;
+                        Rec.Posted := true;
+                        Rec."Date Posted" := Today;
+                        Rec."Time Posted" := Time;
+                        Rec."Posted By" := UserId;
+                        Rec.Modify;
 
                     end;
                 }
@@ -267,8 +267,8 @@ Page 51516031 "Funds Transfer Card"
                     var
                         SrestepApprovalsCodeUnit: Codeunit SurestepApprovalsCodeUnit;
                     begin
-                        if Status <> Status::Open then
-                            Error('This batch is already %1', Format(Status));
+                        if Rec.Status <> Rec.Status::Open then
+                            Error('This batch is already %1', Format(Rec.Status));
                         if Confirm('Send Approval Request?', false) = false then begin
                             exit;
                         end
@@ -327,7 +327,7 @@ Page 51516031 "Funds Transfer Card"
                     trigger OnAction()
                     begin
                         rec.Reset();
-                        rec.SetRange(rec."No.", "No.");
+                        rec.SetRange(rec."No.", Rec."No.");
                         if Rec.FindFirst()
                         then begin
                             Report.RunModal(Report::"Funds Transfer Voucher", true, false, Rec);
@@ -375,8 +375,8 @@ Page 51516031 "Funds Transfer Card"
                     //Check Required Fields
                     CheckRequiredFields;
 
-                    TestField("Posting Date");
-                    TestField(Status, Status::Approved);
+                    Rec.TestField("Posting Date");
+                    Rec.TestField(Status, Rec.Status::Approved);
 
                     //Get Setups of the current UserID from Cash Office User Template
                     CashOfficeUserTemplate.Reset;
@@ -387,18 +387,18 @@ Page 51516031 "Funds Transfer Card"
                     end;
 
                     //Check whether the "Line Amounts" to be Transfered is the same as "Amount to Transfer" in the header
-                    CalcFields("Total Line Amount");
-                    if "Total Line Amount" <> "Amount to Transfer" then begin
-                        Error(Text001, "Amount to Transfer", "Total Line Amount");
+                    Rec.CalcFields("Total Line Amount");
+                    if Rec."Total Line Amount" <> Rec."Amount to Transfer" then begin
+                        Error(Text001, Rec."Amount to Transfer", Rec."Total Line Amount");
                     end;
 
                     //Check if the transaction will lead to a Negative Account Balance in the Paying Account Bank
                     BankAcc.Reset;
-                    BankAcc.SetRange(BankAcc."No.", "Paying Bank Account");
+                    BankAcc.SetRange(BankAcc."No.", Rec."Paying Bank Account");
                     if BankAcc.FindFirst then begin
                         BankAcc.CalcFields(BankAcc.Balance);
 
-                        currBankBalance := BankAcc.Balance - "Amount to Transfer";
+                        currBankBalance := BankAcc.Balance - Rec."Amount to Transfer";
                         /*
                     //For normal banks with no Credit Agreement
                     IF (currBankBalance <= 0) AND NOT BankAcc."Credit Agreement?" THEN
@@ -408,9 +408,9 @@ Page 51516031 "Funds Transfer Card"
                         */
                         //For banks with credit agreeement
                         if (currBankBalance <= 0) and (BankAcc."Credit Agreement?") then begin
-                            NewBankBalanceAfterPost := BankAcc.Balance - "Amount to Transfer";
+                            NewBankBalanceAfterPost := BankAcc.Balance - Rec."Amount to Transfer";
                             if NewBankBalanceAfterPost < BankAcc."Maximum Credit Limit" then begin
-                                Error(Text006, "Paying Bank Account", "Paying Bank Name");
+                                Error(Text006, Rec."Paying Bank Account", Rec."Paying Bank Name");
                             end else begin
                                 //Do Nothing
                             end;
@@ -428,7 +428,7 @@ Page 51516031 "Funds Transfer Card"
 
                     //Inserting Amounts of Accounts to be Debited into the Journal (+)
                     IBTLines.Reset;
-                    IBTLines.SetRange(IBTLines."Document No", "No.");
+                    IBTLines.SetRange(IBTLines."Document No", Rec."No.");
                     if IBTLines.Find('-') then begin
                         repeat
                             Insert_IBTLines_to_Journal;
@@ -443,13 +443,13 @@ Page 51516031 "Funds Transfer Card"
                     //Post:=JournalPostedSuccessfully.PostedSuccessfully();
 
                     //IF Post THEN BEGIN
-                    Posted := true;
-                    Status := Status::Posted;
-                    "Date Posted" := Today;
-                    "Time Posted" := Time;
-                    "Posted By" := UserId;
+                    Rec.Posted := true;
+                    Rec.Status := Rec.Status::Posted;
+                    Rec."Date Posted" := Today;
+                    Rec."Time Posted" := Time;
+                    Rec."Posted By" := UserId;
                     //"Posted On Computer Name":='';
-                    Modify;
+                    Rec.Modify;
                     Commit;
                     Message('The Journal Has Been Posted Successfully');
 
@@ -464,7 +464,7 @@ Page 51516031 "Funds Transfer Card"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        "Created By" := UserId;
+        Rec."Created By" := UserId;
     end;
 
     var
@@ -496,10 +496,10 @@ Page 51516031 "Funds Transfer Card"
 
     procedure CheckRequiredFields()
     begin
-        TestField("Amount to Transfer");
+        Rec.TestField("Amount to Transfer");
         //Check Lines if Cheque No has been specified
         IBTLines.Reset;
-        IBTLines.SetRange(IBTLines."Document No", "No.");
+        IBTLines.SetRange(IBTLines."Document No", Rec."No.");
         if IBTLines.Find('-') then begin
             repeat
                 IBTLines.TestField(IBTLines."Pay Mode");
@@ -510,9 +510,9 @@ Page 51516031 "Funds Transfer Card"
         end;
 
         //Check whether the "Line Amounts" to be Transfered is the same as "Amount to Transfer" in the header
-        CalcFields("Total Line Amount");
-        if "Total Line Amount" <> "Amount to Transfer" then begin
-            Error(Text001, "Amount to Transfer", "Total Line Amount");
+        Rec.CalcFields("Total Line Amount");
+        if Rec."Total Line Amount" <> Rec."Amount to Transfer" then begin
+            Error(Text001, Rec."Amount to Transfer", Rec."Total Line Amount");
         end;
     end;
 
@@ -535,12 +535,12 @@ Page 51516031 "Funds Transfer Card"
         GenJnlLine."Source Code" := 'PAYMENTJNL';
         GenJnlLine."Journal Template Name" := "Inter Bank Template Name";
         GenJnlLine."Journal Batch Name" := "Inter Bank Journal Batch";
-        GenJnlLine."Posting Date" := "Posting Date";
-        GenJnlLine."Document No." := "No.";
+        GenJnlLine."Posting Date" := Rec."Posting Date";
+        GenJnlLine."Document No." := Rec."No.";
         GenJnlLine."Account Type" := GenJnlLine."account type"::"Bank Account";
         GenJnlLine."Account No." := IBTLines."Receiving Bank Account";
         GenJnlLine.Validate(GenJnlLine."Account No.");
-        GenJnlLine.Description := 'Inter-Bank Transfer Ref No: ' + Format("No.");
+        GenJnlLine.Description := 'Inter-Bank Transfer Ref No: ' + Format(Rec."No.");
         //GenJnlLine."Shortcut Dimension 1 Code":="Receiving Depot Code";
         //GenJnlLine."Shortcut Dimension 2 Code":="Receiving Department Code";
         //GenJnlLine.VALIDATE(GenJnlLine."Shortcut Dimension 1 Code");
@@ -548,10 +548,10 @@ Page 51516031 "Funds Transfer Card"
         //GenJnlLine.ValidateShortcutDimCode(3,"Shortcut Dimension 3 Code1");
         //GenJnlLine.ValidateShortcutDimCode(4,"Shortcut Dimension 4 Code1");
         GenJnlLine."External Document No." := IBTLines."External Doc No.";
-        if Description = '' then begin
-            GenJnlLine.Description := 'Inter-Bank Transfer Ref No: ' + Format("No.");
+        if Rec.Description = '' then begin
+            GenJnlLine.Description := 'Inter-Bank Transfer Ref No: ' + Format(Rec."No.");
         end else begin
-            GenJnlLine.Description := Description;
+            GenJnlLine.Description := Rec.Description;
         end;
         GenJnlLine."Currency Code" := IBTLines."Currency Code";
         GenJnlLine.Validate(GenJnlLine."Currency Code");
@@ -584,10 +584,10 @@ Page 51516031 "Funds Transfer Card"
         GenJnlLine."Source Code" := 'PAYMENTJNL';
         GenJnlLine."Journal Template Name" := "Inter Bank Template Name";
         GenJnlLine."Journal Batch Name" := "Inter Bank Journal Batch";
-        GenJnlLine."Posting Date" := "Posting Date";
-        GenJnlLine."Document No." := "No.";
+        GenJnlLine."Posting Date" := Rec."Posting Date";
+        GenJnlLine."Document No." := Rec."No.";
         GenJnlLine."Account Type" := GenJnlLine."account type"::"Bank Account";
-        GenJnlLine."Account No." := "Paying Bank Account";
+        GenJnlLine."Account No." := Rec."Paying Bank Account";
         GenJnlLine.Validate(GenJnlLine."Account No.");
         //GenJnlLine."Shortcut Dimension 1 Code":="Source Depot Code";
         //GenJnlLine."Shortcut Dimension 2 Code":="Source Department Code";
@@ -595,11 +595,11 @@ Page 51516031 "Funds Transfer Card"
         //GenJnlLine.VALIDATE(GenJnlLine."Shortcut Dimension 2 Code");
         //GenJnlLine.ValidateShortcutDimCode(3,"Shortcut Dimension 3 Code");
         //GenJnlLine.ValidateShortcutDimCode(4,"Shortcut Dimension 4 Code");
-        GenJnlLine."External Document No." := "Cheque/Doc. No";
-        if Description = '' then begin
-            GenJnlLine.Description := 'Inter-Bank Transfer Ref No:' + Format("No.");
+        GenJnlLine."External Document No." := Rec."Cheque/Doc. No";
+        if Rec.Description = '' then begin
+            GenJnlLine.Description := 'Inter-Bank Transfer Ref No:' + Format(Rec."No.");
         end else begin
-            GenJnlLine.Description := Description;
+            GenJnlLine.Description := Rec.Description;
         end;
         //GenJnlLine."Currency Code":=;
         //GenJnlLine.VALIDATE(GenJnlLine."Currency Code");
@@ -608,7 +608,7 @@ Page 51516031 "Funds Transfer Card"
         GenJnlLine."Currency Factor" := IBTLines."Currency Factor";  //Exchange Rate of Paying Account
         GenJnlLine.Validate(GenJnlLine."Currency Factor");
         //END;
-        GenJnlLine.Amount := -"Amount to Transfer";
+        GenJnlLine.Amount := -Rec."Amount to Transfer";
         GenJnlLine.Validate(GenJnlLine.Amount);
         GenJnlLine.Insert;
     end;
@@ -626,7 +626,7 @@ Page 51516031 "Funds Transfer Card"
             Currpage.UPDATECONTROLS;
         END;
         */
-        if Status = Status::"Pending Approval" then begin
+        if Rec.Status = Rec.Status::"Pending Approval" then begin
             CurrPage.Editable := false;
             //Currpage.UPDATECONTROLS
         end;

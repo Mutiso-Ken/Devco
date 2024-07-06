@@ -1633,18 +1633,18 @@
 
 //                     group("Loan Batching")
 //                     {
-                        
+
 //                         action("Loan Batch List")
 //                         {
 //                             ApplicationArea = Basic, Suite;
 //                             RunObject = page "Loans Disbursment Batch List";
-                           
+
 //                         }
 //                           action("Posted Loan Batch List")
 //                         {
 //                             ApplicationArea = Basic, Suite;
 //                             RunObject = page "Posted Loan Batch - List";
-                          
+
 //                         }
 //                     }
 //                     group("Loans Top Up List")

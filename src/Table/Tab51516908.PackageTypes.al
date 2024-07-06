@@ -6,23 +6,23 @@ Table 51516908 "Package Types"
 
     fields
     {
-        field(1;"Code";Code[20])
+        field(1; "Code"; Code[20])
         {
         }
-        field(2;"Package Description";Text[30])
+        field(2; "Package Description"; Text[30])
         {
         }
-        field(3;"Package Charge";Decimal)
+        field(3; "Package Charge"; Decimal)
         {
         }
-        field(4;"Package Charge Account";Code[20])
+        field(4; "Package Charge Account"; Code[20])
         {
             TableRelation = "G/L Account"."No.";
         }
-        field(5;"Package Retrieval Fee";Decimal)
+        field(5; "Package Retrieval Fee"; Decimal)
         {
         }
-        field(6;"Package Retrieval Fee Account";Code[20])
+        field(6; "Package Retrieval Fee Account"; Code[20])
         {
             TableRelation = "G/L Account"."No.";
         }
@@ -30,7 +30,7 @@ Table 51516908 "Package Types"
 
     keys
     {
-        key(Key1;"Code")
+        key(Key1; "Code")
         {
             Clustered = true;
         }

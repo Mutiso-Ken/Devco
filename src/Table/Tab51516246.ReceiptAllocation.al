@@ -26,7 +26,7 @@ Table 51516246 "Receipt Allocation"
                 // if "Transaction Type" = "transaction type"::"FOSA Account" then
                 //     "Global Dimension 1 Code" := 'FOSA';
 
-                if  ("Transaction Type" <> "transaction type"::" ") then begin
+                if ("Transaction Type" <> "transaction type"::" ") then begin
                     "Account Type" := "account type"::Customer
                 end else
                     "Account Type" := "account type"::Vendor;
@@ -89,7 +89,7 @@ Table 51516246 "Receipt Allocation"
                 if Loans.Get("Loan No.") then begin
                     Loans.CalcFields(Loans."Outstanding Balance");
                     if Loans.Posted = true then begin
-                        
+
                         // if Amount > Loans."Outstanding Balance" then
                         //     Error('Principle Repayment cannot be more than the loan oustanding balance,Currrent Balance is %1', Loans."Outstanding Balance");
                     end;

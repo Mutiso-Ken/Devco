@@ -14,11 +14,11 @@ page 50325 "Payroll Employee Cummulatives."
         {
             group(General)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Full Name"; "Full Name")
+                field("Full Name"; Rec."Full Name")
                 {
                     ApplicationArea = All;
                 }
@@ -26,115 +26,115 @@ page 50325 "Payroll Employee Cummulatives."
             }
             group(Cummulatives)
             {
-                field("Cummulative Basic Pay"; "Cummulative Basic Pay")
+                field("Cummulative Basic Pay"; Rec."Cummulative Basic Pay")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative Gross Pay"; "Cummulative Gross Pay")
+                field("Cummulative Gross Pay"; Rec."Cummulative Gross Pay")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative Allowances"; "Cummulative Allowances")
+                field("Cummulative Allowances"; Rec."Cummulative Allowances")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative Deductions"; "Cummulative Deductions")
+                field("Cummulative Deductions"; Rec."Cummulative Deductions")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative Net Pay"; "Cummulative Net Pay")
+                field("Cummulative Net Pay"; Rec."Cummulative Net Pay")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative PAYE"; "Cummulative PAYE")
+                field("Cummulative PAYE"; Rec."Cummulative PAYE")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative NSSF"; "Cummulative NSSF")
+                field("Cummulative NSSF"; Rec."Cummulative NSSF")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative Pension"; "Cummulative Pension")
+                field("Cummulative Pension"; Rec."Cummulative Pension")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative HELB"; "Cummulative HELB")
+                field("Cummulative HELB"; Rec."Cummulative HELB")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative NHIF"; "Cummulative NHIF")
+                field("Cummulative NHIF"; Rec."Cummulative NHIF")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative Employer Pension"; "Cummulative Employer Pension")
+                field("Cummulative Employer Pension"; Rec."Cummulative Employer Pension")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative TopUp"; "Cummulative TopUp")
+                field("Cummulative TopUp"; Rec."Cummulative TopUp")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative Basic Pay(LCY)"; "Cummulative Basic Pay(LCY)")
+                field("Cummulative Basic Pay(LCY)"; Rec."Cummulative Basic Pay(LCY)")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative Gross Pay(LCY)"; "Cummulative Gross Pay(LCY)")
+                field("Cummulative Gross Pay(LCY)"; Rec."Cummulative Gross Pay(LCY)")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative Allowances(LCY)"; "Cummulative Allowances(LCY)")
+                field("Cummulative Allowances(LCY)"; Rec."Cummulative Allowances(LCY)")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative Deductions(LCY)"; "Cummulative Deductions(LCY)")
+                field("Cummulative Deductions(LCY)"; Rec."Cummulative Deductions(LCY)")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative Net Pay(LCY)"; "Cummulative Net Pay(LCY)")
+                field("Cummulative Net Pay(LCY)"; Rec."Cummulative Net Pay(LCY)")
                 {
                     ApplicationArea = All;
                 }
-                field("Development Loans"; "Development Loans")
+                field("Development Loans"; Rec."Development Loans")
                 {
                     ApplicationArea = all;
                 }
-                field("Emergency Loans"; "Emergency Loans")
+                field("Emergency Loans"; Rec."Emergency Loans")
                 {
                     ApplicationArea = all;
                 }
-                field("Cummulative PAYE(LCY)"; "Cummulative PAYE(LCY)")
+                field("Cummulative PAYE(LCY)"; Rec."Cummulative PAYE(LCY)")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative NSSF(LCY)"; "Cummulative NSSF(LCY)")
+                field("Cummulative NSSF(LCY)"; Rec."Cummulative NSSF(LCY)")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative Pension(LCY)"; "Cummulative Pension(LCY)")
+                field("Cummulative Pension(LCY)"; Rec."Cummulative Pension(LCY)")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative HELB(LCY)"; "Cummulative HELB(LCY)")
+                field("Cummulative HELB(LCY)"; Rec."Cummulative HELB(LCY)")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative NHIF(LCY)"; "Cummulative NHIF(LCY)")
+                field("Cummulative NHIF(LCY)"; Rec."Cummulative NHIF(LCY)")
                 {
                     ApplicationArea = All;
                 }
-                field("Cumm Employer Pension(LCY)"; "Cumm Employer Pension(LCY)")
+                field("Cumm Employer Pension(LCY)"; Rec."Cumm Employer Pension(LCY)")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative TopUp(LCY)"; "Cummulative TopUp(LCY)")
+                field("Cummulative TopUp(LCY)"; Rec."Cummulative TopUp(LCY)")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative Gratuity"; "Cummulative Gratuity")
+                field("Cummulative Gratuity"; Rec."Cummulative Gratuity")
                 {
                     ApplicationArea = All;
                 }
-                field("Cummulative Gratuity(LCY)"; "Cummulative Gratuity(LCY)")
+                field("Cummulative Gratuity(LCY)"; Rec."Cummulative Gratuity(LCY)")
                 {
                     ApplicationArea = All;
                 }

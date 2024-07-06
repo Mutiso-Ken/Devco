@@ -10,53 +10,53 @@ Page 51516076 "Store Requisition Lines"
         {
             repeater(Group)
             {
-                field(Type;Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = Basic;
                 }
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Qty in store";"Qty in store")
+                field("Qty in store"; Rec."Qty in store")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Unit of Measure";"Unit of Measure")
+                field("Unit of Measure"; Rec."Unit of Measure")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Shortcut Dimension 1 Code";"Shortcut Dimension 1 Code")
+                field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Shortcut Dimension 2 Code";"Shortcut Dimension 2 Code")
+                field("Shortcut Dimension 2 Code"; Rec."Shortcut Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Quantity Requested";"Quantity Requested")
+                field("Quantity Requested"; Rec."Quantity Requested")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Unit Cost";"Unit Cost")
+                field("Unit Cost"; Rec."Unit Cost")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Line Amount";"Line Amount")
+                field("Line Amount"; Rec."Line Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Quantity;Quantity)
+                field(Quantity; Rec.Quantity)
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Issuing Store";"Issuing Store")
+                field("Issuing Store"; Rec."Issuing Store")
                 {
                     ApplicationArea = Basic;
                 }

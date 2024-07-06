@@ -17,39 +17,39 @@ Page 51516905 "Account Activation Card"
             group(General)
             {
                 Caption = 'General';
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Type"; Type)
+                field("Type"; Rec.Type)
                 {
                     ApplicationArea = Basic;
                     Editable = AType;
                     Caption = 'Account Source';
                 }
-                field("Client No."; "Client No.")
+                field("Client No."; Rec."Client No.")
                 {
                     ApplicationArea = Basic;
                     Editable = MNoEditable;
                 }
-                field("Client Name"; "Client Name")
+                field("Client Name"; Rec."Client Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Activation Date"; "Activation Date")
+                field("Activation Date"; Rec."Activation Date")
                 {
                     ApplicationArea = Basic;
                     Editable = ClosingDateEditable;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field(Remarks; Remarks)
+                field(Remarks; Rec.Remarks)
                 {
                     ApplicationArea = Basic;
                     Editable = Rmarks;
@@ -78,14 +78,14 @@ Page 51516905 "Account Activation Card"
                     trigger OnAction()
                     begin
 
-                        if Status <> Status::Approved then
+                        if Rec.Status <> Rec.Status::Approved then
                             Error('The request must be approved');
 
-                        TestField("Activation Date");
+                        Rec.TestField("Activation Date");
 
-                        if Type = Type::Member then begin
+                        if Rec.Type = Rec.Type::Member then begin
 
-                            if cust.Get("Client No.") then begin
+                            if cust.Get(Rec."Client No.") then begin
                                 if cust.Status = cust.Status::Active then
                                     Error('This Member Account has already been Activated');
 
@@ -103,8 +103,8 @@ Page 51516905 "Account Activation Card"
                             end;
                         end;
 
-                        if Type = Type::Account then begin
-                            if Vend.Get("Client No.") then begin
+                        if Rec.Type = Rec.Type::Account then begin
+                            if Vend.Get(Rec."Client No.") then begin
                                 if Vend.Status = Vend.Status::Active then
                                     Error('This Account has already been Activated');
 
@@ -121,23 +121,23 @@ Page 51516905 "Account Activation Card"
                         end;
 
 
-                        Activated := true;
-                        Modify;
+                        Rec.Activated := true;
+                        Rec.Modify;
 
                         BATCH_TEMPLATE := 'GENERAL';
                         BATCH_NAME := 'ACTIVATE';
-                        DOCUMENT_NO := "No.";
+                        DOCUMENT_NO := Rec."No.";
                         GenSetup.Get();
                         LineNo := 0;
                         //----------------------------------1.DEBIT TO VENDOR WITH PROCESSING FEE----------------------------------------------
                         LineNo := LineNo + 10000;
                         SFactory.FnCreateGnlJournalLineBalanced(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"0", GenJournalLine."account type"::Vendor,
-                        "Client No.", Today, 200, 'FOSA', '', 'Activation fees', '', GenJournalLine."bal. account type"::"G/L Account", '5534');
+                        Rec."Client No.", Today, 200, 'FOSA', '', 'Activation fees', '', GenJournalLine."bal. account type"::"G/L Account", '5534');
 
                         //-------------------------------2.CHARGE EXCISE DUTY----------------------------------------------
                         LineNo := LineNo + 10000;
                         SFactory.FnCreateGnlJournalLineBalanced(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"0", GenJournalLine."account type"::Vendor,
-                        "Client No.", Today, 20, 'FOSA', '', 'Excise Duty', '', GenJournalLine."bal. account type"::"G/L Account", GenSetup."Excise Duty Account");
+                        Rec."Client No.", Today, 20, 'FOSA', '', 'Excise Duty', '', GenJournalLine."bal. account type"::"G/L Account", GenSetup."Excise Duty Account");
 
 
                         //Post New
@@ -170,7 +170,7 @@ Page 51516905 "Account Activation Card"
                         ApprovalEntries: Page "Approval Entries";
                     begin
                         DocumentType := Documenttype::"Account Reactivation";
-                        ApprovalEntries.SetRecordFilters(Database::"Account Activation", DocumentType, "No.");
+                        ApprovalEntries.SetRecordFilters(Database::"Account Activation", DocumentType, Rec."No.");
                         ApprovalEntries.Run;
                     end;
                 }
@@ -188,7 +188,7 @@ Page 51516905 "Account Activation Card"
                         text001: label 'This batch is already pending approval';
                         ApprovalMgt: Codeunit "Export F/O Consolidation";
                     begin
-                        if Status <> Status::Open then
+                        if Rec.Status <> Rec.Status::Open then
                             Error(text001);
 
                         //End allocate batch number
@@ -209,7 +209,7 @@ Page 51516905 "Account Activation Card"
                         text001: label 'This batch is already pending approval';
                         ApprovalMgt: Codeunit "Export F/O Consolidation";
                     begin
-                        if Status <> Status::Open then
+                        if Rec.Status <> Rec.Status::Open then
                             Error(text001);
 
                         //End allocate batch number
@@ -280,7 +280,7 @@ Page 51516905 "Account Activation Card"
 
     procedure UpdateControl()
     begin
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             MNoEditable := true;
             ClosingDateEditable := false;
             ClosureTypeEditable := true;
@@ -288,7 +288,7 @@ Page 51516905 "Account Activation Card"
             Rmarks := true;
         end;
 
-        if Status = Status::Pending then begin
+        if Rec.Status = Rec.Status::Pending then begin
             MNoEditable := false;
             ClosingDateEditable := false;
             ClosureTypeEditable := false;
@@ -296,7 +296,7 @@ Page 51516905 "Account Activation Card"
             Rmarks := true;
         end;
 
-        if Status = Status::Rejected then begin
+        if Rec.Status = Rec.Status::Rejected then begin
             MNoEditable := false;
             ClosingDateEditable := false;
             ClosureTypeEditable := false;
@@ -304,7 +304,7 @@ Page 51516905 "Account Activation Card"
             Rmarks := false;
         end;
 
-        if Status = Status::Approved then begin
+        if Rec.Status = Rec.Status::Approved then begin
             MNoEditable := false;
             ClosingDateEditable := true;
             AType := false;

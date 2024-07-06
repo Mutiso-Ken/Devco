@@ -184,7 +184,7 @@ report 51516856 "Actual Vs Budget"
                     // end;
 
                 end;
-                
+
             }
 
             trigger OnAfterGetRecord()

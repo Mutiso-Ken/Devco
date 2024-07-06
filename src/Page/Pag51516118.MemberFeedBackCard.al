@@ -1,7 +1,7 @@
 page 51516118 "Member FeedBack Card"
 {
     PageType = Card;
-    LinksAllowed=true;
+    LinksAllowed = true;
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "Member FeedBack";
@@ -12,29 +12,29 @@ page 51516118 "Member FeedBack Card"
         {
             group(GroupName)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
 
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = all;
                     Editable = false;
                 }
-                field("Type of Feed Back"; "Type of Feed Back")
+                field("Type of Feed Back"; Rec."Type of Feed Back")
                 {
                     ApplicationArea = all;
                 }
-                field("Customer FeedBack"; "Customer FeedBack")
+                field("Customer FeedBack"; Rec."Customer FeedBack")
                 {
                     ApplicationArea = all;
                     Editable = true;
                     MultiLine = true;
-                    RowSpan=10;
+                    RowSpan = 10;
 
                 }
-                
+
 
             }
         }

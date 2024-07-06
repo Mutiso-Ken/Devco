@@ -1,7 +1,7 @@
 enum 51516021 "BankAccountTypesEnums"
 {
     Extensible = true;
-    
+
     value(0; " ")
     {
         Caption = '';

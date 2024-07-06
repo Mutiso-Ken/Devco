@@ -14,7 +14,7 @@ Page 51516479 "Loans Cue"
             cuegroup(Group1)
             {
                 Caption = 'BOSA LOANS ';
-                field("New Applied Loans"; "Applied Loans")
+                field("New Applied Loans"; Rec."Applied Loans")
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -23,7 +23,7 @@ Page 51516479 "Loans Cue"
                     DrillDownPageId = "Loan List";
                 }
 
-                field("Active Loans"; "Active Loans")
+                field("Active Loans"; Rec."Active Loans")
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -31,7 +31,7 @@ Page 51516479 "Loans Cue"
                     StyleExpr = true;
                     DrillDownPageId = "Loans Posted List";
                 }
-                field("Cleared Loans"; "Cleared Loans")
+                field("Cleared Loans"; Rec."Cleared Loans")
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -40,7 +40,7 @@ Page 51516479 "Loans Cue"
                     DrillDownPageId = "Loans Posted List";
                 }
 
-                field("Pending Loans"; "Pending Loans")
+                field("Pending Loans"; Rec."Pending Loans")
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -48,7 +48,7 @@ Page 51516479 "Loans Cue"
                     StyleExpr = true;
                     DrillDownPageId = "Loan List";
                 }
-                field("ASSET LOAN"; "ASSET LOAN")
+                field("ASSET LOAN"; Rec."ASSET LOAN")
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -56,7 +56,7 @@ Page 51516479 "Loans Cue"
                     StyleExpr = true;
                     DrillDownPageId = "Loans Posted List";
                 }
-                field("COLLEGE LOAN"; "COLLEGE LOAN")
+                field("COLLEGE LOAN"; Rec."COLLEGE LOAN")
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -64,7 +64,7 @@ Page 51516479 "Loans Cue"
                     StyleExpr = true;
                     DrillDownPageId = "Loans Posted List";
                 }
-                field("QUICK CASH"; "QUICK CASH")
+                field("QUICK CASH"; Rec."QUICK CASH")
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -72,7 +72,7 @@ Page 51516479 "Loans Cue"
                     StyleExpr = true;
                     DrillDownPageId = "Loans Posted List";
                 }
-                field(SCH_FEES; SCH_FEES)
+                field(SCH_FEES; Rec.SCH_FEES)
                 {
                     ApplicationArea = Basic;
                     Caption = 'SCHOOL FEES LOAN';
@@ -81,7 +81,7 @@ Page 51516479 "Loans Cue"
                     StyleExpr = true;
                     DrillDownPageId = "Loans Posted List";
                 }
-                field(EMERGENCY; EMERGENCY)
+                field(EMERGENCY; Rec.EMERGENCY)
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -92,7 +92,7 @@ Page 51516479 "Loans Cue"
 
 
 
-                field(KARIBU; KARIBU)
+                field(KARIBU; Rec.KARIBU)
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -100,7 +100,7 @@ Page 51516479 "Loans Cue"
                     StyleExpr = true;
                     DrillDownPageId = "Loans Posted List";
                 }
-                field(LIKIZO; LIKIZO)
+                field(LIKIZO; Rec.LIKIZO)
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -108,7 +108,7 @@ Page 51516479 "Loans Cue"
                     StyleExpr = true;
                     DrillDownPageId = "Loans Posted List";
                 }
-                field(MAKEOVER; MAKEOVER)
+                field(MAKEOVER; Rec.MAKEOVER)
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -117,7 +117,7 @@ Page 51516479 "Loans Cue"
                     DrillDownPageId = "Loans Posted List";
 
                 }
-                field(NORMAL; NORMAL)
+                field(NORMAL; Rec.NORMAL)
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -125,7 +125,7 @@ Page 51516479 "Loans Cue"
                     StyleExpr = true;
                     DrillDownPageId = "Loans Posted List";
                 }
-                field(PREMIUM; PREMIUM)
+                field(PREMIUM; Rec.PREMIUM)
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -200,9 +200,9 @@ Page 51516479 "Loans Cue"
     }
     trigger OnOpenPage()
     begin
-        if not Rec.Get("Primary Key") then begin
+        if not Rec.Get(Rec."Primary Key") then begin
             Rec.Init;
-            Rec."Primary Key" := "Primary Key";
+            Rec."Primary Key" := Rec."Primary Key";
             Rec.Insert;
         end;
     end;

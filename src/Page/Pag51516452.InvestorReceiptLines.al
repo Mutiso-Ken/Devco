@@ -10,53 +10,53 @@ Page 51516452 "Investor Receipt Lines"
         {
             repeater(Group)
             {
-                field("Transaction Type";"Transaction Type")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = Basic;
-                    TableRelation = "Funds Transaction Types"."Transaction Code" where ("Transaction Type"=const(Receipt),
-                                                                                        "Transaction Category"=const(Investor));
+                    TableRelation = "Funds Transaction Types"."Transaction Code" where("Transaction Type" = const(Receipt),
+                                                                                        "Transaction Category" = const(Investor));
                 }
-                field("Default Grouping";"Default Grouping")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Account Type";"Account Type")
+                field("Default Grouping"; Rec."Default Grouping")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Code";"Account Code")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
+                field("Account Code"; Rec."Account Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount(LCY)";"Amount(LCY)")
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Net Amount";"Net Amount")
+                field("Amount(LCY)"; Rec."Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Net Amount(LCY)";"Net Amount(LCY)")
+                field("Net Amount"; Rec."Net Amount")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Net Amount(LCY)"; Rec."Net Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }

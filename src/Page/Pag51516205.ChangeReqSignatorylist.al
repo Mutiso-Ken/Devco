@@ -10,7 +10,7 @@ Page 51516205 "Change Req Signatory list"
         {
             repeater(Control1102760000)
             {
-                field("Document No"; "Document No")
+                field("Document No"; Rec."Document No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -19,43 +19,43 @@ Page 51516205 "Change Req Signatory list"
 
                     end;
                 }
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
 
                     trigger OnValidate()
                     begin
                         CUST.Reset;
-                        CUST.SetRange(CUST."ID No.", "ID No.");
+                        CUST.SetRange(CUST."ID No.", Rec."ID No.");
                         if CUST.Find('-') then begin
-                            "BOSA No." := CUST."No.";
-                            Names := CUST.Name;
-                            "Date Of Birth" := CUST."Date of Birth";
-                            "Email Address" := cust."E-Mail (Personal)";
+                            Rec."BOSA No." := CUST."No.";
+                            Rec.Names := CUST.Name;
+                            Rec."Date Of Birth" := CUST."Date of Birth";
+                            Rec."Email Address" := cust."E-Mail (Personal)";
                         end;
                     end;
                 }
-                field(Names; Names)
+                field(Names; Rec.Names)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Of Birth"; "Date Of Birth")
+                field("Date Of Birth"; Rec."Date Of Birth")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Control1102760009; Signatory)
+                field(Control1102760009; Rec.Signatory)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Must Sign"; "Must Sign")
+                field("Must Sign"; Rec."Must Sign")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Must be Present"; "Must be Present")
+                field("Must be Present"; Rec."Must be Present")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Email Address"; "Email Address")
+                field("Email Address"; Rec."Email Address")
                 {
                     ApplicationArea = Basic;
                 }

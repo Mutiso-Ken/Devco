@@ -1,6 +1,6 @@
 enum 51516014 "Periodic Processing Types"
 {
-    
+
     value(0; Salary)
     {
         Caption = 'Salary';

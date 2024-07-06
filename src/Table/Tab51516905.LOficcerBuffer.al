@@ -4,17 +4,17 @@ Table 51516905 "LOficcer Buffer"
 
     fields
     {
-        field(1;"Customer No";Code[20])
+        field(1; "Customer No"; Code[20])
         {
         }
-        field(2;"Loan Officer Name";Text[50])
+        field(2; "Loan Officer Name"; Text[50])
         {
         }
     }
 
     keys
     {
-        key(Key1;"Customer No")
+        key(Key1; "Customer No")
         {
             Clustered = true;
         }

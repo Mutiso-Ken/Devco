@@ -15,80 +15,80 @@ Page 51516001 "Payment Card"
         {
             group(General)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Date"; "Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Date';
                 }
-                field("Posting Date"; "Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payment Mode"; "Payment Mode")
+                field("Payment Mode"; Rec."Payment Mode")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Currency Code"; "Currency Code")
+                field("Currency Code"; Rec."Currency Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Bank Account"; "Bank Account")
+                field("Bank Account"; Rec."Bank Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Account Name"; "Bank Account Name")
+                field("Bank Account Name"; Rec."Bank Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Account Balance"; "Bank Account Balance")
+                field("Bank Account Balance"; Rec."Bank Account Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cheque Type"; "Cheque Type")
+                field("Cheque Type"; Rec."Cheque Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cheque No"; "Cheque No")
+                field("Cheque No"; Rec."Cheque No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Payee; Payee)
+                field(Payee; Rec.Payee)
                 {
                     ApplicationArea = Basic;
                 }
-                field("On Behalf Of"; "On Behalf Of")
+                field("On Behalf Of"; Rec."On Behalf Of")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payment Description"; "Payment Description")
+                field("Payment Description"; Rec."Payment Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Responsibility Center"; "Responsibility Center")
+                field("Responsibility Center"; Rec."Responsibility Center")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                     trigger OnValidate()
                     begin
-                         CurrPage.Update();
+                        CurrPage.Update();
                     end;
-                    
+
                 }
                 // field("Amount(LCY)"; "Amount(LCY)")
                 // {
@@ -118,12 +118,12 @@ Page 51516001 "Payment Card"
                 //     ApplicationArea = Basic;
                 //     Visible = false;
                 // }
-                field("Net Amount(LCY)"; "Net Amount(LCY)")
+                field("Net Amount(LCY)"; Rec."Net Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -144,7 +144,7 @@ Page 51516001 "Payment Card"
                 // {
                 //     ApplicationArea = Basic;
                 // }
-                field(Cashier; Cashier)
+                field(Cashier; Rec.Cashier)
                 {
                     ApplicationArea = Basic;
                 }
@@ -200,7 +200,7 @@ Page 51516001 "Payment Card"
                         FundsManager.PostPayment(Rec, JTemplate, JBatch);
                         Commit;
                         PHeader.Reset;
-                        PHeader.SetRange(PHeader."No.", "No.");
+                        PHeader.SetRange(PHeader."No.", Rec."No.");
                         if PHeader.FindFirst then begin
                             Report.RunModal(Report::"Payment Voucher", true, false, PHeader);
                         end;
@@ -233,7 +233,7 @@ Page 51516001 "Payment Card"
                 trigger OnAction()
                 begin
                     rec.CalcFields(Amount);
-                    if Amount <> 0 then begin
+                    if Rec.Amount <> 0 then begin
                         if Confirm('Send  Approval request?', false) = true then begin
                             SrestepApprovalsCodeUnit.SendPaymentVoucherRequestForApproval(rec."No.", Rec);
                         end else
@@ -270,7 +270,7 @@ Page 51516001 "Payment Card"
                 trigger OnAction()
                 begin
                     PHeader.Reset;
-                    PHeader.SetRange(PHeader."No.", "No.");
+                    PHeader.SetRange(PHeader."No.", Rec."No.");
                     if PHeader.FindFirst then begin
                         Report.RunModal(Report::"Payment Voucher", true, false, PHeader);
                     end;
@@ -282,8 +282,8 @@ Page 51516001 "Payment Card"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        "Payment Mode" := "payment mode"::Cheque;
-        "Payment Type" := "payment type"::Normal;
+        Rec."Payment Mode" := Rec."payment mode"::Cheque;
+        Rec."Payment Type" := Rec."payment type"::Normal;
     end;
 
     var
@@ -298,13 +298,13 @@ Page 51516001 "Payment Card"
 
     local procedure CheckRequiredItems()
     begin
-        TestField(Status, Status::Approved);
-        TestField("Posting Date");
-        TestField(Payee);
-        TestField("Bank Account");
-        TestField("Payment Description");
-        TestField("Global Dimension 1 Code");
-        TestField("Global Dimension 2 Code");
+        Rec.TestField(Status, Rec.Status::Approved);
+        Rec.TestField("Posting Date");
+        Rec.TestField(Payee);
+        Rec.TestField("Bank Account");
+        Rec.TestField("Payment Description");
+        Rec.TestField("Global Dimension 1 Code");
+        Rec.TestField("Global Dimension 2 Code");
     end;
 }
 

@@ -4,22 +4,22 @@ Table 51516478 "Investment General Setup"
 
     fields
     {
-        field(10;"Primary Key";Code[10])
+        field(10; "Primary Key"; Code[10])
         {
         }
-        field(11;"Investor Application Nos.";Code[20])
-        {
-            TableRelation = "No. Series".Code;
-        }
-        field(12;"Investor Account Nos.";Code[20])
+        field(11; "Investor Application Nos."; Code[20])
         {
             TableRelation = "No. Series".Code;
         }
-        field(13;"Investor Posting Group";Code[20])
+        field(12; "Investor Account Nos."; Code[20])
+        {
+            TableRelation = "No. Series".Code;
+        }
+        field(13; "Investor Posting Group"; Code[20])
         {
             TableRelation = "Investor Posting Group"."Posting Code";
         }
-        field(14;"Interest Posting Group";Code[20])
+        field(14; "Interest Posting Group"; Code[20])
         {
             TableRelation = "Investor Posting Group"."Posting Code";
         }
@@ -27,7 +27,7 @@ Table 51516478 "Investment General Setup"
 
     keys
     {
-        key(Key1;"Primary Key")
+        key(Key1; "Primary Key")
         {
             Clustered = true;
         }

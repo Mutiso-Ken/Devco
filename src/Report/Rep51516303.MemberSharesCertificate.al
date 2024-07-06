@@ -92,18 +92,18 @@ Report 51516303 "Member Shares Certificate"
             begin
                 MembersReg.Reset;
                 MembersReg.SetRange(MembersReg."No.", "Members Register"."No.");
-                MembersReg.SetAutocalcFields( MembersReg."Current Shares",MembersReg."Share Capital");
+                MembersReg.SetAutocalcFields(MembersReg."Current Shares", MembersReg."Share Capital");
                 if MembersReg.Find('-') then begin
                     TotalCurrectshares := 0;
                     TotalSharecap := 0;
-                   
-                    TotalShares := MembersReg."Current Shares"+MembersReg."Share Capital";
+
+                    TotalShares := MembersReg."Current Shares" + MembersReg."Share Capital";
                     CertificateNo := 'DEVS' + Format(MembersReg."No.");
                     IDnoMember := MembersReg."ID No.";
                     FullName := MembersReg.Name;
                     TotalCurrectshares := MembersReg."Current Shares";
-                    TotalSharecap:=MembersReg."Share Capital";
-                  
+                    TotalSharecap := MembersReg."Share Capital";
+
                     //................................................
                     //Amount into words
                     CheckReport.InitTextVariable;

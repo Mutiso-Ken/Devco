@@ -12,14 +12,14 @@ Page 51516869 "Project General Setup"
         {
             group(General)
             {
-                field("Project Nos";"Project Nos")
+                field("Project Nos"; Rec."Project Nos")
                 {
                     ApplicationArea = Basic;
                 }
             }
             group("Project Analysis")
             {
-                field("Projects Analysis Code";"Projects Analysis Code")
+                field("Projects Analysis Code"; Rec."Projects Analysis Code")
                 {
                     ApplicationArea = Basic;
                 }

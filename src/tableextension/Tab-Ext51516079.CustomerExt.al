@@ -1142,7 +1142,7 @@ tableextension 51516079 "CustomerExt" extends Customer
         }
         field(69088; "Housing Deposits"; Decimal)
         {
-            CalcFormula = -sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
+            CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
                                                                    "Transaction Type" = filter(Investment),
                                                                    "Posting Date" = field("Date Filter"),
                                                                    Reversed = filter(false),

@@ -13,7 +13,7 @@ Page 51516388 "FOSA Statistics FactBox"
         {
             group("Member Picture")
             {
-                field(Image; Image)
+                field(Image; Rec.Image)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Picture';
@@ -25,7 +25,7 @@ Page 51516388 "FOSA Statistics FactBox"
                 Caption = 'Account Statistics FactBox';
 
 
-                field("Account Balance"; "Account Balance")
+                field("Account Balance"; Rec."Account Balance")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Book Balance';
@@ -33,7 +33,7 @@ Page 51516388 "FOSA Statistics FactBox"
                     Style = StrongAccent;
                     StyleExpr = true;
                 }
-                field("""Account Balance""-(""Uncleared Cheques""+""ATM Transactions""+""EFT Transactions""+MinBalance+1100)"; "Account Balance" - ("Uncleared Cheques" + "ATM Transactions" + "EFT Transactions" + MinBalance + 1100))
+                field("""Account Balance""-(""Uncleared Cheques""+""ATM Transactions""+""EFT Transactions""+MinBalance+1100)"; Rec."Account Balance" - (Rec."Uncleared Cheques" + Rec."ATM Transactions" + Rec."EFT Transactions" + MinBalance + 1100))
                 {
                     ApplicationArea = Basic;
                     Caption = 'Withdrawable Balance';
@@ -41,28 +41,28 @@ Page 51516388 "FOSA Statistics FactBox"
                     Style = Unfavorable;
 
                 }
-                field("Uncleared Cheques"; "Uncleared Cheques")
+                field("Uncleared Cheques"; Rec."Uncleared Cheques")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                     StyleExpr = true;
                 }
-                field("Total Outstanding Overdraft"; "Total Outstanding Overdraft")
+                field("Total Outstanding Overdraft"; Rec."Total Outstanding Overdraft")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                     StyleExpr = true;
                 }
-                field("Total Outstanding Okoa"; "Total Outstanding Okoa")
+                field("Total Outstanding Okoa"; Rec."Total Outstanding Okoa")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                     StyleExpr = true;
                 }
-                field("Outstanding FOSA Loan"; "Outstanding FOSA Loan")
+                field("Outstanding FOSA Loan"; Rec."Outstanding FOSA Loan")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -71,7 +71,7 @@ Page 51516388 "FOSA Statistics FactBox"
                     Visible = false;
                     Caption = 'Outstanding FOSA Loans';
                 }
-                field("Outstanding FOSA Interest"; "Outstanding FOSA Interest")
+                field("Outstanding FOSA Interest"; Rec."Outstanding FOSA Interest")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
@@ -83,7 +83,7 @@ Page 51516388 "FOSA Statistics FactBox"
 
             group("Member Signature")
             {
-                field(Signature; Signature)
+                field(Signature; Rec.Signature)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Signature';
@@ -103,13 +103,13 @@ Page 51516388 "FOSA Statistics FactBox"
     var
         LoansRegisterTable: Record "Loans Register";
     begin
-        CalcFields("Outstanding Overdraft", Balance);
+        Rec.CalcFields("Outstanding Overdraft", Balance);
         AdjustmentAmount := 0;
-        if ((Balance < 1090) and (Balance > 0)) then begin
-            AdjustmentAmount := 1090 - Balance;
+        if ((Rec.Balance < 1090) and (Rec.Balance > 0)) then begin
+            AdjustmentAmount := 1090 - Rec.Balance;
         end;
-        if Balance < 0 then begin
-            AdjustmentAmount := 1090 + Abs(Balance);
+        if Rec.Balance < 0 then begin
+            AdjustmentAmount := 1090 + Abs(Rec.Balance);
         end;
 
     end;

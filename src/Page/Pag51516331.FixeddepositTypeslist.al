@@ -14,19 +14,19 @@ Page 51516331 "Fixed deposit Types list"
         {
             repeater(Group)
             {
-                field("Code";Code)
+                field("Code"; Rec.Code)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Duration;Duration)
+                field(Duration; Rec.Duration)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("No. of Months";"No. of Months")
+                field("No. of Months"; Rec."No. of Months")
                 {
                     ApplicationArea = Basic;
                 }

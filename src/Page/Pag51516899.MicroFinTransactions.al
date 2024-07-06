@@ -13,148 +13,148 @@ Page 51516899 "Micro_Fin_Transactions"
         {
             group(General)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Group Code"; "Group Code")
+                field("Group Code"; Rec."Group Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Group Account No.';
                     Style = StrongAccent;
 
                 }
-                field("Group Name"; "Group Name")
+                field("Group Name"; Rec."Group Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
 
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Teller No.';
 
 
                 }
-                field("Account Name"; "Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Teller Account Name';
                 }
-                field("Payment Description"; "Payment Description")
+                field("Payment Description"; Rec."Payment Description")
                 {
                     ApplicationArea = Basic;
 
                 }
-                field("Account Type"; "Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Total Amount"; "Total Amount")
+                field("Total Amount"; Rec."Total Amount")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Transaction Date"; "Transaction Date")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Transaction Time"; "Transaction Time")
+                field("Transaction Time"; Rec."Transaction Time")
                 {
                     ApplicationArea = Basic;
                     Enabled = false;
                     Visible = false;
 
                 }
-                field(Posted; Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Posted By"; "Posted By")
+                field("Posted By"; Rec."Posted By")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Group Meeting Day"; "Group Meeting Day")
+                field("Group Meeting Day"; Rec."Group Meeting Day")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Balance; Balance)
+                field(Balance; Rec.Balance)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Total Repayment"; "Total Repayment")
+                field("Total Repayment"; Rec."Total Repayment")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = Unfavorable;
                 }
-                field("Total Savings"; "Total Savings")
+                field("Total Savings"; Rec."Total Savings")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = Unfavorable;
                 }
 
-                field("Total Principle"; "Total Principle")
+                field("Total Principle"; Rec."Total Principle")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = Unfavorable;
                 }
-                field("Total Interest"; "Total Interest")
+                field("Total Interest"; Rec."Total Interest")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = Unfavorable;
                 }
-                field("Total Excess"; "Total Excess")
+                field("Total Excess"; Rec."Total Excess")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Penalty"; "Total Penalty")
+                field("Total Penalty"; Rec."Total Penalty")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
 
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Activity Code"; "Activity Code")
+                field("Activity Code"; Rec."Activity Code")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Branch Code"; "Branch Code")
+                field("Branch Code"; Rec."Branch Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("CEEP Officer"; "CEEP Officer")
+                field("CEEP Officer"; Rec."CEEP Officer")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -198,23 +198,23 @@ Page 51516899 "Micro_Fin_Transactions"
                     begin
                         if Confirm('Are you sure you have selected loan number for clients with loans?') = true then begin
                             if Confirm(Text006) = true then begin
-                                if Amount = 0 then
+                                if Rec.Amount = 0 then
                                     Error('Amount must not be 0');
-                                TestField("Account No");
-                                TestField("Payment Description");
-                                TestField(Amount);
-                                if Posted then
+                                Rec.TestField("Account No");
+                                Rec.TestField("Payment Description");
+                                Rec.TestField(Amount);
+                                if Rec.Posted then
                                     Error('Transaction already posted');
 
-                                if "Account Type" = "account type"::"G/L Account" then
+                                if Rec."Account Type" = Rec."account type"::"G/L Account" then
                                     Error('Account type must be Bank Account');
-                                if Posted then
-                                    Error('The transaction %1 is already posted', "No.");
-                                if Amount = 0 then
-                                    Error(Text002, "No.", Amount);
+                                if Rec.Posted then
+                                    Error('The transaction %1 is already posted', Rec."No.");
+                                if Rec.Amount = 0 then
+                                    Error(Text002, Rec."No.", Rec.Amount);
 
-                                CalcFields("Total Amount");
-                                if "Total Amount" <> Amount then begin
+                                Rec.CalcFields("Total Amount");
+                                if Rec."Total Amount" <> Rec.Amount then begin
                                     Error(Text005);
                                 end;
                                 Temp.Get(UserId);
@@ -235,30 +235,30 @@ Page 51516899 "Micro_Fin_Transactions"
                                 //end of deletion
                                 LineNo := 10000;
 
-                                TestField("Account No");
+                                Rec.TestField("Account No");
                                 //.........................................THE CODE
                                 LineNo := LineNo + 10000;    //JBatch
                                 GenJournalLine.Init;
                                 GenJournalLine."Journal Template Name" := Jtemplate;
                                 GenJournalLine."Journal Batch Name" := JBatch;
-                                GenJournalLine."Document No." := "No.";
+                                GenJournalLine."Document No." := Rec."No.";
                                 GenJournalLine."Line No." := LineNo;
-                                GenJournalLine."Group Code" := "Group Code";
-                                GenJournalLine."Account Type" := "Account Type";
-                                GenJournalLine."Account No." := "Account No";
+                                GenJournalLine."Group Code" := Rec."Group Code";
+                                GenJournalLine."Account Type" := Rec."Account Type";
+                                GenJournalLine."Account No." := Rec."Account No";
                                 GenJournalLine.Validate(GenJournalLine."Account No.");
-                                GenJournalLine."Posting Date" := "Transaction Date";
-                                GenJournalLine.Description := "Payment Description";
-                                GenJournalLine.Amount := Amount;
+                                GenJournalLine."Posting Date" := Rec."Transaction Date";
+                                GenJournalLine.Description := Rec."Payment Description";
+                                GenJournalLine.Amount := Rec.Amount;
                                 GenJournalLine.Validate(GenJournalLine.Amount);
                                 GenJournalLine."Loan No" := Transact."Loans No.";
                                 GenJournalLine."Shortcut Dimension 1 Code" := 'MICRO';
-                                GenJournalLine."Shortcut Dimension 2 Code" := "Branch Code";
+                                GenJournalLine."Shortcut Dimension 2 Code" := Rec."Branch Code";
                                 if GenJournalLine.Amount <> 0 then
                                     GenJournalLine.Insert;
 
                                 Transact.Reset;
-                                Transact.SetRange(Transact."No.", "No.");
+                                Transact.SetRange(Transact."No.", Rec."No.");
                                 Transact.SetFilter(Transact.Amount, '>%1', 0);
                                 if Transact.Find('-') then begin
                                     repeat
@@ -267,20 +267,20 @@ Page 51516899 "Micro_Fin_Transactions"
                                             GenJournalLine.Init;
                                             GenJournalLine."Journal Template Name" := Jtemplate;
                                             GenJournalLine."Journal Batch Name" := JBatch;
-                                            GenJournalLine."Document No." := "No.";
+                                            GenJournalLine."Document No." := Rec."No.";
                                             GenJournalLine."Line No." := LineNo;
                                             GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::Repayment;
                                             GenJournalLine."Group Code" := Transact."Group Code";
                                             GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
                                             GenJournalLine."Account No." := Transact."Account Number";
                                             GenJournalLine.Validate(GenJournalLine."Account No.");
-                                            GenJournalLine."Posting Date" := "Transaction Date";
+                                            GenJournalLine."Posting Date" := Rec."Transaction Date";
                                             GenJournalLine.Description := 'Loan Repayment';
                                             GenJournalLine.Amount := -Transact."Principle Amount";
                                             GenJournalLine.Validate(GenJournalLine.Amount);
                                             GenJournalLine."Loan No" := Transact."Loans No.";
                                             GenJournalLine."Shortcut Dimension 1 Code" := 'MICRO';
-                                            GenJournalLine."Shortcut Dimension 2 Code" := "Branch Code";
+                                            GenJournalLine."Shortcut Dimension 2 Code" := Rec."Branch Code";
                                             if GenJournalLine.Amount <> 0 then
                                                 GenJournalLine.Insert;
                                         end;
@@ -290,19 +290,19 @@ Page 51516899 "Micro_Fin_Transactions"
                                             GenJournalLine.Init;
                                             GenJournalLine."Journal Template Name" := Jtemplate;
                                             GenJournalLine."Journal Batch Name" := JBatch;
-                                            GenJournalLine."Document No." := "No.";
+                                            GenJournalLine."Document No." := Rec."No.";
                                             GenJournalLine."Line No." := LineNo;
                                             GenJournalLine."Group Code" := Transact."Group Code";
                                             GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
                                             GenJournalLine."Account No." := Transact."Account Number";
                                             GenJournalLine.Validate(GenJournalLine."Account No.");
-                                            GenJournalLine."Posting Date" := "Transaction Date";
+                                            GenJournalLine."Posting Date" := Rec."Transaction Date";
                                             GenJournalLine.Description := 'Deposit Contribution';
                                             GenJournalLine.Amount := -Transact.Savings;
                                             GenJournalLine.Validate(GenJournalLine.Amount);
                                             GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Deposit Contribution";
                                             GenJournalLine."Shortcut Dimension 1 Code" := 'MICRO';
-                                            GenJournalLine."Shortcut Dimension 2 Code" := "Branch Code";
+                                            GenJournalLine."Shortcut Dimension 2 Code" := Rec."Branch Code";
                                             if GenJournalLine.Amount <> 0 then
                                                 GenJournalLine.Insert;
                                         end;
@@ -312,20 +312,20 @@ Page 51516899 "Micro_Fin_Transactions"
                                             LineNo := LineNo + 10000;
                                             GenJournalLine."Journal Template Name" := Jtemplate;
                                             GenJournalLine."Journal Batch Name" := JBatch;
-                                            GenJournalLine."Document No." := "No.";
+                                            GenJournalLine."Document No." := Rec."No.";
                                             GenJournalLine."Line No." := LineNo;
                                             GenJournalLine."Group Code" := Transact."Group Code";
                                             GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Interest Paid";
                                             GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
                                             GenJournalLine."Account No." := Transact."Account Number";
                                             GenJournalLine.Validate(GenJournalLine."Account No.");
-                                            GenJournalLine."Posting Date" := "Transaction Date";
+                                            GenJournalLine."Posting Date" := Rec."Transaction Date";
                                             GenJournalLine.Description := 'Interest Paid';
                                             GenJournalLine.Amount := -Transact."Interest Amount";
                                             GenJournalLine.Validate(GenJournalLine.Amount);
                                             GenJournalLine."Loan No" := Transact."Loans No.";
                                             GenJournalLine."Shortcut Dimension 1 Code" := 'MICRO';
-                                            GenJournalLine."Shortcut Dimension 2 Code" := "Branch Code";
+                                            GenJournalLine."Shortcut Dimension 2 Code" := Rec."Branch Code";
                                             if GenJournalLine.Amount <> 0 then
                                                 GenJournalLine.Insert;
                                             Commit;
@@ -338,20 +338,20 @@ Page 51516899 "Micro_Fin_Transactions"
                                             GenJournalLine."Journal Template Name" := Jtemplate;
                                             GenJournalLine."Journal Batch Name" := JBatch;
 
-                                            GenJournalLine."Document No." := "No.";
+                                            GenJournalLine."Document No." := Rec."No.";
                                             GenJournalLine."Line No." := LineNo;
                                             GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Unallocated Funds";
                                             GenJournalLine."Group Code" := Transact."Group Code";
                                             GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
                                             GenJournalLine."Account No." := Transact."Account Number";
                                             GenJournalLine.Validate(GenJournalLine."Account No.");
-                                            GenJournalLine."Posting Date" := "Transaction Date";
+                                            GenJournalLine."Posting Date" := Rec."Transaction Date";
                                             GenJournalLine.Description := 'Excess from-' + Transact."Account Number" + ' To unallocated funds';
                                             GenJournalLine.Amount := -Transact."Excess Amount";
                                             GenJournalLine.Validate(GenJournalLine.Amount);
 
-                                            GenJournalLine."Shortcut Dimension 1 Code" := "Activity Code";
-                                            GenJournalLine."Shortcut Dimension 2 Code" := "Branch Code";
+                                            GenJournalLine."Shortcut Dimension 1 Code" := Rec."Activity Code";
+                                            GenJournalLine."Shortcut Dimension 2 Code" := Rec."Branch Code";
                                             if GenJournalLine.Amount <> 0 then
                                                 GenJournalLine.Insert;
                                         end;
@@ -362,20 +362,20 @@ Page 51516899 "Micro_Fin_Transactions"
                                             LineNo := LineNo + 10000;
                                             GenJournalLine."Journal Template Name" := Jtemplate;
                                             GenJournalLine."Journal Batch Name" := JBatch;
-                                            GenJournalLine."Document No." := "No.";
+                                            GenJournalLine."Document No." := Rec."No.";
                                             GenJournalLine."Line No." := LineNo;
-                                            GenJournalLine."Group Code" := "Group Code";
+                                            GenJournalLine."Group Code" := Rec."Group Code";
                                             GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
                                             GenJournalLine."Account No." := Transact."Account Number";
                                             GenJournalLine.Validate(GenJournalLine."Account No.");
-                                            GenJournalLine."Posting Date" := "Transaction Date";
-                                           // GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Penalty Paid";
+                                            GenJournalLine."Posting Date" := Rec."Transaction Date";
+                                            // GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Penalty Paid";
                                             GenJournalLine.Description := 'CEEP Fees';
                                             GenJournalLine.Amount := -Transact."Penalty Amount";
                                             GenJournalLine.Validate(GenJournalLine.Amount);
                                             GenJournalLine."Loan No" := Transact."Loans No.";
                                             GenJournalLine."Shortcut Dimension 1 Code" := 'MICRO';
-                                            GenJournalLine."Shortcut Dimension 2 Code" := "Branch Code";
+                                            GenJournalLine."Shortcut Dimension 2 Code" := Rec."Branch Code";
                                             if GenJournalLine.Amount <> 0 then
                                                 GenJournalLine.Insert;
                                         end;
@@ -388,9 +388,9 @@ Page 51516899 "Micro_Fin_Transactions"
                                 GenJournalLine.SetRange(GenJournalLine."Journal Batch Name", JBatch);
                                 Codeunit.Run(Codeunit::"Gen. Jnl.-Post", GenJournalLine);
 
-                                Posted := true;
-                                "Posted By" := UserId;
-                                Modify;
+                                Rec.Posted := true;
+                                Rec."Posted By" := UserId;
+                                Rec.Modify;
                             end else
                                 Error('Operation aborted !');
                         end else
@@ -407,9 +407,9 @@ Page 51516899 "Micro_Fin_Transactions"
 
                     trigger OnAction()
                     begin
-                        TestField(Posted, true);
+                        Rec.TestField(Posted, true);
                         MicrSchedule.Reset;
-                        MicrSchedule.SetRange(MicrSchedule."No.", "No.");
+                        MicrSchedule.SetRange(MicrSchedule."No.", Rec."No.");
                         if MicrSchedule.Find('-') then begin
                             Report.Run(51516850, true, false, MicrSchedule);
                         end;
@@ -424,7 +424,7 @@ Page 51516899 "Micro_Fin_Transactions"
 
     trigger OnOpenPage()
     begin
-        if Posted = true then
+        if Rec.Posted = true then
             CurrPage.Editable := false;
     end;
 

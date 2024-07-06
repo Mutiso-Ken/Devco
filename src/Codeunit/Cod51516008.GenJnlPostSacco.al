@@ -23,27 +23,25 @@ Codeunit 51516008 "Gen. Jnl.-Post Sacco"
 
     local procedure "Code"()
     begin
-        with GenJnlLine do begin
-          GenJnlTemplate.Get("Journal Template Name");
-          GenJnlTemplate.TestField("Force Posting Report",false);
-          if GenJnlTemplate.Recurring and (GetFilter("Posting Date") <> '') then
-            FieldError("Posting Date",Text000);
+        GenJnlTemplate.Get(GenJnlLine."Journal Template Name");
+        GenJnlTemplate.TestField("Force Posting Report", false);
+        if GenJnlTemplate.Recurring and (GenJnlLine.GetFilter("Posting Date") <> '') then
+            GenJnlLine.FieldError("Posting Date", Text000);
 
-          TempJnlBatchName := "Journal Batch Name";
-          GenJnlPostBatch.Run(GenJnlLine);
+        TempJnlBatchName := GenJnlLine."Journal Batch Name";
+        GenJnlPostBatch.Run(GenJnlLine);
 
-          if "Line No." = 0 then
+        if GenJnlLine."Line No." = 0 then
             Message(Text002)
-          else
-          if not Find('=><') or (TempJnlBatchName <> "Journal Batch Name") then begin
-            Reset;
-            FilterGroup(2);
-            SetRange("Journal Template Name","Journal Template Name");
-            SetRange("Journal Batch Name","Journal Batch Name");
-            FilterGroup(0);
-            "Line No." := 1;
-          end;
-        end;
+        else
+            if not GenJnlLine.Find('=><') or (TempJnlBatchName <> GenJnlLine."Journal Batch Name") then begin
+                GenJnlLine.Reset;
+                GenJnlLine.FilterGroup(2);
+                GenJnlLine.SetRange("Journal Template Name", GenJnlLine."Journal Template Name");
+                GenJnlLine.SetRange("Journal Batch Name", GenJnlLine."Journal Batch Name");
+                GenJnlLine.FilterGroup(0);
+                GenJnlLine."Line No." := 1;
+            end;
     end;
 }
 

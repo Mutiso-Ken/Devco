@@ -4,7 +4,7 @@ enum 51516022 "TransactionTypesEnum"
 
     value(0; " ")
     {
-      
+
     }
     value(1; "Registration Fee")
     {
@@ -100,7 +100,7 @@ enum 51516022 "TransactionTypesEnum"
     // }
     // value(24; "Property Shares")
     // {
-  
+
     // }
     // value(25; "Tax Shares")
     // {
@@ -181,7 +181,7 @@ enum 51516022 "TransactionTypesEnum"
     // value(44; "CIC shares")
     // {
     //     Caption = 'CIC shares';
-     
+
     // }
     // value(45; "COOP Shares")
     // {
@@ -218,7 +218,7 @@ enum 51516022 "TransactionTypesEnum"
     value(53; Alpha_savings)
     {
         Caption = 'Alpha Savings';
-        
+
     }
     // value(54; "Loan Application Fee Paid")
     // {

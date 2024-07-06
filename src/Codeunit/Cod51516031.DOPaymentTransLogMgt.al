@@ -50,80 +50,55 @@ Codeunit 51516031 "DO Payment Trans. Log Mgt."
         DOPaymentSetup: Record "DO Payment Setup";
     begin
         if DOPaymentSetup.Get then
-            if DOPaymentSetup."Days Before Auth. Expiry" <> 0 then
-                with DOPaymentTransLogEntry do begin
-                    SetCurrentkey("Document Type", "Document No.", "Transaction Type", "Transaction Result", "Transaction Status");
-                    SetRange("Document Type", DocumentType);
-                    SetRange("Document No.", DocumentNo);
-                    SetRange("Transaction Type", "transaction type"::Authorization);
-                    SetRange("Transaction Result", "transaction result"::Success);
-                    SetRange("Transaction Status", "transaction status"::" ");
-                    if FindSet then
-                        repeat
-                            if Dt2Date(CurrentDatetime) -
-                               Dt2Date("Transaction Date-Time") > DOPaymentSetup."Days Before Auth. Expiry"
-                            then begin
-                                "Transaction Status" := "transaction status"::Expired;
-                                Modify;
-                            end;
-                        until Next = 0;
-                end;
+            if DOPaymentSetup."Days Before Auth. Expiry" <> 0 then begin
+                DOPaymentTransLogEntry.SetCurrentkey("Document Type", "Document No.", "Transaction Type", "Transaction Result", "Transaction Status");
+                DOPaymentTransLogEntry.SetRange("Document Type", DocumentType);
+                DOPaymentTransLogEntry.SetRange("Document No.", DocumentNo);
+                DOPaymentTransLogEntry.SetRange("Transaction Type", DOPaymentTransLogEntry."transaction type"::Authorization);
+                DOPaymentTransLogEntry.SetRange("Transaction Result", DOPaymentTransLogEntry."transaction result"::Success);
+                DOPaymentTransLogEntry.SetRange("Transaction Status", DOPaymentTransLogEntry."transaction status"::" ");
+                if DOPaymentTransLogEntry.FindSet then
+                    repeat
+                        if Dt2Date(CurrentDatetime) -
+                           Dt2Date(DOPaymentTransLogEntry."Transaction Date-Time") > DOPaymentSetup."Days Before Auth. Expiry"
+                        then begin
+                            DOPaymentTransLogEntry."Transaction Status" := DOPaymentTransLogEntry."transaction status"::Expired;
+                            DOPaymentTransLogEntry.Modify;
+                        end;
+                    until DOPaymentTransLogEntry.Next = 0;
+            end;
     end;
 
 
     procedure FindValidAuthorizationEntry(DocumentType: Integer; DocumentNo: Code[20]; var DOPaymentTransLogEntry: Record "DO Payment Trans. Log Entry"): Boolean
     begin
         UpdateExpirationInAuthEntries(DocumentType, DocumentNo);
-        with DOPaymentTransLogEntry do begin
-            Reset;
-            SetCurrentkey("Document Type", "Document No.", "Transaction Type", "Transaction Result", "Transaction Status");
-            SetRange("Document Type", DocumentType);
-            SetRange("Document No.", DocumentNo);
-            SetRange("Transaction Type", "transaction type"::Authorization);
-            SetRange("Transaction Result", "transaction result"::Success);
-            SetRange("Transaction Status", "transaction status"::" ");
-            exit(FindFirst);
-        end;
+        DOPaymentTransLogEntry.Reset;
+        DOPaymentTransLogEntry.SetCurrentkey("Document Type", "Document No.", "Transaction Type", "Transaction Result", "Transaction Status");
+        DOPaymentTransLogEntry.SetRange("Document Type", DocumentType);
+        DOPaymentTransLogEntry.SetRange("Document No.", DocumentNo);
+        DOPaymentTransLogEntry.SetRange("Transaction Type", DOPaymentTransLogEntry."transaction type"::Authorization);
+        DOPaymentTransLogEntry.SetRange("Transaction Result", DOPaymentTransLogEntry."transaction result"::Success);
+        DOPaymentTransLogEntry.SetRange("Transaction Status", DOPaymentTransLogEntry."transaction status"::" ");
+        exit(DOPaymentTransLogEntry.FindFirst);
     end;
 
 
     procedure FindPostingNotFinishedEntry(DocumentType: Integer; DocumentNo: Code[20]; var DOPaymentTransLogEntry: Record "DO Payment Trans. Log Entry"): Boolean
     begin
-        with DOPaymentTransLogEntry do begin
-            Reset;
-            SetCurrentkey("Document Type", "Document No.", "Transaction Type", "Transaction Result", "Transaction Status");
-            SetRange("Document Type", DocumentType);
-            SetRange("Document No.", DocumentNo);
-            SetFilter("Transaction Type", '%1|%2', "transaction type"::Void, "transaction type"::Refund);
-            SetRange("Transaction Result", "transaction result"::Success);
-            SetRange("Transaction Status", "transaction status"::"Posting Not Finished");
-            exit(FindFirst);
-        end;
+        DOPaymentTransLogEntry.Reset;
+        DOPaymentTransLogEntry.SetCurrentkey("Document Type", "Document No.", "Transaction Type", "Transaction Result", "Transaction Status");
+        DOPaymentTransLogEntry.SetRange("Document Type", DocumentType);
+        DOPaymentTransLogEntry.SetRange("Document No.", DocumentNo);
+        DOPaymentTransLogEntry.SetFilter("Transaction Type", '%1|%2', DOPaymentTransLogEntry."transaction type"::Void, DOPaymentTransLogEntry."transaction type"::Refund);
+        DOPaymentTransLogEntry.SetRange("Transaction Result", DOPaymentTransLogEntry."transaction result"::Success);
+        DOPaymentTransLogEntry.SetRange("Transaction Status", DOPaymentTransLogEntry."transaction status"::"Posting Not Finished");
+        exit(DOPaymentTransLogEntry.FindFirst);
     end;
 
 
     procedure FindCapturedButNotFinishedEntr(CustomerNo: Code[20]; DocumentNo: Code[20]; PaidAmount: Decimal; CurrencyCode: Code[10]; CreditCardNo: Code[20]; var DOPaymentTransLogEntry: Record "DO Payment Trans. Log Entry"): Boolean
     begin
-        with DOPaymentTransLogEntry do begin
-            //   Reset;
-            //   SetCurrentkey("Document No.","Customer No.","Transaction Status");
-            //   SetRange("Document No.",DocumentNo);
-            //   SetRange("Customer No.",CustomerNo);
-            //   SetRange("Transaction Status","transaction status"::"Posting Not Finished");
-            //   SetRange("Credit Card No.",CreditCardNo);
-            //   CurrencyCode := DOPaymentMgt.FindCurrencyCode(CurrencyCode);
-            //   SetRange("Currency Code",CurrencyCode);
-            //   SetRange("Transaction Type","transaction type"::Capture);
-            //   SetRange("Transaction Result","transaction result"::Success);
-
-            //   if not FindFirst then
-            //     exit(false);
-
-            //   if Amount <> PaidAmount then
-            //     Error(Text005,Amount,CurrencyCode,DocumentNo,Format(Dt2Date("Transaction Date-Time"),0,4));
-
-            //   exit(true);
-        end;
     end;
 
 

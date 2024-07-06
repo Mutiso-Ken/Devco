@@ -6,10 +6,10 @@ Report 51516291 "Account Maintance"
 
     dataset
     {
-        dataitem(Vendor;Vendor)
+        dataitem(Vendor; Vendor)
         {
             CalcFields = Balance;
-            DataItemTableView = where("Account Type"=const('ORDINARY'),"Debtor Type"=const("FOSA Account"),Status=filter(Active));
+            DataItemTableView = where("Account Type" = const('ORDINARY'), "Debtor Type" = const("FOSA Account"), Status = filter(Active));
             RequestFilterFields = "No.";
             column(ReportForNavId_1102755000; 1102755000)
             {
@@ -17,81 +17,80 @@ Report 51516291 "Account Maintance"
 
             trigger OnAfterGetRecord()
             begin
-                if Vendor.Balance >60 then
-                  begin
-                //CurrReport.SKIP;
-                if PDate=0D then
-                Error('Kindly specify the posting date');
+                if Vendor.Balance > 60 then begin
+                    //CurrReport.SKIP;
+                    if PDate = 0D then
+                        Error('Kindly specify the posting date');
 
-                if DocNo='' then
-                Error('Kindly specify the document no');
+                    if DocNo = '' then
+                        Error('Kindly specify the document no');
 
-                //........... Deduct Account Maintainance Fee ....................................//
-                  LineNo:=LineNo+10000;
-                  GenJournalLine.Init;
-                  GenJournalLine."Journal Template Name":='GENERAL';
-                  GenJournalLine."Line No.":=LineNo+10000;
-                  GenJournalLine."Journal Batch Name":='ACCM';
-                  GenJournalLine."Document No.":=DocNo;
-                  GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                  GenJournalLine."Account No.":=Vendor."No.";
-                  GenJournalLine.Validate(GenJournalLine."Account No.");
-                  GenJournalLine."Posting Date":=PDate;
-                  GenJournalLine.Description:='Account Maintanance Fee';
-                  GenJournalLine.Validate(GenJournalLine."Currency Code");
-                  GenJournalLine.Amount:=50;
-                  GenJournalLine.Validate(GenJournalLine.Amount);
-                  GenJournalLine."Bal. Account Type":=GenJournalLine."bal. account type"::"G/L Account";
-                  GenJournalLine."Bal. Account No.":='5418';
-                  GenJournalLine."Shortcut Dimension 1 Code":=Vendor."Global Dimension 1 Code";
-                  GenJournalLine."Shortcut Dimension 2 Code":=Vendor."Global Dimension 2 Code";
-                  if GenJournalLine.Amount<>0 then
-                  GenJournalLine.Insert;
+                    //........... Deduct Account Maintainance Fee ....................................//
+                    LineNo := LineNo + 10000;
+                    GenJournalLine.Init;
+                    GenJournalLine."Journal Template Name" := 'GENERAL';
+                    GenJournalLine."Line No." := LineNo + 10000;
+                    GenJournalLine."Journal Batch Name" := 'ACCM';
+                    GenJournalLine."Document No." := DocNo;
+                    GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                    GenJournalLine."Account No." := Vendor."No.";
+                    GenJournalLine.Validate(GenJournalLine."Account No.");
+                    GenJournalLine."Posting Date" := PDate;
+                    GenJournalLine.Description := 'Account Maintanance Fee';
+                    GenJournalLine.Validate(GenJournalLine."Currency Code");
+                    GenJournalLine.Amount := 50;
+                    GenJournalLine.Validate(GenJournalLine.Amount);
+                    GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"G/L Account";
+                    GenJournalLine."Bal. Account No." := '5418';
+                    GenJournalLine."Shortcut Dimension 1 Code" := Vendor."Global Dimension 1 Code";
+                    GenJournalLine."Shortcut Dimension 2 Code" := Vendor."Global Dimension 2 Code";
+                    if GenJournalLine.Amount <> 0 then
+                        GenJournalLine.Insert;
 
-                //........................ End Of Account Maintainance Fee ........................//
+                    //........................ End Of Account Maintainance Fee ........................//
 
-                //........................Excercise Duty on Account Maintainace ....................//
+                    //........................Excercise Duty on Account Maintainace ....................//
 
-                  LineNo:=LineNo+10000;
-                  GenJournalLine.Init;
-                  GenJournalLine."Journal Template Name":='GENERAL';
-                  GenJournalLine."Line No.":=LineNo+10000;
-                  GenJournalLine."Journal Batch Name":='ACCM';
-                  GenJournalLine."Document No.":=DocNo;
-                  GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                  GenJournalLine."Account No.":=Vendor."No.";
-                  GenJournalLine.Validate(GenJournalLine."Account No.");
-                  GenJournalLine."Posting Date":=PDate;
-                  GenJournalLine.Description:='Excise Duty';
-                  GenJournalLine.Validate(GenJournalLine."Currency Code");
-                  GenJournalLine.Amount:=10;
-                  GenJournalLine.Validate(GenJournalLine.Amount);
-                  GenJournalLine."Bal. Account Type":=GenJournalLine."bal. account type"::"G/L Account";
-                  GenJournalLine."Bal. Account No.":='3326';
-                  GenJournalLine."Shortcut Dimension 1 Code":=Vendor."Global Dimension 1 Code";
-                  GenJournalLine."Shortcut Dimension 2 Code":=Vendor."Global Dimension 2 Code";
-                  if GenJournalLine.Amount<>0 then
-                  GenJournalLine.Insert;
-                 // CODEUNIT.RUN(CODEUNIT::"Gen. Jnl.-Post Batch",GenJournalLine);
-                  end
+                    LineNo := LineNo + 10000;
+                    GenJournalLine.Init;
+                    GenJournalLine."Journal Template Name" := 'GENERAL';
+                    GenJournalLine."Line No." := LineNo + 10000;
+                    GenJournalLine."Journal Batch Name" := 'ACCM';
+                    GenJournalLine."Document No." := DocNo;
+                    GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                    GenJournalLine."Account No." := Vendor."No.";
+                    GenJournalLine.Validate(GenJournalLine."Account No.");
+                    GenJournalLine."Posting Date" := PDate;
+                    GenJournalLine.Description := 'Excise Duty';
+                    GenJournalLine.Validate(GenJournalLine."Currency Code");
+                    GenJournalLine.Amount := 10;
+                    GenJournalLine.Validate(GenJournalLine.Amount);
+                    GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"G/L Account";
+                    GenJournalLine."Bal. Account No." := '3326';
+                    GenJournalLine."Shortcut Dimension 1 Code" := Vendor."Global Dimension 1 Code";
+                    GenJournalLine."Shortcut Dimension 2 Code" := Vendor."Global Dimension 2 Code";
+                    if GenJournalLine.Amount <> 0 then
+                        GenJournalLine.Insert;
+                    // CODEUNIT.RUN(CODEUNIT::"Gen. Jnl.-Post Batch",GenJournalLine);
+                end
                 //.............. End of Excercise Duty on Account Maintainance ........................//
             end;
 
             trigger OnPostDataItem()
             begin
                 GenJournalLine.Reset;
-                GenJournalLine.SetRange("Journal Template Name",'GENERAL');
-                GenJournalLine.SetRange("Journal Batch Name",'ACCM');
+                GenJournalLine.SetRange("Journal Template Name", 'GENERAL');
+                GenJournalLine.SetRange("Journal Batch Name", 'ACCM');
                 if GenJournalLine.Find('-') then begin
-                //CODEUNIT.RUN(CODEUNIT::"Gen. Jnl.-Post Batch",GenJournalLine);
+                    //CODEUNIT.RUN(CODEUNIT::"Gen. Jnl.-Post Batch",GenJournalLine);
                 end;
             end;
 
             trigger OnPreDataItem()
             begin
                 GenJournalLine.Reset;
-                GenJournalLine.SetRange(GenJournalLine."Journal Template Name",'GENERAL');
-                GenJournalLine.SetRange(GenJournalLine."Journal Batch Name",'ACCM');
+                GenJournalLine.SetRange(GenJournalLine."Journal Template Name", 'GENERAL');
+                GenJournalLine.SetRange(GenJournalLine."Journal Batch Name", 'ACCM');
                 GenJournalLine.DeleteAll;
             end;
         }
@@ -104,12 +103,12 @@ Report 51516291 "Account Maintance"
         {
             area(content)
             {
-                field(PDate;PDate)
+                field(PDate; PDate)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Posting Date';
                 }
-                field(DocNo;DocNo)
+                field(DocNo; DocNo)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Document No';
@@ -129,10 +128,10 @@ Report 51516291 "Account Maintance"
     trigger OnInitReport()
     begin
         StatusPermissions.Reset;
-        StatusPermissions.SetRange(StatusPermissions."User Id",UserId);
-        StatusPermissions.SetRange(StatusPermissions."Function",StatusPermissions."function"::"Account Status");
+        StatusPermissions.SetRange(StatusPermissions."User Id", UserId);
+        StatusPermissions.SetRange(StatusPermissions."Function", StatusPermissions."function"::"Account Status");
         if StatusPermissions.Find('-') = false then
-        Error('You do not have permissions to charge maintenance fee. Please contact systems administrator');
+            Error('You do not have permissions to charge maintenance fee. Please contact systems administrator');
     end;
 
     var

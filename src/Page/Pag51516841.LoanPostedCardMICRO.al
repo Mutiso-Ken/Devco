@@ -15,18 +15,18 @@ Page 51516841 "Loan Posted Card - MICRO"
             {
                 Caption = 'General';
                 Editable = false;
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Staff No"; "Staff No")
+                field("Staff No"; Rec."Staff No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Staff No';
                     Editable = false;
                 }
-                field("Client Code"; "Client Code")
+                field("Client Code"; Rec."Client Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Account No.';
@@ -43,68 +43,68 @@ Page 51516841 "Loan Posted Card - MICRO"
 
                     end;
                 }
-                field("Client Name"; "Client Name")
+                field("Client Name"; Rec."Client Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Officer"; "Loan Officer")
+                field("Loan Officer"; Rec."Loan Officer")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("ID NO"; "ID NO")
+                field("ID NO"; Rec."ID NO")
                 {
                     ApplicationArea = Basic;
                     Caption = 'ID No.';
                     Editable = false;
                 }
-                field("Group Account"; "Group Account")
+                field("Group Account"; Rec."Group Account")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Group Account No.';
                     Editable = false;
                 }
-                field("Group Name"; "Group Name")
+                field("Group Name"; Rec."Group Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                     Editable = ApplcDateEditable;
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Loan Product Type"; "Loan Product Type")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Editable = LProdTypeEditable;
                 }
-                field("Shares Balance"; "Shares Balance")
+                field("Shares Balance"; Rec."Shares Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Installments; Installments)
+                field(Installments; Rec.Installments)
                 {
                     ApplicationArea = Basic;
                     Editable = InstallmentEditable;
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field(Interest; Interest)
+                field(Interest; Rec.Interest)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Requested Amount"; "Requested Amount")
+                field("Requested Amount"; Rec."Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Amount Applied';
@@ -112,15 +112,15 @@ Page 51516841 "Loan Posted Card - MICRO"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Recommended Amount"; "Recommended Amount")
+                field("Recommended Amount"; Rec."Recommended Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Approved Amount"; "Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Approved Amount';
@@ -128,35 +128,35 @@ Page 51516841 "Loan Posted Card - MICRO"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Loan Purpose"; "Loan Purpose")
+                field("Loan Purpose"; Rec."Loan Purpose")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                     Visible = false;
                 }
-                field("Repayment Method"; "Repayment Method")
+                field("Repayment Method"; Rec."Repayment Method")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Principle Repayment"; "Loan Principle Repayment")
+                field("Loan Principle Repayment"; Rec."Loan Principle Repayment")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Interest Repayment"; "Loan Interest Repayment")
+                field("Loan Interest Repayment"; Rec."Loan Interest Repayment")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Repayment; Repayment)
+                field(Repayment; Rec.Repayment)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Status"; "Loan Status")
+                field("Loan Status"; Rec."Loan Status")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -299,87 +299,87 @@ Page 51516841 "Loan Posted Card - MICRO"
 
                     end;
                 }
-                field("Batch Source"; "Batch Source")
+                field("Batch Source"; Rec."Batch Source")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Batch No."; "Batch No.")
+                field("Batch No."; Rec."Batch No.")
                 {
                     ApplicationArea = Basic;
                     Editable = BatchNoEditable;
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Top Up Amount"; "Top Up Amount")
+                field("Top Up Amount"; Rec."Top Up Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Repayment Frequency"; "Repayment Frequency")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Account No"; "Account No")
+                field("Repayment Frequency"; Rec."Repayment Frequency")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Mode of Disbursement"; "Mode of Disbursement")
+                field("Account No"; Rec."Account No")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Mode of Disbursement"; Rec."Mode of Disbursement")
                 {
                     ApplicationArea = Basic;
                     Editable = ModeofDisburesmentEdit;
                 }
-                field("Loan Disbursement Date"; "Loan Disbursement Date")
+                field("Loan Disbursement Date"; Rec."Loan Disbursement Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cheque No."; "Cheque No.")
+                field("Cheque No."; Rec."Cheque No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
 
                     trigger OnValidate()
                     begin
-                        if StrLen("Cheque No.") > 6 then
+                        if StrLen(Rec."Cheque No.") > 6 then
                             Error('Document No. cannot contain More than 6 Characters.');
                     end;
                 }
-                field("Repayment Start Date"; "Repayment Start Date")
+                field("Repayment Start Date"; Rec."Repayment Start Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Expected Date of Completion"; "Expected Date of Completion")
+                field("Expected Date of Completion"; Rec."Expected Date of Completion")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("External EFT"; "External EFT")
+                field("External EFT"; Rec."External EFT")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Approval Status"; "Approval Status")
+                field("Approval Status"; Rec."Approval Status")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Posted; Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field(Source; Source)
+                field(Source; Rec.Source)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Remarks; Remarks)
+                field(Remarks; Rec.Remarks)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
@@ -430,7 +430,7 @@ Page 51516841 "Loan Posted Card - MICRO"
                     trigger OnAction()
                     begin
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", Rec."Loan  No.");
                         if LoanApp.Find('-') then
                             Report.Run(51516852, true, false, LoanApp);
                     end;
@@ -537,12 +537,12 @@ Page 51516841 "Loan Posted Card - MICRO"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        Source := Source::MICRO;
+        Rec.Source := Rec.Source::MICRO;
     end;
 
     trigger OnNextRecord(Steps: Integer): Integer
     begin
-        if "Loan Status" = "loan status"::Approved then
+        if Rec."Loan Status" = Rec."loan status"::Approved then
             CurrPage.Editable := false;
     end;
 
@@ -696,7 +696,7 @@ Page 51516841 "Loan Posted Card - MICRO"
     begin
 
         //IF "Loan Status"="Loan Status"::Application THEN BEGIN
-        if "Approval Status" = "approval status"::Open then begin
+        if Rec."Approval Status" = Rec."approval status"::Open then begin
             MNoEditable := true;
             ApplcDateEditable := false;
             LoanStatusEditable := false;
@@ -715,7 +715,7 @@ Page 51516841 "Loan Posted Card - MICRO"
         end;
 
         //IF "Loan Status"="Loan Status"::Appraisal THEN BEGIN
-        if "Approval Status" = "approval status"::Pending then begin
+        if Rec."Approval Status" = Rec."approval status"::Pending then begin
             MNoEditable := false;
             ApplcDateEditable := false;
             LoanStatusEditable := false;
@@ -735,7 +735,7 @@ Page 51516841 "Loan Posted Card - MICRO"
         end;
 
         //IF "Loan Status"="Loan Status"::Rejected THEN BEGIN
-        if "Approval Status" = "approval status"::Rejected then begin
+        if Rec."Approval Status" = Rec."approval status"::Rejected then begin
             MNoEditable := false;
             ApplcDateEditable := false;
             LoanStatusEditable := false;
@@ -755,7 +755,7 @@ Page 51516841 "Loan Posted Card - MICRO"
         end;
 
         //IF "Loan Status"="Loan Status"::Approved THEN BEGIN
-        if "Approval Status" = "approval status"::Approved then begin
+        if Rec."Approval Status" = Rec."approval status"::Approved then begin
             MNoEditable := false;
             LoanStatusEditable := false;
             ApplcDateEditable := false;

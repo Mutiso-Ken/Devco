@@ -11,24 +11,24 @@ Page 51516375 "CEEP Statistics FactBox"
     {
         area(content)
         {
-            field(Image; Image)
+            field(Image; Rec.Image)
             {
                 ApplicationArea = Basic;
                 Caption = 'Member No.';
             }
             group("Member Details")
             {
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Phone No."; "Phone No.")
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
@@ -36,7 +36,7 @@ Page 51516375 "CEEP Statistics FactBox"
                 // {
                 //     ApplicationArea = Basic;
                 // }
-                field("Group Account Name"; "Group Account Name")
+                field("Group Account Name"; Rec."Group Account Name")
                 {
                     ApplicationArea = Basic;
                 }
@@ -52,12 +52,12 @@ Page 51516375 "CEEP Statistics FactBox"
                     Style = StrongAccent;
                     StyleExpr = true;
                 }
-                field("Current Shares"; "Current Shares")
+                field("Current Shares"; Rec."Current Shares")
                 {
                     Caption = 'Non-withdrawable Deposits';
                 }
 
-                field("Outstanding Balance"; "Outstanding Balance")
+                field("Outstanding Balance"; Rec."Outstanding Balance")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -65,7 +65,7 @@ Page 51516375 "CEEP Statistics FactBox"
                     StyleExpr = true;
                     Caption = 'CEEP  Principle Balance';
                 }
-                field("Outstanding Interest"; "Outstanding Interest")
+                field("Outstanding Interest"; Rec."Outstanding Interest")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -74,7 +74,7 @@ Page 51516375 "CEEP Statistics FactBox"
                     Caption = 'CEEP  Interest Balance';
                 }
 
-                field("Loan Arrears"; "Loan Arrears")
+                field("Loan Arrears"; Rec."Loan Arrears")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -82,7 +82,7 @@ Page 51516375 "CEEP Statistics FactBox"
                     StyleExpr = true;
                     Caption = 'CEEP  Loan Arrears';
                 }
-                field("FOSA  Account Bal"; "FOSA  Account Bal")
+                field("FOSA  Account Bal"; Rec."FOSA  Account Bal")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -101,7 +101,7 @@ Page 51516375 "CEEP Statistics FactBox"
 
     trigger OnAfterGetRecord()
     begin
-        "Loan Arrears" := FnGetLoanArrears(Rec."No.");
+        Rec."Loan Arrears" := FnGetLoanArrears(Rec."No.");
     end;
 
     trigger OnOpenPage()
@@ -192,9 +192,9 @@ Page 51516375 "CEEP Statistics FactBox"
 
     procedure ChangeCustomer()
     begin
-        LatestCustLedgerEntry.SetRange("Customer No.", "No.");
+        LatestCustLedgerEntry.SetRange("Customer No.", Rec."No.");
         for I := 1 to ArrayLen(CustLedgerEntry) do
-            CustLedgerEntry[I].SetRange("Customer No.", "No.");
+            CustLedgerEntry[I].SetRange("Customer No.", Rec."No.");
     end;
 
 

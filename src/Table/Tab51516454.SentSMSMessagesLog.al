@@ -4,17 +4,17 @@ Table 51516454 "Sent SMS Messages Log"
 
     fields
     {
-        field(1;"Loan Number";Code[30])
+        field(1; "Loan Number"; Code[30])
         {
         }
-        field(2;"SMS Log Date";Date)
+        field(2; "SMS Log Date"; Date)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Loan Number")
+        key(Key1; "Loan Number")
         {
             Clustered = true;
         }

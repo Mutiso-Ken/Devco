@@ -66,25 +66,21 @@ Codeunit 50015 "Payroll Processing"
         HrEmployee.SetRange(HrEmployee."No.", HrEmployee."No.");
         if HrEmployee.Find('-') then
             VitalSetup.FindFirst;
-        with VitalSetup do begin
-            // curReliefPersonal := "Tax Relief";
-            curReliefInsurance := "Insurance Relief";
-            // curReliefMorgage := HrEmployee."Morgage Relief";
-            NSSFR := 0;
-            //"Mortgage Relief"; //Same as HOSP
-            curMaximumRelief := "Max Relief";
-            curNssfEmployee := "NSSF Employee";
-            curNssf_Employer_Factor := "NSSF Employer Factor";
-            intNHIF_BasedOn := "NHIF Based on";
-            curMaxPensionContrib := "Max Pension Contribution";
-            curRateTaxExPension := "Tax On Excess Pension";
-            curOOIMaxMonthlyContrb := "OOI Deduction";
-            curOOIDecemberDedc := "OOI December";
-            curLoanMarketRate := "Loan Market Rate";
-            curLoanCorpRate := "Loan Corporate Rate";
-
-
-        end;
+        // curReliefPersonal := "Tax Relief";
+        curReliefInsurance := VitalSetup."Insurance Relief";
+        // curReliefMorgage := HrEmployee."Morgage Relief";
+        NSSFR := 0;
+        //"Mortgage Relief"; //Same as HOSP
+        curMaximumRelief := VitalSetup."Max Relief";
+        curNssfEmployee := VitalSetup."NSSF Employee";
+        curNssf_Employer_Factor := VitalSetup."NSSF Employer Factor";
+        intNHIF_BasedOn := VitalSetup."NHIF Based on";
+        curMaxPensionContrib := VitalSetup."Max Pension Contribution";
+        curRateTaxExPension := VitalSetup."Tax On Excess Pension";
+        curOOIMaxMonthlyContrb := VitalSetup."OOI Deduction";
+        curOOIDecemberDedc := VitalSetup."OOI December";
+        curLoanMarketRate := VitalSetup."Loan Market Rate";
+        curLoanCorpRate := VitalSetup."Loan Corporate Rate";
     end;
 
 
@@ -610,16 +606,14 @@ Codeunit 50015 "Payroll Processing"
                 prUnusedRelief.Delete;
 
             prUnusedRelief.Reset;
-            with prUnusedRelief do begin
-                Init;
-                "Employee No." := strEmpCode;
-                "Unused Relief" := curPAYE;
-                "Period Month" := intMonth;
-                "Period Year" := intYear;
-                Insert;
+            prUnusedRelief.Init;
+            prUnusedRelief."Employee No." := strEmpCode;
+            prUnusedRelief."Unused Relief" := curPAYE;
+            prUnusedRelief."Period Month" := intMonth;
+            prUnusedRelief."Period Year" := intYear;
+            prUnusedRelief.Insert;
 
-                curPAYE := 0;
-            end;
+            curPAYE := 0;
         end;
 
 
@@ -767,37 +761,35 @@ Codeunit 50015 "Payroll Processing"
         prSalCard: Record "Payroll Employee.";
     begin
         if curAmount = 0 then exit;
-        with prPeriodTransactions do begin
-            Init;
-            "Employee Code" := EmpCode;
-            "Transaction Code" := TCode;
-            "Group Text" := TGroup;
-            "Transaction Name" := Description;
-            Amount := ROUND(curAmount, 0.01, '=');
-            Balance := curBalance;
-            "Original Amount" := Balance;
-            "Group Order" := GroupOrder;
-            "Sub Group Order" := SubGroupOrder;
-            Membership := mMembership;
-            "Reference No" := ReferenceNo;
-            "Period Month" := Month;
-            "Period Year" := Year;
-            "Payroll Period" := dtOpenPeriod;
-            "Department Code" := Department;
-            "Journal Account Type" := JournalACType;
-            "Post As" := PostAs;
-            "Journal Account Code" := JournalAC;
-            "Loan Number" := LoanNo;
-            "coop parameters" := CoopParam;
-            "Payroll Code" := PayrollType;
-            //Paymode
-            if prSalCard.Get(EmpCode) then
-                "Payment Mode" := prSalCard."Payment Mode";
-            Insert;
+        prPeriodTransactions.Init;
+        prPeriodTransactions."Employee Code" := EmpCode;
+        prPeriodTransactions."Transaction Code" := TCode;
+        prPeriodTransactions."Group Text" := TGroup;
+        prPeriodTransactions."Transaction Name" := Description;
+        prPeriodTransactions.Amount := ROUND(curAmount, 0.01, '=');
+        prPeriodTransactions.Balance := curBalance;
+        prPeriodTransactions."Original Amount" := prPeriodTransactions.Balance;
+        prPeriodTransactions."Group Order" := GroupOrder;
+        prPeriodTransactions."Sub Group Order" := SubGroupOrder;
+        prPeriodTransactions.Membership := mMembership;
+        prPeriodTransactions."Reference No" := ReferenceNo;
+        prPeriodTransactions."Period Month" := Month;
+        prPeriodTransactions."Period Year" := Year;
+        prPeriodTransactions."Payroll Period" := dtOpenPeriod;
+        prPeriodTransactions."Department Code" := Department;
+        prPeriodTransactions."Journal Account Type" := JournalACType;
+        prPeriodTransactions."Post As" := PostAs;
+        prPeriodTransactions."Journal Account Code" := JournalAC;
+        prPeriodTransactions."Loan Number" := LoanNo;
+        prPeriodTransactions."coop parameters" := CoopParam;
+        prPeriodTransactions."Payroll Code" := PayrollType;
+        //Paymode
+        if prSalCard.Get(EmpCode) then
+            prPeriodTransactions."Payment Mode" := prSalCard."Payment Mode";
+        prPeriodTransactions.Insert;
 
-            //Update the prEmployee Transactions  with the Amount
-            fnUpdateEmployeeTrans("Employee Code", "Transaction Code", Amount, "Period Month", "Period Year", "Payroll Period");
-        end;
+        //Update the prEmployee Transactions  with the Amount
+        fnUpdateEmployeeTrans(prPeriodTransactions."Employee Code", prPeriodTransactions."Transaction Code", prPeriodTransactions.Amount, prPeriodTransactions."Period Month", prPeriodTransactions."Period Year", prPeriodTransactions."Payroll Period");
     end;
 
 
@@ -1088,23 +1080,23 @@ Codeunit 50015 "Payroll Processing"
 
                         //Insert record for the next period
                         with prEmployeeTrans do begin
-                            Init;
-                            "No." := prEmployeeTransactions."No.";
-                            "Transaction Code" := prEmployeeTransactions."Transaction Code";
-                            "Transaction Name" := prEmployeeTransactions."Transaction Name";
-                            "Transaction Type" := prEmployeeTransactions."Transaction Type";
-                            Amount := curTransAmount;
-                            Balance := curTransBalance;
-                            "Amtzd Loan Repay Amt" := prEmployeeTransactions."Amtzd Loan Repay Amt";
-                            "Original Amount" := prEmployeeTransactions."Original Amount";
-                            Membership := prEmployeeTransactions.Membership;
-                            "Reference No" := prEmployeeTransactions."Reference No";
-                            "Loan Number" := prEmployeeTransactions."Loan Number";
-                            "Period Month" := intNewMonth;
-                            "Period Year" := intNewYear;
-                            "Payroll Period" := dtNewPeriod;
-                            "Payroll Code" := PayrollCode;
-                            Insert;
+                            prEmployeeTrans.Init;
+                            prEmployeeTrans."No." := prEmployeeTransactions."No.";
+                            prEmployeeTrans."Transaction Code" := prEmployeeTransactions."Transaction Code";
+                            prEmployeeTrans."Transaction Name" := prEmployeeTransactions."Transaction Name";
+                            prEmployeeTrans."Transaction Type" := prEmployeeTransactions."Transaction Type";
+                            prEmployeeTrans.Amount := curTransAmount;
+                            prEmployeeTrans.Balance := curTransBalance;
+                            prEmployeeTrans."Amtzd Loan Repay Amt" := prEmployeeTransactions."Amtzd Loan Repay Amt";
+                            prEmployeeTrans."Original Amount" := prEmployeeTransactions."Original Amount";
+                            prEmployeeTrans.Membership := prEmployeeTransactions.Membership;
+                            prEmployeeTrans."Reference No" := prEmployeeTransactions."Reference No";
+                            prEmployeeTrans."Loan Number" := prEmployeeTransactions."Loan Number";
+                            prEmployeeTrans."Period Month" := intNewMonth;
+                            prEmployeeTrans."Period Year" := intNewYear;
+                            prEmployeeTrans."Payroll Period" := dtNewPeriod;
+                            prEmployeeTrans."Payroll Code" := PayrollCode;
+                            prEmployeeTrans.Insert;
                         end;
                     end;
                 end
@@ -1126,16 +1118,14 @@ Codeunit 50015 "Payroll Processing"
         end;
 
         //Enter a New Period
-        with prNewPayrollPeriods do begin
-            Init;
-            "Period Month" := intNewMonth;
-            "Period Year" := intNewYear;
-            "Period Name" := Format(dtNewPeriod, 0, '<Month Text>') + '' + Format(intNewYear);
-            "Date Opened" := dtNewPeriod;
-            Closed := false;
-            "Payroll Code" := PayrollCode;
-            Insert;
-        end;
+        prNewPayrollPeriods.Init;
+        prNewPayrollPeriods."Period Month" := intNewMonth;
+        prNewPayrollPeriods."Period Year" := intNewYear;
+        prNewPayrollPeriods."Period Name" := Format(dtNewPeriod, 0, '<Month Text>') + '' + Format(intNewYear);
+        prNewPayrollPeriods."Date Opened" := dtNewPeriod;
+        prNewPayrollPeriods.Closed := false;
+        prNewPayrollPeriods."Payroll Code" := PayrollCode;
+        prNewPayrollPeriods.Insert;
 
         //Effect the transactions for the P9
         fnP9PeriodClosure(intMonth, intYear, dtOpenPeriod, PayrollCode);
@@ -1165,19 +1155,17 @@ Codeunit 50015 "Payroll Processing"
 
         if prPeriodTransactions.Find('-') then begin
             repeat
-                with prEmployeeTransactions do begin
-                    Init;
-                    "No." := prPeriodTransactions."Employee Code";
-                    "Transaction Code" := 'NEGP';
-                    "Transaction Name" := 'Negative Pay';
-                    Amount := prPeriodTransactions.Amount;
-                    Balance := 0;
-                    "Original Amount" := 0;
-                    "Period Month" := intNewMonth;
-                    "Period Year" := intNewYear;
-                    "Payroll Period" := dtNewPeriod;
-                    Insert;
-                end;
+                prEmployeeTransactions.Init;
+                prEmployeeTransactions."No." := prPeriodTransactions."Employee Code";
+                prEmployeeTransactions."Transaction Code" := 'NEGP';
+                prEmployeeTransactions."Transaction Name" := 'Negative Pay';
+                prEmployeeTransactions.Amount := prPeriodTransactions.Amount;
+                prEmployeeTransactions.Balance := 0;
+                prEmployeeTransactions."Original Amount" := 0;
+                prEmployeeTransactions."Period Month" := intNewMonth;
+                prEmployeeTransactions."Period Year" := intNewYear;
+                prEmployeeTransactions."Payroll Period" := dtNewPeriod;
+                prEmployeeTransactions.Insert;
             until prPeriodTransactions.Next = 0;
         end;
     end;
@@ -1250,46 +1238,44 @@ Codeunit 50015 "Payroll Processing"
                 prPeriodTransactions.SetRange(prPeriodTransactions."Employee Code", prEmployee."No.");
                 if prPeriodTransactions.Find('-') then begin
                     repeat
-                        with prPeriodTransactions do begin
-                            case prPeriodTransactions."Group Order" of
-                                1: //Basic pay & Arrears
-                                    begin
-                                        if "Sub Group Order" = 1 then P9BasicPay := Amount; //Basic Pay
-                                        if "Sub Group Order" = 2 then P9BasicPay := P9BasicPay + Amount; //Basic Pay Arrears
-                                    end;
-                                3:  //Allowances
-                                    begin
-                                        P9Allowances := P9Allowances + Amount
-                                    end;
-                                4: //Gross Pay
-                                    begin
-                                        P9GrossPay := Amount
-                                    end;
-                                6: //Taxation
-                                    begin
-                                        if "Sub Group Order" = 1 then P9DefinedContribution := Amount; //Defined Contribution
-                                        if "Sub Group Order" = 9 then P9TaxRelief := Amount; //Tax Relief
-                                        if "Sub Group Order" = 8 then P9InsuranceRelief := Amount; //Insurance Relief
-                                        if "Sub Group Order" = 6 then P9TaxablePay := Amount; //Taxable Pay
-                                        if "Sub Group Order" = 7 then P9TaxCharged := Amount; //Tax Charged
-                                    end;
-                                7: //Statutories
-                                    begin
-                                        if "Sub Group Order" = 1 then P9NSSF := Amount; //Nssf
-                                        if "Sub Group Order" = 2 then P9NHIF := Amount; //Nhif
-                                        if "Sub Group Order" = 3 then P9Paye := Amount; //paye
+                        case prPeriodTransactions."Group Order" of
+                            1: //Basic pay & Arrears
+                                begin
+                                    if prPeriodTransactions."Sub Group Order" = 1 then P9BasicPay := prPeriodTransactions.Amount; //Basic Pay
+                                    if prPeriodTransactions."Sub Group Order" = 2 then P9BasicPay := P9BasicPay + prPeriodTransactions.Amount; //Basic Pay Arrears
+                                end;
+                            3:  //Allowances
+                                begin
+                                    P9Allowances := P9Allowances + prPeriodTransactions.Amount
+                                end;
+                            4: //Gross Pay
+                                begin
+                                    P9GrossPay := prPeriodTransactions.Amount
+                                end;
+                            6: //Taxation
+                                begin
+                                    if prPeriodTransactions."Sub Group Order" = 1 then P9DefinedContribution := prPeriodTransactions.Amount; //Defined Contribution
+                                    if prPeriodTransactions."Sub Group Order" = 9 then P9TaxRelief := prPeriodTransactions.Amount; //Tax Relief
+                                    if prPeriodTransactions."Sub Group Order" = 8 then P9InsuranceRelief := prPeriodTransactions.Amount; //Insurance Relief
+                                    if prPeriodTransactions."Sub Group Order" = 6 then P9TaxablePay := prPeriodTransactions.Amount; //Taxable Pay
+                                    if prPeriodTransactions."Sub Group Order" = 7 then P9TaxCharged := prPeriodTransactions.Amount; //Tax Charged
+                                end;
+                            7: //Statutories
+                                begin
+                                    if prPeriodTransactions."Sub Group Order" = 1 then P9NSSF := prPeriodTransactions.Amount; //Nssf
+                                    if prPeriodTransactions."Sub Group Order" = 2 then P9NHIF := prPeriodTransactions.Amount; //Nhif
+                                    if prPeriodTransactions."Sub Group Order" = 3 then P9Paye := prPeriodTransactions.Amount; //paye
 
-                                        // if "Sub Group Order" = 4 then P9Paye := P9Paye + Amount; //Paye Arrears
-                                    end;
-                                8://Deductions
-                                    begin
-                                        P9Deductions := P9Deductions + Amount;
-                                    end;
-                                9: //NetPay
-                                    begin
-                                        P9NetPay := Amount;
-                                    end;
-                            end;
+                                    // if "Sub Group Order" = 4 then P9Paye := P9Paye + Amount; //Paye Arrears
+                                end;
+                            8://Deductions
+                                begin
+                                    P9Deductions := P9Deductions + prPeriodTransactions.Amount;
+                                end;
+                            9: //NetPay
+                                begin
+                                    P9NetPay := prPeriodTransactions.Amount;
+                                end;
                         end;
                     until prPeriodTransactions.Next = 0;
                 end;
@@ -1315,31 +1301,29 @@ Codeunit 50015 "Payroll Processing"
         intYear := Date2dmy(dtCurrPeriod, 3);
 
         prEmployeeP9Info.Reset;
-        with prEmployeeP9Info do begin
-            Init;
-            "Employee Code" := P9EmployeeCode;
-            "Basic Pay" := P9BasicPay;
-            Allowances := P9Allowances;
-            Benefits := P9Allowances;
-            "Value Of Quarters" := P9ValueOfQuarters;//Housing 
-            "Defined Contribution" := P9DefinedContribution;
-            "Owner Occupier Interest" := P9OwnerOccupierInterest;
-            "Gross Pay" := P9GrossPay;
-            "Taxable Pay" := P9TaxablePay;
-            "Tax Charged" := P9TaxCharged;
-            "Insurance Relief" := P9InsuranceRelief;
-            "Tax Relief" := P9TaxRelief;
-            PAYE := P9Paye;
-            NSSF := P9NSSF;
-            NHIF := P9NHIF;
-            Deductions := P9Deductions;
-            "Net Pay" := P9NetPay;
-            "Period Month" := intMonth;
-            "Period Year" := intYear;
-            "Payroll Period" := dtCurrPeriod;
-            "Payroll Code" := prPayrollCode;
-            Insert;
-        end;
+        prEmployeeP9Info.Init;
+        prEmployeeP9Info."Employee Code" := P9EmployeeCode;
+        prEmployeeP9Info."Basic Pay" := P9BasicPay;
+        prEmployeeP9Info.Allowances := P9Allowances;
+        prEmployeeP9Info.Benefits := P9Allowances;
+        prEmployeeP9Info."Value Of Quarters" := P9ValueOfQuarters;//Housing 
+        prEmployeeP9Info."Defined Contribution" := P9DefinedContribution;
+        prEmployeeP9Info."Owner Occupier Interest" := P9OwnerOccupierInterest;
+        prEmployeeP9Info."Gross Pay" := P9GrossPay;
+        prEmployeeP9Info."Taxable Pay" := P9TaxablePay;
+        prEmployeeP9Info."Tax Charged" := P9TaxCharged;
+        prEmployeeP9Info."Insurance Relief" := P9InsuranceRelief;
+        prEmployeeP9Info."Tax Relief" := P9TaxRelief;
+        prEmployeeP9Info.PAYE := P9Paye;
+        prEmployeeP9Info.NSSF := P9NSSF;
+        prEmployeeP9Info.NHIF := P9NHIF;
+        prEmployeeP9Info.Deductions := P9Deductions;
+        prEmployeeP9Info."Net Pay" := P9NetPay;
+        prEmployeeP9Info."Period Month" := intMonth;
+        prEmployeeP9Info."Period Year" := intYear;
+        prEmployeeP9Info."Payroll Period" := dtCurrPeriod;
+        prEmployeeP9Info."Payroll Code" := prPayrollCode;
+        prEmployeeP9Info.Insert;
     end;
 
 
@@ -1539,16 +1523,14 @@ Codeunit 50015 "Payroll Processing"
     begin
 
         if curAmount = 0 then exit;
-        with prEmployerDeductions do begin
-            Init;
-            "Employee Code" := EmpCode;
-            "Transaction Code" := TCode;
-            Amount := curAmount;
-            "Period Month" := Month;
-            "Period Year" := Year;
-            "Payroll Period" := dtOpenPeriod;
-            Insert;
-        end;
+        prEmployerDeductions.Init;
+        prEmployerDeductions."Employee Code" := EmpCode;
+        prEmployerDeductions."Transaction Code" := TCode;
+        prEmployerDeductions.Amount := curAmount;
+        prEmployerDeductions."Period Month" := Month;
+        prEmployerDeductions."Period Year" := Year;
+        prEmployerDeductions."Payroll Period" := dtOpenPeriod;
+        prEmployerDeductions.Insert;
     end;
 
 

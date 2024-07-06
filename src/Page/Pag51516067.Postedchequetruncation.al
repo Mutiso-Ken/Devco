@@ -17,74 +17,74 @@ page 51516067 "Postedcheque truncation"
         {
             repeater(Group)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Date"; "Transaction Date")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Refference Document"; "Refference Document")
-                {
-                    ApplicationArea = Basic;
-                    visible = false;
-                }
-                field("Transaction Time"; "Transaction Time")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Created By"; "Created By")
-                {
-                    ApplicationArea = Basic;
-                    Style = StrongAccent;
-                }
-                field("No of Cheques"; "No of Cheques")
-                {
-                    ApplicationArea = Basic;
-                    Style = StrongAccent;
-                }
-                field("Posted By"; "Posted By")
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Imported; Imported)
+                field("Refference Document"; Rec."Refference Document")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field(Processed; Processed)
+                field("Transaction Time"; Rec."Transaction Time")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Created By"; Rec."Created By")
+                {
+                    ApplicationArea = Basic;
+                    Style = StrongAccent;
+                }
+                field("No of Cheques"; Rec."No of Cheques")
+                {
+                    ApplicationArea = Basic;
+                    Style = StrongAccent;
+                }
+                field("Posted By"; Rec."Posted By")
+                {
+                    ApplicationArea = Basic;
+                }
+                field(Imported; Rec.Imported)
+                {
+                    ApplicationArea = Basic;
+                    visible = false;
+                }
+                field(Processed; Rec.Processed)
                 {
                     ApplicationArea = Basic;
                     Visible = false;
 
                 }
-                field("Document Name"; "Document Name")
+                field("Document Name"; Rec."Document Name")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field(Posted; Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                     Style = Strong;
                 }
-                field("Bank Account"; "Bank Account")
+                field("Bank Account"; Rec."Bank Account")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field("No. Series"; "No. Series")
+                field("No. Series"; Rec."No. Series")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Unpaid By"; "Unpaid By")
+                field("Unpaid By"; Rec."Unpaid By")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field(Unpaid; Unpaid)
+                field(Unpaid; Rec.Unpaid)
                 {
 
                     ApplicationArea = Basic;
@@ -101,7 +101,7 @@ page 51516067 "Postedcheque truncation"
 
     trigger OnOpenPage()
     begin
-        Ascending(false)
+        Rec.Ascending(false)
     end;
 }
 

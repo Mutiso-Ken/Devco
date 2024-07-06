@@ -4,18 +4,18 @@ Table 51516267 "Value Posting"
 
     fields
     {
-        field(1;UserID;Code[100])
+        field(1; UserID; Code[100])
         {
             TableRelation = User;
         }
-        field(2;"Value Posting";Integer)
+        field(2; "Value Posting"; Integer)
         {
         }
     }
 
     keys
     {
-        key(Key1;UserID)
+        key(Key1; UserID)
         {
             Clustered = true;
         }

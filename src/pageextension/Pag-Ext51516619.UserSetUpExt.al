@@ -5,55 +5,55 @@ pageextension 51516619 "UserSetUpExt" extends "User Setup"
         addafter("Allow Posting To")
         {
 
-            field("Financial User"; "Financial User")
+            field("Financial User"; Rec."Financial User")
             {
 
             }
-            field("Payroll User"; "Payroll User")
+            field("Payroll User"; Rec."Payroll User")
             {
 
             }
-            field("View Cashier Report"; "View Cashier Report")
+            field("View Cashier Report"; Rec."View Cashier Report")
             {
 
             }
-            field("Reversal Right"; "Reversal Right")
+            field("Reversal Right"; Rec."Reversal Right")
             {
 
             }
-            field("User Can Process Dividends"; "User Can Process Dividends")
+            field("User Can Process Dividends"; Rec."User Can Process Dividends")
             {
 
             }
-            field("Exempt OTP On LogIn"; "Exempt OTP On LogIn")
+            field("Exempt OTP On LogIn"; Rec."Exempt OTP On LogIn")
             {
 
             }
-            field("Post Leave Days Allocations"; "Post Leave Days Allocations")
+            field("Post Leave Days Allocations"; Rec."Post Leave Days Allocations")
             {
 
             }
-            field(Branch; Branch)
+            field(Branch; Rec.Branch)
             {
 
             }
-            field(Activity; Activity)
+            field(Activity; Rec.Activity)
             {
 
             }
-            field("Exempt Posting Date Update"; "Exempt Posting Date Update")
+            field("Exempt Posting Date Update"; Rec."Exempt Posting Date Update")
             {
 
             }
-            field("Exempt Logs"; "Exempt Logs")
+            field("Exempt Logs"; Rec."Exempt Logs")
             {
 
             }
-            field("Can POST Loans"; "Can POST Loans")
+            field("Can POST Loans"; Rec."Can POST Loans")
             {
 
             }
-        
+
 
         }
         modify("Allow Deferral Posting From")

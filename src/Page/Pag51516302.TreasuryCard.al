@@ -15,104 +15,104 @@ Page 51516302 "Treasury Card"
             group(General)
             {
                 Caption = 'General';
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
 
                     trigger OnAssistEdit()
                     begin
-                        if AssistEdit(xRec) then
+                        if Rec.AssistEdit(xRec) then
                             CurrPage.Update;
                     end;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Address; Address)
+                field(Address; Rec.Address)
                 {
                     ApplicationArea = Basic;
                     Visible = false;
 
                 }
-                field("Address 2"; "Address 2")
+                field("Address 2"; Rec."Address 2")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Post Code"; "Post Code")
+                field("Post Code"; Rec."Post Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Post Code/City';
                     visible = false;
                 }
-                field(City; City)
+                field(City; Rec.City)
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Country/Region Code"; "Country/Region Code")
+                field("Country/Region Code"; Rec."Country/Region Code")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Phone No."; "Phone No.")
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field(Contact; Contact)
+                field(Contact; Rec.Contact)
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Bank Branch No."; "Bank Branch No.")
+                field("Bank Branch No."; Rec."Bank Branch No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Account No."; "Bank Account No.")
+                field("Bank Account No."; Rec."Bank Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Search Name"; "Search Name")
+                field("Search Name"; Rec."Search Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Control22; Balance)
+                field(Control22; Rec.Balance)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Balance (LCY)"; "Balance (LCY)")
+                field("Balance (LCY)"; Rec."Balance (LCY)")
                 {
                     ApplicationArea = Basic;
                     editable = false;
                 }
-                field("Min. Balance"; "Min. Balance")
+                field("Min. Balance"; Rec."Min. Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Our Contact Code"; "Our Contact Code")
+                field("Our Contact Code"; Rec."Our Contact Code")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field(Blocked; Blocked)
+                field(Blocked; Rec.Blocked)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Last Date Modified"; "Last Date Modified")
+                field("Last Date Modified"; Rec."Last Date Modified")
                 {
                     ApplicationArea = Basic;
                 }
-                field(CashierID; CashierID)
+                field(CashierID; Rec.CashierID)
                 {
                     ApplicationArea = Basic;
                     Caption = 'User ID';
                 }
-                field("Maximum Teller Withholding"; "Maximum Teller Withholding")
+                field("Maximum Teller Withholding"; Rec."Maximum Teller Withholding")
                 {
                     ApplicationArea = Basic;
                 }
@@ -121,15 +121,15 @@ Page 51516302 "Treasury Card"
             {
                 visible = false;
                 Caption = 'Communication';
-                field("Fax No."; "Fax No.")
+                field("Fax No."; Rec."Fax No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("E-Mail"; "E-Mail")
+                field("E-Mail"; Rec."E-Mail")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Home Page"; "Home Page")
+                field("Home Page"; Rec."Home Page")
                 {
                     ApplicationArea = Basic;
                 }
@@ -139,27 +139,27 @@ Page 51516302 "Treasury Card"
             {
                 Caption = 'Posting';
                 visible = false;
-                field("Currency Code"; "Currency Code")
+                field("Currency Code"; Rec."Currency Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Last Check No."; "Last Check No.")
+                field("Last Check No."; Rec."Last Check No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transit No."; "Transit No.")
+                field("Transit No."; Rec."Transit No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Last Statement No."; "Last Statement No.")
+                field("Last Statement No."; Rec."Last Statement No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Balance Last Statement"; "Balance Last Statement")
+                field("Balance Last Statement"; Rec."Balance Last Statement")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Acc. Posting Group"; "Bank Acc. Posting Group")
+                field("Bank Acc. Posting Group"; Rec."Bank Acc. Posting Group")
                 {
                     ApplicationArea = Basic;
                 }
@@ -168,11 +168,11 @@ Page 51516302 "Treasury Card"
             {
                 Caption = 'Transfer';
                 visible = false;
-                field("SWIFT Code"; "SWIFT Code")
+                field("SWIFT Code"; Rec."SWIFT Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Iban; Iban)
+                field(Iban; Rec.Iban)
                 {
                     ApplicationArea = Basic;
                 }
@@ -262,7 +262,7 @@ Page 51516302 "Treasury Card"
 
                     trigger OnAction()
                     begin
-                        ShowContact;
+                        Rec.ShowContact;
                     end;
                 }
             }
@@ -271,12 +271,12 @@ Page 51516302 "Treasury Card"
 
     trigger OnAfterGetRecord()
     begin
-        CalcFields("Check Report Name");
+        Rec.CalcFields("Check Report Name");
     end;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        "Account Type" := "account type"::Treasury;
+        Rec."Account Type" := Rec."account type"::Treasury;
     end;
 
     var

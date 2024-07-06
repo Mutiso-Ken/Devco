@@ -6,8 +6,8 @@ Page 51516016 "Posted PettyCash Payment Card"
     ModifyAllowed = false;
     PageType = Card;
     SourceTable = "Payment Header";
-    SourceTableView = where("Payment Type"=const("Petty Cash"),
-                            Posted=const(true));
+    SourceTableView = where("Payment Type" = const("Petty Cash"),
+                            Posted = const(true));
 
     layout
     {
@@ -15,122 +15,122 @@ Page 51516016 "Posted PettyCash Payment Card"
         {
             group(General)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Date";"Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Date";"Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payment Mode";"Payment Mode")
+                field("Payment Mode"; Rec."Payment Mode")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Currency Code";"Currency Code")
+                field("Currency Code"; Rec."Currency Code")
                 {
                     ApplicationArea = Basic;
-                    Visible=false;
+                    Visible = false;
                 }
-                field("Bank Account";"Bank Account")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Bank Account Name";"Bank Account Name")
+                field("Bank Account"; Rec."Bank Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Account Balance";"Bank Account Balance")
+                field("Bank Account Name"; Rec."Bank Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cheque Type";"Cheque Type")
-                {
-                    ApplicationArea = Basic;
-                    Visible=false;
-                }
-                field("Cheque No";"Cheque No")
-                {
-                    ApplicationArea = Basic;
-                    Visible=false;
-                }
-                field(Payee;Payee)
+                field("Bank Account Balance"; Rec."Bank Account Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("On Behalf Of";"On Behalf Of")
+                field("Cheque Type"; Rec."Cheque Type")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Cheque No"; Rec."Cheque No")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field(Payee; Rec.Payee)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payment Description";"Payment Description")
+                field("On Behalf Of"; Rec."On Behalf Of")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field("Payment Description"; Rec."Payment Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount(LCY)";"Amount(LCY)")
-                {
-                    ApplicationArea = Basic;
-                    Visible=false;
-                }
-                field("Net Amount";"Net Amount")
-                {
-                    ApplicationArea = Basic;
-                    Visible=false;
-                }
-                field("Net Amount(LCY)";"Net Amount(LCY)")
-                {
-                    ApplicationArea = Basic;
-                    Visible=false;
-                }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Amount(LCY)"; Rec."Amount(LCY)")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Net Amount"; Rec."Net Amount")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Net Amount(LCY)"; Rec."Net Amount(LCY)")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Responsibility Center";"Responsibility Center")
-                {
-                    ApplicationArea = Basic;
-                    Visible=false;
-                }
-                field(Status;Status)
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted;Posted)
+                field("Responsibility Center"; Rec."Responsibility Center")
                 {
                     ApplicationArea = Basic;
-                    Visible=false;
+                    Visible = false;
                 }
-                field("Posted By";"Posted By")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Date Posted";"Date Posted")
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Time Posted";"Time Posted")
+                field(Posted; Rec.Posted)
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Posted By"; Rec."Posted By")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Cashier;Cashier)
+                field("Date Posted"; Rec."Date Posted")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Time Posted"; Rec."Time Posted")
+                {
+                    ApplicationArea = Basic;
+                }
+                field(Cashier; Rec.Cashier)
                 {
                     ApplicationArea = Basic;
                 }
             }
-            part(Control35;"Posted PettyCash Payment Line")
+            part(Control35; "Posted PettyCash Payment Line")
             {
-                SubPageLink = "Document No"=field("No.");
+                SubPageLink = "Document No" = field("No.");
             }
         }
     }
@@ -149,11 +149,11 @@ Page 51516016 "Posted PettyCash Payment Card"
 
                 trigger OnAction()
                 begin
-                      PHeader.Reset;
-                      PHeader.SetRange(PHeader."No.","No.");
-                      if PHeader.FindFirst then begin
-                        Report.RunModal(Report::"PettyCash Voucher",true,false,PHeader);
-                      end;
+                    PHeader.Reset;
+                    PHeader.SetRange(PHeader."No.", Rec."No.");
+                    if PHeader.FindFirst then begin
+                        Report.RunModal(Report::"PettyCash Voucher", true, false, PHeader);
+                    end;
                 end;
             }
         }

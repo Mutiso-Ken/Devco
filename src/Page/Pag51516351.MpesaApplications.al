@@ -12,35 +12,35 @@ Page 51516351 "Mpesa Applications"
         {
             group(General)
             {
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Application Type"; "Application Type")
+                field("Application Type"; Rec."Application Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Application No"; "Application No")
+                field("Application No"; Rec."Application No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Serial No"; "Document Serial No")
+                field("Document Serial No"; Rec."Document Serial No")
                 {
                     ApplicationArea = Basic;
                     Editable = DocSNo;
                 }
-                field("Document Date"; "Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic;
                     Editable = DocDate;
                 }
-                field("Customer ID No"; "Customer ID No")
+                field("Customer ID No"; Rec."Customer ID No")
                 {
                     ApplicationArea = Basic;
                     Editable = CustID;
                 }
-                field("Customer Name"; "Customer Name")
+                field("Customer Name"; Rec."Customer Name")
                 {
                     ApplicationArea = Basic;
                     Editable = CustName;
@@ -49,58 +49,58 @@ Page 51516351 "Mpesa Applications"
                     begin
 
                         MPESAApplications.Reset;
-                        MPESAApplications.SetRange(MPESAApplications."Customer ID No", "Customer ID No");
+                        MPESAApplications.SetRange(MPESAApplications."Customer ID No", Rec."Customer ID No");
                         MPESAApplications.SetRange(MPESAApplications.Status, MPESAApplications.Status::Approved);
                         if MPESAApplications.FindFirst then begin
                             Error('ID Number is used');
                         end;
                     end;
                 }
-                field("MPESA Mobile No"; "MPESA Mobile No")
+                field("MPESA Mobile No"; Rec."MPESA Mobile No")
                 {
                     ApplicationArea = Basic;
                     Editable = MpesaNo;
                 }
-                field("Old Telephone No"; "Old Telephone No")
+                field("Old Telephone No"; Rec."Old Telephone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Comments; Comments)
+                field(Comments; Rec.Comments)
                 {
                     ApplicationArea = Basic;
                     Editable = Comms;
                 }
-                field("Date Entered"; "Date Entered")
+                field("Date Entered"; Rec."Date Entered")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Time Entered"; "Time Entered")
+                field("Time Entered"; Rec."Time Entered")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Entered By"; "Entered By")
+                field("Entered By"; Rec."Entered By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Withdrawal Limit Code"; "Withdrawal Limit Code")
+                field("Withdrawal Limit Code"; Rec."Withdrawal Limit Code")
                 {
                     ApplicationArea = Basic;
                     Editable = WithLimit;
                 }
-                field("Withdrawal Limit Amount"; "Withdrawal Limit Amount")
+                field("Withdrawal Limit Amount"; Rec."Withdrawal Limit Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Responsibility Center"; "Responsibility Center")
+                field("Responsibility Center"; Rec."Responsibility Center")
                 {
                     ApplicationArea = Basic;
                 }
@@ -133,7 +133,7 @@ Page 51516351 "Mpesa Applications"
                         ApprovalEntries: Page "Approval Entries";
                     begin
                         DocumentType := Documenttype::"MSacco Applications";
-                        ApprovalEntries.SetRecordFilters(Database::"MPESA Applications", DocumentType, No);
+                        ApprovalEntries.SetRecordFilters(Database::"MPESA Applications", DocumentType, Rec.No);
                         ApprovalEntries.Run;
                     end;
                 }
@@ -150,39 +150,39 @@ Page 51516351 "Mpesa Applications"
                         text001: label 'This batch is already pending approval';
                     //ApprovalMgt: Codeunit "Export F/O Consolidation";
                     begin
-                        if Status <> Status::Open then
+                        if Rec.Status <> Rec.Status::Open then
                             //Created,Open,Canceled,Rejected,Approved
                             Error(text001);
 
-                        TestField("Document Serial No");
-                        TestField("Document Date");
-                        TestField("Customer ID No");
-                        TestField("Customer Name");
+                        Rec.TestField("Document Serial No");
+                        Rec.TestField("Document Date");
+                        Rec.TestField("Customer ID No");
+                        Rec.TestField("Customer Name");
                         //TESTFIELD("MPESA Mobile No");
 
-                        if "Application Type" <> "application type"::Change then begin
-                            TestField("MPESA Mobile No");
+                        if Rec."Application Type" <> Rec."application type"::Change then begin
+                            Rec.TestField("MPESA Mobile No");
                         end;
 
-                        TestField("Withdrawal Limit Code");
-                        TestField("Withdrawal Limit Amount");
+                        Rec.TestField("Withdrawal Limit Code");
+                        Rec.TestField("Withdrawal Limit Amount");
                         //TESTFIELD("Responsibility Center");
 
-                        StrTel := CopyStr("MPESA Mobile No", 1, 4);
+                        StrTel := CopyStr(Rec."MPESA Mobile No", 1, 4);
 
-                        if "Application Type" <> "application type"::Change then begin
+                        if Rec."Application Type" <> Rec."application type"::Change then begin
 
                             if StrTel <> '+254' then begin
                                 Error('The MPESA Mobile Phone No. should be in the format +254XXXYYYZZZ.');
                             end;
 
 
-                            if StrLen("MPESA Mobile No") <> 13 then begin
+                            if StrLen(Rec."MPESA Mobile No") <> 13 then begin
                                 Error('Invalid MPESA mobile phone number. Please enter the correct mobile phone number.');
                             end;
 
                             MPESAAppDetails.Reset;
-                            MPESAAppDetails.SetRange(MPESAAppDetails."Application No", No);
+                            MPESAAppDetails.SetRange(MPESAAppDetails."Application No", Rec.No);
                             if MPESAAppDetails.Find('-') then begin
                                 //Exists
                             end
@@ -191,8 +191,8 @@ Page 51516351 "Mpesa Applications"
                             end;
 
                         end;
-                        Status := Status::Approved;
-                        Modify;
+                        Rec.Status := Rec.Status::Approved;
+                        Rec.Modify;
                         Message('Application Approved Succesfuly');
                         //End allocate batch number
                         //IF ApprovalMgt.SendMsaccoAppApprovalRequest(Rec) THEN;
@@ -211,7 +211,7 @@ Page 51516351 "Mpesa Applications"
                         text001: label 'This batch is already pending approval';
                     // ApprovalMgt: Codeunit "Export F/O Consolidation";
                     begin
-                        if Status <> Status::Pending then
+                        if Rec.Status <> Rec.Status::Pending then
                             Error(text002);
 
                         //End allocate batch number
@@ -227,27 +227,27 @@ Page 51516351 "Mpesa Applications"
 
                     trigger OnAction()
                     begin
-                        if Status <> Status::Approved then
+                        if Rec.Status <> Rec.Status::Approved then
                             Error('This application has not yet been approved');
 
 
                         if Confirm('Are you sure you would like to Create the application?') = true then begin
                             //FOSA
                             MPESAAppDetails.Reset;
-                            MPESAAppDetails.SetRange(MPESAAppDetails."Application No", No);
+                            MPESAAppDetails.SetRange(MPESAAppDetails."Application No", Rec.No);
                             MPESAAppDetails.SetRange(MPESAAppDetails."Account Type", MPESAAppDetails."account type"::Vendor);
                             if MPESAAppDetails.Find('-') then begin
                                 repeat
                                     Vend.Reset;
                                     Vend.SetRange(Vend."No.", MPESAAppDetails."Account No.");
                                     if Vend.Find('-') then begin
-                                        if "Application Type" <> "application type"::Initial then begin
+                                        if Rec."Application Type" <> Rec."application type"::Initial then begin
                                             if Vend."MPESA Mobile No" <> '' then begin
                                                 Error('The FOSA Account No. ' + Vend."No." + ' has already been registered for M-SACCO.');
                                                 exit;
                                             end;
                                         end;
-                                        Vend."MPESA Mobile No" := "MPESA Mobile No";
+                                        Vend."MPESA Mobile No" := Rec."MPESA Mobile No";
                                         Vend.Modify;
                                     end;
                                 until MPESAAppDetails.Next = 0;
@@ -256,20 +256,20 @@ Page 51516351 "Mpesa Applications"
                             //BOSA
 
                             MPESAAppDetails.Reset;
-                            MPESAAppDetails.SetRange(MPESAAppDetails."Application No", No);
+                            MPESAAppDetails.SetRange(MPESAAppDetails."Application No", Rec.No);
                             MPESAAppDetails.SetRange(MPESAAppDetails."Account Type", MPESAAppDetails."account type"::Customer);
                             if MPESAAppDetails.Find('-') then begin
                                 repeat
                                     Cust.Reset;
                                     Cust.SetRange(Cust."No.", MPESAAppDetails."Account No.");
                                     if Cust.Find('-') then begin
-                                        if "Application Type" <> "application type"::Initial then begin
+                                        if Rec."Application Type" <> Rec."application type"::Initial then begin
                                             if Cust."MPESA Mobile No" <> '' then begin
                                                 Error('The BOSA Account No. ' + Cust."No." + ' has already been registered for M-SACCO.');
                                                 exit;
                                             end;
                                         end;
-                                        Cust."MPESA Mobile No" := "MPESA Mobile No";
+                                        Cust."MPESA Mobile No" := Rec."MPESA Mobile No";
                                         Cust.Modify;
                                     end;
                                 until MPESAAppDetails.Next = 0;
@@ -293,7 +293,7 @@ Page 51516351 "Mpesa Applications"
 
 
                             MPESAAppDetails.Reset;
-                            MPESAAppDetails.SetRange(MPESAAppDetails."Application No", No);
+                            MPESAAppDetails.SetRange(MPESAAppDetails."Application No", Rec.No);
                             MPESAAppDetails.SetRange(MPESAAppDetails."Account Type", MPESAAppDetails."account type"::Vendor);
                             if MPESAAppDetails.Find('-') then begin
                                 //DELETE
@@ -334,8 +334,8 @@ Page 51516351 "Mpesa Applications"
                                         GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
                                         GenJournalLine."Account No." := MPESAAppDetails."Account No.";
                                         GenJournalLine.Validate(GenJournalLine."Account No.");
-                                        GenJournalLine."Document No." := No;
-                                        GenJournalLine."Posting Date" := "Date Entered";
+                                        GenJournalLine."Document No." := Rec.No;
+                                        GenJournalLine."Posting Date" := Rec."Date Entered";
                                         GenJournalLine.Description := 'M-SACCO Registration Charges';
                                         GenJournalLine.Amount := MPesaCharges;
                                         GenJournalLine.Validate(GenJournalLine.Amount);
@@ -358,8 +358,8 @@ Page 51516351 "Mpesa Applications"
                                         GenJournalLine."Account Type" := GenJournalLine."account type"::"G/L Account";
                                         GenJournalLine."Account No." := MPesaChargesAccount;
                                         GenJournalLine.Validate(GenJournalLine."Account No.");
-                                        GenJournalLine."Document No." := No;
-                                        GenJournalLine."Posting Date" := "Date Entered";
+                                        GenJournalLine."Document No." := Rec.No;
+                                        GenJournalLine."Posting Date" := Rec."Date Entered";
                                         GenJournalLine.Description := 'M-SACCO Registration Charges';
                                         GenJournalLine.Amount := MPesaCharges * -1;
                                         GenJournalLine.Validate(GenJournalLine.Amount);
@@ -393,13 +393,13 @@ Page 51516351 "Mpesa Applications"
                             //Post
 
 
-                            "App Status" := "app status"::Approved;
-                            "Date Approved" := Today;
-                            "Time Approved" := Time;
-                            "Approved By" := UserId;
-                            Modify;
+                            Rec."App Status" := Rec."app status"::Approved;
+                            Rec."Date Approved" := Today;
+                            Rec."Time Approved" := Time;
+                            Rec."Approved By" := UserId;
+                            Rec.Modify;
 
-                            Message('M-SACCO activated for Customer ' + "Customer Name" + '. The Customer will receive a confirmation SMS shortly.');
+                            Message('M-SACCO activated for Customer ' + Rec."Customer Name" + '. The Customer will receive a confirmation SMS shortly.');
 
                         end;
                     end;
@@ -457,7 +457,7 @@ Page 51516351 "Mpesa Applications"
     procedure UpdateControl()
     begin
 
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             DocSNo := true;
             DocDate := true;
             CustID := true;
@@ -468,7 +468,7 @@ Page 51516351 "Mpesa Applications"
             MpesaPagePart := true;
         end;
 
-        if Status = Status::Pending then begin
+        if Rec.Status = Rec.Status::Pending then begin
             DocSNo := false;
             DocDate := false;
             CustID := false;
@@ -479,7 +479,7 @@ Page 51516351 "Mpesa Applications"
             MpesaPagePart := false;
         end;
 
-        if Status = Status::Rejected then begin
+        if Rec.Status = Rec.Status::Rejected then begin
             DocSNo := false;
             DocDate := false;
             CustID := false;
@@ -490,7 +490,7 @@ Page 51516351 "Mpesa Applications"
             MpesaPagePart := false;
         end;
 
-        if Status = Status::Approved then begin
+        if Rec.Status = Rec.Status::Approved then begin
             DocSNo := false;
             DocDate := false;
             CustID := false;

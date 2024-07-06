@@ -4,66 +4,66 @@ Table 51516528 "Agency Members App"
 
     fields
     {
-        field(1;"No.";Integer)
+        field(1; "No."; Integer)
         {
             AutoIncrement = true;
         }
-        field(2;"Account No";Code[30])
+        field(2; "Account No"; Code[30])
         {
             TableRelation = Vendor."No.";
 
             trigger OnValidate()
             begin
                 if Accounts.Get("Account No") then begin
-                "Account Name":=Accounts.Name;
-                "ID No":=Accounts."ID No.";
-                Telephone:=Accounts."Phone No.";
-                "Bosa Number":=Accounts."BOSA Account No";
+                    "Account Name" := Accounts.Name;
+                    "ID No" := Accounts."ID No.";
+                    Telephone := Accounts."Phone No.";
+                    "Bosa Number" := Accounts."BOSA Account No";
 
 
                 end;
             end;
         }
-        field(3;"Account Name";Text[50])
+        field(3; "Account Name"; Text[50])
         {
         }
-        field(4;Telephone;Code[20])
+        field(4; Telephone; Code[20])
         {
         }
-        field(5;"ID No";Code[20])
+        field(5; "ID No"; Code[20])
         {
         }
-        field(6;Status;Option)
+        field(6; Status; Option)
         {
             OptionCaption = 'Application, Pending Approval,Approved,Rejected';
             OptionMembers = Application," Pending Approval",Approved,Rejected;
         }
-        field(7;"Date Applied";Date)
+        field(7; "Date Applied"; Date)
         {
         }
-        field(8;"Time Applied";Time)
+        field(8; "Time Applied"; Time)
         {
         }
-        field(9;"Created By";Code[100])
+        field(9; "Created By"; Code[100])
         {
         }
-        field(10;Sent;Boolean)
+        field(10; Sent; Boolean)
         {
         }
-        field(11;"No. Series";Code[20])
+        field(11; "No. Series"; Code[20])
         {
         }
-        field(12;SentToServer;Boolean)
+        field(12; SentToServer; Boolean)
         {
         }
-        field(13;"Bosa Number";Code[50])
+        field(13; "Bosa Number"; Code[50])
         {
         }
     }
 
     keys
     {
-        key(Key1;"No.")
+        key(Key1; "No.")
         {
             Clustered = true;
         }

@@ -1,8 +1,8 @@
 table 59043 PayrollDepartments
 {
     DataClassification = ToBeClassified;
-    DrillDownPageId=PayrollDepartment;
-    LookupPageId=PayrollDepartment;
+    DrillDownPageId = PayrollDepartment;
+    LookupPageId = PayrollDepartment;
 
     fields
     {

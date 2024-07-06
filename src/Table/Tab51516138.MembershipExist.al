@@ -171,8 +171,8 @@ Table 51516138 "Membership Exist"
         }
         field(29; "Reason For Withdrawal"; Option)
         {
-      
-            OptionMembers =  ,Relocation,Expulsion,"Financial Constraints","Personal Reasons",Death;
+
+            OptionMembers = ,Relocation,Expulsion,"Financial Constraints","Personal Reasons",Death;
         }
         field(30; "Sell Share Capital to"; Code[20])
         {
@@ -274,10 +274,10 @@ Table 51516138 "Membership Exist"
         {
 
         }
-         field(51;"EFT Charge";Decimal)
+        field(51; "EFT Charge"; Decimal)
         {
         }
-                field(52;"Paying Bank";Code[20])
+        field(52; "Paying Bank"; Code[20])
         {
 #pragma warning disable AL0275
             TableRelation = "Bank Account"."No.";

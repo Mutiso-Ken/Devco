@@ -15,31 +15,31 @@ Page 51516236 "Member List-Editable"
         {
             repeater(Control1)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Old Account No."; "Old Account No.")
+                field("Old Account No."; Rec."Old Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No."; "Phone No.")
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payroll/Staff No"; "Payroll/Staff No")
+                field("Payroll/Staff No"; Rec."Payroll/Staff No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("FOSA Account"; "FOSA Account")
+                field("FOSA Account"; Rec."FOSA Account")
                 {
                     ApplicationArea = Basic;
                 }
@@ -84,7 +84,7 @@ Page 51516236 "Member List-Editable"
 
                     trigger OnAction()
                     begin
-                        ShowContact;
+                        Rec.ShowContact;
                     end;
                 }
             }

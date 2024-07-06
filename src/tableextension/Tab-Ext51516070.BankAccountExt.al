@@ -313,17 +313,15 @@ tableextension 51516070 "BankAccountExt" extends "Bank Account"
 
     procedure AssistEdit(OldBankAcc: Record "Bank Account"): Boolean
     begin
-        with BankAcc do begin
-            BankAcc := Rec;
+        BankAcc := Rec;
+        GLSetup.Get;
+        GLSetup.TestField("Bank Account Nos.");
+        if NoSeriesMgt.SelectSeries(GLSetup."Bank Account Nos.", OldBankAcc."No. Series", BankAcc."No. Series") then begin
             GLSetup.Get;
             GLSetup.TestField("Bank Account Nos.");
-            if NoSeriesMgt.SelectSeries(GLSetup."Bank Account Nos.", OldBankAcc."No. Series", "No. Series") then begin
-                GLSetup.Get;
-                GLSetup.TestField("Bank Account Nos.");
-                NoSeriesMgt.SetSeries("No.");
-                Rec := BankAcc;
-                exit(true);
-            end;
+            NoSeriesMgt.SetSeries(BankAcc."No.");
+            Rec := BankAcc;
+            exit(true);
         end;
     end;
 

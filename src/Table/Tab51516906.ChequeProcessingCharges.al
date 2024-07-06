@@ -4,23 +4,23 @@ Table 51516906 "Cheque Processing Charges"
 
     fields
     {
-        field(1;"Lower Limit";Decimal)
+        field(1; "Lower Limit"; Decimal)
         {
         }
-        field(2;"Upper Limit";Decimal)
+        field(2; "Upper Limit"; Decimal)
         {
         }
-        field(3;Charges;Decimal)
+        field(3; Charges; Decimal)
         {
         }
-        field(4;Range;Integer)
+        field(4; Range; Integer)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Lower Limit")
+        key(Key1; "Lower Limit")
         {
             Clustered = true;
         }

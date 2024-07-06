@@ -378,7 +378,7 @@ Table 51516512 "Loan Collateral Register"
 
 
         "Date Received" := Today;
-        "Received By":=UserId;
+        "Received By" := UserId;
     end;
 
     var

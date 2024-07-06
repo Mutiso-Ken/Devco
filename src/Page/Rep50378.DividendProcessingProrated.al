@@ -301,7 +301,7 @@ Report 50378 "Dividend Processing-Prorated"
 
                         DividendsOnshareCapital := DividendsOnshareCapital + CDiv;
                         IntOnDeposits := IntOnDeposits + CInterest;
-                       // DivTotal := DivTotal + (CDiv + CInterest);
+                        // DivTotal := DivTotal + (CDiv + CInterest);
                         //"Interest on Share Capital(%)"
                         //DividendsOnshareCapital := +(DividendsOnshareCapital + CDiv);
                         WtaX := (CDiv + CInterest) * (GenSetUp."Withholding Tax (%)" / 100);

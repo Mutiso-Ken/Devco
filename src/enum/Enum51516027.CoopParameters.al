@@ -1,6 +1,6 @@
 enum 51516027 CoopParameters
 {
-    
+
     value(0; "none")
     {
         Caption = 'none';

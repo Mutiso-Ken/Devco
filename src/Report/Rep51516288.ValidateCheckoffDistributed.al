@@ -6,7 +6,7 @@ Report 51516288 "Validate Checkoff-Distributed"
 
     dataset
     {
-        dataitem("Checkoff Lines-Distributed";"Checkoff Lines-Distributed")
+        dataitem("Checkoff Lines-Distributed"; "Checkoff Lines-Distributed")
         {
             column(ReportForNavId_1000000000; 1000000000)
             {
@@ -17,92 +17,92 @@ Report 51516288 "Validate Checkoff-Distributed"
 
 
 
-                    Cust.Reset;
-                    Cust.SetRange(Cust."Payroll/Staff No","Staff/Payroll No");
-                    Cust.SetRange(Cust."Employer Code","Employer Code");
-                    //Cust.SETRANGE(Cust."Date Filter",ASATDATE);
-                    if Cust.Find('-') then begin
-                     repeat
-                      Cust.CalcFields(Cust."Current Shares");
-                      "Member No.":=Cust."No.";
-                      Name:=Cust.Name;
-                      "Expected Amount":=Cust."Monthly Contribution";
-                      Variance:=Amount+"Expected Amount";
-                      Modify;
+                Cust.Reset;
+                Cust.SetRange(Cust."Payroll/Staff No", "Staff/Payroll No");
+                Cust.SetRange(Cust."Employer Code", "Employer Code");
+                //Cust.SETRANGE(Cust."Date Filter",ASATDATE);
+                if Cust.Find('-') then begin
+                    repeat
+                        Cust.CalcFields(Cust."Current Shares");
+                        "Member No." := Cust."No.";
+                        Name := Cust.Name;
+                        "Expected Amount" := Cust."Monthly Contribution";
+                        Variance := Amount + "Expected Amount";
+                        Modify;
 
-                     until Cust.Next=0;
-                  end;
+                    until Cust.Next = 0;
+                end;
 
-                    Cust.Reset;
-                    Cust.SetRange(Cust."Payroll/Staff No","Staff/Payroll No");
-                    Cust.SetRange(Cust."Employer Code","Checkoff Lines-Distributed"."Employer Code");
-                    //Cust.SETRANGE(Cust."Date Filter",ASATDATE);
-                    if Cust.Find('-') then begin
-                     repeat
-                       if (Cust."Employer Code"='POSTAL CORP') then begin
-                       if Reference='377' then begin
-                         "Checkoff Lines-Distributed"."Transaction Type":="Checkoff Lines-Distributed"."transaction type"::"Deposits Contribution";
-                         "Checkoff Lines-Distributed".Modify;
-                          end else if  Reference='38J' then begin
+                Cust.Reset;
+                Cust.SetRange(Cust."Payroll/Staff No", "Staff/Payroll No");
+                Cust.SetRange(Cust."Employer Code", "Checkoff Lines-Distributed"."Employer Code");
+                //Cust.SETRANGE(Cust."Date Filter",ASATDATE);
+                if Cust.Find('-') then begin
+                    repeat
+                        if (Cust."Employer Code" = 'POSTAL CORP') then begin
+                            if Reference = '377' then begin
+                                "Checkoff Lines-Distributed"."Transaction Type" := "Checkoff Lines-Distributed"."transaction type"::"Deposits Contribution";
+                                "Checkoff Lines-Distributed".Modify;
+                            end else if Reference = '38J' then begin
 
-                         "Checkoff Lines-Distributed"."Transaction Type":="Checkoff Lines-Distributed"."transaction type"::"SchFees Shares";
-                            "Checkoff Lines-Distributed".Modify;
-                         end;
-                         end else if  (Cust."Employer Code"='TELKOM') then begin
-                        if Reference='377' then begin
-                         "Checkoff Lines-Distributed"."Transaction Type":="Checkoff Lines-Distributed"."transaction type"::"Deposits Contribution";
-                         "Checkoff Lines-Distributed".Modify;
-                          end else if  Reference='38J' then begin
+                                "Checkoff Lines-Distributed"."Transaction Type" := "Checkoff Lines-Distributed"."transaction type"::"SchFees Shares";
+                                "Checkoff Lines-Distributed".Modify;
+                            end;
+                        end else if (Cust."Employer Code" = 'TELKOM') then begin
+                            if Reference = '377' then begin
+                                "Checkoff Lines-Distributed"."Transaction Type" := "Checkoff Lines-Distributed"."transaction type"::"Deposits Contribution";
+                                "Checkoff Lines-Distributed".Modify;
+                            end else if Reference = '38J' then begin
 
-                         "Checkoff Lines-Distributed"."Transaction Type":="Checkoff Lines-Distributed"."transaction type"::"SchFees Shares";
-                            "Checkoff Lines-Distributed".Modify;
-                         end;
-                         end else if  (Cust."Employer Code"='TELKOM') then begin
-                        if Reference='377' then begin
-                         "Checkoff Lines-Distributed"."Transaction Type":="Checkoff Lines-Distributed"."transaction type"::"Deposits Contribution";
-                         "Checkoff Lines-Distributed".Modify;
-                          end else if  Reference='38J' then begin
+                                "Checkoff Lines-Distributed"."Transaction Type" := "Checkoff Lines-Distributed"."transaction type"::"SchFees Shares";
+                                "Checkoff Lines-Distributed".Modify;
+                            end;
+                        end else if (Cust."Employer Code" = 'TELKOM') then begin
+                            if Reference = '377' then begin
+                                "Checkoff Lines-Distributed"."Transaction Type" := "Checkoff Lines-Distributed"."transaction type"::"Deposits Contribution";
+                                "Checkoff Lines-Distributed".Modify;
+                            end else if Reference = '38J' then begin
 
-                         "Checkoff Lines-Distributed"."Transaction Type":="Checkoff Lines-Distributed"."transaction type"::"SchFees Shares";
-                            "Checkoff Lines-Distributed".Modify;
-                         end;
-                         end;
+                                "Checkoff Lines-Distributed"."Transaction Type" := "Checkoff Lines-Distributed"."transaction type"::"SchFees Shares";
+                                "Checkoff Lines-Distributed".Modify;
+                            end;
+                        end;
 
 
-                       until Cust.Next=0;
-                  end;
+                    until Cust.Next = 0;
+                end;
 
 
 
                 //****Morris Advice Principle***//
 
                 CheckoffMatrix.Reset;
-                CheckoffMatrix.SetRange(CheckoffMatrix."check Interest",false);
-                CheckoffMatrix.SetRange(CheckoffMatrix."Employer Code","Employer Code");
-                CheckoffMatrix.SetRange(CheckoffMatrix."Check off Code","Checkoff Lines-Distributed".Reference);
+                CheckoffMatrix.SetRange(CheckoffMatrix."check Interest", false);
+                CheckoffMatrix.SetRange(CheckoffMatrix."Employer Code", "Employer Code");
+                CheckoffMatrix.SetRange(CheckoffMatrix."Check off Code", "Checkoff Lines-Distributed".Reference);
                 if CheckoffMatrix.Find('-') then begin
-                  repeat
+                    repeat
 
-                    Loans.SetRange(Loans."Staff No","Staff/Payroll No");
-                    Loans.SetRange(Loans."Employer Code","Employer Code");
-                    Loans.SetRange(Loans."Loan Product Type",CheckoffMatrix."Loan Product Code");
-                     if Loans.Find('-') then begin
-                      repeat
+                        Loans.SetRange(Loans."Staff No", "Staff/Payroll No");
+                        Loans.SetRange(Loans."Employer Code", "Employer Code");
+                        Loans.SetRange(Loans."Loan Product Type", CheckoffMatrix."Loan Product Code");
+                        if Loans.Find('-') then begin
+                            repeat
 
-                        Loans.CalcFields(Loans."Outstanding Balance");
-                        if Loans."Outstanding Balance">0 then begin
-                             "Checkoff Lines-Distributed"."Loan Balance":=Loans."Outstanding Balance";
-                          "Loan No.":=Loans."Loan  No.";
-                          "Loan Type":=Loans."Loan Product Type";
-                          "Checkoff Lines-Distributed".adviced:=true;
+                                Loans.CalcFields(Loans."Outstanding Balance");
+                                if Loans."Outstanding Balance" > 0 then begin
+                                    "Checkoff Lines-Distributed"."Loan Balance" := Loans."Outstanding Balance";
+                                    "Loan No." := Loans."Loan  No.";
+                                    "Loan Type" := Loans."Loan Product Type";
+                                    "Checkoff Lines-Distributed".adviced := true;
 
-                                Modify;
-                                 end;
+                                    Modify;
+                                end;
 
-                                 until Loans.Next=0;
-                               end;
-                            until CheckoffMatrix.Next=0;
-                            end;
+                            until Loans.Next = 0;
+                        end;
+                    until CheckoffMatrix.Next = 0;
+                end;
 
                 //**End  Advice Principal Morris***//
 
@@ -110,33 +110,33 @@ Report 51516288 "Validate Checkoff-Distributed"
                 //****Morris Advice Interest***//
 
                 CheckoffMatrix.Reset;
-                CheckoffMatrix.SetRange(CheckoffMatrix."check Interest",true);
-                CheckoffMatrix.SetRange(CheckoffMatrix."Employer Code","Employer Code");
-                CheckoffMatrix.SetRange(CheckoffMatrix."Check off Code","Checkoff Lines-Distributed".Reference);
+                CheckoffMatrix.SetRange(CheckoffMatrix."check Interest", true);
+                CheckoffMatrix.SetRange(CheckoffMatrix."Employer Code", "Employer Code");
+                CheckoffMatrix.SetRange(CheckoffMatrix."Check off Code", "Checkoff Lines-Distributed".Reference);
                 if CheckoffMatrix.Find('-') then begin
-                  repeat
+                    repeat
 
-                    Loans.SetRange(Loans."Staff No","Staff/Payroll No");
-                    Loans.SetRange(Loans."Employer Code","Employer Code");
-                    Loans.SetRange(Loans."Loan Product Type",CheckoffMatrix."Loan Product Code");
-                     if Loans.Find('-') then begin
-                      repeat
+                        Loans.SetRange(Loans."Staff No", "Staff/Payroll No");
+                        Loans.SetRange(Loans."Employer Code", "Employer Code");
+                        Loans.SetRange(Loans."Loan Product Type", CheckoffMatrix."Loan Product Code");
+                        if Loans.Find('-') then begin
+                            repeat
 
-                        Loans.CalcFields(Loans."Oustanding Interest");
-                        if (Loans."Check Int"=false) then begin
-                       // IF (Loans."Oustanding Interest">0) THEN BEGIN
-                             "Checkoff Lines-Distributed"."Loan Balance":=Loans."Oustanding Interest";
-                          "Loan No.":=Loans."Loan  No.";
-                          "Loan Type":=Loans."Loan Product Type";
-                          "Checkoff Lines-Distributed"."Transaction Type":="Checkoff Lines-Distributed"."transaction type"::"Interest Paid";
-                          "Checkoff Lines-Distributed".adviced:=true;
-                          Modify;
-                                 end;
-                                 //END;
-                                 until Loans.Next=0;
-                               end;
-                            until CheckoffMatrix.Next=0;
-                            end;
+                                Loans.CalcFields(Loans."Oustanding Interest");
+                                if (Loans."Check Int" = false) then begin
+                                    // IF (Loans."Oustanding Interest">0) THEN BEGIN
+                                    "Checkoff Lines-Distributed"."Loan Balance" := Loans."Oustanding Interest";
+                                    "Loan No." := Loans."Loan  No.";
+                                    "Loan Type" := Loans."Loan Product Type";
+                                    "Checkoff Lines-Distributed"."Transaction Type" := "Checkoff Lines-Distributed"."transaction type"::"Interest Paid";
+                                    "Checkoff Lines-Distributed".adviced := true;
+                                    Modify;
+                                end;
+                            //END;
+                            until Loans.Next = 0;
+                        end;
+                    until CheckoffMatrix.Next = 0;
+                end;
 
 
                 //**End  Advice Interest Morris***//
@@ -151,7 +151,7 @@ Report 51516288 "Validate Checkoff-Distributed"
         {
             area(content)
             {
-                field(ASATDATE;ASATDATE)
+                field(ASATDATE; ASATDATE)
                 {
                     ApplicationArea = Basic;
                     Caption = 'As At';

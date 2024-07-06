@@ -8,11 +8,11 @@ Table 51516451 "Main Sector"
     {
         field(1; "Code"; Code[20])
         {
-            NotBlank=true;
+            NotBlank = true;
         }
         field(2; Description; Text[100])
         {
-          
+
         }
     }
 

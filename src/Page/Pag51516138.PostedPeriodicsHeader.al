@@ -24,7 +24,7 @@ page 51516138 "Posted Periodics Header"
                 {
                     Editable = false;
                 }
-                field("Posting Document No"; "Posting Document No")
+                field("Posting Document No"; Rec."Posting Document No")
                 {
                 }
                 field("Entered By"; Rec."Entered By")
@@ -99,7 +99,7 @@ page 51516138 "Posted Periodics Header"
                         exit;
                     end else begin
                         SalaryImportedLines.Reset();
-                        SalaryImportedLines.SetRange(SalaryImportedLines."Document No", "Document No");
+                        SalaryImportedLines.SetRange(SalaryImportedLines."Document No", Rec."Document No");
                         if SalaryImportedLines.Find('-') then begin
                             SalaryImportedLines.DeleteAll();
                         end;
@@ -123,7 +123,7 @@ page 51516138 "Posted Periodics Header"
                     Vendor: Record Vendor;
                 begin
                     SalaryImportedLines.Reset();
-                    SalaryImportedLines.SetRange(SalaryImportedLines."Document No", "Document No");
+                    SalaryImportedLines.SetRange(SalaryImportedLines."Document No", Rec."Document No");
                     if SalaryImportedLines.Find('-') then begin
                         repeat
                             SalaryImportedLines."Account Found" := false;
@@ -160,7 +160,7 @@ page 51516138 "Posted Periodics Header"
                     Vendor: Record Vendor;
                 begin
                     SalaryImportedLines.Reset();
-                    SalaryImportedLines.SetRange(SalaryImportedLines."Document No", "Document No");
+                    SalaryImportedLines.SetRange(SalaryImportedLines."Document No", Rec."Document No");
                     if SalaryImportedLines.Find('-') then begin
                         Report.Run(51516042, true, false, SalaryImportedLines);
                     end;
@@ -185,9 +185,9 @@ page 51516138 "Posted Periodics Header"
                         exit;
                     end else begin
                         //.................................................
-                        IF "Notify Member(s)" = true THEN begin
+                        IF Rec."Notify Member(s)" = true THEN begin
                             PeriodicProcessingLines.Reset();
-                            PeriodicProcessingLines.SetRange(PeriodicProcessingLines."Document No", "Document No");
+                            PeriodicProcessingLines.SetRange(PeriodicProcessingLines."Document No", Rec."Document No");
                             if PeriodicProcessingLines.Find('-') then begin
                                 repeat
                                     SMSBody := 'Dear ' + Format(PeriodicProcessingLines."Member Name") + ' your account ' + Format(PeriodicProcessingLines."Account No") + ' has been credited with Ksh. ' + Format(PeriodicProcessingLines.Amount) + '.Thank you for banking with us.';
@@ -198,9 +198,9 @@ page 51516138 "Posted Periodics Header"
                                 until PeriodicProcessingLines.Next = 0;
                             end;
                             //..................
-                            Posted := true;
-                            "Posted By" := UserId;
-                            Status := Status::Closed;
+                            Rec.Posted := true;
+                            Rec."Posted By" := UserId;
+                            Rec.Status := Rec.Status::Closed;
                             //Modify();
                         end;
                     end;
@@ -210,8 +210,8 @@ page 51516138 "Posted Periodics Header"
     }
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        "Processing Type" := "Processing Type"::Salary;
-        "Posting Date" := Today;
+        Rec."Processing Type" := Rec."Processing Type"::Salary;
+        Rec."Posting Date" := Today;
     end;
 
     local procedure FnGetMobilePhone(AccountNo: Code[100]): Text
@@ -234,6 +234,6 @@ page 51516138 "Posted Periodics Header"
     var
         PeriodicProcessingLines: Record "Periodics Processing Header";
     begin
-        SetRange("Entered By", UserId);
+        Rec.SetRange("Entered By", UserId);
     end;
 }

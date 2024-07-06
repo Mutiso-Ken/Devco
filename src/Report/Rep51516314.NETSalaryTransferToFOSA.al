@@ -357,13 +357,13 @@
 //               BEGIN
 //                 LineNo:=LineNo+10000;
 //                   AmountToDeduct:=FnGetMonthlyRepayment("Account No");
-        
+
 //                   IF ObjVendor."Outstanding Overdraft"<=AmountToDeduct THEN
 //                   AmountToDeduct:=ObjVendor."Outstanding Overdraft";
-        
+
 //                  IF RunningBalance <= AmountToDeduct THEN
 //                   AmountToDeduct:=RunningBalance;
-        
+
 //                   SFactory.FnCreateGnlJournalLineBalancedCashier(BATCH_TEMPLATE,BATCH_NAME,DOCUMENT_NO,LineNo,GenJournalLine."Transaction Type"::"0",GenJournalLine."Account Type"::Vendor,
 //                   "Account No",PDate,AmountToDeduct,'FOSA',ODNumber,"Account No"+' Overdraft paid','',
 //                   GenJournalLine."Account Type"::"G/L Account",ObjOverDraftSetup."Control Account",ODNumber,GenJournalLine."Overdraft codes"::"Overdraft Paid");
@@ -372,7 +372,7 @@
 //             END;
 //         END;
 //         EXIT(RunningBalance);
-        
+
 //         LOCAL FnGetApprovedOverDraftNo(AccNo : Code[100]) : Code[100]
 //         ObjOverdraftRegister.RESET;
 //         ObjOverdraftRegister.SETRANGE(ObjOverdraftRegister."Account No",AccNo);

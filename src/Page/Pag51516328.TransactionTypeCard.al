@@ -11,46 +11,46 @@ Page 51516328 "Transaction Type Card"
             group(General)
             {
                 Caption = 'General';
-                field("Code";Code)
+                field("Code"; Rec.Code)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Type;Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type";"Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Has Schedule";"Has Schedule")
+                field("Has Schedule"; Rec."Has Schedule")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Category";"Transaction Category")
+                field("Transaction Category"; Rec."Transaction Category")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Span";"Transaction Span")
+                field("Transaction Span"; Rec."Transaction Span")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Default Mode";"Default Mode")
+                field("Default Mode"; Rec."Default Mode")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Lower Limit";"Lower Limit")
+                field("Lower Limit"; Rec."Lower Limit")
                 {
                     ApplicationArea = Basic;
                 }
             }
-            part(Control1000000000;"Front Office Charges")
+            part(Control1000000000; "Front Office Charges")
             {
-                SubPageLink = "Transaction Type"=field(Code);
+                SubPageLink = "Transaction Type" = field(Code);
             }
         }
     }

@@ -13,58 +13,58 @@ page 51516947 "posted paybills card"
         {
             group(General)
             {
-                field("Document No"; "Document No")
+                field("Document No"; Rec."Document No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Transaction Date"; "Transaction Date")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                
-                field(Description; Description)
+
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Posted; Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Key Word"; "Key Word")
+                field("Key Word"; Rec."Key Word")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Telephone; Telephone)
+                field(Telephone; Rec.Telephone)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account Name"; "Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     Caption = 'Sender Name';
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Needs Manual Posting"; "Needs Manual Posting")
+                field("Needs Manual Posting"; Rec."Needs Manual Posting")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Date"; "Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;

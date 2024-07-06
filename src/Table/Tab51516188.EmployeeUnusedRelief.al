@@ -4,29 +4,29 @@ Table 51516188 "Employee Unused Relief"
 
     fields
     {
-        field(10;"Employee No.";Code[20])
+        field(10; "Employee No."; Code[20])
         {
         }
-        field(11;"Unused Relief";Decimal)
+        field(11; "Unused Relief"; Decimal)
         {
         }
-        field(12;"Unused Relief(LCY)";Decimal)
+        field(12; "Unused Relief(LCY)"; Decimal)
         {
         }
-        field(13;"Period Month";Integer)
+        field(13; "Period Month"; Integer)
         {
         }
-        field(14;"Period Year";Integer)
+        field(14; "Period Year"; Integer)
         {
         }
-        field(15;"Payroll Period";Date)
+        field(15; "Payroll Period"; Date)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Employee No.")
+        key(Key1; "Employee No.")
         {
             Clustered = true;
         }

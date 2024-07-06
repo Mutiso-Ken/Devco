@@ -5,15 +5,15 @@ pageextension 51516882 CustomerExtension extends "Customer Card"
         // Add changes to page layout here
         addafter(Address)
         {
-            field("Customer Type"; "Customer Type")
+            field("Customer Type"; Rec."Customer Type")
             {
                 ApplicationArea = all;
             }
-            field("Employer Code"; "Employer Code")
+            field("Employer Code"; Rec."Employer Code")
             {
                 ApplicationArea = all;
             }
-            field("Employer Name"; "Employer Name")
+            field("Employer Name"; Rec."Employer Name")
             {
                 ApplicationArea = all;
                 Editable = false;

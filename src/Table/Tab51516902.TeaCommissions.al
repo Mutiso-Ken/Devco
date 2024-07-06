@@ -4,23 +4,23 @@ Table 51516902 "Tea Commissions"
 
     fields
     {
-        field(1;"No.";Code[10])
+        field(1; "No."; Code[10])
         {
         }
-        field(2;"Lower Bound";Decimal)
+        field(2; "Lower Bound"; Decimal)
         {
         }
-        field(3;"Upper Bound";Decimal)
+        field(3; "Upper Bound"; Decimal)
         {
         }
-        field(4;Charge;Decimal)
+        field(4; Charge; Decimal)
         {
         }
     }
 
     keys
     {
-        key(Key1;"No.")
+        key(Key1; "No.")
         {
             Clustered = true;
         }

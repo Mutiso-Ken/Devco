@@ -22,44 +22,44 @@ Page 51516893 "MC Individual Page"
             {
                 Caption = 'General';
                 Editable = true;
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Memebership No.';
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Old Account No."; "Old Account No.")
+                field("Old Account No."; Rec."Old Account No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Old Memebership No.';
                     visible = false;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Caption = 'Member Name';
                     Style = StrongAccent;
                 }
-                field("BOSA Account No."; "BOSA Account No.")
+                field("BOSA Account No."; Rec."BOSA Account No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Comment; Comment)
+                field(Comment; Rec.Comment)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     visible = false;
                 }
 
-                field("Payroll/Staff No"; "Payroll/Staff No")
+                field("Payroll/Staff No"; Rec."Payroll/Staff No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("FOSA Account"; "FOSA Account")
+                field("FOSA Account"; Rec."FOSA Account")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -68,8 +68,8 @@ Page 51516893 "MC Individual Page"
                     begin
                         FosaName := '';
 
-                        if "FOSA Account" <> '' then begin
-                            if Vend.Get("FOSA Account") then begin
+                        if Rec."FOSA Account" <> '' then begin
+                            if Vend.Get(Rec."FOSA Account") then begin
                                 FosaName := Vend.Name;
                             end;
                         end;
@@ -81,7 +81,7 @@ Page 51516893 "MC Individual Page"
                     Caption = 'FOSA Account Name';
                     Editable = false;
                 }
-                field("Account Category"; "Account Category")
+                field("Account Category"; Rec."Account Category")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -109,100 +109,100 @@ Page 51516893 "MC Individual Page"
                     //     end;
                     // end;
                 }
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'ID Number';
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Passport No."; "Passport No.")
+                field("Passport No."; Rec."Passport No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Address; Address)
+                field(Address; Rec.Address)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Post Code"; "Post Code")
+                field("Post Code"; Rec."Post Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Post Code/City';
                     Editable = false;
                 }
-                field(Gender; Gender)
+                field(Gender; Rec.Gender)
                 {
                     ApplicationArea = Basic;
                 }
-                field(City; City)
+                field(City; Rec.City)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Country/Region Code"; "Country/Region Code")
+                field("Country/Region Code"; Rec."Country/Region Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Phone No."; "Phone No.")
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Mobile No.';
                     Editable = false;
                 }
-                field("Employer Code"; "Employer Code")
+                field("Employer Code"; Rec."Employer Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Employer';
                     Editable = false;
                 }
-                field("Job Title"; "Job title")
+                field("Job Title"; Rec."Job title")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Job Title';
                     Editable = false;
                 }
-                field(PIN; Pin)
+                field(PIN; Rec.Pin)
                 {
                     ApplicationArea = Basic;
                     Caption = 'PIN';
                     Editable = false;
                 }
-                field("Registration Date"; "Registration Date")
+                field("Registration Date"; Rec."Registration Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(txtMarital; "Marital Status")
+                field(txtMarital; Rec."Marital Status")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Marital Status';
                     Visible = txtMaritalVisible;
                 }
-                field("Date of Birth"; "Date of Birth")
+                field("Date of Birth"; Rec."Date of Birth")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Date of Birth';
                     Editable = true;
                 }
-                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Customer Posting Group"; "Customer Posting Group")
+                field("Customer Posting Group"; Rec."Customer Posting Group")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -216,21 +216,21 @@ Page 51516893 "MC Individual Page"
                             Error('You do not have permissions to change the account status.');
                     end;
                 }
-                field(Blocked; Blocked)
+                field(Blocked; Rec.Blocked)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Last Date Modified"; "Last Date Modified")
+                field("Last Date Modified"; Rec."Last Date Modified")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Currect File Location"; "Currect File Location")
+                field("Currect File Location"; Rec."Currect File Location")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("File Movement Remarks"; "File Movement Remarks")
+                field("File Movement Remarks"; Rec."File Movement Remarks")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
@@ -244,17 +244,17 @@ Page 51516893 "MC Individual Page"
                 //     ApplicationArea = Basic;
                 //     Style = StrongAccent;
                 // }
-                field("Group Account"; "Group Account")
+                field("Group Account"; Rec."Group Account")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field("Group Account Name"; "Group Account Name")
+                field("Group Account Name"; Rec."Group Account Name")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field("Loan Officer Name"; "Loan Officer Name")
+                field("Loan Officer Name"; Rec."Loan Officer Name")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
@@ -265,66 +265,66 @@ Page 51516893 "MC Individual Page"
             {
                 Caption = 'Other Details';
                 Editable = true;
-                field("Contact Person"; "Contact Person")
+                field("Contact Person"; Rec."Contact Person")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Contact Person Phone"; "Contact Person Phone")
+                field("Contact Person Phone"; Rec."Contact Person Phone")
                 {
                     ApplicationArea = Basic;
                 }
-                field("E-Mail"; "E-Mail")
+                field("E-Mail"; Rec."E-Mail")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Code"; "Bank Code")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("Bank Account No."; "Bank Account No.")
+                field("Bank Code"; Rec."Bank Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Village/Residence"; "Village/Residence")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Home Page"; "Home Page")
+                field("Bank Account No."; Rec."Bank Account No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Address 2"; "Address 2")
+                field("Village/Residence"; Rec."Village/Residence")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Home Page"; Rec."Home Page")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Address 2"; Rec."Address 2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Physical Address';
                     Visible = false;
                 }
-                field("Withdrawal Application Date"; "Withdrawal Application Date")
+                field("Withdrawal Application Date"; Rec."Withdrawal Application Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Withdrawal Date"; "Withdrawal Date")
+                field("Withdrawal Date"; Rec."Withdrawal Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Withdrawal Fee"; "Withdrawal Fee")
+                field("Withdrawal Fee"; Rec."Withdrawal Fee")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Status - Withdrawal App."; "Status - Withdrawal App.")
+                field("Status - Withdrawal App."; Rec."Status - Withdrawal App.")
                 {
                     ApplicationArea = Basic;
 
                 }
-                field("Mode of Dividend Payment"; "Mode of Dividend Payment")
+                field("Mode of Dividend Payment"; Rec."Mode of Dividend Payment")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Recruited By"; "Recruited By")
+                field("Recruited By"; Rec."Recruited By")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
@@ -381,7 +381,7 @@ Page 51516893 "MC Individual Page"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51516223, true, false, Cust);
                     end;
@@ -434,8 +434,8 @@ Page 51516893 "MC Individual Page"
     var
         RecordFound: Boolean;
     begin
-        RecordFound := Find(Which);
-        CurrPage.Editable := RecordFound or (GetFilter("No.") = '');
+        RecordFound := Rec.Find(Which);
+        CurrPage.Editable := RecordFound or (Rec.GetFilter("No.") = '');
         exit(RecordFound);
     end;
 

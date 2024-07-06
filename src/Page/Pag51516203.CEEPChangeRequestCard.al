@@ -10,11 +10,11 @@ Page 51516203 "CEEP Change Request Card"
         {
             group(General)
             {
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Type; Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = Basic;
                     Editable = TypeEditable;
@@ -24,7 +24,7 @@ Page 51516203 "CEEP Change Request Card"
 
                     end;
                 }
-                field("Micro Finance Change Type"; "Micro Finance Change Type")
+                field("Micro Finance Change Type"; Rec."Micro Finance Change Type")
                 {
                     ApplicationArea = Basic;
                     Editable = AccountNoEditable;
@@ -32,25 +32,25 @@ Page 51516203 "CEEP Change Request Card"
                     trigger OnValidate()
                     var
                     begin
-                        if "Micro Finance Change Type" = "Micro Finance Change Type"::"CEEP Member" then begin
+                        if Rec."Micro Finance Change Type" = Rec."Micro Finance Change Type"::"CEEP Member" then begin
                             ChoosenCEEPMember := true;
                             ChoosenCEEPGroup := false;
                             ChoosenCEEPSignatories := false;
                             ChoosenSgnatory := false;
                         end else
-                            if "Micro Finance Change Type" = "Micro Finance Change Type"::"CEEP Group" then begin
+                            if Rec."Micro Finance Change Type" = Rec."Micro Finance Change Type"::"CEEP Group" then begin
                                 ChoosenCEEPMember := false;
                                 ChoosenCEEPGroup := true;
                                 ChoosenCEEPSignatories := false;
                                 ChoosenSgnatory := false;
                             end else
-                                if "Micro Finance Change Type" = "Micro Finance Change Type"::" " then begin
+                                if Rec."Micro Finance Change Type" = Rec."Micro Finance Change Type"::" " then begin
                                     ChoosenCEEPMember := false;
                                     ChoosenCEEPGroup := false;
                                     ChoosenCEEPSignatories := false;
                                     ChoosenSgnatory := false;
                                 end else
-                                    if "Micro Finance Change Type" = "Micro Finance Change Type"::Signatories then begin
+                                    if Rec."Micro Finance Change Type" = Rec."Micro Finance Change Type"::Signatories then begin
                                         ChoosenCEEPMember := false;
                                         ChoosenCEEPGroup := false;
                                         ChoosenCEEPSignatories := false;
@@ -58,25 +58,25 @@ Page 51516203 "CEEP Change Request Card"
                                     end;
                     end;
                 }
-                field("Captured by"; "Captured by")
+                field("Captured by"; Rec."Captured by")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Capture Date"; "Capture Date")
+                field("Capture Date"; Rec."Capture Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approved by"; "Approved by")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field(Status; Status)
+                field("Approved by"; Rec."Approved by")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Reason for change"; "Reason for change")
+                field(Status; Rec.Status)
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Reason for change"; Rec."Reason for change")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -90,7 +90,7 @@ Page 51516203 "CEEP Change Request Card"
                 {
                     Visible = ChoosenCEEPGroup;
                     Caption = 'CEEP Group Details';
-                    field("CEEP Group No"; "CEEP Group No")
+                    field("CEEP Group No"; Rec."CEEP Group No")
                     {
                         ApplicationArea = Basic;
                         Editable = TypeEditable;
@@ -99,7 +99,7 @@ Page 51516203 "CEEP Change Request Card"
                         begin
                         end;
                     }
-                    field("CEEP Group Name"; "CEEP Group Name")
+                    field("CEEP Group Name"; Rec."CEEP Group Name")
                     {
                         ApplicationArea = Basic;
                         Editable = false;
@@ -108,7 +108,7 @@ Page 51516203 "CEEP Change Request Card"
                         begin
                         end;
                     }
-                    field("CEEP Group Officer"; "CEEP Group Officer")
+                    field("CEEP Group Officer"; Rec."CEEP Group Officer")
                     {
                         ApplicationArea = Basic;
                         Editable = false;
@@ -117,37 +117,7 @@ Page 51516203 "CEEP Change Request Card"
                         begin
                         end;
                     }
-                    field("CEEP Group Officer(New)"; "CEEP Group Officer(New)")
-                    {
-                        ApplicationArea = Basic;
-                        Editable = TypeEditable;
-                        trigger OnValidate()
-                        var
-                        begin
-
-                        end;
-                    }
-                    field("CEEP Group Officer Name(New)"; "CEEP Group Officer Name(New)")
-                    {
-                        ApplicationArea = Basic;
-                        Editable = false;
-                        trigger OnValidate()
-                        var
-                        begin
-
-                        end;
-                    }
-                    field("CEEP Certificate"; "CEEP Certificate")
-                    {
-                        ApplicationArea = Basic;
-                        Editable = false;
-                        trigger OnValidate()
-                        var
-                        begin
-
-                        end;
-                    }
-                    field("CEEP Certificate(New)"; "CEEP Certificate(New)")
+                    field("CEEP Group Officer(New)"; Rec."CEEP Group Officer(New)")
                     {
                         ApplicationArea = Basic;
                         Editable = TypeEditable;
@@ -157,7 +127,7 @@ Page 51516203 "CEEP Change Request Card"
 
                         end;
                     }
-                    field("CEEP Branch"; "CEEP Branch")
+                    field("CEEP Group Officer Name(New)"; Rec."CEEP Group Officer Name(New)")
                     {
                         ApplicationArea = Basic;
                         Editable = false;
@@ -167,7 +137,37 @@ Page 51516203 "CEEP Change Request Card"
 
                         end;
                     }
-                    field("CEEP Branch(New)"; "CEEP Branch(New)")
+                    field("CEEP Certificate"; Rec."CEEP Certificate")
+                    {
+                        ApplicationArea = Basic;
+                        Editable = false;
+                        trigger OnValidate()
+                        var
+                        begin
+
+                        end;
+                    }
+                    field("CEEP Certificate(New)"; Rec."CEEP Certificate(New)")
+                    {
+                        ApplicationArea = Basic;
+                        Editable = TypeEditable;
+                        trigger OnValidate()
+                        var
+                        begin
+
+                        end;
+                    }
+                    field("CEEP Branch"; Rec."CEEP Branch")
+                    {
+                        ApplicationArea = Basic;
+                        Editable = false;
+                        trigger OnValidate()
+                        var
+                        begin
+
+                        end;
+                    }
+                    field("CEEP Branch(New)"; Rec."CEEP Branch(New)")
                     {
                         ApplicationArea = Basic;
                         Editable = TypeEditable;
@@ -183,7 +183,7 @@ Page 51516203 "CEEP Change Request Card"
                 {
                     Visible = ChoosenCEEPMember;
                     Caption = 'CEEP Member Details';
-                    field("CEEP Member No"; "CEEP Member No")
+                    field("CEEP Member No"; Rec."CEEP Member No")
                     {
                         ApplicationArea = Basic;
                         Editable = TypeEditable;
@@ -192,7 +192,7 @@ Page 51516203 "CEEP Change Request Card"
                         begin
                         end;
                     }
-                    field("CEEP Member Name"; "CEEP Member Name")
+                    field("CEEP Member Name"; Rec."CEEP Member Name")
                     {
                         ApplicationArea = Basic;
                         Editable = false;
@@ -201,7 +201,7 @@ Page 51516203 "CEEP Change Request Card"
                         begin
                         end;
                     }
-                    field("CEEP Member Name(New)"; "CEEP Member Name(New)")
+                    field("CEEP Member Name(New)"; Rec."CEEP Member Name(New)")
                     {
                         ApplicationArea = Basic;
                         Editable = TypeEditable;
@@ -211,7 +211,7 @@ Page 51516203 "CEEP Change Request Card"
                         begin
                         end;
                     }
-                    field("CEEP Member Group Account"; "CEEP Member Group Account")
+                    field("CEEP Member Group Account"; Rec."CEEP Member Group Account")
                     {
                         ApplicationArea = Basic;
                         Editable = false;
@@ -221,7 +221,7 @@ Page 51516203 "CEEP Change Request Card"
                         end;
                     }
 
-                    field("CEEP Member Group Name"; "CEEP Member Group Name")
+                    field("CEEP Member Group Name"; Rec."CEEP Member Group Name")
                     {
                         ApplicationArea = Basic;
                         Editable = false;
@@ -230,7 +230,7 @@ Page 51516203 "CEEP Change Request Card"
                         begin
                         end;
                     }
-                    field("CEEP Member Group Account(New)"; "CEEP Member Group Account(New)")
+                    field("CEEP Member Group Account(New)"; Rec."CEEP Member Group Account(New)")
                     {
                         ApplicationArea = Basic;
                         Editable = TypeEditable;
@@ -240,7 +240,7 @@ Page 51516203 "CEEP Change Request Card"
                         end;
                     }
 
-                    field("CEEP Member Group Name(New)"; "CEEP Member Group Name(New)")
+                    field("CEEP Member Group Name(New)"; Rec."CEEP Member Group Name(New)")
                     {
                         ApplicationArea = Basic;
                         Editable = false;
@@ -249,7 +249,7 @@ Page 51516203 "CEEP Change Request Card"
                         begin
                         end;
                     }
-                    field("CEEP Member ID"; "CEEP Member ID")
+                    field("CEEP Member ID"; Rec."CEEP Member ID")
                     {
                         ApplicationArea = Basic;
                         Editable = false;
@@ -258,7 +258,7 @@ Page 51516203 "CEEP Change Request Card"
                         begin
                         end;
                     }
-                    field("CEEP Member ID(New)"; "CEEP Member ID(New)")
+                    field("CEEP Member ID(New)"; Rec."CEEP Member ID(New)")
                     {
                         ApplicationArea = Basic;
                         Editable = TypeEditable;
@@ -268,7 +268,7 @@ Page 51516203 "CEEP Change Request Card"
                         begin
                         end;
                     }
-                    field("CEEP Member Phone No"; "CEEP Member Phone No")
+                    field("CEEP Member Phone No"; Rec."CEEP Member Phone No")
                     {
                         ApplicationArea = Basic;
                         Editable = false;
@@ -277,7 +277,7 @@ Page 51516203 "CEEP Change Request Card"
                         begin
                         end;
                     }
-                    field("CEEP Member Phone No(New)"; "CEEP Member Phone No(New)")
+                    field("CEEP Member Phone No(New)"; Rec."CEEP Member Phone No(New)")
                     {
                         ApplicationArea = Basic;
                         Editable = TypeEditable;
@@ -291,12 +291,12 @@ Page 51516203 "CEEP Change Request Card"
                 {
                     Visible = ChoosenSgnatory;
                     Caption = 'Account Number Details';
-                    field("Group Accounts No"; "Group Accounts No")
+                    field("Group Accounts No"; Rec."Group Accounts No")
                     {
                         Editable = TypeEditable;
 
                     }
-                    field("Group Accounts Name"; "Group Accounts Name")
+                    field("Group Accounts Name"; Rec."Group Accounts Name")
                     {
                         Editable = false;
                     }
@@ -320,7 +320,7 @@ Page 51516203 "CEEP Change Request Card"
                 PromotedOnly = true;
                 trigger OnAction()
                 begin
-                    if (Status <> Status::Approved) then begin
+                    if (Rec.Status <> Rec.Status::Approved) then begin
                         Error('Change Request Must be Approved First');
                     end;
                     If Confirm('Are you sure you want to Update Member Details ?', false) = false then begin
@@ -347,9 +347,9 @@ Page 51516203 "CEEP Change Request Card"
                     SrestepApprovalsCodeUnit: Codeunit SurestepApprovalsCodeUnit;
                 begin
 
-                    if Status <> Status::Open then
+                    if Rec.Status <> Rec.Status::Open then
                         Error('Status MUST be open');
-                    TestField("Reason for change");
+                    Rec.TestField("Reason for change");
                     if Confirm('Send Approval Request?', false) = false then begin
                         exit;
                     end else begin
@@ -416,7 +416,7 @@ Page 51516203 "CEEP Change Request Card"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        Type := type::"Microfinance Change";
+        Rec.Type := Rec.type::"Microfinance Change";
     end;
 
     var
@@ -492,7 +492,7 @@ Page 51516203 "CEEP Change Request Card"
 
     local procedure UpdateControl()
     begin
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             NameEditable := true;
             NotOpen := false;
             CancelApproval := false;
@@ -538,7 +538,7 @@ Page 51516203 "CEEP Change Request Card"
             TypeEditable := true;
             AccountCategoryEditable := true
         end else
-            if Status = Status::Pending then begin
+            if Rec.Status = Rec.Status::Pending then begin
                 NameEditable := false;
                 NotOpen := false;
                 CancelApproval := true;
@@ -584,7 +584,7 @@ Page 51516203 "CEEP Change Request Card"
                 ReactivationFeeEditable := false;
                 AccountCategoryEditable := false
             end else
-                if Status = Status::Approved then begin
+                if Rec.Status = Rec.Status::Approved then begin
                     NameEditable := false;
                     NotOpen := true;
                     CancelApproval := false;
@@ -630,25 +630,25 @@ Page 51516203 "CEEP Change Request Card"
                     TypeEditable := false;
                     AccountCategoryEditable := false
                 end;
-        if "Micro Finance Change Type" = "Micro Finance Change Type"::"CEEP Member" then begin
+        if Rec."Micro Finance Change Type" = Rec."Micro Finance Change Type"::"CEEP Member" then begin
             ChoosenCEEPMember := true;
             ChoosenCEEPGroup := false;
             ChoosenCEEPSignatories := false;
             ChoosenSgnatory := false;
         end else
-            if "Micro Finance Change Type" = "Micro Finance Change Type"::"CEEP Group" then begin
+            if Rec."Micro Finance Change Type" = Rec."Micro Finance Change Type"::"CEEP Group" then begin
                 ChoosenCEEPMember := false;
                 ChoosenCEEPGroup := true;
                 ChoosenCEEPSignatories := false;
                 ChoosenSgnatory := false;
             end else
-                if "Micro Finance Change Type" = "Micro Finance Change Type"::Signatories then begin
+                if Rec."Micro Finance Change Type" = Rec."Micro Finance Change Type"::Signatories then begin
                     ChoosenCEEPMember := false;
                     ChoosenCEEPGroup := false;
                     ChoosenCEEPSignatories := true;
                     ChoosenSgnatory := true;
                 end else
-                    if "Micro Finance Change Type" = "Micro Finance Change Type"::" " then begin
+                    if Rec."Micro Finance Change Type" = Rec."Micro Finance Change Type"::" " then begin
                         ChoosenCEEPMember := false;
                         ChoosenCEEPGroup := false;
                         ChoosenCEEPSignatories := false;
@@ -663,93 +663,93 @@ Page 51516203 "CEEP Change Request Card"
         PreviousAccountSignatories: record "Member Account Signatories";
         NewAccountSignatories: Record "Change Request New Signatories";
     begin
-        if Type = type::"Microfinance Change" then begin
-            if "Micro Finance Change Type" = "Micro Finance Change Type"::"CEEP Member" then begin
+        if Rec.Type = Rec.type::"Microfinance Change" then begin
+            if Rec."Micro Finance Change Type" = Rec."Micro Finance Change Type"::"CEEP Member" then begin
                 CustomerTable.reset;
-                CustomerTable.SetRange(CustomerTable."No.", "CEEP Member No");
+                CustomerTable.SetRange(CustomerTable."No.", Rec."CEEP Member No");
                 if CustomerTable.find('-') then begin
-                    if "CEEP Member Name(New)" <> '' then begin
-                        CustomerTable.Name := "CEEP Member Name(New)";
+                    if Rec."CEEP Member Name(New)" <> '' then begin
+                        CustomerTable.Name := Rec."CEEP Member Name(New)";
                     end;
-                    if "CEEP Member Phone No(New)" <> '' then begin
-                        CustomerTable."Phone No." := "CEEP Member Phone No(New)";
-                        CustomerTable."Mobile Phone No" := "CEEP Member Phone No(New)";
-                        CustomerTable."MPESA Mobile No" := "CEEP Member Phone No(New)";
-                        CustomerTable."Mobile Phone No." := "CEEP Member Phone No(New)";
+                    if Rec."CEEP Member Phone No(New)" <> '' then begin
+                        CustomerTable."Phone No." := Rec."CEEP Member Phone No(New)";
+                        CustomerTable."Mobile Phone No" := Rec."CEEP Member Phone No(New)";
+                        CustomerTable."MPESA Mobile No" := Rec."CEEP Member Phone No(New)";
+                        CustomerTable."Mobile Phone No." := Rec."CEEP Member Phone No(New)";
 
                     end;
-                    if "CEEP Member ID(New)" <> '' then begin
-                        CustomerTable."ID No." := "CEEP Member ID(New)";
+                    if Rec."CEEP Member ID(New)" <> '' then begin
+                        CustomerTable."ID No." := Rec."CEEP Member ID(New)";
                         LoansReg.Reset();
-                        LoansReg.SetRange(LoansReg."Client Code", "CEEP Member No");
+                        LoansReg.SetRange(LoansReg."Client Code", Rec."CEEP Member No");
                         LoansReg.SetAutoCalcFields(LoansReg."Outstanding Balance", LoansReg."Oustanding Interest");
                         if LoansReg.Find('-') then begin
                             repeat
                                 if (LoansReg."Outstanding Balance" <> 0) or (LoansReg."Oustanding Interest" <> 0) then begin
-                                    LoansReg."ID NO" := "CEEP Member ID(New)";
+                                    LoansReg."ID NO" := Rec."CEEP Member ID(New)";
                                 end;
                                 LoansReg.Modify();
                             until LoansReg.Next = 0;
                         end;
                     end;
-                    if "CEEP Member Group Account(New)" <> '' then begin
+                    if Rec."CEEP Member Group Account(New)" <> '' then begin
                         // CustomerTable."Group Account No" := "CEEP Member Group Account(New)";
-                        CustomerTable."Group Account Name" := "CEEP Member Group Name(New)";
+                        CustomerTable."Group Account Name" := Rec."CEEP Member Group Name(New)";
                         LoansReg.Reset();
-                        LoansReg.SetRange(LoansReg."Client Code", "CEEP Member No");
+                        LoansReg.SetRange(LoansReg."Client Code", Rec."CEEP Member No");
                         LoansReg.SetAutoCalcFields(LoansReg."Outstanding Balance", LoansReg."Oustanding Interest");
                         if LoansReg.Find('-') then begin
                             repeat
                                 if (LoansReg."Outstanding Balance" <> 0) or (LoansReg."Oustanding Interest" <> 0) then begin
-                                    LoansReg."Group Account" := "CEEP Member Group Account(New)";
-                                    LoansReg."Group Name" := "CEEP Member Group Name(New)";
-                                    LoansReg."Group Code" := "CEEP Member Group Account(New)";
+                                    LoansReg."Group Account" := Rec."CEEP Member Group Account(New)";
+                                    LoansReg."Group Name" := Rec."CEEP Member Group Name(New)";
+                                    LoansReg."Group Code" := Rec."CEEP Member Group Account(New)";
                                 end;
                                 LoansReg.Modify();
                             until LoansReg.Next = 0;
                         end;
                     end;
                     CustomerTable.Modify(true);
-                    Status := Status::Closed;
+                    Rec.Status := Rec.Status::Closed;
                     Rec.Modify();
                     CurrPage.Close();
                     exit;
                 end;
 
             end else
-                if "Micro Finance Change Type" = "Micro Finance Change Type"::"CEEP Group" then begin
+                if Rec."Micro Finance Change Type" = Rec."Micro Finance Change Type"::"CEEP Group" then begin
                     CustomerTable.reset;
-                    CustomerTable.SetRange(CustomerTable."No.", "CEEP Group No");
+                    CustomerTable.SetRange(CustomerTable."No.", Rec."CEEP Group No");
                     IF CustomerTable.Find('-') THEN begin
-                        IF "CEEP Group Officer(New)" <> '' THEN begin
-                            CustomerTable."Loan Officer Name" := "CEEP Group Officer Name(New)";
+                        IF Rec."CEEP Group Officer(New)" <> '' THEN begin
+                            CustomerTable."Loan Officer Name" := Rec."CEEP Group Officer Name(New)";
                             LoansReg.Reset();
-                            LoansReg.SetRange(LoansReg."Group Account", "CEEP Group No");
+                            LoansReg.SetRange(LoansReg."Group Account", Rec."CEEP Group No");
                             LoansReg.SetAutoCalcFields(LoansReg."Outstanding Balance", LoansReg."Oustanding Interest");
                             if LoansReg.Find('-') then begin
                                 repeat
                                     if (LoansReg."Outstanding Balance" <> 0) or (LoansReg."Oustanding Interest" <> 0) then begin
                                         DialogBox.open('Updating Group officer Details for the group in the loans register for ' + (LoansReg."Client Name"));
-                                        LoansReg."Loan Officer" := "CEEP Group Officer Name(New)";
+                                        LoansReg."Loan Officer" := Rec."CEEP Group Officer Name(New)";
                                     end;
                                     LoansReg.Modify();
                                 until LoansReg.Next = 0;
                                 DialogBox.Close();
                             end;
                         end;
-                        IF "CEEP Certificate(New)" <> '' then begin
-                            CustomerTable."ID No." := "CEEP Certificate(New)";
+                        IF Rec."CEEP Certificate(New)" <> '' then begin
+                            CustomerTable."ID No." := Rec."CEEP Certificate(New)";
                         end;
-                        IF "CEEP Branch(New)" <> '' THEN begin
-                            CustomerTable."Global Dimension 2 Code" := "CEEP Branch(New)";
+                        IF Rec."CEEP Branch(New)" <> '' THEN begin
+                            CustomerTable."Global Dimension 2 Code" := Rec."CEEP Branch(New)";
                             LoansReg.Reset();
-                            LoansReg.SetRange(LoansReg."Group Account", "CEEP Group No");
+                            LoansReg.SetRange(LoansReg."Group Account", Rec."CEEP Group No");
                             LoansReg.SetAutoCalcFields(LoansReg."Outstanding Balance", LoansReg."Oustanding Interest");
                             if LoansReg.Find('-') then begin
                                 repeat
                                     if (LoansReg."Outstanding Balance" <> 0) or (LoansReg."Oustanding Interest" <> 0) then begin
                                         DialogBox.open('Updating Branch Details for the in the loans register for ' + (LoansReg."Client Name"));
-                                        LoansReg."Branch Code" := "CEEP Branch(New)";
+                                        LoansReg."Branch Code" := Rec."CEEP Branch(New)";
                                     end;
                                     LoansReg.Modify();
                                 until LoansReg.Next = 0;
@@ -757,28 +757,28 @@ Page 51516203 "CEEP Change Request Card"
                             end;
                         end;
                         CustomerTable.Modify();
-                        Status := Status::Closed;
+                        Rec.Status := Rec.Status::Closed;
                         Rec.Modify();
                         CurrPage.Close();
                         exit;
                     end;
                 end else
-                    if "Micro Finance Change Type" = "Micro Finance Change Type"::Signatories then begin
+                    if Rec."Micro Finance Change Type" = Rec."Micro Finance Change Type"::Signatories then begin
                         //.........................Ensure New Signatories List is Not empty
 
                         ///........................Delete previous signatories of the account
                         PreviousAccountSignatories.Reset();
-                        PreviousAccountSignatories.SetRange(PreviousAccountSignatories."Account No", "Group Accounts No");
+                        PreviousAccountSignatories.SetRange(PreviousAccountSignatories."Account No", Rec."Group Accounts No");
                         if PreviousAccountSignatories.Find('-') then begin
                             PreviousAccountSignatories.DeleteAll();
                         end;
                         //........................Insert New Signatories
                         NewAccountSignatories.Reset();
-                        NewAccountSignatories.SetRange(NewAccountSignatories."Document No", No);
+                        NewAccountSignatories.SetRange(NewAccountSignatories."Document No", Rec.No);
                         if NewAccountSignatories.Find('-') then begin
                             repeat
                                 PreviousAccountSignatories.Init();
-                                PreviousAccountSignatories."Account No" := "Group Accounts No";
+                                PreviousAccountSignatories."Account No" := Rec."Group Accounts No";
                                 PreviousAccountSignatories."ID No." := NewAccountSignatories."ID No.";
                                 PreviousAccountSignatories.Names := NewAccountSignatories.Names;
                                 PreviousAccountSignatories."Must be Present" := NewAccountSignatories."Must be Present";
@@ -790,7 +790,7 @@ Page 51516203 "CEEP Change Request Card"
                             until NewAccountSignatories.Next = 0;
                         end;
                     end;
-            Status := Status::Closed;
+            Rec.Status := Rec.Status::Closed;
             Rec.Modify();
             CurrPage.Close();
             exit;

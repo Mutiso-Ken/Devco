@@ -27,7 +27,7 @@ Table 51516245 "Loan Collateral Set-up"
         }
         field(5; Category; Option)
         {
-         
+
             OptionMembers = " ","Title Deed",Cash,"Government Securities","Corporate Bonds",Equity,"Mortgage Securities","Fixed Deposit";
         }
         field(6; "Collateral Multiplier"; Integer)

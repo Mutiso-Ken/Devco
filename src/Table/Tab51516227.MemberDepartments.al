@@ -6,18 +6,18 @@ Table 51516227 "Member Departments"
 
     fields
     {
-        field(1;"No.";Code[10])
+        field(1; "No."; Code[10])
         {
             NotBlank = true;
         }
-        field(2;Department;Text[70])
+        field(2; Department; Text[70])
         {
         }
     }
 
     keys
     {
-        key(Key1;"No.",Department)
+        key(Key1; "No.", Department)
         {
             Clustered = true;
         }

@@ -10,41 +10,41 @@ Page 51516281 "Loan Product Charges"
         {
             repeater(Group)
             {
-                field("Product Code"; "Product Code")
+                field("Product Code"; Rec."Product Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Code"; Code)
+                field("Code"; Rec.Code)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount2; Amount2)
+                field(Amount2; Rec.Amount2)
                 {
                     Caption = 'Loan Drsbursement Fee Above 1M';
                     ApplicationArea = Basic;
                 }
-                field(Percentage; Percentage)
+                field(Percentage; Rec.Percentage)
                 {
                     ApplicationArea = Basic;
                 }
-                field("G/L Account"; "G/L Account")
+                field("G/L Account"; Rec."G/L Account")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Above 1M"; "Above 1M")
+                field("Above 1M"; Rec."Above 1M")
                 {
                     ApplicationArea = basic;
                 }
-                field("Use Perc"; "Use Perc")
+                field("Use Perc"; Rec."Use Perc")
                 {
                     ApplicationArea = Basic;
                 }

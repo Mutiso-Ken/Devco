@@ -36,7 +36,7 @@ Report 51516273 "Generate FOSA Interest"
                             Account.SetFilter(Account."Date Filter", DFilter);
                             if Account.Find('-') then begin
                                 Account.CalcFields(Account."Net Change (LCY)");
-                                Error('....%1',Account."Net Change (LCY)");
+                                Error('....%1', Account."Net Change (LCY)");
                                 Bal := Account."Net Change (LCY)";
                                 if Account."Net Change (LCY)" >= AccountType."Interest Calc Min Balance" then begin
                                     AccountType.TestField(AccountType."Interest Rate");

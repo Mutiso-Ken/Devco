@@ -4,25 +4,25 @@ Table 51516431 "Tariff Codes"
 
     fields
     {
-        field(1;"Code";Code[20])
+        field(1; "Code"; Code[20])
         {
             NotBlank = true;
         }
-        field(2;Description;Text[50])
+        field(2; Description; Text[50])
         {
         }
-        field(3;Percentage;Decimal)
+        field(3; Percentage; Decimal)
         {
         }
-        field(4;"Account No.";Code[20])
+        field(4; "Account No."; Code[20])
         {
-            TableRelation = if ("Account Type"=const("G/L Account")) "G/L Account"."No." where ("Direct Posting"=const(true)) else if ("Account Type"=const(Vendor)) Vendor."No.";
+            TableRelation = if ("Account Type" = const("G/L Account")) "G/L Account"."No." where("Direct Posting" = const(true)) else if ("Account Type" = const(Vendor)) Vendor."No.";
         }
-        field(5;Type;Option)
+        field(5; Type; Option)
         {
             OptionMembers = " ","W/Tax",VAT,Excise,Others,Retention;
         }
-        field(12;"Account Type";Option)
+        field(12; "Account Type"; Option)
         {
             Caption = 'Account Type';
             OptionCaption = 'G/L Account,Customer,Vendor,Bank Account,Fixed Asset,IC Partner';
@@ -30,7 +30,7 @@ Table 51516431 "Tariff Codes"
 
             trigger OnValidate()
             var
-               // PayLines: Record UnknownRecord39004406;
+            // PayLines: Record UnknownRecord39004406;
             begin
             end;
         }
@@ -38,7 +38,7 @@ Table 51516431 "Tariff Codes"
 
     keys
     {
-        key(Key1;"Code")
+        key(Key1; "Code")
         {
             Clustered = true;
         }
@@ -50,15 +50,15 @@ Table 51516431 "Tariff Codes"
 
     trigger OnDelete()
     begin
-          PaymentLine.Reset;
-          PaymentLine.SetRange(PaymentLine."VAT Code",Code);
-          if PaymentLine.Find('-') then
-             Error('You cannot delete the %1 Code its already used',Type);
+        PaymentLine.Reset;
+        PaymentLine.SetRange(PaymentLine."VAT Code", Code);
+        if PaymentLine.Find('-') then
+            Error('You cannot delete the %1 Code its already used', Type);
 
-          PaymentLine.Reset;
-          PaymentLine.SetRange(PaymentLine."Withholding Tax Code",Code);
-          if PaymentLine.Find('-') then
-             Error('You cannot delete the %1 Code its already used',Type);
+        PaymentLine.Reset;
+        PaymentLine.SetRange(PaymentLine."Withholding Tax Code", Code);
+        if PaymentLine.Find('-') then
+            Error('You cannot delete the %1 Code its already used', Type);
     end;
 
     var

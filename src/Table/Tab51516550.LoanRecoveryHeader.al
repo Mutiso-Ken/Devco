@@ -40,7 +40,7 @@ Table 51516550 "Loan Recovery Header"
         }
         field(16; "Recovery Type"; Enum "Loan Recovery Methods")
         {
-            InitValue="From Loanee Deposits";
+            InitValue = "From Loanee Deposits";
             trigger OnValidate()
             var
             begin

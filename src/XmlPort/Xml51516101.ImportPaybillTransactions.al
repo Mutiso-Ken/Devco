@@ -7,22 +7,22 @@ XmlPort 51516101 "Import Paybill Transactions"
     {
         textelement(root)
         {
-            tableelement("Cust. Ledger Entry";"Cust. Ledger Entry")
+            tableelement("Cust. Ledger Entry"; "Cust. Ledger Entry")
             {
                 XmlName = 'Paybill';
-                fieldelement(No;"Cust. Ledger Entry"."Entry No.")
+                fieldelement(No; "Cust. Ledger Entry"."Entry No.")
                 {
                 }
-                fieldelement(Mobile_No;"Cust. Ledger Entry"."Document No.")
+                fieldelement(Mobile_No; "Cust. Ledger Entry"."Document No.")
                 {
                 }
-                fieldelement(Amount;"Cust. Ledger Entry".Amount)
+                fieldelement(Amount; "Cust. Ledger Entry".Amount)
                 {
                 }
-                fieldelement(Header_No;"Cust. Ledger Entry"."Transaction Type")
+                fieldelement(Header_No; "Cust. Ledger Entry"."Transaction Type")
                 {
                 }
-                fieldelement(Transaction_No;"Cust. Ledger Entry"."Posting Date")
+                fieldelement(Transaction_No; "Cust. Ledger Entry"."Posting Date")
                 {
                 }
             }

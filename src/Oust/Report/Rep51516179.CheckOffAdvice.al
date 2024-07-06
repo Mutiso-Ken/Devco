@@ -152,7 +152,7 @@ Report 51516179 "Check Off Advice"
 
                     loans.Reset;
                     loans.SetRange(loans."Client Code", "Members Register"."No.");
-                    loans.SetRange(loans."Recovery Mode",loans."Recovery Mode");
+                    loans.SetRange(loans."Recovery Mode", loans."Recovery Mode");
                     loans.SetRange(loans."Loan Product Type", 'NORMAL');
                     loans.SetFilter(loans."Outstanding Balance", '>0');
                     loans.SetAutocalcFields(loans."Outstanding Balance", loans."Oustanding Interest");

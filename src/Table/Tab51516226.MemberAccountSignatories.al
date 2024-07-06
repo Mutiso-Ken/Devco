@@ -72,7 +72,7 @@ Table 51516226 "Member Account Signatories"
         field(15; "Email Address"; Text[50])
         {
         }
-        field(16; "Mobile Number" ;Text[50])
+        field(16; "Mobile Number"; Text[50])
         {
         }
         // field(17; "Entry No"; Integer)

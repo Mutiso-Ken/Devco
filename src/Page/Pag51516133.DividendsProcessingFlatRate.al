@@ -18,149 +18,149 @@ page 51516133 "Dividends Processing Flat Rate"
                 {
                     ToolTip = 'Specifies the value of the Member No field.';
                 }
-                field("Dividend Year"; "Dividend Year")
+                field("Dividend Year"; Rec."Dividend Year")
                 {
                 }
-                field("Current Shares"; "Current Shares")
+                field("Current Shares"; Rec."Current Shares")
                 {
                 }
-                field("Qualifying Current Shares"; "Qualifying Current Shares")
+                field("Qualifying Current Shares"; Rec."Qualifying Current Shares")
                 {
                 }
-                field("Gross Interest -Current Shares"; "Gross Interest -Current Shares")
+                field("Gross Interest -Current Shares"; Rec."Gross Interest -Current Shares")
                 {
                 }
-                field("WTX -Current Shares"; "WTX -Current Shares")
+                field("WTX -Current Shares"; Rec."WTX -Current Shares")
                 {
                 }
-                field("Net Interest -Current Shares"; "Net Interest -Current Shares")
+                field("Net Interest -Current Shares"; Rec."Net Interest -Current Shares")
                 {
                 }
-                field("FOSA Shares"; "FOSA Shares")
+                field("FOSA Shares"; Rec."FOSA Shares")
                 {
                 }
-                field("Qualifying FOSA Shares"; "Qualifying FOSA Shares")
+                field("Qualifying FOSA Shares"; Rec."Qualifying FOSA Shares")
                 {
                 }
-                field("Gross Interest -FOSA Shares"; "Gross Interest -FOSA Shares")
+                field("Gross Interest -FOSA Shares"; Rec."Gross Interest -FOSA Shares")
                 {
                 }
-                field("WTX -FOSA Shares"; "WTX -FOSA Shares")
+                field("WTX -FOSA Shares"; Rec."WTX -FOSA Shares")
                 {
                 }
-                field("Net Interest -FOSA Shares"; "Net Interest -FOSA Shares")
-                {
-                }
-                //...
-                field("Computer Shares"; "Computer Shares")
-                {
-                }
-                field("Qualifying Computer Shares"; "Qualifying Computer Shares")
-                {
-                }
-                field("Gross Interest-Computer Shares"; "Gross Interest-Computer Shares")
-                {
-                }
-                field("WTX -Computer Shares"; "WTX -Computer Shares")
-                {
-                }
-                field("Net Interest -Computer Shares"; "Net Interest -Computer Shares")
-                {
-                }
-                //--
-                field("Van Shares"; "Van Shares")
-                {
-                }
-                field("Qualifying Van Shares"; "Qualifying Van Shares")
-                {
-                }
-                field("Gross Interest-Van Shares"; "Gross Interest-Van Shares")
-                {
-                }
-                field("WTX -Van Shares"; "WTX -Van Shares")
-                {
-                }
-                field("Net Interest -Van Shares"; "Net Interest -Van Shares")
-                {
-                }
-                //--
-                field("Preferential Shares"; "Preferential Shares")
-                {
-                }
-                field("Qualifying Preferential Shares"; "Qualifying Preferential Shares")
-                {
-                }
-                field("Gross Interest-Preferential Shares"; "Gross Int-Preferential Shares")
-                {
-                }
-                field("WTX -Preferential Shares"; "WTX -Preferential Shares")
-                {
-                }
-                field("Net Int-Preferential Shares"; "Net Int-Preferential Shares")
-                {
-                }
-                //--
-                field("Lift Shares"; "Lift Shares")
-                {
-                }
-                field("Qualifying Lift Shares"; "Qualifying Lift Shares")
-                {
-                }
-                field("Gross Interest-Lift Shares"; "Gross Int-Lift Shares")
-                {
-                }
-                field("WTX -Lift Shares"; "WTX -Van Shares")
-                {
-                }
-                field("Net Interest -Lift Shares"; "Net Int-Lift Shares")
+                field("Net Interest -FOSA Shares"; Rec."Net Interest -FOSA Shares")
                 {
                 }
                 //...
-                field("Tambaa Shares"; "Tambaa Shares")
+                field("Computer Shares"; Rec."Computer Shares")
                 {
                 }
-                field("Qualifying Tambaa Shares"; "Qualifying Tambaa Shares")
+                field("Qualifying Computer Shares"; Rec."Qualifying Computer Shares")
                 {
                 }
-                field("Gross Interest-Tambaa Shares"; "Gross Int-Tambaa Shares")
+                field("Gross Interest-Computer Shares"; Rec."Gross Interest-Computer Shares")
                 {
                 }
-                field("WTX -Tambaa Shares"; "WTX -Tambaa Shares")
+                field("WTX -Computer Shares"; Rec."WTX -Computer Shares")
                 {
                 }
-                field("Net Interest -Tambaa Shares"; "Net Int-Tambaa Shares")
-                {
-                }
-                //--
-                field("Pepea Shares"; "Pepea Shares")
-                {
-                }
-                field("Qualifying Pepea Shares"; "Qualifying Pepea Shares")
-                {
-                }
-                field("Gross Interest-Pepea Shares"; "Gross Int-Pepea Shares")
-                {
-                }
-                field("WTX -Pepea Shares"; "WTX -Pepea Shares")
-                {
-                }
-                field("Net Interest -Pepea Shares"; "Net Int-Pepea Shares")
+                field("Net Interest -Computer Shares"; Rec."Net Interest -Computer Shares")
                 {
                 }
                 //--
-                field("Housing Shares"; "Housing Shares")
+                field("Van Shares"; Rec."Van Shares")
                 {
                 }
-                field("Qualifying Housing Shares"; "Qualifying Housing Shares")
+                field("Qualifying Van Shares"; Rec."Qualifying Van Shares")
                 {
                 }
-                field("Gross Interest-Housing Shares"; "Gross Int-Housing Shares")
+                field("Gross Interest-Van Shares"; Rec."Gross Interest-Van Shares")
                 {
                 }
-                field("WTX -Housing Shares"; "WTX -Housing Shares")
+                field("WTX -Van Shares"; Rec."WTX -Van Shares")
                 {
                 }
-                field("Net Interest -Housing Shares"; "Net Int-Housing Shares")
+                field("Net Interest -Van Shares"; Rec."Net Interest -Van Shares")
+                {
+                }
+                //--
+                field("Preferential Shares"; Rec."Preferential Shares")
+                {
+                }
+                field("Qualifying Preferential Shares"; Rec."Qualifying Preferential Shares")
+                {
+                }
+                field("Gross Interest-Preferential Shares"; Rec."Gross Int-Preferential Shares")
+                {
+                }
+                field("WTX -Preferential Shares"; Rec."WTX -Preferential Shares")
+                {
+                }
+                field("Net Int-Preferential Shares"; Rec."Net Int-Preferential Shares")
+                {
+                }
+                //--
+                field("Lift Shares"; Rec."Lift Shares")
+                {
+                }
+                field("Qualifying Lift Shares"; Rec."Qualifying Lift Shares")
+                {
+                }
+                field("Gross Interest-Lift Shares"; Rec."Gross Int-Lift Shares")
+                {
+                }
+                field("WTX -Lift Shares"; Rec."WTX -Van Shares")
+                {
+                }
+                field("Net Interest -Lift Shares"; Rec."Net Int-Lift Shares")
+                {
+                }
+                //...
+                field("Tambaa Shares"; Rec."Tambaa Shares")
+                {
+                }
+                field("Qualifying Tambaa Shares"; Rec."Qualifying Tambaa Shares")
+                {
+                }
+                field("Gross Interest-Tambaa Shares"; Rec."Gross Int-Tambaa Shares")
+                {
+                }
+                field("WTX -Tambaa Shares"; Rec."WTX -Tambaa Shares")
+                {
+                }
+                field("Net Interest -Tambaa Shares"; Rec."Net Int-Tambaa Shares")
+                {
+                }
+                //--
+                field("Pepea Shares"; Rec."Pepea Shares")
+                {
+                }
+                field("Qualifying Pepea Shares"; Rec."Qualifying Pepea Shares")
+                {
+                }
+                field("Gross Interest-Pepea Shares"; Rec."Gross Int-Pepea Shares")
+                {
+                }
+                field("WTX -Pepea Shares"; Rec."WTX -Pepea Shares")
+                {
+                }
+                field("Net Interest -Pepea Shares"; Rec."Net Int-Pepea Shares")
+                {
+                }
+                //--
+                field("Housing Shares"; Rec."Housing Shares")
+                {
+                }
+                field("Qualifying Housing Shares"; Rec."Qualifying Housing Shares")
+                {
+                }
+                field("Gross Interest-Housing Shares"; Rec."Gross Int-Housing Shares")
+                {
+                }
+                field("WTX -Housing Shares"; Rec."WTX -Housing Shares")
+                {
+                }
+                field("Net Interest -Housing Shares"; Rec."Net Int-Housing Shares")
                 {
                 }
             }

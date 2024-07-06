@@ -83,14 +83,14 @@ page 51516048 "Loan Recovery Card"
                 var
                     RecoveryLines: Record "Loan Recovery List";
                 begin
-                    TestField(Posted, false);
-                    TestField("Posted By", '');
-                    TestField("Posting Date", 0D);
-                    if Status <> Status::Open then begin
+                    Rec.TestField(Posted, false);
+                    Rec.TestField("Posted By", '');
+                    Rec.TestField("Posting Date", 0D);
+                    if Rec.Status <> Rec.Status::Open then begin
                         Error('The card MUST be Open');
                     end;
                     RecoveryLines.Reset();
-                    RecoveryLines.SetRange(RecoveryLines."Document No", "Document No");
+                    RecoveryLines.SetRange(RecoveryLines."Document No", Rec."Document No");
                     if RecoveryLines.Find('-') then begin
                         repeat
                             if (RecoveryLines."Member No" = '') or (RecoveryLines."Loan No." = '') or (RecoveryLines."Total Amount To Recover" = 0) then begin
@@ -143,14 +143,14 @@ page 51516048 "Loan Recovery Card"
                     JBatch: Code[20];
                     FundsUser: Record "Funds User Setup";
                 begin
-                    TestField(Posted, false);
-                    TestField("Posted By", '');
-                    TestField("Posting Date", 0D);
-                    if Status <> Status::Approved then begin
+                    Rec.TestField(Posted, false);
+                    Rec.TestField("Posted By", '');
+                    Rec.TestField("Posting Date", 0D);
+                    if Rec.Status <> Rec.Status::Approved then begin
                         Error('The card MUST be Approved');
                     end;
                     //----------------Recovery Process Begin
-                    if Confirm('Are You sure you want to recover loans from ' + Format("Recovery Type") + ' ?', false) = false then begin
+                    if Confirm('Are You sure you want to recover loans from ' + Format(Rec."Recovery Type") + ' ?', false) = false then begin
                         exit;
                     end else begin
 
@@ -171,7 +171,7 @@ page 51516048 "Loan Recovery Card"
                             end;
 
                             RecoveryLines.Reset();
-                            RecoveryLines.SetRange(RecoveryLines."Document No", "Document No");
+                            RecoveryLines.SetRange(RecoveryLines."Document No", Rec."Document No");
                             if RecoveryLines.Find('-') then begin
                                 repeat
                                     //.....................Create GL Lines
@@ -258,10 +258,10 @@ page 51516048 "Loan Recovery Card"
                             end;
 
                             //------------------Mark As Posted
-                            Posted := true;
-                            "Posted By" := UserId;
-                            "Posting Date" := Today;
-                            Status := Status::Closed;
+                            Rec.Posted := true;
+                            Rec."Posted By" := UserId;
+                            Rec."Posting Date" := Today;
+                            Rec.Status := Rec.Status::Closed;
                             REC.Modify();
                             Message('Loan Recoveries Posted Successfully');
                             // IF REC."Notify Member(s)" = true THEN begin
@@ -300,34 +300,34 @@ page 51516048 "Loan Recovery Card"
 
     local procedure FnUpdateControls()
     begin
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             SendApprovalEnabled := true;
             CancelApprovalEnabled := false;
             PostEnabled := false;
             FieldEditable := true;
         end else
-            if Status = Status::Pending then begin
+            if Rec.Status = Rec.Status::Pending then begin
                 SendApprovalEnabled := false;
                 CancelApprovalEnabled := true;
                 PostEnabled := false;
                 FieldEditable := false;
             end
             else
-                if Status = Status::Approved then begin
+                if Rec.Status = Rec.Status::Approved then begin
                     SendApprovalEnabled := false;
                     CancelApprovalEnabled := false;
                     PostEnabled := true;
                     FieldEditable := false;
                 end
                 else
-                    if Status = Status::Closed then begin
+                    if Rec.Status = Rec.Status::Closed then begin
                         SendApprovalEnabled := false;
                         CancelApprovalEnabled := false;
                         PostEnabled := false;
                         FieldEditable := false;
                     end
                     else
-                        if Status = Status::Rejected then begin
+                        if Rec.Status = Rec.Status::Rejected then begin
                             SendApprovalEnabled := true;
                             CancelApprovalEnabled := false;
                             PostEnabled := true;

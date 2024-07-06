@@ -1037,7 +1037,7 @@ report 50024 FinancialStaticalInformation
                 end;
 
                 if TotalRevenue <> 0 then begin
-                    TotalExpensesTotalRevenue :=  (TotalExpenses / TotalRevenue);
+                    TotalExpensesTotalRevenue := (TotalExpenses / TotalRevenue);
                 end;
 
                 if LTotalRevenue <> 0 then begin

@@ -4,12 +4,12 @@ Table 51516868 "Project User Setup"
 
     fields
     {
-        field(10;"User ID";Code[20])
+        field(10; "User ID"; Code[20])
         {
 
             trigger OnLookup()
             begin
-                 // UserManager.LookupUserID("User ID");
+                // UserManager.LookupUserID("User ID");
             end;
 
             trigger OnValidate()
@@ -17,25 +17,25 @@ Table 51516868 "Project User Setup"
                 // UserManager.ValidateUserID(UserId);
             end;
         }
-        field(11;"Reclassification Template";Code[20])
+        field(11; "Reclassification Template"; Code[20])
         {
             TableRelation = "FA Reclass. Journal Template".Name;
         }
-        field(12;"Reclassification Batch";Code[20])
+        field(12; "Reclassification Batch"; Code[20])
         {
-            TableRelation = "FA Reclass. Journal Batch".Name where ("Journal Template Name"=field("Reclassification Template"));
+            TableRelation = "FA Reclass. Journal Batch".Name where("Journal Template Name" = field("Reclassification Template"));
         }
-        field(13;"General Journal Template";Code[20])
+        field(13; "General Journal Template"; Code[20])
         {
         }
-        field(14;"General Journal Batch";Code[20])
+        field(14; "General Journal Batch"; Code[20])
         {
         }
     }
 
     keys
     {
-        key(Key1;"User ID")
+        key(Key1; "User ID")
         {
             Clustered = true;
         }

@@ -8,8 +8,8 @@ Page 51516033 "Posted Funds Transfer List"
     InsertAllowed = false;
     PageType = List;
     SourceTable = "Funds Transfer Header";
-    SourceTableView = where(Posted=const(true),
-                            Status=const(Posted));
+    SourceTableView = where(Posted = const(true),
+                            Status = const(Posted));
     UsageCategory = Lists;
 
     layout
@@ -18,31 +18,31 @@ Page 51516033 "Posted Funds Transfer List"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Date;Date)
+                field(Date; Rec.Date)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Date";"Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Paying Bank Account";"Paying Bank Account")
+                field("Paying Bank Account"; Rec."Paying Bank Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Paying Bank Name";"Paying Bank Name")
+                field("Paying Bank Name"; Rec."Paying Bank Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount to Transfer";"Amount to Transfer")
+                field("Amount to Transfer"; Rec."Amount to Transfer")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount to Transfer(LCY)";"Amount to Transfer(LCY)")
+                field("Amount to Transfer(LCY)"; Rec."Amount to Transfer(LCY)")
                 {
                     ApplicationArea = Basic;
                 }

@@ -10,11 +10,11 @@ Page 51516363 "Bulk SMS Lines Part"
         {
             repeater(Group)
             {
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No"; "Phone No")
+                field("Phone No"; Rec."Phone No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Telephone No';

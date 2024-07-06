@@ -4,78 +4,78 @@ Table 51516522 "SurePESA Transactions"
 
     fields
     {
-        field(1;"Account No";Code[30])
+        field(1; "Account No"; Code[30])
         {
-            
+
         }
-        field(2;"Account Name";Text[50])
+        field(2; "Account Name"; Text[50])
         {
-            
+
         }
-        field(3;"Document No";Code[30])
-        {
-        }
-        field(4;"Document Date";Date)
+        field(3; "Document No"; Code[30])
         {
         }
-        field(5;"Transaction Time";Time)
+        field(4; "Document Date"; Date)
         {
         }
-        field(6;"Transaction Type";Option)
+        field(5; "Transaction Time"; Time)
+        {
+        }
+        field(6; "Transaction Type"; Option)
         {
             OptionCaption = ' ,Withdrawal,Deposit,Balance,Ministatement,Airtime,Loan balance,Loan Status,Share Deposit Balance,Transfer to Fosa,Transfer to Bosa,Utility Payment,Loan Application,Standing orders';
             OptionMembers = " ",Withdrawal,Deposit,Balance,Ministatement,Airtime,"Loan balance","Loan Status","Share Deposit Balance","Transfer to Fosa","Transfer to Bosa","Utility Payment","Loan Application","Standing orders";
         }
-        field(7;"Telephone Number";Code[30])
+        field(7; "Telephone Number"; Code[30])
         {
         }
-        field(8;Posted;Boolean)
+        field(8; Posted; Boolean)
         {
         }
-        field(9;"Date Posted";DateTime)
+        field(9; "Date Posted"; DateTime)
         {
         }
-        field(10;"Account No2";Text[30])
+        field(10; "Account No2"; Text[30])
         {
         }
-        field(11;"Loan No";Code[30])
+        field(11; "Loan No"; Code[30])
         {
         }
-        field(12;Status;Option)
+        field(12; Status; Option)
         {
             OptionCaption = 'Pending,Completed,Failed';
             OptionMembers = Pending,Completed,Failed;
         }
-        field(13;Comments;Text[50])
+        field(13; Comments; Text[50])
         {
         }
-        field(14;Amount;Decimal)
+        field(14; Amount; Decimal)
         {
         }
-        field(15;Charge;Decimal)
+        field(15; Charge; Decimal)
         {
         }
-        field(16;Description;Text[100])
+        field(16; Description; Text[100])
         {
         }
-        field(18;Entry;Integer)
+        field(18; Entry; Integer)
         {
             AutoIncrement = true;
         }
-        field(20;Client;Code[50])
+        field(20; Client; Code[50])
         {
         }
-        field(21;"Posting Date";Date)
+        field(21; "Posting Date"; Date)
         {
         }
-        field(22;"SMS Message";Text[250])
+        field(22; "SMS Message"; Text[250])
         {
         }
     }
 
     keys
     {
-        key(Key1;Entry,"Document No")
+        key(Key1; Entry, "Document No")
         {
             Clustered = true;
         }

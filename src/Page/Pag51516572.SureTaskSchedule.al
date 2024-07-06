@@ -12,15 +12,15 @@ Page 51516572 "Sure Task Schedule"
         {
             repeater(Group)
             {
-                field(Task;Task)
+                field(Task; Rec.Task)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Next Task Date";"Next Task Date")
+                field("Next Task Date"; Rec."Next Task Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(frequency;frequency)
+                field(frequency; Rec.frequency)
                 {
                     ApplicationArea = Basic;
                 }

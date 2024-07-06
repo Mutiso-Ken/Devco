@@ -28,7 +28,7 @@ page 51516080 "Salary Processing Lines"
                 field(Amount; Rec.Amount)
                 {
                 }
-                field("Staff No"; "Staff No")
+                field("Staff No"; Rec."Staff No")
                 {
                     trigger OnValidate()
                     var
@@ -36,10 +36,10 @@ page 51516080 "Salary Processing Lines"
                     begin
                         VendorTable.Reset();
                         VendorTable.SetRange(VendorTable."Account Type", 'ORDINARY');
-                        VendorTable.SetRange(VendorTable."Staff No", "Staff No");
+                        VendorTable.SetRange(VendorTable."Staff No", Rec."Staff No");
                         if VendorTable.Find('-') then begin
-                            "Account No" := VendorTable."No.";
-                            Modify();
+                            Rec."Account No" := VendorTable."No.";
+                            Rec.Modify();
                         end;
                     end;
                 }

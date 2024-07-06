@@ -4,34 +4,34 @@ Table 51516479 "loans Cues"
 
     fields
     {
-        field(1;"Primary Key";Code[10])
+        field(1; "Primary Key"; Code[10])
         {
         }
-        field(2;"Applied Loans";Integer)
+        field(2; "Applied Loans"; Integer)
         {
-            CalcFormula = count("Loans Register" where ("Approval Status"=const(Open)));
+            CalcFormula = count("Loans Register" where("Approval Status" = const(Open)));
             FieldClass = FlowField;
         }
-        field(3;"Approved Loans";Integer)
+        field(3; "Approved Loans"; Integer)
         {
-            CalcFormula = count("Loans Register" where ("Approval Status"=const(Approved)));
+            CalcFormula = count("Loans Register" where("Approval Status" = const(Approved)));
             FieldClass = FlowField;
         }
-        field(4;"Pending Loans";Integer)
+        field(4; "Pending Loans"; Integer)
         {
-            CalcFormula = count("Loans Register" where ("Approval Status"=const(Pending)));
+            CalcFormula = count("Loans Register" where("Approval Status" = const(Pending)));
             FieldClass = FlowField;
         }
-        field(5;"Rejected Loans";Integer)
+        field(5; "Rejected Loans"; Integer)
         {
-            CalcFormula = count("Loans Register" where ("Approval Status"=const(Rejected)));
+            CalcFormula = count("Loans Register" where("Approval Status" = const(Rejected)));
             FieldClass = FlowField;
         }
     }
 
     keys
     {
-        key(Key1;"Primary Key")
+        key(Key1; "Primary Key")
         {
             Clustered = true;
         }

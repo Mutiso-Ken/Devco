@@ -10,22 +10,22 @@ Page 51516528 "Agent/NOK/Sign. Change Card"
         {
             group(General)
             {
-                field("Document No"; "Document No")
+                field("Document No"; Rec."Document No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Member No"; "Member No")
+                field("Member No"; Rec."Member No")
                 {
                     ApplicationArea = Basic;
                     Editable = MemberNoEditable;
                 }
-                field("Member Name"; "Member Name")
+                field("Member Name"; Rec."Member Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account Type"; "Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                     Editable = AccountTypeEditable;
@@ -33,15 +33,15 @@ Page 51516528 "Agent/NOK/Sign. Change Card"
                     trigger OnValidate()
                     begin
                         AccountEditable := false;
-                        if "Account Type" = "account type"::FOSA then
+                        if Rec."Account Type" = Rec."account type"::FOSA then
                             AccountEditable := true;
 
                         ChangeTypeEditable := true;
-                        if "Account Type" = "account type"::" " then
+                        if Rec."Account Type" = Rec."account type"::" " then
                             ChangeTypeEditable := false;
                     end;
                 }
-                field("Change Type"; "Change Type")
+                field("Change Type"; Rec."Change Type")
                 {
                     ApplicationArea = Basic;
                     Editable = ChangeTypeEditable;
@@ -51,22 +51,22 @@ Page 51516528 "Agent/NOK/Sign. Change Card"
                         FnGetListShow();
                     end;
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Captured On"; "Captured On")
+                field("Captured On"; Rec."Captured On")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Change Effected"; "Change Effected")
+                field("Change Effected"; Rec."Change Effected")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -112,30 +112,30 @@ Page 51516528 "Agent/NOK/Sign. Change Card"
                 trigger OnAction()
                 begin
                     if Confirm('Confirm you want to effect this Change', false) = true then begin
-                        if ("Account Type" = "account type"::BOSA) and ("Change Type" = "change type"::"Account Next Of Kin Change") then begin
-                            FnRunMemberNextofKinChange_Effect("Document No");
+                        if (Rec."Account Type" = Rec."account type"::BOSA) and (Rec."Change Type" = Rec."change type"::"Account Next Of Kin Change") then begin
+                            FnRunMemberNextofKinChange_Effect(Rec."Document No");
                         end;
 
-                        if ("Account Type" = "account type"::BOSA) and ("Change Type" = "change type"::"Account Agent Change") then begin
-                            FnRunMemberAgentDetailsChange_Effect("Document No");
+                        if (Rec."Account Type" = Rec."account type"::BOSA) and (Rec."Change Type" = Rec."change type"::"Account Agent Change") then begin
+                            FnRunMemberAgentDetailsChange_Effect(Rec."Document No");
                         end;
 
-                        if ("Account Type" = "account type"::FOSA) and ("Change Type" = "change type"::"Account Next Of Kin Change") then begin
-                            FnRunAccountNextofKinChange_Effect("Document No");
+                        if (Rec."Account Type" = Rec."account type"::FOSA) and (Rec."Change Type" = Rec."change type"::"Account Next Of Kin Change") then begin
+                            FnRunAccountNextofKinChange_Effect(Rec."Document No");
                         end;
 
-                        if ("Account Type" = "account type"::FOSA) and ("Change Type" = "change type"::"Account Agent Change") then begin
-                            FnRunAccountAgentDetailsChange_Effect("Document No");
+                        if (Rec."Account Type" = Rec."account type"::FOSA) and (Rec."Change Type" = Rec."change type"::"Account Agent Change") then begin
+                            FnRunAccountAgentDetailsChange_Effect(Rec."Document No");
                         end;
 
-                        if ("Change Type" = "change type"::"Account Signatory Change") then begin
-                            FnRunAccountSignatoriesChange_Effect("Document No");
+                        if (Rec."Change Type" = Rec."change type"::"Account Signatory Change") then begin
+                            FnRunAccountSignatoriesChange_Effect(Rec."Document No");
                         end;
 
                     end;
-                    "Change Effected" := true;
-                    "Change Effected By" := UserId;
-                    "Change Effected On" := WorkDate;
+                    Rec."Change Effected" := true;
+                    Rec."Change Effected By" := UserId;
+                    Rec."Change Effected On" := WorkDate;
                     AllowEffect := false;
                     Message('Change Effected Succesfully');
                 end;
@@ -191,7 +191,7 @@ Page 51516528 "Agent/NOK/Sign. Change Card"
                     ApprovalEntries: Page "Approval Entries";
                 begin
                     DocumentType := Documenttype::MemberAgentNOKChange;
-                    ApprovalEntries.SetRecordFilters(Database::"Member Agent/Next Of Kin Chang", DocumentType, "Document No");
+                    ApprovalEntries.SetRecordFilters(Database::"Member Agent/Next Of Kin Chang", DocumentType, Rec."Document No");
                     ApprovalEntries.Run;
                 end;
             }
@@ -203,31 +203,31 @@ Page 51516528 "Agent/NOK/Sign. Change Card"
         //FnGetListShow();
 
         EnableCreateMember := false;
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
-        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
+        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(Rec.RecordId);
+        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(Rec.RecordId);
         EnabledApprovalWorkflowsExist := true;
 
-        if ((Rec.Status = Status::Approved)) then
+        if ((Rec.Status = Rec.Status::Approved)) then
             EnableCreateMember := true;
     end;
 
     trigger OnAfterGetRecord()
     begin
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             MemberNoEditable := true;
             AccountTypeEditable := true;
             AccountNoEditable := true;
             ChangeTypeEditable := true;
             AllowEffect := false;
         end else
-            if Status = Status::"Pending Approval" then begin
+            if Rec.Status = Rec.Status::"Pending Approval" then begin
                 MemberNoEditable := false;
                 AccountTypeEditable := false;
                 AccountNoEditable := false;
                 ChangeTypeEditable := false;
                 AllowEffect := false;
             end else
-                if Status = Status::Approved then begin
+                if Rec.Status = Rec.Status::Approved then begin
                     MemberNoEditable := false;
                     AccountTypeEditable := false;
                     AccountNoEditable := false;
@@ -236,11 +236,11 @@ Page 51516528 "Agent/NOK/Sign. Change Card"
                 end;
 
         EnableCreateMember := false;
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
-        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
+        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(Rec.RecordId);
+        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(Rec.RecordId);
         EnabledApprovalWorkflowsExist := true;
 
-        if ((Rec.Status = Status::Approved)) then begin
+        if ((Rec.Status = Rec.Status::Approved)) then begin
             EnableCreateMember := true;
             AllowEffect := true;
         end;
@@ -249,7 +249,7 @@ Page 51516528 "Agent/NOK/Sign. Change Card"
 
 
         LinesEditable := true;
-        if "Change Effected" = true then begin
+        if Rec."Change Effected" = true then begin
             LinesEditable := false;
             AllowEffect := false;
         end;
@@ -259,27 +259,27 @@ Page 51516528 "Agent/NOK/Sign. Change Card"
     begin
         FnGetListShow();
 
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             MemberNoEditable := true;
             AccountTypeEditable := true;
             AccountNoEditable := true;
             ChangeTypeEditable := true;
             AccountEditable := false;
             AllowEffect := false;
-            if "Account Type" = "account type"::FOSA then
+            if Rec."Account Type" = Rec."account type"::FOSA then
                 AccountEditable := true;
 
-            if "Account Type" = "account type"::" " then
+            if Rec."Account Type" = Rec."account type"::" " then
                 ChangeTypeEditable := false;
         end else
-            if Status = Status::"Pending Approval" then begin
+            if Rec.Status = Rec.Status::"Pending Approval" then begin
                 MemberNoEditable := false;
                 AccountTypeEditable := false;
                 AccountNoEditable := false;
                 ChangeTypeEditable := false;
                 AllowEffect := false;
             end else
-                if Status = Status::Approved then begin
+                if Rec.Status = Rec.Status::Approved then begin
                     MemberNoEditable := false;
                     AccountTypeEditable := false;
                     AccountNoEditable := false;
@@ -288,7 +288,7 @@ Page 51516528 "Agent/NOK/Sign. Change Card"
                 end;
 
         LinesEditable := true;
-        if "Change Effected" = true then begin
+        if Rec."Change Effected" = true then begin
             LinesEditable := false;
             AllowEffect := false;
         end;
@@ -333,17 +333,17 @@ Page 51516528 "Agent/NOK/Sign. Change Card"
         VarAccountSignatoriesVisible := false;
 
 
-        if ("Change Type" = "change type"::"Account Next Of Kin Change") then begin
+        if (Rec."Change Type" = Rec."change type"::"Account Next Of Kin Change") then begin
             VarAccountAgentVisible := false;
             VarBOSANOKVisible := true;
             VarAccountSignatoriesVisible := false;
         end else
-            if ("Change Type" = "change type"::"Account Agent Change") then begin
+            if (Rec."Change Type" = Rec."change type"::"Account Agent Change") then begin
                 VarAccountAgentVisible := true;
                 VarBOSANOKVisible := false;
                 VarAccountSignatoriesVisible := false;
             end else
-                if ("Change Type" = "change type"::"Account Signatory Change") then begin
+                if (Rec."Change Type" = Rec."change type"::"Account Signatory Change") then begin
                     VarAccountAgentVisible := false;
                     VarBOSANOKVisible := false;
                     VarAccountSignatoriesVisible := true;
@@ -358,7 +358,7 @@ Page 51516528 "Agent/NOK/Sign. Change Card"
         ObjNOKAgentChange.SetRange(ObjNOKAgentChange."Change Type", ObjNOKAgentChange."change type"::"Account Next Of Kin Change");
         if ObjNOKAgentChange.FindSet then begin
             ObjAccountNOKDetails.Reset;
-            ObjAccountNOKDetails.SetRange(ObjAccountNOKDetails."Account No", "Account No");
+            ObjAccountNOKDetails.SetRange(ObjAccountNOKDetails."Account No", Rec."Account No");
             if ObjAccountNOKDetails.FindSet then begin
                 ObjAccountNOKDetails.DeleteAll;
             end;
@@ -371,7 +371,7 @@ Page 51516528 "Agent/NOK/Sign. Change Card"
                     ObjAccountNOKDetails.Name := ObjMemberNextofKinChange.Name;
                     ObjAccountNOKDetails.Address := ObjMemberNextofKinChange.Address;
                     ObjAccountNOKDetails."ID No." := ObjMemberNextofKinChange."ID No.";
-                    ObjAccountNOKDetails."Account No" := "Account No";
+                    ObjAccountNOKDetails."Account No" := Rec."Account No";
                     ObjAccountNOKDetails."%Allocation" := ObjMemberNextofKinChange."%Allocation";
                     ObjAccountNOKDetails."Next Of Kin Type" := ObjMemberNextofKinChange."Next Of Kin Type";
                     ObjAccountNOKDetails.Insert;
@@ -389,7 +389,7 @@ Page 51516528 "Agent/NOK/Sign. Change Card"
         ObjNOKAgentChange.SetRange(ObjNOKAgentChange."Change Type", ObjNOKAgentChange."change type"::"Account Next Of Kin Change");
         if ObjNOKAgentChange.FindSet then begin
             ObjMemberNOKDetails.Reset;
-            ObjMemberNOKDetails.SetRange(ObjMemberNOKDetails."Account No", "Member No");
+            ObjMemberNOKDetails.SetRange(ObjMemberNOKDetails."Account No", Rec."Member No");
             if ObjMemberNOKDetails.FindSet then begin
                 ObjMemberNOKDetails.DeleteAll;
             end;
@@ -399,7 +399,7 @@ Page 51516528 "Agent/NOK/Sign. Change Card"
             if ObjMemberNextofKinChange.FindSet then begin
                 repeat
                     ObjMemberNOKDetails.Init;
-                    ObjMemberNOKDetails."Account No" := "Member No";
+                    ObjMemberNOKDetails."Account No" := Rec."Member No";
                     //ObjMemberNOKDetails."Member No" := ObjMemberNextofKinChange."Member No";
                     ObjMemberNOKDetails.Name := ObjMemberNextofKinChange.Name;
                     ObjMemberNOKDetails.Address := ObjMemberNextofKinChange.Address;
@@ -426,7 +426,7 @@ Page 51516528 "Agent/NOK/Sign. Change Card"
         ObjNOKAgentChange.SetRange(ObjNOKAgentChange."Change Type", ObjNOKAgentChange."change type"::"Account Agent Change");
         if ObjNOKAgentChange.FindSet then begin
             ObjMemberAgentDetails.Reset;
-            ObjMemberAgentDetails.SetRange(ObjMemberAgentDetails."Account No", "Member No");
+            ObjMemberAgentDetails.SetRange(ObjMemberAgentDetails."Account No", Rec."Member No");
             if ObjMemberAgentDetails.FindSet then begin
                 ObjMemberAgentDetails.DeleteAll;
             end;
@@ -443,7 +443,7 @@ Page 51516528 "Agent/NOK/Sign. Change Card"
                             ObjMemberAgentDetails."Document No" := VarDocumentNo;
                             ObjMemberAgentDetails.Names := ObjMemberAccountAgent.Names;
                             ObjMemberAgentDetails."ID No." := ObjMemberAccountAgent."ID No.";
-                            ObjMemberAgentDetails."Account No" := "Member No";
+                            ObjMemberAgentDetails."Account No" := Rec."Member No";
                             ObjMemberAgentDetails."Mobile No." := ObjMemberAccountAgent."Mobile No.";
                             ObjMemberAgentDetails."Expiry Date" := ObjMemberAccountAgent."Expiry Date";
                             ObjMemberAgentDetails."Allowed  Correspondence" := ObjMemberAccountAgent."Allowed  Correspondence";
@@ -466,7 +466,7 @@ Page 51516528 "Agent/NOK/Sign. Change Card"
         ObjNOKAgentChange.SetRange(ObjNOKAgentChange."Change Type", ObjNOKAgentChange."change type"::"Account Agent Change");
         if ObjNOKAgentChange.FindSet then begin
             ObjAccountAgentDetails.Reset;
-            ObjAccountAgentDetails.SetRange(ObjAccountAgentDetails."Account No", "Account No");
+            ObjAccountAgentDetails.SetRange(ObjAccountAgentDetails."Account No", Rec."Account No");
             if ObjAccountAgentDetails.FindSet then begin
                 ObjAccountAgentDetails.DeleteAll;
             end;
@@ -483,7 +483,7 @@ Page 51516528 "Agent/NOK/Sign. Change Card"
                             ObjAccountAgentDetails."Document No" := VarDocumentNo;
                             ObjAccountAgentDetails.Names := ObjMemberAccountAgent.Names;
                             ObjAccountAgentDetails."ID No." := ObjMemberAccountAgent."ID No.";
-                            ObjAccountAgentDetails."Account No" := "Account No";
+                            ObjAccountAgentDetails."Account No" := Rec."Account No";
                             ObjAccountAgentDetails."Mobile No." := ObjMemberAccountAgent."Mobile No.";
                             ObjAccountAgentDetails."Expiry Date" := ObjMemberAccountAgent."Expiry Date";
                             ObjAccountAgentDetails."Allowed  Correspondence" := ObjMemberAccountAgent."Allowed  Correspondence";
@@ -510,7 +510,7 @@ Page 51516528 "Agent/NOK/Sign. Change Card"
         ObjNOKAgentChange.SetRange(ObjNOKAgentChange."Change Type", ObjNOKAgentChange."change type"::"Account Signatory Change");
         if ObjNOKAgentChange.FindSet then begin
             ObjAccountSignatories.Reset;
-            ObjAccountSignatories.SetRange(ObjAccountSignatories."Account No", "Account No");
+            ObjAccountSignatories.SetRange(ObjAccountSignatories."Account No", Rec."Account No");
             if ObjAccountSignatories.FindSet then begin
                 ObjAccountSignatories.DeleteAll;
             end;
@@ -527,7 +527,7 @@ Page 51516528 "Agent/NOK/Sign. Change Card"
                         //ObjAccountSignatories."Document No" := VarDocumentNo;
                         ObjAccountSignatories.Names := ObjMemberSignatory.Names;
                         ObjAccountSignatories."ID No." := ObjMemberSignatory."ID No.";
-                        ObjAccountSignatories."Account No" := "Account No";
+                        ObjAccountSignatories."Account No" := Rec."Account No";
                         //ObjAccountSignatories."Mobile No" := ObjMemberSignatory."Mobile Phone No";
                         ObjAccountSignatories."Expiry Date" := ObjMemberSignatory."Expiry Date";
                         ObjAccountSignatories."Must be Present" := ObjMemberSignatory."Must be Present";

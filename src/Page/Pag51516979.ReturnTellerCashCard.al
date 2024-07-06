@@ -13,94 +13,94 @@ page 51516979 ReturnTellerCashCard
             group(General)
             {
                 Caption = 'General';
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Transaction Type"; "Transaction Type")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                     Style = StrongAccent;
 
                 }
-                field("From Account"; "From Account")
+                field("From Account"; Rec."From Account")
                 {
                     ApplicationArea = Basic;
                     Caption = 'From';
                 }
-                field("To Account"; "To Account")
+                field("To Account"; Rec."To Account")
                 {
                     ApplicationArea = Basic;
                     Caption = 'To';
                     Style = StrongAccent;
 
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
 
                 }
-                field("Cheque No."; "Cheque No.")
+                field("Cheque No."; Rec."Cheque No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Cheque/Document No.';
                 }
-                field(Issued; Issued)
+                field(Issued; Rec.Issued)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Date Issued"; "Date Issued")
+                field("Date Issued"; Rec."Date Issued")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Time Issued"; "Time Issued")
+                field("Time Issued"; Rec."Time Issued")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Issued By"; "Issued By")
+                field("Issued By"; Rec."Issued By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Received; Received)
+                field(Received; Rec.Received)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Date Received"; "Date Received")
+                field("Date Received"; Rec."Date Received")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Time Received"; "Time Received")
+                field("Time Received"; Rec."Time Received")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Received By"; "Received By")
+                field("Received By"; Rec."Received By")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Approved; Approved)
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field(Posted; Posted)
+                field(Approved; Rec.Approved)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Captured By"; "Captured By")
+                field(Posted; Rec.Posted)
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Captured By"; Rec."Captured By")
                 {
 
                 }
@@ -126,26 +126,26 @@ page 51516979 ReturnTellerCashCard
 
                 trigger OnAction()
                 begin
-                    TESTFIELD(Amount);
-                    TestField("From Account");
-                    TestField("To Account");
+                    Rec.TESTFIELD(Amount);
+                    Rec.TestField("From Account");
+                    Rec.TestField("To Account");
                     Coinage.Reset;
-                    Coinage.SetRange(Coinage.No, No);
+                    Coinage.SetRange(Coinage.No, Rec.No);
                     if Coinage.Find('-') then begin
-                        CalcFields("Total Cash on Treasury Coinage");
-                        if Amount <> "Total Cash on Treasury Coinage" then
+                        Rec.CalcFields("Total Cash on Treasury Coinage");
+                        if Rec.Amount <> Rec."Total Cash on Treasury Coinage" then
                             Error('Amount must be equal before performing this operation');
                     end;
-                    if ("Transaction Type" = "transaction type"::"Issue To Teller") or
-                    ("Transaction Type" = "transaction type"::"Return To Treasury") or
-                    ("Transaction Type" = "transaction type"::"Inter Teller Transfers") or
-                    ("Transaction Type" = "transaction type"::"Branch Treasury Transactions")
+                    if (Rec."Transaction Type" = Rec."transaction type"::"Issue To Teller") or
+                    (Rec."Transaction Type" = Rec."transaction type"::"Return To Treasury") or
+                    (Rec."Transaction Type" = Rec."transaction type"::"Inter Teller Transfers") or
+                    (Rec."Transaction Type" = Rec."transaction type"::"Branch Treasury Transactions")
                      then begin
-                        if Issued = Issued::Yes then
+                        if Rec.Issued = Rec.Issued::Yes then
                             Error('The money has already been issued.');
 
                         TellerTill.Reset;
-                        TellerTill.SetRange(TellerTill."No.", "From Account");
+                        TellerTill.SetRange(TellerTill."No.", Rec."From Account");
                         if TellerTill.Find('-') then begin
                             if UpperCase(UserId) <> TellerTill.CashierID then
                                 Error('You do not have permission to transact on this teller till/Account.');
@@ -153,42 +153,42 @@ page 51516979 ReturnTellerCashCard
 
 
                         Banks.Reset;
-                        Banks.SetRange(Banks."No.", "From Account");
+                        Banks.SetRange(Banks."No.", Rec."From Account");
                         if Banks.Find('-') then begin
                             Banks.CalcFields(Banks."Balance (LCY)");
                             BankBal := Banks."Balance (LCY)";
-                            if Amount > BankBal then begin
+                            if Rec.Amount > BankBal then begin
                                 Error('You cannot issue more than the account balance.')
                             end;
                         end;
 
                         if Confirm('Are you sure you want to make this issue?', false) = true then begin
-                            Issued := Issued::Yes;
-                            "Date Issued" := Today;
-                            "Time Issued" := Time;
-                            "Issued By" := UpperCase(UserId);
-                            Modify;
+                            Rec.Issued := Rec.Issued::Yes;
+                            Rec."Date Issued" := Today;
+                            Rec."Time Issued" := Time;
+                            Rec."Issued By" := UpperCase(UserId);
+                            Rec.Modify;
                             SENDMAIL;
                         end;
 
-                        if ("Transaction Type" = "transaction type"::"Issue To Teller") or ("Transaction Type" = "transaction type"::"Issue From Bank")
-                        or ("Transaction Type" = "transaction type"::"Issue To Teller") or ("Transaction Type" = "transaction type"::"Inter Teller Transfers") then
+                        if (Rec."Transaction Type" = Rec."transaction type"::"Issue To Teller") or (Rec."Transaction Type" = Rec."transaction type"::"Issue From Bank")
+                        or (Rec."Transaction Type" = Rec."transaction type"::"Issue To Teller") or (Rec."Transaction Type" = Rec."transaction type"::"Inter Teller Transfers") then
                             Message('Money successfully issued.')
                         else
                             Message('Money successfully Returned.')
                     end else begin
-                        if "Transaction Type" = "transaction type"::"Return To Bank" then begin
-                            TestField(Amount);
-                            TestField("From Account");
-                            TestField("To Account");
+                        if Rec."Transaction Type" = Rec."transaction type"::"Return To Bank" then begin
+                            Rec.TestField(Amount);
+                            Rec.TestField("From Account");
+                            Rec.TestField("To Account");
 
 
                             Banks.Reset;
-                            Banks.SetRange(Banks."No.", "From Account");
+                            Banks.SetRange(Banks."No.", Rec."From Account");
                             if Banks.Find('-') then begin
                                 Banks.CalcFields("Balance (LCY)");
-                                if Amount > Banks."Balance (LCY)" then
-                                    Error('You cannot receive more than balance in ' + "From Account")
+                                if Rec.Amount > Banks."Balance (LCY)" then
+                                    Error('You cannot receive more than balance in ' + Rec."From Account")
                             end;
 
                             if Confirm('Are you sure you want to make this return?', false) = false then
@@ -211,20 +211,20 @@ page 51516979 ReturnTellerCashCard
                             GenJournalLine.Init;
                             GenJournalLine."Journal Template Name" := 'GENERAL';
                             GenJournalLine."Journal Batch Name" := 'FTRANS';
-                            GenJournalLine."Document No." := No;
-                            GenJournalLine."External Document No." := "Cheque No.";
+                            GenJournalLine."Document No." := Rec.No;
+                            GenJournalLine."External Document No." := Rec."Cheque No.";
                             GenJournalLine."Line No." := 10000;
                             GenJournalLine."Account Type" := GenJournalLine."account type"::"Bank Account";
-                            GenJournalLine."Account No." := "From Account";
+                            GenJournalLine."Account No." := Rec."From Account";
                             GenJournalLine."Posting Date" := Today;
                             GenJournalLine.Validate(GenJournalLine."Account No.");
-                            GenJournalLine.Description := Description;
-                            GenJournalLine."Currency Code" := "Currency Code";
+                            GenJournalLine.Description := Rec.Description;
+                            GenJournalLine."Currency Code" := Rec."Currency Code";
                             GenJournalLine.Validate(GenJournalLine."Currency Code");
-                            GenJournalLine.Amount := -Amount;
+                            GenJournalLine.Amount := -Rec.Amount;
                             GenJournalLine.Validate(GenJournalLine.Amount);
                             GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"Bank Account";
-                            GenJournalLine."Bal. Account No." := "To Account";
+                            GenJournalLine."Bal. Account No." := Rec."To Account";
                             GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
                             if GenJournalLine.Amount <> 0 then
                                 GenJournalLine.Insert;
@@ -235,16 +235,16 @@ page 51516979 ReturnTellerCashCard
                             if GenJournalLine.Find('-') then
                                 Codeunit.Run(Codeunit::"Gen. Jnl.-Post", GenJournalLine);
 
-                            Posted := true;
-                            "Date Posted" := Today;
-                            "Time Posted" := Time;
-                            "Posted By" := UpperCase(UserId);
+                            Rec.Posted := true;
+                            Rec."Date Posted" := Today;
+                            Rec."Time Posted" := Time;
+                            Rec."Posted By" := UpperCase(UserId);
 
-                            Received := Received::Yes;
-                            "Date Received" := Today;
-                            "Time Received" := Time;
-                            "Received By" := UpperCase(UserId);
-                            Modify;
+                            Rec.Received := Rec.Received::Yes;
+                            Rec."Date Received" := Today;
+                            Rec."Time Received" := Time;
+                            Rec."Received By" := UpperCase(UserId);
+                            Rec.Modify;
 
                             //END;
 
@@ -266,40 +266,40 @@ page 51516979 ReturnTellerCashCard
 
                 trigger OnAction()
                 begin
-                    TestField(Amount);
-                    TestField("From Account");
-                    TestField("To Account");
-                    Approved := true;
+                    Rec.TestField(Amount);
+                    Rec.TestField("From Account");
+                    Rec.TestField("To Account");
+                    Rec.Approved := true;
                     GenSetup.Get;
 
-                    if "Transaction Type" = "transaction type"::"Issue From Bank" then
-                        TestField("Cheque No.");
+                    if Rec."Transaction Type" = Rec."transaction type"::"Issue From Bank" then
+                        Rec.TestField("Cheque No.");
 
                     CurrentTellerAmount := 0;
-                    if Posted = true then
+                    if Rec.Posted = true then
                         Error('The transaction has already been received and posted.');
 
-                    if "Transaction Type" = "transaction type"::"Inter Teller Transfers" then begin
-                        if Approved = false then
+                    if Rec."Transaction Type" = Rec."transaction type"::"Inter Teller Transfers" then begin
+                        if Rec.Approved = false then
                             Error('Inter Teller Transfers must be approved.');
                     end;
 
 
-                    if ("Transaction Type" = "transaction type"::"Issue To Teller") or
-                    ("Transaction Type" = "transaction type"::"Branch Treasury Transactions") or
-                    ("Transaction Type" = "transaction type"::"Inter Teller Transfers") then begin
-                        if Issued = Issued::No then
+                    if (Rec."Transaction Type" = Rec."transaction type"::"Issue To Teller") or
+                    (Rec."Transaction Type" = Rec."transaction type"::"Branch Treasury Transactions") or
+                    (Rec."Transaction Type" = Rec."transaction type"::"Inter Teller Transfers") then begin
+                        if Rec.Issued = Rec.Issued::No then
                             Error('The issue has not yet been made and therefore you cannot continue with this transaction.');
 
                         TellerTill.Reset;
-                        TellerTill.SetRange(TellerTill."No.", "To Account");
+                        TellerTill.SetRange(TellerTill."No.", Rec."To Account");
                         if TellerTill.Find('-') then begin
                             if UpperCase(UserId) <> TellerTill.CashierID then
                                 Error('You do not have permission to transact on this teller till/Account.');
 
                             TellerTill.CalcFields(TellerTill.Balance);
                             CurrentTellerAmount := TellerTill.Balance;
-                            if CurrentTellerAmount + Amount > TellerTill."Maximum Teller Withholding" then
+                            if CurrentTellerAmount + Rec.Amount > TellerTill."Maximum Teller Withholding" then
                                 Error('The transaction will result in the teller having a balance more than the maximum allowable therefor terminated.');
 
                         end;
@@ -327,20 +327,20 @@ page 51516979 ReturnTellerCashCard
                     GenJournalLine.Init;
                     GenJournalLine."Journal Template Name" := 'GENERAL';
                     GenJournalLine."Journal Batch Name" := 'FTRANS';
-                    GenJournalLine."Document No." := No;
+                    GenJournalLine."Document No." := Rec.No;
                     GenJournalLine."Line No." := lines;
                     GenJournalLine."Account Type" := GenJournalLine."account type"::"Bank Account";
-                    GenJournalLine."Account No." := "From Account";
-                    GenJournalLine."External Document No." := "Cheque No.";
+                    GenJournalLine."Account No." := Rec."From Account";
+                    GenJournalLine."External Document No." := Rec."Cheque No.";
                     GenJournalLine."Posting Date" := Today;
                     GenJournalLine.Validate(GenJournalLine."Account No.");
-                    GenJournalLine.Description := Description;
-                    GenJournalLine."Currency Code" := "Currency Code";
+                    GenJournalLine.Description := Rec.Description;
+                    GenJournalLine."Currency Code" := Rec."Currency Code";
                     GenJournalLine.Validate(GenJournalLine."Currency Code");
-                    GenJournalLine.Amount := -Amount;
+                    GenJournalLine.Amount := -Rec.Amount;
                     GenJournalLine.Validate(GenJournalLine.Amount);
                     GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"Bank Account";
-                    GenJournalLine."Bal. Account No." := "To Account";
+                    GenJournalLine."Bal. Account No." := Rec."To Account";
                     GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
                     if GenJournalLine.Amount <> 0 then
                         GenJournalLine.Insert;
@@ -358,16 +358,16 @@ page 51516979 ReturnTellerCashCard
                     GenJournalLine.SetRange("Journal Template Name", 'GENERAL');
                     GenJournalLine.SetRange("Journal Batch Name", 'FTRANS');
                     GenJournalLine.DeleteAll;
-                    Posted := true;
-                    "Date Posted" := Today;
-                    "Time Posted" := Time;
-                    "Posted By" := UpperCase(UserId);
+                    Rec.Posted := true;
+                    Rec."Date Posted" := Today;
+                    Rec."Time Posted" := Time;
+                    Rec."Posted By" := UpperCase(UserId);
 
-                    Received := Received::Yes;
-                    "Date Received" := Today;
-                    "Time Received" := Time;
-                    "Received By" := UpperCase(UserId);
-                    Modify;
+                    Rec.Received := Rec.Received::Yes;
+                    Rec."Date Received" := Today;
+                    Rec."Time Received" := Time;
+                    Rec."Received By" := UpperCase(UserId);
+                    Rec.Modify;
 
                     //END;
                 end;
@@ -384,7 +384,7 @@ page 51516979 ReturnTellerCashCard
                 begin
 
                     Trans.Reset;
-                    Trans.SetRange(Trans.No, No);
+                    Trans.SetRange(Trans.No, Rec.No);
                     if Trans.Find('-') then
                         Report.Run(51516430, true, true, Trans)
                 end;
@@ -427,9 +427,9 @@ page 51516979 ReturnTellerCashCard
 
                 trigger OnAction()
                 begin
-                    TestField("From Account");
-                    TestField("To Account");
-                    TestField(Amount);
+                    Rec.TestField("From Account");
+                    Rec.TestField("To Account");
+                    Rec.TestField(Amount);
 
                     StatusPermissions.Reset;
                     StatusPermissions.SetRange(StatusPermissions."User Id", UserId);
@@ -437,8 +437,8 @@ page 51516979 ReturnTellerCashCard
                     if StatusPermissions.Find('-') = false then
                         Error('You do not have permissions to approve inter teller transactions.');
 
-                    Approved := true;
-                    Modify;
+                    Rec.Approved := true;
+                    Rec.Modify;
                 end;
             }
         }
@@ -453,7 +453,7 @@ page 51516979 ReturnTellerCashCard
         */
 
 
-        if Posted = true then
+        if Rec.Posted = true then
             CurrPage.Editable := false
 
     end;

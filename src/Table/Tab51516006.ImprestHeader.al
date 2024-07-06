@@ -617,7 +617,7 @@ Table 51516006 "Imprest Header"
     procedure ImpLinesExist(): Boolean
     begin
         ImpLines.Reset;
-       // ImpLines.SetRange(No, "No.");
+        // ImpLines.SetRange(No, "No.");
         exit(ImpLines.FindFirst);
     end;
 

@@ -7,7 +7,7 @@ Page 51516614 "Loan Top-Up List"
     DeleteAllowed = false;
     PageType = List;
     SourceTable = "Loan Top Up.";
-    SourceTableView = where(Posted=const(false));
+    SourceTableView = where(Posted = const(false));
     UsageCategory = Lists;
 
     layout
@@ -16,19 +16,19 @@ Page 51516614 "Loan Top-Up List"
         {
             repeater(Group)
             {
-                field("Document No";"Document No")
+                field("Document No"; Rec."Document No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member No";"Member No")
+                field("Member No"; Rec."Member No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member Name";"Member Name")
+                field("Member Name"; Rec."Member Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Topped-Up By";"Topped-Up By")
+                field("Topped-Up By"; Rec."Topped-Up By")
                 {
                     ApplicationArea = Basic;
                 }

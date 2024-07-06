@@ -12,16 +12,16 @@ page 51516119 "Member FeedBack List"
         {
             repeater(GroupName)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
 
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = All;
                 }
-                field("Type of Feed Back"; "Type of Feed Back") { ApplicationArea = all; }
+                field("Type of Feed Back"; Rec."Type of Feed Back") { ApplicationArea = all; }
             }
         }
         area(Factboxes)

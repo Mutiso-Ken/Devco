@@ -41,7 +41,7 @@ Page 51516226 "Member List"
                     Caption = 'Mobile Phone';
 
                 }
-                field("Date of Birth"; "Date of Birth")
+                field("Date of Birth"; Rec."Date of Birth")
                 {
                     ApplicationArea = Basic;
                 }
@@ -49,43 +49,43 @@ Page 51516226 "Member List"
                 {
                     ApplicationArea = basic;
                 }
-                field("Shares Retained"; "Shares Retained")
+                field("Shares Retained"; Rec."Shares Retained")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Share Capital';
                 }
-                field("Current Shares"; "Current Shares")
+                field("Current Shares"; Rec."Current Shares")
                 {
                     Caption = 'Non-withdrawable Deposits';
                     Style = StrongAccent;
                     ApplicationArea = Basic;
                 }
-                field("Outstanding Balance"; "Outstanding Balance")
+                field("Outstanding Balance"; Rec."Outstanding Balance")
                 {
                     Style = StrongAccent;
                     Caption = 'Oustanding Loan Balance';
                     ApplicationArea = Basic;
                 }
-                field("Outstanding Interest"; "Outstanding Interest")
+                field("Outstanding Interest"; Rec."Outstanding Interest")
                 {
                     Style = StrongAccent;
                     Caption = 'Oustanding Loan Interest';
                     ApplicationArea = Basic;
                 }
-                field("Likizo Contribution"; "Likizo Contribution")
+                field("Likizo Contribution"; Rec."Likizo Contribution")
                 {
                     ApplicationArea = all;
                     Caption = 'Holiday Contribution';
                 }
-                field("Alpha Savings"; "Alpha Savings")
+                field("Alpha Savings"; Rec."Alpha Savings")
                 {
                     ApplicationArea = all;
                 }
-                field("Un-allocated Funds"; "Un-allocated Funds")
+                field("Un-allocated Funds"; Rec."Un-allocated Funds")
                 {
                     ApplicationArea = all;
                 }
-                field("Junior Savings One"; "Junior Savings One")
+                field("Junior Savings One"; Rec."Junior Savings One")
                 {
                     ApplicationArea = all;
                 }
@@ -134,7 +134,7 @@ Page 51516226 "Member List"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51516223, true, false, Cust);
                     end;
@@ -150,7 +150,7 @@ Page 51516226 "Member List"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51516226, true, false, Cust);
                     end;
@@ -166,7 +166,7 @@ Page 51516226 "Member List"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51516302, true, false, Cust);
                     end;
@@ -182,7 +182,7 @@ Page 51516226 "Member List"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51516608, true, false, Cust);
                     end;
@@ -197,7 +197,7 @@ Page 51516226 "Member List"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51516303, true, false, Cust);
                     end;
@@ -213,7 +213,7 @@ Page 51516226 "Member List"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(51001, true, false, Cust);
                     end;

@@ -233,7 +233,7 @@ Table 51516557 "General Equiries."
             OptionCaption = ' ,Low Risk,Medium Risk,High Risk';
             OptionMembers = " ","Low Risk","Medium Risk","High Risk";
         }
-    
+
 
 
     }

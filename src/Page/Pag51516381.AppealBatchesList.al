@@ -13,24 +13,24 @@ Page 51516381 "Appeal Batches - List"
         {
             repeater(Control1000000006)
             {
-                field("Batch No.";"Batch No.")
+                field("Batch No."; Rec."Batch No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Source;Source)
+                field(Source; Rec.Source)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Description/Remarks";"Description/Remarks")
+                field("Description/Remarks"; Rec."Description/Remarks")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Date";"Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mode Of Disbursement";"Mode Of Disbursement")
+                field("Mode Of Disbursement"; Rec."Mode Of Disbursement")
                 {
                     ApplicationArea = Basic;
                     Editable = true;

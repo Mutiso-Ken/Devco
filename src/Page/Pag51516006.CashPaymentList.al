@@ -6,8 +6,8 @@ Page 51516006 "Cash Payment List"
     DeleteAllowed = false;
     PageType = List;
     SourceTable = "Payment Header";
-    SourceTableView = where("Payment Type"=const("Cash Purchase"),
-                            Posted=const(false));
+    SourceTableView = where("Payment Type" = const("Cash Purchase"),
+                            Posted = const(false));
     UsageCategory = Lists;
 
     layout
@@ -16,31 +16,31 @@ Page 51516006 "Cash Payment List"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Type";"Document Type")
+                field("Document Type"; Rec."Document Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Date";"Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Payee;Payee)
+                field(Payee; Rec.Payee)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount(LCY)";"Amount(LCY)")
+                field("Amount(LCY)"; Rec."Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Cashier;Cashier)
+                field(Cashier; Rec.Cashier)
                 {
                     ApplicationArea = Basic;
                 }
@@ -54,8 +54,8 @@ Page 51516006 "Cash Payment List"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-          "Payment Mode":="payment mode"::Cash;
-          "Payment Type":="payment type"::"Cash Purchase";
+        Rec."Payment Mode" := Rec."payment mode"::Cash;
+        Rec."Payment Type" := Rec."payment type"::"Cash Purchase";
     end;
 }
 

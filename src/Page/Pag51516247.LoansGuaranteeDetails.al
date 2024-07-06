@@ -13,12 +13,12 @@ Page 51516247 "Loans Guarantee Details"
         {
             repeater(Control1102760000)
             {
-                field("Loan No"; "Loan No")
+                field("Loan No"; Rec."Loan No")
                 {
                     Editable = false;
 
                 }
-                field("Member No"; "Member No")
+                field("Member No"; Rec."Member No")
                 {
                     ApplicationArea = Basic;
                     trigger OnValidate()
@@ -40,35 +40,35 @@ Page 51516247 "Loans Guarantee Details"
                     end;
                 }
 
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Outstanding Balance"; "Outstanding Balance")
+                field("Outstanding Balance"; Rec."Outstanding Balance")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = Ambiguous;
                 }
-                field(Shares; Shares)
+                field(Shares; Rec.Shares)
                 {
                     ApplicationArea = Basic;
                     Visible = true;
                     caption = 'Current Deposits';
                     Editable = false;
                 }
-                field("Free Shares"; "Free Shares")
+                field("Free Shares"; Rec."Free Shares")
                 {
                     ApplicationArea = all;
                     Editable = false;
                 }
-                field("Amont Guaranteed"; "Amont Guaranteed")
+                field("Amont Guaranteed"; Rec."Amont Guaranteed")
                 {
                     Caption = 'Amount To Guarantee';
                     ApplicationArea = Basic;
@@ -76,7 +76,7 @@ Page 51516247 "Loans Guarantee Details"
                     trigger OnValidate()
                     begin
                         //rec.CalcFields("Outstanding Balance");
-                        if "Free Shares" < "Amont Guaranteed" then begin
+                        if Rec."Free Shares" < Rec."Amont Guaranteed" then begin
                             Error('The Guarantor has no enough Deposits to Guarantee')
                         end
                         else begin
@@ -85,18 +85,18 @@ Page 51516247 "Loans Guarantee Details"
 
                     end;
                 }
-                field("Total Amount Guaranteed"; "Total Amount Guaranteed")
+                field("Total Amount Guaranteed"; Rec."Total Amount Guaranteed")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = Strong;
                 }
-                field("Self Guarantee"; "Self Guarantee")
+                field("Self Guarantee"; Rec."Self Guarantee")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Date; Date)
+                field(Date; Rec.Date)
                 {
                     ApplicationArea = Basic;
                     Editable = false;

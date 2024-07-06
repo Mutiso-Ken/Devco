@@ -11,15 +11,15 @@ Page 51516436 "Investor Group List"
         {
             repeater(Group)
             {
-                field("ID/Passport No";"ID/Passport No")
+                field("ID/Passport No"; Rec."ID/Passport No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mobile No.";"Mobile No.")
+                field("Mobile No."; Rec."Mobile No.")
                 {
                     ApplicationArea = Basic;
                 }
@@ -42,7 +42,7 @@ Page 51516436 "Investor Group List"
 
                     trigger OnAction()
                     begin
-                           Page.Run(Page::"Investor Group Card",Rec);
+                        Page.Run(Page::"Investor Group Card", Rec);
                     end;
                 }
             }

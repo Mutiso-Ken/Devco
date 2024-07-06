@@ -17,28 +17,28 @@ Page 51516914 "MC Individual List editable"
         {
             repeater(Control1)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Old Account No."; "Old Account No.")
+                field("Old Account No."; Rec."Old Account No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Customer Posting Group"; "Customer Posting Group")
+                field("Customer Posting Group"; Rec."Customer Posting Group")
                 {
                     ApplicationArea = Basic;
                 }
@@ -46,11 +46,11 @@ Page 51516914 "MC Individual List editable"
                 // {
                 //     ApplicationArea = Basic;
                 // }
-                field("Group Account Name"; "Group Account Name")
+                field("Group Account Name"; Rec."Group Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Group Account"; "Group Account")
+                field("Group Account"; Rec."Group Account")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
@@ -103,7 +103,7 @@ Page 51516914 "MC Individual List editable"
 
                     trigger OnAction()
                     begin
-                        ShowContact;
+                        Rec.ShowContact;
                     end;
                 }
             }
@@ -124,7 +124,7 @@ Page 51516914 "MC Individual List editable"
                     begin
 
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(39004290, true, false, Cust);
                     end;
@@ -141,7 +141,7 @@ Page 51516914 "MC Individual List editable"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(39004450, true, false, Cust);
                     end;
@@ -157,7 +157,7 @@ Page 51516914 "MC Individual List editable"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."ID No.", "ID No.");
+                        Cust.SetRange(Cust."ID No.", Rec."ID No.");
                         if Cust.Find('-') then
                             Report.Run(39004267, true, false, Cust);
                     end;
@@ -174,7 +174,7 @@ Page 51516914 "MC Individual List editable"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(39004268, true, false, Cust);
                     end;
@@ -220,7 +220,7 @@ Page 51516914 "MC Individual List editable"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
                             Report.Run(39004260, true, false, Cust);
                     end;
@@ -253,7 +253,7 @@ Page 51516914 "MC Individual List editable"
 
                     trigger OnAction()
                     begin
-                        if "Status - Withdrawal App." <> "status - withdrawal app."::Approved then
+                        if Rec."Status - Withdrawal App." <> Rec."status - withdrawal app."::Approved then
                             Error('Withdrawal application must be approved before posting.');
 
                         if Confirm('Are you sure you want to recover the loans from the members shares?') = false then
@@ -270,31 +270,31 @@ Page 51516914 "MC Individual List editable"
 
                         TotalRecovered := 0;
 
-                        CalcFields("Outstanding Balance", "Accrued Interest", "Current Shares", "Insurance Fund", "FOSA Outstanding Balance",
+                        Rec.CalcFields("Outstanding Balance", "Accrued Interest", "Current Shares", "Insurance Fund", "FOSA Outstanding Balance",
                                    "FOSA Oustanding Interest", "Shares Retained");
 
-                        if Status = Status::Deceased then
-                            TotalAvailable := ("Current Shares") * -1
+                        if Rec.Status = Rec.Status::Deceased then
+                            TotalAvailable := (Rec."Current Shares") * -1
                         else
-                            TotalAvailable := ("Insurance Fund" + "Current Shares") * -1;
+                            TotalAvailable := (Rec."Insurance Fund" + Rec."Current Shares") * -1;
 
 
-                        if "Shares Retained" < -GeneralSetup."Retained Shares" then
+                        if Rec."Shares Retained" < -GeneralSetup."Retained Shares" then
                             Error('Please transfer 2000/= deposits to the member share capital account.');
 
-                        if "Defaulted Loans Recovered" <> true then begin
-                            if "Closing Deposit Balance" = 0 then
-                                "Closing Deposit Balance" := "Current Shares" * -1;
-                            if "Closing Loan Balance" = 0 then
-                                "Closing Loan Balance" := "Outstanding Balance" + "FOSA Outstanding Balance";
-                            if "Closing Insurance Balance" = 0 then
-                                "Closing Insurance Balance" := "Insurance Fund" * -1;
+                        if Rec."Defaulted Loans Recovered" <> true then begin
+                            if Rec."Closing Deposit Balance" = 0 then
+                                Rec."Closing Deposit Balance" := Rec."Current Shares" * -1;
+                            if Rec."Closing Loan Balance" = 0 then
+                                Rec."Closing Loan Balance" := Rec."Outstanding Balance" + Rec."FOSA Outstanding Balance";
+                            if Rec."Closing Insurance Balance" = 0 then
+                                Rec."Closing Insurance Balance" := Rec."Insurance Fund" * -1;
                         end;
-                        "Withdrawal Posted" := true;
-                        Modify;
+                        Rec."Withdrawal Posted" := true;
+                        Rec.Modify;
 
                         Loans.Reset;
-                        Loans.SetRange(Loans."Client Code", "FOSA Account");
+                        Loans.SetRange(Loans."Client Code", Rec."FOSA Account");
                         Loans.SetRange(Loans.Source, Loans.Source::FOSA);
                         if Loans.Find('-') then begin
                             repeat
@@ -310,29 +310,29 @@ Page 51516914 "MC Individual List editable"
                         end;
 
 
-                        TotalOustanding := ("Outstanding Balance" + "Accrued Interest" + TotalFOSALoan);
+                        TotalOustanding := (Rec."Outstanding Balance" + Rec."Accrued Interest" + TotalFOSALoan);
 
 
 
                         //Create MC Account
-                        if (TotalOustanding + 1000 + ("Current Shares" + "Insurance Fund")) < 0 then begin
-                            if Vend.Get('MC-' + "Payroll/Staff No") = false then begin
-                                TestField("Payroll/Staff No");
+                        if (TotalOustanding + 1000 + (Rec."Current Shares" + Rec."Insurance Fund")) < 0 then begin
+                            if Vend.Get('MC-' + Rec."Payroll/Staff No") = false then begin
+                                Rec.TestField("Payroll/Staff No");
 
                                 Vend.Init;
-                                Vend."No." := 'MC-' + "Payroll/Staff No";
-                                Vend.Name := Name;
-                                Vend."Staff No" := "Payroll/Staff No";
-                                Vend."Global Dimension 1 Code" := "Global Dimension 1 Code";
-                                Vend."Global Dimension 2 Code" := "Global Dimension 2 Code";
+                                Vend."No." := 'MC-' + Rec."Payroll/Staff No";
+                                Vend.Name := Rec.Name;
+                                Vend."Staff No" := Rec."Payroll/Staff No";
+                                Vend."Global Dimension 1 Code" := Rec."Global Dimension 1 Code";
+                                Vend."Global Dimension 2 Code" := Rec."Global Dimension 2 Code";
                                 Vend."Vendor Posting Group" := 'MCREDITOR';
                                 Vend.Insert(true);
 
                                 Vend.Reset;
-                                if Vend.Get('MC-' + "Payroll/Staff No") then begin
+                                if Vend.Get('MC-' + Rec."Payroll/Staff No") then begin
                                     Vend.Validate(Vend.Name);
-                                    Vend."Global Dimension 1 Code" := "Global Dimension 1 Code";
-                                    Vend."Global Dimension 2 Code" := "Global Dimension 2 Code";
+                                    Vend."Global Dimension 1 Code" := Rec."Global Dimension 1 Code";
+                                    Vend."Global Dimension 2 Code" := Rec."Global Dimension 2 Code";
                                     Vend.Validate(Vend."Global Dimension 1 Code");
                                     Vend.Validate(Vend."Global Dimension 2 Code");
                                     Vend.Validate(Vend."Vendor Posting Group");
@@ -349,7 +349,7 @@ Page 51516914 "MC Individual List editable"
                         AvailableShares := TotalAvailable;
 
                         Loans.Reset;
-                        Loans.SetRange(Loans."Client Code", "No.");
+                        Loans.SetRange(Loans."Client Code", Rec."No.");
                         Loans.SetRange(Loans.Source, Loans.Source::BOSA);
                         Loans.SetRange(Loans."Loan Product Type", 'DFTL');
                         if Loans.Find('-') then begin
@@ -371,9 +371,9 @@ Page 51516914 "MC Individual List editable"
                                             Gnljnline."Journal Batch Name" := 'ACC CLOSED';
                                             Gnljnline."Line No." := LineN;
                                             Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
-                                            Gnljnline."Account No." := "No.";
+                                            Gnljnline."Account No." := Rec."No.";
                                             Gnljnline.Validate(Gnljnline."Account No.");
-                                            Gnljnline."Document No." := 'LR-' + "No.";
+                                            Gnljnline."Document No." := 'LR-' + Rec."No.";
                                             Gnljnline."Posting Date" := Today;
                                             Gnljnline.Description := 'Interest Recovery from deposits';
                                             if AvailableShares < Interest then
@@ -411,9 +411,9 @@ Page 51516914 "MC Individual List editable"
                                             Gnljnline."Journal Batch Name" := 'ACC CLOSED';
                                             Gnljnline."Line No." := LineN;
                                             Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
-                                            Gnljnline."Account No." := "No.";
+                                            Gnljnline."Account No." := Rec."No.";
                                             Gnljnline.Validate(Gnljnline."Account No.");
-                                            Gnljnline."Document No." := 'LR-' + "No.";
+                                            Gnljnline."Document No." := 'LR-' + Rec."No.";
                                             Gnljnline."Posting Date" := Today;
                                             Gnljnline.Description := 'Loan Recovery from deposits';
                                             if AvailableShares < LRepayment then
@@ -447,7 +447,7 @@ Page 51516914 "MC Individual List editable"
 
                         //Recover Interest without loan First
                         Loans.Reset;
-                        Loans.SetRange(Loans."BOSA No", "No.");
+                        Loans.SetRange(Loans."BOSA No", Rec."No.");
                         if Loans.Find('-') then begin
                             repeat
                                 Loans.CalcFields(Loans."Outstanding Balance", Loans."Oustanding Interest");
@@ -464,9 +464,9 @@ Page 51516914 "MC Individual List editable"
                                         Gnljnline."Journal Batch Name" := 'ACC CLOSED';
                                         Gnljnline."Line No." := LineN;
                                         Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
-                                        Gnljnline."Account No." := "No.";
+                                        Gnljnline."Account No." := Rec."No.";
                                         Gnljnline.Validate(Gnljnline."Account No.");
-                                        Gnljnline."Document No." := 'LR-' + "No.";
+                                        Gnljnline."Document No." := 'LR-' + Rec."No.";
                                         Gnljnline."Posting Date" := Today;
                                         Gnljnline.Description := 'Interest Recovery from deposits';
                                         if AvailableShares < Interest then
@@ -497,7 +497,7 @@ Page 51516914 "MC Individual List editable"
 
 
                         Loans.Reset;
-                        Loans.SetRange(Loans."Client Code", "No.");
+                        Loans.SetRange(Loans."Client Code", Rec."No.");
                         Loans.SetRange(Loans.Source, Loans.Source::BOSA);
                         if Loans.Find('-') then begin
                             repeat
@@ -523,9 +523,9 @@ Page 51516914 "MC Individual List editable"
                                                 Gnljnline."Journal Batch Name" := 'ACC CLOSED';
                                                 Gnljnline."Line No." := LineN;
                                                 Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
-                                                Gnljnline."Account No." := "No.";
+                                                Gnljnline."Account No." := Rec."No.";
                                                 Gnljnline.Validate(Gnljnline."Account No.");
-                                                Gnljnline."Document No." := 'LR-' + "No.";
+                                                Gnljnline."Document No." := 'LR-' + Rec."No.";
                                                 Gnljnline."Posting Date" := Today;
                                                 Gnljnline.Description := 'Interest Recovery from deposits';
                                                 if AvailableShares < Interest then
@@ -562,9 +562,9 @@ Page 51516914 "MC Individual List editable"
                                                 Gnljnline."Journal Batch Name" := 'ACC CLOSED';
                                                 Gnljnline."Line No." := LineN;
                                                 Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
-                                                Gnljnline."Account No." := "No.";
+                                                Gnljnline."Account No." := Rec."No.";
                                                 Gnljnline.Validate(Gnljnline."Account No.");
-                                                Gnljnline."Document No." := 'LR-' + "No.";
+                                                Gnljnline."Document No." := 'LR-' + Rec."No.";
                                                 Gnljnline."Posting Date" := Today;
                                                 Gnljnline.Description := 'Loan Recovery from deposits';
                                                 if AvailableShares < LRepayment then
@@ -594,7 +594,7 @@ Page 51516914 "MC Individual List editable"
 
                         //Recover FOSA Loans
                         Loans.Reset;
-                        Loans.SetRange(Loans."Client Code", "FOSA Account");
+                        Loans.SetRange(Loans."Client Code", Rec."FOSA Account");
                         Loans.SetRange(Loans.Source, Loans.Source::FOSA);
                         if Loans.Find('-') then begin
                             repeat
@@ -621,7 +621,7 @@ Page 51516914 "MC Individual List editable"
                                             Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
                                             Gnljnline."Account No." := Loans."Client Code";
                                             Gnljnline.Validate(Gnljnline."Account No.");
-                                            Gnljnline."Document No." := 'LR-' + "No.";
+                                            Gnljnline."Document No." := 'LR-' + Rec."No.";
                                             Gnljnline."Posting Date" := Today;
                                             Gnljnline.Description := 'Interest Recovery from deposits';
                                             if AvailableShares < Interest then
@@ -660,7 +660,7 @@ Page 51516914 "MC Individual List editable"
                                             Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
                                             Gnljnline."Account No." := Loans."Client Code";
                                             Gnljnline.Validate(Gnljnline."Account No.");
-                                            Gnljnline."Document No." := 'LR-' + "No.";
+                                            Gnljnline."Document No." := 'LR-' + Rec."No.";
                                             Gnljnline."Posting Date" := Today;
                                             Gnljnline.Description := 'Loan Recovery from deposits';
                                             if AvailableShares < LRepayment then
@@ -697,15 +697,15 @@ Page 51516914 "MC Individual List editable"
                         Gnljnline."Journal Batch Name" := 'ACC CLOSED';
                         Gnljnline."Line No." := LineN;
                         Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
-                        Gnljnline."Account No." := "No.";
+                        Gnljnline."Account No." := Rec."No.";
                         Gnljnline.Validate(Gnljnline."Account No.");
-                        Gnljnline."Document No." := 'LR-' + "No.";
+                        Gnljnline."Document No." := 'LR-' + Rec."No.";
                         Gnljnline."Posting Date" := Today;
                         Gnljnline.Description := 'Deposit Refundable';
-                        if Status = Status::Deceased then
+                        if Rec.Status = Rec.Status::Deceased then
                             Gnljnline.Amount := TotalRecovered + GeneralSetup."Withdrawal Fee"
                         else
-                            Gnljnline.Amount := TotalRecovered + "Insurance Fund" + GeneralSetup."Withdrawal Fee";
+                            Gnljnline.Amount := TotalRecovered + Rec."Insurance Fund" + GeneralSetup."Withdrawal Fee";
                         Gnljnline.Validate(Gnljnline.Amount);
                         Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Deposit Contribution";
                         if Gnljnline.Amount <> 0 then
@@ -713,7 +713,7 @@ Page 51516914 "MC Individual List editable"
 
 
                         //Reduce Insurance Contribution
-                        if Status <> Status::Deceased then begin
+                        if Rec.Status <> Rec.Status::Deceased then begin
                             LineN := LineN + 10000;
 
                             Gnljnline.Init;
@@ -721,12 +721,12 @@ Page 51516914 "MC Individual List editable"
                             Gnljnline."Journal Batch Name" := 'ACC CLOSED';
                             Gnljnline."Line No." := LineN;
                             Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
-                            Gnljnline."Account No." := "No.";
+                            Gnljnline."Account No." := Rec."No.";
                             Gnljnline.Validate(Gnljnline."Account No.");
-                            Gnljnline."Document No." := 'LR-' + "No.";
+                            Gnljnline."Document No." := 'LR-' + Rec."No.";
                             Gnljnline."Posting Date" := Today;
                             Gnljnline.Description := 'Insurance Refundable';
-                            Gnljnline.Amount := "Insurance Fund" * -1;
+                            Gnljnline.Amount := Rec."Insurance Fund" * -1;
                             Gnljnline.Validate(Gnljnline.Amount);
                             Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Benevolent Fund";
                             if Gnljnline.Amount <> 0 then
@@ -736,7 +736,7 @@ Page 51516914 "MC Individual List editable"
 
 
                         //Insurance Retension
-                        if Status = Status::Deceased then begin
+                        if Rec.Status = Rec.Status::Deceased then begin
                             GeneralSetup.TestField(GeneralSetup."Insurance Retension Account");
 
                             LineN := LineN + 10000;
@@ -746,12 +746,12 @@ Page 51516914 "MC Individual List editable"
                             Gnljnline."Journal Batch Name" := 'ACC CLOSED';
                             Gnljnline."Line No." := LineN;
                             Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
-                            Gnljnline."Account No." := "No.";
+                            Gnljnline."Account No." := Rec."No.";
                             Gnljnline.Validate(Gnljnline."Account No.");
-                            Gnljnline."Document No." := 'LR-' + "No.";
+                            Gnljnline."Document No." := 'LR-' + Rec."No.";
                             Gnljnline."Posting Date" := Today;
                             Gnljnline.Description := 'Insurance Retension';
-                            Gnljnline.Amount := "Insurance Fund" * -1;
+                            Gnljnline.Amount := Rec."Insurance Fund" * -1;
                             Gnljnline.Validate(Gnljnline.Amount);
                             Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Benevolent Fund";
                             Gnljnline."Bal. Account Type" := Gnljnline."bal. account type"::"G/L Account";
@@ -771,9 +771,9 @@ Page 51516914 "MC Individual List editable"
                         Gnljnline."Journal Batch Name" := 'ACC CLOSED';
                         Gnljnline."Line No." := LineN;
                         Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
-                        Gnljnline."Account No." := "No.";
+                        Gnljnline."Account No." := Rec."No.";
                         Gnljnline.Validate(Gnljnline."Account No.");
-                        Gnljnline."Document No." := 'LR-' + "No.";
+                        Gnljnline."Document No." := 'LR-' + Rec."No.";
                         Gnljnline."Posting Date" := Today;
                         Gnljnline.Description := 'Shares Capital Retension';
                         Gnljnline.Amount := GeneralSetup."Retained Shares";
@@ -796,9 +796,9 @@ Page 51516914 "MC Individual List editable"
                             Gnljnline."Journal Batch Name" := 'ACC CLOSED';
                             Gnljnline."Line No." := LineN;
                             Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
-                            Gnljnline."Account No." := "No.";
+                            Gnljnline."Account No." := Rec."No.";
                             Gnljnline.Validate(Gnljnline."Account No.");
-                            Gnljnline."Document No." := 'LR-' + "No.";
+                            Gnljnline."Document No." := 'LR-' + Rec."No.";
                             Gnljnline."Posting Date" := Today;
                             Gnljnline.Description := 'Withdrawal Fee';
                             Gnljnline.Amount := -GeneralSetup."Withdrawal Fee";
@@ -811,7 +811,7 @@ Page 51516914 "MC Individual List editable"
                         end;
 
                         //Transfer to MC Account
-                        if ((TotalRecovered + 1000) + ("Current Shares" + "Insurance Fund")) < 0 then begin
+                        if ((TotalRecovered + 1000) + (Rec."Current Shares" + Rec."Insurance Fund")) < 0 then begin
                             LineN := LineN + 10000;
 
                             Gnljnline.Init;
@@ -819,15 +819,15 @@ Page 51516914 "MC Individual List editable"
                             Gnljnline."Journal Batch Name" := 'ACC CLOSED';
                             Gnljnline."Line No." := LineN;
                             Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
-                            Gnljnline."Account No." := "No.";
+                            Gnljnline."Account No." := Rec."No.";
                             Gnljnline.Validate(Gnljnline."Account No.");
-                            Gnljnline."Document No." := 'LR-' + "No.";
+                            Gnljnline."Document No." := 'LR-' + Rec."No.";
                             Gnljnline."Posting Date" := Today;
                             Gnljnline.Description := 'Refundable Deposits to MC';
-                            if Status = Status::Deceased then
-                                Gnljnline.Amount := ((TotalRecovered + GeneralSetup."Withdrawal Fee") + ("Current Shares")) * -1
+                            if Rec.Status = Rec.Status::Deceased then
+                                Gnljnline.Amount := ((TotalRecovered + GeneralSetup."Withdrawal Fee") + (Rec."Current Shares")) * -1
                             else
-                                Gnljnline.Amount := ((TotalRecovered + "Insurance Fund" + GeneralSetup."Withdrawal Fee") + ("Current Shares")) * -1;
+                                Gnljnline.Amount := ((TotalRecovered + Rec."Insurance Fund" + GeneralSetup."Withdrawal Fee") + (Rec."Current Shares")) * -1;
                             Gnljnline.Validate(Gnljnline.Amount);
                             Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Deposit Contribution";
                             if Gnljnline.Amount <> 0 then
@@ -840,22 +840,22 @@ Page 51516914 "MC Individual List editable"
                             Gnljnline."Journal Batch Name" := 'ACC CLOSED';
                             Gnljnline."Line No." := LineN;
                             Gnljnline."Account Type" := Gnljnline."bal. account type"::Vendor;
-                            Gnljnline."Account No." := 'MC-' + "Payroll/Staff No";
+                            Gnljnline."Account No." := 'MC-' + Rec."Payroll/Staff No";
                             Gnljnline.Validate(Gnljnline."Account No.");
-                            Gnljnline."Document No." := 'LR-' + "No.";
+                            Gnljnline."Document No." := 'LR-' + Rec."No.";
                             Gnljnline."Posting Date" := Today;
                             Gnljnline.Description := 'Refundable Deposits to MC';
-                            if Status = Status::Deceased then
-                                Gnljnline.Amount := ((TotalRecovered + GeneralSetup."Withdrawal Fee") + ("Current Shares"))
+                            if Rec.Status = Rec.Status::Deceased then
+                                Gnljnline.Amount := ((TotalRecovered + GeneralSetup."Withdrawal Fee") + (Rec."Current Shares"))
                             else
-                                Gnljnline.Amount := ((TotalRecovered + "Insurance Fund" + GeneralSetup."Withdrawal Fee") + ("Current Shares"));
+                                Gnljnline.Amount := ((TotalRecovered + Rec."Insurance Fund" + GeneralSetup."Withdrawal Fee") + (Rec."Current Shares"));
                             Gnljnline.Validate(Gnljnline.Amount);
                             Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Deposit Contribution";
                             if Gnljnline.Amount <> 0 then
                                 Gnljnline.Insert;
 
                             //Funeral Expenses
-                            if Status = Status::Deceased then begin
+                            if Rec.Status = Rec.Status::Deceased then begin
                                 GeneralSetup.TestField("Funeral Expenses Account");
 
                                 LineN := LineN + 10000;
@@ -865,10 +865,10 @@ Page 51516914 "MC Individual List editable"
                                 Gnljnline."Journal Batch Name" := 'ACC CLOSED';
                                 Gnljnline."Line No." := LineN;
                                 Gnljnline."Account Type" := Gnljnline."bal. account type"::Vendor;
-                                Gnljnline."Account No." := 'MC-' + "Payroll/Staff No";
+                                Gnljnline."Account No." := 'MC-' + Rec."Payroll/Staff No";
                                 Gnljnline.Validate(Gnljnline."Account No.");
-                                Gnljnline."Document No." := 'LR-' + "No.";
-                                Gnljnline."External Document No." := "Payroll/Staff No";
+                                Gnljnline."Document No." := 'LR-' + Rec."No.";
+                                Gnljnline."External Document No." := Rec."Payroll/Staff No";
                                 Gnljnline."Posting Date" := Today;
                                 Gnljnline.Description := 'Funeral Expenses';
                                 Gnljnline.Amount := -GeneralSetup."Funeral Expenses Amount";
@@ -900,7 +900,7 @@ Page 51516914 "MC Individual List editable"
 
                     trigger OnAction()
                     begin
-                        if ("Current Shares" * -1) > 0 then
+                        if (Rec."Current Shares" * -1) > 0 then
                             Error('Please recover the loans from the members shares before recovering from gurantors.');
 
                         if Confirm('Are you absolutely sure you want to recover the loans from the guarantors as loans?') = false then
@@ -917,28 +917,28 @@ Page 51516914 "MC Individual List editable"
 
                         TotalRecovered := 0;
 
-                        DActivity := "Global Dimension 1 Code";
-                        DBranch := "Global Dimension 2 Code";
+                        DActivity := Rec."Global Dimension 1 Code";
+                        DBranch := Rec."Global Dimension 2 Code";
 
-                        CalcFields("Outstanding Balance", "FOSA Outstanding Balance", "Accrued Interest", "Insurance Fund", "Current Shares");
-
-
-                        if "Closing Deposit Balance" = 0 then
-                            "Closing Deposit Balance" := "Current Shares" * -1;
-                        if "Closing Loan Balance" = 0 then
-                            "Closing Loan Balance" := "Outstanding Balance" + "FOSA Outstanding Balance";
-                        if "Closing Insurance Balance" = 0 then
-                            "Closing Insurance Balance" := "Insurance Fund" * -1;
-                        "Withdrawal Posted" := true;
-                        Modify;
+                        Rec.CalcFields("Outstanding Balance", "FOSA Outstanding Balance", "Accrued Interest", "Insurance Fund", "Current Shares");
 
 
-                        CalcFields("Outstanding Balance", "Accrued Interest", "Current Shares");
+                        if Rec."Closing Deposit Balance" = 0 then
+                            Rec."Closing Deposit Balance" := Rec."Current Shares" * -1;
+                        if Rec."Closing Loan Balance" = 0 then
+                            Rec."Closing Loan Balance" := Rec."Outstanding Balance" + Rec."FOSA Outstanding Balance";
+                        if Rec."Closing Insurance Balance" = 0 then
+                            Rec."Closing Insurance Balance" := Rec."Insurance Fund" * -1;
+                        Rec."Withdrawal Posted" := true;
+                        Rec.Modify;
+
+
+                        Rec.CalcFields("Outstanding Balance", "Accrued Interest", "Current Shares");
 
 
 
                         LoansR.Reset;
-                        LoansR.SetRange(LoansR."Client Code", "No.");
+                        LoansR.SetRange(LoansR."Client Code", Rec."No.");
                         LoansR.SetRange(LoansR.Source, LoansR.Source::BOSA);
                         if LoansR.Find('-') then begin
                             repeat
@@ -995,7 +995,7 @@ Page 51516914 "MC Individual List editable"
                                             Loans."Issued Date" := Today;
                                             Loans."Loan Disbursement Date" := Today;
                                             Loans."Repayment Start Date" := Today;
-                                            Loans."Batch No." := "Batch No.";
+                                            Loans."Batch No." := Rec."Batch No.";
                                             Loans."BOSA No" := LGurantors."Member No";
                                             Loans."Recovered Loan" := LoansR."Loan  No.";
                                             Loans.Insert(true);
@@ -1104,8 +1104,8 @@ Page 51516914 "MC Individual List editable"
                         end;
 
 
-                        "Defaulted Loans Recovered" := true;
-                        Modify;
+                        Rec."Defaulted Loans Recovered" := true;
+                        Rec.Modify;
 
 
                         //Post New
@@ -1127,13 +1127,13 @@ Page 51516914 "MC Individual List editable"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        "Customer Type" := "customer type"::MicroFinance;
-        "Global Dimension 1 Code" := 'MICRO';
-        "Customer Posting Group" := 'MICRO';
+        Rec."Customer Type" := Rec."customer type"::MicroFinance;
+        Rec."Global Dimension 1 Code" := 'MICRO';
+        Rec."Customer Posting Group" := 'MICRO';
         //Source:=Source::Micro;
-        "Account Type" := "account type"::Single;
+        Rec."Account Type" := Rec."account type"::Single;
         // "Account Category":="account category"::SINGLE;
-        "Group Account" := false;
+        Rec."Group Account" := false;
     end;
 
     trigger OnOpenPage()

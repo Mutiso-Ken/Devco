@@ -1101,14 +1101,14 @@
 
 
 //                         /*//Post New
-                        
+
 //                         GenJournalLine.RESET;
 //                         GenJournalLine.SETRANGE("Journal Template Name",'PURCHASES');
 //                         GenJournalLine.SETRANGE("Journal Batch Name",'FTRANS');
 //                         IF GenJournalLine.FIND('-') THEN BEGIN
 //                         CODEUNIT.RUN(CODEUNIT::Codeunit,GenJournalLine);
 //                         END;
-                        
+
 //                         //Post New
 //                         */
 
@@ -1117,7 +1117,7 @@
 //                         GenJournalLine.SETRANGE("Journal Template Name",'PURCHASES');
 //                         GenJournalLine.SETRANGE("Journal Batch Name",'FTRANS');
 //                         GenJournalLine.DELETEALL;
-                        
+
 //                            */
 //                         //Transfer Balance if Fixed Deposit
 
@@ -1789,8 +1789,8 @@
 //         CurrForm.Statement.VISIBLE:=TRUE;
 //         CurrForm.Account.VISIBLE:=TRUE;
 //         END;
-        
-        
+
+
 //         IF Hide = TRUE THEN BEGIN
 //         IF UsersID.GET(USERID) THEN BEGIN
 //         IF UsersID."Show Hiden" = FALSE THEN BEGIN

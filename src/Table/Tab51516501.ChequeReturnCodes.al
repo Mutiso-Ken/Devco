@@ -4,16 +4,16 @@ Table 51516501 "Cheque Return Codes"
 
     fields
     {
-        field(1;"Return Code";Code[2])
+        field(1; "Return Code"; Code[2])
         {
         }
-        field(2;"Code Interpretation";Text[100])
+        field(2; "Code Interpretation"; Text[100])
         {
         }
-        field(3;Charges;Decimal)
+        field(3; Charges; Decimal)
         {
         }
-        field(4;"Bounced Charges GL Account";Code[20])
+        field(4; "Bounced Charges GL Account"; Code[20])
         {
             TableRelation = "G/L Account";
         }
@@ -21,7 +21,7 @@ Table 51516501 "Cheque Return Codes"
 
     keys
     {
-        key(Key1;"Return Code")
+        key(Key1; "Return Code")
         {
             Clustered = true;
         }
@@ -29,7 +29,7 @@ Table 51516501 "Cheque Return Codes"
 
     fieldgroups
     {
-        fieldgroup(DropDown;"Return Code","Code Interpretation")
+        fieldgroup(DropDown; "Return Code", "Code Interpretation")
         {
         }
     }

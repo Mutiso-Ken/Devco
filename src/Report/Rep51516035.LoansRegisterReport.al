@@ -22,8 +22,8 @@ report 51516035 "Loans Register Report"
             column(CompanyPhone; CompanyInfo."Phone No.")
             {
             }
-             column(CompanyPic; CompanyInfo.Picture)
-            
+            column(CompanyPic; CompanyInfo.Picture)
+
             {
             }
             column(CompanyEmail; CompanyInfo."E-Mail")

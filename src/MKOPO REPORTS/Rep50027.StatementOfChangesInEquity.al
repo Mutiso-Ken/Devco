@@ -448,7 +448,7 @@ report 50027 StatementOfChangesInEquity
 
     var
         SaccoInfo: Record "Sacco Information";
-        BalanceBF:Decimal;
+        BalanceBF: Decimal;
         AsAt: Date;
         LSurplus: Decimal;
         LExpenses: Decimal;

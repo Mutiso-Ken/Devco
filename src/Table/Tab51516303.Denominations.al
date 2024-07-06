@@ -6,29 +6,29 @@ Table 51516303 "Denominations"
 
     fields
     {
-        field(1;"Code";Code[30])
+        field(1; "Code"; Code[30])
         {
             NotBlank = true;
         }
-        field(2;Description;Text[100])
+        field(2; Description; Text[100])
         {
         }
-        field(3;Value;Decimal)
+        field(3; Value; Decimal)
         {
             Editable = false;
         }
-        field(4;Type;Option)
+        field(4; Type; Option)
         {
             OptionMembers = Note,Coin;
         }
-        field(5;Priority;Integer)
+        field(5; Priority; Integer)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Code")
+        key(Key1; "Code")
         {
             Clustered = true;
         }

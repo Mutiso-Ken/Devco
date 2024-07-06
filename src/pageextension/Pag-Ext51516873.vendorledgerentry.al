@@ -8,17 +8,17 @@ pageextension 51516873 "vendorledgerentry" extends "Vendor Ledger Entries"
             // {
             //     ApplicationArea = Basic;
             // }
-            field("CreditAmount"; "Credit Amount")
+            field("CreditAmount"; Rec."Credit Amount")
             {
                 ApplicationArea = Basic;
                 Caption = 'Credit Amount';
             }
-            field("DebitAmount"; "Debit Amount")
+            field("DebitAmount"; Rec."Debit Amount")
             {
                 ApplicationArea = Basic;
                 Caption = 'Debit Amount';
             }
-            field("UserID"; "User ID")
+            field("UserID"; Rec."User ID")
             {
                 ApplicationArea = Basic;
                 Caption = 'User ID';

@@ -897,14 +897,14 @@ Report 51516042 "Generate Member Salaries Batch"
                                     //     IF ReceiptAllocations."Transaction Type" = ReceiptAllocations."Transaction Type"::"FOSA Shares" THEN
                                     //         GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"FOSA Shares"
                                     //     ELSE
-                                            // IF ReceiptAllocations."Transaction Type" = ReceiptAllocations."Transaction Type"::"Tambaa Shares" THEN
-                                            //     GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Tamba Shares"
-                                            // ELSE
-                                                // IF ReceiptAllocations."Transaction Type" = ReceiptAllocations."Transaction Type"::"Changamka Shares" THEN
-                                                //     GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Changamka Shares"
-                                                // ELSE
-                                                    IF ReceiptAllocations."Transaction Type" = ReceiptAllocations."Transaction Type"::"Shares Capital" THEN
-                                                        GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Shares Capital";
+                                    // IF ReceiptAllocations."Transaction Type" = ReceiptAllocations."Transaction Type"::"Tambaa Shares" THEN
+                                    //     GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Tamba Shares"
+                                    // ELSE
+                                    // IF ReceiptAllocations."Transaction Type" = ReceiptAllocations."Transaction Type"::"Changamka Shares" THEN
+                                    //     GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Changamka Shares"
+                                    // ELSE
+                                    IF ReceiptAllocations."Transaction Type" = ReceiptAllocations."Transaction Type"::"Shares Capital" THEN
+                                        GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Shares Capital";
                     GenJournalLine."Loan No" := ReceiptAllocations."Loan No.";
                     GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
                     GenJournalLine."Shortcut Dimension 2 Code" := DBranch;

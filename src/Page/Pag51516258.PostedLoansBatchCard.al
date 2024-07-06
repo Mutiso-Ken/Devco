@@ -14,61 +14,61 @@ Page 51516258 "Posted Loans Batch Card"
     {
         area(content)
         {
-            field("Batch No."; "Batch No.")
+            field("Batch No."; Rec."Batch No.")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("Batch Type"; "Batch Type")
+            field("Batch Type"; Rec."Batch Type")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("Description/Remarks"; "Description/Remarks")
+            field("Description/Remarks"; Rec."Description/Remarks")
             {
                 ApplicationArea = Basic;
             }
-            field(Status; Status)
+            field(Status; Rec.Status)
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field(Posted; Posted)
+            field(Posted; Rec.Posted)
             {
                 Editable = true;
                 ApplicationArea = Basic;
             }
-            field("Total Loan Amount"; "Total Loan Amount")
+            field("Total Loan Amount"; Rec."Total Loan Amount")
             {
                 ApplicationArea = Basic;
             }
-            field("No of Loans"; "No of Loans")
+            field("No of Loans"; Rec."No of Loans")
             {
                 ApplicationArea = Basic;
             }
-            field("Mode Of Disbursement"; "Mode Of Disbursement")
+            field("Mode Of Disbursement"; Rec."Mode Of Disbursement")
             {
                 ApplicationArea = Basic;
             }
-            field("Document No."; "Document No.")
+            field("Document No."; Rec."Document No.")
             {
                 ApplicationArea = Basic;
 
                 trigger OnValidate()
                 begin
-                    if StrLen("Document No.") > 6 then
+                    if StrLen(Rec."Document No.") > 6 then
                         Error('Document No. cannot contain More than 6 Characters.');
                 end;
             }
-            field("Posting Date"; "Posting Date")
+            field("Posting Date"; Rec."Posting Date")
             {
                 ApplicationArea = Basic;
             }
-            field("BOSA Bank Account"; "BOSA Bank Account")
+            field("BOSA Bank Account"; Rec."BOSA Bank Account")
             {
                 ApplicationArea = Basic;
             }
-            field("Cheque Name"; "Cheque Name")
+            field("Cheque Name"; Rec."Cheque Name")
             {
                 ApplicationArea = Basic;
             }
@@ -206,7 +206,7 @@ Page 51516258 "Posted Loans Batch Card"
                         Text001: label 'This Batch is already pending approval';
                     begin
                         LBatches.Reset;
-                        LBatches.SetRange(LBatches."Batch No.", "Batch No.");
+                        LBatches.SetRange(LBatches."Batch No.", Rec."Batch No.");
                         if LBatches.Find('-') then begin
                             if LBatches.Status <> LBatches.Status::Open then
                                 Error(Text001);
@@ -235,12 +235,12 @@ Page 51516258 "Posted Loans Batch Card"
 
                     trigger OnAction()
                     begin
-                        Reset;
-                        SetFilter("Batch No.", "Batch No.");
+                        Rec.Reset;
+                        Rec.SetFilter("Batch No.", Rec."Batch No.");
                         if Confirm(Text002, true) then begin
 
                             //REPORT.RUN(,TRUE,TRUE,Rec);
-                            Reset;
+                            Rec.Reset;
                         end;
                     end;
                 }
@@ -256,7 +256,7 @@ Page 51516258 "Posted Loans Batch Card"
                     begin
 
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Batch No.", "Batch No.");
+                        LoanApp.SetRange(LoanApp."Batch No.", Rec."Batch No.");
                         if LoanApp.Find('-') then begin
 
                             Xmlport.Run(51516012, true, false, LoanApp);

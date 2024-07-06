@@ -17,49 +17,49 @@ Page 51516320 "Loan Application CardAdvances"
             group(General)
             {
                 Caption = 'General';
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
 
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'FOSA Account No';
                     Editable = MNoEditable;
                     Style = StrongAccent;
                 }
-                field("Client Name"; "Client Name")
+                field("Client Name"; Rec."Client Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("ID NO"; "ID NO")
+                field("ID NO"; Rec."ID NO")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Loan Product Type"; "Loan Product Type")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Editable = LProdTypeEditable;
                     Style = StrongAccent;
                 }
-                field("Requested Amount"; "Requested Amount")
+                field("Requested Amount"; Rec."Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Amount Applied';
@@ -67,11 +67,11 @@ Page 51516320 "Loan Application CardAdvances"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
 
                     end;
                 }
-                field("Approved Amount"; "Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Approved Amount';
@@ -81,26 +81,26 @@ Page 51516320 "Loan Application CardAdvances"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field(Installments; Installments)
+                field(Installments; Rec.Installments)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field(Interest; Interest)
+                field(Interest; Rec.Interest)
                 {
                     ApplicationArea = Basic;
                     Editable = Interrest;
                 }
 
-                field("Main Sector"; "Main Sector")
+                field("Main Sector"; Rec."Main Sector")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -108,10 +108,10 @@ Page 51516320 "Loan Application CardAdvances"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Sub-Sector"; "Sub-Sector")
+                field("Sub-Sector"; Rec."Sub-Sector")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -119,36 +119,36 @@ Page 51516320 "Loan Application CardAdvances"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Specific Sector"; "Specific Sector")
+                field("Specific Sector"; Rec."Specific Sector")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                     Editable = false;
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field(Remarks; Remarks)
+                field(Remarks; Rec.Remarks)
                 {
                     ApplicationArea = Basic;
                     Visible = true;
                     Editable = MNoEditable;
                 }
-                field("Repayment Method"; "Repayment Method")
+                field("Repayment Method"; Rec."Repayment Method")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Repayment; Repayment)
+                field(Repayment; Rec.Repayment)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Status"; "Loan Status")
+                field("Loan Status"; Rec."Loan Status")
                 {
                     ApplicationArea = Basic;
                     Editable = LoanStatusEditable;
@@ -160,66 +160,66 @@ Page 51516320 "Loan Application CardAdvances"
                     end;
                 }
 
-                field("Top Up Amount"; "Top Up Amount")
+                field("Top Up Amount"; Rec."Top Up Amount")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field("Total TopUp Commission"; "Total TopUp Commission")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                    Style = StrongAccent;
-                }
-                field("Repayment Frequency"; "Repayment Frequency")
+                field("Total TopUp Commission"; Rec."Total TopUp Commission")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Recovery Mode"; "Recovery Mode")
+                field("Repayment Frequency"; Rec."Repayment Frequency")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                    Style = StrongAccent;
+                }
+                field("Recovery Mode"; Rec."Recovery Mode")
                 {
                     ApplicationArea = Basic;
                     Editable = MNoEditable;
                     Style = StrongAccent;
                 }
-                field("Mode of Disbursement"; "Mode of Disbursement")
+                field("Mode of Disbursement"; Rec."Mode of Disbursement")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Loan Disbursement Date"; "Loan Disbursement Date")
+                field("Loan Disbursement Date"; Rec."Loan Disbursement Date")
                 {
                     ApplicationArea = Basic;
                     Editable = MNoEditable;
                 }
-                field("Repayment Start Date"; "Repayment Start Date")
+                field("Repayment Start Date"; Rec."Repayment Start Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Expected Date of Completion"; "Expected Date of Completion")
+                field("Expected Date of Completion"; Rec."Expected Date of Completion")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Approval Status"; "Approval Status")
+                field("Approval Status"; Rec."Approval Status")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Recommended Amount"; "Recommended Amount")
+                field("Recommended Amount"; Rec."Recommended Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Staff No"; "Staff No")
+                field("Staff No"; Rec."Staff No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Staff No';
                     Editable = false;
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -275,12 +275,12 @@ Page 51516320 "Loan Application CardAdvances"
                     trigger OnAction()
                     begin
 
-                        if ("Repayment Start Date" = 0D) then
+                        if (Rec."Repayment Start Date" = 0D) then
                             Error('Please enter Disbursement Date to continue');
-                        SFactory.FnGenerateRepaymentSchedule("Loan  No.");
+                        SFactory.FnGenerateRepaymentSchedule(Rec."Loan  No.");
 
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", Rec."Loan  No.");
                         if LoanApp.Find('-') then begin
                             Report.Run(51516477, true, false, LoanApp);
                         end;
@@ -306,22 +306,22 @@ Page 51516320 "Loan Application CardAdvances"
                             //   if (UserId <> 'MMHSACCO\SMUTUMA') and (UserId <> 'MMHSACCO\JKANANU') and (UserId <> 'MMHSACCO\BENKOBIA') then begin
                             Error('Denied! You are not allowed to Post Loans')
                         end;
-                        if "Loan Product Type" = 'OVERDRAFT' THEN begin
+                        if Rec."Loan Product Type" = 'OVERDRAFT' THEN begin
                             Error('Use Overdraft Loans Menu to disburse');
                         end;
-                        if "Loan Product Type" = 'OKOA' THEN begin
+                        if Rec."Loan Product Type" = 'OKOA' THEN begin
                             Error('Use OKOA Biashara Loans Menu to disburse');
                         end;
-                        if "Mode of Disbursement" <> "Mode of Disbursement"::Cheque then begin
-                            Error('Prohibited ! Mode of disbursement cannot be ' + Format("Mode of Disbursement"));
+                        if Rec."Mode of Disbursement" <> Rec."Mode of Disbursement"::Cheque then begin
+                            Error('Prohibited ! Mode of disbursement cannot be ' + Format(Rec."Mode of Disbursement"));
                         end;
-                        if Posted = true then begin
+                        if Rec.Posted = true then begin
                             Error('Prohibited ! The loan is already Posted');
                         end;
-                        if "Loan Status" <> "Loan Status"::Approved then begin
+                        if Rec."Loan Status" <> Rec."Loan Status"::Approved then begin
                             Error('Prohibited ! The loan is Status MUST be Approved');
                         end;
-                        if Confirm('Are you sure you want to POST Loan Approved amount of Ksh. ' + Format("Approved Amount") + ' to member -' + Format("Client Name") + ' ?', false) = false then begin
+                        if Confirm('Are you sure you want to POST Loan Approved amount of Ksh. ' + Format(Rec."Approved Amount") + ' to member -' + Format(Rec."Client Name") + ' ?', false) = false then begin
                             exit;
                         end else begin
                             TemplateName := 'PAYMENTS';
@@ -336,16 +336,16 @@ Page 51516320 "Loan Application CardAdvances"
                             if GenJournalLine.Find('-') then begin
                                 CODEUNIT.RUN(CODEUNIT::"Gen. Jnl.-Post Batch", GenJournalLine);
                                 FnSendNotifications();//Send Notifications
-                                "Loan Status" := "Loan Status"::Issued;
-                                Posted := true;
-                                "Posted By" := UserId;
-                                "Posting Date" := Today;
-                                "Issued Date" := "Loan Disbursement Date";
-                                "Approval Status" := "Approval Status"::Approved;
+                                Rec."Loan Status" := Rec."Loan Status"::Issued;
+                                Rec.Posted := true;
+                                Rec."Posted By" := UserId;
+                                Rec."Posting Date" := Today;
+                                Rec."Issued Date" := Rec."Loan Disbursement Date";
+                                Rec."Approval Status" := Rec."Approval Status"::Approved;
                                 // "Loans Category-SASRA" := "Loans Category-SASRA"::Perfoming;
-                                Modify();
+                                Rec.Modify();
                                 //...................Recover Overdraft Loan On Loan
-                                SFactory.FnRecoverOnLoanOverdrafts("Client Code");
+                                SFactory.FnRecoverOnLoanOverdrafts(Rec."Client Code");
                                 //.................................................
                                 Message('Loan has successfully been posted and member notified');
                                 CurrPage.close();
@@ -399,22 +399,22 @@ Page 51516320 "Loan Application CardAdvances"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        Source := Source::FOSA;
-        "Mode of Disbursement" := "mode of disbursement"::Cheque;
+        Rec.Source := Rec.Source::FOSA;
+        Rec."Mode of Disbursement" := Rec."mode of disbursement"::Cheque;
     end;
 
     trigger OnNextRecord(Steps: Integer): Integer
     begin
-        if "Loan Status" = "loan status"::Approved then
+        if Rec."Loan Status" = Rec."loan status"::Approved then
             CurrPage.Editable := false;
     end;
 
     trigger OnOpenPage()
     begin
-        SetRange(Posted, false);
+        Rec.SetRange(Posted, false);
         if
-        "Mode of Disbursement" <> "Mode of Disbursement"::Cheque then begin
-            "Mode of Disbursement" := "Mode of Disbursement"::Cheque;
+        Rec."Mode of Disbursement" <> Rec."Mode of Disbursement"::Cheque then begin
+            Rec."Mode of Disbursement" := Rec."Mode of Disbursement"::Cheque;
             rec.Modify();
         end;
     end;
@@ -556,7 +556,7 @@ Page 51516320 "Loan Application CardAdvances"
 
     procedure UpdateControl()
     begin
-        if "Loan Status" = "loan status"::Application then begin
+        if Rec."Loan Status" = Rec."loan status"::Application then begin
             CancelApprovalEnabled := false;
             SendApprovalEnabled := true;
             MNoEditable := true;
@@ -576,7 +576,7 @@ Page 51516320 "Loan Application CardAdvances"
             DisbursementDateEditable := true;
         end;
 
-        if "Loan Status" = "loan status"::Appraisal then begin
+        if Rec."Loan Status" = Rec."loan status"::Appraisal then begin
             CancelApprovalEnabled := true;
             SendApprovalEnabled := false;
             MNoEditable := false;
@@ -596,7 +596,7 @@ Page 51516320 "Loan Application CardAdvances"
             DisbursementDateEditable := false;
         end;
 
-        if "Loan Status" = "loan status"::Rejected then begin
+        if Rec."Loan Status" = Rec."loan status"::Rejected then begin
             CancelApprovalEnabled := false;
             SendApprovalEnabled := true;
             MNoEditable := false;
@@ -616,7 +616,7 @@ Page 51516320 "Loan Application CardAdvances"
             DisbursementDateEditable := false;
         end;
 
-        if "Loan Status" = "loan status"::Approved then begin
+        if Rec."Loan Status" = Rec."loan status"::Approved then begin
             SendApprovalEnabled := false;
             CancelApprovalEnabled := false;
             MNoEditable := false;
@@ -648,12 +648,12 @@ Page 51516320 "Loan Application CardAdvances"
         PhoneNo: Text[250];
     begin
         LoansR.Reset();
-        LoansR.SetRange(LoansR."Loan  No.", "Loan  No.");
+        LoansR.SetRange(LoansR."Loan  No.", Rec."Loan  No.");
         if LoansR.Find('-') then begin
             msg := '';
-            msg := 'Dear Member, Your ' + Format(LoansR."Loan Product Type") + ' loan application of KSHs.' + Format("Requested Amount") + ' has been processed and deposited to your FOSA Account.Jamii Yetu Sacco.';
-            PhoneNo := FnGetPhoneNo("Client Code");
-            SendSMSMessage("Client Code", msg, PhoneNo);
+            msg := 'Dear Member, Your ' + Format(LoansR."Loan Product Type") + ' loan application of KSHs.' + Format(Rec."Requested Amount") + ' has been processed and deposited to your FOSA Account.Jamii Yetu Sacco.';
+            PhoneNo := FnGetPhoneNo(Rec."Client Code");
+            SendSMSMessage(Rec."Client Code", msg, PhoneNo);
         end;
     end;
 
@@ -739,7 +739,7 @@ Page 51516320 "Loan Application CardAdvances"
         Sfactorycode: Codeunit "SURESTEP Factory";
     begin
         //--------------------Generate Schedule
-        Sfactorycode.FnGenerateRepaymentSchedule("Loan  No.");
+        Sfactorycode.FnGenerateRepaymentSchedule(Rec."Loan  No.");
         //....................PRORATED DAYS
         EndMonth := CALCDATE('-1D', CALCDATE('1M', DMY2DATE(1, DATE2DMY(Today, 2), DATE2DMY(Today, 3))));
         RemainingDays := (EndMonth - Today) + 1;
@@ -760,7 +760,7 @@ Page 51516320 "Loan Application CardAdvances"
         GenSetUp.GET;
         DActivity := '';
         DBranch := '';
-        IF Vend.GET("Client Code") THEN BEGIN
+        IF Vend.GET(Rec."Client Code") THEN BEGIN
             DActivity := Vend."Global Dimension 1 Code";
             DBranch := Vend."Global Dimension 2 Code";
         END;
@@ -771,16 +771,16 @@ Page 51516320 "Loan Application CardAdvances"
         GenJournalLine."Journal Batch Name" := BatchName;
         GenJournalLine."Line No." := LineNo;
         GenJournalLine."Account Type" := GenJournalLine."Account Type"::Customer;
-        GenJournalLine."Account No." := "Client Code";
+        GenJournalLine."Account No." := Rec."Client Code";
         GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-        GenJournalLine."Document No." := "Loan  No.";
+        GenJournalLine."Document No." := Rec."Loan  No.";
         GenJournalLine."Posting Date" := Today;
-        GenJournalLine.Description := 'Loan Principle Amount' + Format("Loan  No.");
-        GenJournalLine.Amount := "Approved Amount";
+        GenJournalLine.Description := 'Loan Principle Amount' + Format(Rec."Loan  No.");
+        GenJournalLine.Amount := Rec."Approved Amount";
         GenJournalLine.VALIDATE(GenJournalLine.Amount);
         GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::Loan;
-        GenJournalLine."Loan No" := "Loan  No.";
-        GenJournalLine."Group Code" := "Group Code";
+        GenJournalLine."Loan No" := Rec."Loan  No.";
+        GenJournalLine."Group Code" := Rec."Group Code";
         GenJournalLine.VALIDATE(GenJournalLine."Bal. Account No.");
         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
         GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
@@ -792,23 +792,23 @@ Page 51516320 "Loan Application CardAdvances"
         GenJournalLine."Journal Template Name" := TemplateName;
         GenJournalLine."Journal Batch Name" := BatchName;
         GenJournalLine."Line No." := LineNo;
-        GenJournalLine."Document No." := "Loan  No.";
+        GenJournalLine."Document No." := Rec."Loan  No.";
         GenJournalLine."Posting Date" := Today;
-        GenJournalLine."External Document No." := "Loan  No.";
+        GenJournalLine."External Document No." := Rec."Loan  No.";
         GenJournalLine."Account Type" := GenJournalLine."Bal. Account Type"::Vendor;
-        GenJournalLine."Account No." := "Account No";
+        GenJournalLine."Account No." := Rec."Account No";
         GenJournalLine.VALIDATE(GenJournalLine."Account No.");
         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
         GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
-        GenJournalLine.Description := "Loan Product Type" + ' Loan-' + Format("Loan  No.");
-        GenJournalLine.Amount := ("Approved Amount") * -1;
+        GenJournalLine.Description := Rec."Loan Product Type" + ' Loan-' + Format(Rec."Loan  No.");
+        GenJournalLine.Amount := (Rec."Approved Amount") * -1;
         GenJournalLine.VALIDATE(GenJournalLine.Amount);
         GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
         GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
         IF GenJournalLine.Amount <> 0 THEN
             GenJournalLine.INSERT;
         //-------------Recover Interst of all FOSA loans (Check with Credit Department)
-        IF LoanType.Get("Loan Product Type") then begin
+        IF LoanType.Get(Rec."Loan Product Type") then begin
             if LoanType."Charge Interest Upfront" = true then begin
                 LineNo := LineNo + 10000;
                 GenJournalLine.INIT;
@@ -816,20 +816,20 @@ Page 51516320 "Loan Application CardAdvances"
                 GenJournalLine."Journal Batch Name" := BatchName;
                 GenJournalLine."Line No." := LineNo;
                 GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
-                GenJournalLine."Account No." := "Account No";
-                GenJournalLine."Document No." := "Loan  No.";
-                GenJournalLine."External Document No." := "Loan  No.";
+                GenJournalLine."Account No." := Rec."Account No";
+                GenJournalLine."Document No." := Rec."Loan  No.";
+                GenJournalLine."External Document No." := Rec."Loan  No.";
                 GenJournalLine."Posting Date" := Today;
-                GenJournalLine.Description := 'Upfront Interest Recovered-' + Format("Loan  No.");
-                GenJournalLine.Amount := ("Approved Amount" * (Interest / 100));
+                GenJournalLine.Description := 'Upfront Interest Recovered-' + Format(Rec."Loan  No.");
+                GenJournalLine.Amount := (Rec."Approved Amount" * (Rec.Interest / 100));
                 GenJournalLine.VALIDATE(GenJournalLine.Amount);
                 GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
-                if LoanType.Get("Loan Product Type") then begin
+                if LoanType.Get(Rec."Loan Product Type") then begin
                     GenJournalLine."Bal. Account No." := LoanType."Loan Interest Account";
                 end;
                 GenJournalLine.VALIDATE(GenJournalLine."Bal. Account No.");
                 GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-                GenJournalLine."Shortcut Dimension 2 Code" := Sfactorycode.FnGetMemberBranch("BOSA No");
+                GenJournalLine."Shortcut Dimension 2 Code" := Sfactorycode.FnGetMemberBranch(Rec."BOSA No");
                 IF GenJournalLine.Amount <> 0 THEN
                     GenJournalLine.INSERT;
             END;
@@ -841,17 +841,17 @@ Page 51516320 "Loan Application CardAdvances"
                 GenJournalLine."Journal Batch Name" := BatchName;
                 GenJournalLine."Line No." := LineNo;
                 GenJournalLine."Account Type" := GenJournalLine."Account Type"::Customer;
-                GenJournalLine."Account No." := "Client Code";
+                GenJournalLine."Account No." := Rec."Client Code";
                 GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                GenJournalLine."Document No." := "Loan  No.";
-                GenJournalLine."External Document No." := "Loan  No.";
+                GenJournalLine."Document No." := Rec."Loan  No.";
+                GenJournalLine."External Document No." := Rec."Loan  No.";
                 GenJournalLine."Posting Date" := Today;
                 GenJournalLine.Description := 'Loan Total Interest Due';
-                GenJournalLine.Amount := ((("Approved Amount") * (Interest / 100)) / 2);
+                GenJournalLine.Amount := (((Rec."Approved Amount") * (Rec.Interest / 100)) / 2);
                 GenJournalLine.VALIDATE(GenJournalLine.Amount);
                 GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Interest Due";
-                GenJournalLine."Loan No" := "Loan  No.";
-                IF LoanType.GET("Loan Product Type") THEN BEGIN
+                GenJournalLine."Loan No" := Rec."Loan  No.";
+                IF LoanType.GET(Rec."Loan Product Type") THEN BEGIN
                     GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
                     GenJournalLine."Bal. Account No." := LoanType."Loan Interest Account";
                     GenJournalLine.VALIDATE(GenJournalLine."Bal. Account No.");
@@ -867,7 +867,7 @@ Page 51516320 "Loan Application CardAdvances"
         //Code Here
         //***************************Loan Product Charges code
         PCharges.Reset();
-        PCharges.SETRANGE(PCharges."Product Code", "Loan Product Type");
+        PCharges.SETRANGE(PCharges."Product Code", Rec."Loan Product Type");
         IF PCharges.FIND('-') THEN BEGIN
             REPEAT
                 PCharges.TESTFIELD(PCharges."G/L Account");
@@ -879,19 +879,19 @@ Page 51516320 "Loan Application CardAdvances"
                 GenJournalLine."Account Type" := GenJournalLine."Account Type"::"G/L Account";
                 GenJournalLine."Account No." := PCharges."G/L Account";
                 GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                GenJournalLine."Document No." := "Loan  No.";
-                GenJournalLine."External Document No." := "Loan  No.";
+                GenJournalLine."Document No." := Rec."Loan  No.";
+                GenJournalLine."External Document No." := Rec."Loan  No.";
                 GenJournalLine."Posting Date" := Today;
-                GenJournalLine.Description := PCharges.Description + '-' + Format("Loan  No.");
+                GenJournalLine.Description := PCharges.Description + '-' + Format(Rec."Loan  No.");
                 IF PCharges."Use Perc" = TRUE THEN BEGIN
-                    GenJournalLine.Amount := ("Approved Amount" * (PCharges.Percentage / 100)) * -1
+                    GenJournalLine.Amount := (Rec."Approved Amount" * (PCharges.Percentage / 100)) * -1
                 END ELSE
                     IF PCharges."Use Perc" = false then begin
                         GenJournalLine.Amount := PCharges.Amount * -1;
                     end;
                 GenJournalLine.VALIDATE(GenJournalLine.Amount);
                 GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::Vendor;
-                GenJournalLine."Bal. Account No." := "Account No";
+                GenJournalLine."Bal. Account No." := Rec."Account No";
                 GenJournalLine.VALIDATE(GenJournalLine."Bal. Account No.");
                 GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
                 GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
@@ -900,10 +900,10 @@ Page 51516320 "Loan Application CardAdvances"
             UNTIL PCharges.NEXT = 0;
         END;
         //...................Cater for Loan Offset Now !
-        CalcFields("Top Up Amount");
-        if "Top Up Amount" > 0 then begin
+        Rec.CalcFields("Top Up Amount");
+        if Rec."Top Up Amount" > 0 then begin
             LoanTopUp.RESET;
-            LoanTopUp.SETRANGE(LoanTopUp."Loan No.", "Loan  No.");
+            LoanTopUp.SETRANGE(LoanTopUp."Loan No.", Rec."Loan  No.");
             IF LoanTopUp.FIND('-') THEN BEGIN
                 REPEAT//Maybe there are multiple topup loans
                     //Principle
@@ -912,13 +912,13 @@ Page 51516320 "Loan Application CardAdvances"
                     GenJournalLine."Journal Template Name" := TemplateName;
                     GenJournalLine."Journal Batch Name" := BatchName;
                     GenJournalLine."Line No." := LineNo;
-                    GenJournalLine."Document No." := "Loan  No.";
+                    GenJournalLine."Document No." := Rec."Loan  No.";
                     GenJournalLine."Posting Date" := Today;
-                    GenJournalLine."External Document No." := "Loan  No.";
+                    GenJournalLine."External Document No." := Rec."Loan  No.";
                     GenJournalLine."Account Type" := GenJournalLine."Account Type"::Customer;
-                    GenJournalLine."Account No." := "Client Code";
+                    GenJournalLine."Account No." := Rec."Client Code";
                     GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                    GenJournalLine.Description := 'Loan OffSet By - ' + "Loan  No.";
+                    GenJournalLine.Description := 'Loan OffSet By - ' + Rec."Loan  No.";
                     GenJournalLine.Amount := LoanTopUp."Principle Top Up" * -1;
                     GenJournalLine.VALIDATE(GenJournalLine.Amount);
                     GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::Repayment;
@@ -933,11 +933,11 @@ Page 51516320 "Loan Application CardAdvances"
                     GenJournalLine."Journal Template Name" := TemplateName;
                     GenJournalLine."Journal Batch Name" := BatchName;
                     GenJournalLine."Line No." := LineNo;
-                    GenJournalLine."Document No." := "Loan  No.";
+                    GenJournalLine."Document No." := Rec."Loan  No.";
                     GenJournalLine."Posting Date" := Today;
-                    GenJournalLine."External Document No." := "Loan  No.";
+                    GenJournalLine."External Document No." := Rec."Loan  No.";
                     GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
-                    GenJournalLine."Account No." := "Account No";
+                    GenJournalLine."Account No." := Rec."Account No";
                     GenJournalLine.VALIDATE(GenJournalLine."Account No.");
                     GenJournalLine.Description := 'Loan offset Principal to loan-' + LoanTopUp."Loan Top Up" + '-' + LoanTopUp."Loan Type";
                     GenJournalLine.Amount := LoanTopUp."Principle Top Up";
@@ -947,20 +947,20 @@ Page 51516320 "Loan Application CardAdvances"
                     IF GenJournalLine.Amount <> 0 THEN
                         GenJournalLine.INSERT;
                     //..................Recover Interest On Top Up
-                    IF LoanType.GET("Loan Product Type") THEN BEGIN
+                    IF LoanType.GET(Rec."Loan Product Type") THEN BEGIN
                         LineNo := LineNo + 10000;
                         GenJournalLine.INIT;
                         GenJournalLine."Journal Template Name" := TemplateName;
                         GenJournalLine."Journal Batch Name" := BatchName;
                         GenJournalLine."Line No." := LineNo;
                         GenJournalLine."Account Type" := GenJournalLine."Bal. Account Type"::Customer;
-                        GenJournalLine."Account No." := "Client Code";
+                        GenJournalLine."Account No." := Rec."Client Code";
                         GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                        GenJournalLine."Document No." := "Loan  No.";
+                        GenJournalLine."Document No." := Rec."Loan  No.";
                         GenJournalLine."Posting Date" := Today;
                         GenJournalLine.Description := 'Interest Due Paid on top up';
                         GenJournalLine.Amount := -LoanTopUp."Interest Top Up";
-                        GenJournalLine."External Document No." := "Loan  No.";
+                        GenJournalLine."External Document No." := Rec."Loan  No.";
                         GenJournalLine.VALIDATE(GenJournalLine.Amount);
                         GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Interest Paid";
                         GenJournalLine."Loan No" := LoanTopUp."Loan Top Up";
@@ -976,13 +976,13 @@ Page 51516320 "Loan Application CardAdvances"
                     GenJournalLine."Journal Batch Name" := BatchName;
                     GenJournalLine."Line No." := LineNo;
                     GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
-                    GenJournalLine."Account No." := "Account No";
+                    GenJournalLine."Account No." := Rec."Account No";
                     GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                    GenJournalLine."Document No." := "Loan  No.";
+                    GenJournalLine."Document No." := Rec."Loan  No.";
                     GenJournalLine."Posting Date" := Today;
                     GenJournalLine.Description := 'Loan offset Interest to loan-' + LoanTopUp."Loan Top Up" + '-' + LoanTopUp."Loan Type";
                     GenJournalLine.Amount := LoanTopUp."Interest Top Up";
-                    GenJournalLine."External Document No." := "Loan  No.";
+                    GenJournalLine."External Document No." := Rec."Loan  No.";
                     GenJournalLine.VALIDATE(GenJournalLine.Amount);
                     GenJournalLine."Loan No" := LoanTopUp."Loan Top Up";
                     GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
@@ -998,11 +998,11 @@ Page 51516320 "Loan Application CardAdvances"
                     GenJournalLine."Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
                     GenJournalLine."Account No." := '5411';
                     GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                    GenJournalLine."Document No." := "Loan  No.";
+                    GenJournalLine."Document No." := Rec."Loan  No.";
                     GenJournalLine."Posting Date" := Today;
                     GenJournalLine.Description := 'Commission on ' + format(LoanTopUp."Loan No.") + ' Loan Offset';
                     GenJournalLine.Amount := -LoanTopUp.Commision;
-                    GenJournalLine."External Document No." := "Loan  No.";
+                    GenJournalLine."External Document No." := Rec."Loan  No.";
                     GenJournalLine.VALIDATE(GenJournalLine.Amount);
                     GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
                     GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
@@ -1015,13 +1015,13 @@ Page 51516320 "Loan Application CardAdvances"
                     GenJournalLine."Journal Batch Name" := BatchName;
                     GenJournalLine."Line No." := LineNo;
                     GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
-                    GenJournalLine."Account No." := "Account No";
+                    GenJournalLine."Account No." := Rec."Account No";
                     GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                    GenJournalLine."Document No." := "Loan  No.";
+                    GenJournalLine."Document No." := Rec."Loan  No.";
                     GenJournalLine."Posting Date" := Today;
                     GenJournalLine.Description := 'Commission Charged on ' + format(LoanTopUp."Loan No.") + ' Loan Offset';
                     GenJournalLine.Amount := LoanTopUp.Commision;
-                    GenJournalLine."External Document No." := "Loan  No.";
+                    GenJournalLine."External Document No." := Rec."Loan  No.";
                     GenJournalLine.VALIDATE(GenJournalLine.Amount);
                     GenJournalLine."Loan No" := LoanTopUp."Loan Top Up";
                     GenJournalLine."Shortcut Dimension 1 Code" := DActivity;

@@ -4,52 +4,52 @@ Table 51516524 "Agent Tariff Details"
 
     fields
     {
-        field(1;"Entry No";Integer)
+        field(1; "Entry No"; Integer)
         {
 
             trigger OnValidate()
             begin
-                   /* IF "Entry No" = 0 THEN BEGIN
-                      TariffDetails.RESET;
-                      IF TariffDetails.FIND('+') THEN BEGIN
-                      iEntryNo:=TariffDetails."Entry No";
-                      iEntryNo:=iEntryNo+1;
-                      END
-                      ELSE BEGIN
-                      iEntryNo:=1;
-                      END;
-                      END;
-                    "Entry No":=iEntryNo;*/
+                /* IF "Entry No" = 0 THEN BEGIN
+                   TariffDetails.RESET;
+                   IF TariffDetails.FIND('+') THEN BEGIN
+                   iEntryNo:=TariffDetails."Entry No";
+                   iEntryNo:=iEntryNo+1;
+                   END
+                   ELSE BEGIN
+                   iEntryNo:=1;
+                   END;
+                   END;
+                 "Entry No":=iEntryNo;*/
 
             end;
         }
-        field(2;"Code";Code[20])
+        field(2; "Code"; Code[20])
         {
             TableRelation = "Agency Tariff Header";
         }
-        field(3;Charge;Decimal)
+        field(3; Charge; Decimal)
         {
         }
-        field(4;"Lower Limit";Decimal)
+        field(4; "Lower Limit"; Decimal)
         {
         }
-        field(5;"Upper Limit";Decimal)
+        field(5; "Upper Limit"; Decimal)
         {
         }
-        field(6;"Agent Comm";Decimal)
+        field(6; "Agent Comm"; Decimal)
         {
         }
-        field(7;"Sacco Comm";Decimal)
+        field(7; "Sacco Comm"; Decimal)
         {
         }
-        field(8;"Vendor Comm";Decimal)
+        field(8; "Vendor Comm"; Decimal)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Entry No")
+        key(Key1; "Entry No")
         {
             Clustered = true;
         }

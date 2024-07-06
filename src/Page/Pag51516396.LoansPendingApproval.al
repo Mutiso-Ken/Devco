@@ -18,47 +18,47 @@ Page 51516396 "Loans Pending Approval"
             group(General)
             {
                 Caption = 'General';
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
 
-                field("Client Code"; "Client Code")
+                field("Client Code"; Rec."Client Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member';
                     Editable = MNoEditable;
                     ShowMandatory = true;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                     Editable = AccountNoEditable;
                     Style = StrongAccent;
                 }
-                field("Client Name"; "Client Name")
+                field("Client Name"; Rec."Client Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Member Deposits"; "Member Deposits")
+                field("Member Deposits"; Rec."Member Deposits")
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
                 }
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Loan Product Type"; "Loan Product Type")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
@@ -71,7 +71,7 @@ Page 51516396 "Loans Pending Approval"
                         // end;
                     end;
                 }
-                field(Installments; Installments)
+                field(Installments; Rec.Installments)
                 {
                     ApplicationArea = Basic;
                     Editable = InstallmentEditable;
@@ -79,16 +79,16 @@ Page 51516396 "Loans Pending Approval"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field(Interest; Interest)
+                field(Interest; Rec.Interest)
                 {
                     ApplicationArea = Basic;
                     Editable = EditableField;
                     Caption = 'Interest Rate';
                 }
-                field("Requested Amount"; "Requested Amount")
+                field("Requested Amount"; Rec."Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Amount Applied';
@@ -98,10 +98,10 @@ Page 51516396 "Loans Pending Approval"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Approved Amount"; "Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Approved Amount';
@@ -111,10 +111,10 @@ Page 51516396 "Loans Pending Approval"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Main Sector"; "Main Sector")
+                field("Main Sector"; Rec."Main Sector")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -123,10 +123,10 @@ Page 51516396 "Loans Pending Approval"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Sub-Sector"; "Sub-Sector")
+                field("Sub-Sector"; Rec."Sub-Sector")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -135,10 +135,10 @@ Page 51516396 "Loans Pending Approval"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Specific Sector"; "Specific Sector")
+                field("Specific Sector"; Rec."Specific Sector")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -147,37 +147,37 @@ Page 51516396 "Loans Pending Approval"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
 
-                field(Remarks; Remarks)
+                field(Remarks; Rec.Remarks)
                 {
                     ApplicationArea = Basic;
                     Editable = MNoEditable;
                     Visible = true;
                 }
-                field("Repayment Method"; "Repayment Method")
+                field("Repayment Method"; Rec."Repayment Method")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Principle Repayment"; "Loan Principle Repayment")
+                field("Loan Principle Repayment"; Rec."Loan Principle Repayment")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Interest Repayment"; "Loan Interest Repayment")
+                field("Loan Interest Repayment"; Rec."Loan Interest Repayment")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Repayment; Repayment)
+                field(Repayment; Rec.Repayment)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Status"; "Loan Status")
+                field("Loan Status"; Rec."Loan Status")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -190,19 +190,19 @@ Page 51516396 "Loans Pending Approval"
 
                     end;
                 }
-                field("Approval Status"; "Approval Status")
+                field("Approval Status"; Rec."Approval Status")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Repayment Frequency"; "Repayment Frequency")
+                field("Repayment Frequency"; Rec."Repayment Frequency")
                 {
                     ApplicationArea = Basic;
                     Editable = RepayFrequencyEditable;
                     Style = StrongAccent;
                     ShowMandatory = true;
                 }
-                field("Recovery Mode"; "Recovery Mode")
+                field("Recovery Mode"; Rec."Recovery Mode")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
@@ -210,37 +210,37 @@ Page 51516396 "Loans Pending Approval"
                     Editable = MNoEditable;
                     OptionCaption = 'Checkoff,Standing Order,Salary,Pension,Direct Debits,Tea,Milk,Tea Bonus,Dividend,Christmas';
                 }
-                field("Mode of Disbursement"; "Mode of Disbursement")
+                field("Mode of Disbursement"; Rec."Mode of Disbursement")
                 {
                     ApplicationArea = Basic;
                     Editable = MNoEditable;
                     ShowMandatory = true;
                 }
-                field("Loan Disbursement Date"; "Loan Disbursement Date")
+                field("Loan Disbursement Date"; Rec."Loan Disbursement Date")
                 {
                     ApplicationArea = Basic;
                     Editable = MNoEditable;
                     Style = StrongAccent;
                     ShowMandatory = true;
                 }
-                field("Repayment Start Date"; "Repayment Start Date")
+                field("Repayment Start Date"; Rec."Repayment Start Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Expected Date of Completion"; "Expected Date of Completion")
+                field("Expected Date of Completion"; Rec."Expected Date of Completion")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Total TopUp Commission"; "Total TopUp Commission")
+                field("Total TopUp Commission"; Rec."Total TopUp Commission")
                 {
                     ApplicationArea = Basic;
                     Editable = MNoEditable;
                     Visible = false;
 
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -297,7 +297,7 @@ Page 51516396 "Loans Pending Approval"
                     trigger OnAction()
                     begin
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", Rec."Loan  No.");
                         if LoanApp.Find('-') then begin
                             Report.Run(51516244, true, false, LoanApp);
                         end;
@@ -314,7 +314,7 @@ Page 51516396 "Loans Pending Approval"
                     trigger OnAction()
                     begin
                         FnCheckForTestFields();
-                        if Confirm('Send Approval Request For Loan Application of Ksh. ' + Format("Approved Amount") + ' applied by ' + Format("Client Name") + ' ?', false) = false then begin
+                        if Confirm('Send Approval Request For Loan Application of Ksh. ' + Format(Rec."Approved Amount") + ' applied by ' + Format(Rec."Client Name") + ' ?', false) = false then begin
                             exit;
                         end else begin
                             SrestepApprovalsCodeUnit.SendLoanApplicationsRequestForApproval(rec."Loan  No.", Rec);
@@ -350,7 +350,7 @@ Page 51516396 "Loans Pending Approval"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "Client Code");
+                        Cust.SetRange(Cust."No.", Rec."Client Code");
                         Report.Run(51516223, true, false, Cust);
                     end;
                 }
@@ -364,13 +364,13 @@ Page 51516396 "Loans Pending Approval"
 
                     trigger OnAction()
                     begin
-                        if ("Repayment Start Date" = 0D) then
+                        if (Rec."Repayment Start Date" = 0D) then
                             Error('Please enter Disbursement Date to continue');
 
-                        SFactory.FnGenerateRepaymentSchedule("Loan  No.");
+                        SFactory.FnGenerateRepaymentSchedule(Rec."Loan  No.");
 
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", Rec."Loan  No.");
                         if LoanApp.Find('-') then begin
                             Report.Run(51516477, true, false, LoanApp);
                         end;
@@ -423,8 +423,8 @@ Page 51516396 "Loans Pending Approval"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        Source := Source::BOSA;
-        "Mode of Disbursement" := "mode of disbursement"::Cheque;
+        Rec.Source := Rec.Source::BOSA;
+        Rec."Mode of Disbursement" := Rec."mode of disbursement"::Cheque;
     end;
 
     trigger OnNextRecord(Steps: Integer): Integer
@@ -435,7 +435,7 @@ Page 51516396 "Loans Pending Approval"
 
     trigger OnOpenPage()
     begin
-        SetRange(Posted, false);
+        Rec.SetRange(Posted, false);
 
     end;
 
@@ -583,7 +583,7 @@ Page 51516396 "Loans Pending Approval"
     procedure UpdateControl()
     begin
 
-        if "Loan Status" = "loan status"::Application then begin
+        if Rec."Loan Status" = Rec."loan status"::Application then begin
             RecordApproved := false;
             MNoEditable := true;
             ApplcDateEditable := false;
@@ -602,7 +602,7 @@ Page 51516396 "Loans Pending Approval"
 
         end;
 
-        if "Loan Status" = "loan status"::Appraisal then begin
+        if Rec."Loan Status" = Rec."loan status"::Appraisal then begin
             RecordApproved := true;
             MNoEditable := false;
             ApplcDateEditable := false;
@@ -620,7 +620,7 @@ Page 51516396 "Loans Pending Approval"
             CanCancelApprovalForRecord := true;
         end;
 
-        if "Loan Status" = "loan status"::Rejected then begin
+        if Rec."Loan Status" = Rec."loan status"::Rejected then begin
             RecordApproved := true;
             MNoEditable := false;
             AccountNoEditable := false;
@@ -640,7 +640,7 @@ Page 51516396 "Loans Pending Approval"
             CanCancelApprovalForRecord := false;
         end;
 
-        if "Approval Status" = "approval status"::Approved then begin
+        if Rec."Approval Status" = Rec."approval status"::Approved then begin
             RecordApproved := true;
             MNoEditable := false;
             AccountNoEditable := false;
@@ -691,18 +691,18 @@ Page 51516396 "Loans Pending Approval"
 
             SMSMessage.Init;
             SMSMessage."Entry No" := iEntryNo;
-            SMSMessage."Batch No" := "Batch No.";
-            SMSMessage."Document No" := "Loan  No.";
-            SMSMessage."Account No" := "Account No";
+            SMSMessage."Batch No" := Rec."Batch No.";
+            SMSMessage."Document No" := Rec."Loan  No.";
+            SMSMessage."Account No" := Rec."Account No";
             SMSMessage."Date Entered" := Today;
             SMSMessage."Time Entered" := Time;
             SMSMessage.Source := 'LOANS';
             SMSMessage."Entered By" := UserId;
             SMSMessage."Sent To Server" := SMSMessage."sent to server"::No;
-            SMSMessage."SMS Message" := 'Your Loan Application of amount ' + Format("Requested Amount") + ' for ' +
-            "Client Code" + ' ' + "Client Name" + ' has been received and is being Processed ' + compinfo.Name + ' ' + GenSetUp."Customer Care No";
+            SMSMessage."SMS Message" := 'Your Loan Application of amount ' + Format(Rec."Requested Amount") + ' for ' +
+            Rec."Client Code" + ' ' + Rec."Client Name" + ' has been received and is being Processed ' + compinfo.Name + ' ' + GenSetUp."Customer Care No";
             Cust.Reset;
-            Cust.SetRange(Cust."No.", "Client Code");
+            Cust.SetRange(Cust."No.", Rec."Client Code");
             if Cust.Find('-') then begin
                 SMSMessage."Telephone No" := Cust."Mobile Phone No";
             end;
@@ -737,23 +737,23 @@ Page 51516396 "Loans Pending Approval"
         LoanGuarantors: Record "Loans Guarantee Details";
     begin
         //--------------------
-        if "Approval Status" = "Approval Status"::Approved then begin
+        if Rec."Approval Status" = Rec."Approval Status"::Approved then begin
             Error('The loan has already been approved');
         end;
-        if "Approval Status" <> "Approval Status"::Open then begin
+        if Rec."Approval Status" <> Rec."Approval Status"::Open then begin
             Error('Approval status MUST be Open');
         end;
-        TestField("Requested Amount");
-        TestField("Main Sector");
-        TestField("Sub-Sector");
-        TestField("Specific Sector");
-        TestField("Loan Product Type");
-        TestField("Mode of Disbursement");
+        Rec.TestField("Requested Amount");
+        Rec.TestField("Main Sector");
+        Rec.TestField("Sub-Sector");
+        Rec.TestField("Specific Sector");
+        Rec.TestField("Loan Product Type");
+        Rec.TestField("Mode of Disbursement");
         //----------------------
-        if LoanType.get("Loan Product Type") then begin
+        if LoanType.get(Rec."Loan Product Type") then begin
             if LoanType."Appraise Guarantors" = true then begin
                 LoanGuarantors.Reset();
-                LoanGuarantors.SetRange(LoanGuarantors."Loan No", "Loan  No.");
+                LoanGuarantors.SetRange(LoanGuarantors."Loan No", Rec."Loan  No.");
                 if LoanGuarantors.find('-') then begin
                     Error('Please Insert Loan Applicant Guarantor Details!');
                 end;
@@ -777,16 +777,16 @@ Page 51516396 "Loans Pending Approval"
         SMSMessages.RESET;
         SMSMessages.INIT;
         SMSMessages."Entry No" := iEntryNo;
-        SMSMessages."Account No" := "Client Code";
+        SMSMessages."Account No" := Rec."Client Code";
         SMSMessages."Date Entered" := TODAY;
         SMSMessages."Time Entered" := TIME;
         SMSMessages.Source := 'LOAN APPL';
         SMSMessages."Entered By" := USERID;
         SMSMessages."Sent To Server" := SMSMessages."Sent To Server"::No;
-        SMSMessages."SMS Message" := 'Your loan application of KSHs.' + FORMAT("Requested Amount") +
+        SMSMessages."SMS Message" := 'Your loan application of KSHs.' + FORMAT(Rec."Requested Amount") +
                                   ' has been received. Jamii Yetu Sacco Ltd.';
         Cust.RESET;
-        IF Cust.GET("Client Code") THEN
+        IF Cust.GET(Rec."Client Code") THEN
             if Cust."Mobile Phone No" <> '' then begin
                 SMSMessages."Telephone No" := Cust."Mobile Phone No";
             end else
@@ -796,7 +796,7 @@ Page 51516396 "Loans Pending Approval"
         SMSMessages.INSERT;
         //.......................................Notify Guarantors
         LoanGuar.RESET;
-        LoanGuar.SETRANGE(LoanGuar."Loan No", "Loan  No.");
+        LoanGuar.SETRANGE(LoanGuar."Loan No", Rec."Loan  No.");
         IF LoanGuar.FIND('-') THEN BEGIN
             REPEAT
 
@@ -822,8 +822,8 @@ Page 51516396 "Loans Pending Approval"
                     SMSMessages."Sent To Server" := SMSMessages."Sent To Server"::No;
                     IF LoanApp.GET(LoanGuar."Loan No") THEN
                         SMSMessages."SMS Message" := 'You have guaranteed an amount of ' + FORMAT(LoanGuar."Amont Guaranteed")
-                        + ' to ' + "Client Name" + '  ' +
-                        'Loan Type ' + "Loan Product Type" + ' ' + 'of ' + FORMAT("Requested Amount") + ' at Jamii Yetu Sacco Ltd. Call 0726050260 if in dispute';
+                        + ' to ' + Rec."Client Name" + '  ' +
+                        'Loan Type ' + Rec."Loan Product Type" + ' ' + 'of ' + FORMAT(Rec."Requested Amount") + ' at Jamii Yetu Sacco Ltd. Call 0726050260 if in dispute';
                     ;
                     SMSMessages."Telephone No" := Cust."Phone No.";
                     SMSMessages.INSERT;
@@ -839,8 +839,8 @@ Page 51516396 "Loans Pending Approval"
     begin
         Balance := 0;
         LoansReg.Reset();
-        LoansReg.SetRange(LoansReg."Client Code", "Client Code");
-        LoansReg.SetRange(LoansReg."Loan Product Type", "Loan Product Type");
+        LoansReg.SetRange(LoansReg."Client Code", Rec."Client Code");
+        LoansReg.SetRange(LoansReg."Loan Product Type", Rec."Loan Product Type");
         LoansReg.SetRange(LoansReg.Posted, true);
         LoansReg.SetAutoCalcFields(LoansReg."Outstanding Balance", LoansReg."Oustanding Interest");
         if LoansReg.Find('-') then begin
@@ -863,8 +863,8 @@ Page 51516396 "Loans Pending Approval"
     begin
         Balance := 0;
         LoansReg.Reset();
-        LoansReg.SetRange(LoansReg."Client Code", "Client Code");
-        LoansReg.SetRange(LoansReg."Loan Product Type", "Loan Product Type");
+        LoansReg.SetRange(LoansReg."Client Code", Rec."Client Code");
+        LoansReg.SetRange(LoansReg."Loan Product Type", Rec."Loan Product Type");
         LoansReg.SetRange(LoansReg.Posted, true);
         LoansReg.SetAutoCalcFields(LoansReg."Outstanding Balance", LoansReg."Oustanding Interest");
         if LoansReg.Find('-') then begin

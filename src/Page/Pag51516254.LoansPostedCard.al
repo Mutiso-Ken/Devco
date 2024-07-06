@@ -17,12 +17,12 @@ Page 51516254 "Loans Posted Card"
             group(General)
             {
                 Caption = 'General';
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Client Code"; "Client Code")
+                field("Client Code"; Rec."Client Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member';
@@ -30,33 +30,33 @@ Page 51516254 "Loans Posted Card"
                     Style = StrongAccent;
 
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                     Editable = AccountNoEditable;
                     Style = StrongAccent;
                     Visible = false;
                 }
-                field("Client Name"; "Client Name")
+                field("Client Name"; Rec."Client Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
 
                 }
-                field("ID NO"; "ID NO")
+                field("ID NO"; Rec."ID NO")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                     Visible = false;
                 }
-                field("Member Deposits"; "Member Deposits")
+                field("Member Deposits"; Rec."Member Deposits")
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
                 }
-                field("Staff No"; "Staff No")
+                field("Staff No"; Rec."Staff No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Staff No';
@@ -64,13 +64,13 @@ Page 51516254 "Loans Posted Card"
                     Visible = false;
 
                 }
-                field("Loan Product Type"; "Loan Product Type")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Editable = LProdTypeEditable;
                     Style = StrongAccent;
                 }
-                field("Requested Amount"; "Requested Amount")
+                field("Requested Amount"; Rec."Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Amount Applied';
@@ -79,11 +79,11 @@ Page 51516254 "Loans Posted Card"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
 
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                     //Editable = ApplcDateEditable;
@@ -95,34 +95,34 @@ Page 51516254 "Loans Posted Card"
                     end;
                 }
 
-                field(Installments; Installments)
+                field(Installments; Rec.Installments)
                 {
                     ApplicationArea = Basic;
                     Editable = InstallmentEditable;
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Approved Repayment"; "Approved Repayment")
+                field("Approved Repayment"; Rec."Approved Repayment")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Interest; Interest)
+                field(Interest; Rec.Interest)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
 
-                field("Recommended Amount"; "Recommended Amount")
+                field("Recommended Amount"; Rec."Recommended Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Approved Amount"; "Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Approved Amount';
@@ -131,68 +131,68 @@ Page 51516254 "Loans Posted Card"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Repayment Method"; "Repayment Method")
+                field("Repayment Method"; Rec."Repayment Method")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field(Repayment; Repayment)
+                field(Repayment; Rec.Repayment)
                 {
                     ApplicationArea = Basic;
                     Editable = RepaymentEditable;
                 }
 
-                field("Loan Principle Repayment"; "Loan Principle Repayment")
+                field("Loan Principle Repayment"; Rec."Loan Principle Repayment")
                 {
 
                 }
 
-                field("Loan Interest Repayment"; "Loan Interest Repayment")
+                field("Loan Interest Repayment"; Rec."Loan Interest Repayment")
                 {
 
                 }
-                field("Outstanding Balance"; "Outstanding Balance")
+                field("Outstanding Balance"; Rec."Outstanding Balance")
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
                 }
-                field("Oustanding Interest"; "Oustanding Interest")
+                field("Oustanding Interest"; Rec."Oustanding Interest")
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
                 }
-                field("Principal In Arrears"; "Principal In Arrears")
+                field("Principal In Arrears"; Rec."Principal In Arrears")
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
                 }
-                field("Interest In Arrears"; "Interest In Arrears")
+                field("Interest In Arrears"; Rec."Interest In Arrears")
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
                 }
 
-                field("Appeal Amount"; "Appeal Amount")
+                field("Appeal Amount"; Rec."Appeal Amount")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Appeal Date"; "Appeal Date")
+                field("Appeal Date"; Rec."Appeal Date")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Loan Purpose"; "Loan Purpose")
+                field("Loan Purpose"; Rec."Loan Purpose")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                     Visible = false;
                 }
-                field(Remarks; Remarks)
+                field(Remarks; Rec.Remarks)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
@@ -200,7 +200,7 @@ Page 51516254 "Loans Posted Card"
 
                 }
 
-                field("Loan Status"; "Loan Status")
+                field("Loan Status"; Rec."Loan Status")
                 {
                     ApplicationArea = Basic;
                     Editable = LoanStatusEditable;
@@ -212,38 +212,38 @@ Page 51516254 "Loans Posted Card"
 
                     end;
                 }
-                field("Batch No."; "Batch No.")
+                field("Batch No."; Rec."Batch No.")
                 {
                     ApplicationArea = Basic;
                     Editable = BatchNoEditable;
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Top Up Amount"; "Top Up Amount")
+                field("Top Up Amount"; Rec."Top Up Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Bridged Amount';
                 }
-                field("Repayment Frequency"; "Repayment Frequency")
+                field("Repayment Frequency"; Rec."Repayment Frequency")
                 {
                     ApplicationArea = Basic;
                     Editable = RepayFrequencyEditable;
                 }
-                field("Mode of Disbursement"; "Mode of Disbursement")
+                field("Mode of Disbursement"; Rec."Mode of Disbursement")
                 {
                     ApplicationArea = Basic;
                     Editable = ModeofDisburesmentEdit;
                 }
-                field("Loan Disbursement Date"; "Loan Disbursement Date")
+                field("Loan Disbursement Date"; Rec."Loan Disbursement Date")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Issued Date"; "Issued Date") { ApplicationArea = all; }
-                field("Cheque No."; "Cheque No.")
+                field("Issued Date"; Rec."Issued Date") { ApplicationArea = all; }
+                field("Cheque No."; Rec."Cheque No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
@@ -251,56 +251,56 @@ Page 51516254 "Loans Posted Card"
 
                     trigger OnValidate()
                     begin
-                        if StrLen("Cheque No.") > 6 then
+                        if StrLen(Rec."Cheque No.") > 6 then
                             Error('Document No. cannot contain More than 6 Characters.');
                     end;
                 }
-                field("Repayment Start Date"; "Repayment Start Date")
+                field("Repayment Start Date"; Rec."Repayment Start Date")
                 {
                     ApplicationArea = Basic;
-                      Editable=true;
+                    Editable = true;
                 }
-                field("Expected Date of Completion"; "Expected Date of Completion")
+                field("Expected Date of Completion"; Rec."Expected Date of Completion")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("External EFT"; "External EFT")
+                field("External EFT"; Rec."External EFT")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Approval Status"; "Approval Status")
+                field("Approval Status"; Rec."Approval Status")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("partially Bridged"; "partially Bridged")
+                field("partially Bridged"; Rec."partially Bridged")
                 {
                     ApplicationArea = Basic;
 
                 }
-                field(Posted; Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Total TopUp Commission"; "Total TopUp Commission")
+                field("Total TopUp Commission"; Rec."Total TopUp Commission")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Recovery Mode"; "Recovery Mode")
+                field("Recovery Mode"; Rec."Recovery Mode")
                 {
                     ApplicationArea = all;
                     Editable = true;
                 }
-                field("Rejection  Remark"; "Rejection  Remark")
+                field("Rejection  Remark"; Rec."Rejection  Remark")
                 {
                     ApplicationArea = Basic;
                     Editable = RejectionRemarkEditable;
                 }
-                field("Employer Code"; "Employer Code")
+                field("Employer Code"; Rec."Employer Code")
                 {
                     ApplicationArea = Basic;
                 }
@@ -353,7 +353,7 @@ Page 51516254 "Loans Posted Card"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "Client Code");
+                        Cust.SetRange(Cust."No.", Rec."Client Code");
                         Report.Run(51516223, true, false, Cust);
                     end;
                 }
@@ -368,9 +368,9 @@ Page 51516254 "Loans Posted Card"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "Client Code");
-                        Cust.SetFilter(Cust."Loan Product Filter", "Loan Product Type");
-                        Cust.SetFilter(Cust."Loan No. Filter", "Loan  No.");
+                        Cust.SetRange(Cust."No.", Rec."Client Code");
+                        Cust.SetFilter(Cust."Loan Product Filter", Rec."Loan Product Type");
+                        Cust.SetFilter(Cust."Loan No. Filter", Rec."Loan  No.");
                         Report.Run(51516227, true, false);
                     end;
                 }
@@ -385,11 +385,11 @@ Page 51516254 "Loans Posted Card"
 
                     trigger OnAction()
                     begin
-                        if Posted then
-                            SFactory.FnGenerateRepaymentSchedule("Loan  No.");
+                        if Rec.Posted then
+                            SFactory.FnGenerateRepaymentSchedule(Rec."Loan  No.");
 
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", Rec."Loan  No.");
                         if LoanApp.Find('-') then begin
                             Report.Run(51516477, true, false, LoanApp);
                         end;
@@ -427,7 +427,7 @@ Page 51516254 "Loans Posted Card"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        Source := Source::BOSA;
+        Rec.Source := Rec.Source::BOSA;
     end;
 
     trigger OnNextRecord(Steps: Integer): Integer
@@ -439,7 +439,7 @@ Page 51516254 "Loans Posted Card"
 
     trigger OnOpenPage()
     begin
-        SetRange(Posted, true);
+        Rec.SetRange(Posted, true);
         /*IF "Loan Status"="Loan Status"::Approved THEN
         CurrPage.EDITABLE:=FALSE;*/
 
@@ -572,7 +572,7 @@ Page 51516254 "Loans Posted Card"
     procedure UpdateControl()
     begin
 
-        if "Loan Status" = "loan status"::Application then begin
+        if Rec."Loan Status" = Rec."loan status"::Application then begin
             MNoEditable := true;
             ApplcDateEditable := false;
             LoanStatusEditable := false;
@@ -588,7 +588,7 @@ Page 51516254 "Loans Posted Card"
             DisbursementDateEditable := false;
         end;
 
-        if "Loan Status" = "loan status"::Appraisal then begin
+        if Rec."Loan Status" = Rec."loan status"::Appraisal then begin
             MNoEditable := false;
             ApplcDateEditable := false;
             LoanStatusEditable := false;
@@ -604,7 +604,7 @@ Page 51516254 "Loans Posted Card"
             DisbursementDateEditable := false;
         end;
 
-        if "Loan Status" = "loan status"::Rejected then begin
+        if Rec."Loan Status" = Rec."loan status"::Rejected then begin
             MNoEditable := false;
             AccountNoEditable := false;
             ApplcDateEditable := false;
@@ -622,7 +622,7 @@ Page 51516254 "Loans Posted Card"
             RejectionRemarkEditable := false
         end;
 
-        if "Approval Status" = "approval status"::Approved then begin
+        if Rec."Approval Status" = Rec."approval status"::Approved then begin
             MNoEditable := false;
             AccountNoEditable := false;
             LoanStatusEditable := false;

@@ -12,12 +12,12 @@ page 51516502 "Member Picture"
     {
         area(content)
         {
-            field(Picture; Picture)
+            field(Picture; Rec.Picture)
             {
                 ApplicationArea = All;
                 ShowCaption = false;
                 ToolTip = 'Specifies the picture of the Member.';
-                    ShowMandatory = true;
+                ShowMandatory = true;
             }
         }
     }
@@ -134,7 +134,7 @@ page 51516502 "Member Picture"
         }
     }
 
-    
+
     trigger OnAfterGetCurrRecord()
     begin
         SetEditableOnPictureActions();
@@ -160,7 +160,7 @@ page 51516502 "Member Picture"
     var
         PictureInstream: InStream;
         PictureDescription: Text;
-      
+
 
     begin
         Rec.TestField(Rec."No.");
@@ -171,8 +171,8 @@ page 51516502 "Member Picture"
                 exit;
 
         if Camera.GetPicture(PictureInstream, PictureDescription) then begin
-          //  Clear(rec.Picture);
-             rec.Picture.ImportStream(PictureInstream, PictureDescription, MimeTypeTok);
+            //  Clear(rec.Picture);
+            rec.Picture.ImportStream(PictureInstream, PictureDescription, MimeTypeTok);
             Rec.Modify(true)
         end;
     end;

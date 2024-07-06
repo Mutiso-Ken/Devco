@@ -10,35 +10,35 @@ Page 51516249 "Loan Offset Detail List"
         {
             repeater(Group)
             {
-                field("Loan Top Up"; "Loan Top Up")
+                field("Loan Top Up"; Rec."Loan Top Up")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Client Code"; "Client Code")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Loan Type"; "Loan Type")
+                field("Client Code"; Rec."Client Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Principle Top Up"; "Principle Top Up")
+                field("Loan Type"; Rec."Loan Type")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Principle Top Up"; Rec."Principle Top Up")
                 {
                     ApplicationArea = Basic;
                     Editable = OffsetEditable;
                 }
-                field("Interest Top Up"; "Interest Top Up")
+                field("Interest Top Up"; Rec."Interest Top Up")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Commision; Commision)
+                field(Commision; Rec.Commision)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Commission on Offset';
                 }
-                field("Total Top Up"; "Total Top Up")
+                field("Total Top Up"; Rec."Total Top Up")
                 {
                     ApplicationArea = Basic;
                     Editable = OffsetEditable;

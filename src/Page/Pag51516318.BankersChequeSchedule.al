@@ -19,99 +19,99 @@ Page 51516318 "Bankers Cheque Schedule"
         {
             repeater(Control17)
             {
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account Name"; "Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
 
                 }
-                field("Staff/Payroll No"; "Staff/Payroll No")
+                field("Staff/Payroll No"; Rec."Staff/Payroll No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Staff No';
                     Editable = false;
                     visible = false;
                 }
-                field("Transaction Description"; "Transaction Description")
+                field("Transaction Description"; Rec."Transaction Description")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Transaction';
                     Editable = false;
                 }
 
-                field(Payee; Payee)
+                field(Payee; Rec.Payee)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Bankers Cheque No"; "Bankers Cheque No")
+                field("Bankers Cheque No"; Rec."Bankers Cheque No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Transaction Date"; "Transaction Date")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account Type"; "Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
 
 
-                field("Other Bankers No."; "Other Bankers No.")
+                field("Other Bankers No."; Rec."Other Bankers No.")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field("Cheque Date"; "Cheque Date")
+                field("Cheque Date"; Rec."Cheque Date")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
 
-                field("Reference No"; "Reference No")
+                field("Reference No"; Rec."Reference No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     visible = false;
                 }
-                field(Remarks; Remarks)
+                field(Remarks; Rec.Remarks)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     visible = false;
                 }
 
-                field("BIH No"; "BIH No")
+                field("BIH No"; Rec."BIH No")
                 {
                     ApplicationArea = Basic;
                     visible = false;
                 }
-                field(Select; Select)
+                field(Select; Rec.Select)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Posted By"; "Posted By")
+                field("Posted By"; Rec."Posted By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;

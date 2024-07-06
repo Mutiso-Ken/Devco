@@ -18,54 +18,54 @@ page 51516066 "fosaloansapplicationcard"
             group(General)
             {
                 Caption = 'General';
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
 
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'FOSA Account No';
                     Editable = MNoEditable;
                     Style = StrongAccent;
                 }
-                field("Client Name"; "Client Name")
+                field("Client Name"; Rec."Client Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("ID NO"; "ID NO")
+                field("ID NO"; Rec."ID NO")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                     Editable = MNoEditable;
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Loan Product Type"; "Loan Product Type")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Editable = LProdTypeEditable;
                     Style = StrongAccent;
                     trigger OnValidate()
                     begin
-                        if ("Loan Product Type" = 'OVERDRAFT') OR ("Loan Product Type" = 'OKOA') OR ("Loan Product Type" = 'MOBILE LOAN') THEN begin
+                        if (Rec."Loan Product Type" = 'OVERDRAFT') OR (Rec."Loan Product Type" = 'OKOA') OR (Rec."Loan Product Type" = 'MOBILE LOAN') THEN begin
                             ERROR('The product cannot be applied here ');
                         end;
                     end;
                 }
-                field(Installments; Installments)
+                field(Installments; Rec.Installments)
                 {
                     ApplicationArea = Basic;
                     Editable = MNoEditable;
@@ -73,16 +73,16 @@ page 51516066 "fosaloansapplicationcard"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field(Interest; Interest)
+                field(Interest; Rec.Interest)
                 {
                     ApplicationArea = Basic;
                     Editable = Interrest;
                     Style = Unfavorable;
                 }
-                field("Requested Amount"; "Requested Amount")
+                field("Requested Amount"; Rec."Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Amount Applied';
@@ -91,11 +91,11 @@ page 51516066 "fosaloansapplicationcard"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
 
                     end;
                 }
-                field("Approved Amount"; "Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Approved Amount';
@@ -103,21 +103,21 @@ page 51516066 "fosaloansapplicationcard"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Recommended Amount"; "Recommended Amount")
+                field("Recommended Amount"; Rec."Recommended Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Purpose"; "Loan Purpose")
+                field("Loan Purpose"; Rec."Loan Purpose")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                     Visible = false;
                 }
-                field("Main Sector"; "Main Sector")
+                field("Main Sector"; Rec."Main Sector")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -125,10 +125,10 @@ page 51516066 "fosaloansapplicationcard"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Sub-Sector"; "Sub-Sector")
+                field("Sub-Sector"; Rec."Sub-Sector")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -137,10 +137,10 @@ page 51516066 "fosaloansapplicationcard"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Specific Sector"; "Specific Sector")
+                field("Specific Sector"; Rec."Specific Sector")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
@@ -149,17 +149,17 @@ page 51516066 "fosaloansapplicationcard"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
 
-                field(Repayment; Repayment)
+                field(Repayment; Rec.Repayment)
                 {
                     ApplicationArea = Basic;
                     //Editable = RepaymentEditable;
                     Editable = false;
                 }
-                field("Loan Status"; "Loan Status")
+                field("Loan Status"; Rec."Loan Status")
                 {
                     ApplicationArea = Basic;
                     Editable = LoanStatusEditable;
@@ -173,74 +173,74 @@ page 51516066 "fosaloansapplicationcard"
                 }
 
 
-                field("Top Up Amount"; "Top Up Amount")
+                field("Top Up Amount"; Rec."Top Up Amount")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Total TopUp Commission"; "Total TopUp Commission")
+                field("Total TopUp Commission"; Rec."Total TopUp Commission")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
 
-                field("Repayment Frequency"; "Repayment Frequency")
+                field("Repayment Frequency"; Rec."Repayment Frequency")
                 {
                     ApplicationArea = Basic;
                     //Editable = RepayFrequencyEditable;
                     Editable = false;
                 }
 
-                field("Recovery Mode"; "Recovery Mode")
+                field("Recovery Mode"; Rec."Recovery Mode")
                 {
                     ApplicationArea = Basic;
                     Editable = MNoEditable;
                     Style = StrongAccent;
                 }
 
-                field("Mode of Disbursement"; "Mode of Disbursement")
+                field("Mode of Disbursement"; Rec."Mode of Disbursement")
                 {
                     ApplicationArea = Basic;
                     Editable = MNoEditable;
                 }
 
-                field("Loan Disbursement Date"; "Loan Disbursement Date")
+                field("Loan Disbursement Date"; Rec."Loan Disbursement Date")
                 {
                     ApplicationArea = Basic;
                     Editable = MNoEditable;
                 }
 
-                field("Repayment Start Date"; "Repayment Start Date")
+                field("Repayment Start Date"; Rec."Repayment Start Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
 
-                field("Expected Date of Completion"; "Expected Date of Completion")
+                field("Expected Date of Completion"; Rec."Expected Date of Completion")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
 
-                field("Staff No"; "Staff No")
+                field("Staff No"; Rec."Staff No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Staff No';
                     Editable = false;
                 }
-                field(Remarks; Remarks)
+                field(Remarks; Rec.Remarks)
                 {
                     ApplicationArea = Basic;
                     Visible = true;
                     Editable = MNoEditable;
                 }
-                field("Repayment Method"; "Repayment Method")
+                field("Repayment Method"; Rec."Repayment Method")
                 {
                     ApplicationArea = Basic;
                     //Editable = RepayMethodEditable;
                     Editable = false;
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -293,7 +293,7 @@ page 51516066 "fosaloansapplicationcard"
                     trigger OnAction()
                     begin
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", Rec."Loan  No.");
                         if LoanApp.Find('-') then begin
 
                             Report.Run(51516263, true, false, LoanApp);
@@ -312,12 +312,12 @@ page 51516066 "fosaloansapplicationcard"
                     trigger OnAction()
                     begin
 
-                        if ("Repayment Start Date" = 0D) then
+                        if (Rec."Repayment Start Date" = 0D) then
                             Error('Please enter Disbursement Date to continue');
-                        SFactory.FnGenerateRepaymentSchedule("Loan  No.");
+                        SFactory.FnGenerateRepaymentSchedule(Rec."Loan  No.");
 
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", Rec."Loan  No.");
                         if LoanApp.Find('-') then begin
                             Report.Run(51516477, true, false, LoanApp);
                         end;
@@ -352,13 +352,13 @@ page 51516066 "fosaloansapplicationcard"
                         //................Ensure than you cant have two loans same product
                         // SystemGenSet.FnCheckNoOfLoansLimit("Loan  No.", "Loan Product Type", "Client Code");
                         //----------------
-                        TestField("Approved Amount");
-                        TestField("Loan Product Type");
-                        TestField("Loan Disbursement Date");
-                        TestField("Main Sector");
-                        TestField("Sub-Sector");
-                        TestField("Specific Sector");
-                        TestField("Requested Amount");
+                        Rec.TestField("Approved Amount");
+                        Rec.TestField("Loan Product Type");
+                        Rec.TestField("Loan Disbursement Date");
+                        Rec.TestField("Main Sector");
+                        Rec.TestField("Sub-Sector");
+                        Rec.TestField("Specific Sector");
+                        Rec.TestField("Requested Amount");
                         // LGuarantors.Reset;
                         // LGuarantors.SetRange(LGuarantors."Loan No", "Loan  No.");
                         // if LGuarantors.Find('-') = false then begin
@@ -367,7 +367,7 @@ page 51516066 "fosaloansapplicationcard"
                         //.............................Check If Approved Amount Is Equal to the Guarantor Amount
                         GuaranteedAmountsTotal := 0;
                         LGuarantors.Reset;
-                        LGuarantors.SetRange(LGuarantors."Loan No", "Loan  No.");
+                        LGuarantors.SetRange(LGuarantors."Loan No", Rec."Loan  No.");
                         if LGuarantors.Find('-') = true then begin
                             repeat
                                 GuaranteedAmountsTotal += LGuarantors."Amont Guaranteed";
@@ -376,7 +376,7 @@ page 51516066 "fosaloansapplicationcard"
                         //Check if collateral is provide
                         CollateralAmountsTotal := 0;
                         CollateralRegister.Reset();
-                        CollateralRegister.SetRange(CollateralRegister."Loan No", "Loan  No.");
+                        CollateralRegister.SetRange(CollateralRegister."Loan No", Rec."Loan  No.");
                         if CollateralRegister.Find('-') then begin
                             repeat
                                 CollateralAmountsTotal += CollateralRegister.Value;
@@ -385,13 +385,13 @@ page 51516066 "fosaloansapplicationcard"
                         //Check if salary is provide
                         SalaryAmountsTotal := 0;
                         SalaryRegister.Reset();
-                        SalaryRegister.SetRange(SalaryRegister."Loan No", "Loan  No.");
+                        SalaryRegister.SetRange(SalaryRegister."Loan No", Rec."Loan  No.");
                         if SalaryRegister.Find('-') then begin
                             repeat
                                 SalaryAmountsTotal += SalaryRegister.Amount;
                             until CollateralRegister.Next = 0;
                         end;
-                        if "Approved Amount" > GuaranteedAmountsTotal + CollateralAmountsTotal + SalaryAmountsTotal then begin
+                        if Rec."Approved Amount" > GuaranteedAmountsTotal + CollateralAmountsTotal + SalaryAmountsTotal then begin
                             error('The Loan Amount requested MUST Equally tally the Total Guaranteed Amount To cover the loan')
                         end;
                         //--------------------------------------------------------------------------------------
@@ -476,13 +476,13 @@ page 51516066 "fosaloansapplicationcard"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        Source := Source::FOSA;
-        "Mode of Disbursement" := "mode of disbursement"::"Cheque";
+        Rec.Source := Rec.Source::FOSA;
+        Rec."Mode of Disbursement" := Rec."mode of disbursement"::"Cheque";
     end;
 
     trigger OnNextRecord(Steps: Integer): Integer
     begin
-        if "Loan Status" = "loan status"::Approved then
+        if Rec."Loan Status" = Rec."loan status"::Approved then
             CurrPage.Editable := false;
     end;
 
@@ -628,7 +628,7 @@ page 51516066 "fosaloansapplicationcard"
 
     procedure UpdateControl()
     begin
-        if "Loan Status" = "loan status"::Application then begin
+        if Rec."Loan Status" = Rec."loan status"::Application then begin
             CancelApprovalEnabled := false;
             SendApprovalEnabled := true;
             MNoEditable := true;
@@ -648,7 +648,7 @@ page 51516066 "fosaloansapplicationcard"
             DisbursementDateEditable := true;
         end;
 
-        if "Loan Status" = "loan status"::Appraisal then begin
+        if Rec."Loan Status" = Rec."loan status"::Appraisal then begin
             CancelApprovalEnabled := true;
             SendApprovalEnabled := false;
             MNoEditable := false;
@@ -668,7 +668,7 @@ page 51516066 "fosaloansapplicationcard"
             DisbursementDateEditable := false;
         end;
 
-        if "Loan Status" = "loan status"::Rejected then begin
+        if Rec."Loan Status" = Rec."loan status"::Rejected then begin
             CancelApprovalEnabled := false;
             SendApprovalEnabled := true;
             MNoEditable := false;
@@ -688,7 +688,7 @@ page 51516066 "fosaloansapplicationcard"
             DisbursementDateEditable := false;
         end;
 
-        if "Loan Status" = "loan status"::Approved then begin
+        if Rec."Loan Status" = Rec."loan status"::Approved then begin
             SendApprovalEnabled := false;
             CancelApprovalEnabled := false;
             MNoEditable := false;
@@ -720,24 +720,24 @@ page 51516066 "fosaloansapplicationcard"
         PhoneNo: Text[250];
     begin
         LoansR.Reset();
-        LoansR.SetRange(LoansR."Loan  No.", "Loan  No.");
+        LoansR.SetRange(LoansR."Loan  No.", Rec."Loan  No.");
         if LoansR.Find('-') then begin
             msg := '';
-            msg := 'Dear Member, Your ' + Format(LoansR."Loan Product Type") + ' loan application of KSHs.' + Format("Requested Amount") + ' has been received and is being processed.Jamii Yetu Sacco.';
-            PhoneNo := FnGetPhoneNo("Client Code");
-            SendSMSMessage("Client Code", msg, PhoneNo);
+            msg := 'Dear Member, Your ' + Format(LoansR."Loan Product Type") + ' loan application of KSHs.' + Format(Rec."Requested Amount") + ' has been received and is being processed.Jamii Yetu Sacco.';
+            PhoneNo := FnGetPhoneNo(Rec."Client Code");
+            SendSMSMessage(Rec."Client Code", msg, PhoneNo);
             LGuarantors.Reset;
-            LGuarantors.SetRange(LGuarantors."Loan No", "Loan  No.");
+            LGuarantors.SetRange(LGuarantors."Loan No", Rec."Loan  No.");
             LGuarantors.SetRange(LGuarantors."Self Guarantee", true);
             if LGuarantors.Find('-') then begin
                 msg := '';
-                msg := 'Dear Member,you have self guaranteed on ' + Format(LoansR."Loan Product Type") + ' loan application of KSHs.' + Format("Requested Amount") + ' with ' + Format(LGuarantors."Amont Guaranteed") + ' of you current deposits.Jamii Yetu Sacco.';
-                PhoneNo := FnGetPhoneNo("Client Code");
+                msg := 'Dear Member,you have self guaranteed on ' + Format(LoansR."Loan Product Type") + ' loan application of KSHs.' + Format(Rec."Requested Amount") + ' with ' + Format(LGuarantors."Amont Guaranteed") + ' of you current deposits.Jamii Yetu Sacco.';
+                PhoneNo := FnGetPhoneNo(Rec."Client Code");
                 SendSMSMessage(LGuarantors."Member No", msg, PhoneNo);
             end;
             //....................................
             LGuarantors.Reset;
-            LGuarantors.SetRange(LGuarantors."Loan No", "Loan  No.");
+            LGuarantors.SetRange(LGuarantors."Loan No", Rec."Loan  No.");
             LGuarantors.SetRange(LGuarantors."Self Guarantee", false);
             if LGuarantors.Find('-') then begin
                 repeat

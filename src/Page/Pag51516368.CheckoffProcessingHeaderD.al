@@ -10,68 +10,68 @@ Page 51516368 "Checkoff Processing Header-D"
         {
             group(General)
             {
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Entered By"; "Entered By")
+                field("Entered By"; Rec."Entered By")
                 {
                     ApplicationArea = Basic;
                     Enabled = false;
                 }
-                field("Date Entered"; "Date Entered")
+                field("Date Entered"; Rec."Date Entered")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Posting date"; "Posting date")
+                field("Posting date"; Rec."Posting date")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Loan CutOff Date"; "Loan CutOff Date")
+                field("Loan CutOff Date"; Rec."Loan CutOff Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Remarks; Remarks)
+                field(Remarks; Rec.Remarks)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Count"; "Total Count")
+                field("Total Count"; Rec."Total Count")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posted By"; "Posted By")
+                field("Posted By"; Rec."Posted By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type"; "Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employer Code"; "Employer Code")
+                field("Employer Code"; Rec."Employer Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document No"; "Document No")
+                field("Document No"; Rec."Document No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted; Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Scheduled Amount"; "Scheduled Amount")
+                field("Scheduled Amount"; Rec."Scheduled Amount")
                 {
                     ApplicationArea = Basic;
                 }
@@ -116,7 +116,7 @@ Page 51516368 "Checkoff Processing Header-D"
                 begin
 
                     ReceiptLine.Reset;
-                    ReceiptLine.SetRange(ReceiptLine."Receipt Header No", No);
+                    ReceiptLine.SetRange(ReceiptLine."Receipt Header No", Rec.No);
                     if ReceiptLine.Find('-') then
                         Report.Run(51516288, true, false, ReceiptLine);
                 end;
@@ -134,7 +134,7 @@ Page 51516368 "Checkoff Processing Header-D"
                 trigger OnAction()
                 begin
                     ReceiptLine.Reset;
-                    ReceiptLine.SetRange(ReceiptLine."Receipt Header No", No);
+                    ReceiptLine.SetRange(ReceiptLine."Receipt Header No", Rec.No);
                     if ReceiptLine.Find('-') then
                         Report.Run(51516289, true, false, ReceiptLine);
                 end;

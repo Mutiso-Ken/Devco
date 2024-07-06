@@ -6,17 +6,17 @@ Table 51516548 "Insurance companies"
 
     fields
     {
-        field(1;"Insurer code";Code[10])
+        field(1; "Insurer code"; Code[10])
         {
         }
-        field(2;"Insurer Name";Text[30])
+        field(2; "Insurer Name"; Text[30])
         {
         }
     }
 
     keys
     {
-        key(Key1;"Insurer code")
+        key(Key1; "Insurer code")
         {
             Clustered = true;
         }

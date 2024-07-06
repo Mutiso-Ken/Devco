@@ -210,13 +210,13 @@
 //                     ShowMandatory = true;
 //                     TableRelation = Customer where("Group Account" = const(true),
 //                                                               "Customer Posting Group" = const('MICRO'));
-                
+
 //                 }
 //                 field("Group Account Name"; "Group Account Name")
 //                 {
 //                     ApplicationArea = Basic;
 //                     Editable = false;
-                    
+
 //                 }
 //                 field("Recruited By"; "Recruited By")
 //                 {

@@ -10,27 +10,27 @@ Page 51516057 "Funds Tax Codes Card"
         {
             group(General)
             {
-                field("Tax Code";"Tax Code")
+                field("Tax Code"; Rec."Tax Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type";"Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No";"Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Percentage;Percentage)
+                field(Percentage; Rec.Percentage)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Type;Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = Basic;
                 }

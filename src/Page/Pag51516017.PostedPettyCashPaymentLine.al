@@ -10,48 +10,48 @@ Page 51516017 "Posted PettyCash Payment Line"
         {
             repeater(Group)
             {
-                field("Payment Type";"Payment Type")
+                field("Payment Type"; Rec."Payment Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Type Description";"Transaction Type Description")
+                field("Transaction Type Description"; Rec."Transaction Type Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type";"Account Type")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No.";"Account No.")
+                field("Account No."; Rec."Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payment Description";"Payment Description")
+                field("Payment Description"; Rec."Payment Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount(LCY)";"Amount(LCY)")
+                field("Amount(LCY)"; Rec."Amount(LCY)")
                 {
                     ApplicationArea = Basic;
-                    Visible=false;
+                    Visible = false;
                 }
-                field("Net Amount";"Net Amount")
+                field("Net Amount"; Rec."Net Amount")
                 {
                     ApplicationArea = Basic;
-                    Visible=false;
+                    Visible = false;
                 }
-                field("Net Amount(LCY)";"Net Amount(LCY)")
+                field("Net Amount(LCY)"; Rec."Net Amount(LCY)")
                 {
                     ApplicationArea = Basic;
-                    Visible=false;
+                    Visible = false;
                 }
             }
         }

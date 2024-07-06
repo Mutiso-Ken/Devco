@@ -10,55 +10,55 @@ Page 51516326 "Front Office Charges"
         {
             repeater(Group)
             {
-                field("Charge Code";"Charge Code")
+                field("Charge Code"; Rec."Charge Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Charge Amount";"Charge Amount")
+                field("Charge Amount"; Rec."Charge Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Percentage of Amount";"Percentage of Amount")
+                field("Percentage of Amount"; Rec."Percentage of Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Use Percentage";"Use Percentage")
+                field("Use Percentage"; Rec."Use Percentage")
                 {
                     ApplicationArea = Basic;
                 }
-                field("G/L Account";"G/L Account")
+                field("G/L Account"; Rec."G/L Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Minimum Amount";"Minimum Amount")
+                field("Minimum Amount"; Rec."Minimum Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Maximum Amount";"Maximum Amount")
+                field("Maximum Amount"; Rec."Maximum Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Due Amount";"Due Amount")
+                field("Due Amount"; Rec."Due Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Due to Account";"Due to Account")
+                field("Due to Account"; Rec."Due to Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Charge Type";"Charge Type")
+                field("Charge Type"; Rec."Charge Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Staggered Charge Code";"Staggered Charge Code")
+                field("Staggered Charge Code"; Rec."Staggered Charge Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Charge Excise Duty";"Charge Excise Duty")
+                field("Charge Excise Duty"; Rec."Charge Excise Duty")
                 {
                     ApplicationArea = Basic;
                 }

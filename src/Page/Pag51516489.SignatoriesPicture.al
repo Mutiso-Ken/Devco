@@ -13,12 +13,12 @@ page 51516489 "Signatories Picture"
     {
         area(content)
         {
-            field(Picture; Picture)
+            field(Picture; Rec.Picture)
             {
                 ApplicationArea = All;
                 ShowCaption = false;
                 ToolTip = 'Specifies the picture of the Member.';
-                    ShowMandatory = true;
+                ShowMandatory = true;
             }
         }
     }
@@ -102,7 +102,7 @@ page 51516489 "Signatories Picture"
                 begin
 
                     ToFile := DummyPictureEntity.GetDefaultMediaDescription(Rec);
-                    ExportPath := TemporaryPath + rec."ID No."+ Format(rec.Picture.MediaId);
+                    ExportPath := TemporaryPath + rec."ID No." + Format(rec.Picture.MediaId);
                     rec.Picture.ExportFile(ExportPath);
 
                     FileManagement.ExportImage(ExportPath, ToFile);
@@ -129,7 +129,7 @@ page 51516489 "Signatories Picture"
         }
     }
 
-    
+
     trigger OnAfterGetCurrRecord()
     begin
         SetEditableOnPictureActions();
@@ -150,7 +150,7 @@ page 51516489 "Signatories Picture"
         DeleteExportEnabled: Boolean;
         MimeTypeTok: Label 'image/jpeg', Locked = true;
         DownloadImageTxt: label 'Download image';
-        dse:record "Fixed Asset";
+        dse: record "Fixed Asset";
 
     procedure TakeNewPicture()
     var

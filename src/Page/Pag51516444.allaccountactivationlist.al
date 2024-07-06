@@ -19,63 +19,63 @@ page 51516444 "allaccountactivationlist"
         {
             repeater(Control1102755000)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Client No."; "Client No.")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Client Name"; "Client Name")
-                {
-                    ApplicationArea = Basic;
-                    Style = StrongAccent;
-                }
-                field("Activation Date"; "Activation Date")
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Status; Status)
+                field("Client No."; Rec."Client No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Responsibility Center"; "Responsibility Center")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("Posted By"; "Posted By")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field(Source; Source)
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Date; Date)
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Time; Time)
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("Captured By"; "Captured By")
+                field("Client Name"; Rec."Client Name")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field(Type; Type)
+                field("Activation Date"; Rec."Activation Date")
+                {
+                    ApplicationArea = Basic;
+                }
+                field(Status; Rec.Status)
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Responsibility Center"; Rec."Responsibility Center")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Posted By"; Rec."Posted By")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field(Source; Rec.Source)
+                {
+                    ApplicationArea = Basic;
+                }
+                field(Date; Rec.Date)
+                {
+                    ApplicationArea = Basic;
+                }
+                field(Time; Rec.Time)
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Captured By"; Rec."Captured By")
+                {
+                    ApplicationArea = Basic;
+                    Style = StrongAccent;
+                }
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Account Source';
                 }
-                field(Activated; Activated)
+                field(Activated; Rec.Activated)
                 {
                     ApplicationArea = Basic;
                 }
@@ -105,7 +105,7 @@ page 51516444 "allaccountactivationlist"
                         ApprovalEntries: Page "Approval Entries";
                     begin
                         DocumentType := Documenttype::"Account Reactivation";
-                        ApprovalEntries.SetRecordFilters(Database::"Account Activation", DocumentType, "No.");
+                        ApprovalEntries.SetRecordFilters(Database::"Account Activation", DocumentType, Rec."No.");
                         ApprovalEntries.Run;
                     end;
                 }
@@ -123,7 +123,7 @@ page 51516444 "allaccountactivationlist"
                         text001: label 'This batch is already pending approval';
                         ApprovalMgt: Codeunit "Export F/O Consolidation";
                     begin
-                        if Status <> Status::Open then
+                        if Rec.Status <> Rec.Status::Open then
                             Error(text001);
 
                         //End allocate batch number
@@ -144,7 +144,7 @@ page 51516444 "allaccountactivationlist"
                         text001: label 'This batch is already pending approval';
                         ApprovalMgt: Codeunit "Export F/O Consolidation";
                     begin
-                        if Status <> Status::Open then
+                        if Rec.Status <> Rec.Status::Open then
                             Error(text001);
 
                         //End allocate batch number
@@ -167,7 +167,7 @@ page 51516444 "allaccountactivationlist"
 
     trigger OnOpenPage()
     begin
-        SetRange("Captured By", UserId);
+        Rec.SetRange("Captured By", UserId);
     end;
 
     var

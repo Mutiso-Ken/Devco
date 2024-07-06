@@ -12,15 +12,15 @@ Page 51516461 "Investor Interest Rates"
         {
             repeater(Group)
             {
-                field("Code";Code)
+                field("Code"; Rec.Code)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Percentage;Percentage)
+                field(Percentage; Rec.Percentage)
                 {
                     ApplicationArea = Basic;
                 }

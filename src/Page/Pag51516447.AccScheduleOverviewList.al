@@ -61,7 +61,7 @@ Page 51516447 "Acc. Schedule Overview List"
                     trigger OnValidate()
                     begin
                         AccSchedManagement.FindPeriod(Rec, '', PeriodType);
-                        DateFilter := GetFilter("Date Filter");
+                        DateFilter := Rec.GetFilter("Date Filter");
                         CurrPage.Update;
                     end;
                 }
@@ -75,8 +75,8 @@ Page 51516447 "Acc. Schedule Overview List"
                         SystemGeneralSetUp: Codeunit "System General Setup";
                     begin
                         if SystemGeneralSetUp.MakeDateFilter(DateFilter) = 0 then;
-                        SetFilter("Date Filter", DateFilter);
-                        DateFilter := GetFilter("Date Filter");
+                        Rec.SetFilter("Date Filter", DateFilter);
+                        DateFilter := Rec.GetFilter("Date Filter");
                         CurrPage.Update;
                     end;
                 }
@@ -84,11 +84,11 @@ Page 51516447 "Acc. Schedule Overview List"
             repeater(Control48)
             {
                 Editable = false;
-                field("Row No."; "Row No.")
+                field("Row No."; Rec."Row No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
@@ -355,9 +355,9 @@ Page 51516447 "Acc. Schedule Overview List"
                     trigger OnValidate()
                     begin
                         if CostCenterFilter = '' then
-                            SetRange("Cost Center Filter")
+                            Rec.SetRange("Cost Center Filter")
                         else
-                            SetFilter("Cost Center Filter", CostCenterFilter);
+                            Rec.SetFilter("Cost Center Filter", CostCenterFilter);
                         CurrPage.Update;
                     end;
                 }
@@ -376,9 +376,9 @@ Page 51516447 "Acc. Schedule Overview List"
                     trigger OnValidate()
                     begin
                         if CostObjectFilter = '' then
-                            SetRange("Cost Object Filter")
+                            Rec.SetRange("Cost Object Filter")
                         else
-                            SetFilter("Cost Object Filter", CostObjectFilter);
+                            Rec.SetFilter("Cost Object Filter", CostObjectFilter);
                         CurrPage.Update;
                     end;
                 }
@@ -397,9 +397,9 @@ Page 51516447 "Acc. Schedule Overview List"
                     trigger OnValidate()
                     begin
                         if CashFlowFilter = '' then
-                            SetRange("Cash Flow Forecast Filter")
+                            Rec.SetRange("Cash Flow Forecast Filter")
                         else
-                            SetFilter("Cash Flow Forecast Filter", CashFlowFilter);
+                            Rec.SetFilter("Cash Flow Forecast Filter", CashFlowFilter);
                         CurrPage.Update;
                     end;
                 }
@@ -412,10 +412,10 @@ Page 51516447 "Acc. Schedule Overview List"
                     var
                         Result: Boolean;
                     begin
-                        Result := LookupGLBudgetFilter(Text);
+                        Result := Rec.LookupGLBudgetFilter(Text);
                         if Result then begin
-                            SetFilter("G/L Budget Filter", Text);
-                            Text := GetFilter("G/L Budget Filter");
+                            Rec.SetFilter("G/L Budget Filter", Text);
+                            Text := Rec.GetFilter("G/L Budget Filter");
                         end;
                         exit(Result);
                     end;
@@ -423,9 +423,9 @@ Page 51516447 "Acc. Schedule Overview List"
                     trigger OnValidate()
                     begin
                         if GLBudgetFilter = '' then
-                            SetRange("G/L Budget Filter")
+                            Rec.SetRange("G/L Budget Filter")
                         else
-                            SetFilter("G/L Budget Filter", GLBudgetFilter);
+                            Rec.SetFilter("G/L Budget Filter", GLBudgetFilter);
                         CurrPage.Update;
                     end;
                 }
@@ -438,10 +438,10 @@ Page 51516447 "Acc. Schedule Overview List"
                     var
                         Result: Boolean;
                     begin
-                        Result := LookupCostBudgetFilter(Text);
+                        Result := Rec.LookupCostBudgetFilter(Text);
                         if Result then begin
-                            SetFilter("Cost Budget Filter", Text);
-                            Text := GetFilter("Cost Budget Filter");
+                            Rec.SetFilter("Cost Budget Filter", Text);
+                            Text := Rec.GetFilter("Cost Budget Filter");
                         end;
                         exit(Result);
                     end;
@@ -449,9 +449,9 @@ Page 51516447 "Acc. Schedule Overview List"
                     trigger OnValidate()
                     begin
                         if CostBudgetFilter = '' then
-                            SetRange("Cost Budget Filter")
+                            Rec.SetRange("Cost Budget Filter")
                         else
-                            SetFilter("Cost Budget Filter", CostBudgetFilter);
+                            Rec.SetFilter("Cost Budget Filter", CostBudgetFilter);
                         CurrPage.Update;
                     end;
                 }
@@ -481,10 +481,10 @@ Page 51516447 "Acc. Schedule Overview List"
                 begin
                     AccSched.SetAccSchedName(CurrentSchedName);
                     AccSched.SetColumnLayoutName(CurrentColumnName);
-                    DateFilter2 := GetFilter("Date Filter");
-                    GLBudgetFilter2 := GetFilter("G/L Budget Filter");
-                    CostBudgetFilter2 := GetFilter("Cost Budget Filter");
-                    BusUnitFilter := GetFilter("Business Unit Filter");
+                    DateFilter2 := Rec.GetFilter("Date Filter");
+                    GLBudgetFilter2 := Rec.GetFilter("G/L Budget Filter");
+                    CostBudgetFilter2 := Rec.GetFilter("Cost Budget Filter");
+                    BusUnitFilter := Rec.GetFilter("Business Unit Filter");
                     AccSched.SetFilters(DateFilter2, GLBudgetFilter2, CostBudgetFilter2, BusUnitFilter, Dim1Filter, Dim2Filter, Dim3Filter, Dim4Filter);
                     AccSched.Run;
                 end;
@@ -515,7 +515,7 @@ Page 51516447 "Acc. Schedule Overview List"
                 trigger OnAction()
                 begin
                     AccSchedManagement.FindPeriod(Rec, '>=', PeriodType);
-                    DateFilter := GetFilter("Date Filter");
+                    DateFilter := Rec.GetFilter("Date Filter");
                 end;
             }
             action(PreviousPeriod)
@@ -530,7 +530,7 @@ Page 51516447 "Acc. Schedule Overview List"
                 trigger OnAction()
                 begin
                     AccSchedManagement.FindPeriod(Rec, '<=', PeriodType);
-                    DateFilter := GetFilter("Date Filter");
+                    DateFilter := Rec.GetFilter("Date Filter");
                 end;
             }
             action(NextColumn)
@@ -604,7 +604,7 @@ Page 51516447 "Acc. Schedule Overview List"
     begin
         Clear(ColumnValues);
 
-        if (Totaling = '') or (not TempColumnLayout.FindSet) then
+        if (Rec.Totaling = '') or (not TempColumnLayout.FindSet) then
             exit;
 
         repeat
@@ -617,7 +617,7 @@ Page 51516447 "Acc. Schedule Overview List"
                       TempColumnLayout."Rounding Factor"),
                     TempColumnLayout."Rounding Factor");
                 ColumnLayoutArr[ColumnNo - ColumnOffset] := TempColumnLayout;
-                GetStyle(ColumnNo - ColumnOffset, "Line No.", TempColumnLayout."Line No.");
+                GetStyle(ColumnNo - ColumnOffset, Rec."Line No.", TempColumnLayout."Line No.");
             end;
         until TempColumnLayout.Next = 0;
         AccSchedManagement.ForceRecalculate(false);
@@ -663,18 +663,18 @@ Page 51516447 "Acc. Schedule Overview List"
             end;
 
         AccSchedManagement.FindPeriod(Rec, '', PeriodType);
-        SetFilter(Show, '<>%1', Show::No);
-        SetRange("Dimension 1 Filter");
-        SetRange("Dimension 2 Filter");
-        SetRange("Dimension 3 Filter");
-        SetRange("Dimension 4 Filter");
-        SetRange("Cost Center Filter");
-        SetRange("Cost Object Filter");
-        SetRange("Cash Flow Forecast Filter");
-        SetRange("Cost Budget Filter");
-        SetRange("G/L Budget Filter");
+        Rec.SetFilter(Show, '<>%1', Rec.Show::No);
+        Rec.SetRange("Dimension 1 Filter");
+        Rec.SetRange("Dimension 2 Filter");
+        Rec.SetRange("Dimension 3 Filter");
+        Rec.SetRange("Dimension 4 Filter");
+        Rec.SetRange("Cost Center Filter");
+        Rec.SetRange("Cost Object Filter");
+        Rec.SetRange("Cash Flow Forecast Filter");
+        Rec.SetRange("Cost Budget Filter");
+        Rec.SetRange("G/L Budget Filter");
         UpdateDimFilterControls;
-        DateFilter := GetFilter("Date Filter");
+        DateFilter := Rec.GetFilter("Date Filter");
     end;
 
     var
@@ -764,31 +764,31 @@ Page 51516447 "Acc. Schedule Overview List"
         case DimNo of
             1:
                 if DimValueFilter = '' then
-                    SetRange("Dimension 1 Filter")
+                    Rec.SetRange("Dimension 1 Filter")
                 else begin
                     GetDimValueTotaling(DimValueFilter, AnalysisView."Dimension 1 Code");
-                    SetFilter("Dimension 1 Filter", DimValueFilter);
+                    Rec.SetFilter("Dimension 1 Filter", DimValueFilter);
                 end;
             2:
                 if DimValueFilter = '' then
-                    SetRange("Dimension 2 Filter")
+                    Rec.SetRange("Dimension 2 Filter")
                 else begin
                     GetDimValueTotaling(DimValueFilter, AnalysisView."Dimension 2 Code");
-                    SetFilter("Dimension 2 Filter", DimValueFilter);
+                    Rec.SetFilter("Dimension 2 Filter", DimValueFilter);
                 end;
             3:
                 if DimValueFilter = '' then
-                    SetRange("Dimension 3 Filter")
+                    Rec.SetRange("Dimension 3 Filter")
                 else begin
                     GetDimValueTotaling(DimValueFilter, AnalysisView."Dimension 3 Code");
-                    SetFilter("Dimension 3 Filter", DimValueFilter);
+                    Rec.SetFilter("Dimension 3 Filter", DimValueFilter);
                 end;
             4:
                 if DimValueFilter = '' then
-                    SetRange("Dimension 4 Filter")
+                    Rec.SetRange("Dimension 4 Filter")
                 else begin
                     GetDimValueTotaling(DimValueFilter, AnalysisView."Dimension 4 Code");
-                    SetFilter("Dimension 4 Filter", DimValueFilter);
+                    Rec.SetFilter("Dimension 4 Filter", DimValueFilter);
                 end;
         end;
         CurrPage.Update;
@@ -839,9 +839,9 @@ Page 51516447 "Acc. Schedule Overview List"
                     exit(StrSubstNo(Text005, DimNo));
                 end;
             5:
-                exit(FieldCaption("Date Filter"));
+                exit(Rec.FieldCaption("Date Filter"));
             6:
-                exit(FieldCaption("Cash Flow Forecast Filter"));
+                exit(Rec.FieldCaption("Cash Flow Forecast Filter"));
         end;
     end;
 
@@ -886,10 +886,10 @@ Page 51516447 "Acc. Schedule Overview List"
 
     local procedure UpdateDimFilterControls()
     begin
-        Dim1Filter := GetFilter("Dimension 1 Filter");
-        Dim2Filter := GetFilter("Dimension 2 Filter");
-        Dim3Filter := GetFilter("Dimension 3 Filter");
-        Dim4Filter := GetFilter("Dimension 4 Filter");
+        Dim1Filter := Rec.GetFilter("Dimension 1 Filter");
+        Dim2Filter := Rec.GetFilter("Dimension 2 Filter");
+        Dim3Filter := Rec.GetFilter("Dimension 3 Filter");
+        Dim4Filter := Rec.GetFilter("Dimension 4 Filter");
         CostCenterFilter := '';
         CostObjectFilter := '';
         CashFlowFilter := '';
@@ -928,13 +928,13 @@ Page 51516447 "Acc. Schedule Overview List"
                 AnalysisView."Dimension 2 Code" := GLSetup."Global Dimension 2 Code";
             end;
             if PrevAnalysisView."Dimension 1 Code" <> AnalysisView."Dimension 1 Code" then
-                SetRange("Dimension 1 Filter");
+                Rec.SetRange("Dimension 1 Filter");
             if PrevAnalysisView."Dimension 2 Code" <> AnalysisView."Dimension 2 Code" then
-                SetRange("Dimension 2 Filter");
+                Rec.SetRange("Dimension 2 Filter");
             if PrevAnalysisView."Dimension 3 Code" <> AnalysisView."Dimension 3 Code" then
-                SetRange("Dimension 3 Filter");
+                Rec.SetRange("Dimension 3 Filter");
             if PrevAnalysisView."Dimension 4 Code" <> AnalysisView."Dimension 4 Code" then
-                SetRange("Dimension 4 Filter");
+                Rec.SetRange("Dimension 4 Filter");
         end;
         UpdateDimFilterControls;
 

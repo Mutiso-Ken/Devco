@@ -15,27 +15,27 @@ Page 51516350 "Mpesa Applications List"
         {
             repeater(Group)
             {
-                field(No;No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Customer ID No";"Customer ID No")
+                field("Customer ID No"; Rec."Customer ID No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Customer Name";"Customer Name")
+                field("Customer Name"; Rec."Customer Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("MPESA Mobile No";"MPESA Mobile No")
+                field("MPESA Mobile No"; Rec."MPESA Mobile No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Date";"Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }

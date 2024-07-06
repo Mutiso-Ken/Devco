@@ -4,11 +4,11 @@ pageextension 51516110 VendorLookupExt extends "Vendor Lookup"
     {
         addbefore(Name)
         {
-            field("ID No."; "ID No.")
+            field("ID No."; Rec."ID No.")
             {
                 ApplicationArea = Basic;
             }
-            field("BOSA Account No"; "BOSA Account No")
+            field("BOSA Account No"; Rec."BOSA Account No")
             {
                 ApplicationArea = Basic;
             }

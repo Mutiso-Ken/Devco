@@ -16,55 +16,55 @@ Page 51516223 "Membership App Signatories"
                     ApplicationArea = all;
                     Editable = false;
                 }
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
 
                     trigger OnValidate()
                     begin
                         CUST.Reset;
-                        CUST.SetRange(CUST."ID No.", "ID No.");
+                        CUST.SetRange(CUST."ID No.", Rec."ID No.");
                         if CUST.Find('-') then begin
-                            "BOSA No." := CUST."No.";
-                            "Staff/Payroll" := CUST."Payroll/Staff No";
-                            "Date Of Birth" := CUST."Date of Birth";
-                            "Mobile No" := CUST."Mobile Phone No";
-                            Modify;
+                            Rec."BOSA No." := CUST."No.";
+                            Rec."Staff/Payroll" := CUST."Payroll/Staff No";
+                            Rec."Date Of Birth" := CUST."Date of Birth";
+                            Rec."Mobile No" := CUST."Mobile Phone No";
+                            Rec.Modify;
                         end;
                     end;
                 }
-                field(Names; Names)
+                field(Names; Rec.Names)
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = false;
                 }
-                field("Date Of Birth"; "Date Of Birth")
+                field("Date Of Birth"; Rec."Date Of Birth")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Control1102760009; Signatory)
+                field(Control1102760009; Rec.Signatory)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Must Sign"; "Must Sign")
+                field("Must Sign"; Rec."Must Sign")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Must be Present"; "Must be Present")
+                field("Must be Present"; Rec."Must be Present")
                 {
                     ApplicationArea = Basic;
                 }
-                field("BOSA No."; "BOSA No.")
+                field("BOSA No."; Rec."BOSA No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Email Address"; "Email Address")
+                field("Email Address"; Rec."Email Address")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mobile No"; "Mobile No")
+                field("Mobile No"; Rec."Mobile No")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;

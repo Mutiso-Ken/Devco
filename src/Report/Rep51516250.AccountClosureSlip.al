@@ -6,203 +6,203 @@ Report 51516250 "Account Closure Slip"
 
     dataset
     {
-        dataitem(Customer;Customer)
+        dataitem(Customer; Customer)
         {
             DataItemTableView = sorting("No.");
             RequestFilterFields = "No.";
             column(ReportForNavId_7301; 7301)
             {
             }
-            column(FORMAT_TODAY_0_4_;Format(Today,0,4))
+            column(FORMAT_TODAY_0_4_; Format(Today, 0, 4))
             {
             }
-            column(CurrReport_PAGENO;CurrReport.PageNo)
+            column(CurrReport_PAGENO; CurrReport.PageNo)
             {
             }
-            column(USERID;UserId)
+            column(USERID; UserId)
             {
             }
-            column(COMPANYNAME;COMPANYNAME)
+            column(COMPANYNAME; COMPANYNAME)
             {
             }
-            column(COMPANYPIC;Companyinfo.Picture)
+            column(COMPANYPIC; Companyinfo.Picture)
             {
             }
-            column(Members__No__;"No.")
+            column(Members__No__; "No.")
             {
             }
-            column(Members_Name;Name)
+            column(Members_Name; Name)
             {
             }
-            column(Members__ID_No__;"ID No.")
+            column(Members__ID_No__; "ID No.")
             {
             }
-            column(Members__Payroll_Staff_No_;"Payroll/Staff No")
+            column(Members__Payroll_Staff_No_; "Payroll/Staff No")
             {
             }
-            column(Members__Outstanding_Balance_;"Outstanding Balance")
+            column(Members__Outstanding_Balance_; "Outstanding Balance")
             {
             }
-            column(TranferFee;TranferFee)
+            column(TranferFee; TranferFee)
             {
             }
-            column(CompanyinfoPicture;Companyinfo.Picture)
+            column(CompanyinfoPicture; Companyinfo.Picture)
             {
             }
-            column(Current_Shares___1;"Current Shares")
+            column(Current_Shares___1; "Current Shares")
             {
             }
-            column(Insurance_Fund___1;InsFund)
+            column(Insurance_Fund___1; InsFund)
             {
             }
-            column(Members__Accrued_Interest_;"Accrued Interest")
+            column(Members__Accrued_Interest_; "Accrued Interest")
             {
             }
-            column(OutstandingInterest_Members;Customer."Outstanding Interest")
+            column(OutstandingInterest_Members; Customer."Outstanding Interest")
             {
             }
-            column(Members__Current_Shares_;"Current Shares")
+            column(Members__Current_Shares_; "Current Shares")
             {
             }
-            column(UnpaidDividends;UnpaidDividends)
+            column(UnpaidDividends; UnpaidDividends)
             {
             }
-            column(Members__Insurance_Fund_;"Insurance Fund")
+            column(Members__Insurance_Fund_; "Insurance Fund")
             {
             }
-            column(NetPayable;NetPayable)
+            column(NetPayable; NetPayable)
             {
             }
-            column(Members__Current_Investment_Total_;"Current Investment Total")
+            column(Members__Current_Investment_Total_; "Current Investment Total")
             {
             }
-            column(Members__Dividend_Amount_;"Dividend Amount")
+            column(Members__Dividend_Amount_; "Dividend Amount")
             {
             }
-            column(FWithdrawal;FWithdrawal)
+            column(FWithdrawal; FWithdrawal)
             {
             }
-            column(Members_Members__Batch_No__;Customer."Batch No.")
+            column(Members_Members__Batch_No__; Customer."Batch No.")
             {
             }
-            column(Members_Members_Status;Customer.Status)
+            column(Members_Members_Status; Customer.Status)
             {
             }
-            column(EFT;EFT)
+            column(EFT; EFT)
             {
             }
-            column(FOSAInterest;FOSAInterest)
+            column(FOSAInterest; FOSAInterest)
             {
             }
-            column(Members__FOSA_Outstanding_Balance_;"FOSA Outstanding Balance")
+            column(Members__FOSA_Outstanding_Balance_; "FOSA Outstanding Balance")
             {
             }
-            column(Members_Members__Shares_Retained_;Customer."Shares Retained")
+            column(Members_Members__Shares_Retained_; Customer."Shares Retained")
             {
             }
-            column(FExpenses;FExpenses)
+            column(FExpenses; FExpenses)
             {
             }
-            column(InsFund__1;InsFund*-1)
+            column(InsFund__1; InsFund * -1)
             {
             }
-            column(CICLoan;CICLoan)
+            column(CICLoan; CICLoan)
             {
             }
-            column(CICLoan___Current_Shares___1__UnpaidDividends___Insurance_Fund___1__FExpenses;CICLoan+("Current Shares")+UnpaidDividends+FExpenses)
+            column(CICLoan___Current_Shares___1__UnpaidDividends___Insurance_Fund___1__FExpenses; CICLoan + ("Current Shares") + UnpaidDividends + FExpenses)
             {
             }
-            column(Outstanding_Balance___Accrued_Interest___FOSA_Outstanding_Balance__FOSAInterest_FWithdrawal__InsFund__1_;"Outstanding Balance"+"Accrued Interest"+"FOSA Outstanding Balance"+FOSAInterest+FWithdrawal+(InsFund*-1))
+            column(Outstanding_Balance___Accrued_Interest___FOSA_Outstanding_Balance__FOSAInterest_FWithdrawal__InsFund__1_; "Outstanding Balance" + "Accrued Interest" + "FOSA Outstanding Balance" + FOSAInterest + FWithdrawal + (InsFund * -1))
             {
             }
-            column(CurrReport_PAGENOCaption;CurrReport_PAGENOCaptionLbl)
+            column(CurrReport_PAGENOCaption; CurrReport_PAGENOCaptionLbl)
             {
             }
-            column(ACCOUNT_CLOSURE_SLIPCaption;ACCOUNT_CLOSURE_SLIPCaptionLbl)
+            column(ACCOUNT_CLOSURE_SLIPCaption; ACCOUNT_CLOSURE_SLIPCaptionLbl)
             {
             }
-            column(P_O_BOX_75629___00200__NAIROBICaption;P_O_BOX_75629___00200__NAIROBICaptionLbl)
+            column(P_O_BOX_75629___00200__NAIROBICaption; P_O_BOX_75629___00200__NAIROBICaptionLbl)
             {
             }
-            column(Member_No_Caption;Member_No_CaptionLbl)
+            column(Member_No_Caption; Member_No_CaptionLbl)
             {
             }
-            column(Members_NameCaption;FieldCaption(Name))
+            column(Members_NameCaption; FieldCaption(Name))
             {
             }
-            column(Members__ID_No__Caption;FieldCaption("ID No."))
+            column(Members__ID_No__Caption; FieldCaption("ID No."))
             {
             }
-            column(Members__Payroll_Staff_No_Caption;FieldCaption("Payroll/Staff No"))
+            column(Members__Payroll_Staff_No_Caption; FieldCaption("Payroll/Staff No"))
             {
             }
-            column(Current_Oustanding_LoanCaption;Current_Oustanding_LoanCaptionLbl)
+            column(Current_Oustanding_LoanCaption; Current_Oustanding_LoanCaptionLbl)
             {
             }
-            column(Deposit_ContributionCaption;Deposit_ContributionCaptionLbl)
+            column(Deposit_ContributionCaption; Deposit_ContributionCaptionLbl)
             {
             }
-            column(Other_DeductionsCaption;Other_DeductionsCaptionLbl)
+            column(Other_DeductionsCaption; Other_DeductionsCaptionLbl)
             {
             }
-            column(Insurance_Fund_Caption;Insurance_Fund_CaptionLbl)
+            column(Insurance_Fund_Caption; Insurance_Fund_CaptionLbl)
             {
             }
-            column(Members__Accrued_Interest_Caption;FieldCaption("Accrued Interest"))
+            column(Members__Accrued_Interest_Caption; FieldCaption("Accrued Interest"))
             {
             }
-            column(ADD__Unpaid_DividendsCaption;ADD__Unpaid_DividendsCaptionLbl)
+            column(ADD__Unpaid_DividendsCaption; ADD__Unpaid_DividendsCaptionLbl)
             {
             }
-            column(LESS_Caption;LESS_CaptionLbl)
+            column(LESS_Caption; LESS_CaptionLbl)
             {
             }
-            column(ADD_Caption;ADD_CaptionLbl)
+            column(ADD_Caption; ADD_CaptionLbl)
             {
             }
-            column(Net_RefundCaption;Net_RefundCaptionLbl)
+            column(Net_RefundCaption; Net_RefundCaptionLbl)
             {
             }
-            column(Withdrawal_FeesCaption;Withdrawal_FeesCaptionLbl)
+            column(Withdrawal_FeesCaption; Withdrawal_FeesCaptionLbl)
             {
             }
-            column(Batch_No_Caption;Batch_No_CaptionLbl)
+            column(Batch_No_Caption; Batch_No_CaptionLbl)
             {
             }
-        //    column(DataItem1000000004;Prepared_By___________________________________Lbl)
-        //    {
-        //    }
-        //    column(DataItem1000000005;Certified_By____________________________Lbl)
-        //    {
-        //    }
-        //    column(DataItem1000000007;Signature_Date______________________________________________Lbl)
-        //    {
-        //    }
-        //    column(DataItem1000000008;Signature_Date_____________________________________________________________________________________________________000Lbl)
-        //    {
-        //    }
-            column(Member_StatusCaption;Member_StatusCaptionLbl)
+            //    column(DataItem1000000004;Prepared_By___________________________________Lbl)
+            //    {
+            //    }
+            //    column(DataItem1000000005;Certified_By____________________________Lbl)
+            //    {
+            //    }
+            //    column(DataItem1000000007;Signature_Date______________________________________________Lbl)
+            //    {
+            //    }
+            //    column(DataItem1000000008;Signature_Date_____________________________________________________________________________________________________000Lbl)
+            //    {
+            //    }
+            column(Member_StatusCaption; Member_StatusCaptionLbl)
             {
             }
-            column(FOSA_Accrued_InterestCaption;FOSA_Accrued_InterestCaptionLbl)
+            column(FOSA_Accrued_InterestCaption; FOSA_Accrued_InterestCaptionLbl)
             {
             }
-            column(FOSA_Current_Oustanding_LoanCaption;FOSA_Current_Oustanding_LoanCaptionLbl)
+            column(FOSA_Current_Oustanding_LoanCaption; FOSA_Current_Oustanding_LoanCaptionLbl)
             {
             }
-            column(Funeral_ExpensesCaption;Funeral_ExpensesCaptionLbl)
+            column(Funeral_ExpensesCaption; Funeral_ExpensesCaptionLbl)
             {
             }
-            column(Under_Excess_InsuranceCaption;Under_Excess_InsuranceCaptionLbl)
+            column(Under_Excess_InsuranceCaption; Under_Excess_InsuranceCaptionLbl)
             {
             }
-            column(Insurance__CIC_Caption;Insurance__CIC_CaptionLbl)
+            column(Insurance__CIC_Caption; Insurance__CIC_CaptionLbl)
             {
             }
-            column(TotalCaption;TotalCaptionLbl)
+            column(TotalCaption; TotalCaptionLbl)
             {
             }
-            column(TotalCaption_Control1102760055;TotalCaption_Control1102760055Lbl)
+            column(TotalCaption_Control1102760055; TotalCaption_Control1102760055Lbl)
             {
             }
 
@@ -211,104 +211,104 @@ Report 51516250 "Account Closure Slip"
 
 
 
-                WithdrawalFee:=0;
-                NetPayable:=0;
-                FWithdrawal:=0;
-                FExpenses:=0;
-                CICLoan:=0;
-                InsFund:=0;
-                UnpaidDividends:=0;
+                WithdrawalFee := 0;
+                NetPayable := 0;
+                FWithdrawal := 0;
+                FExpenses := 0;
+                CICLoan := 0;
+                InsFund := 0;
+                UnpaidDividends := 0;
 
-                if Cust.Get('RB-'+Cust."Payroll/Staff No") then begin
-                Cust.CalcFields(Cust."Balance (LCY)");
-                UnpaidDividends:=Cust."Balance (LCY)"
+                if Cust.Get('RB-' + Cust."Payroll/Staff No") then begin
+                    Cust.CalcFields(Cust."Balance (LCY)");
+                    UnpaidDividends := Cust."Balance (LCY)"
                 end;
 
-                 // GETTING WITHDRAWAL FEE
+                // GETTING WITHDRAWAL FEE
 
-                 //IF (0.1*("Current Shares")) >1000 THEN BEGIN
-                 "Withdrawal Fee":=0;
-                 //END ELSE BEGIN
-                  //"Withdrawal Fee":=0.1*("Current Shares");
-                  //FWithdrawal:="Withdrawal Fee";
-                 //END;
+                //IF (0.1*("Current Shares")) >1000 THEN BEGIN
+                "Withdrawal Fee" := 0;
+                //END ELSE BEGIN
+                //"Withdrawal Fee":=0.1*("Current Shares");
+                //FWithdrawal:="Withdrawal Fee";
+                //END;
 
 
-                 //MESSAGE('FWithdrawal is %1', FWithdrawal);
+                //MESSAGE('FWithdrawal is %1', FWithdrawal);
                 // END OF GETTING WITHDRWAL FEE
 
 
 
 
-                CalcFields("Current Shares","Outstanding Balance","Outstanding Interest");
+                CalcFields("Current Shares", "Outstanding Balance", "Outstanding Interest");
 
 
-                InsFund:="Insurance Fund";
+                InsFund := "Insurance Fund";
 
-                FOSAInterest:=Customer."FOSA Oustanding Interest";
+                FOSAInterest := Customer."FOSA Oustanding Interest";
 
                 if FOSAInterest < 0 then
-                FOSAInterest:=0;
+                    FOSAInterest := 0;
 
                 if Status = Status::Deceased then begin
-                FExpenses:=0;
-                CICLoan:="Outstanding Balance"+"FOSA Outstanding Balance";
-                NetRefund:= (FExpenses+("Current Shares")) -
-                            ("Outstanding Interest"+FOSAInterest);
+                    FExpenses := 0;
+                    CICLoan := "Outstanding Balance" + "FOSA Outstanding Balance";
+                    NetRefund := (FExpenses + ("Current Shares")) -
+                                ("Outstanding Interest" + FOSAInterest);
 
 
                 end else begin
-                NetRefund:= (("Current Shares"+UnpaidDividends)-
-                            (+"Outstanding Balance"+"Outstanding Interest"));
-                //MESSAGE(FORMAT("Outstanding Interest"));
+                    NetRefund := (("Current Shares" + UnpaidDividends) -
+                                (+"Outstanding Balance" + "Outstanding Interest"));
+                    //MESSAGE(FORMAT("Outstanding Interest"));
 
-                InsFund:=0;
+                    InsFund := 0;
 
-                if "Withdrawal Application Date" <> 0D then begin
-                if CalcDate('3M',"Withdrawal Application Date") > Today then begin
-                if NetRefund > 0 then
-                WithdrawalFee:=ROUND(NetRefund*0.1,1);
+                    if "Withdrawal Application Date" <> 0D then begin
+                        if CalcDate('3M', "Withdrawal Application Date") > Today then begin
+                            if NetRefund > 0 then
+                                WithdrawalFee := ROUND(NetRefund * 0.1, 1);
+
+                        end;
+                    end;
+
 
                 end;
-                end;
 
-
-                end;
-
-                TranferFee:=0;
+                TranferFee := 0;
                 Generalsetup.Get();
                 Closure.Reset;
-                Closure.SetRange(Closure."Member No.","No.");
+                Closure.SetRange(Closure."Member No.", "No.");
                 if Closure.Find('-') then begin
-                // if Closure."Mode Of Disbursement"=Closure."mode of disbursement"::EFT then
-                //TranferFee:=Generalsetup."Loan Trasfer Fee-Cheque"
-                //  TranferFee:=Closure."EFT Charge"
-                EFT:=Closure."EFT Charge"
+                    // if Closure."Mode Of Disbursement"=Closure."mode of disbursement"::EFT then
+                    //TranferFee:=Generalsetup."Loan Trasfer Fee-Cheque"
+                    //  TranferFee:=Closure."EFT Charge"
+                    EFT := Closure."EFT Charge"
 
-                // else
-                // if Closure."Mode Of Disbursement"=Closure."mode of disbursement"::Vendor then
-                // TranferFee:=Generalsetup."Loan Trasfer Fee-EFT"
-                // else
-                // if Closure."Mode Of Disbursement"=Closure."mode of disbursement"::Cheque then
-                // TranferFee:=Generalsetup."Loan Trasfer Fee-EFT";
-                // EFT:=Closure."EFT Charge";
+                    // else
+                    // if Closure."Mode Of Disbursement"=Closure."mode of disbursement"::Vendor then
+                    // TranferFee:=Generalsetup."Loan Trasfer Fee-EFT"
+                    // else
+                    // if Closure."Mode Of Disbursement"=Closure."mode of disbursement"::Cheque then
+                    // TranferFee:=Generalsetup."Loan Trasfer Fee-EFT";
+                    // EFT:=Closure."EFT Charge";
                 end;
 
 
 
                 if Status = Status::Deceased then begin
-                NetPayable:=NetRefund
+                    NetPayable := NetRefund
                 end else
-                NetPayable:=NetRefund-WithdrawalFee-TranferFee-EFT;
+                    NetPayable := NetRefund - WithdrawalFee - TranferFee - EFT;
 
 
-                Closure."Net Pay":=NetPayable+Closure."EFT Charge";
+                Closure."Net Pay" := NetPayable + Closure."EFT Charge";
                 //Closure.MODIFY;
             end;
 
             trigger OnPreDataItem()
             begin
-                  LastFieldNo := FieldNo("No.");
+                LastFieldNo := FieldNo("No.");
 
                 Companyinfo.Get();
                 Companyinfo.CalcFields(Companyinfo.Picture);

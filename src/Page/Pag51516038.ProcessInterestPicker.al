@@ -65,7 +65,7 @@ page 51516038 "Process Interest Picker"
     procedure GetDateFilterEntered(): Date
     begin
         //.............Exit With Period Date 
-        Period :=EndDate;
+        Period := EndDate;
         exit(Period);
     end;
 

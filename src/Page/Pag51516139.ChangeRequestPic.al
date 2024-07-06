@@ -12,7 +12,7 @@ page 51516139 "Change Request Pic"
     {
         area(content)
         {
-            field("Picture(New Value)"; "Picture(New Value)")
+            field("Picture(New Value)"; Rec."Picture(New Value)")
             {
                 ApplicationArea = All;
                 Caption = 'New Picture';

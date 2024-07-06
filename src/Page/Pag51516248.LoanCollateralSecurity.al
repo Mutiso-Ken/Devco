@@ -10,37 +10,37 @@ Page 51516248 "Loan Collateral Security"
         {
             repeater(Control1102756000)
             {
-                field("Loan No"; "Loan No")
+                field("Loan No"; Rec."Loan No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Code"; Code)
+                field("Code"; Rec.Code)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Type; Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
 
                 }
-                field(Value; Value)
+                field(Value; Rec.Value)
                 {
                     ApplicationArea = Basic;
                 }
 
-                field(Category; Category)
+                field(Category; Rec.Category)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Collateral Multiplier"; "Collateral Multiplier")
+                field("Collateral Multiplier"; Rec."Collateral Multiplier")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Guarantee Value"; "Guarantee Value")
+                field("Guarantee Value"; Rec."Guarantee Value")
                 {
                     ApplicationArea = Basic;
                 }
@@ -49,11 +49,11 @@ Page 51516248 "Loan Collateral Security"
                 //     ApplicationArea = Basic;
                 //     Editable = false;
                 // }
-                field("Assesment Done By"; "Assesment Done By")
+                field("Assesment Done By"; Rec."Assesment Done By")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Remarks; Remarks)
+                field(Remarks; Rec.Remarks)
                 {
                     ApplicationArea = Basic;
                 }

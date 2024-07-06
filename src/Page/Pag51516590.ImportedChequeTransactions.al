@@ -5,7 +5,7 @@ Page 51516590 "Imported Cheque Transactions"
     Editable = false;
     PageType = List;
     SourceTable = "Cheque Truncation Buffer";
-    SourceTableView = where("Imported to Receipt Lines"=const(false));
+    SourceTableView = where("Imported to Receipt Lines" = const(false));
 
     layout
     {
@@ -13,67 +13,67 @@ Page 51516590 "Imported Cheque Transactions"
         {
             repeater(Group)
             {
-                field(ChequeDataId;ChequeDataId)
+                field(ChequeDataId; Rec.ChequeDataId)
                 {
                     ApplicationArea = Basic;
                 }
-                field(SerialId;SerialId)
+                field(SerialId; Rec.SerialId)
                 {
                     ApplicationArea = Basic;
                 }
-                field(AMOUNT;AMOUNT)
+                field(AMOUNT; Rec.AMOUNT)
                 {
                     ApplicationArea = Basic;
                 }
-                field(CURRENCYCODE;CURRENCYCODE)
+                field(CURRENCYCODE; Rec.CURRENCYCODE)
                 {
                     ApplicationArea = Basic;
                 }
-                field(DESTBANK;DESTBANK)
+                field(DESTBANK; Rec.DESTBANK)
                 {
                     ApplicationArea = Basic;
                 }
-                field(DESTBRANCH;DESTBRANCH)
+                field(DESTBRANCH; Rec.DESTBRANCH)
                 {
                     ApplicationArea = Basic;
                 }
-                field(DESTACC;DESTACC)
+                field(DESTACC; Rec.DESTACC)
                 {
                     ApplicationArea = Basic;
                 }
-                field(PBANK;PBANK)
+                field(PBANK; Rec.PBANK)
                 {
                     ApplicationArea = Basic;
                 }
-                field(PBRANCH;PBRANCH)
+                field(PBRANCH; Rec.PBRANCH)
                 {
                     ApplicationArea = Basic;
                 }
-                field(MemberNo;MemberNo)
+                field(MemberNo; Rec.MemberNo)
                 {
                     ApplicationArea = Basic;
                 }
-                field(SNO;SNO)
+                field(SNO; Rec.SNO)
                 {
                     ApplicationArea = Basic;
                 }
-                field(FrontBWImage;FrontBWImage)
+                field(FrontBWImage; Rec.FrontBWImage)
                 {
                     ApplicationArea = Basic;
                 }
-                field(FrontGrayScaleImage;FrontGrayScaleImage)
+                field(FrontGrayScaleImage; Rec.FrontGrayScaleImage)
                 {
                     ApplicationArea = Basic;
                 }
-                field(RearImage;RearImage)
+                field(RearImage; Rec.RearImage)
                 {
                     ApplicationArea = Basic;
                 }
-                field(IsFCY;IsFCY)
+                field(IsFCY; Rec.IsFCY)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Imported to Receipt Lines";"Imported to Receipt Lines")
+                field("Imported to Receipt Lines"; Rec."Imported to Receipt Lines")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Imported ?';

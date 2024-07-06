@@ -10,41 +10,41 @@ Page 51516256 "Loan Disburesment Batch Card"
     {
         area(content)
         {
-            field("Batch No."; "Batch No.")
+            field("Batch No."; Rec."Batch No.")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field(Source; Source)
+            field(Source; Rec.Source)
             {
                 ApplicationArea = Basic;
                 Editable = SourceEditable;
             }
-            field("Batch Type"; "Batch Type")
+            field("Batch Type"; Rec."Batch Type")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("Description/Remarks"; "Description/Remarks")
+            field("Description/Remarks"; Rec."Description/Remarks")
             {
                 ApplicationArea = Basic;
                 //Editable = DescriptionEditable;
                 Editable = true;
             }
-            field(Status; Status)
+            field(Status; Rec.Status)
             {
                 ApplicationArea = Basic;
                 Editable = true;
             }
-            field("Total Loan Amount"; "Total Loan Amount")
+            field("Total Loan Amount"; Rec."Total Loan Amount")
             {
                 ApplicationArea = Basic;
             }
-            field("No of Loans"; "No of Loans")
+            field("No of Loans"; Rec."No of Loans")
             {
                 ApplicationArea = Basic;
             }
-            field("Mode Of Disbursement"; "Mode Of Disbursement")
+            field("Mode Of Disbursement"; Rec."Mode Of Disbursement")
             {
                 ApplicationArea = Basic;
                 Editable = ModeofDisburementEditable;
@@ -52,11 +52,11 @@ Page 51516256 "Loan Disburesment Batch Card"
 
                 trigger OnValidate()
                 begin
-                    if "Mode Of Disbursement" <> "mode of disbursement"::Cheque then "Cheque No." := "Batch No.";
-                    Modify;
+                    if Rec."Mode Of Disbursement" <> Rec."mode of disbursement"::Cheque then Rec."Cheque No." := Rec."Batch No.";
+                    Rec.Modify;
                 end;
             }
-            field("Document No."; "Document No.")
+            field("Document No."; Rec."Document No.")
             {
                 ApplicationArea = Basic;
                 Editable = DocumentNoEditable;
@@ -65,7 +65,7 @@ Page 51516256 "Loan Disburesment Batch Card"
                 begin
                 end;
             }
-            field(o; "Posting Date")
+            field(o; Rec."Posting Date")
             {
                 ApplicationArea = Basic;
                 Caption = 'Posting Date';
@@ -113,10 +113,10 @@ Page 51516256 "Loan Disburesment Batch Card"
                         SrestepApprovalsCodeUnit: Codeunit SurestepApprovalsCodeUnit;
                     begin
                         LoanApps.Reset;
-                        LoanApps.SetRange(LoanApps."Batch No.", "Batch No.");
+                        LoanApps.SetRange(LoanApps."Batch No.", Rec."Batch No.");
                         if LoanApps.Find('-') = false then Error('You cannot send an empty batch for approval');
-                        TestField("Description/Remarks");
-                        if Status <> Status::Open then Error(Text001);
+                        Rec.TestField("Description/Remarks");
+                        if Rec.Status <> Rec.Status::Open then Error(Text001);
                         if Confirm('Send Approval Request?', false) = true then begin
                             // Status := Status::Approved;
                             // rec.Modify(true);
@@ -161,18 +161,18 @@ Page 51516256 "Loan Disburesment Batch Card"
                         PepeaShares: Decimal;
                         SaccoDeposits: Decimal;
                     begin
-                        if Posted = true then Error('Batch already posted.');
-                        if Status <> Status::Approved then Error(Format(Text001));
+                        if Rec.Posted = true then Error('Batch already posted.');
+                        if Rec.Status <> Rec.Status::Approved then Error(Format(Text001));
                         if Confirm('Are you sure you want to post this batch?', false) = false then begin
                             exit;
                         end
                         else begin
-                            TestField("Description/Remarks");
-                            TestField("Posting Date");
-                            TestField("Document No.");
+                            Rec.TestField("Description/Remarks");
+                            Rec.TestField("Posting Date");
+                            Rec.TestField("Document No.");
                             //PRORATED DAYS
-                            EndMonth := CalcDate('-1D', CalcDate('1M', Dmy2date(1, Date2dmy("Posting Date", 2), Date2dmy("Posting Date", 3))));
-                            RemainingDays := (EndMonth - "Posting Date") + 1;
+                            EndMonth := CalcDate('-1D', CalcDate('1M', Dmy2date(1, Date2dmy(Rec."Posting Date", 2), Date2dmy(Rec."Posting Date", 3))));
+                            RemainingDays := (EndMonth - Rec."Posting Date") + 1;
                             TMonthDays := Date2dmy(EndMonth, 1);
                             //PRORATED DAYS
                             //Delete Journal Lines
@@ -184,7 +184,7 @@ Page 51516256 "Loan Disburesment Batch Card"
                             DActivity := '';
                             DBranch := '';
                             LoanApps.Reset;
-                            LoanApps.SetRange(LoanApps."Batch No.", "Batch No.");
+                            LoanApps.SetRange(LoanApps."Batch No.", Rec."Batch No.");
                             //LoanApps.SetFilter(LoanApps."Loan Status", '<>Rejected');
                             if LoanApps.Find('-') then begin
                                 repeat
@@ -213,9 +213,9 @@ Page 51516256 "Loan Disburesment Batch Card"
                             Codeunit.Run(Codeunit::"Gen. Jnl.-Post", GenJournalLine);
                         end;
                         Message('Loan has successfully been posted and member notified');
-                        Posted := true;
-                        "Posting Date" := Today;
-                        "Posted By" := UserId;
+                        Rec.Posted := true;
+                        Rec."Posting Date" := Today;
+                        Rec."Posted By" := UserId;
                     end;
                 }
             }
@@ -433,7 +433,7 @@ Page 51516256 "Loan Disburesment Batch Card"
             repeat
                 //--------------------Generate Schedule
                 Sfactorycode.FnGenerateRepaymentSchedule(LoanApps."Loan  No.");
-                DirbursementDate := "Posting Date";
+                DirbursementDate := Rec."Posting Date";
                 VarAmounttoDisburse := LoanApps."Approved Amount";
                 //....................PRORATED DAYS
                 EndMonth := CALCDATE('-1D', CALCDATE('1M', DMY2DATE(1, DATE2DMY(Today, 2), DATE2DMY(Today, 3))));
@@ -461,7 +461,7 @@ Page 51516256 "Loan Disburesment Batch Card"
                 END;
                 //**************Loan Principal Posting**********************************
                 LineNo := LineNo + 10000;
-                SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::Loan, GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, VarAmounttoDisburse, 'BOSA', "Batch No.", 'Loan Disbursement - ' + LoanApps."Loan Product Type", LoanApps."Loan  No.");
+                SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::Loan, GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, VarAmounttoDisburse, 'BOSA', Rec."Batch No.", 'Loan Disbursement - ' + LoanApps."Loan Product Type", LoanApps."Loan  No.");
                 //--------------------------------RECOVER OVERDRAFT()-------------------------------------------------------
 
                 //...................Cater for Loan Offset Now !
@@ -472,13 +472,13 @@ Page 51516256 "Loan Disburesment Batch Card"
                     IF LoanTopUp.FIND('-') THEN BEGIN
                         repeat
                             LineNo := LineNo + 10000;
-                            SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::Repayment, GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, Round(LoanTopUp."Principle Top Up", 0.01, '=') * -1, 'BOSA', "Batch No.", 'Loan OffSet By - ' + LoanApps."Loan  No.", LoanTopUp."Loan Top Up");
+                            SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::Repayment, GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, Round(LoanTopUp."Principle Top Up", 0.01, '=') * -1, 'BOSA', Rec."Batch No.", 'Loan OffSet By - ' + LoanApps."Loan  No.", LoanTopUp."Loan Top Up");
                             //..................Recover Interest On Top Up
                             // LineNo := LineNo + 10000;
                             // SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::"Interest Paid", GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, Round(LoanTopUp."Interest Top Up", 0.01, '=') * -1, 'BOSA', "Batch No.", 'Interest Due Paid on top up - ', LoanTopUp."Loan Top Up");
                             //If there is top up commission charged write it here start
                             LineNo := LineNo + 10000;
-                            SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Top up Account", DirbursementDate, Round(LoanTopUp.Commision, 0.01, '=') * -1, 'BOSA', "Batch No.", 'Commision on top up - ', LoanTopUp."Loan Top Up");
+                            SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Top up Account", DirbursementDate, Round(LoanTopUp.Commision, 0.01, '=') * -1, 'BOSA', Rec."Batch No.", 'Commision on top up - ', LoanTopUp."Loan Top Up");
                             //If there is top up commission charged write it here end
                             AmountTop := (Round(LoanTopUp."Principle Top Up", 0.01, '=') + Round(LoanTopUp.Commision, 0.01, '='));
                             VarAmounttoDisburse := VarAmounttoDisburse - (Round(LoanTopUp."Principle Top Up", 0.01, '=') + Round(LoanTopUp.Commision, 0.01, '='));
@@ -490,19 +490,19 @@ Page 51516256 "Loan Disburesment Batch Card"
                 //If there is top up commission charged write it here end
                 //.....Valuation
                 LineNo := LineNo + 10000;
-                SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Asset Valuation Cost", DirbursementDate, Round(LoanApps."Valuation Cost", 0.01, '=') * -1, 'BOSA', "Batch No.", 'Loan Principle Amount ' + Format(LoanApps."Loan  No."), '');
+                SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Asset Valuation Cost", DirbursementDate, Round(LoanApps."Valuation Cost", 0.01, '=') * -1, 'BOSA', Rec."Batch No.", 'Loan Principle Amount ' + Format(LoanApps."Loan  No."), '');
                 VarAmounttoDisburse := VarAmounttoDisburse - LoanApps."Valuation Cost";
                 //...Debosting amount
                 LineNo := LineNo + 10000;
-                SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Boosting Fees Account", DirbursementDate, Round(LoanApps."Deboost Commision", 0.01, '=') * -1, 'BOSA', "Batch No.", 'Debosting commision ' + Format(LoanApps."Loan  No."), '');
+                SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Boosting Fees Account", DirbursementDate, Round(LoanApps."Deboost Commision", 0.01, '=') * -1, 'BOSA', Rec."Batch No.", 'Debosting commision ' + Format(LoanApps."Loan  No."), '');
                 VarAmounttoDisburse := VarAmounttoDisburse - LoanApps."Deboost Commision";
                 //Debosting commsion
                 LineNo := LineNo + 10000;
-                SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::"Deposit Contribution", GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, Round(LoanApps."Deboost Amount", 0.01, '=') * -1, 'BOSA', "Batch No.", 'Debosted shares ' + Format(LoanApps."Loan  No."), '');
+                SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::"Deposit Contribution", GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, Round(LoanApps."Deboost Amount", 0.01, '=') * -1, 'BOSA', Rec."Batch No.", 'Debosted shares ' + Format(LoanApps."Loan  No."), '');
                 VarAmounttoDisburse := VarAmounttoDisburse - LoanApps."Deboost Amount";
                 //..Legal Fees
                 LineNo := LineNo + 10000;
-                SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Legal Fees", DirbursementDate, Round(LoanApps."Legal Cost", 0.01, '=') * -1, 'BOSA', "Batch No.", 'Loan Principle Amount ' + Format(LoanApps."Loan  No."), '');
+                SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Legal Fees", DirbursementDate, Round(LoanApps."Legal Cost", 0.01, '=') * -1, 'BOSA', Rec."Batch No.", 'Loan Principle Amount ' + Format(LoanApps."Loan  No."), '');
                 VarAmounttoDisburse := VarAmounttoDisburse - LoanApps."Legal Cost";
 
                 NetAmount := VarAmounttoDisburse - (LoanApps."Loan Processing Fee" + LoanApps."Loan Dirbusement Fee" + LoanApps."Loan Insurance");
@@ -547,14 +547,14 @@ Page 51516256 "Loan Disburesment Batch Card"
 
                 //------------------------------------2. CREDIT MEMBER BANK A/C---------------------------------------------------------------------------------------------
                 LineNo := LineNo + 10000;
-                SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"Bank Account", LoanApps."Paying Bank Account No", DirbursementDate, VarAmounttoDisburse * -1, 'BOSA', "Batch No.", 'Loan Principle Amount ' + Format(LoanApps."Loan  No.") + ' ' + Format(LoanApps."Client Name"), '');
+                SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"Bank Account", LoanApps."Paying Bank Account No", DirbursementDate, VarAmounttoDisburse * -1, 'BOSA', Rec."Batch No.", 'Loan Principle Amount ' + Format(LoanApps."Loan  No.") + ' ' + Format(LoanApps."Client Name"), '');
             until LoanApps.Next = 0;
         end;
     end;
 
     procedure UpdateControl()
     begin
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             DescriptionEditable := true;
             ModeofDisburementEditable := false;
             DocumentNoEditable := false;
@@ -567,7 +567,7 @@ Page 51516256 "Loan Disburesment Batch Card"
             CancelApprovalEditable := false;
             PostEnabled := false;
         end;
-        if Status = Status::"Pending Approval" then begin
+        if Rec.Status = Rec.Status::"Pending Approval" then begin
             DescriptionEditable := false;
             ModeofDisburementEditable := false;
             DocumentNoEditable := false;
@@ -580,7 +580,7 @@ Page 51516256 "Loan Disburesment Batch Card"
             CancelApprovalEditable := true;
             PostEnabled := false;
         end;
-        if Status = Status::Rejected then begin
+        if Rec.Status = Rec.Status::Rejected then begin
             DescriptionEditable := false;
             ModeofDisburementEditable := false;
             DocumentNoEditable := false;
@@ -593,7 +593,7 @@ Page 51516256 "Loan Disburesment Batch Card"
             CancelApprovalEditable := false;
             PostEnabled := false;
         end;
-        if Status = Status::Approved then begin
+        if Rec.Status = Rec.Status::Approved then begin
             DescriptionEditable := false;
             ModeofDisburementEditable := true;
             DocumentNoEditable := true;
@@ -719,13 +719,13 @@ Page 51516256 "Loan Disburesment Batch Card"
         SalesSetup: Record "Sacco No. Series";
         NoSeriesMgt: Codeunit NoSeriesManagement;
     begin
-        if "Batch No." = '' then begin
+        if Rec."Batch No." = '' then begin
             SalesSetup.Get();
             SalesSetup.TestField(SalesSetup."Loans Batch Nos");
-            NoSeriesMgt.InitSeries(SalesSetup."Loans Batch Nos", xRec."No. Series", 0D, "Batch No.", "No. Series");
-            "Document No." := "Batch No.";
-            "Prepared By" := UserId;
-            Source := Source::BOSA;
+            NoSeriesMgt.InitSeries(SalesSetup."Loans Batch Nos", xRec."No. Series", 0D, Rec."Batch No.", Rec."No. Series");
+            Rec."Document No." := Rec."Batch No.";
+            Rec."Prepared By" := UserId;
+            Rec.Source := Rec.Source::BOSA;
             xRec."Date Created" := Today;
         end;
     end;

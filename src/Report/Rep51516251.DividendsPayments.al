@@ -31,19 +31,19 @@ report 51516251 "Dividends Payments"
                 Cust.SetRange(Cust."No.", "No.");
                 cust.SetFilter(cust."Retaine Dividends", '%1', false);
                 if cust.FindSet() then begin
-                    
-                        Cust.CalcFields(Cust."Dividend Amount");
-                        if cust."Dividend Amount" > 0 then begin
-                            repeat
-                                ObjGensetup.GET();
-                                DivTotal := cust."Dividend Amount";
-                                LineNo := LineNo + 10000;
-                                SFactory.FnCreateGnlJournalLineBalanced(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."Transaction Type"::Dividend,
-                                GenJournalLine."Account Type"::Customer, "No.", PostingDate, DivTotal, 'BOSA', '',
-                                'Dividends Payments- ' + FORMAT(PostingDate), '', GenJournalLine."Account Type"::"Bank Account", ObjGensetup."Dividends Paying Bank Account");
 
-                            until Cust.Next = 0;
-                    
+                    Cust.CalcFields(Cust."Dividend Amount");
+                    if cust."Dividend Amount" > 0 then begin
+                        repeat
+                            ObjGensetup.GET();
+                            DivTotal := cust."Dividend Amount";
+                            LineNo := LineNo + 10000;
+                            SFactory.FnCreateGnlJournalLineBalanced(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."Transaction Type"::Dividend,
+                            GenJournalLine."Account Type"::Customer, "No.", PostingDate, DivTotal, 'BOSA', '',
+                            'Dividends Payments- ' + FORMAT(PostingDate), '', GenJournalLine."Account Type"::"Bank Account", ObjGensetup."Dividends Paying Bank Account");
+
+                        until Cust.Next = 0;
+
                     end;
 
 

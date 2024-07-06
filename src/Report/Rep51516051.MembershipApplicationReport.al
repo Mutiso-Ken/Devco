@@ -38,7 +38,7 @@ report 51516051 MembershipApplicationReport
             var
             begin
 
-         ;
+                ;
                 EntryNo := EntryNo + 1;
             end;
 

@@ -18,59 +18,59 @@ Page 51516301 "Cashier Transactions - List"
             repeater(Control1102760000)
             {
                 Editable = false;
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Date"; "Transaction Date")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
-                field("Account Name"; "Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Type"; "Transaction Type")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = Basic;
 
                 }
-                field("Transaction Description"; "Transaction Description")
+                field("Transaction Description"; Rec."Transaction Description")
                 {
 
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
                 }
-                field("Expected Maturity Date"; "Expected Maturity Date")
+                field("Expected Maturity Date"; Rec."Expected Maturity Date")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Cashier; Cashier)
+                field(Cashier; Rec.Cashier)
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Amount Discounted"; "Amount Discounted")
+                field("Amount Discounted"; Rec."Amount Discounted")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field(Posted; Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Transaction Time"; "Transaction Time")
+                field("Transaction Time"; Rec."Transaction Time")
                 {
 
                 }
@@ -85,8 +85,8 @@ Page 51516301 "Cashier Transactions - List"
     trigger OnOpenPage()
     begin
         //SETRANGE("Transaction Date",TODAY);
-        SetRange(Cashier, UserId);
-        Ascending(false)
+        Rec.SetRange(Cashier, UserId);
+        Rec.Ascending(false)
 
     end;
 
@@ -116,10 +116,10 @@ Page 51516301 "Cashier Transactions - List"
         ReceiptAllocation: Record "Receipt Allocation";
     begin
         //BOSA Cash Book Entry
-        if "Account No" = '502-00-000300-00' then
+        if Rec."Account No" = '502-00-000300-00' then
             BOSABank := '13865'
         else
-            if "Account No" = '502-00-000303-00' then
+            if Rec."Account No" = '502-00-000303-00' then
                 BOSABank := '070006';
 
 
@@ -128,22 +128,22 @@ Page 51516301 "Cashier Transactions - List"
         GenJournalLine.Init;
         GenJournalLine."Journal Template Name" := 'PURCHASES';
         GenJournalLine."Journal Batch Name" := 'FTRANS';
-        GenJournalLine."Document No." := No;
-        GenJournalLine."External Document No." := "Cheque No";
+        GenJournalLine."Document No." := Rec.No;
+        GenJournalLine."External Document No." := Rec."Cheque No";
         GenJournalLine."Line No." := LineNo;
         GenJournalLine."Account Type" := GenJournalLine."account type"::"Bank Account";
         GenJournalLine."Account No." := BOSABank;
         GenJournalLine.Validate(GenJournalLine."Account No.");
-        GenJournalLine."Posting Date" := "Transaction Date";
-        GenJournalLine.Description := Payee;
+        GenJournalLine."Posting Date" := Rec."Transaction Date";
+        GenJournalLine.Description := Rec.Payee;
         GenJournalLine.Validate(GenJournalLine."Currency Code");
-        GenJournalLine.Amount := -Amount;
+        GenJournalLine.Amount := -Rec.Amount;
         GenJournalLine.Validate(GenJournalLine.Amount);
         if GenJournalLine.Amount <> 0 then
             GenJournalLine.Insert;
 
         ReceiptAllocations.Reset;
-        ReceiptAllocations.SetRange(ReceiptAllocations."Document No", No);
+        ReceiptAllocations.SetRange(ReceiptAllocations."Document No", Rec.No);
         if ReceiptAllocations.Find('-') then begin
             repeat
 
@@ -153,17 +153,17 @@ Page 51516301 "Cashier Transactions - List"
                 GenJournalLine."Journal Template Name" := 'PURCHASES';
                 GenJournalLine."Journal Batch Name" := 'FTRANS';
                 GenJournalLine."Line No." := LineNo;
-                GenJournalLine."Document No." := No;
-                GenJournalLine."External Document No." := "Cheque No";
-                GenJournalLine."Posting Date" := "Transaction Date";
+                GenJournalLine."Document No." := Rec.No;
+                GenJournalLine."External Document No." := Rec."Cheque No";
+                GenJournalLine."Posting Date" := Rec."Transaction Date";
                 if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::Repayment then begin
                     GenJournalLine."Account Type" := GenJournalLine."bal. account type"::"G/L Account";
-                    if "Account No" = '502-00-000303-00' then
+                    if Rec."Account No" = '502-00-000303-00' then
                         GenJournalLine."Account No." := '080023'
                     else
                         GenJournalLine."Account No." := '045003';
                     GenJournalLine.Validate(GenJournalLine."Account No.");
-                    GenJournalLine.Description := Payee;
+                    GenJournalLine.Description := Rec.Payee;
                 end else begin
                     GenJournalLine."Account Type" := GenJournalLine."bal. account type"::Customer;
                     GenJournalLine."Account No." := ReceiptAllocations."Member No";
@@ -198,9 +198,9 @@ Page 51516301 "Cashier Transactions - List"
                     GenJournalLine."Journal Template Name" := 'PURCHASES';
                     GenJournalLine."Journal Batch Name" := 'FTRANS';
                     GenJournalLine."Line No." := LineNo;
-                    GenJournalLine."Document No." := No;
-                    GenJournalLine."External Document No." := "Cheque No";
-                    GenJournalLine."Posting Date" := "Transaction Date";
+                    GenJournalLine."Document No." := Rec.No;
+                    GenJournalLine."External Document No." := Rec."Cheque No";
+                    GenJournalLine."Posting Date" := Rec."Transaction Date";
                     GenJournalLine."Account Type" := GenJournalLine."bal. account type"::Customer;
                     GenJournalLine."Account No." := ReceiptAllocations."Member No";
                     GenJournalLine.Validate(GenJournalLine."Account No.");

@@ -12,23 +12,23 @@ Page 51516460 "Investor Posting Group"
         {
             repeater(Group)
             {
-                field("Posting Code";"Posting Code")
+                field("Posting Code"; Rec."Posting Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Group Description";"Posting Group Description")
+                field("Posting Group Description"; Rec."Posting Group Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Investor Deposit A/C";"Investor Deposit A/C")
+                field("Investor Deposit A/C"; Rec."Investor Deposit A/C")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest Payables A/C";"Interest Payables A/C")
+                field("Interest Payables A/C"; Rec."Interest Payables A/C")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest Expense A/C";"Interest Expense A/C")
+                field("Interest Expense A/C"; Rec."Interest Expense A/C")
                 {
                     ApplicationArea = Basic;
                 }

@@ -14,7 +14,7 @@ Page 51516851 "Property Sales Card"
             group(General)
             {
                 Caption = 'General';
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -22,11 +22,11 @@ Page 51516851 "Property Sales Card"
 
                     trigger OnAssistEdit()
                     begin
-                        if AssistEdit(xRec) then
+                        if Rec.AssistEdit(xRec) then
                             CurrPage.Update;
                     end;
                 }
-                field("Sell-to Customer No."; "Sell-to Customer No.")
+                field("Sell-to Customer No."; Rec."Sell-to Customer No.")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -37,41 +37,41 @@ Page 51516851 "Property Sales Card"
                         SelltoCustomerNoOnAfterValidat;
                     end;
                 }
-                field("Sell-to Contact No."; "Sell-to Contact No.")
+                field("Sell-to Contact No."; Rec."Sell-to Contact No.")
                 {
                     ApplicationArea = Basic;
 
                     trigger OnValidate()
                     begin
-                        if GetFilter("Sell-to Contact No.") = xRec."Sell-to Contact No." then
-                            if "Sell-to Contact No." <> xRec."Sell-to Contact No." then
-                                SetRange("Sell-to Contact No.");
+                        if Rec.GetFilter("Sell-to Contact No.") = xRec."Sell-to Contact No." then
+                            if Rec."Sell-to Contact No." <> xRec."Sell-to Contact No." then
+                                Rec.SetRange("Sell-to Contact No.");
                     end;
                 }
-                field("Sell-to Customer Name"; "Sell-to Customer Name")
+                field("Sell-to Customer Name"; Rec."Sell-to Customer Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Sell-to Address"; "Sell-to Address")
-                {
-                    ApplicationArea = Basic;
-                    Importance = Additional;
-                }
-                field("Sell-to Address 2"; "Sell-to Address 2")
+                field("Sell-to Address"; Rec."Sell-to Address")
                 {
                     ApplicationArea = Basic;
                     Importance = Additional;
                 }
-                field("Sell-to Post Code"; "Sell-to Post Code")
+                field("Sell-to Address 2"; Rec."Sell-to Address 2")
                 {
                     ApplicationArea = Basic;
                     Importance = Additional;
                 }
-                field("Sell-to City"; "Sell-to City")
+                field("Sell-to Post Code"; Rec."Sell-to Post Code")
+                {
+                    ApplicationArea = Basic;
+                    Importance = Additional;
+                }
+                field("Sell-to City"; Rec."Sell-to City")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Sell-to Contact"; "Sell-to Contact")
+                field("Sell-to Contact"; Rec."Sell-to Contact")
                 {
                     ApplicationArea = Basic;
                 }
@@ -79,16 +79,16 @@ Page 51516851 "Property Sales Card"
                 // {
                 //     ApplicationArea = Basic;
                 // }
-                field("Posting Date"; "Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Document Date"; "Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -101,7 +101,7 @@ Page 51516851 "Property Sales Card"
             group(Invoicing)
             {
                 Caption = 'Invoicing';
-                field("Bill-to Customer No."; "Bill-to Customer No.")
+                field("Bill-to Customer No."; Rec."Bill-to Customer No.")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -111,39 +111,39 @@ Page 51516851 "Property Sales Card"
                         BilltoCustomerNoOnAfterValidat;
                     end;
                 }
-                field("Bill-to Contact No."; "Bill-to Contact No.")
+                field("Bill-to Contact No."; Rec."Bill-to Contact No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bill-to Name"; "Bill-to Name")
+                field("Bill-to Name"; Rec."Bill-to Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bill-to Address"; "Bill-to Address")
-                {
-                    ApplicationArea = Basic;
-                    Importance = Additional;
-                }
-                field("Bill-to Address 2"; "Bill-to Address 2")
+                field("Bill-to Address"; Rec."Bill-to Address")
                 {
                     ApplicationArea = Basic;
                     Importance = Additional;
                 }
-                field("Bill-to Post Code"; "Bill-to Post Code")
+                field("Bill-to Address 2"; Rec."Bill-to Address 2")
                 {
                     ApplicationArea = Basic;
                     Importance = Additional;
                 }
-                field("Bill-to City"; "Bill-to City")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Bill-to Contact"; "Bill-to Contact")
+                field("Bill-to Post Code"; Rec."Bill-to Post Code")
                 {
                     ApplicationArea = Basic;
                     Importance = Additional;
                 }
-                field("Shortcut Dimension 1 Code"; "Shortcut Dimension 1 Code")
+                field("Bill-to City"; Rec."Bill-to City")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Bill-to Contact"; Rec."Bill-to Contact")
+                {
+                    ApplicationArea = Basic;
+                    Importance = Additional;
+                }
+                field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
 
@@ -152,7 +152,7 @@ Page 51516851 "Property Sales Card"
                         ShortcutDimension1CodeOnAfterV;
                     end;
                 }
-                field("Shortcut Dimension 2 Code"; "Shortcut Dimension 2 Code")
+                field("Shortcut Dimension 2 Code"; Rec."Shortcut Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
 
@@ -161,34 +161,34 @@ Page 51516851 "Property Sales Card"
                         ShortcutDimension2CodeOnAfterV;
                     end;
                 }
-                field("Payment Terms Code"; "Payment Terms Code")
+                field("Payment Terms Code"; Rec."Payment Terms Code")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Due Date"; "Due Date")
+                field("Due Date"; Rec."Due Date")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Payment Discount %"; "Payment Discount %")
+                field("Payment Discount %"; Rec."Payment Discount %")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Pmt. Discount Date"; "Pmt. Discount Date")
+                field("Pmt. Discount Date"; Rec."Pmt. Discount Date")
                 {
                     ApplicationArea = Basic;
                     Importance = Additional;
                 }
-                field("Payment Method Code"; "Payment Method Code")
+                field("Payment Method Code"; Rec."Payment Method Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Direct Debit Mandate ID"; "Direct Debit Mandate ID")
+                field("Direct Debit Mandate ID"; Rec."Direct Debit Mandate ID")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Prices Including VAT"; "Prices Including VAT")
+                field("Prices Including VAT"; Rec."Prices Including VAT")
                 {
                     ApplicationArea = Basic;
 
@@ -197,7 +197,7 @@ Page 51516851 "Property Sales Card"
                         PricesIncludingVATOnAfterValid;
                     end;
                 }
-                field("VAT Bus. Posting Group"; "VAT Bus. Posting Group")
+                field("VAT Bus. Posting Group"; Rec."VAT Bus. Posting Group")
                 {
                     ApplicationArea = Basic;
                 }
@@ -214,57 +214,57 @@ Page 51516851 "Property Sales Card"
             group(Shipping)
             {
                 Caption = 'Shipping';
-                field("Ship-to Code"; "Ship-to Code")
+                field("Ship-to Code"; Rec."Ship-to Code")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Ship-to Name"; "Ship-to Name")
+                field("Ship-to Name"; Rec."Ship-to Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Ship-to Address"; "Ship-to Address")
-                {
-                    ApplicationArea = Basic;
-                    Importance = Additional;
-                }
-                field("Ship-to Address 2"; "Ship-to Address 2")
+                field("Ship-to Address"; Rec."Ship-to Address")
                 {
                     ApplicationArea = Basic;
                     Importance = Additional;
                 }
-                field("Ship-to Post Code"; "Ship-to Post Code")
+                field("Ship-to Address 2"; Rec."Ship-to Address 2")
+                {
+                    ApplicationArea = Basic;
+                    Importance = Additional;
+                }
+                field("Ship-to Post Code"; Rec."Ship-to Post Code")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Ship-to City"; "Ship-to City")
+                field("Ship-to City"; Rec."Ship-to City")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Ship-to Contact"; "Ship-to Contact")
-                {
-                    ApplicationArea = Basic;
-                    Importance = Additional;
-                }
-                field("Location Code"; "Location Code")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Shipment Method Code"; "Shipment Method Code")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Shipping Agent Code"; "Shipping Agent Code")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Package Tracking No."; "Package Tracking No.")
+                field("Ship-to Contact"; Rec."Ship-to Contact")
                 {
                     ApplicationArea = Basic;
                     Importance = Additional;
                 }
-                field("Shipment Date"; "Shipment Date")
+                field("Location Code"; Rec."Location Code")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Shipment Method Code"; Rec."Shipment Method Code")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Shipping Agent Code"; Rec."Shipping Agent Code")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Package Tracking No."; Rec."Package Tracking No.")
+                {
+                    ApplicationArea = Basic;
+                    Importance = Additional;
+                }
+                field("Shipment Date"; Rec."Shipment Date")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -273,7 +273,7 @@ Page 51516851 "Property Sales Card"
             group("Foreign Trade")
             {
                 Caption = 'Foreign Trade';
-                field("Currency Code"; "Currency Code")
+                field("Currency Code"; Rec."Currency Code")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -281,12 +281,12 @@ Page 51516851 "Property Sales Card"
                     trigger OnAssistEdit()
                     begin
                         Clear(ChangeExchangeRate);
-                        if "Posting Date" <> 0D then
-                            ChangeExchangeRate.SetParameter("Currency Code", "Currency Factor", "Posting Date")
+                        if Rec."Posting Date" <> 0D then
+                            ChangeExchangeRate.SetParameter(Rec."Currency Code", Rec."Currency Factor", Rec."Posting Date")
                         else
-                            ChangeExchangeRate.SetParameter("Currency Code", "Currency Factor", WorkDate);
+                            ChangeExchangeRate.SetParameter(Rec."Currency Code", Rec."Currency Factor", WorkDate);
                         if ChangeExchangeRate.RunModal = Action::OK then begin
-                            Validate("Currency Factor", ChangeExchangeRate.GetParameter);
+                            Rec.Validate("Currency Factor", ChangeExchangeRate.GetParameter);
                             CurrPage.Update;
                         end;
                         Clear(ChangeExchangeRate);
@@ -298,27 +298,27 @@ Page 51516851 "Property Sales Card"
                         SalesCalcDiscountByType.ApplyDefaultInvoiceDiscount(0, Rec);
                     end;
                 }
-                field("EU 3-Party Trade"; "EU 3-Party Trade")
+                field("EU 3-Party Trade"; Rec."EU 3-Party Trade")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Type"; "Transaction Type")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Specification"; "Transaction Specification")
+                field("Transaction Specification"; Rec."Transaction Specification")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transport Method"; "Transport Method")
+                field("Transport Method"; Rec."Transport Method")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Exit Point"; "Exit Point")
+                field("Exit Point"; Rec."Exit Point")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Area"; Area)
+                field("Area"; Rec.Area)
                 {
                     ApplicationArea = Basic;
                 }
@@ -403,7 +403,7 @@ Page 51516851 "Property Sales Card"
 
                     trigger OnAction()
                     begin
-                        CalcInvDiscForHeader;
+                        Rec.CalcInvDiscForHeader;
                         Commit;
                         Page.RunModal(Page::"Sales Statistics", Rec);
                         SalesCalcDiscountByType.ResetRecalculateInvoiceDisc(Rec);
@@ -419,7 +419,7 @@ Page 51516851 "Property Sales Card"
 
                     trigger OnAction()
                     begin
-                        ShowDocDim;
+                        Rec.ShowDocDim;
                         CurrPage.SaveRecord;
                     end;
                 }
@@ -442,7 +442,7 @@ Page 51516851 "Property Sales Card"
                     var
                         ApprovalEntries: Page "Approval Entries";
                     begin
-                        ApprovalEntries.SetRecordFilters(Database::"Sales Header", "Document Type", "No.");
+                        ApprovalEntries.SetRecordFilters(Database::"Sales Header", Rec."Document Type", Rec."No.");
                         ApprovalEntries.Run;
                     end;
                 }
@@ -728,7 +728,7 @@ Page 51516851 "Property Sales Card"
 
                     trigger OnAction()
                     begin
-                        CancelBackgroundPosting;
+                        Rec.CancelBackgroundPosting;
                     end;
                 }
             }
@@ -737,14 +737,14 @@ Page 51516851 "Property Sales Card"
 
     trigger OnAfterGetRecord()
     begin
-        JobQueueVisible := "Job Queue Status" = "job queue status"::"Scheduled for Posting";
+        JobQueueVisible := Rec."Job Queue Status" = Rec."job queue status"::"Scheduled for Posting";
         SetExtDocNoMandatoryCondition;
     end;
 
     trigger OnDeleteRecord(): Boolean
     begin
         CurrPage.SaveRecord;
-        exit(ConfirmDeletion);
+        exit(Rec.ConfirmDeletion);
     end;
 
     trigger OnInit()
@@ -754,15 +754,15 @@ Page 51516851 "Property Sales Card"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        "Responsibility Center" := UserMgt.GetSalesFilter;
+        Rec."Responsibility Center" := UserMgt.GetSalesFilter;
     end;
 
     trigger OnOpenPage()
     begin
         if UserMgt.GetSalesFilter <> '' then begin
-            FilterGroup(2);
-            SetRange("Responsibility Center", UserMgt.GetSalesFilter);
-            FilterGroup(0);
+            Rec.FilterGroup(2);
+            Rec.SetRange("Responsibility Center", UserMgt.GetSalesFilter);
+            Rec.FilterGroup(0);
         end;
 
         SetDocNoVisible;
@@ -782,8 +782,8 @@ Page 51516851 "Property Sales Card"
 
     local procedure Post(PostingCodeunitID: Integer)
     begin
-        SendToPosting(PostingCodeunitID);
-        if "Job Queue Status" = "job queue status"::"Scheduled for Posting" then
+        Rec.SendToPosting(PostingCodeunitID);
+        if Rec."Job Queue Status" = Rec."job queue status"::"Scheduled for Posting" then
             CurrPage.Close;
         CurrPage.Update(false);
     end;
@@ -795,9 +795,9 @@ Page 51516851 "Property Sales Card"
 
     local procedure SelltoCustomerNoOnAfterValidat()
     begin
-        if GetFilter("Sell-to Customer No.") = xRec."Sell-to Customer No." then
-            if "Sell-to Customer No." <> xRec."Sell-to Customer No." then
-                SetRange("Sell-to Customer No.");
+        if Rec.GetFilter("Sell-to Customer No.") = xRec."Sell-to Customer No." then
+            if Rec."Sell-to Customer No." <> xRec."Sell-to Customer No." then
+                Rec.SetRange("Sell-to Customer No.");
         CurrPage.Update;
     end;
 
@@ -831,7 +831,7 @@ Page 51516851 "Property Sales Card"
         DocumentNoVisibility: Codeunit DocumentNoVisibility;
         DocType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order",Reminder,FinChMemo;
     begin
-        DocNoVisible := DocumentNoVisibility.SalesDocumentNoIsVisible(Doctype::Invoice, "No.");
+        DocNoVisible := DocumentNoVisibility.SalesDocumentNoIsVisible(Doctype::Invoice, Rec."No.");
     end;
 
     local procedure SetExtDocNoMandatoryCondition()

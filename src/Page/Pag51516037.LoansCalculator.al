@@ -10,47 +10,47 @@ Page 51516037 "Loans Calculator"
         {
             group(General)
             {
-                field("Loan Product Type"; "Loan Product Type")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Product Description"; "Product Description")
+                field("Product Description"; Rec."Product Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest rate"; "Interest rate")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field(Installments; Installments)
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Instalment Period"; "Instalment Period")
+                field("Interest rate"; Rec."Interest rate")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Repayment Method"; "Repayment Method")
+                field(Installments; Rec.Installments)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Requested Amount"; "Requested Amount")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Principle Repayment"; "Principle Repayment")
+                field("Instalment Period"; Rec."Instalment Period")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Interest Repayment"; "Interest Repayment")
+                field("Repayment Method"; Rec."Repayment Method")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Requested Amount"; Rec."Requested Amount")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Principle Repayment"; Rec."Principle Repayment")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Repayment Start Date"; "Repayment Start Date")
+                field("Interest Repayment"; Rec."Interest Repayment")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Repayment Start Date"; Rec."Repayment Start Date")
                 {
                     ApplicationArea = Basic;
                 }
@@ -79,13 +79,13 @@ Page 51516037 "Loans Calculator"
                         QCounter := 0;
                         QCounter := 3;
                         Evaluate(InPeriod, '1Q');
-                        GrPrinciple := "Grace Period - Principle (M)";
-                        GrInterest := "Grace Period - Interest (M)";
-                        InitialGraceInt := "Grace Period - Interest (M)";
+                        GrPrinciple := Rec."Grace Period - Principle (M)";
+                        GrInterest := Rec."Grace Period - Interest (M)";
+                        InitialGraceInt := Rec."Grace Period - Interest (M)";
 
 
                         LoansR.Reset;
-                        LoansR.SetRange(LoansR."Loan Product Type", "Loan Product Type");
+                        LoansR.SetRange(LoansR."Loan Product Type", Rec."Loan Product Type");
                         if LoansR.Find('-') then begin
 
                             RSchedule.Reset;
@@ -94,9 +94,9 @@ Page 51516037 "Loans Calculator"
 
                             LBalance := LoansR."Requested Amount";
                             LoanAmount := LoansR."Requested Amount";
-                            InterestRate := "Interest rate";
-                            RepayPeriod := Installments;
-                            RunDate := "Repayment Start Date";
+                            InterestRate := Rec."Interest rate";
+                            RepayPeriod := Rec.Installments;
+                            RunDate := Rec."Repayment Start Date";
                             InstalNo := 0;
                             Evaluate(RepayInterval, '1M');
                             repeat
@@ -104,36 +104,36 @@ Page 51516037 "Loans Calculator"
                                 InstalNo := InstalNo + 1;
 
 
-                                if "Repayment Method" = "repayment method"::Amortised then begin
-                                    TestField("Interest rate");
-                                    TestField(Installments);
+                                if Rec."Repayment Method" = Rec."repayment method"::Amortised then begin
+                                    Rec.TestField("Interest rate");
+                                    Rec.TestField(Installments);
                                     TotalMRepay := ROUND((InterestRate / 12 / 100) / (1 - Power((1 + (InterestRate / 12 / 100)), -(RepayPeriod))) * (LoanAmount), 0.05, '>');
                                     LInterest := ROUND(LBalance / 100 / 12 * InterestRate, 0.05, '>');
                                     LPrincipal := TotalMRepay - LInterest;
                                 end;
 
-                                if "Repayment Method" = "repayment method"::"Straight Line" then begin
-                                    TestField("Interest rate");
-                                    TestField(Installments);
+                                if Rec."Repayment Method" = Rec."repayment method"::"Straight Line" then begin
+                                    Rec.TestField("Interest rate");
+                                    Rec.TestField(Installments);
                                     LPrincipal := ROUND(LoanAmount / RepayPeriod, 0.05, '>');
                                     LInterest := ROUND((InterestRate / 12 / 100) * LoanAmount, 0.05, '>');
                                     TotalMRepay := ROUND(LPrincipal + LInterest);
                                 end;
 
-                                if "Repayment Method" = "repayment method"::"Reducing Balance" then begin
-                                    TestField("Interest rate");
-                                    TestField(Installments);
+                                if Rec."Repayment Method" = Rec."repayment method"::"Reducing Balance" then begin
+                                    Rec.TestField("Interest rate");
+                                    Rec.TestField(Installments);
                                     LPrincipal := ROUND(LoanAmount / RepayPeriod, 0.05, '>');
                                     LInterest := ROUND((InterestRate / 12 / 100) * LBalance, 0.05, '>');
                                 end;
 
-                                if "Repayment Method" = "repayment method"::Constants then begin
-                                    TestField(Repayment);
-                                    if LBalance < Repayment then
+                                if Rec."Repayment Method" = Rec."repayment method"::Constants then begin
+                                    Rec.TestField(Repayment);
+                                    if LBalance < Rec.Repayment then
                                         LPrincipal := LBalance
                                     else
-                                        LPrincipal := Repayment;
-                                    LInterest := "Interest rate";
+                                        LPrincipal := Rec.Repayment;
+                                    LInterest := Rec."Interest rate";
                                 end;
 
 
@@ -141,7 +141,7 @@ Page 51516037 "Loans Calculator"
                                 if GrPrinciple > 0 then begin
                                     LPrincipal := 0
                                 end else begin
-                                    if "Instalment Period" <> InPeriod then
+                                    if Rec."Instalment Period" <> InPeriod then
                                         LBalance := LBalance - LPrincipal;
 
                                 end;
@@ -154,7 +154,7 @@ Page 51516037 "Loans Calculator"
                                 //Grace Period
 
                                 //Q Principle
-                                if "Instalment Period" = InPeriod then begin
+                                if Rec."Instalment Period" = InPeriod then begin
                                     //ADDED
                                     if GrPrinciple <> 0 then
                                         GrPrinciple := GrPrinciple - 1;
@@ -185,8 +185,8 @@ Page 51516037 "Loans Calculator"
                                 RSchedule."Loan Amount" := LoanAmount;
                                 RSchedule."Instalment No" := InstalNo;
                                 RSchedule."Repayment Date" := CalcDate('CM', RunDate);
-                                RSchedule."Loan Category" := "Loan Product Type";
-                                RSchedule."Monthly Repayment" := LInterest + LPrincipal + "Administration Fee";
+                                RSchedule."Loan Category" := Rec."Loan Product Type";
+                                RSchedule."Monthly Repayment" := LInterest + LPrincipal + Rec."Administration Fee";
                                 RSchedule."Monthly Interest" := LInterest;
                                 RSchedule."Principal Repayment" := LPrincipal;
                                 RSchedule.Insert;
@@ -201,7 +201,7 @@ Page 51516037 "Loans Calculator"
                         Commit;
 
                         LoansR.Reset;
-                        LoansR.SetRange(LoansR."Loan Product Type", "Loan Product Type");
+                        LoansR.SetRange(LoansR."Loan Product Type", Rec."Loan Product Type");
                         if LoansR.Find('-') then
                             Report.Run(51516436, true, false, LoansR);
                     end;

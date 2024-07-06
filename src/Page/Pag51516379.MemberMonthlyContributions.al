@@ -10,40 +10,40 @@ Page 51516379 "Member Monthly Contributions"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Type;Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan No";"Loan No")
+                field("Loan No"; Rec."Loan No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount Off";"Amount Off")
+                field("Amount Off"; Rec."Amount Off")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount ON";"Amount ON")
+                field("Amount ON"; Rec."Amount ON")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Check Off Priority";"Check Off Priority")
+                field("Check Off Priority"; Rec."Check Off Priority")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Last Advice Date";"Last Advice Date")
+                field("Last Advice Date"; Rec."Last Advice Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Balance;Balance)
+                field(Balance; Rec.Balance)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Balance 2";"Balance 2")
+                field("Balance 2"; Rec."Balance 2")
                 {
                     ApplicationArea = Basic;
                 }

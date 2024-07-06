@@ -6,7 +6,7 @@ Table 51516899 "MF Officer Loans Targets"
 
     fields
     {
-        field(1;"Account No.";Code[10])
+        field(1; "Account No."; Code[10])
         {
             // TableRelation = "Loan Officers Details"."Account No." where (Status=const(Approved));
 
@@ -19,26 +19,26 @@ Table 51516899 "MF Officer Loans Targets"
                 // "Account Name":=BloanOfficer."Account Name";
             end;
         }
-        field(2;"Account Name";Text[30])
+        field(2; "Account Name"; Text[30])
         {
             Editable = false;
         }
-        field(3;"Target Type";Option)
+        field(3; "Target Type"; Option)
         {
             OptionCaption = ' ,Income,Savings Portfolio,Loan Portfolio,Disbursement,Membership,No. of Loans';
             OptionMembers = " ",Income,"Savings Portfolio","Loan Portfolio",Disbursement,Membership,"No. of Loans";
         }
-        field(4;January;Decimal)
+        field(4; January; Decimal)
         {
 
             trigger OnValidate()
             begin
                 TestField(Year);
                 TestField("Target Type");
-                Totals:=January+February+March+April+May+June+July+August+September+October+November+December;
+                Totals := January + February + March + April + May + June + July + August + September + October + November + December;
             end;
         }
-        field(5;February;Decimal)
+        field(5; February; Decimal)
         {
 
             trigger OnValidate()
@@ -46,157 +46,157 @@ Table 51516899 "MF Officer Loans Targets"
                 TestField(Year);
                 TestField("Target Type");
 
-                Totals:=January+February+March+April+May+June+July+August+September+October+November+December;
+                Totals := January + February + March + April + May + June + July + August + September + October + November + December;
             end;
         }
-        field(6;March;Decimal)
+        field(6; March; Decimal)
         {
 
             trigger OnValidate()
             begin
                 TestField(Year);
                 TestField("Target Type");
-                Totals:=January+February+March+April+May+June+July+August+September+October+November+December;
+                Totals := January + February + March + April + May + June + July + August + September + October + November + December;
             end;
         }
-        field(7;April;Decimal)
+        field(7; April; Decimal)
         {
 
             trigger OnValidate()
             begin
                 TestField(Year);
                 TestField("Target Type");
-                Totals:=January+February+March+April+May+June+July+August+September+October+November+December;
+                Totals := January + February + March + April + May + June + July + August + September + October + November + December;
             end;
         }
-        field(8;May;Decimal)
+        field(8; May; Decimal)
         {
 
             trigger OnValidate()
             begin
                 TestField(Year);
                 TestField("Target Type");
-                Totals:=January+February+March+April+May+June+July+August+September+October+November+December;
+                Totals := January + February + March + April + May + June + July + August + September + October + November + December;
             end;
         }
-        field(9;June;Decimal)
+        field(9; June; Decimal)
         {
 
             trigger OnValidate()
             begin
                 TestField(Year);
                 TestField("Target Type");
-                Totals:=January+February+March+April+May+June+July+August+September+October+November+December;
+                Totals := January + February + March + April + May + June + July + August + September + October + November + December;
             end;
         }
-        field(10;July;Decimal)
+        field(10; July; Decimal)
         {
 
             trigger OnValidate()
             begin
-                Totals:=January+February+March+April+May+June+July+August+September+October+November+December;
+                Totals := January + February + March + April + May + June + July + August + September + October + November + December;
             end;
         }
-        field(11;August;Decimal)
-        {
-
-            trigger OnValidate()
-            begin
-                TestField(Year);
-                TestField("Target Type");
-                Totals:=January+February+March+April+May+June+July+August+September+October+November+December;
-            end;
-        }
-        field(12;September;Decimal)
+        field(11; August; Decimal)
         {
 
             trigger OnValidate()
             begin
                 TestField(Year);
                 TestField("Target Type");
-                Totals:=January+February+March+April+May+June+July+August+September+October+November+December;
+                Totals := January + February + March + April + May + June + July + August + September + October + November + December;
             end;
         }
-        field(13;October;Decimal)
+        field(12; September; Decimal)
         {
 
             trigger OnValidate()
             begin
                 TestField(Year);
                 TestField("Target Type");
-                Totals:=January+February+March+April+May+June+July+August+September+October+November+December;
+                Totals := January + February + March + April + May + June + July + August + September + October + November + December;
             end;
         }
-        field(14;November;Decimal)
+        field(13; October; Decimal)
         {
 
             trigger OnValidate()
             begin
                 TestField(Year);
                 TestField("Target Type");
-                Totals:=January+February+March+April+May+June+July+August+September+October+November+December;
+                Totals := January + February + March + April + May + June + July + August + September + October + November + December;
             end;
         }
-        field(15;December;Decimal)
+        field(14; November; Decimal)
         {
 
             trigger OnValidate()
             begin
-                Totals:=January+February+March+April+May+June+July+August+September+October+November+December;
+                TestField(Year);
+                TestField("Target Type");
+                Totals := January + February + March + April + May + June + July + August + September + October + November + December;
             end;
         }
-        field(16;Totals;Decimal)
+        field(15; December; Decimal)
+        {
+
+            trigger OnValidate()
+            begin
+                Totals := January + February + March + April + May + June + July + August + September + October + November + December;
+            end;
+        }
+        field(16; Totals; Decimal)
         {
             Editable = false;
         }
-        field(17;Year;Integer)
+        field(17; Year; Integer)
         {
         }
-        field(18;Date;Date)
+        field(18; Date; Date)
         {
             Editable = false;
         }
-        field(19;UserID;Code[50])
+        field(19; UserID; Code[50])
         {
             Editable = false;
             TableRelation = "User Setup";
         }
-        field(20;"Date Modified";Date)
+        field(20; "Date Modified"; Date)
         {
             Editable = false;
         }
-        field(21;"Previous Year actual";Decimal)
+        field(21; "Previous Year actual"; Decimal)
         {
         }
-        field(22;"Global Dimension 1 Code";Code[20])
+        field(22; "Global Dimension 1 Code"; Code[20])
         {
             CaptionClass = '1,1,1';
             Caption = 'Global Dimension 1 Code';
             Editable = true;
-            TableRelation = "Dimension Value".Code where ("Global Dimension No."=const(1));
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(1));
 
             trigger OnValidate()
             begin
                 ///ValidateShortcutDimCode(1,"Global Dimension 1 Code");
             end;
         }
-        field(23;"Global Dimension 2 Code";Code[20])
+        field(23; "Global Dimension 2 Code"; Code[20])
         {
             CaptionClass = '1,1,2';
             Caption = 'Global Dimension 2 Code';
             Editable = true;
-            TableRelation = "Dimension Value".Code where ("Global Dimension No."=const(2));
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(2));
 
             trigger OnValidate()
             begin
                 //ValidateShortcutDimCode(2,"Global Dimension 2 Code");
             end;
         }
-        field(24;"Targets No. of Loans";Integer)
+        field(24; "Targets No. of Loans"; Integer)
         {
             Editable = false;
         }
-        field(25;"Actuals No. of Loans";Integer)
+        field(25; "Actuals No. of Loans"; Integer)
         {
             Editable = false;
         }
@@ -204,7 +204,7 @@ Table 51516899 "MF Officer Loans Targets"
 
     keys
     {
-        key(Key1;"Account No.","Target Type",Year)
+        key(Key1; "Account No.", "Target Type", Year)
         {
             Clustered = true;
         }
@@ -215,6 +215,6 @@ Table 51516899 "MF Officer Loans Targets"
     }
 
     var
-      //  BloanOfficer: Record "Loan Officers Details";
+    //  BloanOfficer: Record "Loan Officers Details";
 }
 

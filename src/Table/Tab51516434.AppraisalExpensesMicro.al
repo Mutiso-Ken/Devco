@@ -4,41 +4,41 @@ Table 51516434 "Appraisal Expenses-Micro"
 
     fields
     {
-        field(1;"Code";Code[20])
+        field(1; "Code"; Code[20])
         {
             TableRelation = "Profitability Set up-Micro";
 
             trigger OnValidate()
             begin
                 if ProfSetUp.Get(Code) then begin
-                Description:=ProfSetUp.Description;
-                Type:=ProfSetUp.Type;
+                    Description := ProfSetUp.Description;
+                    Type := ProfSetUp.Type;
                 end;
             end;
         }
-        field(2;Description;Text[30])
+        field(2; Description; Text[30])
         {
         }
-        field(3;Type;Option)
+        field(3; Type; Option)
         {
             OptionCaption = 'Profitability,Business Expenses,Family Expenses';
             OptionMembers = Profitability,"Business Expenses","Family Expenses";
         }
-        field(4;Amount;Decimal)
+        field(4; Amount; Decimal)
         {
         }
-        field(5;Loan;Code[10])
+        field(5; Loan; Code[10])
         {
             TableRelation = "Loans Register";
         }
-        field(6;"Client Code";Code[50])
+        field(6; "Client Code"; Code[50])
         {
         }
     }
 
     keys
     {
-        key(Key1;Loan,"Client Code","Code")
+        key(Key1; Loan, "Client Code", "Code")
         {
             Clustered = true;
         }

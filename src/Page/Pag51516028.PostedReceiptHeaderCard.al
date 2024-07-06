@@ -7,7 +7,7 @@ Page 51516028 "Posted Receipt Header Card"
     ModifyAllowed = false;
     PageType = Card;
     SourceTable = "Receipt Header";
-    SourceTableView = where(Status=filter(Posted));
+    SourceTableView = where(Status = filter(Posted));
 
     layout
     {
@@ -15,90 +15,90 @@ Page 51516028 "Posted Receipt Header Card"
         {
             group(General)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Type";"Document Type")
+                field("Document Type"; Rec."Document Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Date;Date)
+                field(Date; Rec.Date)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Date";"Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Code";"Bank Code")
+                field("Bank Code"; Rec."Bank Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Name";"Bank Name")
+                field("Bank Name"; Rec."Bank Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Balance";"Bank Balance")
+                field("Bank Balance"; Rec."Bank Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Currency Code";"Currency Code")
+                field("Currency Code"; Rec."Currency Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Currency Factor";"Currency Factor")
+                field("Currency Factor"; Rec."Currency Factor")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Shortcut Dimension 8 Code";"Shortcut Dimension 8 Code")
+                field("Shortcut Dimension 8 Code"; Rec."Shortcut Dimension 8 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Responsibility Center";"Responsibility Center")
+                field("Responsibility Center"; Rec."Responsibility Center")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount Received";"Amount Received")
+                field("Amount Received"; Rec."Amount Received")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount Received(LCY)";"Amount Received(LCY)")
+                field("Amount Received(LCY)"; Rec."Amount Received(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Amount";"Total Amount")
+                field("Total Amount"; Rec."Total Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Received From";"Received From")
+                field("Received From"; Rec."Received From")
                 {
                     ApplicationArea = Basic;
                 }
-                field("User ID";"User ID")
+                field("User ID"; Rec."User ID")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Amount(LCY)";"Total Amount(LCY)")
+                field("Total Amount(LCY)"; Rec."Total Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
             }
-            part(Control23;"Posted Receipt Line")
+            part(Control23; "Posted Receipt Line")
             {
-                SubPageLink = "Document No"=field("No.");
+                SubPageLink = "Document No" = field("No.");
             }
         }
     }
@@ -120,13 +120,13 @@ Page 51516028 "Posted Receipt Header Card"
 
                     trigger OnAction()
                     begin
-                          TestField(Posted);
-                          ReceiptHeader.Reset;
-                          ReceiptHeader.SetRange(ReceiptHeader."No.","No.");
-                          if ReceiptHeader.FindFirst then begin
+                        Rec.TestField(Posted);
+                        ReceiptHeader.Reset;
+                        ReceiptHeader.SetRange(ReceiptHeader."No.", Rec."No.");
+                        if ReceiptHeader.FindFirst then begin
                             Error('DEV');
-                               // Report.RunModal(Report::"Property Receipt",true,false,ReceiptHeader);
-                          end;
+                            // Report.RunModal(Report::"Property Receipt",true,false,ReceiptHeader);
+                        end;
                     end;
                 }
             }

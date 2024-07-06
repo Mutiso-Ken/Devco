@@ -10,59 +10,59 @@ Page 51516026 "Receipt Line"
         {
             repeater(Group)
             {
-                field("Document No";"Document No")
+                field("Document No"; Rec."Document No")
                 {
                     ApplicationArea = Basic;
 
                 }
-                field("Transaction Type";"Transaction Type")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Default Grouping";"Default Grouping")
+                field("Default Grouping"; Rec."Default Grouping")
                 {
                     ApplicationArea = Basic;
-                    Visible=false;
+                    Visible = false;
                 }
-                field("Account Type";"Account Type")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Account Code";"Account Code")
+                field("Account Type"; Rec."Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
+                field("Account Code"; Rec."Account Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Pay Mode";"Pay Mode")
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field("Pay Mode"; Rec."Pay Mode")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount(LCY)";"Amount(LCY)")
+                field(Amount; Rec.Amount)
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Amount(LCY)"; Rec."Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
-                    Visible=false;
+                    Visible = false;
                 }
-                field("Cheque No";"Cheque No")
+                field("Cheque No"; Rec."Cheque No")
                 {
                     ApplicationArea = Basic;
                 }

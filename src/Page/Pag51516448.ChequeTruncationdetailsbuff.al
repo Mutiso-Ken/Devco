@@ -11,147 +11,147 @@ page 51516448 "Cheque Truncation details buff"
         {
             repeater(General)
             {
-                field(ChequeDataId; ChequeDataId)
+                field(ChequeDataId; Rec.ChequeDataId)
                 {
                     ToolTip = 'Specifies the value of the AMOUNT field.';
                 }
-                field(SerialId; SerialId)
+                field(SerialId; Rec.SerialId)
                 {
                     ToolTip = 'Specifies the value of the BIMAGESIGN field.';
                 }
-                field(FilePathName; FilePathName)
+                field(FilePathName; Rec.FilePathName)
                 {
                     ToolTip = 'Specifies the value of the BIMAGESIZE field.';
                 }
-                field(RCODE; RCODE)
+                field(RCODE; Rec.RCODE)
                 {
                     ToolTip = 'Specifies the value of the CHQDGT field.';
                 }
-                field(VTYPE; VTYPE)
+                field(VTYPE; Rec.VTYPE)
                 {
                     ToolTip = 'Specifies the value of the COLLACC field.';
                 }
-                field(AMOUNT; AMOUNT)
+                field(AMOUNT; Rec.AMOUNT)
                 {
                     ToolTip = 'Specifies the value of the CURRENCYCODE field.';
                 }
-                field(ENTRYMODE; ENTRYMODE)
+                field(ENTRYMODE; Rec.ENTRYMODE)
                 {
                     ToolTip = 'Specifies the value of the ChequeDataId field.';
                 }
-                field(CURRENCYCODE; CURRENCYCODE)
+                field(CURRENCYCODE; Rec.CURRENCYCODE)
                 {
                     ToolTip = 'Specifies the value of the CreatedBy field.';
                 }
-                field(DESTBANK; DESTBANK)
+                field(DESTBANK; Rec.DESTBANK)
                 {
                     ToolTip = 'Specifies the value of the CreatedOn field.';
                 }
-                field(DESTBRANCH; DESTBRANCH)
+                field(DESTBRANCH; Rec.DESTBRANCH)
                 {
                     ToolTip = 'Specifies the value of the DESTACC field.';
                 }
-                field(DESTACC; DESTACC)
+                field(DESTACC; Rec.DESTACC)
                 {
                     ToolTip = 'Specifies the value of the DESTBANK field.';
                 }
-                field(CHQDGT; CHQDGT)
+                field(CHQDGT; Rec.CHQDGT)
                 {
                     ToolTip = 'Specifies the value of the DESTBRANCH field.';
                 }
-                field(PBANK; PBANK)
+                field(PBANK; Rec.PBANK)
                 {
                     ToolTip = 'Specifies the value of the ENTRYMODE field.';
                 }
-                field(PBRANCH; PBRANCH)
+                field(PBRANCH; Rec.PBRANCH)
                 {
                     ToolTip = 'Specifies the value of the FILLER field.';
                 }
-                field(FILLER; FILLER)
+                field(FILLER; Rec.FILLER)
                 {
                     ToolTip = 'Specifies the value of the FIMAGESIGN field.';
                 }
-                field(COLLACC; COLLACC)
+                field(COLLACC; Rec.COLLACC)
                 {
                     ToolTip = 'Specifies the value of the FIMAGESIGNBW field.';
                 }
-                field(MemberNo; MemberNo)
+                field(MemberNo; Rec.MemberNo)
                 {
                     ToolTip = 'Specifies the value of the FIMAGESIZE field.';
                 }
-                field(MembId; MembId)
+                field(MembId; Rec.MembId)
                 {
                     ToolTip = 'Specifies the value of the FIMAGESIZEBW field.';
                 }
-                field(MembShareId; MembShareId)
+                field(MembShareId; Rec.MembShareId)
                 {
                     ToolTip = 'Specifies the value of the FilePathName field.';
                 }
-                field(SNO; SNO)
+                field(SNO; Rec.SNO)
                 {
                     ToolTip = 'Specifies the value of the FrontBWImage field.';
                 }
-                field(PROCNO; PROCNO)
+                field(PROCNO; Rec.PROCNO)
                 {
                     ToolTip = 'Specifies the value of the FrontGrayScaleImage field.';
                 }
-                field(FIMAGESIZEBW; FIMAGESIZEBW)
+                field(FIMAGESIZEBW; Rec.FIMAGESIZEBW)
                 {
                     ToolTip = 'Specifies the value of the Imported to Receipt Lines field.';
                 }
-                field(FIMAGESIGNBW; FIMAGESIGNBW)
+                field(FIMAGESIGNBW; Rec.FIMAGESIGNBW)
                 {
                     ToolTip = 'Specifies the value of the IsFCY field.';
                 }
-                field(FIMAGESIZE; FIMAGESIZE)
+                field(FIMAGESIZE; Rec.FIMAGESIZE)
                 {
                     ToolTip = 'Specifies the value of the MembId field.';
                 }
-                field(FIMAGESIGN; FIMAGESIGN)
+                field(FIMAGESIGN; Rec.FIMAGESIGN)
                 {
                     ToolTip = 'Specifies the value of the MembShareId field.';
                 }
-                field(BIMAGESIZE; BIMAGESIZE)
+                field(BIMAGESIZE; Rec.BIMAGESIZE)
                 {
                     ToolTip = 'Specifies the value of the MemberNo field.';
                 }
-                field(BIMAGESIGN; BIMAGESIGN)
+                field(BIMAGESIGN; Rec.BIMAGESIGN)
                 {
                     ToolTip = 'Specifies the value of the ModifiedBy field.';
                 }
-                field(FrontBWImage; FrontBWImage)
+                field(FrontBWImage; Rec.FrontBWImage)
                 {
                     ToolTip = 'Specifies the value of the ModifiedOn field.';
                 }
-                field(FrontGrayScaleImage; FrontGrayScaleImage)
+                field(FrontGrayScaleImage; Rec.FrontGrayScaleImage)
                 {
                     ToolTip = 'Specifies the value of the PBANK field.';
                 }
-                field(RearImage; RearImage)
+                field(RearImage; Rec.RearImage)
                 {
                     ToolTip = 'Specifies the value of the PBRANCH field.';
                 }
-                field(IsFCY; IsFCY)
+                field(IsFCY; Rec.IsFCY)
                 {
                     ToolTip = 'Specifies the value of the PROCNO field.';
                 }
-                field(Supflag; Supflag)
+                field(Supflag; Rec.Supflag)
                 {
                     ToolTip = 'Specifies the value of the RCODE field.';
                 }
-                field(CreatedBy; CreatedBy)
+                field(CreatedBy; Rec.CreatedBy)
                 {
                     ToolTip = 'Specifies the value of the RearImage field.';
                 }
-                field(CreatedOn; CreatedOn)
+                field(CreatedOn; Rec.CreatedOn)
                 {
                     ToolTip = 'Specifies the value of the SNO field.';
                 }
-                field(UploadedFileId; UploadedFileId)
+                field(UploadedFileId; Rec.UploadedFileId)
                 {
                     ToolTip = 'Specifies the value of the SerialId field.';
                 }
-                field("Imported to Receipt Lines"; "Imported to Receipt Lines")
+                field("Imported to Receipt Lines"; Rec."Imported to Receipt Lines")
                 {
                     ToolTip = 'Specifies the value of the SupervisedBy field.';
                 }

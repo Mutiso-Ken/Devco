@@ -4,29 +4,29 @@ Table 51516012 "buffer1"
 
     fields
     {
-        field(1;No;Code[30])
+        field(1; No; Code[30])
         {
         }
-        field(2;Details;Decimal)
+        field(2; Details; Decimal)
         {
         }
-        field(3;Fosa;Code[60])
+        field(3; Fosa; Code[60])
         {
         }
-        field(4;Detail1;Text[30])
+        field(4; Detail1; Text[30])
         {
         }
-        field(5;Detail2;Text[30])
+        field(5; Detail2; Text[30])
         {
         }
-        field(6;Details3;Text[30])
+        field(6; Details3; Text[30])
         {
         }
     }
 
     keys
     {
-        key(Key1;No,Fosa)
+        key(Key1; No, Fosa)
         {
             Clustered = true;
         }

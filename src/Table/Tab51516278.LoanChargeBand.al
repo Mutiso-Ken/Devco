@@ -4,32 +4,32 @@ Table 51516278 "Loan Charge Band"
 
     fields
     {
-        field(1;"Loan Type";Code[20])
+        field(1; "Loan Type"; Code[20])
         {
         }
-        field(2;"Charge Type";Code[20])
+        field(2; "Charge Type"; Code[20])
         {
         }
-        field(3;"Lower Limit";Decimal)
+        field(3; "Lower Limit"; Decimal)
         {
         }
-        field(4;"Upper Limit";Decimal)
+        field(4; "Upper Limit"; Decimal)
         {
         }
-        field(5;Amount;Decimal)
+        field(5; Amount; Decimal)
         {
         }
-        field(6;"Use (%)";Boolean)
+        field(6; "Use (%)"; Boolean)
         {
         }
-        field(7;Rate;Decimal)
+        field(7; Rate; Decimal)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Loan Type","Charge Type","Lower Limit")
+        key(Key1; "Loan Type", "Charge Type", "Lower Limit")
         {
             Clustered = true;
         }

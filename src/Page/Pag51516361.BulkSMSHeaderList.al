@@ -14,27 +14,27 @@ Page 51516361 "Bulk SMS Header List"
         {
             repeater(Group)
             {
-                field(No;No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Message;Message)
+                field(Message; Rec.Message)
                 {
                     ApplicationArea = Basic;
                 }
-                field("SMS Type";"SMS Type")
+                field("SMS Type"; Rec."SMS Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Entered";"Date Entered")
+                field("Date Entered"; Rec."Date Entered")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Time Entered";"Time Entered")
+                field("Time Entered"; Rec."Time Entered")
                 {
                     ApplicationArea = Basic;
                 }
-                field("SMS Status";"SMS Status")
+                field("SMS Status"; Rec."SMS Status")
                 {
                     ApplicationArea = Basic;
                 }

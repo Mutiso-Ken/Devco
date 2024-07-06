@@ -4,7 +4,7 @@ pageextension 51516623 "AccountScheduleExt" extends "Account Schedule Names"
     {
         addbefore(Description)
         {
-            field("Default Column Layouts"; "Default Column Layout")
+            field("Default Column Layouts"; Rec."Default Column Layout")
             {
                 Caption = 'Default Column Layouts';
                 ApplicationArea = Basic;

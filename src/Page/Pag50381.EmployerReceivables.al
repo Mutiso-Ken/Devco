@@ -17,25 +17,25 @@ page 50381 EmployerReceivables
         {
             repeater(GroupName)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
 
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = all;
                     Editable = false;
                 }
-                field("Balance (LCY)"; "Balance (LCY)")
+                field("Balance (LCY)"; Rec."Balance (LCY)")
                 {
                     Caption = 'Balance';
                     ApplicationArea = all;
                 }
-                field("Receivables Amount"; "Receivables Amount") { ApplicationArea = all; }
-                field("Credit Amount"; "Credit Amount") { ApplicationArea = all; }
-                field("Net Change"; "Net Change") { ApplicationArea = all; }
+                field("Receivables Amount"; Rec."Receivables Amount") { ApplicationArea = all; }
+                field("Credit Amount"; Rec."Credit Amount") { ApplicationArea = all; }
+                field("Net Change"; Rec."Net Change") { ApplicationArea = all; }
             }
         }
         area(Factboxes)

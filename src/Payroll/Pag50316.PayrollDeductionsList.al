@@ -15,67 +15,67 @@ page 50316 "Payroll Deductions List."
         {
             repeater(Group)
             {
-                field("Transaction Code"; "Transaction Code")
+                field("Transaction Code"; Rec."Transaction Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Transaction Name"; "Transaction Name")
+                field("Transaction Name"; Rec."Transaction Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Transaction Type"; "Transaction Type")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = All;
                 }
-                field(Taxable; Taxable)
+                field(Taxable; Rec.Taxable)
                 {
                     ApplicationArea = All;
                 }
-                field("Is Formulae"; "Is Formulae")
+                field("Is Formulae"; Rec."Is Formulae")
                 {
                     ApplicationArea = All;
                 }
-                field("Co-Op Parameters"; "Co-Op Parameters")
+                field("Co-Op Parameters"; Rec."Co-Op Parameters")
                 {
                     ApplicationArea = All;
                 }
-                field(Formulae; Formulae)
+                field(Formulae; Rec.Formulae)
                 {
                     ApplicationArea = All;
                 }
-                field("G/L Account"; "G/L Account")
+                field("G/L Account"; Rec."G/L Account")
                 {
                     ApplicationArea = All;
                 }
-                field("G/L Account Name"; "G/L Account Name")
+                field("G/L Account Name"; Rec."G/L Account Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Sacco Code"; "Sacco Code")
+                field("Sacco Code"; Rec."Sacco Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Employee Name"; "Employee Name")
+                field("Employee Name"; Rec."Employee Name")
                 {
                     ApplicationArea = All;
                 }
-                field("pay period"; "pay period")
+                field("pay period"; Rec."pay period")
                 {
                     ApplicationArea = All;
                 }
-                field("Insurance Code"; "Insurance Code")
+                field("Insurance Code"; Rec."Insurance Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Bank code"; "Bank code")
+                field("Bank code"; Rec."Bank code")
                 {
                     ApplicationArea = All;
                 }
-                field("Welfare code"; "Welfare code")
+                field("Welfare code"; Rec."Welfare code")
                 {
                     ApplicationArea = All;
                 }
-                field("Is Loan Account"; "Is Loan Account")
+                field("Is Loan Account"; Rec."Is Loan Account")
                 {
                     ApplicationArea = all;
                 }
@@ -89,7 +89,7 @@ page 50316 "Payroll Deductions List."
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        "Transaction Type" := "Transaction Type"::Deduction;
+        Rec."Transaction Type" := Rec."Transaction Type"::Deduction;
     end;
 }
 

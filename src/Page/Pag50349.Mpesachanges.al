@@ -4,7 +4,7 @@ Page 50349 "Mpesa changes"
     DeleteAllowed = false;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
     SourceTable = "Change MPESA Transactions";
-    SourceTableView = where(Status=const(Open));
+    SourceTableView = where(Status = const(Open));
 
     layout
     {
@@ -13,75 +13,75 @@ Page 50349 "Mpesa changes"
             group(Control1102755008)
             {
             }
-            field(No;No)
+            field(No; Rec.No)
             {
                 ApplicationArea = Basic;
             }
-            field("Transaction Date";"Transaction Date")
-            {
-                ApplicationArea = Basic;
-                Editable = false;
-            }
-            field("Initiated By";"Initiated By")
+            field("Transaction Date"; Rec."Transaction Date")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("MPESA Receipt No";"MPESA Receipt No")
-            {
-                ApplicationArea = Basic;
-            }
-            field("Account No";"Account No")
+            field("Initiated By"; Rec."Initiated By")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("New Account No";"New Account No")
+            field("MPESA Receipt No"; Rec."MPESA Receipt No")
             {
                 ApplicationArea = Basic;
             }
-            field(Comments;Comments)
+            field("Account No"; Rec."Account No")
+            {
+                ApplicationArea = Basic;
+                Editable = false;
+            }
+            field("New Account No"; Rec."New Account No")
+            {
+                ApplicationArea = Basic;
+            }
+            field(Comments; Rec.Comments)
             {
                 ApplicationArea = Basic;
             }
             group(Control1102755009)
             {
-                field("Date Approved";"Date Approved")
+                field("Date Approved"; Rec."Date Approved")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Approved By";"Approved By")
+                field("Approved By"; Rec."Approved By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Time Approved";"Time Approved")
+                field("Time Approved"; Rec."Time Approved")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Send For Approval By";"Send For Approval By")
+                field("Send For Approval By"; Rec."Send For Approval By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Date Sent For Approval";"Date Sent For Approval")
+                field("Date Sent For Approval"; Rec."Date Sent For Approval")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Time Sent For Approval";"Time Sent For Approval")
+                field("Time Sent For Approval"; Rec."Time Sent For Approval")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Changed;Changed)
+                field(Changed; Rec.Changed)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -108,15 +108,15 @@ Page 50349 "Mpesa changes"
 
                         if Confirm('Do you want to send for approval?') = true then begin
 
-                        MPESAChanges.Reset;
-                        MPESAChanges.SetRange(MPESAChanges.No,No);
-                        if MPESAChanges.Find('-') then begin
-                        MPESAChanges.Status:=MPESAChanges.Status::Pending;
-                        MPESAChanges."Send For Approval By":=UserId;
-                        MPESAChanges."Date Sent For Approval":=Today;
-                        MPESAChanges."Time Sent For Approval":=Time;
-                        MPESAChanges.Modify;
-                        end;
+                            MPESAChanges.Reset;
+                            MPESAChanges.SetRange(MPESAChanges.No, Rec.No);
+                            if MPESAChanges.Find('-') then begin
+                                MPESAChanges.Status := MPESAChanges.Status::Pending;
+                                MPESAChanges."Send For Approval By" := UserId;
+                                MPESAChanges."Date Sent For Approval" := Today;
+                                MPESAChanges."Time Sent For Approval" := Time;
+                                MPESAChanges.Modify;
+                            end;
 
                         end;
                     end;

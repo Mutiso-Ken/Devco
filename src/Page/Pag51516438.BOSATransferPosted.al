@@ -17,41 +17,41 @@ Page 51516438 "BOSA Transfer Posted"
         {
             repeater(Group)
             {
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Date"; "Transaction Date")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Schedule Total"; "Schedule Total")
+                field("Schedule Total"; Rec."Schedule Total")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Approved; Approved)
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("Approved By"; "Approved By")
+                field(Approved; Rec.Approved)
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Posted; Posted)
+                field("Approved By"; Rec."Approved By")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                 }
-                field("No. Series"; "No. Series")
+                field("No. Series"; Rec."No. Series")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Responsibility Center"; "Responsibility Center")
+                field("Responsibility Center"; Rec."Responsibility Center")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Remarks; Remarks)
+                field(Remarks; Rec.Remarks)
                 {
                     ApplicationArea = Basic;
                 }
@@ -65,7 +65,7 @@ Page 51516438 "BOSA Transfer Posted"
 
     trigger OnOpenPage()
     begin
-        SetRange("Captured By", UserId);
+        Rec.SetRange("Captured By", UserId);
 
     end;
 }

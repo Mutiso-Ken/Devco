@@ -43,7 +43,7 @@
 //             //1 Get NWD Shares Earned
 //             NWDSharesInterestEarned := 0;
 //             NWDSharesInterestEarned := FnProcessInterestEarnedOnCurrentShares(MemberRegister."No.", StartDate, EndDate, MemberRegister."Current Shares");
-      
+
 //             //--------------GET NET DIVIDENDS PAYABLE TO MEMBER(Inclusive of capitalzed amount)
 //             NetDividendsPayableToMember := 0;
 //             NetDividendsPayableToMember := ComputerSharesInterestEarned + FOSASharesInterestEarned + NWDSharesInterestEarned + VanSharesInterestEarned + PreferentialSharesInterestEarned + LiftSharesInterestEarned + PepeaSharesInterestEarned + TambaaSharesInterestEarned + HousingSharesInterestEarned;
@@ -387,7 +387,7 @@
 //         TotalGrossNWD := 0;
 //         TotalGrossNWD := GrossNWDMonth1 + GrossNWDMonth2 + GrossNWDMonth3 + GrossNWDMonth4 + GrossNWDMonth5 + GrossNWDMonth6 + GrossNWDMonth7 + GrossNWDMonth8 + GrossNWDMonth9 + GrossNWDMonth10 + GrossNWDMonth11 + GrossNWDMonth12;
 //         //i)Bank Account
-        
+
 //         SaccoGenSetUp.Get();
 //         SaccoGenSetUp.TestField(SaccoGenSetUp."Dividends Paying Bank Account");
 //         LineNo := LineNo + 10000;

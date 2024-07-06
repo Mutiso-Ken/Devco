@@ -15,35 +15,35 @@ page 51516314 "Payroll Earnings List."
         {
             repeater(Group)
             {
-                field("Transaction Code"; "Transaction Code")
+                field("Transaction Code"; Rec."Transaction Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Transaction Name"; "Transaction Name")
+                field("Transaction Name"; Rec."Transaction Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Transaction Type"; "Transaction Type")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = All;
                 }
-                field(Taxable; Taxable)
+                field(Taxable; Rec.Taxable)
                 {
                     ApplicationArea = All;
                 }
-                field("Is Formulae"; "Is Formulae")
+                field("Is Formulae"; Rec."Is Formulae")
                 {
                     ApplicationArea = All;
                 }
-                field(Formulae; Formulae)
+                field(Formulae; Rec.Formulae)
                 {
                     ApplicationArea = All;
                 }
-                field("G/L Account Name"; "G/L Account Name")
+                field("G/L Account Name"; Rec."G/L Account Name")
                 {
                     ApplicationArea = All;
                 }
-                field("G/L Account"; "G/L Account")
+                field("G/L Account"; Rec."G/L Account")
                 {
                     ApplicationArea = All;
                 }
@@ -57,7 +57,7 @@ page 51516314 "Payroll Earnings List."
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        "Transaction Type" := "Transaction Type"::Income;
+        Rec."Transaction Type" := Rec."Transaction Type"::Income;
     end;
 }
 

@@ -12,36 +12,36 @@ Page 51516456 "Investor Amounts"
         {
             repeater(Group)
             {
-                field("Investor No";"Investor No")
+                field("Investor No"; Rec."Investor No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest Code";"Interest Code")
+                field("Interest Code"; Rec."Interest Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Investment Date";"Investment Date")
+                field("Investment Date"; Rec."Investment Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Last Update User";"Last Update User")
+                field("Last Update User"; Rec."Last Update User")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Last Updated By';
                 }
-                field("Last Update Date";"Last Update Date")
+                field("Last Update Date"; Rec."Last Update Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Last Update Time";"Last Update Time")
+                field("Last Update Time"; Rec."Last Update Time")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Closure Date";"Closure Date")
+                field("Closure Date"; Rec."Closure Date")
                 {
                     ApplicationArea = Basic;
                 }

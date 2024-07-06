@@ -4,24 +4,24 @@ Table 51516305 "Fixed Deposit Type"
 
     fields
     {
-        field(1;"Code";Code[30])
+        field(1; "Code"; Code[30])
         {
             NotBlank = true;
         }
-        field(2;Duration;DateFormula)
+        field(2; Duration; DateFormula)
         {
         }
-        field(3;Description;Text[50])
+        field(3; Description; Text[50])
         {
         }
-        field(4;"No. of Months";Integer)
+        field(4; "No. of Months"; Integer)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Code")
+        key(Key1; "Code")
         {
             Clustered = true;
         }

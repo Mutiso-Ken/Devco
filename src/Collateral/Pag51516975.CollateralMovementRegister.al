@@ -10,23 +10,23 @@ Page 51516975 "Collateral Movement Register"
         {
             repeater(Group)
             {
-                field("Entry No";"Entry No")
+                field("Entry No"; Rec."Entry No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document No";"Document No")
+                field("Document No"; Rec."Document No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Current Location";"Current Location")
+                field("Current Location"; Rec."Current Location")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Actioned";"Date Actioned")
+                field("Date Actioned"; Rec."Date Actioned")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Action By";"Action By")
+                field("Action By"; Rec."Action By")
                 {
                     ApplicationArea = Basic;
                 }

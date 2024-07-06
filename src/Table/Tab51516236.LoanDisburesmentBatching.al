@@ -136,7 +136,7 @@ Table 51516236 "Loan Disburesment-Batching"
         }
         field(24; Source; Option)
         {
-          
+
             OptionMembers = BOSA;//,FOSA,MICRO;
             trigger OnValidate()
             begin

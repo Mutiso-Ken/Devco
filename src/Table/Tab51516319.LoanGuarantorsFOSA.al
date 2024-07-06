@@ -4,12 +4,12 @@ Table 51516319 "Loan GuarantorsFOSA"
 
     fields
     {
-        field(1;"Loan No";Code[20])
+        field(1; "Loan No"; Code[20])
         {
             NotBlank = true;
             TableRelation = "Absence Preferences"."Include Weekends";
         }
-        field(2;"Account No.";Code[20])
+        field(2; "Account No."; Code[20])
         {
             NotBlank = true;
             //TableRelation = Table51516154.Field1;
@@ -84,22 +84,22 @@ Table 51516319 "Loan GuarantorsFOSA"
 
             end;
         }
-        field(3;Names;Text[200])
+        field(3; Names; Text[200])
         {
         }
-        field(4;Signed;Boolean)
+        field(4; Signed; Boolean)
         {
         }
-        field(5;"Amount Guaranted";Decimal)
+        field(5; "Amount Guaranted"; Decimal)
         {
         }
-        field(6;"Distribution (%)";Decimal)
+        field(6; "Distribution (%)"; Decimal)
         {
         }
-        field(7;"Distribution (Amount)";Decimal)
+        field(7; "Distribution (Amount)"; Decimal)
         {
         }
-        field(8;"Staff/Payroll No.";Code[20])
+        field(8; "Staff/Payroll No."; Code[20])
         {
 
             trigger OnValidate()
@@ -117,33 +117,33 @@ Table 51516319 "Loan GuarantorsFOSA"
 
             end;
         }
-        field(9;Substituted;Boolean)
+        field(9; Substituted; Boolean)
         {
 
             trigger OnValidate()
             begin
-                Date:=Today;
+                Date := Today;
             end;
         }
-        field(10;"Line No";Integer)
+        field(10; "Line No"; Integer)
         {
         }
-        field(11;Date;Date)
+        field(11; Date; Date)
         {
         }
-        field(12;"Self Guarantee";Boolean)
+        field(12; "Self Guarantee"; Boolean)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Loan No","Staff/Payroll No.","Account No.",Signed,"Line No")
+        key(Key1; "Loan No", "Staff/Payroll No.", "Account No.", Signed, "Line No")
         {
             Clustered = true;
             SumIndexFields = "Amount Guaranted";
         }
-        key(Key2;"Loan No",Signed)
+        key(Key2; "Loan No", Signed)
         {
             SumIndexFields = "Amount Guaranted";
         }

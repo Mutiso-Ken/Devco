@@ -4,28 +4,28 @@ Table 51516263 "Simplified Accounts"
 
     fields
     {
-        field(1;"Loan No";Code[10])
+        field(1; "Loan No"; Code[10])
         {
         }
-        field(2;"Code";Code[10])
+        field(2; "Code"; Code[10])
         {
         }
-        field(3;Description;Text[30])
+        field(3; Description; Text[30])
         {
         }
-        field(4;"Account Type";Option)
+        field(4; "Account Type"; Option)
         {
             OptionCaption = 'Current Asset,Current Liablity,Fixed Asset,Equity,Sales,Credit Sales';
             OptionMembers = "Current Asset","Current Liablity","Fixed Asset",Equity,Sales,"Credit Sales";
         }
-        field(5;Amount;Decimal)
+        field(5; Amount; Decimal)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Loan No","Code",Description)
+        key(Key1; "Loan No", "Code", Description)
         {
             Clustered = true;
         }

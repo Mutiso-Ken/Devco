@@ -8,7 +8,7 @@ Report 51516257 "Loan Guard Report"
     {
         dataitem(Loans; "Loans Register")
         {
-            DataItemTableView = sorting("Staff No") order(ascending) where (Posted =const(true));
+            DataItemTableView = sorting("Staff No") order(ascending) where(Posted = const(true));
             RequestFilterFields = "Date filter", "Issued Date";
             column(ReportForNavId_4645; 4645)
             {

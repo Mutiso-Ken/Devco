@@ -5,7 +5,7 @@ Page 51516030 "Funds Transfer List"
     CardPageID = "Funds Transfer Card";
     PageType = List;
     SourceTable = "Funds Transfer Header";
-    SourceTableView = where(Posted=const(false));
+    SourceTableView = where(Posted = const(false));
     UsageCategory = Lists;
 
     layout
@@ -14,55 +14,55 @@ Page 51516030 "Funds Transfer List"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Date;Date)
+                field(Date; Rec.Date)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Date";"Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Paying Bank Account";"Paying Bank Account")
+                field("Paying Bank Account"; Rec."Paying Bank Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Paying Bank Name";"Paying Bank Name")
+                field("Paying Bank Name"; Rec."Paying Bank Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount to Transfer";"Amount to Transfer")
+                field("Amount to Transfer"; Rec."Amount to Transfer")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount to Transfer(LCY)";"Amount to Transfer(LCY)")
+                field("Amount to Transfer(LCY)"; Rec."Amount to Transfer(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted;Posted)
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Posted By";"Posted By")
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Date Posted";"Date Posted")
+                field("Posted By"; Rec."Posted By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Time Posted";"Time Posted")
+                field("Date Posted"; Rec."Date Posted")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Created By";"Created By")
+                field("Time Posted"; Rec."Time Posted")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Created By"; Rec."Created By")
                 {
                     ApplicationArea = Basic;
                 }

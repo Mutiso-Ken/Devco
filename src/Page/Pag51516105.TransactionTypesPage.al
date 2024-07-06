@@ -11,12 +11,12 @@ page 51516105 "Transaction Types Page"
         {
             repeater(GroupName)
             {
-                field("Posting Group Code"; "Posting Group Code")
+                field("Posting Group Code"; Rec."Posting Group Code")
                 {
                     ApplicationArea = All;
 
                 }
-                field("Transaction Type"; "Transaction Type")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
 
                 }

@@ -16,6 +16,7 @@ Codeunit 51516039 "SurestepApprovalsCodeUnit"
         FundsTransferHeader: Record "Funds Transfer Header";
         FOSAProductApplicationTable: Record "Accounts Applications Details";
         LoanRecoveryApplicationTable: Record "Loan Recovery Header";
+
     var
         Psalmkitswfevents: Codeunit "Custom Workflow Events";
         NoWorkflowEnabledErr: Label 'No Approval workflow for this record type is enabled';
@@ -297,7 +298,7 @@ Codeunit 51516039 "SurestepApprovalsCodeUnit"
         exit(WorkflowManagement.CanExecuteWorkflow(MemberReapplication, Psalmkitswfevents.RunWorkflowOnSendMemberReapplicationForApprovalCode));
     end;
 
-     [IntegrationEvent(false, false)]
+    [IntegrationEvent(false, false)]
 
     procedure FnOnSendMemberReapplicationForApproval(var MemberReapplication: Record "Member Reapplication")
     begin
@@ -310,7 +311,7 @@ Codeunit 51516039 "SurestepApprovalsCodeUnit"
     end;
     //------------------------------------------------------------------------------------------------------
     //7)--------------------------------------------------------------------Send MembershipExit  Applications request For Approval start
-    
+
     procedure SendMembershipExitApplicationsRequestForApproval(MemberApplicationNo: Code[40]; var "Membership Exist": Record "Membership Exist")
     begin
         if FnCheckIfMembershipExitApplicationApprovalsWorkflowEnabled("Membership Exist") then begin

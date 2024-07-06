@@ -669,7 +669,7 @@ Codeunit 51516041 "Custom Workflow Responses"
                     GuarantorSubstitution.Modify(true);
                     Handled := true;
                 end;
-          
+
             //Membership applications
             DATABASE::"Membership Applications":
                 begin

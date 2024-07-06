@@ -12,11 +12,11 @@ Page 51516478 "Investor General Setup"
         {
             group(General)
             {
-                field("Investor Application Nos.";"Investor Application Nos.")
+                field("Investor Application Nos."; Rec."Investor Application Nos.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Investor Account Nos.";"Investor Account Nos.")
+                field("Investor Account Nos."; Rec."Investor Account Nos.")
                 {
                     ApplicationArea = Basic;
                 }

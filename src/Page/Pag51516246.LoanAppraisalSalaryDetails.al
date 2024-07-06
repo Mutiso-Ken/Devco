@@ -10,27 +10,27 @@ Page 51516246 "Loan Appraisal Salary Details"
         {
             repeater(Control1102760000)
             {
-                field("Appraisal Type";"Appraisal Type")
+                field("Appraisal Type"; Rec."Appraisal Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Code";Code)
+                field("Code"; Rec.Code)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Type;Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Basic;Basic)
+                field(Basic; Rec.Basic)
                 {
                     ApplicationArea = Basic;
                 }
@@ -46,12 +46,12 @@ Page 51516246 "Loan Appraisal Salary Details"
     begin
         //**Prevent modification of approved entries
         LoanApps.Reset;
-        LoanApps.SetRange(LoanApps."Loan  No.","Loan No");
+        LoanApps.SetRange(LoanApps."Loan  No.", Rec."Loan No");
         if LoanApps.Find('-') then begin
-         if LoanApps."Approval Status"=LoanApps."approval status"::Approved then begin
-          CurrPage.Editable:=false;
-         end else
-          CurrPage.Editable:=true;
+            if LoanApps."Approval Status" = LoanApps."approval status"::Approved then begin
+                CurrPage.Editable := false;
+            end else
+                CurrPage.Editable := true;
         end;
     end;
 

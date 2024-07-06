@@ -4,20 +4,20 @@ Table 51516266 "Office/Group"
 
     fields
     {
-        field(1;"Office/Unit ID";Code[10])
+        field(1; "Office/Unit ID"; Code[10])
         {
         }
-        field(2;Description;Text[30])
+        field(2; Description; Text[30])
         {
         }
-        field(3;Blocked;Boolean)
+        field(3; Blocked; Boolean)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Office/Unit ID")
+        key(Key1; "Office/Unit ID")
         {
             Clustered = true;
         }

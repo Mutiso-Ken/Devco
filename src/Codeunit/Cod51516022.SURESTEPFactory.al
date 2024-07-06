@@ -30,14 +30,14 @@ Codeunit 51516022 "SURESTEP Factory"
         TheMessage: Codeunit "Email Message";
         Email: Codeunit Email;
 
-//  procedure SendEmailWithAttachment(FileName:Text[100];EmailAddress:Text[100]; EmailSubject: text[100]; EmailBody: Text[200])
-// var
-//  "; 
-// begin
-//     TheMessage.Create(EmailAddress,EmailSubject,'',true);
-//     TheMessage.AddAttachment();
-//           Email.Send(TheMessage);
-// end;
+    //  procedure SendEmailWithAttachment(FileName:Text[100];EmailAddress:Text[100]; EmailSubject: text[100]; EmailBody: Text[200])
+    // var
+    //  "; 
+    // begin
+    //     TheMessage.Create(EmailAddress,EmailSubject,'',true);
+    //     TheMessage.AddAttachment();
+    //           Email.Send(TheMessage);
+    // end;
 
 
     procedure FnGetCashierTransactionBudding(TransactionType: Code[100]; TransAmount: Decimal) TCharge: Decimal
@@ -1134,7 +1134,7 @@ Codeunit 51516022 "SURESTEP Factory"
         VarLenghtOfRelationshipScore: Integer;
         VarInternationalTradeScore: Integer;
         VarElectronicPaymentScore: Integer;
-       // VarCardTypeScore: Integer;
+        // VarCardTypeScore: Integer;
         VarAccountTypeScore: Integer;
         // VarChannelTakenScore: Integer;
         VarAccountTypeOption: Option "International Wire Transfers","Local Wire Transfers","Mobile Transfers","None of the Above","Fixed/Call Deposit Accounts","KSA/Imara/MJA/Heritage)","Account with Sealed Safe deposit","Account with  Open Safe Deposit","All Loan Accounts",BOSA," Ufalme","ATM Debit",Credit,Both,"None","Non-face to face channels","Unsolicited Account Origination e.g. Walk-Ins","Cheque book",Others;

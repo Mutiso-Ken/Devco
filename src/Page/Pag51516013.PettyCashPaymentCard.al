@@ -3,7 +3,7 @@ Page 51516013 "PettyCash Payment Card"
 {
     PageType = Card;
     SourceTable = "Payment Header";
-    
+
     RefreshOnActivate = true;
     Caption = 'Petty Cash Application';
     SourceTableView = where("Payment Type" = const("Petty Cash"),
@@ -15,76 +15,76 @@ Page 51516013 "PettyCash Payment Card"
         {
             group(General)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Date"; "Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Date"; "Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Currency Code"; "Currency Code")
+                field("Currency Code"; Rec."Currency Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Bank Account"; "Bank Account")
+                field("Bank Account"; Rec."Bank Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Account Name"; "Bank Account Name")
+                field("Bank Account Name"; Rec."Bank Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Account Balance"; "Bank Account Balance")
+                field("Bank Account Balance"; Rec."Bank Account Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Payee; Payee)
+                field(Payee; Rec.Payee)
                 {
                     ApplicationArea = Basic;
                 }
-                field("On Behalf Of"; "On Behalf Of")
+                field("On Behalf Of"; Rec."On Behalf Of")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payment Description"; "Payment Description")
+                field("Payment Description"; Rec."Payment Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount(LCY)"; "Amount(LCY)")
+                field("Amount(LCY)"; Rec."Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Net Amount"; "Net Amount")
+                field("Net Amount"; Rec."Net Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Net Amount(LCY)"; "Net Amount(LCY)")
+                field("Net Amount(LCY)"; Rec."Net Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Responsibility Center"; "Responsibility Center")
+                field("Responsibility Center"; Rec."Responsibility Center")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -105,7 +105,7 @@ Page 51516013 "PettyCash Payment Card"
                 // {
                 //     ApplicationArea = Basic;
                 // }
-                field(Cashier; Cashier)
+                field(Cashier; Rec.Cashier)
                 {
                     ApplicationArea = Basic;
                 }
@@ -162,7 +162,7 @@ Page 51516013 "PettyCash Payment Card"
                         FundsManager.PostPayment(Rec, JTemplate, JBatch);
                         Commit;
                         PHeader.Reset;
-                        PHeader.SetRange(PHeader."No.", "No.");
+                        PHeader.SetRange(PHeader."No.", Rec."No.");
                         if PHeader.FindFirst then begin
                             Report.RunModal(Report::"PettyCash Voucher", true, false, PHeader);
                         end;
@@ -184,7 +184,7 @@ Page 51516013 "PettyCash Payment Card"
                     Text001: label 'This request is already pending approval';
                 begin
                     rec.CalcFields(Amount);
-                    if Status <> Status::New then
+                    if Rec.Status <> Rec.Status::New then
                         Error(Text001);
 
                     if Confirm('Send  Approval request?', false) = true then begin
@@ -227,7 +227,7 @@ Page 51516013 "PettyCash Payment Card"
                 trigger OnAction()
                 begin
                     PHeader.Reset;
-                    PHeader.SetRange(PHeader."No.", "No.");
+                    PHeader.SetRange(PHeader."No.", Rec."No.");
                     if PHeader.FindFirst then begin
                         Report.RunModal(Report::"PettyCash Voucher", true, false, PHeader);
                     end;
@@ -238,8 +238,8 @@ Page 51516013 "PettyCash Payment Card"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        "Payment Mode" := "payment mode"::Cash;
-        "Payment Type" := "payment type"::"Petty Cash";
+        Rec."Payment Mode" := Rec."payment mode"::Cash;
+        Rec."Payment Type" := Rec."payment type"::"Petty Cash";
     end;
 
     var
@@ -252,17 +252,17 @@ Page 51516013 "PettyCash Payment Card"
         TableID: Integer;
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         PHeader: Record "Payment Header";
-        X:page "Accountant Role Center";
+        X: page "Accountant Role Center";
 
     local procedure CheckRequiredItems()
     begin
-        TestField(Status, Status::Approved);
-        TestField("Posting Date");
-        TestField(Payee);
-        TestField("Bank Account");
-        TestField("Payment Description");
-        TestField("Global Dimension 1 Code");
-        TestField("Global Dimension 2 Code");
+        Rec.TestField(Status, Rec.Status::Approved);
+        Rec.TestField("Posting Date");
+        Rec.TestField(Payee);
+        Rec.TestField("Bank Account");
+        Rec.TestField("Payment Description");
+        Rec.TestField("Global Dimension 1 Code");
+        Rec.TestField("Global Dimension 2 Code");
     end;
 }
 

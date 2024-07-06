@@ -6,21 +6,21 @@ Table 51516433 "Profitability Set up-Micro"
 
     fields
     {
-        field(1;"Code";Code[10])
+        field(1; "Code"; Code[10])
         {
         }
-        field(2;Description;Text[30])
+        field(2; Description; Text[30])
         {
         }
-        field(3;Amount;Decimal)
+        field(3; Amount; Decimal)
         {
         }
-        field(4;Type;Option)
+        field(4; Type; Option)
         {
             OptionCaption = 'Profitability,Business Expenses,Family Expenses';
             OptionMembers = Profitability,"Business Expenses","Family Expenses";
         }
-        field(5;"Code Type";Option)
+        field(5; "Code Type"; Option)
         {
             OptionCaption = ' ,Purchase,Sales';
             OptionMembers = " ",Purchase,Sales;
@@ -29,7 +29,7 @@ Table 51516433 "Profitability Set up-Micro"
 
     keys
     {
-        key(Key1;"Code")
+        key(Key1; "Code")
         {
             Clustered = true;
         }

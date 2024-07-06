@@ -16,7 +16,7 @@ codeunit 51516056 "Send Loan Notifications"
         FOSAAccount := '';
         LoansRegister.Reset();
         LoansRegister.SetFilter(LoansRegister."Outstanding Balance", '>%1', 0);
-       // LoansRegister.SetRange(LoansRegister."Recovery Mode", LoansRegister."Recovery Mode"::"Direct Debits");
+        // LoansRegister.SetRange(LoansRegister."Recovery Mode", LoansRegister."Recovery Mode"::"Direct Debits");
         if LoansRegister.Find('-') then begin
             repeat
                 if (LoansRegister."Last Reminder SMS Date" <> Today) and (Today <> 20230906D) THEN begin

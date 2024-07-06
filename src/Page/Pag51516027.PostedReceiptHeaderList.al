@@ -5,7 +5,7 @@ Page 51516027 "Posted Receipt Header List"
     CardPageID = "Posted Receipt Header Card";
     PageType = List;
     SourceTable = "Receipt Header";
-    SourceTableView = where(Status=const(Posted));
+    SourceTableView = where(Status = const(Posted));
     UsageCategory = Lists;
 
     layout
@@ -14,31 +14,31 @@ Page 51516027 "Posted Receipt Header List"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Received From";"Received From")
+                field("Received From"; Rec."Received From")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount Received(LCY)";"Amount Received(LCY)")
+                field("Amount Received(LCY)"; Rec."Amount Received(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Amount";"Total Amount")
+                field("Total Amount"; Rec."Total Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("User ID";"User ID")
+                field("User ID"; Rec."User ID")
                 {
                     ApplicationArea = Basic;
                 }

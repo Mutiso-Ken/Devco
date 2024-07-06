@@ -18,7 +18,7 @@ page 51516147 "Board of Directors Lists"
                 field(Name; Rec.Name)
                 {
                 }
-                field(Designation; Designation)
+                field(Designation; Rec.Designation)
                 {
                     ApplicationArea = all;
                 }

@@ -1,7 +1,7 @@
 enum 51516013 "STO Status"
 {
     Extensible = true;
-    
+
     value(0; Successfull)
     {
         Caption = 'Successfull';

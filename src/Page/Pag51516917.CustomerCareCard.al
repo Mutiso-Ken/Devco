@@ -12,111 +12,111 @@ Page 51516917 "Customer Care Card"
             {
                 Caption = 'General Information';
                 Editable = true;
-                field("No.";"No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Name;Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("FOSA Account";"FOSA Account")
+                field("FOSA Account"; Rec."FOSA Account")
                 {
                     ApplicationArea = Basic;
 
                     trigger OnValidate()
                     begin
 
-                        FosaName:='';
+                        FosaName := '';
 
-                        if "FOSA Account" <> '' then begin
-                        if Vend.Get("FOSA Account") then begin
-                        FosaName:=Vend.Name;
-                          //MESSAGE('%1',Vend.Name);
-                        end;
+                        if Rec."FOSA Account" <> '' then begin
+                            if Vend.Get(Rec."FOSA Account") then begin
+                                FosaName := Vend.Name;
+                                //MESSAGE('%1',Vend.Name);
+                            end;
                         end;
                     end;
                 }
-                field(FosaName;FosaName)
+                field(FosaName; FosaName)
                 {
                     ApplicationArea = Basic;
                     Caption = 'FOSA Account Name';
                     Editable = false;
                 }
-                field("ID No.";"ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'ID Number';
                     Editable = true;
                 }
-                field("Passport No.";"Passport No.")
+                field("Passport No."; Rec."Passport No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Address;Address)
+                field(Address; Rec.Address)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Post Code";"Post Code")
+                field("Post Code"; Rec."Post Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Post Code';
                     Editable = false;
                 }
-                field(City;City)
+                field(City; Rec.City)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Town';
                 }
-                field("Address 2";"Address 2")
+                field("Address 2"; Rec."Address 2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Home Address';
                 }
-                field("Home Postal Code";"Home Postal Code")
+                field("Home Postal Code"; Rec."Home Postal Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Home Town";"Home Town")
+                field("Home Town"; Rec."Home Town")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No.";"Phone No.")
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Mobile No.';
                     Editable = true;
                 }
-                field("E-Mail";"E-Mail")
+                field("E-Mail"; Rec."E-Mail")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employer Code";"Employer Code")
+                field("Employer Code"; Rec."Employer Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Employer';
                     Editable = true;
                 }
-                field("Employer Name";"Employer Name")
+                field("Employer Name"; Rec."Employer Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Registration Date";"Registration Date")
+                field("Registration Date"; Rec."Registration Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Date of Birth";"Date of Birth")
+                field("Date of Birth"; Rec."Date of Birth")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Date of Birth';
                     Editable = true;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -124,17 +124,17 @@ Page 51516917 "Customer Care Card"
                     trigger OnValidate()
                     begin
                         StatusPermissions.Reset;
-                        StatusPermissions.SetRange(StatusPermissions."User Id",UserId);
-                        StatusPermissions.SetRange(StatusPermissions."Function",StatusPermissions."function"::"Overide Defaulters");
+                        StatusPermissions.SetRange(StatusPermissions."User Id", UserId);
+                        StatusPermissions.SetRange(StatusPermissions."Function", StatusPermissions."function"::"Overide Defaulters");
                         if StatusPermissions.Find('-') = false then
-                        Error('You do not have permissions to change the account status.');
+                            Error('You do not have permissions to change the account status.');
                     end;
                 }
-                field(Blocked;Blocked)
+                field(Blocked; Rec.Blocked)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Recruited By";"Recruited By")
+                field("Recruited By"; Rec."Recruited By")
                 {
                     ApplicationArea = Basic;
                 }
@@ -142,49 +142,49 @@ Page 51516917 "Customer Care Card"
             group("Savings Details")
             {
                 Caption = 'Savings Details';
-                field("Current Shares";"Current Shares")
+                field("Current Shares"; Rec."Current Shares")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Deposits';
                 }
-                field("Shares Retained";"Shares Retained")
+                field("Shares Retained"; Rec."Shares Retained")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Share Capital';
                 }
-                field("Insurance Fund";"Insurance Fund")
+                field("Insurance Fund"; Rec."Insurance Fund")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Benevolent Fund';
                 }
-                field("FOSA  Account Bal";"FOSA  Account Bal")
+                field("FOSA  Account Bal"; Rec."FOSA  Account Bal")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
             }
-            part(Control1000000013;"Loans Sub-Page List")
+            part(Control1000000013; "Loans Sub-Page List")
             {
                 Caption = 'Loans Details';
-                SubPageLink = "Client Code"=field("No.");
+                SubPageLink = "Client Code" = field("No.");
             }
             group("Loan Eligibility")
             {
                 Caption = 'Loan Eligibility';
-                field("Current Shares1";"Current Shares")
+                field("Current Shares1"; Rec."Current Shares")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member Deposit';
                 }
-                field("Outstanding Balance";"Outstanding Balance")
+                field("Outstanding Balance"; Rec."Outstanding Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member Deposit *3";"Member Deposit *3")
+                field("Member Deposit *3"; Rec."Member Deposit *3")
                 {
                     ApplicationArea = Basic;
                 }
-                field("New loan Eligibility";"New loan Eligibility")
+                field("New loan Eligibility"; Rec."New loan Eligibility")
                 {
                     ApplicationArea = Basic;
                 }
@@ -198,27 +198,27 @@ Page 51516917 "Customer Care Card"
             {
                 Caption = 'Withdrawal Details';
                 Editable = true;
-                field("Withdrawal Application Date";"Withdrawal Application Date")
+                field("Withdrawal Application Date"; Rec."Withdrawal Application Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Withdrawal Date";"Withdrawal Date")
+                field("Withdrawal Date"; Rec."Withdrawal Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Withdrawal Fee";"Withdrawal Fee")
+                field("Withdrawal Fee"; Rec."Withdrawal Fee")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Status - Withdrawal App.";"Status - Withdrawal App.")
+                field("Status - Withdrawal App."; Rec."Status - Withdrawal App.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Active Loans Guarantor";"Active Loans Guarantor")
+                field("Active Loans Guarantor"; Rec."Active Loans Guarantor")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loans Guaranteed";"Loans Guaranteed")
+                field("Loans Guaranteed"; Rec."Loans Guaranteed")
                 {
                     ApplicationArea = Basic;
                 }
@@ -247,14 +247,14 @@ Page 51516917 "Customer Care Card"
                     ApplicationArea = Basic;
                     Image = Dimensions;
                     RunObject = Page "Default Dimensions";
-                    RunPageLink = "No."=field("No.");
+                    RunPageLink = "No." = field("No.");
                 }
                 action("Bank Account")
                 {
                     ApplicationArea = Basic;
                     Image = Card;
                     RunObject = Page "Customer Bank Account Card";
-                    RunPageLink = "Customer No."=field("No.");
+                    RunPageLink = "Customer No." = field("No.");
                 }
                 action(Contacts)
                 {
@@ -263,7 +263,7 @@ Page 51516917 "Customer Care Card"
 
                     trigger OnAction()
                     begin
-                        ShowContact;
+                        Rec.ShowContact;
                     end;
                 }
             }
@@ -277,7 +277,7 @@ Page 51516917 "Customer Care Card"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Members Kin Details List";
-                   // RunPageLink = "Account No"=field("No.");
+                    // RunPageLink = "Account No"=field("No.");
                 }
                 action("Account Signatories")
                 {
@@ -286,7 +286,7 @@ Page 51516917 "Customer Care Card"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Member Account Signatory list";
-                    RunPageLink = "Account No"=field("No.");
+                    RunPageLink = "Account No" = field("No.");
                 }
                 action("Member card")
                 {
@@ -295,11 +295,11 @@ Page 51516917 "Customer Care Card"
 
                     trigger OnAction()
                     begin
-                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","No.");
-                         if Cust.FindFirst then begin
-                          Report.Run(Report::"members card",true,false,Cust);
-                         end;
+                        Cust.Reset;
+                        Cust.SetRange(Cust."No.", Rec."No.");
+                        if Cust.FindFirst then begin
+                            Report.Run(Report::"members card", true, false, Cust);
+                        end;
                     end;
                 }
                 action("Members Statistics")
@@ -309,7 +309,7 @@ Page 51516917 "Customer Care Card"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Members Statistics";
-                    RunPageLink = "No."=field("No.");
+                    RunPageLink = "No." = field("No.");
                 }
                 action("Member is  a Guarantor")
                 {
@@ -324,9 +324,9 @@ Page 51516917 "Customer Care Card"
                     begin
 
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
-                        Report.Run(51516226,true,false,Cust);
+                            Report.Run(51516226, true, false, Cust);
                     end;
                 }
                 action("Member is  Guaranteed")
@@ -341,9 +341,9 @@ Page 51516917 "Customer Care Card"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
-                        Report.Run(51516225,true,false,Cust);
+                            Report.Run(51516225, true, false, Cust);
                         //51516482
                     end;
                 }
@@ -362,9 +362,9 @@ Page 51516917 "Customer Care Card"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
-                        Report.Run(51516223,true,false,Cust);
+                            Report.Run(51516223, true, false, Cust);
                     end;
                 }
                 action("Detailed Interest Statement")
@@ -394,9 +394,9 @@ Page 51516917 "Customer Care Card"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","No.");
+                        Cust.SetRange(Cust."No.", Rec."No.");
                         if Cust.Find('-') then
-                        Report.Run(51516250,true,false,Cust);
+                            Report.Run(51516250, true, false, Cust);
                     end;
                 }
                 action("FOSA Statement")
@@ -412,18 +412,18 @@ Page 51516917 "Customer Care Card"
                         IF Vend.FIND('-') THEN
                         REPORT.RUN(51516248,TRUE,FALSE,Vend);
                         */
-                        
+
                         /*
                         Cust.RESET;
                         Cust.SETRANGE(Cust."No.","No.");
                         IF Cust.FIND('-') THEN
                         REPORT.RUN(51516476,TRUE,FALSE,Cust);
                         */
-                        
+
                         Vend.Reset;
-                        Vend.SetRange(Vend."No.","FOSA Account");
+                        Vend.SetRange(Vend."No.", Rec."FOSA Account");
                         if Vend.Find('-') then
-                        Report.Run(51516248,true,false,Vend);
+                            Report.Run(51516248, true, false, Vend);
 
                     end;
                 }

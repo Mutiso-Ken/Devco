@@ -14,42 +14,42 @@ Page 51516272 "Interest Due Periods"
         {
             repeater(Group)
             {
-                field("Interest Due Date";"Interest Due Date")
+                field("Interest Due Date"; Rec."Interest Due Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Name;Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("New Fiscal Year";"New Fiscal Year")
+                field("New Fiscal Year"; Rec."New Fiscal Year")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Closed;Closed)
+                field(Closed; Rec.Closed)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Date Locked";"Date Locked")
+                field("Date Locked"; Rec."Date Locked")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Closed by User";"Closed by User")
+                field("Closed by User"; Rec."Closed by User")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Closing Date Time";"Closing Date Time")
+                field("Closing Date Time"; Rec."Closing Date Time")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Interest Calcuation Date";"Interest Calcuation Date")
+                field("Interest Calcuation Date"; Rec."Interest Calcuation Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;

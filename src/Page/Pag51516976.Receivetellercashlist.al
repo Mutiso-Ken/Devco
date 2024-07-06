@@ -17,46 +17,46 @@ page 51516976 Receivetellercashlist
         {
             repeater(Group)
             {
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Date"; "Transaction Date")
-                {
-                    ApplicationArea = Basic;
-                    Style = StrongAccent;
-
-                }
-                field("Transaction Type"; "Transaction Type")
-                {
-                    ApplicationArea = Basic;
-
-                }
-                field("From Account"; "From Account")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("To Account"; "To Account")
+                field("Transaction Date"; Rec."Transaction Date")
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
 
                 }
-                field(Amount; Amount)
+                field("Transaction Type"; Rec."Transaction Type")
+                {
+                    ApplicationArea = Basic;
+
+                }
+                field("From Account"; Rec."From Account")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("To Account"; Rec."To Account")
+                {
+                    ApplicationArea = Basic;
+                    Style = StrongAccent;
+
+                }
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
 
                 }
-                field(Posted; Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Received By"; "Received By")
+                field("Received By"; Rec."Received By")
                 {
 
                 }
@@ -67,9 +67,9 @@ page 51516976 Receivetellercashlist
     actions
     {
     }
-      trigger OnOpenPage()
+    trigger OnOpenPage()
     begin
-        Ascending(false);
+        Rec.Ascending(false);
     end;
 }
 

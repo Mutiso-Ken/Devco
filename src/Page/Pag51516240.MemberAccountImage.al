@@ -8,11 +8,11 @@ Page 51516240 "Member Account Image"
     {
         area(content)
         {
-            field(Picture;Image)
+            field(Picture; Rec.Image)
             {
                 ApplicationArea = Basic;
             }
-            field(Signature;Signature)
+            field(Signature; Rec.Signature)
             {
                 ApplicationArea = Basic;
             }

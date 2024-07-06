@@ -16,41 +16,41 @@ Page 51516499 "Lead list Escalated"
         {
             repeater(Group)
             {
-                field(No; No)
+                field(No; Rec.No)
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("Full Name"; "Member Name")
+                field("Full Name"; Rec."Member Name")
                 {
                     ApplicationArea = Basic;
                 }
 
-                field("ID No"; "ID No")
+                field("ID No"; Rec."ID No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No"; "Phone No")
+                field("Phone No"; Rec."Phone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Lead Status"; "Lead Status")
+                field("Lead Status"; Rec."Lead Status")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = Attention;
                 }
-                field("Escalted By"; "Escalted By")
+                field("Escalted By"; Rec."Escalted By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = Attention;
                 }
-                field("Escaltion Date"; "Escaltion Date")
+                field("Escaltion Date"; Rec."Escaltion Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -65,7 +65,7 @@ Page 51516499 "Lead list Escalated"
     }
     trigger OnOpenPage()
     begin
-        SetRange("Caller Reffered To", UserId);
+        Rec.SetRange("Caller Reffered To", UserId);
     end;
 }
 

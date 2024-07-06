@@ -866,10 +866,10 @@ tableextension 51516069 "VendorExt" extends Vendor
                                                                   Reversed = const(false)));
             FieldClass = FlowField;
         }
-field(69082; "Sacco Lawyer"; Boolean)
-{
-    DataClassification = ToBeClassified;
-}
+        field(69082; "Sacco Lawyer"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+        }
         field(51516062; "Do Not Include?"; Boolean)
         {
         }
@@ -1184,17 +1184,15 @@ field(69082; "Sacco Lawyer"; Boolean)
     var
         Vend: Record Vendor;
     begin
-        with Vend do begin
-            Vend := Rec;
+        Vend := Rec;
+        PurchSetup.Get;
+        PurchSetup.TestField("Vendor Nos.");
+        if NoSeriesMgt.SelectSeries(PurchSetup."Vendor Nos.", OldVend."No. Series", Vend."No. Series") then begin
             PurchSetup.Get;
             PurchSetup.TestField("Vendor Nos.");
-            if NoSeriesMgt.SelectSeries(PurchSetup."Vendor Nos.", OldVend."No. Series", "No. Series") then begin
-                PurchSetup.Get;
-                PurchSetup.TestField("Vendor Nos.");
-                NoSeriesMgt.SetSeries("No.");
-                Rec := Vend;
-                exit(true);
-            end;
+            NoSeriesMgt.SetSeries(Vend."No.");
+            Rec := Vend;
+            exit(true);
         end;
     end;
 
@@ -1246,12 +1244,10 @@ field(69082; "Sacco Lawyer"; Boolean)
 
     procedure CheckBlockedVendOnJnls(Vend2: Record Vendor; DocType: Option " ",Payment,Invoice,"Credit Memo","Finance Charge Memo",Reminder,Refund; Transaction: Boolean)
     begin
-        with Vend2 do begin
-            if (Blocked = Blocked::All) or
-               (Blocked = Blocked::Payment) and (DocType = Doctype::Payment)
-            then
-                VendBlockedErrorMessage(Vend2, Transaction);
-        end;
+        if (Vend2.Blocked = Vend2.Blocked::All) or
+   (Vend2.Blocked = Vend2.Blocked::Payment) and (DocType = Doctype::Payment)
+then
+            Vend2.VendBlockedErrorMessage(Vend2, Transaction);
     end;
 
 

@@ -4,26 +4,26 @@ Table 51516343 "Data PeriodsX"
 
     fields
     {
-        field(1;"Period Code";Code[10])
+        field(1; "Period Code"; Code[10])
         {
         }
-        field(2;"Begin Date";Date)
+        field(2; "Begin Date"; Date)
         {
         }
-        field(3;"End Date";Date)
+        field(3; "End Date"; Date)
         {
         }
-        field(4;Month;Code[20])
+        field(4; Month; Code[20])
         {
         }
-        field(5;"Payroll Month";Code[10])
+        field(5; "Payroll Month"; Code[10])
         {
         }
     }
 
     keys
     {
-        key(Key1;"Period Code")
+        key(Key1; "Period Code")
         {
             Clustered = true;
         }

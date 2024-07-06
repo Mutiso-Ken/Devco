@@ -6,389 +6,389 @@ Report 51516139 "Loans Provisioning Summary"
 
     dataset
     {
-        dataitem(Loans;"Loans Register")
+        dataitem(Loans; "Loans Register")
         {
-            DataItemTableView = where(Posted=const(true),"Outstanding Balance"=filter(<>0));
-            RequestFilterFields = "Loan Product Type","Issued Date",Source;
+            DataItemTableView = where(Posted = const(true), "Outstanding Balance" = filter(<> 0));
+            RequestFilterFields = "Loan Product Type", "Issued Date", Source;
             column(ReportForNavId_4645; 4645)
             {
             }
-            column(FORMAT_TODAY_0_4_;Format(Today,0,4))
+            column(FORMAT_TODAY_0_4_; Format(Today, 0, 4))
             {
             }
-            column(CurrReport_PAGENO;CurrReport.PageNo)
+            column(CurrReport_PAGENO; CurrReport.PageNo)
             {
             }
-            column(USERID;UserId)
+            column(USERID; UserId)
             {
             }
-            column(COMPANYNAME;COMPANYNAME)
+            column(COMPANYNAME; COMPANYNAME)
             {
             }
-            column(PROVLOSSBAL;PROVLOSSBAL)
+            column(PROVLOSSBAL; PROVLOSSBAL)
             {
             }
-            column(V100;100)
+            column(V100; 100)
             {
             }
-            column(LOSSBAL;LOSSBAL)
+            column(LOSSBAL; LOSSBAL)
             {
             }
-            column(LOSSCOUNT;LOSSCOUNT)
+            column(LOSSCOUNT; LOSSCOUNT)
             {
             }
-            column(DOUBTBAL;DOUBTBAL)
+            column(DOUBTBAL; DOUBTBAL)
             {
             }
-            column(DOUBTCOUNT;DOUBTCOUNT)
+            column(DOUBTCOUNT; DOUBTCOUNT)
             {
             }
-            column(V50;50)
+            column(V50; 50)
             {
             }
-            column(PROVDOUBTBAL;PROVDOUBTBAL)
+            column(PROVDOUBTBAL; PROVDOUBTBAL)
             {
             }
-            column(SUBBAL;SUBBAL)
+            column(SUBBAL; SUBBAL)
             {
             }
-            column(SUBCOUNT;SUBCOUNT)
+            column(SUBCOUNT; SUBCOUNT)
             {
             }
-            column(V25;25)
+            column(V25; 25)
             {
             }
-            column(PROVSUBBAL;PROVSUBBAL)
+            column(PROVSUBBAL; PROVSUBBAL)
             {
             }
-            column(WATCHBAL;WATCHBAL)
+            column(WATCHBAL; WATCHBAL)
             {
             }
-            column(WATCHCOUNT;WATCHCOUNT)
+            column(WATCHCOUNT; WATCHCOUNT)
             {
             }
-            column(V5;5)
+            column(V5; 5)
             {
             }
-            column(PROVWATCHBAL;PROVWATCHBAL)
+            column(PROVWATCHBAL; PROVWATCHBAL)
             {
             }
-            column(PERFOMBAL;PERFOMBAL)
+            column(PERFOMBAL; PERFOMBAL)
             {
             }
-            column(PERFOMCOUNT;PERFOMCOUNT)
+            column(PERFOMCOUNT; PERFOMCOUNT)
             {
             }
-            column(V1;1)
+            column(V1; 1)
             {
             }
-            column(PROVPERFOMBAL;PROVPERFOMBAL)
+            column(PROVPERFOMBAL; PROVPERFOMBAL)
             {
             }
-            column(RESCHEDULE;RESCHEDULE)
+            column(RESCHEDULE; RESCHEDULE)
             {
             }
-            column(V100_Control1102756049;100)
+            column(V100_Control1102756049; 100)
             {
             }
-            column(RESCHEDULE_Control1102756050;RESCHEDULE)
+            column(RESCHEDULE_Control1102756050; RESCHEDULE)
             {
             }
-            column(RESCHEDULE_Control1102756053;RESCHEDULE)
+            column(RESCHEDULE_Control1102756053; RESCHEDULE)
             {
             }
-            column(V50_Control1102756054;50)
+            column(V50_Control1102756054; 50)
             {
             }
-            column(RESCHEDULE_Control1102756055;RESCHEDULE)
+            column(RESCHEDULE_Control1102756055; RESCHEDULE)
             {
             }
-            column(RESCHEDULE_Control1102756056;RESCHEDULE)
+            column(RESCHEDULE_Control1102756056; RESCHEDULE)
             {
             }
-            column(RESCHEDULE_Control1102756060;RESCHEDULE)
+            column(RESCHEDULE_Control1102756060; RESCHEDULE)
             {
             }
-            column(RESCHEDULE_Control1102756061;RESCHEDULE)
+            column(RESCHEDULE_Control1102756061; RESCHEDULE)
             {
             }
-            column(RESCHEDULE_Control1102756062;RESCHEDULE)
+            column(RESCHEDULE_Control1102756062; RESCHEDULE)
             {
             }
-            column(V25_Control1102756063;25)
+            column(V25_Control1102756063; 25)
             {
             }
-            column(RESCHEDULE_Control1102756066;RESCHEDULE)
+            column(RESCHEDULE_Control1102756066; RESCHEDULE)
             {
             }
-            column(RESCHEDULE_Control1102756067;RESCHEDULE)
+            column(RESCHEDULE_Control1102756067; RESCHEDULE)
             {
             }
-            column(RESCHEDULE_Control1102756068;RESCHEDULE)
+            column(RESCHEDULE_Control1102756068; RESCHEDULE)
             {
             }
-            column(V5_Control1102756069;5)
+            column(V5_Control1102756069; 5)
             {
             }
-            column(RESCHEDULE_Control1102756072;RESCHEDULE)
+            column(RESCHEDULE_Control1102756072; RESCHEDULE)
             {
             }
-            column(RESCHEDULE_Control1102756073;RESCHEDULE)
+            column(RESCHEDULE_Control1102756073; RESCHEDULE)
             {
             }
-            column(RESCHEDULE_Control1102756074;RESCHEDULE)
+            column(RESCHEDULE_Control1102756074; RESCHEDULE)
             {
             }
-            column(V0_Control1102756075;1)
+            column(V0_Control1102756075; 1)
             {
             }
-            column(RESCHEDULE_Control1102756086;RESCHEDULE)
+            column(RESCHEDULE_Control1102756086; RESCHEDULE)
             {
             }
-            column(Tcount;Tcount)
+            column(Tcount; Tcount)
             {
             }
-            column(Portfolio;Portfolio)
+            column(Portfolio; Portfolio)
             {
             }
-            column(Tprovision;Tprovision)
+            column(Tprovision; Tprovision)
             {
             }
-            column(CurrReport_PAGENOCaption;CurrReport_PAGENOCaptionLbl)
+            column(CurrReport_PAGENOCaption; CurrReport_PAGENOCaptionLbl)
             {
             }
-            column(RISK_CLASSIFICATION_OF_ASSETS_AND_PROVISIONINGCaption;RISK_CLASSIFICATION_OF_ASSETS_AND_PROVISIONINGCaptionLbl)
+            column(RISK_CLASSIFICATION_OF_ASSETS_AND_PROVISIONINGCaption; RISK_CLASSIFICATION_OF_ASSETS_AND_PROVISIONINGCaptionLbl)
             {
             }
-            column(FORM_4Caption;FORM_4CaptionLbl)
+            column(FORM_4Caption; FORM_4CaptionLbl)
             {
             }
-            column(SASRA_2_004Caption;SASRA_2_004CaptionLbl)
+            column(SASRA_2_004Caption; SASRA_2_004CaptionLbl)
             {
             }
-            column(R__46_Caption;R__46_CaptionLbl)
+            column(R__46_Caption; R__46_CaptionLbl)
             {
             }
-            column(No__of_A_C_sCaption;No__of_A_C_sCaptionLbl)
+            column(No__of_A_C_sCaption; No__of_A_C_sCaptionLbl)
             {
             }
-            column(Outstanding_Loan_Portfolio__Kshs__Caption;Outstanding_Loan_Portfolio__Kshs__CaptionLbl)
+            column(Outstanding_Loan_Portfolio__Kshs__Caption; Outstanding_Loan_Portfolio__Kshs__CaptionLbl)
             {
             }
-            column(Required_Provision____Caption;Required_Provision____CaptionLbl)
+            column(Required_Provision____Caption; Required_Provision____CaptionLbl)
             {
             }
-            column(Required_Provision_Amount__Kshs__Caption;Required_Provision_Amount__Kshs__CaptionLbl)
+            column(Required_Provision_Amount__Kshs__Caption; Required_Provision_Amount__Kshs__CaptionLbl)
             {
             }
-            column(ClassificationCaption;ClassificationCaptionLbl)
+            column(ClassificationCaption; ClassificationCaptionLbl)
             {
             }
-            column(No_Caption;No_CaptionLbl)
+            column(No_Caption; No_CaptionLbl)
             {
             }
-            column(ACaption;ACaptionLbl)
+            column(ACaption; ACaptionLbl)
             {
             }
-            column(BCaption;BCaptionLbl)
+            column(BCaption; BCaptionLbl)
             {
             }
-            column(CCaption;CCaptionLbl)
+            column(CCaption; CCaptionLbl)
             {
             }
-            column(DCaption;DCaptionLbl)
+            column(DCaption; DCaptionLbl)
             {
             }
-            column(PORTFOLIO_AGEING_REPORTCaption;PORTFOLIO_AGEING_REPORTCaptionLbl)
+            column(PORTFOLIO_AGEING_REPORTCaption; PORTFOLIO_AGEING_REPORTCaptionLbl)
             {
             }
-            column(LossCaption;LossCaptionLbl)
+            column(LossCaption; LossCaptionLbl)
             {
             }
-            column(DoubtfulCaption;DoubtfulCaptionLbl)
+            column(DoubtfulCaption; DoubtfulCaptionLbl)
             {
             }
-            column(SubstandardCaption;SubstandardCaptionLbl)
+            column(SubstandardCaption; SubstandardCaptionLbl)
             {
             }
-            column(WatchCaption;WatchCaptionLbl)
+            column(WatchCaption; WatchCaptionLbl)
             {
             }
-            column(PerfomingCaption;PerfomingCaptionLbl)
+            column(PerfomingCaption; PerfomingCaptionLbl)
             {
             }
-            column(V1Caption;V1CaptionLbl)
+            column(V1Caption; V1CaptionLbl)
             {
             }
-            column(V2Caption;V2CaptionLbl)
+            column(V2Caption; V2CaptionLbl)
             {
             }
-            column(V3Caption;V3CaptionLbl)
+            column(V3Caption; V3CaptionLbl)
             {
             }
-            column(V4Caption;V4CaptionLbl)
+            column(V4Caption; V4CaptionLbl)
             {
             }
-            column(V5Caption;V5CaptionLbl)
+            column(V5Caption; V5CaptionLbl)
             {
             }
-            column(LossCaption_Control1102756051;LossCaption_Control1102756051Lbl)
+            column(LossCaption_Control1102756051; LossCaption_Control1102756051Lbl)
             {
             }
-            column(DoubtfulCaption_Control1102756052;DoubtfulCaption_Control1102756052Lbl)
+            column(DoubtfulCaption_Control1102756052; DoubtfulCaption_Control1102756052Lbl)
             {
             }
-            column(V4Caption_Control1102756057;V4Caption_Control1102756057Lbl)
+            column(V4Caption_Control1102756057; V4Caption_Control1102756057Lbl)
             {
             }
-            column(V5Caption_Control1102756058;V5Caption_Control1102756058Lbl)
+            column(V5Caption_Control1102756058; V5Caption_Control1102756058Lbl)
             {
             }
-            column(SubstandardCaption_Control1102756059;SubstandardCaption_Control1102756059Lbl)
+            column(SubstandardCaption_Control1102756059; SubstandardCaption_Control1102756059Lbl)
             {
             }
-            column(V3Caption_Control1102756064;V3Caption_Control1102756064Lbl)
+            column(V3Caption_Control1102756064; V3Caption_Control1102756064Lbl)
             {
             }
-            column(WatchCaption_Control1102756065;WatchCaption_Control1102756065Lbl)
+            column(WatchCaption_Control1102756065; WatchCaption_Control1102756065Lbl)
             {
             }
-            column(V2Caption_Control1102756070;V2Caption_Control1102756070Lbl)
+            column(V2Caption_Control1102756070; V2Caption_Control1102756070Lbl)
             {
             }
-            column(PerfomingCaption_Control1102756071;PerfomingCaption_Control1102756071Lbl)
+            column(PerfomingCaption_Control1102756071; PerfomingCaption_Control1102756071Lbl)
             {
             }
-            column(V1Caption_Control1102756076;V1Caption_Control1102756076Lbl)
+            column(V1Caption_Control1102756076; V1Caption_Control1102756076Lbl)
             {
             }
-            column(Rescheduled_Renegotiated_LoansCaption;Rescheduled_Renegotiated_LoansCaptionLbl)
+            column(Rescheduled_Renegotiated_LoansCaption; Rescheduled_Renegotiated_LoansCaptionLbl)
             {
             }
-            column(Sub_TotalCaption;Sub_TotalCaptionLbl)
+            column(Sub_TotalCaption; Sub_TotalCaptionLbl)
             {
             }
-            column(AUTHORIZATIONCaption;AUTHORIZATIONCaptionLbl)
+            column(AUTHORIZATIONCaption; AUTHORIZATIONCaptionLbl)
             {
             }
-            column(We_declare_that_this_return__to_the_best_of_our_knowledge_and_belief_is_correct_Caption;We_declare_that_this_return__to_the_best_of_our_knowledge_and_belief_is_correct_CaptionLbl)
+            column(We_declare_that_this_return__to_the_best_of_our_knowledge_and_belief_is_correct_Caption; We_declare_that_this_return__to_the_best_of_our_knowledge_and_belief_is_correct_CaptionLbl)
             {
             }
-            column(Sign__________________________________________________Date_____________________________Caption;Sign__________________________________________________Date_____________________________CaptionLbl)
+            column(Sign__________________________________________________Date_____________________________Caption; Sign__________________________________________________Date_____________________________CaptionLbl)
             {
             }
-            column(Name_of_Authorizing_OfficerCaption;Name_of_Authorizing_OfficerCaptionLbl)
+            column(Name_of_Authorizing_OfficerCaption; Name_of_Authorizing_OfficerCaptionLbl)
             {
             }
-            column(Sign__________________________________________________Date_____________________________Caption_Control1102756084;Sign__________________________________________________Date_____________________________Caption_Control1102756084Lbl)
+            column(Sign__________________________________________________Date_____________________________Caption_Control1102756084; Sign__________________________________________________Date_____________________________Caption_Control1102756084Lbl)
             {
             }
-            column(Name_of_Counter_Signing_OfficerCaption;Name_of_Counter_Signing_OfficerCaptionLbl)
+            column(Name_of_Counter_Signing_OfficerCaption; Name_of_Counter_Signing_OfficerCaptionLbl)
             {
             }
-            column(Loans_Loan__No_;"Loan  No.")
+            column(Loans_Loan__No_; "Loan  No.")
             {
             }
 
             trigger OnAfterGetRecord()
             begin
-                 //PERFOMING LOANS
-                 LoansT.Reset;
-                 LoansT.SetRange(LoansT."Loan  No.",Loans."Loan  No.");
-                 LoansT.SetRange(LoansT."Loans Category-SASRA",LoansT."loans category-sasra"::Perfoming);
-                 if LoansT.Find('-') then begin
-                 LoansT.CalcFields(LoansT."Outstanding Balance");
-                 repeat
-                if LoansT."Outstanding Balance"<>0 then begin
-                // IF LoansT."Static Balance"<>0 THEN BEGIN
-                PERFOMBAL:=PERFOMBAL+LoansT."Outstanding Balance";
-                PERFOMCOUNT:=PERFOMCOUNT+1;
-                PROVPERFOMBAL:=PERFOMBAL*0.01;
-                 end;
-                until LoansT.Next=0;
+                //PERFOMING LOANS
+                LoansT.Reset;
+                LoansT.SetRange(LoansT."Loan  No.", Loans."Loan  No.");
+                LoansT.SetRange(LoansT."Loans Category-SASRA", LoansT."loans category-sasra"::Perfoming);
+                if LoansT.Find('-') then begin
+                    LoansT.CalcFields(LoansT."Outstanding Balance");
+                    repeat
+                        if LoansT."Outstanding Balance" <> 0 then begin
+                            // IF LoansT."Static Balance"<>0 THEN BEGIN
+                            PERFOMBAL := PERFOMBAL + LoansT."Outstanding Balance";
+                            PERFOMCOUNT := PERFOMCOUNT + 1;
+                            PROVPERFOMBAL := PERFOMBAL * 0.01;
+                        end;
+                    until LoansT.Next = 0;
                 end;
 
 
                 //WATCH LOANS
 
-                 LoansT.Reset;
-                 LoansT.SetRange(LoansT."Loan  No.",Loans."Loan  No.");
-                 LoansT.SetRange(LoansT."Loans Category-SASRA",LoansT."loans category-sasra"::Watch);
-                 if LoansT.Find('-') then begin
-                 LoansT.CalcFields(LoansT."Outstanding Balance");
-                 repeat
-                 if LoansT."Outstanding Balance"<>0 then begin
-                 //IF LoansT."Static Balance"<>0 THEN BEGIN
-                WATCHBAL:=WATCHBAL+LoansT."Outstanding Balance";
-                WATCHCOUNT:=WATCHCOUNT+1;
-                PROVWATCHBAL:=WATCHBAL*0.05;
-                 end;
-                until LoansT.Next=0;
+                LoansT.Reset;
+                LoansT.SetRange(LoansT."Loan  No.", Loans."Loan  No.");
+                LoansT.SetRange(LoansT."Loans Category-SASRA", LoansT."loans category-sasra"::Watch);
+                if LoansT.Find('-') then begin
+                    LoansT.CalcFields(LoansT."Outstanding Balance");
+                    repeat
+                        if LoansT."Outstanding Balance" <> 0 then begin
+                            //IF LoansT."Static Balance"<>0 THEN BEGIN
+                            WATCHBAL := WATCHBAL + LoansT."Outstanding Balance";
+                            WATCHCOUNT := WATCHCOUNT + 1;
+                            PROVWATCHBAL := WATCHBAL * 0.05;
+                        end;
+                    until LoansT.Next = 0;
                 end;
 
                 //SUBSTANDARD LOANS
-                 LoansT.Reset;
-                 LoansT.SetRange(LoansT."Loan  No.",Loans."Loan  No.");
-                 LoansT.SetRange(LoansT."Loans Category-SASRA",LoansT."loans category-sasra"::Substandard);
-                 if LoansT.Find('-') then begin
-                 LoansT.CalcFields(LoansT."Outstanding Balance");
-                 repeat
-                if LoansT."Outstanding Balance"<>0 then begin
-                // IF LoansT."Static Balance"<>0 THEN BEGIN
+                LoansT.Reset;
+                LoansT.SetRange(LoansT."Loan  No.", Loans."Loan  No.");
+                LoansT.SetRange(LoansT."Loans Category-SASRA", LoansT."loans category-sasra"::Substandard);
+                if LoansT.Find('-') then begin
+                    LoansT.CalcFields(LoansT."Outstanding Balance");
+                    repeat
+                        if LoansT."Outstanding Balance" <> 0 then begin
+                            // IF LoansT."Static Balance"<>0 THEN BEGIN
 
-                SUBBAL:=SUBBAL+LoansT."Outstanding Balance";
-                SUBCOUNT:=SUBCOUNT+1;
-                PROVSUBBAL:=SUBBAL*0.25;
-                 end;
-                until LoansT.Next=0;
+                            SUBBAL := SUBBAL + LoansT."Outstanding Balance";
+                            SUBCOUNT := SUBCOUNT + 1;
+                            PROVSUBBAL := SUBBAL * 0.25;
+                        end;
+                    until LoansT.Next = 0;
                 end;
 
                 //DOUBTFUL LOANS
 
-                 LoansT.Reset;
-                 LoansT.SetRange(LoansT."Loan  No.",Loans."Loan  No.");
-                 LoansT.SetRange(LoansT."Loans Category-SASRA",LoansT."loans category-sasra"::Doubtful);
-                 if LoansT.Find('-') then begin
-                 LoansT.CalcFields(LoansT."Outstanding Balance");
-                 repeat
-                 if LoansT."Outstanding Balance"<>0 then begin
-                 //IF LoansT."Static Balance"<>0 THEN BEGIN
+                LoansT.Reset;
+                LoansT.SetRange(LoansT."Loan  No.", Loans."Loan  No.");
+                LoansT.SetRange(LoansT."Loans Category-SASRA", LoansT."loans category-sasra"::Doubtful);
+                if LoansT.Find('-') then begin
+                    LoansT.CalcFields(LoansT."Outstanding Balance");
+                    repeat
+                        if LoansT."Outstanding Balance" <> 0 then begin
+                            //IF LoansT."Static Balance"<>0 THEN BEGIN
 
-                DOUBTBAL:=DOUBTBAL+LoansT."Outstanding Balance";
-                DOUBTCOUNT:=DOUBTCOUNT+1;
-                PROVDOUBTBAL:=DOUBTBAL*0.5;
-                 end;
-                until LoansT.Next=0;
+                            DOUBTBAL := DOUBTBAL + LoansT."Outstanding Balance";
+                            DOUBTCOUNT := DOUBTCOUNT + 1;
+                            PROVDOUBTBAL := DOUBTBAL * 0.5;
+                        end;
+                    until LoansT.Next = 0;
                 end;
 
 
-                 // LOSS LOANS
+                // LOSS LOANS
 
-                 LoansT.Reset;
-                 LoansT.SetRange(LoansT."Loan  No.",Loans."Loan  No.");
-                 LoansT.SetRange(LoansT."Loans Category-SASRA",LoansT."loans category-sasra"::Loss);
-                 if LoansT.Find('-') then begin
-                 LoansT.CalcFields(LoansT."Outstanding Balance");
-                 repeat
-                 if LoansT."Outstanding Balance"<>0 then begin
-                 //IF LoansT."Static Balance"<>0 THEN BEGIN
+                LoansT.Reset;
+                LoansT.SetRange(LoansT."Loan  No.", Loans."Loan  No.");
+                LoansT.SetRange(LoansT."Loans Category-SASRA", LoansT."loans category-sasra"::Loss);
+                if LoansT.Find('-') then begin
+                    LoansT.CalcFields(LoansT."Outstanding Balance");
+                    repeat
+                        if LoansT."Outstanding Balance" <> 0 then begin
+                            //IF LoansT."Static Balance"<>0 THEN BEGIN
 
-                LOSSBAL:=LOSSBAL+LoansT."Outstanding Balance";
-                LOSSCOUNT:=LOSSCOUNT+1;
-                PROVLOSSBAL:=LOSSBAL*1.0;
-                 end;
-                until LoansT.Next=0;
+                            LOSSBAL := LOSSBAL + LoansT."Outstanding Balance";
+                            LOSSCOUNT := LOSSCOUNT + 1;
+                            PROVLOSSBAL := LOSSBAL * 1.0;
+                        end;
+                    until LoansT.Next = 0;
                 end;
 
-                Tcount:=PERFOMCOUNT+WATCHCOUNT+SUBCOUNT+DOUBTCOUNT+LOSSCOUNT;
-                Portfolio:=PERFOMBAL+WATCHBAL+SUBBAL+DOUBTBAL+LOSSBAL;
-                Tprovision:=PROVPERFOMBAL+PROVWATCHBAL+PROVSUBBAL+PROVDOUBTBAL+PROVLOSSBAL;
+                Tcount := PERFOMCOUNT + WATCHCOUNT + SUBCOUNT + DOUBTCOUNT + LOSSCOUNT;
+                Portfolio := PERFOMBAL + WATCHBAL + SUBBAL + DOUBTBAL + LOSSBAL;
+                Tprovision := PROVPERFOMBAL + PROVWATCHBAL + PROVSUBBAL + PROVDOUBTBAL + PROVLOSSBAL;
             end;
 
             trigger OnPreDataItem()
             begin
-                 // CurrReport.CREATETOTALS(PERFOMBAL,WATCHBAL,SUBBAL,DOUBTBAL,LOSSBAL,PROVPERFOMBAL,PROVWATCHBAL,
-                  //PROVSUBBAL,PROVDOUBTBAL,PROVLOSSBAL);
+                // CurrReport.CREATETOTALS(PERFOMBAL,WATCHBAL,SUBBAL,DOUBTBAL,LOSSBAL,PROVPERFOMBAL,PROVWATCHBAL,
+                //PROVSUBBAL,PROVDOUBTBAL,PROVLOSSBAL);
             end;
         }
     }

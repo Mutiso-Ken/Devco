@@ -10,83 +10,83 @@ Page 51516040 "ABC ATM Transactions"
         {
             repeater(Group)
             {
-                field(Entry;Entry)
+                field(Entry; Rec.Entry)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Trace ID";"Trace ID")
+                field("Trace ID"; Rec."Trace ID")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No";"Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; Rec."Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Date";"Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Type";"Transaction Type")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Telephone Number";"Telephone Number")
+                field("Telephone Number"; Rec."Telephone Number")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted;Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Posted";"Date Posted")
+                field("Date Posted"; Rec."Date Posted")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ATM Card No";"ATM Card No")
+                field("ATM Card No"; Rec."ATM Card No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Credit Account";"Credit Account")
+                field("Credit Account"; Rec."Credit Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Comments;Comments)
+                field(Comments; Rec.Comments)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Time";"Transaction Time")
+                field("Transaction Time"; Rec."Transaction Time")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Charge;Charge)
+                field(Charge; Rec.Charge)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Client;Client)
+                field(Client; Rec.Client)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Date";"Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("POS Trans";"POS Trans")
+                field("POS Trans"; Rec."POS Trans")
                 {
                     ApplicationArea = Basic;
                 }
@@ -94,7 +94,7 @@ Page 51516040 "ABC ATM Transactions"
         }
         area(factboxes)
         {
-            systempart(Control1120054023;Notes)
+            systempart(Control1120054023; Notes)
             {
             }
         }

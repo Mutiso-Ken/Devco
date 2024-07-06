@@ -55,7 +55,7 @@ Codeunit 51516000 "Funds Management"
         GenJnlLine."Line No." := LineNo;
         GenJnlLine."Source Code" := SourceCode;
         GenJnlLine."Posting Date" := PaymentHeader."Posting Date";
-       
+
         // if CustomerLinesExist(PaymentHeader) then
         //     GenJnlLine."Document Type" := GenJnlLine."document type"::" "
         // else
@@ -116,7 +116,7 @@ Codeunit 51516000 "Funds Management"
                 GenJnlLine."Line No." := LineNo;
                 GenJnlLine."Posting Date" := PaymentHeader."Posting Date";
                 GenJnlLine."Document No." := PaymentLine."Document No";
-                     
+
                 GenJnlLine."Posting Group" := PaymentLine."Default Grouping";    //Posting Group
                 // if CustomerLinesExist(PaymentHeader) then
                 //     GenJnlLine."Document Type" := GenJnlLine."document type"::" "
@@ -157,7 +157,7 @@ Codeunit 51516000 "Funds Management"
                 GenJnlLine.ValidateShortcutDimCode(8, PaymentHeader."Shortcut Dimension 8 Code");
                 GenJnlLine.Description := PaymentLine."Payment Description";//COPYSTR(PaymentHeader."Payment Description",1,50);
                                                                             //GenJnlLine.VALIDATE(GenJnlLine.Description);
-                // GenJnlLine."Applies-to Doc. Type" := GenJnlLine."applies-to doc. type"::Invoice;
+                                                                            // GenJnlLine."Applies-to Doc. Type" := GenJnlLine."applies-to doc. type"::Invoice;
                 GenJnlLine."Applies-to Doc. No." := PaymentLine."Applies-to Doc. No.";
                 GenJnlLine.Validate(GenJnlLine."Applies-to Doc. No.");
                 GenJnlLine."Applies-to ID" := PaymentLine."Applies-to ID";
@@ -411,8 +411,8 @@ Codeunit 51516000 "Funds Management"
         //Before posting if its computer cheque,print the cheque
         // if (PaymentHeader."Payment Mode" = PaymentHeader."payment mode"::Cheque) and
         // (PaymentHeader."Cheque Type" = PaymentHeader."cheque type"::"Computer Cheque") then begin
-            // DocPrint.PrintCheck(GenJnlLine);
-            // Codeunit.Run(Codeunit::"Adjust Gen. Journal Balance", GenJnlLine);
+        // DocPrint.PrintCheck(GenJnlLine);
+        // Codeunit.Run(Codeunit::"Adjust Gen. Journal Balance", GenJnlLine);
         // end;
         //Now Post the Journal Lines
         Codeunit.Run(Codeunit::"Gen. Jnl.-Post", GenJnlLine);

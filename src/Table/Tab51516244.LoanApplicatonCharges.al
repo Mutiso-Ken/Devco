@@ -4,54 +4,54 @@ Table 51516244 "Loan Applicaton Charges"
 
     fields
     {
-        field(1;"Loan No";Code[20])
+        field(1; "Loan No"; Code[20])
         {
             NotBlank = true;
             TableRelation = "Absence Preferences"."Include Weekends";
         }
-        field(2;Description;Text[30])
+        field(2; Description; Text[30])
         {
         }
-        field(3;Amount;Decimal)
+        field(3; Amount; Decimal)
         {
         }
-        field(4;"Code";Code[20])
+        field(4; "Code"; Code[20])
         {
-           // TableRelation = Table51516173.Field2;
+            // TableRelation = Table51516173.Field2;
         }
-        field(5;"Use Perc";Boolean)
+        field(5; "Use Perc"; Boolean)
         {
         }
-        field(6;"Perc (%)";Decimal)
+        field(6; "Perc (%)"; Decimal)
         {
 
             trigger OnValidate()
             begin
                 if "Use Perc" = true then begin
-                if Loans.Get("Loan No") then
-                Amount:=Loans."Approved Amount"*"Perc (%)"*0.01;
+                    if Loans.Get("Loan No") then
+                        Amount := Loans."Approved Amount" * "Perc (%)" * 0.01;
                 end else
-                Error('Only applicable for charges where percentage is applicable.');
+                    Error('Only applicable for charges where percentage is applicable.');
             end;
         }
-        field(7;"G/L Account";Code[20])
+        field(7; "G/L Account"; Code[20])
         {
         }
-        field(8;"Paid Before Disb.";Boolean)
+        field(8; "Paid Before Disb."; Boolean)
         {
         }
-        field(9;"Loan Type";Code[20])
+        field(9; "Loan Type"; Code[20])
         {
         }
     }
 
     keys
     {
-        key(Key1;"Loan No",Description)
+        key(Key1; "Loan No", Description)
         {
             Clustered = true;
         }
-        key(Key2;"Loan No","G/L Account")
+        key(Key2; "Loan No", "G/L Account")
         {
         }
     }

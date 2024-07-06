@@ -4,21 +4,21 @@ Table 51516869 "Project General Setup"
 
     fields
     {
-        field(10;"Primary Key";Code[10])
+        field(10; "Primary Key"; Code[10])
         {
         }
-        field(11;"Project Nos";Code[20])
+        field(11; "Project Nos"; Code[20])
         {
             TableRelation = "No. Series".Code;
         }
-        field(12;"Auto Allocate Cost";Boolean)
+        field(12; "Auto Allocate Cost"; Boolean)
         {
         }
-        field(13;"Depreciation Book";Code[20])
+        field(13; "Depreciation Book"; Code[20])
         {
             TableRelation = "Depreciation Book".Code;
         }
-        field(14;"Projects Analysis Code";Code[20])
+        field(14; "Projects Analysis Code"; Code[20])
         {
             //TableRelation = Dimension.Code where (Field51516830=const(Yes));
         }
@@ -26,7 +26,7 @@ Table 51516869 "Project General Setup"
 
     keys
     {
-        key(Key1;"Primary Key")
+        key(Key1; "Primary Key")
         {
             Clustered = true;
         }

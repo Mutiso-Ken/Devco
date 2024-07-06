@@ -11,61 +11,61 @@ Page 51516516 "Member Acc. Signatory Change"
         {
             repeater(Control1102760000)
             {
-                field("Member No."; "Member No.")
+                field("Member No."; Rec."Member No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Names; Names)
+                field(Names; Rec.Names)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mobile Phone No"; "Mobile Phone No")
+                field("Mobile Phone No"; Rec."Mobile Phone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No."; "ID No.")
+                field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
 
                     trigger OnValidate()
                     begin
                         CUST.Reset;
-                        CUST.SetRange(CUST."ID No.", "ID No.");
+                        CUST.SetRange(CUST."ID No.", Rec."ID No.");
                         if CUST.Find('-') then begin
-                            "Member No." := CUST."No.";
-                            Modify;
+                            Rec."Member No." := CUST."No.";
+                            Rec.Modify;
                         end;
                     end;
                 }
-                field("Date Of Birth"; "Date Of Birth")
+                field("Date Of Birth"; Rec."Date Of Birth")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Must Sign"; "Must Sign")
+                field("Must Sign"; Rec."Must Sign")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Must be Present"; "Must be Present")
+                field("Must be Present"; Rec."Must be Present")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Withdrawal Limit"; "Withdrawal Limit")
+                field("Withdrawal Limit"; Rec."Withdrawal Limit")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mobile Banking Limit"; "Mobile Banking Limit")
+                field("Mobile Banking Limit"; Rec."Mobile Banking Limit")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Signed Up For Mobile Banking"; "Signed Up For Mobile Banking")
+                field("Signed Up For Mobile Banking"; Rec."Signed Up For Mobile Banking")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Email Address"; "Email Address")
+                field("Email Address"; Rec."Email Address")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Expiry Date"; "Expiry Date")
+                field("Expiry Date"; Rec."Expiry Date")
                 {
                     ApplicationArea = Basic;
                 }
@@ -80,7 +80,7 @@ Page 51516516 "Member Acc. Signatory Change"
     trigger OnOpenPage()
     begin
         MemberApp.Reset;
-        MemberApp.SetRange(MemberApp."No.", "Account No");
+        MemberApp.SetRange(MemberApp."No.", Rec."Account No");
         if MemberApp.Find('-') then begin
             if MemberApp.Status = MemberApp.Status::Approved then begin
                 CurrPage.Editable := false;

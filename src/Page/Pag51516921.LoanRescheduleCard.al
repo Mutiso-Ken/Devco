@@ -14,76 +14,76 @@ Page 51516921 "Loan Reschedule Card"
             group(General)
             {
                 Caption = 'General';
-                field("Loan  No."; "Loan  No.")
+                field("Loan  No."; Rec."Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Staff No"; "Staff No")
+                field("Staff No"; Rec."Staff No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Staff No';
                     Editable = false;
                 }
-                field("Client Code"; "Client Code")
+                field("Client Code"; Rec."Client Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member';
                     Editable = MNoEditable;
                 }
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = Basic;
                     Editable = AccountNoEditable;
                 }
-                field("Client Name"; "Client Name")
+                field("Client Name"; Rec."Client Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("ID NO"; "ID NO")
+                field("ID NO"; Rec."ID NO")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Member Deposits"; "Member Deposits")
+                field("Member Deposits"; Rec."Member Deposits")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Application Date"; "Application Date")
+                field("Application Date"; Rec."Application Date")
                 {
                     ApplicationArea = Basic;
                     Editable = ApplcDateEditable;
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Loan Product Type"; "Loan Product Type")
+                field("Loan Product Type"; Rec."Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Installments; Installments)
+                field(Installments; Rec.Installments)
                 {
                     ApplicationArea = Basic;
                     Editable = InstallmentEditable;
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field(Interest; Interest)
+                field(Interest; Rec.Interest)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Reason For Loan Reschedule"; "Reason For Loan Reschedule")
+                field("Reason For Loan Reschedule"; Rec."Reason For Loan Reschedule")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Requested Amount"; "Requested Amount")
+                field("Requested Amount"; Rec."Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Amount Applied';
@@ -91,16 +91,16 @@ Page 51516921 "Loan Reschedule Card"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Recommended Amount"; "Recommended Amount")
+                field("Recommended Amount"; Rec."Recommended Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Qualifying Amount';
                     Editable = false;
                 }
-                field("Approved Amount"; "Approved Amount")
+                field("Approved Amount"; Rec."Approved Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Approved Amount';
@@ -108,37 +108,37 @@ Page 51516921 "Loan Reschedule Card"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted, false);
+                        Rec.TestField(Posted, false);
                     end;
                 }
-                field("Loan Purpose"; "Loan Purpose")
+                field("Loan Purpose"; Rec."Loan Purpose")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                     Visible = true;
                 }
-                field(Remarks; Remarks)
+                field(Remarks; Rec.Remarks)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                     Visible = true;
                 }
-                field("Repayment Method"; "Repayment Method")
+                field("Repayment Method"; Rec."Repayment Method")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Repayment; Repayment)
+                field(Repayment; Rec.Repayment)
                 {
                     ApplicationArea = Basic;
                     Editable = RepaymentEditable;
                 }
-                field("Approved Repayment"; "Approved Repayment")
+                field("Approved Repayment"; Rec."Approved Repayment")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Loan Status"; "Loan Status")
+                field("Loan Status"; Rec."Loan Status")
                 {
                     ApplicationArea = Basic;
 
@@ -147,87 +147,87 @@ Page 51516921 "Loan Reschedule Card"
                         UpdateControl();
                     end;
                 }
-                field("Batch No."; "Batch No.")
+                field("Batch No."; Rec."Batch No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Captured By"; "Captured By")
+                field("Captured By"; Rec."Captured By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Top Up Amount"; "Top Up Amount")
+                field("Top Up Amount"; Rec."Top Up Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Top Up Amount';
                 }
-                field("Total TopUp Commission"; "Total TopUp Commission")
+                field("Total TopUp Commission"; Rec."Total TopUp Commission")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Total TopUp Interest';
                 }
-                field("Repayment Frequency"; "Repayment Frequency")
+                field("Repayment Frequency"; Rec."Repayment Frequency")
                 {
                     ApplicationArea = Basic;
                     Editable = RepayFrequencyEditable;
                 }
-                field("Mode of Disbursement"; "Mode of Disbursement")
+                field("Mode of Disbursement"; Rec."Mode of Disbursement")
                 {
                     ApplicationArea = Basic;
                     Editable = ModeofDisburesmentEdit;
                 }
-                field("Loan Rescheduled By"; "Loan Rescheduled By")
+                field("Loan Rescheduled By"; Rec."Loan Rescheduled By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Rescheduled Date"; "Loan Rescheduled Date")
+                field("Loan Rescheduled Date"; Rec."Loan Rescheduled Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Loan Disbursement Date"; "Loan Disbursement Date")
+                field("Loan Disbursement Date"; Rec."Loan Disbursement Date")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Cheque No."; "Cheque No.")
+                field("Cheque No."; Rec."Cheque No.")
                 {
                     ApplicationArea = Basic;
                     Visible = true;
 
                     trigger OnValidate()
                     begin
-                        if StrLen("Cheque No.") > 6 then
+                        if StrLen(Rec."Cheque No.") > 6 then
                             Error('Document No. cannot contain More than 6 Characters.');
                     end;
                 }
-                field("Repayment Start Date"; "Repayment Start Date")
+                field("Repayment Start Date"; Rec."Repayment Start Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Expected Date of Completion"; "Expected Date of Completion")
+                field("Expected Date of Completion"; Rec."Expected Date of Completion")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("External EFT"; "External EFT")
+                field("External EFT"; Rec."External EFT")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Posted; Posted)
+                field(Posted; Rec.Posted)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Approval Status"; "Approval Status")
+                field("Approval Status"; Rec."Approval Status")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Rejection  Remark"; "Rejection  Remark")
+                field("Rejection  Remark"; Rec."Rejection  Remark")
                 {
                     ApplicationArea = Basic;
                     Editable = RejectionRemarkEditable;
@@ -270,7 +270,7 @@ Page 51516921 "Loan Reschedule Card"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.", "Client Code");
+                        Cust.SetRange(Cust."No.", Rec."Client Code");
                         Report.Run(51516223, true, false, Cust);
                     end;
                 }
@@ -288,59 +288,59 @@ Page 51516921 "Loan Reschedule Card"
 
                     trigger OnAction()
                     begin
-                        if "Repayment Frequency" = "repayment frequency"::Daily then
+                        if Rec."Repayment Frequency" = Rec."repayment frequency"::Daily then
                             Evaluate(InPeriod, '1D')
                         else
-                            if "Repayment Frequency" = "repayment frequency"::Weekly then
+                            if Rec."Repayment Frequency" = Rec."repayment frequency"::Weekly then
                                 Evaluate(InPeriod, '1W')
                             else
-                                if "Repayment Frequency" = "repayment frequency"::Monthly then
+                                if Rec."Repayment Frequency" = Rec."repayment frequency"::Monthly then
                                     Evaluate(InPeriod, '1M')
                                 else
-                                    if "Repayment Frequency" = "repayment frequency"::Quaterly then
+                                    if Rec."Repayment Frequency" = Rec."repayment frequency"::Quaterly then
                                         Evaluate(InPeriod, '1Q');
 
 
                         QCounter := 0;
                         QCounter := 3;
                         //EVALUATE(InPeriod,'1D');
-                        GrPrinciple := "Grace Period - Principle (M)";
-                        GrInterest := "Grace Period - Interest (M)";
-                        InitialGraceInt := "Grace Period - Interest (M)";
+                        GrPrinciple := Rec."Grace Period - Principle (M)";
+                        GrInterest := Rec."Grace Period - Interest (M)";
+                        InitialGraceInt := Rec."Grace Period - Interest (M)";
 
                         LoansR.Reset;
-                        LoansR.SetRange(LoansR."Loan  No.", "Loan  No.");
+                        LoansR.SetRange(LoansR."Loan  No.", Rec."Loan  No.");
                         if LoansR.Find('-') then begin
 
-                            TestField("Loan Disbursement Date");
-                            TestField("Repayment Start Date");
+                            Rec.TestField("Loan Disbursement Date");
+                            Rec.TestField("Repayment Start Date");
 
                             RSchedule.Reset;
-                            RSchedule.SetRange(RSchedule."Loan No.", "Loan  No.");
+                            RSchedule.SetRange(RSchedule."Loan No.", Rec."Loan  No.");
                             RSchedule.DeleteAll;
 
                             LoanAmount := LoansR."Approved Amount";
                             InterestRate := LoansR.Interest;
                             RepayPeriod := LoansR.Installments;
-                            InitialInstal := LoansR.Installments + "Grace Period - Principle (M)";
+                            InitialInstal := LoansR.Installments + Rec."Grace Period - Principle (M)";
                             LBalance := LoansR."Approved Amount";
                             LNBalance := LoansR."Outstanding Balance";
-                            RunDate := "Repayment Start Date";
+                            RunDate := Rec."Repayment Start Date";
 
                             InstalNo := 0;
                             Evaluate(RepayInterval, '1W');
 
                             //Repayment Frequency
-                            if "Repayment Frequency" = "repayment frequency"::Daily then
+                            if Rec."Repayment Frequency" = Rec."repayment frequency"::Daily then
                                 RunDate := CalcDate('-1D', RunDate)
                             else
-                                if "Repayment Frequency" = "repayment frequency"::Weekly then
+                                if Rec."Repayment Frequency" = Rec."repayment frequency"::Weekly then
                                     RunDate := CalcDate('-1W', RunDate)
                                 else
-                                    if "Repayment Frequency" = "repayment frequency"::Monthly then
+                                    if Rec."Repayment Frequency" = Rec."repayment frequency"::Monthly then
                                         RunDate := CalcDate('-1M', RunDate)
                                     else
-                                        if "Repayment Frequency" = "repayment frequency"::Quaterly then
+                                        if Rec."Repayment Frequency" = Rec."repayment frequency"::Quaterly then
                                             RunDate := CalcDate('-1Q', RunDate);
                             //Repayment Frequency
 
@@ -350,16 +350,16 @@ Page 51516921 "Loan Reschedule Card"
 
 
                                 //*************Repayment Frequency***********************//
-                                if "Repayment Frequency" = "repayment frequency"::Daily then
+                                if Rec."Repayment Frequency" = Rec."repayment frequency"::Daily then
                                     RunDate := CalcDate('1D', RunDate)
                                 else
-                                    if "Repayment Frequency" = "repayment frequency"::Weekly then
+                                    if Rec."Repayment Frequency" = Rec."repayment frequency"::Weekly then
                                         RunDate := CalcDate('1W', RunDate)
                                     else
-                                        if "Repayment Frequency" = "repayment frequency"::Monthly then
+                                        if Rec."Repayment Frequency" = Rec."repayment frequency"::Monthly then
                                             RunDate := CalcDate('1M', RunDate)
                                         else
-                                            if "Repayment Frequency" = "repayment frequency"::Quaterly then
+                                            if Rec."Repayment Frequency" = Rec."repayment frequency"::Quaterly then
                                                 RunDate := CalcDate('1Q', RunDate);
 
 
@@ -368,10 +368,10 @@ Page 51516921 "Loan Reschedule Card"
 
 
                                 //*******************If Amortised****************************//
-                                if "Repayment Method" = "repayment method"::Amortised then begin
-                                    TestField(Installments);
-                                    TestField(Interest);
-                                    TestField(Installments);
+                                if Rec."Repayment Method" = Rec."repayment method"::Amortised then begin
+                                    Rec.TestField(Installments);
+                                    Rec.TestField(Interest);
+                                    Rec.TestField(Installments);
                                     TotalMRepay := ROUND((InterestRate / 12 / 100) / (1 - Power((1 + (InterestRate / 12 / 100)), -RepayPeriod)) * LoanAmount, 1, '>');
                                     TotalMRepay := (InterestRate / 12 / 100) / (1 - Power((1 + (InterestRate / 12 / 100)), -RepayPeriod)) * LoanAmount;
                                     LInterest := ROUND(LBalance / 100 / 12 * InterestRate);
@@ -381,35 +381,35 @@ Page 51516921 "Loan Reschedule Card"
 
 
 
-                                if "Repayment Method" = "repayment method"::"Straight Line" then begin
-                                    TestField(Installments);
+                                if Rec."Repayment Method" = Rec."repayment method"::"Straight Line" then begin
+                                    Rec.TestField(Installments);
                                     LPrincipal := ROUND(LoanAmount / RepayPeriod, 1, '>');
-                                    if ("Loan Product Type" = 'INST') or ("Loan Product Type" = 'MAZAO') then begin
+                                    if (Rec."Loan Product Type" = 'INST') or (Rec."Loan Product Type" = 'MAZAO') then begin
                                         LInterest := 0;
                                     end else begin
                                         LInterest := ROUND((InterestRate / 100) * LoanAmount, 1, '>');
                                     end;
 
-                                    Repayment := LPrincipal + LInterest;
-                                    "Loan Principle Repayment" := LPrincipal;
-                                    "Loan Interest Repayment" := LInterest;
+                                    Rec.Repayment := LPrincipal + LInterest;
+                                    Rec."Loan Principle Repayment" := LPrincipal;
+                                    Rec."Loan Interest Repayment" := LInterest;
                                 end;
 
 
-                                if "Repayment Method" = "repayment method"::"Reducing Balance" then begin
-                                    TestField(Interest);
-                                    TestField(Installments);
+                                if Rec."Repayment Method" = Rec."repayment method"::"Reducing Balance" then begin
+                                    Rec.TestField(Interest);
+                                    Rec.TestField(Installments);
                                     LPrincipal := ROUND(LoanAmount / RepayPeriod, 1, '>');
                                     LInterest := ROUND((InterestRate / 12 / 100) * LBalance, 1, '>');
                                 end;
 
-                                if "Repayment Method" = "repayment method"::Constants then begin
-                                    TestField(Repayment);
-                                    if LBalance < Repayment then
+                                if Rec."Repayment Method" = Rec."repayment method"::Constants then begin
+                                    Rec.TestField(Repayment);
+                                    if LBalance < Rec.Repayment then
                                         LPrincipal := LBalance
                                     else
-                                        LPrincipal := Repayment;
-                                    LInterest := Interest;
+                                        LPrincipal := Rec.Repayment;
+                                    LInterest := Rec.Interest;
                                 end;
 
 
@@ -417,7 +417,7 @@ Page 51516921 "Loan Reschedule Card"
                                 if GrPrinciple > 0 then begin
                                     LPrincipal := 0
                                 end else begin
-                                    if "Instalment Period" <> InPeriod then
+                                    if Rec."Instalment Period" <> InPeriod then
                                         LBalance := LBalance - LPrincipal;
 
                                 end;
@@ -431,12 +431,12 @@ Page 51516921 "Loan Reschedule Card"
                                 //Grace Period
                                 RSchedule.Init;
                                 RSchedule."Repayment Code" := RepayCode;
-                                RSchedule."Loan No." := "Loan  No.";
+                                RSchedule."Loan No." := Rec."Loan  No.";
                                 RSchedule."Loan Amount" := LoanAmount;
                                 RSchedule."Instalment No" := InstalNo;
                                 RSchedule."Repayment Date" := RunDate;
-                                RSchedule."Member No." := "Client Code";
-                                RSchedule."Loan Category" := "Loan Product Type";
+                                RSchedule."Member No." := Rec."Client Code";
+                                RSchedule."Loan Category" := Rec."Loan Product Type";
                                 RSchedule."Monthly Repayment" := LInterest + LPrincipal;
                                 RSchedule."Monthly Interest" := LInterest;
                                 RSchedule."Principal Repayment" := LPrincipal;
@@ -451,7 +451,7 @@ Page 51516921 "Loan Reschedule Card"
                         Commit;
 
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", Rec."Loan  No.");
                         if LoanApp.Find('-') then
                             if LoanApp."Loan Product Type" <> 'INST' then begin
                                 Report.Run(51516477, true, false, LoanApp);
@@ -487,7 +487,7 @@ Page 51516921 "Loan Reschedule Card"
 
                     trigger OnAction()
                     begin
-                        if "Approval Status" <> "approval status"::Approved then begin
+                        if Rec."Approval Status" <> Rec."approval status"::Approved then begin
                             Error('You Can not post a loan that is not fully Approved')
                         end else
                             if Confirm('Are you Sure you want to reschedule this Loan', false) = true then begin
@@ -496,7 +496,7 @@ Page 51516921 "Loan Reschedule Card"
 
 
                                 LoanApps.Reset;
-                                LoanApps.SetRange(LoanApps."Loan  No.", "Loan  No.");
+                                LoanApps.SetRange(LoanApps."Loan  No.", Rec."Loan  No.");
                                 if LoanApps.FindSet then begin
                                     FnInsertBOSALines(LoanApps, LoanApps."Loan  No.");
 
@@ -509,17 +509,17 @@ Page 51516921 "Loan Reschedule Card"
                                         Codeunit.Run(Codeunit::"Gen. Jnl.-Post Sacco", GenJournalLine);
                                     end;
 
-                                    Posted := true;
-                                    "Loan Status" := "loan status"::Issued;
-                                    "Approval Status" := "approval status"::Approved;
-                                    Modify;
+                                    Rec.Posted := true;
+                                    Rec."Loan Status" := Rec."loan status"::Issued;
+                                    Rec."Approval Status" := Rec."approval status"::Approved;
+                                    Rec.Modify;
 
                                     //Post New
 
-                                    "Loan Rescheduled Date" := "Loan Disbursement Date";
-                                    "Loan Rescheduled By" := UserId;
-                                    "Loan Reschedule" := true;
-                                    Modify;
+                                    Rec."Loan Rescheduled Date" := Rec."Loan Disbursement Date";
+                                    Rec."Loan Rescheduled By" := UserId;
+                                    Rec."Loan Reschedule" := true;
+                                    Rec.Modify;
                                     Message('Loan Rescheduled successfully.');
 
                                 end else begin
@@ -575,8 +575,8 @@ Page 51516921 "Loan Reschedule Card"
                         SrestepApprovalsCodeUnit: Codeunit SurestepApprovalsCodeUnit;
                     begin
                         //ENSURE THAT REQUESTED AMOUNT IS ENTERED
-                        TestField("Requested Amount");
-                        if "Approval Status" <> "approval status"::Open then
+                        Rec.TestField("Requested Amount");
+                        if Rec."Approval Status" <> Rec."approval status"::Open then
                             Error(Text001);
 
                         //End allocate batch number
@@ -604,16 +604,16 @@ Page 51516921 "Loan Reschedule Card"
                         SMSMessages.Reset;
                         SMSMessages.Init;
                         SMSMessages."Entry No" := iEntryNo;
-                        SMSMessages."Account No" := "Client Code";
+                        SMSMessages."Account No" := Rec."Client Code";
                         SMSMessages."Date Entered" := Today;
                         SMSMessages."Time Entered" := Time;
                         SMSMessages.Source := 'LOAN APPL';
                         SMSMessages."Entered By" := UserId;
                         SMSMessages."Sent To Server" := SMSMessages."sent to server"::No;
-                        SMSMessages."SMS Message" := 'Your loan application of KSHs.' + Format("Requested Amount") +
+                        SMSMessages."SMS Message" := 'Your loan application of KSHs.' + Format(Rec."Requested Amount") +
                                                   ' has been received ' + CompanyInfo.Name + '.';
                         Cust.Reset;
-                        if Cust.Get("Client Code") then
+                        if Cust.Get(Rec."Client Code") then
                             SMSMessages."Telephone No" := Cust."Phone No.";
                         SMSMessages.Insert;
 
@@ -667,7 +667,7 @@ Page 51516921 "Loan Reschedule Card"
 
     trigger OnOpenPage()
     begin
-        SetRange(Posted, false);
+        Rec.SetRange(Posted, false);
         /*IF "Loan Status"="Loan Status"::Approved THEN
         CurrPage.EDITABLE:=FALSE;*/
 
@@ -830,7 +830,7 @@ Page 51516921 "Loan Reschedule Card"
     procedure UpdateControl()
     begin
 
-        if "Loan Status" = "loan status"::Application then begin
+        if Rec."Loan Status" = Rec."loan status"::Application then begin
             MNoEditable := true;
             ApplcDateEditable := false;
             LoanStatusEditable := false;
@@ -846,7 +846,7 @@ Page 51516921 "Loan Reschedule Card"
             DisbursementDateEditable := false;
         end;
 
-        if "Loan Status" = "loan status"::Appraisal then begin
+        if Rec."Loan Status" = Rec."loan status"::Appraisal then begin
             MNoEditable := false;
             ApplcDateEditable := false;
             LoanStatusEditable := false;
@@ -862,7 +862,7 @@ Page 51516921 "Loan Reschedule Card"
             DisbursementDateEditable := false;
         end;
 
-        if "Loan Status" = "loan status"::Rejected then begin
+        if Rec."Loan Status" = Rec."loan status"::Rejected then begin
             MNoEditable := false;
             AccountNoEditable := false;
             ApplcDateEditable := false;
@@ -880,7 +880,7 @@ Page 51516921 "Loan Reschedule Card"
             RejectionRemarkEditable := false
         end;
 
-        if "Approval Status" = "approval status"::Approved then begin
+        if Rec."Approval Status" = Rec."approval status"::Approved then begin
             MNoEditable := false;
             AccountNoEditable := false;
             LoanStatusEditable := false;
@@ -904,7 +904,7 @@ Page 51516921 "Loan Reschedule Card"
     begin
     end;
 
-      local procedure FnInsertBOSALines(var LoanApps: Record "Loans Register"; LoanNo: Code[30])
+    local procedure FnInsertBOSALines(var LoanApps: Record "Loans Register"; LoanNo: Code[30])
     var
         EndMonth: Date;
         RemainingDays: Integer;
@@ -916,9 +916,9 @@ Page 51516921 "Loan Reschedule Card"
         AmountTop := 0;
         NetAmount := 0;
         //--------------------Generate Schedule
-        Sfactorycode.FnGenerateRepaymentSchedule("Loan  No.");
-        DirbursementDate := "Loan Disbursement Date";
-        VarAmounttoDisburse := "Approved Amount";
+        Sfactorycode.FnGenerateRepaymentSchedule(Rec."Loan  No.");
+        DirbursementDate := Rec."Loan Disbursement Date";
+        VarAmounttoDisburse := Rec."Approved Amount";
         //....................PRORATED DAYS
         EndMonth := CALCDATE('-1D', CALCDATE('1M', DMY2DATE(1, DATE2DMY(Today, 2), DATE2DMY(Today, 3))));
         RemainingDays := (EndMonth - Today) + 1;
@@ -945,25 +945,25 @@ Page 51516921 "Loan Reschedule Card"
         END;
         //**************Loan Principal Posting**********************************
         LineNo := LineNo + 10000;
-        SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, "Loan  No.", LineNo, GenJournalLine."Transaction Type"::Loan, GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, VarAmounttoDisburse, 'BOSA', LoanApps."Loan  No.", 'Loan Disbursement - ' + LoanApps."Loan Product Type", LoanApps."Loan  No.");
+        SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, Rec."Loan  No.", LineNo, GenJournalLine."Transaction Type"::Loan, GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, VarAmounttoDisburse, 'BOSA', LoanApps."Loan  No.", 'Loan Disbursement - ' + LoanApps."Loan Product Type", LoanApps."Loan  No.");
         //--------------------------------RECOVER OVERDRAFT()-------------------------------------------------------
         //Code Here
 
         //...................Cater for Loan Offset Now !
-        CalcFields("Top Up Amount");
-        if "Top Up Amount" > 0 then begin
+        Rec.CalcFields("Top Up Amount");
+        if Rec."Top Up Amount" > 0 then begin
             LoanTopUp.RESET;
-            LoanTopUp.SETRANGE(LoanTopUp."Loan No.", "Loan  No.");
+            LoanTopUp.SETRANGE(LoanTopUp."Loan No.", Rec."Loan  No.");
             IF LoanTopUp.FIND('-') THEN BEGIN
                 repeat
                     LineNo := LineNo + 10000;
-                    SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, "Loan  No.", LineNo, GenJournalLine."Transaction Type"::Repayment, GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, LoanTopUp."Principle Top Up" * -1, 'BOSA', LoanApps."Loan  No.", 'Loan OffSet By - ' + LoanApps."Loan  No.", LoanTopUp."Loan Top Up");
+                    SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, Rec."Loan  No.", LineNo, GenJournalLine."Transaction Type"::Repayment, GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, LoanTopUp."Principle Top Up" * -1, 'BOSA', LoanApps."Loan  No.", 'Loan OffSet By - ' + LoanApps."Loan  No.", LoanTopUp."Loan Top Up");
                     //..................Recover Interest On Top Up
                     LineNo := LineNo + 10000;
-                    SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, "Loan  No.", LineNo, GenJournalLine."Transaction Type"::"Interest Paid", GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, LoanTopUp."Interest Top Up" * -1, 'BOSA', LoanApps."Loan  No.", 'Interest Due Paid on top up - ', LoanTopUp."Loan Top Up");
+                    SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, Rec."Loan  No.", LineNo, GenJournalLine."Transaction Type"::"Interest Paid", GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, LoanTopUp."Interest Top Up" * -1, 'BOSA', LoanApps."Loan  No.", 'Interest Due Paid on top up - ', LoanTopUp."Loan Top Up");
                     //If there is top up commission charged write it here start
                     LineNo := LineNo + 10000;
-                    SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Top up Account", DirbursementDate, LoanTopUp.Commision * -1, 'BOSA', "Batch No.", 'Commision on top up - ', LoanTopUp."Loan Top Up");
+                    SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Top up Account", DirbursementDate, LoanTopUp.Commision * -1, 'BOSA', Rec."Batch No.", 'Commision on top up - ', LoanTopUp."Loan Top Up");
                     //If there is top up commission charged write it here end
                     AmountTop := (LoanTopUp."Principle Top Up" + LoanTopUp."Interest Top Up" + LoanTopUp.Commision);
                     VarAmounttoDisburse := VarAmounttoDisburse - (LoanTopUp."Principle Top Up" + LoanTopUp."Interest Top Up" + LoanTopUp.Commision);
@@ -973,10 +973,10 @@ Page 51516921 "Loan Reschedule Card"
         //If there is top up commission charged write it here start // "Loan Insurance"
         //If there is top up commission charged write it here end
 
-        NetAmount := "Approved Amount" - ("Loan Processing Fee" + "Loan Dirbusement Fee" + "Loan Insurance" + AmountTop);
+        NetAmount := Rec."Approved Amount" - (Rec."Loan Processing Fee" + Rec."Loan Dirbusement Fee" + Rec."Loan Insurance" + AmountTop);
         //***************************Loan Product Charges code
         PCharges.Reset();
-        PCharges.SETRANGE(PCharges."Product Code", "Loan Product Type");
+        PCharges.SETRANGE(PCharges."Product Code", Rec."Loan Product Type");
         IF PCharges.FIND('-') THEN BEGIN
             REPEAT
                 PCharges.TESTFIELD(PCharges."G/L Account");
@@ -988,12 +988,12 @@ Page 51516921 "Loan Reschedule Card"
                 GenJournalLine."Account Type" := GenJournalLine."Account Type"::"G/L Account";
                 GenJournalLine."Account No." := PCharges."G/L Account";
                 GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                GenJournalLine."Document No." := "Loan  No.";
-                GenJournalLine."External Document No." := "Loan  No.";
+                GenJournalLine."Document No." := Rec."Loan  No.";
+                GenJournalLine."External Document No." := Rec."Loan  No.";
                 GenJournalLine."Posting Date" := DirbursementDate;
-                GenJournalLine.Description := PCharges.Description + '-' + Format("Loan  No.");
+                GenJournalLine.Description := PCharges.Description + '-' + Format(Rec."Loan  No.");
                 IF PCharges."Use Perc" = TRUE THEN BEGIN
-                    GenJournalLine.Amount := ("Approved Amount" * (PCharges.Percentage / 100)) * -1
+                    GenJournalLine.Amount := (Rec."Approved Amount" * (PCharges.Percentage / 100)) * -1
                 END
                 ELSE
                     IF PCharges."Use Perc" = false then begin
@@ -1011,27 +1011,27 @@ Page 51516921 "Loan Reschedule Card"
         END;
         //end of code
         //.....Valuation
-        VarAmounttoDisburse := VarAmounttoDisburse - ("Loan Processing Fee" + "Loan Dirbusement Fee" + "Loan Insurance");
+        VarAmounttoDisburse := VarAmounttoDisburse - (Rec."Loan Processing Fee" + Rec."Loan Dirbusement Fee" + Rec."Loan Insurance");
         LineNo := LineNo + 10000;
-        SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Asset Valuation Cost", DirbursementDate, LoanApps."Valuation Cost" * -1, 'BOSA', "Batch No.", 'Loan Principle Amount ' + Format(LoanApps."Loan  No."), '');
+        SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Asset Valuation Cost", DirbursementDate, LoanApps."Valuation Cost" * -1, 'BOSA', Rec."Batch No.", 'Loan Principle Amount ' + Format(LoanApps."Loan  No."), '');
         VarAmounttoDisburse := VarAmounttoDisburse - LoanApps."Valuation Cost";
         //...Debosting amount
         LineNo := LineNo + 10000;
-        SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Boosting Fees Account", DirbursementDate, LoanApps."Deboost Commision" * -1, 'BOSA', "Batch No.", 'Debosting commision ' + Format(LoanApps."Loan  No."), '');
+        SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Boosting Fees Account", DirbursementDate, LoanApps."Deboost Commision" * -1, 'BOSA', Rec."Batch No.", 'Debosting commision ' + Format(LoanApps."Loan  No."), '');
         VarAmounttoDisburse := VarAmounttoDisburse - LoanApps."Deboost Commision";
         //Debosting commsion
         LineNo := LineNo + 10000;
-        SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::"Deposit Contribution", GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, LoanApps."Deboost Amount" * -1, 'BOSA', "Batch No.", 'Debosted shares ' + Format(LoanApps."Loan  No."), '');
+        SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::"Deposit Contribution", GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, LoanApps."Deboost Amount" * -1, 'BOSA', Rec."Batch No.", 'Debosted shares ' + Format(LoanApps."Loan  No."), '');
         VarAmounttoDisburse := VarAmounttoDisburse - LoanApps."Deboost Amount";
         //..Legal Fees
         LineNo := LineNo + 10000;
-        SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Legal Fees", DirbursementDate, LoanApps."Legal Cost" * -1, 'BOSA', "Batch No.", 'Loan Principle Amount ' + Format(LoanApps."Loan  No."), '');
+        SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Legal Fees", DirbursementDate, LoanApps."Legal Cost" * -1, 'BOSA', Rec."Batch No.", 'Loan Principle Amount ' + Format(LoanApps."Loan  No."), '');
         VarAmounttoDisburse := VarAmounttoDisburse - LoanApps."Legal Cost";
         //------------------------------------2. CREDIT MEMBER BANK A/C---------------------------------------------------------------------------------------------
         LineNo := LineNo + 10000;
-        SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, "Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"Bank Account", LoanApps."Paying Bank Account No", DirbursementDate, VarAmounttoDisburse * -1, 'BOSA', LoanApps."Loan  No.", 'Loan Principle Amount ' + Format("Loan  No."), '');
+        SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, Rec."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"Bank Account", LoanApps."Paying Bank Account No", DirbursementDate, VarAmounttoDisburse * -1, 'BOSA', LoanApps."Loan  No.", 'Loan Principle Amount ' + Format(Rec."Loan  No."), '');
     end;
 
-  
+
 }
 

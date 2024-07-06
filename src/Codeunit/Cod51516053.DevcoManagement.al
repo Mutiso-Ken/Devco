@@ -27,12 +27,12 @@ codeunit 51516053 "Devco Management"
                 AmountToDeduct := 0;
                 LoanDimension := '';
                 //Direct Debits"Direct Debits"
-                if LoansRegister."Recovery Mode" = LoansRegister."Recovery Mode":: "Standing Order"then begin
+                if LoansRegister."Recovery Mode" = LoansRegister."Recovery Mode"::"Standing Order" then begin
                     //********************************************Recover Interest
                     InterestArrears := LoansRegister."Interest In Arrears";
                     //...........Make sure Int Arrears is greater than zero
                     if InterestArrears < 0 then begin
-                        InterestArrears := 0; 
+                        InterestArrears := 0;
                     end;
                     //FnGetMember Account Balance
                     FosaBalance := SurestepFactory.FnGetFosaAccountBalanceUsingBOSA(LoansRegister."Client Code");
