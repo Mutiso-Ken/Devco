@@ -182,7 +182,6 @@ Report 50008 "Other Disclosures"
                         LossProv += Loans."Outstanding Balance";
                     until Loans.Next = 0;
                 end;
-                //MESSAGE('Substandard%1Doubt%2Loss%3',SubstarndardProv,DoubtfulProv,LossProv);
                 SubstarndardProv := ROUND((SubstarndardProv * 25 / 100), 0.01, '=');
                 DoubtfulProv := ROUND((DoubtfulProv * 50 / 100), 0.01, '=');
                 LossProv := ROUND((LossProv * 100 / 100), 0.01, '=');
@@ -213,19 +212,15 @@ Report 50008 "Other Disclosures"
                 Loanss.Reset;
                 Loanss.SETRANGE(Loanss."Loans Category Previous Year", Loanss."Loans Category Previous Year"::Loss);
                 Loanss.SetFilter(Loanss."Issued Date", '..%1', EndLastYear);
-                //Loanss.SETFILTER(Loanss."Outstanding Balance",'<>%1',0);13/07/23
                 Loanss.SetAutocalcFields(Loanss."Outstanding Balance");
                 if Loanss.FindFirst then begin
                     repeat
-                        //DoubtfulProvPY+=Loanss."Outstanding Balance";13/07/23
                         MemberLedgerEntry.Reset;
                         MemberLedgerEntry.SetRange(MemberLedgerEntry."Loan No", Loanss."Loan  No.");
                         MemberLedgerEntry.SetFilter(MemberLedgerEntry."Transaction Type", '%1|%2', MemberLedgerEntry."transaction type"::Loan, MemberLedgerEntry."transaction type"::Repayment);
                         MemberLedgerEntry.SetFilter(MemberLedgerEntry."Posting Date", '..%1', EndLastYear);
                         if MemberLedgerEntry.FindSet then begin
-                            //MemberLedgerEntry.CalcSums(MemberLedgerEntry."Amount Posted");
                             DoubtfulProvPY += MemberLedgerEntry."Amount Posted";
-                            //GrossnonperformingloanLast+=LoansRegister."Outstanding Balance";//(LoansRegister."Outstanding Balance"+LoansRegister."Oustanding Interest");
                         end;
                     until Loanss.Next = 0;
                 end;
@@ -245,7 +240,6 @@ Report 50008 "Other Disclosures"
                         if MemberLedgerEntry.FindSet then begin
                             //MemberLedgerEntry.CalcSums(MemberLedgerEntry."Amount Posted");
                             LossProvPY += MemberLedgerEntry."Amount Posted";
-                            //GrossnonperformingloanLast+=LoansRegister."Outstanding Balance";//(LoansRegister."Outstanding Balance"+LoansRegister."Oustanding Interest");
                         end;
                     until Loans.Next = 0;
                 end;
@@ -254,87 +248,55 @@ Report 50008 "Other Disclosures"
                 LossProvPY := ROUND((LossProvPY * 100 / 100), 0.01, '=');
                 TotalProvisionPY := SubstarndardProvPY + LossProvPY + DoubtfulProvPY;
                 AllowanceforloanlossLast := TotalProvisionPY;
-                //++++++++++++++++++++++++++++++++++
 
-                //MESSAGE('Aste%1',AsAt);
-                //MESSAGE('Substandard%1Doubt%2Loss%3',SubstarndardProv,DoubtfulProv,LossProv);
+                Grossnonperformingloan := 0;
                 LoansRegister.Reset;
                 LoansRegister.SetFilter(LoansRegister."Loans Category-SASRA", '%1|%2|%3', LoansRegister."Loans Category-SASRA"::Substandard, LoansRegister."Loans Category-SASRA"::Doubtful, LoansRegister."Loans Category-SASRA"::Loss);
-                //LoansRegister.SETFILTER(LoansRegister."Loans Category-SASRA",'%1|%2|%3',LoansRegister."Loans Category-SASRA"::"2",LoansRegister."Loans Category-SASRA"::"3",LoansRegister."Loans Category-SASRA"::"4");
-                //LoansRegister.SETFILTER(LoansRegister."Date filter",DateFilterNew);
                 LoansRegister.SetFilter(LoansRegister."Issued Date", '..%1', AsAt);
                 LoansRegister.SetAutocalcFields("Outstanding Balance", "Oustanding Interest");
+                LoansRegister.SetFilter(LoansRegister."Date filter", '..%1', AsAt);
                 LoansRegister.SetFilter(LoansRegister."Outstanding Balance", '<>%1', 0);
-                if LoansRegister.FindSet then begin
+                if LoansRegister.FindFirst() then begin
                     repeat
-                        // MESSAGE('Here%1',LoansRegister."Loan  No.");
-                        MemberLedgerEntry.Reset;
-                        MemberLedgerEntry.SetRange(MemberLedgerEntry."Loan No", LoansRegister."Loan  No.");
-                        MemberLedgerEntry.SetFilter(MemberLedgerEntry."Transaction Type", '%1|%2', MemberLedgerEntry."transaction type"::Loan, MemberLedgerEntry."transaction type"::Repayment);
-                        MemberLedgerEntry.SetFilter(MemberLedgerEntry."Posting Date", '..%1', AsAt);
-                        if MemberLedgerEntry.FindSet then begin
-                            //MemberLedgerEntry.CalcSums(MemberLedgerEntry."Amount Posted");
-                            Grossnonperformingloan += MemberLedgerEntry."Amount Posted";
-                            // Grossnonperformingloan+=LoansRegister."Outstanding Balance";//(LoansRegister."Outstanding Balance"+LoansRegister."Oustanding Interest");
-                        end;
+                        Grossnonperformingloan += LoansRegister."Outstanding Balance";
                     until LoansRegister.Next = 0;
                 end;
-                //MESSAGE('Gross%1',Grossnonperformingloan);
-
+                GrossnonperformingloanLast := 0;
                 LoansRegister.Reset;
                 LoansRegister.SETFILTER(LoansRegister."Loans Category Previous Year", '%1|%2|%3', LoansRegister."Loans Category Previous Year"::Substandard, LoansRegister."Loans Category Previous Year"::Doubtful, LoansRegister."Loans Category Previous Year"::Loss);
-                //LoansRegister.SETFILTER(LoansRegister."Loans CategoryNew",'%1|%2|%3',LoansRegister."Loans CategoryNew"::"2",LoansRegister."Loans CategoryNew"::"3",LoansRegister."Loans CategoryNew"::"4");
-                //LoansRegister.SETFILTER(LoansRegister."Date filter",LastYearFilter);
                 LoansRegister.SetFilter(LoansRegister."Issued Date", '..%1', EndLastYear);
+                LoansRegister.SetFilter(LoansRegister."Date filter", '..%1', EndLastYear);
                 LoansRegister.SetFilter(LoansRegister."Outstanding Balance", '<>%1', 0);
                 LoansRegister.SetAutocalcFields("Outstanding Balance", "Oustanding Interest");
-                if LoansRegister.FindSet then begin
+                if LoansRegister.FindFirst() then begin
                     repeat
-                        MemberLedgerEntry.Reset;
-                        MemberLedgerEntry.SetRange(MemberLedgerEntry."Loan No", LoansRegister."Loan  No.");
-                        MemberLedgerEntry.SetFilter(MemberLedgerEntry."Transaction Type", '%1|%2', MemberLedgerEntry."transaction type"::Loan, MemberLedgerEntry."transaction type"::Repayment);
-                        MemberLedgerEntry.SetFilter(MemberLedgerEntry."Posting Date", '..%1', EndLastYear);
-                        if MemberLedgerEntry.FindSet then begin
-                            //MemberLedgerEntry.CalcSums(MemberLedgerEntry."Amount Posted");
-                            GrossnonperformingloanLast += MemberLedgerEntry."Amount Posted";
-                            //GrossnonperformingloanLast+=LoansRegister."Outstanding Balance";//(LoansRegister."Outstanding Balance"+LoansRegister."Oustanding Interest");
-                        end;
+
+                        GrossnonperformingloanLast += LoansRegister."Outstanding Balance";
+
                     until LoansRegister.Next = 0;
                 end;
-                //MESSAGE('%1|%2',Grossnonperformingloan,GrossnonperformingloanLast);
                 //interest in suspense
-
+                Interestinsuspense := 0;
                 LoansRegister.Reset;
                 LoansRegister.SetFilter(LoansRegister."Loans Category-SASRA", '%1|%2|%3', LoansRegister."Loans Category-SASRA"::Substandard, LoansRegister."Loans Category-SASRA"::Doubtful, LoansRegister."Loans Category-SASRA"::Loss);
-                //LoansRegister.SETFILTER(LoansRegister."Loans Category-SASRA",'%1|%2|%3',LoansRegister."Loans Category-SASRA"::"2",LoansRegister."Loans Category-SASRA"::"3",LoansRegister."Loans Category-SASRA"::"4");
-                //LoansRegister.SETFILTER(LoansRegister."Date filter",DateFilterNew);
                 LoansRegister.SetFilter(LoansRegister."Issued Date", '..%1', AsAt);
+                LoansRegister.SetFilter(LoansRegister."Date filter", '..%1', AsAt);
                 LoansRegister.SetFilter(LoansRegister."Oustanding Interest", '<>%1', 0);
                 LoansRegister.SetAutocalcFields("Oustanding Interest");
-                if LoansRegister.FindSet then begin
+                if LoansRegister.FindFirst() then begin
                     repeat
-                        MemberLedgerEntry.Reset;
-                        MemberLedgerEntry.SetRange(MemberLedgerEntry."Loan No", LoansRegister."Loan  No.");
-                        MemberLedgerEntry.SetFilter(MemberLedgerEntry."Transaction Type", '%1|%2', MemberLedgerEntry."transaction type"::"Interest Due", MemberLedgerEntry."transaction type"::"Interest Paid");
-                        MemberLedgerEntry.SetFilter(MemberLedgerEntry."Posting Date", '..%1', AsAt);
-                        if MemberLedgerEntry.FindSet then begin
-                            //MemberLedgerEntry.CalcSums(MemberLedgerEntry."Amount Posted");
-                            Interestinsuspense += MemberLedgerEntry."Amount Posted";
-                            //Interestinsuspense+=LoansRegister."Oustanding Interest";
-                        end;
+                        Interestinsuspense += LoansRegister."Oustanding Interest";
                     until LoansRegister.Next = 0;
                 end;
 
-
+                InterestinsuspenseLast := 0;
                 LoansRegister.Reset;
                 LoansRegister.SETFILTER(LoansRegister."Loans Category Previous Year", '%1|%2|%3', LoansRegister."Loans Category Previous Year"::Substandard, LoansRegister."Loans Category Previous Year"::Doubtful, LoansRegister."Loans Category Previous Year"::Loss);
-                //LoansRegister.SETFILTER(LoansRegister."Loans CategoryNew",'%1|%2|%3',LoansRegister."Loans CategoryNew"::"2",LoansRegister."Loans CategoryNew"::"3",LoansRegister."Loans CategoryNew"::"4");
                 LoansRegister.SetFilter(LoansRegister."Date filter", LastYearFilter);
-                //LoansRegister.SETFILTER(LoansRegister."Issued Date",'<=%1',EndLastYear);
                 LoansRegister.SetFilter(LoansRegister."Oustanding Interest", '<>%1', 0);
                 LoansRegister.SetRange(LoansRegister.Posted, true);
                 LoansRegister.SetAutocalcFields("Oustanding Interest", "Outstanding Balance");
-                if LoansRegister.FindSet then begin
+                if LoansRegister.FindFirst() then begin
                     repeat
                         if LoansRegister."Outstanding Balance" <> 0 then
                             MemberLedgerEntry.Reset;
@@ -342,64 +304,42 @@ Report 50008 "Other Disclosures"
                         MemberLedgerEntry.SetFilter(MemberLedgerEntry."Transaction Type", '%1|%2', MemberLedgerEntry."transaction type"::"Interest Due", MemberLedgerEntry."transaction type"::"Interest Paid");
                         MemberLedgerEntry.SetFilter(MemberLedgerEntry."Posting Date", '..%1', EndLastYear);
                         if MemberLedgerEntry.FindSet then begin
-                            //MemberLedgerEntry.CalcSums(MemberLedgerEntry."Amount Posted");
                             InterestinsuspenseLast += MemberLedgerEntry."Amount Posted";
-                            //InterestinsuspenseLast+=LoansRegister."Oustanding Interest";
                         end;
                     until LoansRegister.Next = 0;
                 end;
-                // MESSAGE('Endlast%1',EndLastYear);
                 //insider loans
+                Employees := 0;
                 SaccoInsiders.Reset;
                 SaccoInsiders.SetFilter(SaccoInsiders."Position in society", '%1', SaccoInsiders."position in society"::Staff);
-                if SaccoInsiders.FindSet then begin
+                if SaccoInsiders.FindFirst() then begin
                     repeat
                         LoansRegister.Reset;
                         LoansRegister.SetFilter(LoansRegister."Date filter", DateFilterNew);
                         LoansRegister.SetFilter(LoansRegister."Issued Date", '..%1', AsAt);
+                        LoansRegister.SetFilter(LoansRegister."Date filter", '..%1', AsAt);
                         LoansRegister.SetRange(LoansRegister."Client Code", SaccoInsiders.MemberNo);
-                        //LoansRegister.SETFILTER(LoansRegister."Outstanding Balance",'>%1',0);13/07/2023
                         LoansRegister.SetAutocalcFields("Outstanding Balance");
-                        if LoansRegister.FindSet then begin
+                        if LoansRegister.FindFirst() then begin
                             repeat
-                                //MESSAGE(FORMAT(LoansRegister."Client Code"));
-                                MemberLedgerEntry.Reset;
-                                MemberLedgerEntry.SetRange(MemberLedgerEntry."Loan No", LoansRegister."Loan  No.");
-                                MemberLedgerEntry.SetFilter(MemberLedgerEntry."Transaction Type", '%1|%2', MemberLedgerEntry."transaction type"::Loan, MemberLedgerEntry."transaction type"::Repayment);
-                                MemberLedgerEntry.SetFilter(MemberLedgerEntry."Posting Date", '..%1', AsAt);
-                                if MemberLedgerEntry.FindSet then begin
-                                    //MemberLedgerEntry.CalcSums(MemberLedgerEntry."Amount Posted");
-                                    Employees += MemberLedgerEntry."Amount Posted";
-                                    //Employees+=LoansRegister."Outstanding Balance";
-                                end;
+                                Employees += LoansRegister."Outstanding Balance";
                             until LoansRegister.Next = 0;
                         end;
                     until SaccoInsiders.Next = 0;
                 end;
-
+                EmployeesLast := 0;
                 SaccoInsiders.Reset;
                 SaccoInsiders.SetFilter(SaccoInsiders."Position in society", '%1', SaccoInsiders."position in society"::Staff);
-                if SaccoInsiders.FindSet then begin
+                if SaccoInsiders.FindFirst() then begin
                     repeat
                         LoansRegister.Reset;
-                        //LoansRegister.SETFILTER(LoansRegister."Date filter",LastYearFilter);
-                        //LoansRegister.SETFILTER(LoansRegister."Date filter",LoanFilterOk);
                         LoansRegister.SetFilter(LoansRegister."Issued Date", '..%1', EndLastYear);
+                        LoansRegister.SetFilter(LoansRegister."Date filter", '..%1', EndLastYear);
                         LoansRegister.SetRange(LoansRegister."Client Code", SaccoInsiders.MemberNo);
-                        //LoansRegister.SETFILTER(LoansRegister."Outstanding Balance",'>%1',0);
                         LoansRegister.SetAutocalcFields("Outstanding Balance");
-                        if LoansRegister.FindSet then begin
+                        if LoansRegister.FindFirst() then begin
                             repeat
-
-                                MemberLedgerEntry.Reset;
-                                MemberLedgerEntry.SetRange(MemberLedgerEntry."Loan No", LoansRegister."Loan  No.");
-                                MemberLedgerEntry.SetFilter(MemberLedgerEntry."Transaction Type", '%1|%2', MemberLedgerEntry."transaction type"::Loan, MemberLedgerEntry."transaction type"::Repayment);
-                                MemberLedgerEntry.SetFilter(MemberLedgerEntry."Posting Date", '..%1', EndLastYear);
-                                if MemberLedgerEntry.FindSet then begin
-                                    //MemberLedgerEntry.CalcSums(MemberLedgerEntry."Amount Posted");
-                                    EmployeesLast += MemberLedgerEntry."Amount Posted";
-                                    //EmployeesLast+=LoansRegister."Outstanding Balance";
-                                end;
+                                EmployeesLast += LoansRegister."Outstanding Balance";
                             until LoansRegister.Next = 0;
                             //MESSAGE(FORMAT(EmployeesLast));
                         end;
@@ -407,55 +347,37 @@ Report 50008 "Other Disclosures"
                 end;
                 //directors
                 SaccoInsiders.Reset;
-                SaccoInsiders.SetFilter(SaccoInsiders."Position in society", '%1|%2', SaccoInsiders."position in society"::Board, SaccoInsiders."position in society"::Board);
-                if SaccoInsiders.FindSet then begin
+                SaccoInsiders.SetFilter(SaccoInsiders."Position in society", '%1', SaccoInsiders."position in society"::Board);
+                if SaccoInsiders.FindFirst() then begin
                     repeat
                         LoansRegister.Reset;
-                        // LoansRegister.SETFILTER(LoansRegister."Date filter",DateFilterNew);
                         LoansRegister.SetFilter(LoansRegister."Issued Date", '..%1', AsAt);
+                        LoansRegister.SetFilter(LoansRegister."Date filter", '..%1', AsAt);
                         LoansRegister.SetRange(LoansRegister."Client Code", SaccoInsiders.MemberNo);
                         LoansRegister.SetFilter(LoansRegister."Outstanding Balance", '>%1', 0);
                         LoansRegister.SetAutocalcFields("Outstanding Balance");
-                        if LoansRegister.FindSet then begin
+                        if LoansRegister.FindFirst() then begin
                             repeat
-                                //MESSAGE(FORMAT(LoansRegister."Client Code"));
-                                MemberLedgerEntry.Reset;
-                                MemberLedgerEntry.SetRange(MemberLedgerEntry."Loan No", LoansRegister."Loan  No.");
-                                MemberLedgerEntry.SetFilter(MemberLedgerEntry."Transaction Type", '%1|%2', MemberLedgerEntry."transaction type"::Loan, MemberLedgerEntry."transaction type"::Repayment);
-                                MemberLedgerEntry.SetFilter(MemberLedgerEntry."Posting Date", '..%1', AsAt);
-                                if MemberLedgerEntry.FindSet then begin
-                                    //MemberLedgerEntry.CalcSums(MemberLedgerEntry."Amount Posted");
-                                    Directors += MemberLedgerEntry."Amount Posted";
-                                    //Employees+=LoansRegister."Outstanding Balance";
-                                end;
-                            //Directors+=LoansRegister."Outstanding Balance";
+
+                                Directors += LoansRegister."Outstanding Balance";
+
                             until LoansRegister.Next = 0;
                         end;
                     until SaccoInsiders.Next = 0;
                 end;
 
                 SaccoInsiders.Reset;
-                SaccoInsiders.SetFilter(SaccoInsiders."Position in society", '%1|%2', SaccoInsiders."position in society"::Board, SaccoInsiders."position in society"::Board);
-                if SaccoInsiders.FindSet then begin
+                SaccoInsiders.SetFilter(SaccoInsiders."Position in society", '%1', SaccoInsiders."position in society"::Board);
+                if SaccoInsiders.FindFirst() then begin
                     repeat
                         LoansRegister.Reset;
-                        //LoansRegister.SETFILTER(LoansRegister."Date filter",LastYearFilter);
                         LoansRegister.SetFilter(LoansRegister."Issued Date", '..%1', EndLastYear);
+                        LoansRegister.SetFilter(LoansRegister."Date filter", '..%1', EndLastYear);
                         LoansRegister.SetRange(LoansRegister."Client Code", SaccoInsiders.MemberNo);
-                        // LoansRegister.SETFILTER(LoansRegister."Outstanding Balance",'>%1',0);13/07/2023
                         LoansRegister.SetAutocalcFields("Outstanding Balance");
-                        if LoansRegister.FindSet then begin
+                        if LoansRegister.FindFirst() then begin
                             repeat
-                                MemberLedgerEntry.Reset;
-                                MemberLedgerEntry.SetRange(MemberLedgerEntry."Loan No", LoansRegister."Loan  No.");
-                                MemberLedgerEntry.SetFilter(MemberLedgerEntry."Transaction Type", '%1|%2', MemberLedgerEntry."transaction type"::Loan, MemberLedgerEntry."transaction type"::Repayment);
-                                MemberLedgerEntry.SetFilter(MemberLedgerEntry."Posting Date", '..%1', EndLastYear);
-                                if MemberLedgerEntry.FindSet then begin
-                                    //MemberLedgerEntry.CalcSums(MemberLedgerEntry."Amount Posted");
-                                    DirectorsLast += MemberLedgerEntry."Amount Posted";
-                                    //Employees+=LoansRegister."Outstanding Balance";
-                                end;
-                            //DirectorsLast+=LoansRegister."Outstanding Balance";
+                                DirectorsLast += LoansRegister."Outstanding Balance";
                             until LoansRegister.Next = 0;
                         end;
                     until SaccoInsiders.Next = 0;
@@ -502,99 +424,7 @@ Report 50008 "Other Disclosures"
                 Minimumstatutoryratio := 0.08;
                 Minimumstatutoryratio2 := 0.05;
                 Minimumstatutoryratio3 := 0.1;
-                /*
-                //CORE CAPITAL
-                GLAccount.RESET;
-                GLAccount.SETFILTER(GLAccount."Form 2H other disc",'%1',GLAccount."Form 2H other disc"::Core_Capital);
-                IF GLAccount.FINDSET THEN BEGIN
-                  REPEAT
-                    GLEntry.RESET;
-                    GLEntry.SETRANGE(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SETFILTER(GLEntry."Posting Date",DateFilter);
-                    IF GLEntry.FINDSET THEN BEGIN
-                      GLEntry.CALCSUMS(Amount);
-                      Corecapital+=GLEntry.Amount*-1;
-                      END;
-                      UNTIL GLAccount.NEXT = 0 ;
-                
-                END;
-                GLAccount.RESET;
-                GLAccount.SETFILTER(GLAccount."Form 2H other disc",'%1',GLAccount."Form 2H other disc"::Core_Capital);
-                IF GLAccount.FINDSET THEN BEGIN
-                  REPEAT
-                    GLEntry.RESET;
-                    GLEntry.SETRANGE(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SETFILTER(GLEntry."Posting Date",LastYearFilter);
-                    IF GLEntry.FINDSET THEN BEGIN
-                      GLEntry.CALCSUMS(Amount);
-                      CorecapitalLast+=GLEntry.Amount*-1;
-                      END;
-                      UNTIL GLAccount.NEXT = 0 ;
-                
-                END;
-                GLAccount.RESET;
-                GLAccount.SETRANGE(GLAccount."No.",'101799');
-                GLAccount.SETFILTER(GLAccount."Date Filter",DateFilter);
-                IF GLAccount.FINDSET THEN BEGIN
-                  REPEAT
-                    GLAccount.CALCFIELDS("Balance at Date");
-                    BalancesheetAssets+=GLAccount."Balance at Date";
-                    //MESSAGE(FORMAT(BalancesheetAssets));
-                UNTIL GLAccount.NEXT =0 ;
-                END;
-                GLAccount.RESET;
-                GLAccount.SETRANGE(GLAccount."No.",'101799');
-                GLAccount.SETFILTER(GLAccount."Date Filter",LastYearFilter);
-                IF GLAccount.FINDSET THEN BEGIN
-                  REPEAT
-                    GLAccount.CALCFIELDS("Balance at Date");
-                    BalancesheetAssetsLast+=GLAccount."Balance at Date";
-                
-                UNTIL GLAccount.NEXT =0 ;
-                END;
-                //deposit liabilites
-                 GLAccount.RESET;
-                 GLAccount.SETFILTER(GLAccount."Form 2H other disc",'%1',GLAccount."Form 2H other disc"::"Deposits liabilities");
-                 IF GLAccount.FINDSET THEN BEGIN
-                  REPEAT
-                    GLEntry.RESET;
-                    GLEntry.SETRANGE(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SETFILTER(GLEntry."Posting Date",DateFilter);
-                    IF GLEntry.FINDSET THEN BEGIN
-                      GLEntry.CALCSUMS(Amount);
-                      Depositsliabilitiesratio+=GLEntry.Amount*-1;
-                      END;
-                
-                   UNTIL GLAccount.NEXT = 0;
-                
-                 END;
-                  GLAccount.RESET;
-                 GLAccount.SETFILTER(GLAccount."Form 2H other disc",'%1',GLAccount."Form 2H other disc"::"Deposits liabilities");
-                 IF GLAccount.FINDSET THEN BEGIN
-                  REPEAT
-                    GLEntry.RESET;
-                    GLEntry.SETRANGE(GLEntry."G/L Account No.",GLAccount."No.");
-                    GLEntry.SETFILTER(GLEntry."Posting Date",LastYearFilter);
-                    IF GLEntry.FINDSET THEN BEGIN
-                      GLEntry.CALCSUMS(Amount);
-                      DepositsliabilitiesratioLast+=GLEntry.Amount*-1;
-                      END;
-                
-                   UNTIL GLAccount.NEXT = 0;
-                
-                 END;
-                 CorecapitaltoTotalassetratioNew:=Corecapital/BalancesheetAssets;
-                 CorecapitaltoTotalassetratioNewLast:=CorecapitalLast/BalancesheetAssetsLast;
-                 Maximumstatutoryratio:=0.08;
-                 Excess1:=(CorecapitaltoTotalassetratioNew-Maximumstatutoryratio);
-                 Excess11:=(CorecapitaltoTotalassetratioNewLast-Maximumstatutoryratio);
-                // MESSAGE(FORMAT(CorecapitaltoTotalassetratioNew));
-                // MESSAGE(FORMAT(CorecapitaltoTotalassetratioNewLast));
-                 CorecapitalDepositsliabilities:=Corecapital/Depositsliabilitiesratio;
-                 CorecapitalDepositsliabilitiesLast:=CorecapitalLast/DepositsliabilitiesratioLast;
-                 xcessdeficiency:=(CorecapitalDepositsliabilities-0.05);
-                 xcessdeficiencyLast:=(CorecapitalDepositsliabilitiesLast-0.08);*/
-                //new
+                BalancesheetAssets := 0;
                 GLAccount.Reset;
                 GLAccount.SetRange(GLAccount."No.", '14300');
                 GLAccount.SetFilter(GLAccount."Date Filter", DateFilter);
@@ -699,41 +529,9 @@ Report 50008 "Other Disclosures"
                     until GLAccount.Next = 0;
 
                 end;
-                //curent year surplus
-                GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Capital adequecy", '%1', GLAccount."capital adequecy"::NetSurplusaftertax);
-                if GLAccount.FindSet then begin
-                    repeat
-                        GLEntry.Reset;
-                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", CurrentYearFilter);
-                        if GLEntry.FindSet then begin
-                            GLEntry.CalcSums(Amount);
-                            NetSurplusaftertax += (GLEntry.Amount * 50 / 100) * -1;
-                        end;
 
-                    until GLAccount.Next = 0;
 
-                end;
 
-                GLAccount.Reset;
-                GLAccount.SetFilter(GLAccount."Capital adequecy", '%1', GLAccount."capital adequecy"::LoansandAdvances);
-                if GLAccount.FindSet then begin
-                    repeat
-                        ShareCapitalValue := 0;
-                        GLEntry.Reset;
-                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", DateFilter);
-                        if GLEntry.FindSet then begin
-                            GLEntry.CalcSums(Amount);
-                            LoansandAdvances += GLEntry.Amount;
-                        end;
-
-                    until GLAccount.Next = 0;
-
-                end;
-
-                //total assets as per the balance sheet
 
                 GLAccount.Reset;
                 GLAccount.SetRange(GLAccount."No.", '14300');
@@ -904,14 +702,7 @@ Report 50008 "Other Disclosures"
                     until GLAccount.Next = 0;
 
                 end;
-                // TOTALOnBalanceSheet:=Cash+GovernmentSecurities+DepositsandBalancesatOtherInstitutions+LoansandAdvances+InvestmentsinSubsidiary+Otherassets+PropertyandEquipment+investment;
-                // Sub_Total:=ShareCapital+CapitalGrants+retainedEarnins+NetSurplusaftertax+StatutoryReserve+Otherreserves;
-                // TotalDeductions:=InvestmentsinSubsidiary+OtherDeductions;
-                // CORECAPITAL:=Sub_Total-TotalDeductions;
-                TOTALOnBalanceSheet := Cash + GovernmentSecurities + DepositsandBalancesatOtherInstitutions + LoansandAdvances + InvestmentsinSubsidiary + Otherassets + PropertyandEquipment;
-                Sub_Total := ShareCapital + CapitalGrants + retainedEarnins + NetSurplusaftertax + StatutoryReserve + Otherreserves;
-                TotalDeductions := InvestmentsinSubsidiary + OtherDeductions;
-                Corecapital := (Sub_Total - TotalDeductions);
+
 
 
                 //corecapital last year
@@ -1032,7 +823,7 @@ Report 50008 "Other Disclosures"
                 end;
 
                 //INVESTMENT IN SUBSIDIARY
-                InvestmentsinSubsidiary := 0;
+                InvestmentsinSubsidiaryLast := 0;
                 GLAccount.Reset;
                 GLAccount.SetFilter(GLAccount."Capital adequecy", '%1', GLAccount."capital adequecy"::InvestmentsinSubsidiary);
                 if GLAccount.FindSet then begin
@@ -1157,6 +948,23 @@ Report 50008 "Other Disclosures"
 
                 //investment
                 //TotalDepositsLiabilities:=0;
+
+
+                //non withdrawal
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.StatementOfFP2, '%1', GLAccount.Statementoffp2::Nonwithdrawabledeposits);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', Asat);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            Nonwithdrawabledeposits += -1 * GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+
+                end;
                 GLAccount.Reset;
                 GLAccount.SetFilter(GLAccount."Capital adequecy", '%1', GLAccount."capital adequecy"::Investments);
                 if GLAccount.FindSet then begin
@@ -1172,29 +980,34 @@ Report 50008 "Other Disclosures"
                     until GLAccount.Next = 0;
 
                 end;
-                TOTALOnBalanceSheet := Cash + GovernmentSecurities + DepositsandBalancesatOtherInstitutions + LoansandAdvances + InvestmentsinSubsidiary + Otherassets + PropertyandEquipment + investment;
-                Sub_Total := ShareCapital + CapitalGrants + retainedEarnins + NetSurplusaftertax + StatutoryReserve + Otherreserves;
-                TotalDeductions := InvestmentsinSubsidiary + OtherDeductions;
-                CORECAPITAL := Sub_Total - TotalDeductions;
 
-                TOTALOnBalanceSheetLast := CashLast + GovernmentSecuritiesLast + DepositsandBalancesatOtherInstitutionsLast + LoansandAdvanceslast + InvestmentsinSubsidiaryLast + OtherassetsLast + PropertyandEquipmentLast;
-                Sub_TotalLast := ShareCapitalLast + CapitalGrantsLast + retainedEarninsLast + NetSurplusaftertaxLast + StatutoryReserveLast + OtherreservesLast;
-                TotalDeductionsLast := InvestmentsinSubsidiaryLast + OtherDeductionsLast;
-                CorecapitalLast := (Sub_TotalLast - TotalDeductionsLast);
-                // if Corecapital 
-                if BalancesheetAssets > 0 then
-                    CorecapitaltoTotalassetratioNew := Corecapital / BalancesheetAssets;
-                if BalancesheetAssetsLast > 0 then
-                    CorecapitaltoTotalassetratioNewLast := CorecapitalLast / BalancesheetAssetsLast;
-                Maximumstatutoryratio := 0.08;
-                Excess1 := (CorecapitaltoTotalassetratioNew - Maximumstatutoryratio);
-                Excess11 := (CorecapitaltoTotalassetratioNewLast - Maximumstatutoryratio);
-                if Depositsliabilitiesratio > 0 then
-                    CorecapitalDepositsliabilities := Corecapital / Depositsliabilitiesratio;
-                if DepositsliabilitiesratioLast > 0 then
-                    CorecapitalDepositsliabilitiesLast := CorecapitalLast / DepositsliabilitiesratioLast;
-                xcessdeficiency := (CorecapitalDepositsliabilities - 0.05);
-                xcessdeficiencyLast := (CorecapitalDepositsliabilitiesLast - 0.08);
+                //current year surplus
+                NetSurplusaftertax := 0;
+                GLAccount.Reset;
+                GLAccount.SetRange(GLAccount."No.", '20800');
+                GLAccount.SetFilter(GLAccount."Date Filter", '<=%1', AsAt);
+                if GLAccount.FindSet then begin
+                    GLAccount.CalcFields(GLAccount."Net Change");
+                    NetSurplusaftertax := (NetSurplusaftertax + GLAccount."Net Change");
+                end;
+                //investment incompany shares
+                InvestmentinCompaniesshares := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)", '%1', GLAccount."form2f(statement of c income)"::InvestmentinCompaniesshares);
+                if GLAccount.FindSet then begin
+
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", DateFilter);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            InvestmentinCompaniesshares += -1 * GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
+
                 // //liquidity ratio
                 LocalNotes := 0;
                 GLAccount.Reset;
@@ -1407,15 +1220,88 @@ Report 50008 "Other Disclosures"
 
                     until GLAccount.Next = 0;
                 end;
+                
+                AllowanceforLoanLoss := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.StatementOfFP, '%1', GLAccount.Statementoffp::AllowanceforLoanLoss);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', Asat);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            AllowanceforLoanLoss += -GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
 
+                end;
+
+
+                Taxpaid := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F1(Statement of C Income)", '%1', GLAccount."Form2F1(Statement of C Income)"::NonOperatingExpense);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            Taxpaid += GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+                Taxes := 0;
+                ProposedDividends := 0;
+                ProposedHonoraria := 0;
+                StatturyAdjustment := 0;
+                Netsurplus := 0;
+                Corecapital := 0;
+                Saccogen.Get();
+                ProposedHonoraria := (((Nonwithdrawabledeposits * SaccoGen."Interest On Current Shares") * 0.01) * (SaccoGen."Proposed Honoraria" * 0.01));
+                ProposedDividends := ((Nonwithdrawabledeposits * SaccoGen."Interest On Current Shares") * 0.01) + ((ShareCapital * SaccoGen."Interest on Share Capital(%)") * 0.01);
+                NetSurplusaftertax := NetSurplusaftertax + ProposedDividends;
+                Taxes := ((InvestmentinCompaniesshares * 0.50) * 0.30);
+                Taxes := Taxes - Taxpaid;
+                NetSurplusaftertax := NetSurplusaftertax + Taxes;
+                Netsurplus := -(NetSurplusaftertax * 0.50);
+                StatturyAdjustment := -(0.20 * NetSurplusaftertax);
+                NetSurplusaftertax := -(NetSurplusaftertax + (StatturyAdjustment + ProposedHonoraria));
+                Otherreserves := NetSurplusaftertax;
+
+                StatutoryReserve := StatutoryReserve + StatturyAdjustment;
+                TOTALOnBalanceSheet := Cash + GovernmentSecurities + DepositsandBalancesatOtherInstitutions + LoansandAdvances + InvestmentsinSubsidiary + Otherassets + PropertyandEquipment + investment;
+                Sub_Total := ShareCapital + CapitalGrants + retainedEarnins + Netsurplus + StatutoryReserve + Otherreserves;
+
+                CORECAPITAL := Sub_Total - InvestmentsinSubsidiary;
+
+                TOTALOnBalanceSheetLast := CashLast + GovernmentSecuritiesLast + DepositsandBalancesatOtherInstitutionsLast + LoansandAdvanceslast + InvestmentsinSubsidiaryLast + OtherassetsLast + PropertyandEquipmentLast;
+                Sub_TotalLast := ShareCapitalLast + CapitalGrantsLast + retainedEarninsLast + NetSurplusaftertaxLast + StatutoryReserveLast + OtherreservesLast;
+                TotalDeductionsLast := InvestmentsinSubsidiaryLast + OtherDeductionsLast;
+                CorecapitalLast := (Sub_TotalLast - TotalDeductionsLast);
+                BalancesheetAssets := BalancesheetAssets - AllowanceforLoanLoss;
+
+                // if Corecapital 
+                if BalancesheetAssets > 0 then
+                    CorecapitaltoTotalassetratioNew := Corecapital / BalancesheetAssets;
+                if BalancesheetAssetsLast > 0 then
+                    CorecapitaltoTotalassetratioNewLast := CorecapitalLast / BalancesheetAssetsLast;
+                Maximumstatutoryratio := 0.08;
+                Excess1 := (CorecapitaltoTotalassetratioNew - Maximumstatutoryratio);
+                Excess11 := (CorecapitaltoTotalassetratioNewLast - Maximumstatutoryratio);
+                if Depositsliabilitiesratio > 0 then
+                    CorecapitalDepositsliabilities := Corecapital / Depositsliabilitiesratio;
+                if DepositsliabilitiesratioLast > 0 then
+                    CorecapitalDepositsliabilitiesLast := CorecapitalLast / DepositsliabilitiesratioLast;
+                xcessdeficiency := (CorecapitalDepositsliabilities - 0.05);
+                xcessdeficiencyLast := (CorecapitalDepositsliabilitiesLast - 0.08);
                 NETLIQUIDASSETS :=
                 LocalNotes + ForeignNotes + BalancesduetoFinanciaInstitutions + BalancesDuetootherSaccosocieties + BalanceswithCommercialBanks + BalanceswithotherFinancialInstitutions + BalanceswithotherSaccoSocieties + TreasuryBills + TreasuryBonds + TimeDeposits
                 + OverdraftsandMatured;
-                //MESSAGE('%1|%2|%3',NETLIQUIDASSETS,TotalOtherliabilitiesNew,BalanceswithCommercialBanks);
                 NETLIQUIDASSETSLst :=
                 LocalNotesLast + ForeignNotes + BalancesduetoFinanciaInstitutionsLast + BalancesDuetootherSaccosocieties + BalanceswithCommercialBanksLast + BalanceswithotherFinancialInstitutionsLast + BalanceswithotherSaccoSocieties + TreasuryBillsLast + TreasuryBonds
                 + TimeDepositsLast + OverdraftsandMatured;
-                // TotalOtherliabilities:=MaturedLiabilities+LiabilitiesMaturingwithin91Days;
                 if TotalOtherliabilitiesNew > 0 then
                     Ratio := NETLIQUIDASSETS / TotalOtherliabilitiesNew;
                 if TotalOtherliabilitiesNewLast > 0 then
@@ -1466,9 +1352,6 @@ Report 50008 "Other Disclosures"
             }
         }
 
-        actions
-        {
-        }
     }
 
     labels
@@ -1476,6 +1359,15 @@ Report 50008 "Other Disclosures"
     }
 
     var
+        Taxes: Decimal;
+        StatturyAdjustment: Decimal;
+        ProposedHonoraria: Decimal;
+        Taxpaid: Decimal;
+        Netsurplus: Decimal;
+        Nonwithdrawabledeposits: Decimal;
+        Saccogen: Record "Sacco General Set-Up";
+        InvestmentinCompaniesshares: Decimal;
+        ProposedDividends: Decimal;
         DateFilter: Text;
         DateFilterNew: Text;
         Date: Date;

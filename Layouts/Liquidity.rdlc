@@ -3829,7 +3829,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Minum holding of Liquid Assets Requirement</Value>
+                                  <Value>Minimum holding of Liquid Assets Requirement</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3848,6 +3848,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>

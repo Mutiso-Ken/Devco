@@ -445,7 +445,37 @@ Report 50001 "STATEMENT OF FINANCIAL P"
                     until GLAccount.Next = 0;
 
                 end;
+                Taxpaid := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F1(Statement of C Income)", '%1', GLAccount."Form2F1(Statement of C Income)"::NonOperatingExpense);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            Taxpaid += GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+                //investment incompany shares
+                InvestmentinCompaniesshares := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F(Statement of C Income)", '%1', GLAccount."form2f(statement of c income)"::InvestmentinCompaniesshares);
+                if GLAccount.FindSet then begin
 
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", DateFilter);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            InvestmentinCompaniesshares += -1 * GLEntry.Amount;
+                        end;
+
+                    until GLAccount.Next = 0;
+                end;
                 //current year surplus
                 CurrentYearSurplus := 0;
                 GLAccount.Reset;
@@ -455,16 +485,28 @@ Report 50001 "STATEMENT OF FINANCIAL P"
                     GLAccount.CalcFields(GLAccount."Net Change");
                     CurrentYearSurplus := CurrentYearSurplus + GLAccount."Net Change";
                 end;
-                //MESSAGE(FORMAT(CurrentYearSurplus));
 
+                Taxes := 0;
+                StatturyAdjustment := 0;
+                ProposedHonoraria := 0;
+                SaccoGen.Get();
+                Taxes := (((InvestmentinCompaniesshares * 0.50) * 0.30));
+                Taxes := Taxes - Taxpaid;
+
+                DividendPayable := ((Nonwithdrawabledeposits * SaccoGen."Interest On Current Shares") * 0.01) + ((ShareCapital * SaccoGen."Interest on Share Capital(%)") * 0.01);
+                ProposedHonoraria := (((Nonwithdrawabledeposits * SaccoGen."Interest On Current Shares") * 0.01) * (SaccoGen."Proposed Honoraria" * 0.01));
+                CurrentYearSurplus := CurrentYearSurplus + (DividendPayable + Taxes);
+                StatturyAdjustment := -(0.20 * CurrentYearSurplus);
+                CurrentYearSurplus := (CurrentYearSurplus + (StatturyAdjustment + ProposedHonoraria));
+                TaxPayable := TaxPayable + Taxes;
+                OtherLiabilities := OtherLiabilities + ProposedHonoraria;
+                StatutoryReserve := StatutoryReserve + StatturyAdjustment;
                 CashCashEquivalent := Cashatbank + Cashinhand;
                 FinancialInvestments := GovernmentSecurities + Placement + CollectiveInvestment + Derivatives + EquityInvestments + Investmentincompanies + CommercialPapers;
                 NetLoanPortfolio := GrossLoanPortfolio + AllowanceforLoanLoss;
                 AccountsReceivables := TaxRecoverable + DeferredTaxAssets + RetirementBenefitAssets;
                 PropertyEquipmentOtheassets := InvestmentProperties + PropertyEquipment + PrepaidLeaseentals + OtherAssets + IntangibleAssets;
                 TotalAssets := CashCashEquivalent + FinancialInvestments + NetLoanPortfolio + AccountsReceivables + PropertyEquipmentOtheassets + PrepaymentsSundryReceivables;
-
-
                 AccountsPayableOtherLiabilities := TaxPayable + DividendPayable + DeferredTaxLiability + ExternalBorrowings + RetirementBenefitsLiability + OtherLiabilities;
                 EQUITY := ShareCapital + CapitalGrants;
                 RetainedEarnings := PrioryarRetainedEarnings - CurrentYearSurplus;
@@ -510,7 +552,12 @@ Report 50001 "STATEMENT OF FINANCIAL P"
 
     var
 #pragma warning disable AL0275
+        InvestmentinCompaniesshares: Decimal;
         CompanyInformation: Record "Company Information";
+        StatturyAdjustment: Decimal;
+        Taxpaid: Decimal;
+        Taxes: Decimal;
+        ProposedHonoraria: Decimal;
 #pragma warning restore AL0275
         Cashinhand: Decimal;
         FinancialYear: Integer;
@@ -519,8 +566,7 @@ Report 50001 "STATEMENT OF FINANCIAL P"
         CashCashEquivalent: Decimal;
 #pragma warning disable AL0275
         GLEntry: Record "G/L Entry";
-#pragma warning restore AL0275
-#pragma warning disable AL0275
+        SaccoGen: Record "Sacco General Set-Up";
         GLAccount: Record "G/L Account";
 #pragma warning restore AL0275
         DateFilter: Text;

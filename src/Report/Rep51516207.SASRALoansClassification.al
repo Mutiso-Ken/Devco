@@ -77,111 +77,110 @@ Report 51516207 "SASRA Loans Classification"
                 LoansReg.SetFilter(LoansReg."Date filter", DateFilter);
                 LoansReg.SetRange(LoansReg."Loan  No.", "Loans Register"."Loan  No.");
                 LoansReg.SetAutocalcFields(LoansReg."Scheduled Principle Payments", LoansReg."Schedule Loan Amount Issued", LoansReg."Schedule Installments", LoansReg."Outstanding Balance", LoansReg."Oustanding Interest", LoansReg."Scheduled Interest Payments", LoansReg."Interest Paid");
-                if LoansReg.Find('-') then begin
-                    if LoansReg.Find('-') then begin
+                if LoansReg.FindSet() then begin
+                    repeat
+                        LoansClassificationCodeUnit.FnClassifyLoan(LoansReg."Loan  No.", AsAt);
+                    until LoansReg.Next = 0;
+                end else
+                    if not Find('-') then begin
                         repeat
-                            LoansClassificationCodeUnit.FnClassifyLoan(LoansReg."Loan  No.", AsAt);
+                            //...................Loan is not within the specified range
+                            if LoansReg.Posted = true then begin
+                                LoansReg."Loans Category-SASRA" := LoansReg."loans category-sasra"::Perfoming;
+                                LoansReg.Modify(true);
+                            end;
                         until LoansReg.Next = 0;
-                    end else
-                        if not Find('-') then begin
-                            repeat
-                                //...................Loan is not within the specified range
-                                if LoansReg.Posted = true then begin
-                                    LoansReg."Loans Category-SASRA" := LoansReg."loans category-sasra"::Perfoming;
-                                    LoansReg.Modify(true);
-                                end;
-                            until LoansReg.Next = 0;
-                        end;
-                    //...........Current Loan Balance
-
-                    CurrentLoanBalance := 0;
-                    CurrentLoanBalance := LoansReg."Outstanding Balance";
-                    //...........Calculate Principle Arrears
-                    LoanArrears := 0;
-                    LoanArrears := LoansReg."Principal In Arrears";
-                    if LoanArrears < 0 then begin
-                        LoanArrears := 0;
                     end;
-                    //...........................Interest Arrears
-                    if LoansReg.Source = LoansReg.Source::BOSA then begin
+                //...........Current Loan Balance
+
+                CurrentLoanBalance := 0;
+                CurrentLoanBalance := LoansReg."Outstanding Balance";
+                //...........Calculate Principle Arrears
+                LoanArrears := 0;
+                LoanArrears := LoansReg."Principal In Arrears";
+                if LoanArrears < 0 then begin
+                    LoanArrears := 0;
+                end;
+                //...........................Interest Arrears
+                if LoansReg.Source = LoansReg.Source::BOSA then begin
+                    InterestArrears := 0;
+                    InterestArrears := LoansReg."Oustanding Interest";
+                    if InterestArrears < 0 then begin
                         InterestArrears := 0;
-                        InterestArrears := LoansReg."Oustanding Interest";
-                        if InterestArrears < 0 then begin
-                            InterestArrears := 0;
-                        end;
+                    end;
 
 
-                        DaysInArrears := 0;
-                        DaysInArrears := ROUND((LoansReg."No of Months in Arrears" * 30), 1, '>');
-                        //...........................Classify Loan
-                        PerformingDisplay := 0;
-                        WatchDisplay := 0;
-                        StandardDisplay := 0;
-                        DoubtfulDisplay := 0;
-                        LossDisplay := 0;
-                        AmountInArrearsDisplay := 0;
-                        NoOfMonthsInArrears := 0;
-                        NoOfMonthsInArrears := LoansReg."No of Months in Arrears";
+                    DaysInArrears := 0;
+                    DaysInArrears := ROUND((LoansReg."No of Months in Arrears" * 30), 1, '>');
+                    //...........................Classify Loan
+                    PerformingDisplay := 0;
+                    WatchDisplay := 0;
+                    StandardDisplay := 0;
+                    DoubtfulDisplay := 0;
+                    LossDisplay := 0;
+                    AmountInArrearsDisplay := 0;
+                    NoOfMonthsInArrears := 0;
+                    NoOfMonthsInArrears := LoansReg."No of Months in Arrears";
 
-                        if (LoansReg."Expected Date of Completion" <> 0D) then begin
-                            If LoansReg."Loans Category-SASRA" = LoansReg."Loans Category-SASRA"::Perfoming then begin
-                                PerformingDisplay := CurrentLoanBalance;
-                                WatchDisplay := 0;
+                    if (LoansReg."Expected Date of Completion" <> 0D) then begin
+                        If LoansReg."Loans Category-SASRA" = LoansReg."Loans Category-SASRA"::Perfoming then begin
+                            PerformingDisplay := CurrentLoanBalance;
+                            WatchDisplay := 0;
+                            StandardDisplay := 0;
+                            DoubtfulDisplay := 0;
+                            LossDisplay := 0;
+                            AmountInArrearsDisplay := LoanArrears;
+                        end else
+                            if LoansReg."Loans Category-SASRA" = LoansReg."Loans Category-SASRA"::Watch then begin
+                                PerformingDisplay := 0;
+                                WatchDisplay := CurrentLoanBalance;
                                 StandardDisplay := 0;
                                 DoubtfulDisplay := 0;
                                 LossDisplay := 0;
                                 AmountInArrearsDisplay := LoanArrears;
                             end else
-                                if LoansReg."Loans Category-SASRA" = LoansReg."Loans Category-SASRA"::Watch then begin
+                                if LoansReg."Loans Category-SASRA" = LoansReg."Loans Category-SASRA"::Substandard then begin
                                     PerformingDisplay := 0;
-                                    WatchDisplay := CurrentLoanBalance;
-                                    StandardDisplay := 0;
+                                    WatchDisplay := 0;
+                                    StandardDisplay := CurrentLoanBalance;
                                     DoubtfulDisplay := 0;
                                     LossDisplay := 0;
                                     AmountInArrearsDisplay := LoanArrears;
                                 end else
-                                    if LoansReg."Loans Category-SASRA" = LoansReg."Loans Category-SASRA"::Substandard then begin
+                                    if LoansReg."Loans Category-SASRA" = LoansReg."Loans Category-SASRA"::Doubtful then begin
                                         PerformingDisplay := 0;
                                         WatchDisplay := 0;
-                                        StandardDisplay := CurrentLoanBalance;
-                                        DoubtfulDisplay := 0;
+                                        StandardDisplay := 0;
+                                        DoubtfulDisplay := CurrentLoanBalance;
                                         LossDisplay := 0;
                                         AmountInArrearsDisplay := LoanArrears;
                                     end else
-                                        if LoansReg."Loans Category-SASRA" = LoansReg."Loans Category-SASRA"::Doubtful then begin
+                                        if LoansReg."Loans Category-SASRA" = LoansReg."Loans Category-SASRA"::Loss then begin
                                             PerformingDisplay := 0;
                                             WatchDisplay := 0;
                                             StandardDisplay := 0;
-                                            DoubtfulDisplay := CurrentLoanBalance;
-                                            LossDisplay := 0;
+                                            DoubtfulDisplay := 0;
+                                            LossDisplay := CurrentLoanBalance;
                                             AmountInArrearsDisplay := LoanArrears;
-                                        end else
-                                            if LoansReg."Loans Category-SASRA" = LoansReg."Loans Category-SASRA"::Loss then begin
-                                                PerformingDisplay := 0;
-                                                WatchDisplay := 0;
-                                                StandardDisplay := 0;
-                                                DoubtfulDisplay := 0;
-                                                LossDisplay := CurrentLoanBalance;
-                                                AmountInArrearsDisplay := LoanArrears;
-                                            end;
-                        end;
-                    end
-                    else
-                        if (LoansReg."Expected Date of Completion" <> 0D) and (DateBD > LoansReg."Expected Date of Completion") then begin
-                            PerformingDisplay := 0;
-                            WatchDisplay := 0;
-                            StandardDisplay := 0;
-                            DoubtfulDisplay := 0;
-                            LossDisplay := CurrentLoanBalance;
-                            AmountInArrearsDisplay := LoanArrears;
-                        end;
-                    if (PerformingDisplay = 0) and (WatchDisplay = 0) and (StandardDisplay = 0)
-                      and (DoubtfulDisplay = 0) and (LossDisplay = 0) OR (LoansReg."Schedule Installments" = 0) then begin
-                        CurrReport.Skip;
+                                        end;
                     end;
-                    NextCount := NextCount + 1;
+                end
+                else
+                    if (LoansReg."Expected Date of Completion" <> 0D) and (DateBD > LoansReg."Expected Date of Completion") then begin
+                        PerformingDisplay := 0;
+                        WatchDisplay := 0;
+                        StandardDisplay := 0;
+                        DoubtfulDisplay := 0;
+                        LossDisplay := CurrentLoanBalance;
+                        AmountInArrearsDisplay := LoanArrears;
+                    end;
+                if (PerformingDisplay = 0) and (WatchDisplay = 0) and (StandardDisplay = 0)
+                  and (DoubtfulDisplay = 0) and (LossDisplay = 0) OR (LoansReg."Schedule Installments" = 0) then begin
+                    CurrReport.Skip;
                 end;
+                NextCount := NextCount + 1;
             end;
+            //end;
 
 
             trigger OnPreDataItem()

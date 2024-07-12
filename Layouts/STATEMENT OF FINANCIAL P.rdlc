@@ -2809,7 +2809,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!AllowanceforLoanLoss.Value</Value>
+                                  <Value>=Fields!AllowanceforLoanLoss.Value*-1</Value>
                                   <Style>
                                     <Format>#,0.00;(#,0.00)</Format>
                                   </Style>
@@ -6476,7 +6476,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!CurrentYearSurplus.Value</Value>
+                                  <Value>=Fields!CurrentYearSurplus.Value*-1</Value>
                                   <Style>
                                     <Format>#,0.00;(#,0.00)</Format>
                                   </Style>

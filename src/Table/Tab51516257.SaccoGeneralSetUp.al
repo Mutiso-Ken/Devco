@@ -584,7 +584,10 @@ Table 51516257 "Sacco General Set-Up"
         {
             TableRelation = "G/L Account";
         }
-
+        field(1605; "Proposed Honoraria"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 
     keys

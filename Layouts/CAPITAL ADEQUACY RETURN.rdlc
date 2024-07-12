@@ -64,7 +64,6 @@
                           </Style>
                         </Textbox>
                         <ColSpan>3</ColSpan>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell />
@@ -1417,14 +1416,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="NetSurplusaftertax">
+                        <Textbox Name="Netsurplus">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!NetSurplusaftertax.Value</Value>
+                                  <Value>=Fields!Netsurplus.Value</Value>
                                   <Style>
                                     <FontFamily>Cambria</FontFamily>
                                     <Format>#,0.00;(#,0.00)</Format>
@@ -1436,7 +1435,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>NetSurplusaftertax</rd:DefaultName>
+                          <rd:DefaultName>Netsurplus</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -7099,6 +7098,12 @@ End Function
         </Field>
         <Field Name="Excess2Format">
           <DataField>Excess2Format</DataField>
+        </Field>
+        <Field Name="Netsurplus">
+          <DataField>Netsurplus</DataField>
+        </Field>
+        <Field Name="NetsurplusFormat">
+          <DataField>NetsurplusFormat</DataField>
         </Field>
         <Field Name="CorecapitatoDepositsRatio">
           <DataField>CorecapitatoDepositsRatio</DataField>

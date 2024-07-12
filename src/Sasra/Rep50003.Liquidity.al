@@ -191,18 +191,18 @@ Report 50003 Liquidity
                         GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', AsAt);
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
-                            TotalOtherliabilitiesNew += GLEntry.Amount * -1;
+                            LiabilitiesMaturingwithin91Days += GLEntry.Amount * -1;
                         end;
 
                     until GLAccount.Next = 0;
 
-                end;//20199
-
+                end;
 
                 NETLIQUIDASSETS := LocalNotes + ForeignNotes + BalancesduetoFinanciaInstitutions + BalancesDuetootherSaccosocieties + BalanceswithCommercialBanks + BalanceswithotherFinancialInstitutions + BalanceswithotherSaccoSocieties + TreasuryBills + TreasuryBonds + TimeDeposits
-                + OverdraftsandMatured;
-                TotalOtherliabilities := MaturedLiabilities + LiabilitiesMaturingwithin91Days;
-                // Ratio := (NETLIQUIDASSETS / TotalOtherliabilitiesNew);
+                  + OverdraftsandMatured;
+                TotalOtherliabilitiesNew := LiabilitiesMaturingwithin91Days + MaturedLiabilities;
+                TotalOtherliabilities := MaturedLiabilities + TotalOtherliabilitiesNew;
+                Ratio := (NETLIQUIDASSETS / TotalOtherliabilitiesNew);
                 Minumholding := 0.1;
                 Excess := Ratio - Minumholding;
             end;

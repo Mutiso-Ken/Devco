@@ -66,10 +66,13 @@ Report 51516132 "Loan Sectoral Lending Report"
                         LoansR.SetRange(LoansR."Specific Sector", "Specific Sector".Code);
                         LoansR.SetRange(LoansR.Posted, true);
                         LoansR.SetFilter("Issued Date", Datefilter);
-                        if LoansR.FindFirst then begin
+
+                        LoansR.SetFilter("Date filter", '%1..%2', 0D, EndDate);
+                        if LoansR.FindFirst() then begin
                             repeat
+
                                 LoansR.CalcFields("Outstanding Balance");
-                                AMount := AMount + LoansR."Approved Amount";
+                                AMount := AMount + LoansR."Outstanding Balance";
                             until LoansR.Next = 0;
                         end;
                     end;
@@ -83,10 +86,13 @@ Report 51516132 "Loan Sectoral Lending Report"
                     LoansR.SetRange(LoansR."Sub-Sector", "Sub Sector".Code);
                     LoansR.SetRange(LoansR.Posted, true);
                     LoansR.SetFilter("Issued Date", Datefilter);
-                    if LoansR.FindFirst then begin
+                    LoansR.SetFilter("Date filter", '%1..%2', 0D, EndDate);
+                    if LoansR.FindFirst() then begin
                         repeat
+
+
                             LoansR.CalcFields("Outstanding Balance");
-                            SubSectorAmount := SubSectorAmount + LoansR."Approved Amount";
+                            SubSectorAmount := SubSectorAmount + LoansR."Outstanding Balance";
                         until LoansR.Next = 0;
                     end;
                 end;
@@ -98,10 +104,12 @@ Report 51516132 "Loan Sectoral Lending Report"
                 LoansR.SetRange(LoansR."Main Sector", "Main Sector".Code);
                 LoansR.SetRange(LoansR.Posted, true);
                 LoansR.SetFilter("Issued Date", Datefilter);
-                if LoansR.FindFirst then begin
+                LoansR.SetFilter("Date filter", '%1..%2', 0D, EndDate);
+                if LoansR.FindFirst() then begin
                     repeat
+
                         LoansR.CalcFields("Outstanding Balance");
-                        MainSectorAmount := MainSectorAmount + LoansR."Approved Amount";
+                        MainSectorAmount := MainSectorAmount + LoansR."Outstanding Balance";
                     until LoansR.Next = 0;
                 end;
             end;
@@ -134,10 +142,7 @@ Report 51516132 "Loan Sectoral Lending Report"
         actions
         {
         }
-        trigger OnOpenPage()
-        begin
-            //:= false;
-        end;
+
     }
 
     trigger OnInitReport()

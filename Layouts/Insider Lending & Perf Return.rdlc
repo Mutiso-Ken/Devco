@@ -414,7 +414,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.40833in</Height>
+                  <Height>0.2625in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -447,7 +447,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -5375,11 +5374,7 @@
                   <KeepWithGroup>After</KeepWithGroup>
                 </TablixMember>
                 <TablixMember>
-                  <Group Name="LMemberName_LoansRegister">
-                    <GroupExpressions>
-                      <GroupExpression>=Fields!LMemberName_LoansRegister.Value</GroupExpression>
-                    </GroupExpressions>
-                  </Group>
+                  <Group Name="LMemberName_LoansRegister" />
                   <SortExpressions>
                     <SortExpression>
                       <Value>=Fields!LMemberName_LoansRegister.Value</Value>
@@ -5460,14 +5455,14 @@
                           <TablixHeader>
                             <Size>1.44055in</Size>
                             <CellContents>
-                              <Textbox Name="LMemberName_LoansRegister1">
+                              <Textbox Name="MemberName">
                                 <CanGrow>true</CanGrow>
                                 <KeepTogether>true</KeepTogether>
                                 <Paragraphs>
                                   <Paragraph>
                                     <TextRuns>
                                       <TextRun>
-                                        <Value>=First(Fields!MemberName.Value)</Value>
+                                        <Value>=Fields!MemberName.Value</Value>
                                         <Style>
                                           <FontFamily>Segoe UI</FontFamily>
                                           <FontSize>8pt</FontSize>
@@ -5477,7 +5472,7 @@
                                     <Style />
                                   </Paragraph>
                                 </Paragraphs>
-                                <rd:DefaultName>LMemberName_LoansRegister1</rd:DefaultName>
+                                <rd:DefaultName>MemberName</rd:DefaultName>
                                 <Style>
                                   <Border>
                                     <Color>LightGrey</Color>
@@ -5493,16 +5488,6 @@
                           </TablixHeader>
                           <TablixMembers>
                             <TablixMember>
-                              <Group Name="LClientCode_LoansRegister">
-                                <GroupExpressions>
-                                  <GroupExpression>=Fields!LClientCode_LoansRegister.Value</GroupExpression>
-                                </GroupExpressions>
-                              </Group>
-                              <SortExpressions>
-                                <SortExpression>
-                                  <Value>=Fields!LClientCode_LoansRegister.Value</Value>
-                                </SortExpression>
-                              </SortExpressions>
                               <TablixHeader>
                                 <Size>0.65187in</Size>
                                 <CellContents>
@@ -5513,7 +5498,7 @@
                                       <Paragraph>
                                         <TextRuns>
                                           <TextRun>
-                                            <Value>=First(Fields!clientcode.Value)</Value>
+                                            <Value>=Fields!clientcode.Value</Value>
                                             <Style>
                                               <FontFamily>Segoe UI</FontFamily>
                                               <FontSize>8pt</FontSize>
@@ -5539,27 +5524,17 @@
                               </TablixHeader>
                               <TablixMembers>
                                 <TablixMember>
-                                  <Group Name="LPOSITIONHELD">
-                                    <GroupExpressions>
-                                      <GroupExpression>=Fields!LPOSITIONHELD.Value</GroupExpression>
-                                    </GroupExpressions>
-                                  </Group>
-                                  <SortExpressions>
-                                    <SortExpression>
-                                      <Value>=Fields!LPOSITIONHELD.Value</Value>
-                                    </SortExpression>
-                                  </SortExpressions>
                                   <TablixHeader>
                                     <Size>0.63388in</Size>
                                     <CellContents>
-                                      <Textbox Name="LPOSITIONHELD">
+                                      <Textbox Name="BoardPositions">
                                         <CanGrow>true</CanGrow>
                                         <KeepTogether>true</KeepTogether>
                                         <Paragraphs>
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=Fields!LPOSITIONHELD.Value</Value>
+                                                <Value>=Fields!BoardPositions.Value</Value>
                                                 <Style>
                                                   <FontFamily>Segoe UI</FontFamily>
                                                   <FontSize>8pt</FontSize>
@@ -5569,7 +5544,7 @@
                                             <Style />
                                           </Paragraph>
                                         </Paragraphs>
-                                        <rd:DefaultName>LPOSITIONHELD</rd:DefaultName>
+                                        <rd:DefaultName>BoardPositions</rd:DefaultName>
                                         <Style>
                                           <Border>
                                             <Color>LightGrey</Color>
@@ -5581,20 +5556,11 @@
                                           <PaddingBottom>2pt</PaddingBottom>
                                         </Style>
                                       </Textbox>
+                                      <rd:Selected>true</rd:Selected>
                                     </CellContents>
                                   </TablixHeader>
                                   <TablixMembers>
                                     <TablixMember>
-                                      <Group Name="LLoanProductType_LoansRegister">
-                                        <GroupExpressions>
-                                          <GroupExpression>=Fields!LLoanProductType_LoansRegister.Value</GroupExpression>
-                                        </GroupExpressions>
-                                      </Group>
-                                      <SortExpressions>
-                                        <SortExpression>
-                                          <Value>=Fields!LLoanProductType_LoansRegister.Value</Value>
-                                        </SortExpression>
-                                      </SortExpressions>
                                       <TablixHeader>
                                         <Size>1.21946in</Size>
                                         <CellContents>
@@ -5631,16 +5597,6 @@
                                       </TablixHeader>
                                       <TablixMembers>
                                         <TablixMember>
-                                          <Group Name="LRequestedAmount_LoansRegister">
-                                            <GroupExpressions>
-                                              <GroupExpression>=Fields!LRequestedAmount_LoansRegister.Value</GroupExpression>
-                                            </GroupExpressions>
-                                          </Group>
-                                          <SortExpressions>
-                                            <SortExpression>
-                                              <Value>=Fields!LRequestedAmount_LoansRegister.Value</Value>
-                                            </SortExpression>
-                                          </SortExpressions>
                                           <TablixHeader>
                                             <Size>0.81157in</Size>
                                             <CellContents>
@@ -5678,16 +5634,6 @@
                                           </TablixHeader>
                                           <TablixMembers>
                                             <TablixMember>
-                                              <Group Name="LRequestedAmount_LoansRegister1">
-                                                <GroupExpressions>
-                                                  <GroupExpression>=Fields!LRequestedAmount_LoansRegister.Value</GroupExpression>
-                                                </GroupExpressions>
-                                              </Group>
-                                              <SortExpressions>
-                                                <SortExpression>
-                                                  <Value>=Fields!LRequestedAmount_LoansRegister.Value</Value>
-                                                </SortExpression>
-                                              </SortExpressions>
                                               <TablixHeader>
                                                 <Size>0.68594in</Size>
                                                 <CellContents>
@@ -5725,16 +5671,6 @@
                                               </TablixHeader>
                                               <TablixMembers>
                                                 <TablixMember>
-                                                  <Group Name="LIssuedDate_LoansRegister">
-                                                    <GroupExpressions>
-                                                      <GroupExpression>=Fields!LIssuedDate_LoansRegister.Value</GroupExpression>
-                                                    </GroupExpressions>
-                                                  </Group>
-                                                  <SortExpressions>
-                                                    <SortExpression>
-                                                      <Value>=Fields!LIssuedDate_LoansRegister.Value</Value>
-                                                    </SortExpression>
-                                                  </SortExpressions>
                                                   <TablixHeader>
                                                     <Size>0.88802in</Size>
                                                     <CellContents>
@@ -5772,16 +5708,6 @@
                                                   </TablixHeader>
                                                   <TablixMembers>
                                                     <TablixMember>
-                                                      <Group Name="CurrentSharess">
-                                                        <GroupExpressions>
-                                                          <GroupExpression>=Fields!CurrentSharess.Value</GroupExpression>
-                                                        </GroupExpressions>
-                                                      </Group>
-                                                      <SortExpressions>
-                                                        <SortExpression>
-                                                          <Value>=Fields!CurrentSharess.Value</Value>
-                                                        </SortExpression>
-                                                      </SortExpressions>
                                                       <TablixHeader>
                                                         <Size>0.78674in</Size>
                                                         <CellContents>
@@ -5819,16 +5745,6 @@
                                                       </TablixHeader>
                                                       <TablixMembers>
                                                         <TablixMember>
-                                                          <Group Name="LNATUREOFSECURITY">
-                                                            <GroupExpressions>
-                                                              <GroupExpression>=Fields!LNATUREOFSECURITY.Value</GroupExpression>
-                                                            </GroupExpressions>
-                                                          </Group>
-                                                          <SortExpressions>
-                                                            <SortExpression>
-                                                              <Value>=Fields!LNATUREOFSECURITY.Value</Value>
-                                                            </SortExpression>
-                                                          </SortExpressions>
                                                           <TablixHeader>
                                                             <Size>0.73177in</Size>
                                                             <CellContents>
@@ -5865,16 +5781,6 @@
                                                           </TablixHeader>
                                                           <TablixMembers>
                                                             <TablixMember>
-                                                              <Group Name="LRepaymentStartDate_LoansRegister">
-                                                                <GroupExpressions>
-                                                                  <GroupExpression>=Fields!LRepaymentStartDate_LoansRegister.Value</GroupExpression>
-                                                                </GroupExpressions>
-                                                              </Group>
-                                                              <SortExpressions>
-                                                                <SortExpression>
-                                                                  <Value>=Fields!LRepaymentStartDate_LoansRegister.Value</Value>
-                                                                </SortExpression>
-                                                              </SortExpressions>
                                                               <TablixHeader>
                                                                 <Size>0.93856in</Size>
                                                                 <CellContents>
@@ -5912,16 +5818,6 @@
                                                               </TablixHeader>
                                                               <TablixMembers>
                                                                 <TablixMember>
-                                                                  <Group Name="LInstallments_LoansRegister">
-                                                                    <GroupExpressions>
-                                                                      <GroupExpression>=Fields!LInstallments_LoansRegister.Value</GroupExpression>
-                                                                    </GroupExpressions>
-                                                                  </Group>
-                                                                  <SortExpressions>
-                                                                    <SortExpression>
-                                                                      <Value>=Fields!LInstallments_LoansRegister.Value</Value>
-                                                                    </SortExpression>
-                                                                  </SortExpressions>
                                                                   <TablixHeader>
                                                                     <Size>0.79873in</Size>
                                                                     <CellContents>
@@ -6463,9 +6359,14 @@
                 </FilterValues>
               </Filter>
             </Filters>
+            <SortExpressions>
+              <SortExpression>
+                <Value>=Fields!clientcode.Value</Value>
+              </SortExpression>
+            </SortExpressions>
             <Top>0.00135in</Top>
             <Left>0.00584in</Left>
-            <Height>3.23749in</Height>
+            <Height>3.09166in</Height>
             <Width>12.27433in</Width>
             <Style>
               <Border>

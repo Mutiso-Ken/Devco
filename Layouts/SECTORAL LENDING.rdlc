@@ -2008,11 +2008,44 @@ End Function
   <DataSets>
     <DataSet Name="DataSet_Result">
       <Fields>
-        <Field Name="ReportForNavId_1120054004">
-          <DataField>ReportForNavId_1120054004</DataField>
-        </Field>
         <Field Name="name">
           <DataField>name</DataField>
+        </Field>
+        <Field Name="Code_MainSector">
+          <DataField>Code_MainSector</DataField>
+        </Field>
+        <Field Name="MainSectorAmount">
+          <DataField>MainSectorAmount</DataField>
+        </Field>
+        <Field Name="MainSectorAmountFormat">
+          <DataField>MainSectorAmountFormat</DataField>
+        </Field>
+        <Field Name="Description_MainSector">
+          <DataField>Description_MainSector</DataField>
+        </Field>
+        <Field Name="Code_SubSector">
+          <DataField>Code_SubSector</DataField>
+        </Field>
+        <Field Name="Description_SubSector">
+          <DataField>Description_SubSector</DataField>
+        </Field>
+        <Field Name="SubSectorAmount">
+          <DataField>SubSectorAmount</DataField>
+        </Field>
+        <Field Name="SubSectorAmountFormat">
+          <DataField>SubSectorAmountFormat</DataField>
+        </Field>
+        <Field Name="Code_SpecificSector">
+          <DataField>Code_SpecificSector</DataField>
+        </Field>
+        <Field Name="Description_SpecificSector">
+          <DataField>Description_SpecificSector</DataField>
+        </Field>
+        <Field Name="AMount">
+          <DataField>AMount</DataField>
+        </Field>
+        <Field Name="AMountFormat">
+          <DataField>AMountFormat</DataField>
         </Field>
         <Field Name="startdate">
           <DataField>startdate</DataField>
@@ -2028,39 +2061,6 @@ End Function
         </Field>
         <Field Name="FinacialYear">
           <DataField>FinacialYear</DataField>
-        </Field>
-        <Field Name="ReportForNavId_1">
-          <DataField>ReportForNavId_1</DataField>
-        </Field>
-        <Field Name="Code_MainSector">
-          <DataField>Code_MainSector</DataField>
-        </Field>
-        <Field Name="Description_MainSector">
-          <DataField>Description_MainSector</DataField>
-        </Field>
-        <Field Name="ReportForNavId_4">
-          <DataField>ReportForNavId_4</DataField>
-        </Field>
-        <Field Name="Code_SubSector">
-          <DataField>Code_SubSector</DataField>
-        </Field>
-        <Field Name="Description_SubSector">
-          <DataField>Description_SubSector</DataField>
-        </Field>
-        <Field Name="ReportForNavId_7">
-          <DataField>ReportForNavId_7</DataField>
-        </Field>
-        <Field Name="Code_SpecificSector">
-          <DataField>Code_SpecificSector</DataField>
-        </Field>
-        <Field Name="Description_SpecificSector">
-          <DataField>Description_SpecificSector</DataField>
-        </Field>
-        <Field Name="AMount">
-          <DataField>AMount</DataField>
-        </Field>
-        <Field Name="AMountFormat">
-          <DataField>AMountFormat</DataField>
         </Field>
       </Fields>
       <Query>

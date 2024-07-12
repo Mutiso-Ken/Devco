@@ -397,8 +397,8 @@ Report 50002 "Form2F Statement of CompIncome"
                 end;
 
                 //taxes
-                Taxes := 0;
-                Taxes := 0.15 * InvestmentinCompaniesshares;
+                // Taxes := 0;
+                // Taxes := 0.15 * InvestmentinCompaniesshares;
 
                 /*  GLAccount.RESET;
                  GLAccount.SETFILTER(GLAccount."Form2F1(Statement of C Income)",'%1',GLAccount."Form2F1(Statement of C Income)"::Taxes);
@@ -446,6 +446,54 @@ Report 50002 "Form2F Statement of CompIncome"
                     until GLAccount.Next = 0;
                 end;
 
+                MemberDeposits := 0;
+
+                SaccoGen.Get();
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.StatementOfFP2, '%1', GLAccount.StatementOfFP2::Nonwithdrawabledeposits);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            MemberDeposits += GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount.StatementOfFP2, '%1', GLAccount.StatementOfFP2::ShareCapital);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            Sharecapital += GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+                Taxpaid := 0;
+                GLAccount.Reset;
+                GLAccount.SetFilter(GLAccount."Form2F1(Statement of C Income)", '%1', GLAccount."Form2F1(Statement of C Income)"::NonOperatingExpense);
+                if GLAccount.FindSet then begin
+                    repeat
+                        GLEntry.Reset;
+                        GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
+                        GLEntry.SetFilter(GLEntry."Posting Date", '<=%1', AsAt);
+                        if GLEntry.FindSet then begin
+                            GLEntry.CalcSums(Amount);
+                            Taxpaid += GLEntry.Amount;
+                        end;
+                    until GLAccount.Next = 0;
+                end;
+
+                SaccoGen.Get();
+                nterestExpenseonDeposits := -((MemberDeposits * SaccoGen."Interest On Current Shares") * 0.01);
+                DividendExpenses := -((Sharecapital * SaccoGen."Interest on Share Capital(%)") * 0.01);
 
                 NetFinancialIncomeLoss := 0;
                 FinancialIncome := 0;
@@ -453,6 +501,7 @@ Report 50002 "Form2F Statement of CompIncome"
                 FinancialExpense := 0;
                 OperatingExpenses := 0;
                 NetNonOperatingIncomeExpense := 0;
+                Taxes := 0;
                 FinancialIncomefromLoansPortfolio := 0;
                 FinancialIncomefromInvestments := InvestmentinCompaniesshares + EquityInvestmentsinsubsidiaries + PlacementinBanks + Derivatives + CollectiveinvestmentSchemes + GovernmentSecurities + CommercialPapers;
                 FinancialIncomefromLoansPortfolio := InterestonLoanPortfolio + FeesCommissiononLoanPortfolio;
@@ -464,7 +513,9 @@ Report 50002 "Form2F Statement of CompIncome"
                 OperatingExpenses := GovernanceExpenses + PersonnelExpenses + MarketingExpenses + AdministrativeExpenses + DepreciationandAmortizationCharges;// + OtherFinancialExpense;
                 NetOperatingIncome := NetFinancialIncomeLoss - AllowanceforLoanLoss - OperatingExpenses;
                 NetIncomeBeforeTaxesandDonations := NetOperatingIncome + NetNonOperatingIncomeExpense;
-                NetIncomeAfterTaxesbeforeDonations := NetIncomeBeforeTaxesandDonations - Taxes;
+                Taxes := (-((InvestmentinCompaniesshares * 0.50) * 0.30));
+                Taxes := Taxes + Taxpaid;
+                NetIncomeAfterTaxesbeforeDonations := NetIncomeBeforeTaxesandDonations + Taxes;
                 NetIncomeAfterTaxesandDonations := NetIncomeAfterTaxesbeforeDonations - Donations;
 
             end;
@@ -511,7 +562,10 @@ Report 50002 "Form2F Statement of CompIncome"
     end;
 
     var
+        MemberDeposits: Decimal;
+        Sharecapital: Decimal;
         FinancialIncome: Decimal;
+        Taxpaid: Decimal;
         AsAt: Date;
         DateFilter: Text;
         Date: Date;
@@ -561,5 +615,7 @@ Report 50002 "Form2F Statement of CompIncome"
         NetIncomeBeforeTaxesandDonations: Decimal;
         NetIncomeAfterTaxesbeforeDonations: Decimal;
         NetIncomeAfterTaxesandDonations: Decimal;
+
+        SaccoGen: Record "Sacco General Set-Up";
 }
 

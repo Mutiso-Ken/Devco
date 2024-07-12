@@ -460,6 +460,10 @@ Page 51516271 "Sacco General Set-Up"
                     Caption = 'Dividends Capitalization Rate(%)';
                     Visible = false;
                 }
+                field("Proposed Honoraria"; "Proposed Honoraria")
+                {
+                    ApplicationArea = all;
+                }
             }
             group(ATM)
             {

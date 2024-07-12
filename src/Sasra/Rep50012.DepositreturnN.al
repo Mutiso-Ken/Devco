@@ -4,6 +4,7 @@ Report 50012 "Deposit returnN"
     DefaultLayout = RDLC;
     RDLCLayout = './Layouts/Deposit returnN.rdlc';
     UsageCategory = ReportsandAnalysis;
+    Caption = 'Form 2C';
 
     dataset
     {

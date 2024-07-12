@@ -22,36 +22,21 @@ Codeunit 51516030 "LoansClassificationCodeUnit"
 
     begin
         //..................Check if Loan expected date of completion is attained,if yes loan is loss
-        if IsLoanSupposedToBeCompleted(LoanNo, AsAt) = true then begin
-            //Mark LoaN As A Loss
-            LoansRegTablw.Reset;
-            LoansRegTablw.SetAutocalcFields(LoansRegTablw."Outstanding Balance");
-            LoansRegTablw.SetRange(LoansRegTablw."Loan  No.", LoanNo);
-            if LoansRegTablw.Find('-') then begin
-                if LoansRegTablw."Outstanding Balance" > 0 then begin
-                    //--Function to Get Days In Arrears and modify;
-                    LoansRegTablw."Amount in Arrears" := LoansRegTablw."Outstanding Balance";
-                    LoansRegTablw."No of Months in Arrears" := ROUND(LoansRegTablw."Amount in Arrears" / LoansRegTablw."Loan Principle Repayment", 1, '=');
-                    LoansRegTablw."Loans Category-SASRA" := LoansRegTablw."Loans Category-SASRA"::Loss;
-                end else
-                    if LoansRegTablw."Outstanding Balance" <= 0 then begin
-                        LoansRegTablw."Amount in Arrears" := 0;
-                        LoansRegTablw."No of Months in Arrears" := 0;
-                        LoansRegTablw."Loans Category-SASRA" := LoansRegTablw."Loans Category-SASRA"::Perfoming;
-                        //LoansRegTablw."Loans Category-SASRA" := LoansRegTablw."loans category-sasra"::Perfoming;
-                    end;
-                LoansRegTablw.Modify(true);
-            end;
-        end
-        else
-            if IsLoanSupposedToBeCompleted(LoanNo, AsAt) = false then begin
-                //Check member ledger entry to know loan balance as at that date was how much
-                // If 
-                // LoanBalAsAtFilterDate := 0;
-                LoanBalAsAtFilterDate := GetLoanBalAsAtFilterDate(LoanNo, AsAt);
+
+        LoansRegTablw.Reset;
+        LoansRegTablw.SetAutocalcFields(LoansRegTablw."Outstanding Balance");
+        LoansRegTablw.SetRange(LoansRegTablw."Loan  No.", LoanNo);
+        if LoansRegTablw.Find('-') then begin
+            LoanBalAsAtFilterDate := GetLoanBalAsAtFilterDate(LoanNo, AsAt);
+            IF LoanBalAsAtFilterDate > 0 then begin
                 //Check repayment schedule to know the expected balance
                 ScheduleExpectedLoanBal := 0;
-                ScheduleExpectedLoanBal := GetExpectedBalAsPerSchedule(LoanNo, AsAt);
+                if LoansRegTablw."Expected Date of Completion" < AsAt then begin
+                    ScheduleExpectedLoanBal := 0;
+                end else begin
+                    ScheduleExpectedLoanBal := GetExpectedBalAsPerSchedule(LoanNo, AsAt);
+                end;
+
                 //Determine if any areas
                 ArreasPresent := 0;
                 if LoanBalAsAtFilterDate > ScheduleExpectedLoanBal then begin
@@ -61,7 +46,6 @@ Codeunit 51516030 "LoansClassificationCodeUnit"
                     if (LoanBalAsAtFilterDate <= ScheduleExpectedLoanBal) then begin
                         ArreasPresent := 0;
                     end;
-                //MESSAGE('The loan balance is '+FORMAT(LoanBalAsAtFilterDate)+' the expected balance is '+FORMAT(ScheduleExpectedLoanBal));
                 //if there are areas then,,determine the days in areas
                 if ArreasPresent > 0 then begin
                     //--Function to Get Days In Arrears and modify;
@@ -71,8 +55,13 @@ Codeunit 51516030 "LoansClassificationCodeUnit"
                     if ArreasPresent <= 0 then begin
                         FnUpdateLoanStatusNonArrears(LoanNo);
                     end;
-            end;
-        //Classify
+            end else
+                if LoanBalAsAtFilterDate <= 0 then begin
+                    LoansRegTablw."Amount in Arrears" := 0;
+                    LoansRegTablw."No of Months in Arrears" := 0;
+                    LoansRegTablw."Loans Category-SASRA" := LoansRegTablw."Loans Category-SASRA"::Perfoming;
+                end;
+        end;
     end;
 
     local procedure GetLoanBalAsAtFilterDate(LoanNos: Code[30]; FilterDate: Date): Decimal
@@ -99,7 +88,7 @@ Codeunit 51516030 "LoansClassificationCodeUnit"
         ActualDate: Date;
         DateFormula: Text;
         i: Integer;
-        TotalPrincipalRepayment: Decimal;
+        PrincipalRepayment: Decimal;
         LoanBalance: Decimal;
     begin
         ScheduleExpectedBal := 0;
@@ -110,16 +99,8 @@ Codeunit 51516030 "LoansClassificationCodeUnit"
         RepaymentSchedule.SetFilter(RepaymentSchedule."Repayment Date", '%1..%2', 0D, DateFiltering);
         if RepaymentSchedule.FindLast then begin
             repeat
-                i := i + 1;
-                TotalPrincipalRepayment := ROUND(TotalPrincipalRepayment + RepaymentSchedule."Principal Repayment");
-                if i = 1 then begin
-                    LoanBalance := (RepaymentSchedule."Loan Amount")
-                end else begin
-                    LoanBalance := (RepaymentSchedule."Loan Amount" - TotalPrincipalRepayment +
-                    RepaymentSchedule."Principal Repayment");
-                end;
-                ScheduleExpectedBal := LoanBalance;
-                ScheduleExpectedBal := ROUND(RepaymentSchedule."Loan Balance");
+                ScheduleExpectedBal := ROUND(RepaymentSchedule."Loan Balance" + RepaymentSchedule."Principal Repayment");
+
             until RepaymentSchedule.Next = 0;
         end;
         exit(ScheduleExpectedBal);
@@ -141,7 +122,12 @@ Codeunit 51516030 "LoansClassificationCodeUnit"
     end;
 
     local procedure FnUpdateLoanStatusWithArrears(LoanNo: Code[30]; AmountInArearsPassed: Decimal; Datefilter: Date)
+
+    var
+        DaysInArreas: Integer;
+
     begin
+        DaysInArreas := 0;
         LoansReg.Reset;
         LoansReg.SetRange(LoansReg."Loan  No.", LoanNo);
         if LoansReg.Find('-') then begin
@@ -159,25 +145,22 @@ Codeunit 51516030 "LoansClassificationCodeUnit"
                 LoansRegTablw.Installments := 12;
             end;
             LoansReg."No of Months in Arrears" := ROUND(LoansReg."Amount in Arrears" / RepaymentScheduleAmount, 1, '=');
-            if LoansReg."No of Months in Arrears" = 0 then begin
+
+            DaysInArreas := LoansReg."No of Months in Arrears" * 30;
+            if (DaysInArreas <= 30) then begin
                 LoansReg."Loans Category-SASRA" := LoansReg."Loans Category-SASRA"::Perfoming;
-                // LoansReg."Loans Category-SASRA" := LoansReg."loans category-sasra"::Perfoming;
             end else
-                if (LoansReg."No of Months in Arrears" > 0) and (LoansReg."No of Months in Arrears" <= 1) then begin
-                    // LoansReg."Loans Category-SASRA" := LoansReg."Loans Category-SASRA"::Watch;
+                if (DaysInArreas > 30) and (DaysInArreas <= 60) then begin
                     LoansReg."Loans Category-SASRA" := LoansReg."loans category-sasra"::Watch;
                 end
                 else
-                    if (LoansReg."No of Months in Arrears" > 1) and (LoansReg."No of Months in Arrears" <= 6) then begin
-                        // LoansReg."Loans Category-SASRA" := LoansReg."Loans Category-SASRA"::Substandard;
+                    if (DaysInArreas > 60) and (DaysInArreas <= 180) then begin
                         LoansReg."Loans Category-SASRA" := LoansReg."loans category-sasra"::Substandard;
                     end else
-                        if (LoansReg."No of Months in Arrears" > 6) and (LoansReg."No of Months in Arrears" <= 12) then begin
-                            // LoansReg."Loans Category-SASRA" := LoansReg."Loans Category-SASRA"::Doubtful;
+                        if (DaysInArreas > 180) and (DaysInArreas <= 360) then begin
                             LoansReg."Loans Category-SASRA" := LoansReg."loans category-sasra"::Doubtful;
                         end else
-                            if (LoansReg."No of Months in Arrears" > 12) then begin
-                                // LoansReg."Loans Category-SASRA" := LoansReg."Loans Category-SASRA"::Loss;
+                            if (LoansReg."No of Months in Arrears" > 360) then begin
                                 LoansReg."Loans Category-SASRA" := LoansReg."loans category-sasra"::Loss;
                             end;
             LoansReg.Modify(true);

@@ -1899,23 +1899,23 @@ Table 51516230 "Loans Register"
 
             trigger OnValidate()
             begin
-                TestField(Posted, false);
+                //TestField(Posted, false);
             end;
         }
         field(69189; "Sub-Sector"; Code[10])
         {
-            TableRelation = "Sub-Sector".Code;//where(No = FIELD("Main Sector"));
+            TableRelation = "Sub-Sector".Code where(No = FIELD("Main Sector"));
             trigger OnValidate()
             begin
-                TestField(Posted, false);
+                //TestField(Posted, false);
             end;
         }
         field(69190; "Specific Sector"; Code[10])
         {
-            TableRelation = "Specific-Sector".Code;//where(No = FIELD("Sub-Sector"));
+            TableRelation = "Specific-Sector".Code where(No = FIELD("Sub-Sector"));
             trigger OnValidate()
             begin
-                TestField(Posted, false);
+              //  TestField(Posted, false);
             end;
         }
         field(69191; "Insider Board"; Boolean)
